@@ -19,10 +19,9 @@
   }
   & .dropdown-destructive {
     color: var(--destructive);
-    &:hover { background: oklch(0.577 0.245 27.33 / 0.08); }
+    &:hover { background: oklch(from var(--destructive) l c h / 0.08); }
     &:is(.dark *) {
-      color: oklch(0.792 0.198 27.33);
-      &:hover { background: oklch(0.577 0.245 27.33 / 0.12); }
+      &:hover { background: oklch(from var(--destructive) l c h / 0.12); }
     }
   }
 }

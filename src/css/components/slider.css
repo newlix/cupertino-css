@@ -25,5 +25,14 @@
     height: 22px;
     border: none;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transition: box-shadow 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
+  }
+  &::-moz-range-thumb:hover {
+    box-shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transform: scale(1.05);
+  }
+  &::-moz-range-thumb:active {
+    box-shadow: 0 1px 3px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transform: scale(0.95);
   }
 }
