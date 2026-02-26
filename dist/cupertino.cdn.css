@@ -538,10 +538,10 @@
     color: var(--color-primary);
   }
   .badge-success {
-    color: oklch(0.596 0.172 145.18);
+    color: var(--success);
   }
   .badge-warning {
-    color: oklch(0.666 0.179 58.32);
+    color: var(--warning);
   }
   .badge-destructive {
     color: var(--color-destructive);
@@ -658,12 +658,12 @@
   }
   .alert-success {
     & svg:first-child {
-      color: oklch(0.596 0.172 145.18);
+      color: var(--success);
     }
   }
   .alert-warning {
     & svg:first-child {
-      color: oklch(0.666 0.179 58.32);
+      color: var(--warning);
     }
   }
   .alert-destructive {

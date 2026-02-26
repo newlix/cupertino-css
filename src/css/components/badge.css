@@ -11,8 +11,8 @@
 }
 /* Only text carries semantic color */
 .badge-primary    { @apply text-primary; }
-.badge-success    { color: oklch(0.596 0.172 145.18); }
-.badge-warning    { color: oklch(0.666 0.179 58.32); }
+.badge-success    { color: var(--success); }
+.badge-warning    { color: var(--warning); }
 .badge-destructive { @apply text-destructive; }
 .badge-outline {
   @apply bg-transparent;

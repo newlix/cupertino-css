@@ -13,6 +13,6 @@
 }
 /* Only the icon carries semantic color */
 .alert-info    { & svg:first-child { color: var(--primary); } }
-.alert-success { & svg:first-child { color: oklch(0.596 0.172 145.18); } }
-.alert-warning { & svg:first-child { color: oklch(0.666 0.179 58.32); } }
+.alert-success { & svg:first-child { color: var(--success); } }
+.alert-warning { & svg:first-child { color: var(--warning); } }
 .alert-destructive { & svg:first-child { color: var(--destructive); } }
