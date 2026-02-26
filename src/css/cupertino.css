@@ -394,46 +394,21 @@
   .alert-success,
   .alert-warning,
   .alert-destructive {
-    @apply flex gap-3 rounded-2xl p-4;
-    border: 1px solid transparent;
-    & svg:first-child { @apply mt-0.5 size-5 shrink-0; }
-    & p:first-child, & p:first-of-type { @apply text-sm font-semibold; }
-    & p:last-child:not(:first-child) { @apply mt-0.5 text-sm opacity-80; }
-  }
-  .alert-info {
-    border-color: var(--info-border);
-    background: var(--info-bg);
-    color: var(--info-text);
-    & svg { color: var(--info-text); }
-  }
-  .alert-success {
-    border-color: var(--success-border);
-    background: var(--success-bg);
-    & p:first-of-type { color: var(--success-text); }
-    & p:last-child:not(:first-child) { color: var(--success-text); }
-    & svg { color: var(--success-text); }
-  }
-  .alert-warning {
-    border-color: var(--warning-border);
-    background: var(--warning-bg);
-    & p:first-of-type { color: var(--warning-text); }
-    & p:last-child:not(:first-child) { color: var(--warning-text); }
-    & svg { color: var(--warning-text); }
-  }
-  .alert-destructive {
-    border-color: oklch(0.577 0.245 27.33 / 0.15);
-    background: oklch(0.577 0.245 27.33 / 0.04);
-    & p:first-of-type { color: oklch(0.444 0.177 27.33); }
-    & p:last-child:not(:first-child) { color: oklch(0.494 0.226 27.33); }
-    & svg { color: oklch(0.535 0.241 27.33); }
+    @apply flex gap-3 rounded-xl p-4;
+    background: var(--card);
+    box-shadow: var(--shadow-sm), 0 0 0 1px oklch(0 0 0 / 0.04);
+    & svg:first-child { @apply mt-0.5 size-5 shrink-0; color: var(--muted-foreground); }
+    & p:first-child, & p:first-of-type { @apply text-sm font-medium text-foreground; }
+    & p:last-child:not(:first-child) { @apply mt-0.5 text-sm text-muted-foreground; }
     &:is(.dark *) {
-      border-color: oklch(0.577 0.245 27.33 / 0.2);
-      background: oklch(0.577 0.245 27.33 / 0.05);
-      & p:first-of-type { color: oklch(0.869 0.148 27.33); }
-      & p:last-child:not(:first-child) { color: oklch(0.792 0.198 27.33 / 0.8); }
-      & svg { color: oklch(0.792 0.198 27.33); }
+      box-shadow: var(--shadow-sm), 0 0 0 1px oklch(1 0 0 / 0.08);
     }
   }
+  /* Only the icon carries semantic color */
+  .alert-info    { & svg:first-child { color: var(--primary); } }
+  .alert-success { & svg:first-child { color: oklch(0.596 0.172 145.18); } }
+  .alert-warning { & svg:first-child { color: oklch(0.666 0.179 58.32); } }
+  .alert-destructive { & svg:first-child { color: var(--destructive); } }
 
   /* ========== INPUT ========== */
   .input {
