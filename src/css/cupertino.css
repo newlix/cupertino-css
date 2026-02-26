@@ -482,7 +482,7 @@
 
   /* ========== LABEL ========== */
   .label {
-    @apply text-sm font-medium text-foreground;
+    @apply block text-sm font-medium text-foreground;
   }
 
   /* ========== FIELD (auto-styles children) ========== */
