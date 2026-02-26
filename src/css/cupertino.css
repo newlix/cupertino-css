@@ -311,30 +311,14 @@
   .badge-warning,
   .badge-destructive,
   .badge-outline {
-    @apply inline-flex items-center rounded-full px-2.5 py-[3px] text-xs font-medium bg-secondary text-secondary-foreground;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-[3px] text-xs font-medium bg-secondary text-secondary-foreground;
     letter-spacing: 0;
-    &:is(.dark *) {
-      color: oklch(0.862 0.007 286.02);
-    }
   }
-  .badge-primary {
-    @apply text-primary;
-    background: oklch(0.563 0.193 256.16 / 0.1);
-  }
-  .badge-success {
-    @apply bg-success-bg text-success-text;
-  }
-  .badge-warning {
-    @apply bg-warning-bg text-warning-text;
-  }
-  .badge-destructive {
-    @apply text-destructive;
-    background: oklch(0.577 0.245 27.33 / 0.05);
-    &:is(.dark *) {
-      background: oklch(0.577 0.245 27.33 / 0.1);
-      color: oklch(0.792 0.198 27.33);
-    }
-  }
+  /* Only text carries semantic color */
+  .badge-primary    { @apply text-primary; }
+  .badge-success    { color: oklch(0.596 0.172 145.18); }
+  .badge-warning    { color: oklch(0.666 0.179 58.32); }
+  .badge-destructive { @apply text-destructive; }
   .badge-outline {
     @apply bg-transparent;
     box-shadow: inset 0 0 0 1px var(--border-solid);
