@@ -13,6 +13,8 @@ function showToast(title, message, type = "success") {
 
   const toast = document.createElement("div");
   toast.className = "toast";
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
 
   // Icon
   const iconWrapper = document.createElement("template");
@@ -35,6 +37,7 @@ function showToast(title, message, type = "success") {
   // Close button
   const closeBtn = document.createElement("button");
   closeBtn.className = "toast-close";
+  closeBtn.setAttribute("aria-label", "Close");
   closeBtn.innerHTML = '<svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>';
   closeBtn.addEventListener("click", () => toast.remove());
   toast.appendChild(closeBtn);

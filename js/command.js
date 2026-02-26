@@ -45,17 +45,14 @@ document.querySelectorAll(".command").forEach((command) => {
   });
 });
 
-// Command dialog — keyboard shortcut
-document.querySelectorAll(".command-dialog").forEach((dialog) => {
-  const shortcut = dialog.dataset.shortcut;
-  if (!shortcut) return;
+// Command dialog — keyboard shortcut (single listener for all dialogs)
+document.addEventListener("keydown", (e) => {
+  document.querySelectorAll(".command-dialog[data-shortcut]").forEach((dialog) => {
+    const parts = dialog.dataset.shortcut.toLowerCase().split("+");
+    const key = parts.pop();
+    const needsMeta = parts.includes("meta") || parts.includes("cmd");
+    const needsCtrl = parts.includes("ctrl");
 
-  const parts = shortcut.toLowerCase().split("+");
-  const key = parts.pop();
-  const needsMeta = parts.includes("meta") || parts.includes("cmd");
-  const needsCtrl = parts.includes("ctrl");
-
-  document.addEventListener("keydown", (e) => {
     const metaMatch = needsMeta ? (e.metaKey || e.ctrlKey) : true;
     const ctrlMatch = needsCtrl ? e.ctrlKey : true;
 
