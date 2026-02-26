@@ -31,10 +31,7 @@
   @apply border bg-card text-card-foreground;
   border-color: var(--border-solid);
   box-shadow: var(--shadow-sm);
-  &:hover { background: oklch(0.985 0.002 286.32); box-shadow: var(--shadow); }
-  &:is(.dark *) {
-    &:hover { @apply bg-accent; }
-  }
+  &:hover { background: var(--surface-2); box-shadow: var(--shadow); }
 }
 .btn-ghost {
   @apply text-foreground;
