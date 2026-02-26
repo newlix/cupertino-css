@@ -22,6 +22,7 @@
     transition: all 0.15s var(--apple-ease);
     & svg { @apply size-4 text-muted-foreground; }
     &:hover { background: var(--surface-3); @apply text-foreground; }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     &[data-active] { background: var(--surface-4); @apply text-foreground font-medium; }
   }
   & .sidebar-footer {

@@ -402,6 +402,14 @@
       transform: translateY(0);
     }
   }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 @layer components {
   .btn, .btn-primary, .btn-secondary, .btn-outline, .btn-ghost, .btn-destructive {
@@ -426,6 +434,10 @@
     letter-spacing: -0.01em;
     &:active {
       transform: scale(var(--apple-press-scale));
+    }
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: 2px;
     }
   }
   .btn-primary {
@@ -605,6 +617,10 @@
     color: var(--color-card-foreground);
     box-shadow: var(--shadow), var(--panel-ring);
     transition: all 0.3s var(--apple-spring);
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: 2px;
+    }
     & h2, & h3 {
       font-size: 17px;
       --tw-font-weight: var(--font-weight-semibold);
@@ -936,6 +952,10 @@
       &:hover {
         background-color: var(--color-accent);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
+      }
       & svg {
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
@@ -976,6 +996,10 @@
     transition: color 0.2s var(--apple-ease);
     &:hover {
       color: var(--color-foreground);
+    }
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: -3px;
     }
     &[data-active] {
       color: var(--primary);
@@ -1095,6 +1119,10 @@
       &:hover {
         background: var(--surface-1);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
+      }
       &::-webkit-details-marker {
         display: none;
       }
@@ -1180,6 +1208,11 @@
       &:hover {
         color: var(--color-foreground);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
     }
     & svg {
       width: calc(var(--spacing) * 3.5);
@@ -1216,6 +1249,10 @@
       transition: all 0.15s var(--apple-ease);
       &:hover {
         background: var(--surface-2);
+      }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
       }
       &:first-child {
         border-top-left-radius: 10px;
@@ -1273,6 +1310,10 @@
     transition: all 0.2s var(--apple-ease);
     &:hover {
       background: var(--surface-3);
+    }
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: 2px;
     }
     &[data-active] {
       background-color: var(--color-primary);
@@ -1412,6 +1453,11 @@
       transition: color 0.15s var(--apple-ease);
       &:hover {
         color: var(--color-foreground);
+      }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: 2px;
+        border-radius: 4px;
       }
       & svg {
         width: calc(var(--spacing) * 4);
@@ -1715,6 +1761,10 @@
     &:hover {
       background: var(--surface-2);
     }
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: -3px;
+    }
   }
   .item-group {
     display: flex;
@@ -1829,6 +1879,10 @@
         background: var(--surface-3);
         color: var(--color-foreground);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
+      }
       &[data-active] {
         background: var(--surface-4);
         --tw-font-weight: var(--font-weight-medium);
@@ -1864,6 +1918,10 @@
       }
       &:hover {
         color: var(--color-foreground);
+      }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: 2px;
       }
       &[data-active] {
         color: var(--color-foreground);
@@ -1942,6 +2000,10 @@
         }
         &:hover {
           background-color: var(--color-accent);
+        }
+        &:focus-visible {
+          outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+          outline-offset: -3px;
         }
         &[data-active] {
           background-color: var(--color-accent);
@@ -2023,6 +2085,10 @@
       border-color: var(--input);
       &:hover:not(:focus) {
         border-color: var(--border-solid);
+      }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: 2px;
       }
       & span {
         flex: 1;
@@ -2121,6 +2187,10 @@
           }
           &:hover {
             background-color: var(--color-accent);
+          }
+          &:focus-visible {
+            outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+            outline-offset: -3px;
           }
           &[data-active] {
             background-color: var(--color-accent);
@@ -2229,6 +2299,10 @@
       &:hover {
         background: var(--surface-1);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
+      }
       &::-webkit-details-marker {
         display: none;
       }
@@ -2300,6 +2374,10 @@
         &:hover {
           background: var(--surface-2);
         }
+        &:focus-visible {
+          outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+          outline-offset: -3px;
+        }
         & > svg {
           width: calc(var(--spacing) * 4);
           height: calc(var(--spacing) * 4);
@@ -2335,6 +2413,10 @@
       transition: background-color 0.15s var(--apple-ease);
       &:hover {
         background: var(--surface-2);
+      }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
       }
       & > svg {
         width: calc(var(--spacing) * 4);
@@ -2462,6 +2544,10 @@
     border-radius: 8px;
     color: var(--color-muted-foreground);
     transition: all 0.2s var(--apple-ease);
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: 2px;
+    }
     &:hover {
       color: var(--color-foreground);
       background: var(--surface-3);
@@ -2960,6 +3046,10 @@
       &:hover {
         background-color: var(--color-accent);
       }
+      &:focus-visible {
+        outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+        outline-offset: -3px;
+      }
       & svg {
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
@@ -3039,6 +3129,10 @@
     }
     &:active {
       transform: translateY(-50%) scale(var(--apple-press-scale));
+    }
+    &:focus-visible {
+      outline: 3px solid oklch(from var(--primary) l c h / 0.3);
+      outline-offset: 2px;
     }
     &:disabled {
       pointer-events: none;

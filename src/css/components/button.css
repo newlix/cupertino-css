@@ -9,6 +9,7 @@
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.01em;
   &:active { transform: scale(var(--apple-press-scale)); }
+  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
 }
 .btn-primary {
   @apply bg-primary text-primary-foreground;

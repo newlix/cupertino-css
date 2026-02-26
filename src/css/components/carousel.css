@@ -38,6 +38,7 @@
   transition: all 0.2s var(--apple-ease);
   &:hover { box-shadow: var(--shadow-md), var(--float-ring); }
   &:active { transform: translateY(-50%) scale(var(--apple-press-scale)); }
+  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &:disabled { @apply pointer-events-none opacity-30; }
   & svg { @apply size-4; }
 }

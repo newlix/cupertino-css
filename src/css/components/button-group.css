@@ -6,6 +6,7 @@
     @apply inline-flex items-center justify-center bg-transparent px-4 py-2.5 text-[13px] font-medium text-foreground;
     transition: all 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     &:first-child { @apply rounded-l-[10px]; }
     &:last-child { @apply rounded-r-[10px]; }
     &:not(:first-child) {

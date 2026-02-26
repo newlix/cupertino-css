@@ -4,6 +4,7 @@
   & a {
     @apply text-muted-foreground transition-colors;
     &:hover { @apply text-foreground; }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
   }
   & svg { @apply size-3.5 text-muted-foreground; opacity: 0.6; }
   & span:last-child, & [aria-current] {

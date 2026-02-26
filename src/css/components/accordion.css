@@ -9,6 +9,7 @@
     @apply flex cursor-pointer items-center justify-between px-5 py-4 text-[13px] font-medium text-foreground;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     &::-webkit-details-marker { display: none; }
     & svg:last-child {
       @apply size-4 shrink-0 text-muted-foreground;

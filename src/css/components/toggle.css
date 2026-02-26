@@ -2,6 +2,7 @@
 .toggle {
   @apply inline-flex size-9 items-center justify-center rounded-[8px] text-muted-foreground cursor-pointer;
   transition: all 0.2s var(--apple-ease);
+  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &:hover {
     @apply text-foreground;
     background: var(--surface-3);

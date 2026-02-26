@@ -25,6 +25,7 @@
       @apply flex items-center gap-1.5 rounded-lg px-2 py-1 text-[13px] text-foreground;
       transition: background-color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
+      &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
       & > svg { @apply size-4 shrink-0 text-muted-foreground; }
     }
 
@@ -46,6 +47,7 @@
     padding-left: 1.75rem; /* aligns file icon with folder icon: px-2 + chevron + gap */
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & > svg { @apply size-4 shrink-0; }
   }
 }

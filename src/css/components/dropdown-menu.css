@@ -11,6 +11,7 @@
     @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
     transition: background-color 0.12s var(--apple-ease);
     &:hover { @apply bg-accent; }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
   }
   & .dropdown-divider, & hr {

@@ -6,6 +6,7 @@
     background-color: var(--card);
     border-color: var(--input);
     &:hover:not(:focus) { border-color: var(--border-solid); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     & span { @apply flex-1 truncate text-left; }
     & span[data-placeholder] { @apply text-muted-foreground; opacity: 0.5; }
     & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }
@@ -37,6 +38,7 @@
         @apply flex items-center gap-2 rounded-lg px-2 py-2 text-[13px] text-foreground cursor-pointer transition-colors;
         & svg { @apply size-4 shrink-0 text-muted-foreground; }
         &:hover { @apply bg-accent; }
+        &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
         &[data-active] { @apply bg-accent; }
         &[data-selected] {
           @apply bg-accent font-medium;
