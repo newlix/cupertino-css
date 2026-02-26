@@ -1201,7 +1201,8 @@
       & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }
     }
     & [data-combobox-content] {
-      @apply absolute z-50 mt-1.5 hidden w-full min-w-[200px] rounded-xl overflow-hidden;
+      @apply absolute z-50 mt-1.5 w-full min-w-[200px] rounded-xl overflow-hidden;
+      display: none;
       background: var(--glass-bg-opaque);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
@@ -1251,7 +1252,7 @@
       }
     }
     &[data-open] > [data-combobox-content] {
-      @apply block;
+      display: block;
     }
   }
 
@@ -1396,15 +1397,14 @@
     @apply relative inline-block;
   }
   .popover-content {
-    @apply absolute z-50 mt-2 hidden min-w-[220px] rounded-2xl p-4;
+    @apply absolute z-50 mt-2 min-w-[220px] rounded-2xl p-4;
+    display: none;
     background: var(--glass-bg-opaque);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     box-shadow: var(--shadow-lg), var(--float-ring);
     animation: slideUp 0.2s var(--apple-spring);
-    &.popover-open {
-      @apply block;
-    }
+    &[data-open] { display: block; }
   }
   .popover-top {
     & .popover-content {
@@ -1685,7 +1685,8 @@
     @apply cursor-default;
   }
   .context-menu-content {
-    @apply fixed z-[9999] hidden min-w-[200px] rounded-xl p-1.5;
+    @apply fixed z-[9999] min-w-[200px] rounded-xl p-1.5;
+    display: none;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -1704,7 +1705,7 @@
     & .context-menu-shortcut {
       @apply ml-auto text-xs text-muted-foreground;
     }
-    &.open { @apply block; }
+    &[data-open] { display: block; }
   }
 
   /* ========== CAROUSEL ========== */

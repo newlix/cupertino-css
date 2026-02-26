@@ -7,8 +7,8 @@ document.addEventListener("contextmenu", (e) => {
   e.preventDefault();
 
   // Close all context menus first
-  document.querySelectorAll(".context-menu-content.open").forEach((el) => {
-    el.classList.remove("open");
+  document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
+    el.removeAttribute("data-open");
   });
 
   const menu = trigger.querySelector(".context-menu-content") ||
@@ -18,7 +18,7 @@ document.addEventListener("contextmenu", (e) => {
   // Position at cursor
   menu.style.left = e.clientX + "px";
   menu.style.top = e.clientY + "px";
-  menu.classList.add("open");
+  menu.setAttribute("data-open", "");
 
   // Adjust if overflowing viewport
   requestAnimationFrame(() => {
@@ -34,16 +34,16 @@ document.addEventListener("contextmenu", (e) => {
 
 // Close on click anywhere
 document.addEventListener("click", () => {
-  document.querySelectorAll(".context-menu-content.open").forEach((el) => {
-    el.classList.remove("open");
+  document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
+    el.removeAttribute("data-open");
   });
 });
 
 // Close on Escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    document.querySelectorAll(".context-menu-content.open").forEach((el) => {
-      el.classList.remove("open");
+    document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
+      el.removeAttribute("data-open");
     });
   }
 });
