@@ -54,803 +54,362 @@
   </div>
 </section>
 
-<!-- ─── Bento Grid ─── -->
-<h2 class="home-section-title">Built with Cupertino</h2>
-<div class="home-bento-grid">
+<!-- ─── Demo Tabs ─── -->
+<div class="home-demos">
+<h2 class="home-section-title" style="max-width:none;padding:0;">Built with Cupertino</h2>
 
-  <!-- Cell 1: Create Account (1col, 2row) -->
-  <div class="bento-cell bento-2row">
-    <div class="bento-cell-header">Create Account</div>
-    <div class="bento-cell-body">
-      <form onsubmit="return false" class="space-y-4">
-        <div class="field">
-          <label>Name</label>
-          <input type="text" placeholder="John Doe">
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" placeholder="john@example.com">
-        </div>
-        <div class="field">
-          <label>Role</label>
-          <select class="select">
-            <option value="" disabled selected>Select a role</option>
-            <option>Designer</option>
-            <option>Developer</option>
-            <option>Manager</option>
-          </select>
-        </div>
-        <div class="separator"></div>
-        <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" class="checkbox">
-          <span class="text-sm">I agree to the terms</span>
-        </label>
-        <button class="btn w-full">Create Account</button>
-      </form>
+<div class="home-demo-tabs-list">
+  <div class="tabs-pill">
+    <div class="tabs-list">
+      <button class="tabs-trigger" data-demo="components" data-active>Components</button>
+      <button class="tabs-trigger" data-demo="mail">Mail</button>
+      <button class="tabs-trigger" data-demo="dashboard">Dashboard</button>
+      <button class="tabs-trigger" data-demo="settings">Settings</button>
+      <button class="tabs-trigger" data-demo="auth">Authentication</button>
     </div>
   </div>
+</div>
 
-  <!-- Cell 2: Team Members (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Team Members</div>
-    <div class="bento-cell-body p-0!">
-      <div class="table">
-        <table>
-          <thead>
-            <tr>
-              <th>Member</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th class="text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="flex items-center gap-2.5">
-                  <div class="avatar avatar-sm bg-primary/10 text-primary">SC</div>
-                  <span class="font-medium">Sarah Chen</span>
-                </div>
-              </td>
-              <td class="text-muted-foreground">Lead Designer</td>
-              <td><span class="badge-success">Active</span></td>
-              <td class="text-right">
-                <div class="relative inline-block" data-dropdown>
-                  <button data-dropdown-trigger class="btn btn-ghost btn-sm btn-icon">
-                    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-                  </button>
-                  <div data-dropdown-content class="dropdown-menu" style="min-width:120px;">
-                    <button>Edit</button>
-                    <button>View Profile</button>
-                    <hr>
-                    <button class="dropdown-destructive">Remove</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="flex items-center gap-2.5">
-                  <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 150);color:oklch(0.4 0.1 150);">AK</div>
-                  <span class="font-medium">Alex Kim</span>
-                </div>
-              </td>
-              <td class="text-muted-foreground">Engineer</td>
-              <td><span class="badge-success">Active</span></td>
-              <td class="text-right">
-                <div class="relative inline-block" data-dropdown>
-                  <button data-dropdown-trigger class="btn btn-ghost btn-sm btn-icon">
-                    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-                  </button>
-                  <div data-dropdown-content class="dropdown-menu" style="min-width:120px;">
-                    <button>Edit</button>
-                    <button>View Profile</button>
-                    <hr>
-                    <button class="dropdown-destructive">Remove</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="flex items-center gap-2.5">
-                  <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 280);color:oklch(0.4 0.1 280);">MR</div>
-                  <span class="font-medium">Maria Rodriguez</span>
-                </div>
-              </td>
-              <td class="text-muted-foreground">PM</td>
-              <td><span class="badge-warning">Away</span></td>
-              <td class="text-right">
-                <div class="relative inline-block" data-dropdown>
-                  <button data-dropdown-trigger class="btn btn-ghost btn-sm btn-icon">
-                    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-                  </button>
-                  <div data-dropdown-content class="dropdown-menu" style="min-width:120px;">
-                    <button>Edit</button>
-                    <button>View Profile</button>
-                    <hr>
-                    <button class="dropdown-destructive">Remove</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<!-- Panel 1: Components -->
+<div class="home-demo-panel" data-demo-panel="components" data-active>
+<div class="home-showcase">
 
-  <!-- Cell 3: Notification Settings (1col) -->
-  <div class="bento-cell">
-    <div class="bento-cell-header">Notifications</div>
-    <div class="bento-cell-body space-y-4">
-      <label class="flex items-center justify-between cursor-pointer">
-        <div>
-          <p class="text-sm font-medium">Push Notifications</p>
-          <p class="text-xs text-muted-foreground">Receive push notifications</p>
+  <!-- Row 1: Create Account + Notifications (2-col) -->
+  <div class="home-showcase-row home-showcase-2">
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <div class="home-showcase-card-head">
+          <h3>Create an account</h3>
+          <p>Enter your details to get started</p>
         </div>
-        <input type="checkbox" class="switch" checked>
-      </label>
-      <div class="separator"></div>
-      <label class="flex items-center justify-between cursor-pointer">
-        <div>
-          <p class="text-sm font-medium">Email Digest</p>
-          <p class="text-xs text-muted-foreground">Weekly email summary</p>
-        </div>
-        <input type="checkbox" class="switch">
-      </label>
-      <div class="separator"></div>
-      <label class="flex items-center justify-between cursor-pointer">
-        <div>
-          <p class="text-sm font-medium">Marketing</p>
-          <p class="text-xs text-muted-foreground">Product updates & offers</p>
-        </div>
-        <input type="checkbox" class="switch">
-      </label>
-    </div>
-  </div>
-
-  <!-- Cell 4: Payment Method (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Payment Method</div>
-    <div class="bento-cell-body">
-      <div class="tabs" data-tabs>
-        <div class="tabs-list" data-tab-list>
-          <button data-tab="pay-card" data-active class="tabs-trigger">Card</button>
-          <button data-tab="pay-paypal" class="tabs-trigger">PayPal</button>
-        </div>
-        <div data-tab-panel="pay-card" data-active class="tabs-content">
-          <form onsubmit="return false" class="space-y-3 pt-1">
-            <div class="field">
-              <label>Card number</label>
-              <input type="text" placeholder="1234 5678 9012 3456">
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div class="field">
-                <label>Expiry</label>
-                <input type="text" placeholder="MM / YY">
-              </div>
-              <div class="field">
-                <label>CVC</label>
-                <input type="text" placeholder="123">
-              </div>
-            </div>
-            <fieldset class="space-y-2">
-              <legend class="label">Card type</legend>
-              <div class="flex gap-4">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="home-card-type" value="visa" checked class="radio">
-                  <span class="text-sm">Visa</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="home-card-type" value="mc" class="radio">
-                  <span class="text-sm">Mastercard</span>
-                </label>
-              </div>
-            </fieldset>
-            <button class="btn w-full">Save Card</button>
-          </form>
-        </div>
-        <div data-tab-panel="pay-paypal" class="tabs-content">
-          <div class="py-6 text-center">
-            <p class="text-sm text-muted-foreground">Click below to connect your PayPal account.</p>
-            <button class="btn btn-outline mt-3">Connect PayPal</button>
+        <form onsubmit="return false" class="space-y-3">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="John Doe">
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 5: Alert variants (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Alerts</div>
-    <div class="bento-cell-body space-y-3">
-      <div class="alert-info">
-        <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <div><p>A new software update is available for your device.</p></div>
-      </div>
-      <div class="alert-success">
-        <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <div><p>Your changes have been saved successfully.</p></div>
-      </div>
-      <div class="alert-warning">
-        <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-        <div><p>Your storage is almost full. Upgrade your plan.</p></div>
-      </div>
-      <div class="alert-destructive">
-        <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <div><p>Connection lost. Check your internet and try again.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 6: Command Palette (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Command Palette</div>
-    <div class="bento-cell-body">
-      <div class="command" style="width:100%;">
-        <header>
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" placeholder="Type a command or search..." autocomplete="off" spellcheck="false">
-        </header>
-        <div role="menu" data-empty="No results found.">
-          <div role="group">
-            <span role="heading">Suggestions</span>
-            <div role="menuitem">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-              <span>Calendar</span>
-              <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">C</kbd></span>
-            </div>
-            <div role="menuitem">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              <span>Search Files</span>
-              <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">F</kbd></span>
-            </div>
-            <div role="menuitem">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-              <span>Settings</span>
-              <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">,</kbd></span>
-            </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="john@example.com">
           </div>
-          <div role="group">
-            <span role="heading">Actions</span>
-            <div role="menuitem">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-              <span>Invite Team Member</span>
-            </div>
-            <div role="menuitem">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-              <span>New Document</span>
-            </div>
+          <div class="field">
+            <label>Role</label>
+            <select class="select">
+              <option value="" disabled selected>Select a role</option>
+              <option>Designer</option>
+              <option>Developer</option>
+              <option>Manager</option>
+            </select>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 7: Activity Feed (1col, 2row) -->
-  <div class="bento-cell bento-2row">
-    <div class="bento-cell-header">Activity</div>
-    <div class="bento-cell-body p-0!">
-      <div class="scroll-area" style="height:340px;">
-        <div class="space-y-0">
-          <div class="item">
-            <div class="avatar avatar-sm bg-primary/10 text-primary text-[11px]">SC</div>
-            <div class="item-content">
-              <h3>Sarah pushed to main</h3>
-              <p>2 minutes ago</p>
-            </div>
-            <span class="badge">New</span>
-          </div>
-          <div class="item">
-            <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 150);color:oklch(0.4 0.1 150);font-size:11px;">AK</div>
-            <div class="item-content">
-              <h3>Alex opened a PR</h3>
-              <p>15 minutes ago</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 280);color:oklch(0.4 0.1 280);font-size:11px;">MR</div>
-            <div class="item-content">
-              <h3>Maria commented</h3>
-              <p>1 hour ago</p>
-            </div>
-          </div>
-          <div class="separator mx-4!"></div>
-          <div class="item">
-            <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 60);color:oklch(0.4 0.1 60);font-size:11px;">JD</div>
-            <div class="item-content">
-              <h3>Jake deployed v2.1</h3>
-              <p>3 hours ago</p>
-            </div>
-            <span class="badge-success">Live</span>
-          </div>
-          <div class="item">
-            <div class="avatar avatar-sm bg-primary/10 text-primary text-[11px]">SC</div>
-            <div class="item-content">
-              <h3>Sarah updated docs</h3>
-              <p>5 hours ago</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 150);color:oklch(0.4 0.1 150);font-size:11px;">AK</div>
-            <div class="item-content">
-              <h3>Alex merged PR #42</h3>
-              <p>Yesterday</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 30);color:oklch(0.4 0.1 30);font-size:11px;">LW</div>
-            <div class="item-content">
-              <h3>Lisa added milestone</h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 8: Cookie Consent (1col) -->
-  <div class="bento-cell">
-    <div class="bento-cell-header">Cookie Settings</div>
-    <div class="bento-cell-body space-y-3">
-      <p class="text-sm text-muted-foreground">Manage your cookie preferences.</p>
-      <div class="accordion">
-        <details name="home-cookies">
-          <summary>
-            Essential Cookies
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>
-            <label class="inline-flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" class="checkbox" checked disabled>
-              <span class="text-sm">Always active</span>
-            </label>
-          </div>
-        </details>
-        <details name="home-cookies">
-          <summary>
-            Analytics
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>
-            <label class="inline-flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" class="checkbox">
-              <span class="text-sm">Allow analytics cookies</span>
-            </label>
-          </div>
-        </details>
-      </div>
-      <button class="btn w-full" onclick="document.getElementById('home-drawer').showModal()">Customize</button>
-      <dialog id="home-drawer" class="sheet-bottom">
-        <div class="drawer-handle"></div>
-        <button onclick="document.getElementById('home-drawer').close()" class="sheet-close">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <header>
-          <h2>Cookie Preferences</h2>
-          <p>Choose which cookies you'd like to accept.</p>
-        </header>
-        <section class="space-y-4">
-          <label class="flex items-center justify-between cursor-pointer">
-            <span class="text-sm font-medium">Essential</span>
-            <input type="checkbox" class="switch" checked disabled>
+          <label class="inline-flex items-center gap-2.5 cursor-pointer">
+            <input type="checkbox" class="checkbox">
+            <span class="text-sm">I agree to the terms and conditions</span>
           </label>
+          <button class="btn w-full">Create Account</button>
+        </form>
+      </div>
+    </div>
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <div class="home-showcase-card-head">
+          <h3>Notifications</h3>
+          <p>Choose what you want to be notified about</p>
+        </div>
+        <div class="space-y-4">
           <label class="flex items-center justify-between cursor-pointer">
-            <span class="text-sm font-medium">Analytics</span>
-            <input type="checkbox" class="switch">
-          </label>
-          <label class="flex items-center justify-between cursor-pointer">
-            <span class="text-sm font-medium">Marketing</span>
-            <input type="checkbox" class="switch">
-          </label>
-        </section>
-        <footer>
-          <button onclick="document.getElementById('home-drawer').close()" class="btn w-full">Save Preferences</button>
-        </footer>
-      </dialog>
-    </div>
-  </div>
-
-  <!-- Cell 9: Storage & Loading (1col) -->
-  <div class="bento-cell">
-    <div class="bento-cell-header">Storage</div>
-    <div class="bento-cell-body space-y-4">
-      <div>
-        <div class="flex justify-between text-sm mb-1.5">
-          <span class="font-medium">Documents</span>
-          <span class="text-muted-foreground">4.2 GB</span>
-        </div>
-        <div class="progress"><div class="progress-bar" style="width:68%"></div></div>
-      </div>
-      <div>
-        <div class="flex justify-between text-sm mb-1.5">
-          <span class="font-medium">Photos</span>
-          <span class="text-muted-foreground">2.8 GB</span>
-        </div>
-        <div class="progress"><div class="progress-bar" style="width:45%"></div></div>
-      </div>
-      <div class="separator"></div>
-      <div class="flex items-center gap-3">
-        <span class="spinner spinner-sm"></span>
-        <span class="text-sm text-muted-foreground">Syncing 3 files...</span>
-      </div>
-      <div class="space-y-2">
-        <div class="skeleton h-3 w-full rounded"></div>
-        <div class="skeleton h-3 w-3/4 rounded"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 10: FAQ (1col, 2row) -->
-  <div class="bento-cell bento-2row">
-    <div class="bento-cell-header">FAQ</div>
-    <div class="bento-cell-body p-0!">
-      <div class="accordion">
-        <details name="home-faq" open>
-          <summary>
-            Is it accessible?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>Yes. All components follow WAI-ARIA patterns and are keyboard navigable.</div>
-        </details>
-        <details name="home-faq">
-          <summary>
-            Is it styled?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>Yes. Semantic CSS classes with Apple HIG styling &mdash; no utility soup.</div>
-        </details>
-        <details name="home-faq">
-          <summary>
-            Does it support dark mode?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>Yes. Every component has light and dark mode built in. Just add the <code class="kbd">.dark</code> class.</div>
-        </details>
-        <details name="home-faq">
-          <summary>
-            Can I use it with any framework?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>Yes. It's pure CSS, so it works with React, Vue, Svelte, HTMX, or plain HTML.</div>
-        </details>
-        <details name="home-faq">
-          <summary>
-            Is it customizable?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>Yes. Override any CSS variable or Tailwind utility. The components are designed to be composable.</div>
-        </details>
-        <details name="home-faq">
-          <summary>
-            What about animations?
-            <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div>All interactive components include smooth Apple-style transitions that respect prefers-reduced-motion.</div>
-        </details>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 11: Profile Actions (1col) -->
-  <div class="bento-cell">
-    <div class="bento-cell-header">Profile</div>
-    <div class="bento-cell-body">
-      <div class="flex flex-col items-center gap-3 text-center">
-        <div class="hover-card">
-          <div class="avatar bg-primary/10 text-primary avatar-lg cursor-pointer">JD</div>
-          <div class="hover-card-content">
-            <div class="flex items-center gap-3">
-              <div class="avatar bg-primary/10 text-primary">JD</div>
-              <div class="text-left">
-                <p class="text-sm font-semibold">John Doe</p>
-                <p class="text-xs text-muted-foreground">@johndoe</p>
-              </div>
-            </div>
-            <p class="mt-2 text-sm text-muted-foreground">Building tools for the web. Open source enthusiast.</p>
-            <div class="mt-2 flex gap-4 text-xs text-muted-foreground">
-              <span><strong class="text-foreground">128</strong> Following</span>
-              <span><strong class="text-foreground">4.2k</strong> Followers</span>
-            </div>
-          </div>
-        </div>
-        <p class="text-sm font-medium">John Doe</p>
-        <div class="flex gap-2">
-          <div class="popover" data-popover>
-            <button data-popover-trigger class="btn btn-outline btn-sm">Edit</button>
-            <div class="popover-content" style="min-width:200px;">
-              <h4 class="text-sm font-semibold">Edit Profile</h4>
-              <div class="mt-2 field">
-                <label>Display name</label>
-                <input type="text" value="John Doe">
-              </div>
-            </div>
-          </div>
-          <div class="tooltip">
-            <button class="btn btn-sm btn-ghost btn-icon">
-              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-            </button>
-            <div class="tooltip-content">Share profile</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 12: Navigation (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Navigation</div>
-    <div class="bento-cell-body space-y-5">
-      <nav class="breadcrumb">
-        <a href="#">Home</a>
-        <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        <a href="#">Components</a>
-        <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        <span>Button</span>
-      </nav>
-      <div class="separator"></div>
-      <nav class="pagination">
-        <button class="pagination-item" disabled>
-          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="pagination-item" data-active>1</button>
-        <button class="pagination-item">2</button>
-        <button class="pagination-item">3</button>
-        <span class="inline-flex size-9 items-center justify-center text-sm text-muted-foreground">...</span>
-        <button class="pagination-item">10</button>
-        <button class="pagination-item">
-          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </nav>
-      <div class="separator"></div>
-      <div class="flex flex-wrap items-center gap-3">
-        <div class="button-group">
-          <button>Day</button>
-          <button>Week</button>
-          <button>Month</button>
-        </div>
-        <div class="flex items-center gap-1 text-sm text-muted-foreground">
-          Press <kbd class="kbd">&#8984;</kbd><kbd class="kbd">K</kbd> to search
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 13: Text Editor (1col) -->
-  <div class="bento-cell">
-    <div class="bento-cell-header">Editor</div>
-    <div class="bento-cell-body space-y-3">
-      <div class="flex items-center gap-2">
-        <div class="toggle-group" data-multiple>
-          <button class="toggle" data-active aria-pressed="true" title="Bold">
-            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
-          </button>
-          <button class="toggle" aria-pressed="false" title="Italic">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m-2 0h4"/></svg>
-          </button>
-          <button class="toggle" aria-pressed="false" title="Underline">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a6 6 0 0012 0V4M4 20h16"/></svg>
-          </button>
-        </div>
-        <div class="combobox" style="width:120px;">
-          <button type="button">
-            <span data-placeholder>Font…</span>
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
-          </button>
-          <div data-combobox-content>
-            <header>
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              <input type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
-            </header>
-            <div role="listbox" data-empty="Not found.">
-              <div role="option" data-value="SF Pro">SF Pro</div>
-              <div role="option" data-value="Helvetica">Helvetica</div>
-              <div role="option" data-value="Inter">Inter</div>
-              <div role="option" data-value="Mono">Mono</div>
-            </div>
-          </div>
-          <input type="hidden" name="home-font" value="">
-        </div>
-      </div>
-      <textarea rows="4" placeholder="Start typing..." class="textarea"></textarea>
-    </div>
-  </div>
-
-  <!-- Cell 14: Mini Sidebar (1col, 2row) -->
-  <div class="bento-cell bento-2row" style="padding:0;">
-    <div class="sidebar" style="position:relative; height:100%; border-radius:inherit; border:0;">
-      <div class="sidebar-header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-primary">
-          <rect width="24" height="24" rx="6" fill="currentColor" opacity="0.12"/>
-          <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="12" cy="12" r="4" fill="currentColor"/>
-        </svg>
-        <h2>Workspace</h2>
-      </div>
-      <div class="sidebar-content">
-        <div class="sidebar-section">
-          <h3>General</h3>
-          <a class="sidebar-item" data-active>
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            Home
-          </a>
-          <a class="sidebar-item">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            Search
-          </a>
-          <a class="sidebar-item">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-            Notifications
-            <span class="badge ml-auto">3</span>
-          </a>
-        </div>
-        <div class="sidebar-section">
-          <h3>Projects</h3>
-          <a class="sidebar-item">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            Design System
-          </a>
-          <a class="sidebar-item">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            Marketing Site
-          </a>
-        </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="flex items-center gap-2.5 text-sm text-muted-foreground">
-          <div class="avatar avatar-sm bg-primary/10 text-primary text-[10px]">JD</div>
-          <span class="font-medium text-foreground">John Doe</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 15: Carousel + Empty (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">Showcase</div>
-    <div class="bento-cell-body space-y-4">
-      <div class="carousel">
-        <div class="carousel-content">
-          <div class="carousel-item">
-            <div class="aspect-ratio aspect-video rounded-lg border overflow-hidden" style="background:oklch(0.95 0.02 250);">
-              <div class="flex items-center justify-center h-full text-sm text-muted-foreground">Slide 1</div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="aspect-ratio aspect-video rounded-lg border overflow-hidden" style="background:oklch(0.95 0.02 150);">
-              <div class="flex items-center justify-center h-full text-sm text-muted-foreground">Slide 2</div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="aspect-ratio aspect-video rounded-lg border overflow-hidden" style="background:oklch(0.95 0.02 30);">
-              <div class="flex items-center justify-center h-full text-sm text-muted-foreground">Slide 3</div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-prev" aria-label="Previous">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="carousel-next" aria-label="Next">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-      <div class="empty" style="padding:1.5rem;">
-        <div class="empty-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
-        </div>
-        <h3>No items yet</h3>
-        <p>Upload your first image to get started.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cell 16: File Tree + OTP + Slider + Toast + Context Menu + Collapsible + Theme Switcher (2col) -->
-  <div class="bento-cell bento-2col">
-    <div class="bento-cell-header">More Components</div>
-    <div class="bento-cell-body">
-      <div class="grid grid-cols-2 gap-4">
-        <!-- File Tree -->
-        <div>
-          <details class="file-tree" open>
-            <summary>Project</summary>
             <div>
-              <details open>
-                <summary>
-                  <svg class="file-tree-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                  src
-                </summary>
-                <div>
-                  <div class="file-tree-item">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    app.tsx
-                  </div>
-                  <div class="file-tree-item">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    styles.css
-                  </div>
-                </div>
-              </details>
-              <div class="file-tree-item">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                package.json
+              <p class="text-sm font-medium">Push Notifications</p>
+              <p class="text-xs text-muted-foreground">Sent to your device</p>
+            </div>
+            <input type="checkbox" class="switch" checked>
+          </label>
+          <div class="separator"></div>
+          <label class="flex items-center justify-between cursor-pointer">
+            <div>
+              <p class="text-sm font-medium">Email Digest</p>
+              <p class="text-xs text-muted-foreground">Weekly summary</p>
+            </div>
+            <input type="checkbox" class="switch">
+          </label>
+          <div class="separator"></div>
+          <label class="flex items-center justify-between cursor-pointer">
+            <div>
+              <p class="text-sm font-medium">Marketing</p>
+              <p class="text-xs text-muted-foreground">Product updates &amp; tips</p>
+            </div>
+            <input type="checkbox" class="switch">
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Command Palette (full-width hero) -->
+  <div class="home-showcase-row">
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card p-0!">
+        <div class="command" style="width:100%;border:0;border-radius:0;box-shadow:none;">
+          <header>
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" placeholder="Type a command or search..." autocomplete="off" spellcheck="false">
+          </header>
+          <div role="menu" data-empty="No results found.">
+            <div role="group">
+              <span role="heading">Suggestions</span>
+              <div role="menuitem">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                <span>Calendar</span>
+                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">C</kbd></span>
+              </div>
+              <div role="menuitem">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <span>Search Files</span>
+                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">F</kbd></span>
+              </div>
+              <div role="menuitem">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>Settings</span>
+                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">,</kbd></span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Team Members + Payment (2-col) -->
+  <div class="home-showcase-row home-showcase-2">
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card p-0!">
+        <div class="px-6 pt-6 pb-4">
+          <div class="home-showcase-card-head pb-0!">
+            <h3>Team Members</h3>
+            <p>Manage your team and permissions</p>
+          </div>
+        </div>
+        <div class="table" style="border:0;border-radius:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="flex items-center gap-2.5">
+                    <div class="avatar avatar-sm bg-primary/10 text-primary">SC</div>
+                    <span class="font-medium">Sarah Chen</span>
+                  </div>
+                </td>
+                <td class="text-muted-foreground">Lead Designer</td>
+                <td><span class="badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="flex items-center gap-2.5">
+                    <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 150);color:oklch(0.4 0.1 150);">AK</div>
+                    <span class="font-medium">Alex Kim</span>
+                  </div>
+                </td>
+                <td class="text-muted-foreground">Engineer</td>
+                <td><span class="badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="flex items-center gap-2.5">
+                    <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 280);color:oklch(0.4 0.1 280);">MR</div>
+                    <span class="font-medium">Maria Rodriguez</span>
+                  </div>
+                </td>
+                <td class="text-muted-foreground">PM</td>
+                <td><span class="badge-warning">Away</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <div class="home-showcase-card-head">
+          <h3>Payment Method</h3>
+          <p>Add a payment method to your account</p>
+        </div>
+        <div class="tabs" data-tabs>
+          <div class="tabs-list" data-tab-list>
+            <button data-tab="pay-card" data-active class="tabs-trigger">Card</button>
+            <button data-tab="pay-paypal" class="tabs-trigger">PayPal</button>
+          </div>
+          <div data-tab-panel="pay-card" data-active class="tabs-content">
+            <form onsubmit="return false" class="space-y-3 pt-1">
+              <div class="field">
+                <label>Card number</label>
+                <input type="text" placeholder="1234 5678 9012 3456">
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="field">
+                  <label>Expiry</label>
+                  <input type="text" placeholder="MM / YY">
+                </div>
+                <div class="field">
+                  <label>CVC</label>
+                  <input type="text" placeholder="123">
+                </div>
+              </div>
+              <button class="btn w-full">Save Card</button>
+            </form>
+          </div>
+          <div data-tab-panel="pay-paypal" class="tabs-content">
+            <div class="py-6 text-center">
+              <p class="text-sm text-muted-foreground">Connect your PayPal account.</p>
+              <button class="btn btn-outline mt-3">Connect PayPal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4: FAQ + Alerts + Controls (3-col) -->
+  <div class="home-showcase-row home-showcase-3">
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card p-0!">
+        <div class="px-6 pt-6 pb-3">
+          <h3 class="text-base font-semibold tracking-tight">FAQ</h3>
+        </div>
+        <div class="accordion">
+          <details name="home-faq" open>
+            <summary>
+              Is it accessible?
+              <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div>Yes. WAI-ARIA patterns and keyboard navigable.</div>
+          </details>
+          <details name="home-faq">
+            <summary>
+              Dark mode support?
+              <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div>Yes. Add the <code class="kbd">.dark</code> class.</div>
+          </details>
+          <details name="home-faq">
+            <summary>
+              Any framework?
+              <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div>Pure CSS &mdash; React, Vue, Svelte, or plain HTML.</div>
           </details>
         </div>
-
-        <!-- Right column -->
+      </div>
+    </div>
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <h3 class="text-base font-semibold tracking-tight pb-4">Alerts</h3>
+        <div class="space-y-3">
+          <div class="alert-info">
+            <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div><p>A new update is available.</p></div>
+          </div>
+          <div class="alert-destructive">
+            <svg class="mt-0.5 size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div><p>Connection lost.</p></div>
+          </div>
+          <button class="btn btn-outline btn-sm w-full" id="home-toast-btn">
+            <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            Show Toast
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <h3 class="text-base font-semibold tracking-tight pb-4">Controls</h3>
         <div class="space-y-4">
-          <!-- OTP -->
           <div>
-            <p class="text-xs font-medium text-muted-foreground mb-2">Verification Code</p>
-            <div class="input-otp" data-name="home-otp">
-              <div class="input-otp-slot"></div>
-              <div class="input-otp-slot"></div>
-              <div class="input-otp-slot"></div>
-              <div class="input-otp-slot"></div>
+            <p class="text-[13px] font-medium text-muted-foreground mb-2">Verification Code</p>
+            <div class="flex justify-center">
+              <div class="input-otp" data-name="home-otp">
+                <div class="input-otp-slot"></div>
+                <div class="input-otp-slot"></div>
+                <div class="input-otp-slot"></div>
+                <div class="input-otp-slot"></div>
+              </div>
             </div>
           </div>
-
-          <!-- Slider -->
-          <div>
-            <p class="text-xs font-medium text-muted-foreground mb-2">Volume</p>
-            <input type="range" min="0" max="100" value="65" class="slider w-full">
+          <div class="separator"></div>
+          <div class="flex items-center justify-between">
+            <p class="text-[13px] font-medium text-muted-foreground">Format</p>
+            <div class="toggle-group" data-multiple>
+              <button class="toggle" data-active aria-pressed="true" title="Bold">
+                <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
+              </button>
+              <button class="toggle" aria-pressed="false" title="Italic">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m-2 0h4"/></svg>
+              </button>
+              <button class="toggle" aria-pressed="false" title="Underline">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a6 6 0 0012 0V4M4 20h16"/></svg>
+              </button>
+            </div>
           </div>
-
-          <!-- Theme Switcher -->
-          <div class="theme-switcher">
-            <button data-active title="Light">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            </button>
-            <button title="Dark">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-            </button>
-            <button title="System">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </button>
+          <div class="separator"></div>
+          <div>
+            <p class="text-[13px] font-medium text-muted-foreground mb-2">Volume</p>
+            <input type="range" min="0" max="100" value="65" class="slider w-full">
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="separator my-4"></div>
-
-      <div class="flex flex-wrap items-center gap-3">
-        <!-- Collapsible -->
-        <details class="collapsible" style="flex:1; min-width:200px;">
-          <summary>
-            3 items hidden
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-0 pb-0">
-            <div class="border-t px-5 py-3 text-[13px] text-muted-foreground">@cupertino/core</div>
-            <div class="border-t px-5 py-3 text-[13px] text-muted-foreground">@cupertino/icons</div>
-            <div class="border-t px-5 py-3 text-[13px] text-muted-foreground">@cupertino/utils</div>
-          </div>
-        </details>
-
-        <!-- Toast trigger -->
-        <button class="btn btn-outline btn-sm" id="home-toast-btn">
-          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-          Show Toast
-        </button>
-
-        <!-- Context menu -->
-        <div class="context-menu-trigger flex h-10 items-center justify-center rounded-lg border border-dashed px-3 text-xs text-muted-foreground">
-          Right-click
-          <div class="context-menu-content">
-            <button>Cut</button>
-            <button>Copy</button>
-            <button>Paste</button>
-          </div>
+  <!-- Row 5: Navigation (full-width closure) -->
+  <div class="home-showcase-row">
+    <div class="home-showcase-cell">
+      <div class="home-showcase-card">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <nav class="breadcrumb">
+            <a href="#">Home</a>
+            <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <a href="#">Components</a>
+            <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <span>Button</span>
+          </nav>
+          <nav class="pagination">
+            <button class="pagination-item" disabled>
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="pagination-item" data-active>1</button>
+            <button class="pagination-item">2</button>
+            <button class="pagination-item">3</button>
+            <span class="inline-flex size-9 items-center justify-center text-sm text-muted-foreground">...</span>
+            <button class="pagination-item">10</button>
+            <button class="pagination-item">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </nav>
         </div>
       </div>
     </div>
   </div>
 
 </div>
+</div><!-- /components panel -->
+
+<!-- Panel 2: Mail (lazy-loaded from examples/mail.html) -->
+<div class="home-demo-panel" data-demo-panel="mail"></div>
+
+<!-- Panel 3: Dashboard (lazy-loaded from examples/dashboard.html) -->
+<div class="home-demo-panel" data-demo-panel="dashboard"></div>
+
+<!-- Panel 4: Settings (lazy-loaded from examples/settings.html) -->
+<div class="home-demo-panel" data-demo-panel="settings"></div>
+
+<!-- Panel 5: Authentication (lazy-loaded from examples/auth.html) -->
+<div class="home-demo-panel" data-demo-panel="auth"></div>
+
+</div><!-- /home-demos -->
 
 <!-- ─── Footer ─── -->
 <footer class="home-footer">
@@ -891,6 +450,24 @@
     if (typeof window.showToast === "function") {
       window.showToast("Event has been created.", { description: "Monday, January 1st at 6:00 PM" });
     }
+  });
+
+  // Demo tab switching (uses data-demo, not data-tab, to avoid conflict with tabs.js)
+  const demoCache = {};
+  document.querySelectorAll("[data-demo]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      document.querySelectorAll("[data-demo]").forEach(b => b.removeAttribute("data-active"));
+      document.querySelectorAll("[data-demo-panel]").forEach(p => p.removeAttribute("data-active"));
+      btn.setAttribute("data-active", "");
+      const name = btn.getAttribute("data-demo");
+      const panel = document.querySelector(`[data-demo-panel="${name}"]`);
+      panel.setAttribute("data-active", "");
+      if (name !== "components" && !demoCache[name]) {
+        const res = await fetch(`examples/${name}.html`);
+        panel.innerHTML = await res.text();
+        demoCache[name] = true;
+      }
+    });
   });
 </script>
 </body>
