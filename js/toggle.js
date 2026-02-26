@@ -1,4 +1,4 @@
-// Toggle — cupertino
+// Toggle — cupertino-css
 document.addEventListener("click", (e) => {
   const toggle = e.target.closest(".toggle");
   if (!toggle || toggle.disabled) return;

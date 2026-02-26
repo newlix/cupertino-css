@@ -1,4 +1,4 @@
-// Combobox — cupertino
+// Combobox — cupertino-css
 // Searchable select dropdown
 
 document.querySelectorAll(".combobox").forEach((combobox) => {

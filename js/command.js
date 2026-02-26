@@ -1,4 +1,4 @@
-// Command — cupertino
+// Command — cupertino-css
 // Handles search filtering in .command components
 
 document.querySelectorAll(".command").forEach((command) => {

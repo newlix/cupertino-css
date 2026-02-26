@@ -1,4 +1,4 @@
-// Custom Select — cupertino
+// Custom Select — cupertino-css
 document.querySelectorAll("[data-select]").forEach((select) => {
   const trigger = select.querySelector("[data-select-trigger]");
   const content = select.querySelector("[data-select-content]");

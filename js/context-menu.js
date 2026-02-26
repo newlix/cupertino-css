@@ -1,4 +1,4 @@
-// Context Menu — cupertino
+// Context Menu — cupertino-css
 // Right-click triggered menu, reuses dropdown-menu styling.
 document.addEventListener("contextmenu", (e) => {
   const trigger = e.target.closest(".context-menu-trigger");

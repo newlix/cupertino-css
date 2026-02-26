@@ -1,10 +1,10 @@
 /*
- * cupertino — Apple-aesthetic UI components as a Tailwind CSS plugin
- * https://github.com/newlix/cupertino
+ * cupertino-css — Apple-aesthetic UI components as a Tailwind CSS plugin
+ * https://github.com/newlix/cupertino-css
  *
  * Usage:
  *   @import "tailwindcss";
- *   @import "cupertino";
+ *   @import "cupertino-css";
  */
 
 /* ─── Dark mode variant ─── */
@@ -59,8 +59,8 @@
   --info-text: oklch(0.563 0.193 256.16);
   --info-border: oklch(0.563 0.193 256.16 / 0.2);
 
-  --input-border: oklch(0.862 0.007 286.02);       /* #D1D1D6 Apple input border */
-  --input-border-hover: oklch(0.740 0.006 286.01); /* Darker on hover */
+  --input-border: oklch(0.800 0.007 286.02);       /* Apple input border */
+  --input-border-hover: oklch(0.580 0.010 286.01); /* Darker on hover */
 
   --apple-press-scale: 0.98;
   --apple-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -412,11 +412,10 @@
   .field > select {
     @apply w-full rounded-[12px] border text-[13px] text-foreground outline-none;
     background-color: var(--card);
-    transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
+    transition: border-color 0.2s var(--apple-ease);
     &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
     &:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.12);
     }
     &:disabled { @apply cursor-not-allowed opacity-50; }
   }
@@ -426,7 +425,7 @@
   .field > input:not([type="checkbox"]):not([type="radio"]),
   .field > textarea {
     border-color: var(--input-border);
-    &:hover { border-color: var(--input-border-hover); }
+    &:hover:not(:focus) { border-color: var(--input-border-hover); }
   }
   /* Input sizing */
   .input,
@@ -447,7 +446,7 @@
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1rem;
-    &:hover { border-color: var(--border-solid); }
+    &:hover:not(:focus) { border-color: var(--border-solid); }
   }
   /* Error states */
   .input[aria-invalid="true"], .input.input-error,
@@ -456,7 +455,6 @@
     border-color: var(--destructive);
     &:focus {
       border-color: var(--destructive);
-      box-shadow: 0 0 0 3px oklch(from var(--destructive) l c h / 0.12);
     }
   }
 
@@ -472,7 +470,7 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-    &:hover { border-color: var(--input-border-hover); }
+    &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
     &:focus-visible { box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.15); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
   }
@@ -486,7 +484,7 @@
       border-color: var(--primary);
       border-width: 5px;
     }
-    &:hover { border-color: var(--input-border-hover); }
+    &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
     &:focus-visible { box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.15); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
   }
@@ -1055,11 +1053,12 @@
   .fieldset {
     @apply flex flex-col gap-5;
     & legend {
-      @apply text-base font-semibold tracking-tight text-foreground;
+      @apply w-full text-base font-semibold tracking-tight text-foreground;
       letter-spacing: -0.01em;
+      float: left;
     }
     & legend + p {
-      @apply -mt-3 text-[13px] text-muted-foreground;
+      @apply mt-1 text-[13px] text-muted-foreground;
     }
     & hr {
       background: var(--panel-border);
@@ -1186,7 +1185,7 @@
       @apply flex h-11 items-center justify-between gap-2 rounded-[12px] border px-3.5 text-[13px] transition-all duration-200 cursor-pointer;
       background-color: var(--card);
       border-color: var(--input);
-      &:hover { border-color: var(--border-solid); }
+      &:hover:not(:focus) { border-color: var(--border-solid); }
       & span { @apply flex-1 truncate text-left; }
       & span[data-placeholder] { @apply text-muted-foreground; opacity: 0.5; }
       & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }
@@ -1600,10 +1599,9 @@
     @apply flex size-12 items-center justify-center rounded-[10px] border text-[17px] font-medium text-foreground;
     border-color: var(--input-border);
     caret-color: transparent;
-    transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
+    transition: border-color 0.2s var(--apple-ease);
     &:focus-within, &[data-active] {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.12);
     }
   }
   .input-otp-separator {

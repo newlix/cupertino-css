@@ -1,4 +1,4 @@
-// Toast — cupertino
+// Toast — cupertino-css
 function showToast(title, message, type = "success") {
   const container =
     document.getElementById("toast-container") || createToastContainer();

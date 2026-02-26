@@ -1,12 +1,12 @@
 {
-  "name": "cupertino",
+  "name": "cupertino-css",
   "version": "0.1.0",
   "description": "Apple-aesthetic UI components as a Tailwind CSS plugin",
   "license": "MIT",
   "author": "newlix",
   "repository": {
     "type": "git",
-    "url": "https://github.com/newlix/cupertino"
+    "url": "https://github.com/newlix/cupertino-css"
   },
   "keywords": [
     "tailwindcss",

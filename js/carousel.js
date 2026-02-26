@@ -1,4 +1,4 @@
-// Carousel — cupertino
+// Carousel — cupertino-css
 // Prev/next navigation + indicators for scroll-snap carousels.
 document.querySelectorAll(".carousel").forEach((carousel) => {
   const content = carousel.querySelector(".carousel-content");

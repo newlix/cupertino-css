@@ -1,10 +1,10 @@
 /*
- * cupertino — CDN variant (includes Tailwind CSS)
+ * cupertino-css — CDN variant (includes Tailwind CSS)
  *
  * Usage:
  *   <link rel="stylesheet" href="path/to/cupertino.cdn.css" />
  *
- * This file includes Tailwind CSS + cupertino in one bundle.
+ * This file includes Tailwind CSS + cupertino-css in one bundle.
  * source(none) ensures Tailwind only generates classes used in cupertino.css.
  */
 @import "tailwindcss" source(none);

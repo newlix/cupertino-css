@@ -1,4 +1,4 @@
-// Popover — cupertino
+// Popover — cupertino-css
 document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-popover-trigger]");
   if (trigger) {

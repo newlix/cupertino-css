@@ -5,7 +5,7 @@ Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names 
 ## Install
 
 ```bash
-npm install cupertino
+npm install cupertino-css
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install cupertino
 ```css
 /* your main CSS file */
 @import "tailwindcss";
-@import "cupertino";
+@import "cupertino-css";
 ```
 
 ```html

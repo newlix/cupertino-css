@@ -1,4 +1,4 @@
-// Dropdown Menu — cupertino
+// Dropdown Menu — cupertino-css
 document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-dropdown-trigger]");
   if (trigger) {
