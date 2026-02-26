@@ -367,49 +367,82 @@
 
   /* ========== INPUT ========== */
   .input {
-    @apply h-10 w-full rounded-lg border bg-card px-3.5 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-    border-color: var(--border-solid);
-    &::placeholder { @apply text-muted-foreground; opacity: 0.7; }
+    @apply h-10 w-full rounded-[10px] border-0 px-3.5 text-sm text-foreground outline-none transition-all duration-200;
+    background: oklch(0.961 0.004 286.32); /* gray-100 fill */
+    &::placeholder { @apply text-muted-foreground; opacity: 0.6; }
+    &:hover {
+      background: oklch(0.930 0.006 286.32); /* gray-200 subtle darken */
+    }
     &:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px var(--ring);
+      background: var(--card);
+      box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
     }
     &:disabled { @apply cursor-not-allowed opacity-50; }
     &[aria-invalid="true"], &.input-error {
-      border-color: var(--destructive);
-      &:focus { box-shadow: 0 0 0 4px oklch(0.577 0.245 27.33 / 0.1); }
+      box-shadow: inset 0 0 0 1px var(--destructive);
+      &:focus { box-shadow: 0 0 0 3.5px oklch(0.577 0.245 27.33 / 0.2); }
+    }
+    @at-root :is(.dark *) & {
+      background: oklch(0.205 0.015 285.82); /* dark: gray-850 */
+      &:hover { background: oklch(0.240 0.015 285.82); }
+      &:focus {
+        background: oklch(0.160 0.014 285.82);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+      }
     }
   }
 
   /* ========== TEXTAREA ========== */
   .textarea {
-    @apply w-full rounded-lg border bg-card px-3.5 py-2.5 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-    border-color: var(--border-solid);
-    &::placeholder { @apply text-muted-foreground; opacity: 0.7; }
+    @apply w-full rounded-[10px] border-0 px-3.5 py-2.5 text-sm text-foreground outline-none transition-all duration-200;
+    background: oklch(0.961 0.004 286.32);
+    &::placeholder { @apply text-muted-foreground; opacity: 0.6; }
+    &:hover {
+      background: oklch(0.930 0.006 286.32);
+    }
     &:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px var(--ring);
+      background: var(--card);
+      box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
     }
     &:disabled { @apply cursor-not-allowed opacity-50; }
     &[aria-invalid="true"], &.textarea-error {
-      border-color: var(--destructive);
-      &:focus { box-shadow: 0 0 0 4px oklch(0.577 0.245 27.33 / 0.1); }
+      box-shadow: inset 0 0 0 1px var(--destructive);
+      &:focus { box-shadow: 0 0 0 3.5px oklch(0.577 0.245 27.33 / 0.2); }
+    }
+    @at-root :is(.dark *) & {
+      background: oklch(0.205 0.015 285.82);
+      &:hover { background: oklch(0.240 0.015 285.82); }
+      &:focus {
+        background: oklch(0.160 0.014 285.82);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+      }
     }
   }
 
   /* ========== SELECT (native) ========== */
   .select {
-    @apply h-10 w-full appearance-none rounded-lg border bg-card pl-3.5 pr-10 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-    border-color: var(--border-solid);
+    @apply h-10 w-full appearance-none rounded-[10px] border-0 pl-3.5 pr-10 text-sm text-foreground outline-none transition-all duration-200;
+    background: oklch(0.961 0.004 286.32);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1rem;
+    &:hover {
+      background-color: oklch(0.930 0.006 286.32);
+    }
     &:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px var(--ring);
+      background-color: var(--card);
+      box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
     }
     &:disabled { @apply cursor-not-allowed opacity-50; }
+    @at-root :is(.dark *) & {
+      background-color: oklch(0.205 0.015 285.82);
+      &:hover { background-color: oklch(0.240 0.015 285.82); }
+      &:focus {
+        background-color: oklch(0.160 0.014 285.82);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+      }
+    }
   }
 
   /* ========== CHECKBOX ========== */
@@ -475,41 +508,68 @@
     @apply space-y-1.5;
     & > label { @apply text-sm font-medium text-foreground; }
     & > input:not([type="checkbox"]):not([type="radio"]) {
-      @apply h-10 w-full rounded-lg border bg-card px-3.5 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-      border-color: var(--border-solid);
-      &::placeholder { @apply text-muted-foreground; opacity: 0.7; }
+      @apply h-10 w-full rounded-[10px] border-0 px-3.5 text-sm text-foreground outline-none transition-all duration-200;
+      background: oklch(0.961 0.004 286.32);
+      &::placeholder { @apply text-muted-foreground; opacity: 0.6; }
+      &:hover { background: oklch(0.930 0.006 286.32); }
       &:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px var(--ring);
+        background: var(--card);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
       }
       &:disabled { @apply cursor-not-allowed opacity-50; }
       &[aria-invalid="true"], &.input-error {
-        border-color: var(--destructive);
-        &:focus { box-shadow: 0 0 0 4px oklch(0.577 0.245 27.33 / 0.1); }
+        box-shadow: inset 0 0 0 1px var(--destructive);
+        &:focus { box-shadow: 0 0 0 3.5px oklch(0.577 0.245 27.33 / 0.2); }
+      }
+      @at-root :is(.dark *) & {
+        background: oklch(0.205 0.015 285.82);
+        &:hover { background: oklch(0.240 0.015 285.82); }
+        &:focus {
+          background: oklch(0.160 0.014 285.82);
+          box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+        }
       }
     }
     & > textarea {
-      @apply w-full rounded-lg border bg-card px-3.5 py-2.5 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-      border-color: var(--border-solid);
-      &::placeholder { @apply text-muted-foreground; opacity: 0.7; }
+      @apply w-full rounded-[10px] border-0 px-3.5 py-2.5 text-sm text-foreground outline-none transition-all duration-200;
+      background: oklch(0.961 0.004 286.32);
+      &::placeholder { @apply text-muted-foreground; opacity: 0.6; }
+      &:hover { background: oklch(0.930 0.006 286.32); }
       &:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px var(--ring);
+        background: var(--card);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
       }
       &:disabled { @apply cursor-not-allowed opacity-50; }
+      @at-root :is(.dark *) & {
+        background: oklch(0.205 0.015 285.82);
+        &:hover { background: oklch(0.240 0.015 285.82); }
+        &:focus {
+          background: oklch(0.160 0.014 285.82);
+          box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+        }
+      }
     }
     & > select {
-      @apply h-10 w-full appearance-none rounded-lg border bg-card pl-3.5 pr-10 text-sm text-foreground shadow-sm outline-none transition-all duration-200;
-      border-color: var(--border-solid);
+      @apply h-10 w-full appearance-none rounded-[10px] border-0 pl-3.5 pr-10 text-sm text-foreground outline-none transition-all duration-200;
+      background: oklch(0.961 0.004 286.32);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 0.75rem center;
       background-size: 1rem;
+      &:hover { background-color: oklch(0.930 0.006 286.32); }
       &:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px var(--ring);
+        background-color: var(--card);
+        box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.3);
       }
       &:disabled { @apply cursor-not-allowed opacity-50; }
+      @at-root :is(.dark *) & {
+        background-color: oklch(0.205 0.015 285.82);
+        &:hover { background-color: oklch(0.240 0.015 285.82); }
+        &:focus {
+          background-color: oklch(0.160 0.014 285.82);
+          box-shadow: 0 0 0 3.5px oklch(0.546 0.245 262.88 / 0.35);
+        }
+      }
     }
     & > p { @apply text-xs text-muted-foreground; }
     & > p.field-error { color: var(--destructive); }
