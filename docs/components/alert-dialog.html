@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert Dialog — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Alert Dialog" data-description="Confirmation dialogs that require user acknowledgement.">
+
+  <section class="docs-example" data-example="Default">
+    <template>
+<button onclick="document.getElementById('demo-alert-dialog').showModal()" class="btn btn-outline">Delete Account</button>
+
+<dialog id="demo-alert-dialog" class="dialog">
+  <header>
+    <h3>Are you absolutely sure?</h3>
+    <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn btn-destructive">Continue</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

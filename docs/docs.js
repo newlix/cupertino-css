@@ -14,6 +14,7 @@ const NAV = [
     items: [
       { label: "Accordion", href: "components/accordion.html" },
       { label: "Alert", href: "components/alert.html" },
+      { label: "Alert Dialog", href: "components/alert-dialog.html" },
       { label: "Avatar", href: "components/avatar.html" },
       { label: "Badge", href: "components/badge.html" },
       { label: "Breadcrumb", href: "components/breadcrumb.html" },
@@ -22,9 +23,16 @@ const NAV = [
       { label: "Card", href: "components/card.html" },
       { label: "Checkbox", href: "components/checkbox.html" },
       { label: "Collapsible", href: "components/collapsible.html" },
+      { label: "Combobox", href: "components/combobox.html" },
+      { label: "Command", href: "components/command.html" },
       { label: "Dialog", href: "components/dialog.html" },
       { label: "Dropdown Menu", href: "components/dropdown-menu.html" },
+      { label: "Empty", href: "components/empty.html" },
+      { label: "Field", href: "components/field.html" },
+      { label: "Form", href: "components/form.html" },
       { label: "Input", href: "components/input.html" },
+      { label: "Input Group", href: "components/input-group.html" },
+      { label: "Item", href: "components/item.html" },
       { label: "Kbd", href: "components/kbd.html" },
       { label: "Label", href: "components/label.html" },
       { label: "Pagination", href: "components/pagination.html" },
@@ -34,6 +42,7 @@ const NAV = [
       { label: "Select", href: "components/select.html" },
       { label: "Separator", href: "components/separator.html" },
       { label: "Sheet", href: "components/sheet.html" },
+      { label: "Sidebar", href: "components/sidebar.html" },
       { label: "Skeleton", href: "components/skeleton.html" },
       { label: "Slider", href: "components/slider.html" },
       { label: "Spinner", href: "components/spinner.html" },
@@ -41,6 +50,7 @@ const NAV = [
       { label: "Table", href: "components/table.html" },
       { label: "Tabs", href: "components/tabs.html" },
       { label: "Textarea", href: "components/textarea.html" },
+      { label: "Theme Switcher", href: "components/theme-switcher.html" },
       { label: "Toast", href: "components/toast.html" },
       { label: "Toggle", href: "components/toggle.html" },
       { label: "Tooltip", href: "components/tooltip.html" },
@@ -73,10 +83,18 @@ function initTheme() {
 
 function toggleTheme() {
   document.documentElement.classList.toggle("dark");
-  localStorage.setItem(
-    "theme",
-    document.documentElement.classList.contains("dark") ? "dark" : "light"
-  );
+  const isDark = document.documentElement.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  updateHljsTheme(isDark);
+}
+
+function updateHljsTheme(isDark) {
+  const el = document.getElementById("hljs-theme");
+  if (el) {
+    el.href = isDark
+      ? "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css"
+      : "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github.min.css";
+  }
 }
 
 // ─── Build sidebar HTML ───
@@ -231,6 +249,8 @@ function loadComponentScripts() {
     "sheet.js",
     "popover.js",
     "toggle.js",
+    "command.js",
+    "combobox.js",
   ];
   const jsBase = isSubpage ? "../../js/" : "../js/";
   for (const src of scripts) {
@@ -242,10 +262,13 @@ function loadComponentScripts() {
 
 // ─── Load highlight.js from CDN ───
 function loadHighlightJS() {
+  const isDark = document.documentElement.classList.contains("dark");
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href =
-    "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css";
+  link.id = "hljs-theme";
+  link.href = isDark
+    ? "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css"
+    : "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github.min.css";
   document.head.appendChild(link);
 
   const script = document.createElement("script");

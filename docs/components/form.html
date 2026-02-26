@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Form" data-description="Structured forms with fieldsets, validation, and layout patterns.">
+
+  <section class="docs-example" data-example="Login Form">
+    <template>
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Log In</legend>
+    <p>Enter your credentials to access your account.</p>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+  </fieldset>
+  <button type="submit" class="btn w-full">Sign In</button>
+</form>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Profile Form with Validation">
+    <template>
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Profile</legend>
+    <p>Update your profile information.</p>
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" placeholder="John Doe">
+    </div>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" value="ab" class="input-error">
+      <p class="field-error">Username must be at least 3 characters.</p>
+    </div>
+    <div class="field">
+      <label>Bio</label>
+      <textarea placeholder="Tell us about yourself..." rows="3"></textarea>
+      <p>Max 200 characters.</p>
+    </div>
+  </fieldset>
+  <div class="flex gap-3">
+    <button type="submit" class="btn">Save</button>
+    <button type="button" class="btn btn-outline">Cancel</button>
+  </div>
+</form>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Checkbox & Radio Group">
+    <template>
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Notifications</legend>
+    <p>Choose what you want to be notified about.</p>
+    <div class="flex flex-col gap-3">
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox" checked> Email notifications
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox"> Push notifications
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox"> SMS notifications
+      </label>
+    </div>
+  </fieldset>
+  <hr class="border-border">
+  <fieldset class="fieldset">
+    <legend>Frequency</legend>
+    <div class="flex flex-col gap-3">
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq" checked> Real-time
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq"> Daily digest
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq"> Weekly summary
+      </label>
+    </div>
+  </fieldset>
+</form>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

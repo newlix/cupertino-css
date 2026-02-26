@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combobox — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Combobox" data-description="Searchable select dropdown with filtering.">
+
+  <section class="docs-example" data-example="Default">
+    <template>
+<div class="combobox" style="width:200px;">
+  <button type="button">
+    <span data-placeholder>Select framework…</span>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+  </button>
+  <div data-combobox-content>
+    <header>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="Search framework…" autocomplete="off" spellcheck="false">
+    </header>
+    <div role="listbox" data-empty="No framework found.">
+      <div role="option" data-value="Next.js">Next.js</div>
+      <div role="option" data-value="SvelteKit">SvelteKit</div>
+      <div role="option" data-value="Nuxt.js">Nuxt.js</div>
+      <div role="option" data-value="Remix">Remix</div>
+      <div role="option" data-value="Astro">Astro</div>
+    </div>
+  </div>
+  <input type="hidden" name="framework" value="">
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Groups">
+    <template>
+<div class="combobox" style="width:260px;">
+  <button type="button">
+    <span data-placeholder>Select timezone…</span>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+  </button>
+  <div data-combobox-content>
+    <header>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="Search timezone…" autocomplete="off" spellcheck="false">
+    </header>
+    <div role="listbox" data-empty="No timezone found.">
+      <div role="group">
+        <div role="heading">Americas</div>
+        <div role="option" data-value="America/New_York">(GMT-5) New York</div>
+        <div role="option" data-value="America/Los_Angeles">(GMT-8) Los Angeles</div>
+        <div role="option" data-value="America/Chicago">(GMT-6) Chicago</div>
+      </div>
+      <div role="group">
+        <div role="heading">Europe</div>
+        <div role="option" data-value="Europe/London">(GMT+0) London</div>
+        <div role="option" data-value="Europe/Paris">(GMT+1) Paris</div>
+        <div role="option" data-value="Europe/Berlin">(GMT+1) Berlin</div>
+      </div>
+      <div role="group">
+        <div role="heading">Asia / Pacific</div>
+        <div role="option" data-value="Asia/Tokyo">(GMT+9) Tokyo</div>
+        <div role="option" data-value="Asia/Shanghai">(GMT+8) Shanghai</div>
+        <div role="option" data-value="Australia/Sydney">(GMT+11) Sydney</div>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" name="timezone" value="">
+</div>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Field" data-description="Auto-styled form fields with label, input, and helper text.">
+
+  <section class="docs-example" data-example="Input Field">
+    <template>
+<div class="field">
+  <label>Email</label>
+  <input type="email" placeholder="you@example.com">
+  <p>We'll never share your email.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Textarea Field">
+    <template>
+<div class="field">
+  <label>Bio</label>
+  <textarea placeholder="Tell us about yourself..."></textarea>
+  <p>Max 200 characters.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Select Field">
+    <template>
+<div class="field">
+  <label>Country</label>
+  <select>
+    <option value="" disabled selected>Select a country</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="tw">Taiwan</option>
+  </select>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Error State">
+    <template>
+<div class="field">
+  <label>Username</label>
+  <input type="text" value="ab" class="input-error">
+  <p class="field-error">Username must be at least 3 characters.</p>
+</div>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>
