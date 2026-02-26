@@ -835,9 +835,13 @@
 
   /* ========== SPINNER ========== */
   .spinner {
-    @apply size-5 animate-spin text-primary;
-    & circle { opacity: 0.25; }
-    & path { opacity: 0.75; }
+    @apply inline-block size-5;
+    border-radius: 50%;
+    color: var(--muted-foreground);
+    background: conic-gradient(transparent 150deg, currentColor);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    animation: spin 1s linear infinite;
   }
   .spinner-sm { @apply size-4; }
   .spinner-lg { @apply size-8; }

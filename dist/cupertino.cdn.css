@@ -31,7 +31,6 @@
     --shadow-md: var(--shadow-md);
     --shadow-lg: var(--shadow-lg);
     --shadow-xl: var(--shadow-xl);
-    --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1350,16 +1349,15 @@
     }
   }
   .spinner {
+    display: inline-block;
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
-    animation: var(--animate-spin);
-    color: var(--color-primary);
-    & circle {
-      opacity: 0.25;
-    }
-    & path {
-      opacity: 0.75;
-    }
+    border-radius: 50%;
+    color: var(--muted-foreground);
+    background: conic-gradient(transparent 150deg, currentColor);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    animation: spin 1s linear infinite;
   }
   .spinner-sm {
     width: calc(var(--spacing) * 4);
