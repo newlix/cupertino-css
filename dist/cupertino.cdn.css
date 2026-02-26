@@ -912,14 +912,17 @@
     position: absolute;
     z-index: 50;
     margin-top: calc(var(--spacing) * 1.5);
-    display: none;
     min-width: 200px;
     border-radius: var(--radius-xl);
     padding: calc(var(--spacing) * 1.5);
+    display: none;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     box-shadow: var(--shadow-lg), var(--float-ring);
+    &[data-open] {
+      display: block;
+    }
     & button, & a {
       display: flex;
       width: 100%;
