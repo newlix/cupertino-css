@@ -1,6 +1,6 @@
 /* ========== TABLE ========== */
 .table {
-  @apply overflow-hidden rounded-2xl bg-card;
+  @apply overflow-x-auto rounded-2xl bg-card;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & table {
     @apply w-full text-left text-[13px];
