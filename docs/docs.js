@@ -33,6 +33,7 @@ const NAV = [
       { label: "Dropdown Menu", href: "components/dropdown-menu.html" },
       { label: "Empty", href: "components/empty.html" },
       { label: "Field", href: "components/field.html" },
+      { label: "File Tree", href: "components/file-tree.html" },
       { label: "Form", href: "components/form.html" },
       { label: "Hover Card", href: "components/hover-card.html" },
       { label: "Input", href: "components/input.html" },

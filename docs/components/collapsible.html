@@ -7,19 +7,19 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Collapsible" data-description="Show and hide content with a toggle.">
+<main data-title="Collapsible" data-description="An interactive component which expands/collapses a panel.">
 
   <section class="docs-example" data-example="Default">
     <template>
-<details class="collapsible rounded-xl border" open>
+<details class="collapsible" open>
   <summary>
     @peduarte starred 3 repositories
-    <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
   </summary>
-  <div class="space-y-2">
-    <div class="rounded-lg border px-4 py-2 text-sm">@radix-ui/primitives</div>
-    <div class="rounded-lg border px-4 py-2 text-sm">@radix-ui/colors</div>
-    <div class="rounded-lg border px-4 py-2 text-sm">@stitches/react</div>
+  <div class="px-0 pb-0">
+    <div class="border-t px-5 py-4 text-[13px] text-muted-foreground">@radix-ui/primitives</div>
+    <div class="border-t px-5 py-4 text-[13px] text-muted-foreground">@radix-ui/colors</div>
+    <div class="border-t px-5 py-4 text-[13px] text-muted-foreground">@stitches/react</div>
   </div>
 </details>
     </template>
@@ -27,13 +27,13 @@
 
   <section class="docs-example" data-example="Initially Closed">
     <template>
-<details class="collapsible rounded-xl border">
+<details class="collapsible">
   <summary>
-    Show more items
-    <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    Can I use this in my project?
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
   </summary>
   <div>
-    <p>Hidden content is now visible.</p>
+    <p>Yes. Free to use for personal and commercial projects. No attribution required.</p>
   </div>
 </details>
     </template>
@@ -41,11 +41,11 @@
 
   <section class="docs-example" data-example="Settings Panel">
     <template>
-<details class="collapsible rounded-xl border" open>
+<details class="collapsible" open>
   <summary>
     <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     Advanced settings
-    <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
   </summary>
   <div class="space-y-3">
     <div class="field">
@@ -69,64 +69,6 @@
     </div>
   </div>
 </details>
-    </template>
-  </section>
-
-  <section class="docs-example" data-example="File Tree">
-    <template>
-<div class="max-w-xs rounded-xl border">
-  <details class="collapsible" open>
-    <summary>
-      <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-      src
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div class="ml-4 space-y-0.5">
-      <details class="collapsible" open>
-        <summary>
-          <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          components
-          <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="ml-4 space-y-0.5">
-          <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-            <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            button.tsx
-          </div>
-          <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-            <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            card.tsx
-          </div>
-          <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-            <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            dialog.tsx
-          </div>
-        </div>
-      </details>
-      <details class="collapsible">
-        <summary>
-          <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          lib
-          <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="ml-4 space-y-0.5">
-          <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-            <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            utils.ts
-          </div>
-        </div>
-      </details>
-      <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-        <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        app.tsx
-      </div>
-      <div class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground">
-        <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        index.ts
-      </div>
-    </div>
-  </details>
-</div>
     </template>
   </section>
 
