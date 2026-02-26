@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card — Cupertino</title>
+  <link rel="stylesheet" href="../src/css/cupertino.cdn.css" />
+</head>
+<body class="min-h-screen">
+  <div class="mx-auto max-w-2xl px-6 py-12">
+    <div class="mb-8 flex items-center justify-between">
+      <div>
+        <a href="../preview.html" class="text-sm text-muted-foreground hover:text-foreground">&larr; All Components</a>
+        <h1 class="mt-1 text-2xl font-bold tracking-tight">Card</h1>
+      </div>
+      <button id="theme-toggle" class="btn-icon">
+        <svg id="sun-icon" class="size-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg id="moon-icon" class="size-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+    </div>
+    <div class="space-y-6">
+
+<!-- Basic Card -->
+<div class="card">
+  <section>
+    <h3 class="text-lg font-semibold tracking-tight">Card Title</h3>
+    <p class="mt-1.5 text-sm text-muted-foreground">Card description goes here with some supporting text.</p>
+  </section>
+</div>
+
+<!-- Card with Header and Footer -->
+<div class="card">
+  <header>
+    <h3 class="text-lg font-semibold tracking-tight">Card Title</h3>
+    <p class="mt-0.5 text-sm text-muted-foreground">Card description</p>
+  </header>
+  <section>
+    <p class="text-sm text-muted-foreground">Card content goes here.</p>
+  </section>
+  <footer>
+    <button class="btn btn-primary">Save</button>
+  </footer>
+</div>
+
+<!-- Interactive Card -->
+<div class="card card-interactive">
+  <section>
+    <h3 class="text-lg font-semibold tracking-tight">Interactive Card</h3>
+    <p class="mt-1.5 text-sm text-muted-foreground">This card has a hover effect. Click to navigate.</p>
+    <span class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
+      Learn more
+      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </span>
+  </section>
+</div>
+
+    </div>
+  </div>
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

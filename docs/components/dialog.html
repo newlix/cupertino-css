@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Dialog" data-description="Modal dialogs for confirmations and forms.">
+
+  <section class="docs-example" data-example="Confirmation">
+    <template>
+<button onclick="document.getElementById('demo-dialog-1').showModal()" class="btn">Open Dialog</button>
+
+<dialog id="demo-dialog-1" class="dialog">
+  <header>
+    <h2>Are you sure?</h2>
+    <p>This action cannot be undone. This will permanently delete your account.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn btn-destructive">Delete</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Form Dialog">
+    <template>
+<button onclick="document.getElementById('demo-dialog-2').showModal()" class="btn btn-outline">Edit Profile</button>
+
+<dialog id="demo-dialog-2" class="dialog">
+  <header>
+    <h2>Edit Profile</h2>
+    <p>Make changes to your profile here.</p>
+  </header>
+  <section>
+    <div class="space-y-4">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" value="John Doe" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" value="john@example.com" />
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-2').close()" class="btn btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-2').close()" class="btn">Save Changes</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

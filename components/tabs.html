@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabs — Cupertino</title>
+  <link rel="stylesheet" href="../src/css/cupertino.cdn.css" />
+</head>
+<body class="min-h-screen">
+  <div class="mx-auto max-w-2xl px-6 py-12">
+    <div class="mb-8 flex items-center justify-between">
+      <div>
+        <a href="../preview.html" class="text-sm text-muted-foreground hover:text-foreground">&larr; All Components</a>
+        <h1 class="mt-1 text-2xl font-bold tracking-tight">Tabs</h1>
+      </div>
+      <button id="theme-toggle" class="btn-icon">
+        <svg id="sun-icon" class="size-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg id="moon-icon" class="size-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+    </div>
+    <div class="space-y-6">
+
+<!-- Underline Tabs -->
+<div class="tabs" data-tabs>
+  <div class="tabs-list" data-tab-list>
+    <button class="tabs-trigger" data-tab="tab-1" data-active>Account</button>
+    <button class="tabs-trigger" data-tab="tab-2">Password</button>
+    <button class="tabs-trigger" data-tab="tab-3">Notifications</button>
+  </div>
+  <div class="tabs-content" data-tab-panel="tab-1" data-active>
+    <p class="text-sm text-muted-foreground">Make changes to your account here.</p>
+  </div>
+  <div class="tabs-content" data-tab-panel="tab-2">
+    <p class="text-sm text-muted-foreground">Change your password here.</p>
+  </div>
+  <div class="tabs-content" data-tab-panel="tab-3">
+    <p class="text-sm text-muted-foreground">Configure your notification settings.</p>
+  </div>
+</div>
+
+<!-- Pill Tabs -->
+<div class="tabs tabs-pill" data-tabs>
+  <div class="tabs-list" data-tab-list>
+    <button class="tabs-trigger" data-tab="pill-1" data-active>Overview</button>
+    <button class="tabs-trigger" data-tab="pill-2">Analytics</button>
+    <button class="tabs-trigger" data-tab="pill-3">Reports</button>
+  </div>
+  <div class="tabs-content" data-tab-panel="pill-1" data-active>
+    <p class="text-sm text-muted-foreground">Overview content here.</p>
+  </div>
+  <div class="tabs-content" data-tab-panel="pill-2">
+    <p class="text-sm text-muted-foreground">Analytics content here.</p>
+  </div>
+  <div class="tabs-content" data-tab-panel="pill-3">
+    <p class="text-sm text-muted-foreground">Reports content here.</p>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="../js/tabs.js"></script>
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

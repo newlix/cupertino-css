@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Toast" data-description="Notification messages.">
+
+  <section class="docs-example" data-example="Static">
+    <template>
+<div class="toast">
+  <svg class="mt-0.5 size-5 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <div class="flex-1">
+    <p class="toast-title">Saved successfully</p>
+    <p class="toast-message">Your changes have been saved.</p>
+  </div>
+  <button onclick="this.parentElement.remove()" class="toast-close">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Programmatic">
+    <template>
+<button onclick="showToast('Hello!', 'This is a toast notification.')" class="btn">Show Toast</button>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

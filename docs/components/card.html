@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Card" data-description="Content containers with Apple-style borders and shadows.">
+
+  <section class="docs-example" data-example="Basic">
+    <template>
+<div class="card">
+  <h3>Basic Card</h3>
+  <p>Simple card with title and description.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Interactive">
+    <template>
+<div class="card-interactive group">
+  <h3>Interactive Card</h3>
+  <p>Hover to see the effect.</p>
+  <span class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary transition-all duration-200 group-hover:gap-2">
+    Learn more <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </span>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Header & Footer">
+    <template>
+<div class="card">
+  <header>
+    <h3>Card with Header & Footer</h3>
+    <p>Structured layout</p>
+  </header>
+  <section>
+    <p class="text-sm text-muted-foreground">Card content goes here.</p>
+  </section>
+  <footer>
+    <button class="btn">Save</button>
+  </footer>
+</div>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

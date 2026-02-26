@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "../src/css/cupertino.css";
+
+/* ─── Docs Layout ─── */
+@layer components {
+
+  /* Sidebar */
+  .docs-sidebar {
+    @apply fixed left-0 top-0 z-40 h-screen w-[260px] overflow-y-auto border-r;
+    background: oklch(from var(--background) l c h / 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .docs-sidebar-brand {
+    @apply flex items-center gap-2.5 px-5 py-5;
+    & h1 {
+      @apply text-base font-bold tracking-tight text-foreground;
+    }
+  }
+  .docs-sidebar-section {
+    @apply px-3 pb-4;
+    & h2 {
+      @apply px-2 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground;
+    }
+  }
+  .docs-sidebar a {
+    @apply flex items-center rounded-lg px-2 py-1.5 text-[13px] font-medium text-muted-foreground transition-colors duration-150;
+    &:hover {
+      @apply text-foreground;
+      background: oklch(from var(--accent) l c h / 0.6);
+    }
+    &[data-active] {
+      @apply text-primary;
+      background: oklch(from var(--primary) l c h / 0.08);
+    }
+  }
+
+  /* Header (top bar for mobile + breadcrumb) */
+  .docs-header {
+    @apply sticky top-0 z-30 border-b;
+    background: oklch(from var(--background) l c h / 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .docs-header-inner {
+    @apply flex items-center justify-between px-6 py-3;
+  }
+
+  /* Main content area */
+  .docs-main {
+    @apply ml-[260px] min-h-screen;
+  }
+  .docs-content {
+    @apply mx-auto max-w-3xl px-8 py-10;
+  }
+  .docs-title {
+    @apply text-3xl font-bold tracking-tight text-foreground;
+  }
+  .docs-description {
+    @apply mt-2 text-base text-muted-foreground;
+  }
+
+  /* Example container */
+  .docs-example {
+    @apply mt-8;
+  }
+  .docs-example-label {
+    @apply mb-3 text-lg font-semibold tracking-tight text-foreground;
+  }
+  .docs-example-card {
+    @apply rounded-xl border overflow-hidden;
+  }
+  .docs-example-preview {
+    @apply p-6;
+    background: var(--card);
+  }
+  .docs-example-code {
+    @apply relative border-t;
+    background: oklch(0.145 0.014 285.82);
+    @at-root :is(.dark *) & {
+      background: oklch(0.08 0.01 285.82);
+    }
+  }
+  .docs-example-code pre {
+    @apply overflow-x-auto p-4 text-[13px] leading-relaxed;
+    & code {
+      @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace];
+      color: oklch(0.869 0.008 285.82);
+    }
+  }
+  .docs-copy-btn {
+    @apply absolute right-3 top-3 rounded-md border px-2 py-1 text-[11px] font-medium transition-all duration-200 cursor-pointer;
+    background: oklch(0.274 0.017 285.82 / 0.6);
+    border-color: oklch(0.371 0.017 285.82);
+    color: oklch(0.809 0.008 286.04);
+    &:hover {
+      background: oklch(0.371 0.017 285.82);
+      color: oklch(0.961 0.004 286.32);
+    }
+    &:active {
+      transform: scale(var(--apple-press-scale));
+    }
+  }
+
+  /* Theme toggle */
+  .docs-theme-toggle {
+    @apply flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors cursor-pointer;
+    &:hover {
+      @apply text-foreground;
+      background: var(--accent);
+    }
+  }
+
+  /* Mobile hamburger */
+  .docs-hamburger {
+    @apply hidden size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors cursor-pointer;
+    &:hover {
+      @apply text-foreground;
+      background: var(--accent);
+    }
+  }
+  .docs-overlay {
+    @apply fixed inset-0 z-30 hidden;
+    background: oklch(0 0 0 / 0.4);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .docs-sidebar {
+      @apply -translate-x-full transition-transform duration-300;
+    }
+    .docs-sidebar.open {
+      @apply translate-x-0;
+    }
+    .docs-overlay.open {
+      @apply block;
+    }
+    .docs-main {
+      @apply ml-0;
+    }
+    .docs-hamburger {
+      @apply inline-flex;
+    }
+    .docs-content {
+      @apply px-5 py-8;
+    }
+  }
+}

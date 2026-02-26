@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs — Cupertino</title>
+  <link rel="stylesheet" href="../docs.css">
+</head>
+<body>
+<main data-title="Tabs" data-description="Tabbed content navigation.">
+
+  <section class="docs-example" data-example="Underline">
+    <template>
+<div class="tabs" data-tabs>
+  <div class="tabs-list" data-tab-list>
+    <button data-tab="tab-1" data-active class="tabs-trigger">Account</button>
+    <button data-tab="tab-2" class="tabs-trigger">Password</button>
+    <button data-tab="tab-3" class="tabs-trigger">Notifications</button>
+  </div>
+  <div data-tab-panel="tab-1" data-active class="tabs-content">
+    <p class="text-sm text-muted-foreground">Make changes to your account here.</p>
+  </div>
+  <div data-tab-panel="tab-2" class="tabs-content">
+    <p class="text-sm text-muted-foreground">Change your password here.</p>
+  </div>
+  <div data-tab-panel="tab-3" class="tabs-content">
+    <p class="text-sm text-muted-foreground">Configure your notification settings.</p>
+  </div>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Pill">
+    <template>
+<div class="tabs tabs-pill" data-tabs>
+  <div class="tabs-list" data-tab-list>
+    <button data-tab="pill-1" data-active class="tabs-trigger">Overview</button>
+    <button data-tab="pill-2" class="tabs-trigger">Analytics</button>
+    <button data-tab="pill-3" class="tabs-trigger">Reports</button>
+  </div>
+  <div data-tab-panel="pill-1" data-active class="tabs-content">
+    <p class="text-sm text-muted-foreground">Overview content here.</p>
+  </div>
+  <div data-tab-panel="pill-2" class="tabs-content">
+    <p class="text-sm text-muted-foreground">Analytics content here.</p>
+  </div>
+  <div data-tab-panel="pill-3" class="tabs-content">
+    <p class="text-sm text-muted-foreground">Reports content here.</p>
+  </div>
+</div>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>

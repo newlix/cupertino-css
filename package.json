@@ -1,0 +1,39 @@
+{
+  "name": "cupertino",
+  "version": "0.1.0",
+  "description": "Apple-aesthetic UI components as a Tailwind CSS plugin",
+  "license": "MIT",
+  "author": "newlix",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/newlix/cupertino"
+  },
+  "keywords": [
+    "tailwindcss",
+    "tailwind",
+    "css",
+    "components",
+    "apple",
+    "cupertino",
+    "ui"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/css/cupertino.css",
+    "./cdn": "./src/css/cupertino.cdn.css"
+  },
+  "files": [
+    "src/css/cupertino.css",
+    "src/css/cupertino.cdn.css",
+    "js/"
+  ],
+  "scripts": {
+    "build": "tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.css",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "vite": "^7.3.1"
+  }
+}
