@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "build": "tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.css",
-    "dev": "concurrently \"tailwindcss -i docs/docs.css -o docs/docs.built.css --watch\" \"npx serve -l 3000\"",
+    "dev": "concurrently \"tailwindcss -i docs/docs.css -o docs/docs.built.css --watch\" \"npx serve -l tcp://0.0.0.0:3000\"",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui"
   },
