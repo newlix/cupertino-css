@@ -40,6 +40,7 @@ dialog.sheet,
     @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
     transition: all 0.2s var(--apple-ease);
     &:hover { @apply text-foreground bg-accent; }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     & svg { @apply size-4; }
   }
 }

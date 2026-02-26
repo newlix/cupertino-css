@@ -4,7 +4,7 @@
   box-shadow: var(--shadow), var(--panel-ring);
   & > header {
     @apply px-6 py-5;
-    border-bottom: 1px solid var(--panel-border);
+    &:not(:last-child) { border-bottom: 1px solid var(--panel-border); }
     & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }

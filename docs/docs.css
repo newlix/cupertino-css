@@ -159,7 +159,7 @@
     @apply mx-auto max-w-6xl px-6 pb-6 text-2xl font-bold tracking-tight text-foreground;
   }
   .home-showcase {
-    @apply mx-auto px-6 pb-20;
+    @apply mx-auto px-6;
     max-width: 64rem;
     display: flex;
     flex-direction: column;
@@ -192,7 +192,10 @@
     @apply border-t py-8 text-center text-sm text-muted-foreground;
   }
   @media (max-width: 900px) {
-    .home-showcase-3 { grid-template-columns: repeat(2, 1fr); }
+    .home-showcase-3 {
+      grid-template-columns: repeat(2, 1fr);
+      & > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+    }
   }
   @media (max-width: 640px) {
     .home-hero { @apply py-12; }
