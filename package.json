@@ -28,7 +28,7 @@
     "js/"
   ],
   "scripts": {
-    "build": "tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.css",
+    "build": "tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.css && tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.min.css --minify",
     "dev": "concurrently \"tailwindcss -i docs/docs.css -o docs/docs.built.css --watch\" \"npx serve -l tcp://0.0.0.0:3000\"",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui"
