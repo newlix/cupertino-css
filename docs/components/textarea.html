@@ -15,6 +15,59 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="Invalid">
+    <template>
+<textarea rows="3" placeholder="Type your message..." class="textarea" aria-invalid="true"></textarea>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Disabled">
+    <template>
+<textarea rows="3" placeholder="Type your message..." class="textarea" disabled></textarea>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Label">
+    <template>
+<div class="grid gap-3">
+  <label for="demo-ta-label" class="label">Message</label>
+  <textarea id="demo-ta-label" rows="3" class="textarea" placeholder="Type your message..."></textarea>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Text">
+    <template>
+<div class="grid gap-3">
+  <label for="demo-ta-text" class="label">Bio</label>
+  <textarea id="demo-ta-text" rows="3" class="textarea" placeholder="Type your message..."></textarea>
+  <p class="text-muted-foreground text-sm">Type your message and press enter to send.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Button">
+    <template>
+<div class="grid gap-3">
+  <textarea rows="3" class="textarea" placeholder="Type your message..."></textarea>
+  <button type="submit" class="btn">Submit</button>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Form">
+    <template>
+<form class="w-full flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <div class="field">
+    <label>Bio</label>
+    <textarea rows="3" placeholder="Tell us a bit about yourself"></textarea>
+    <p>You can @mention other users and organizations.</p>
+  </div>
+  <button type="submit" class="btn">Submit</button>
+</form>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

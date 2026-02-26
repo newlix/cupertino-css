@@ -20,6 +20,50 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="With Groups">
+    <template>
+<select class="select">
+  <option value="" disabled selected>Select a fruit</option>
+  <optgroup label="Citrus">
+    <option value="orange">Orange</option>
+    <option value="lemon">Lemon</option>
+    <option value="grapefruit">Grapefruit</option>
+  </optgroup>
+  <optgroup label="Berries">
+    <option value="strawberry">Strawberry</option>
+    <option value="blueberry">Blueberry</option>
+    <option value="raspberry">Raspberry</option>
+  </optgroup>
+  <optgroup label="Tropical">
+    <option value="mango">Mango</option>
+    <option value="pineapple">Pineapple</option>
+    <option value="papaya">Papaya</option>
+  </optgroup>
+</select>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Disabled">
+    <template>
+<select class="select" disabled>
+  <option value="" disabled selected>Select an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</select>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Invalid State">
+    <template>
+<select class="select" aria-invalid="true">
+  <option value="" disabled selected>Select a role</option>
+  <option value="admin">Admin</option>
+  <option value="editor">Editor</option>
+  <option value="viewer">Viewer</option>
+</select>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

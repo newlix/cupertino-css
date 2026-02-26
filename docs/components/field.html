@@ -53,6 +53,62 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="Slider Field">
+    <template>
+<div class="field">
+  <label>Volume</label>
+  <input type="range" class="slider" min="0" max="100" value="50">
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Checkbox Field">
+    <template>
+<div class="field">
+  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+    <input type="checkbox" class="checkbox">
+    <span class="text-sm">I agree to the terms and conditions</span>
+  </label>
+  <p>You must agree before continuing.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Radio Group Field">
+    <template>
+<div class="field">
+  <label>Plan</label>
+  <fieldset class="space-y-2.5">
+    <label class="flex items-center gap-2.5 cursor-pointer">
+      <input type="radio" name="demo-field-plan" value="free" class="radio" checked />
+      <span class="text-sm">Free</span>
+    </label>
+    <label class="flex items-center gap-2.5 cursor-pointer">
+      <input type="radio" name="demo-field-plan" value="pro" class="radio" />
+      <span class="text-sm">Pro</span>
+    </label>
+    <label class="flex items-center gap-2.5 cursor-pointer">
+      <input type="radio" name="demo-field-plan" value="enterprise" class="radio" />
+      <span class="text-sm">Enterprise</span>
+    </label>
+  </fieldset>
+  <p>Select the plan that works for you.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Switch Field">
+    <template>
+<div class="field">
+  <div class="flex items-center justify-between">
+    <label for="demo-field-switch" class="text-sm font-medium">Airplane Mode</label>
+    <input type="checkbox" id="demo-field-switch" class="switch">
+  </div>
+  <p>Disable all wireless connections.</p>
+</div>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>
