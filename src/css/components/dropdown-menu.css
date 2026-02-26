@@ -1,0 +1,28 @@
+/* ========== DROPDOWN MENU ========== */
+.dropdown-menu {
+  @apply absolute z-50 mt-1.5 min-w-[200px] rounded-xl p-1.5;
+  display: none;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-lg), var(--float-ring);
+  &[data-open] { display: block; }
+  & button, & a {
+    @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
+    transition: background-color 0.12s var(--apple-ease);
+    &:hover { @apply bg-accent; }
+    & svg { @apply size-4 text-muted-foreground; }
+  }
+  & .dropdown-divider, & hr {
+    @apply my-1 h-px mx-1.5;
+    background: var(--panel-border);
+  }
+  & .dropdown-destructive {
+    color: var(--destructive);
+    &:hover { background: oklch(0.577 0.245 27.33 / 0.08); }
+    &:is(.dark *) {
+      color: oklch(0.792 0.198 27.33);
+      &:hover { background: oklch(0.577 0.245 27.33 / 0.12); }
+    }
+  }
+}

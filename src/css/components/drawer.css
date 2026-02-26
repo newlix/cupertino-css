@@ -1,0 +1,67 @@
+/* ========== DRAWER ========== */
+dialog.sheet-bottom,
+.sheet-bottom {
+  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  max-height: min(85vh, 600px);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 32px oklch(0 0 0 / 0.1), var(--float-ring);
+  &::backdrop {
+    background: var(--backdrop-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  &[open] { animation: sheetSlideInBottom 0.35s var(--apple-spring); }
+  & > header {
+    @apply px-6 py-5;
+    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & p { @apply mt-1 text-[13px] text-muted-foreground; }
+  }
+  & > section {
+    @apply overflow-y-auto px-6 py-5;
+  }
+  & > footer {
+    @apply px-6 py-4;
+    border-top: 1px solid var(--panel-border);
+  }
+  & .sheet-close {
+    @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
+    transition: all 0.2s var(--apple-ease);
+    &:hover { @apply text-foreground bg-accent; }
+    & svg { @apply size-4; }
+  }
+  & .drawer-handle {
+    @apply mx-auto mt-2 mb-1 h-1 w-9 rounded-full;
+    background: var(--surface-7);
+  }
+}
+dialog.sheet-top,
+.sheet-top {
+  @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  max-height: min(85vh, 600px);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.1), var(--float-ring);
+  &::backdrop {
+    background: var(--backdrop-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  &[open] { animation: sheetSlideInTop 0.35s var(--apple-spring); }
+  & > header {
+    @apply px-6 py-5;
+    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & p { @apply mt-1 text-[13px] text-muted-foreground; }
+  }
+  & > section {
+    @apply overflow-y-auto px-6 py-5;
+  }
+  & > footer {
+    @apply px-6 py-4;
+    border-top: 1px solid var(--panel-border);
+  }
+  & .sheet-close {
+    @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
+    transition: all 0.2s var(--apple-ease);
+    &:hover { @apply text-foreground bg-accent; }
+    & svg { @apply size-4; }
+  }
+}

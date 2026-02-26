@@ -1,0 +1,16 @@
+/* ========== THEME SWITCHER ========== */
+.theme-switcher {
+  @apply inline-flex items-center rounded-[10px] p-0.5;
+  background: var(--surface-4);
+  & button {
+    @apply flex size-8 items-center justify-center rounded-[7px] text-muted-foreground cursor-pointer;
+    transition: all 0.2s var(--apple-spring);
+    & svg { @apply size-4; }
+    &:hover { @apply text-foreground; }
+    &[data-active] {
+      @apply text-foreground;
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}

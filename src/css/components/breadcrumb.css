@@ -1,0 +1,15 @@
+/* ========== BREADCRUMB ========== */
+.breadcrumb {
+  @apply flex items-center gap-1.5 text-[13px];
+  & a {
+    @apply text-muted-foreground transition-colors;
+    &:hover { @apply text-foreground; }
+  }
+  & svg { @apply size-3.5 text-muted-foreground; opacity: 0.6; }
+  & span:last-child, & [aria-current] {
+    @apply font-medium text-foreground;
+  }
+  & .breadcrumb-separator {
+    @apply text-muted-foreground; opacity: 0.6;
+  }
+}

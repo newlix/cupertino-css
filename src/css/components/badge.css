@@ -1,0 +1,20 @@
+/* ========== BADGE ========== */
+.badge,
+.badge-primary,
+.badge-secondary,
+.badge-success,
+.badge-warning,
+.badge-destructive,
+.badge-outline {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-[3px] text-xs font-medium bg-secondary text-secondary-foreground;
+  letter-spacing: 0;
+}
+/* Only text carries semantic color */
+.badge-primary    { @apply text-primary; }
+.badge-success    { color: oklch(0.596 0.172 145.18); }
+.badge-warning    { color: oklch(0.666 0.179 58.32); }
+.badge-destructive { @apply text-destructive; }
+.badge-outline {
+  @apply bg-transparent;
+  box-shadow: inset 0 0 0 1px var(--border-solid);
+}

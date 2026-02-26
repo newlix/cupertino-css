@@ -1,0 +1,48 @@
+/* ========== INPUT GROUP ========== */
+.input-group {
+  @apply relative;
+  & .input-group-icon {
+    @apply absolute top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground;
+    & svg { @apply size-4; }
+  }
+  & .input-group-icon-left {
+    @apply left-3;
+  }
+  & .input-group-icon-right {
+    @apply right-3;
+  }
+  & .input-group-text {
+    @apply absolute top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground text-[13px];
+  }
+  & .input-group-text-left {
+    @apply left-3;
+  }
+  & .input-group-text-right {
+    @apply right-3;
+  }
+}
+.input-group-attached {
+  @apply flex items-stretch;
+  & .input-group-addon {
+    @apply flex items-center border px-3 text-[13px] text-muted-foreground;
+    background: var(--muted);
+  }
+  & .input-group-addon:first-child {
+    @apply rounded-l-xl border-r-0;
+  }
+  & .input-group-addon:last-child {
+    @apply rounded-r-xl border-l-0;
+  }
+  & .input, & input {
+    @apply flex-1;
+  }
+  & .input:not(:first-child):not(:last-child), & input:not(:first-child):not(:last-child) {
+    @apply rounded-none;
+  }
+  & .input:first-child, & input:first-child {
+    @apply rounded-r-none;
+  }
+  & .input:last-child, & input:last-child {
+    @apply rounded-l-none;
+  }
+}

@@ -1,0 +1,4 @@
+/* ========== LABEL ========== */
+.label {
+  @apply block text-[13px] font-medium text-foreground;
+}

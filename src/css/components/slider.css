@@ -1,0 +1,29 @@
+/* ========== SLIDER ========== */
+.slider {
+  @apply w-full cursor-pointer appearance-none rounded-full;
+  height: 4px;
+  background: var(--surface-5);
+  accent-color: var(--primary);
+  &::-webkit-slider-thumb {
+    @apply appearance-none rounded-full bg-white;
+    width: 22px;
+    height: 22px;
+    box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transition: box-shadow 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
+  }
+  &::-webkit-slider-thumb:hover {
+    box-shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transform: scale(1.05);
+  }
+  &::-webkit-slider-thumb:active {
+    box-shadow: 0 1px 3px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
+    transform: scale(0.95);
+  }
+  &::-moz-range-thumb {
+    @apply rounded-full bg-white;
+    width: 22px;
+    height: 22px;
+    border: none;
+    box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 1px oklch(0 0 0 / 0.04);
+  }
+}

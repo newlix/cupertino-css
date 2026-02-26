@@ -1,0 +1,18 @@
+/* ========== ALERT ========== */
+.alert,
+.alert-info,
+.alert-success,
+.alert-warning,
+.alert-destructive {
+  @apply flex gap-3 rounded-xl p-4;
+  background: var(--card);
+  box-shadow: var(--shadow-sm), var(--panel-ring);
+  & svg:first-child { @apply mt-0.5 size-5 shrink-0; color: var(--muted-foreground); }
+  & p:first-child, & p:first-of-type { @apply text-[13px] font-medium text-foreground; }
+  & p:last-child:not(:first-child) { @apply mt-0.5 text-[13px] text-muted-foreground; }
+}
+/* Only the icon carries semantic color */
+.alert-info    { & svg:first-child { color: var(--primary); } }
+.alert-success { & svg:first-child { color: oklch(0.596 0.172 145.18); } }
+.alert-warning { & svg:first-child { color: oklch(0.666 0.179 58.32); } }
+.alert-destructive { & svg:first-child { color: var(--destructive); } }

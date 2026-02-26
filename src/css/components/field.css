@@ -1,0 +1,7 @@
+/* ========== FIELD (auto-styles children — form controls inherited from shared base above) ========== */
+.field {
+  @apply space-y-1.5;
+  & > label { @apply text-[13px] font-medium text-foreground; }
+  & > p { @apply text-xs text-muted-foreground; }
+  & > p.field-error { color: var(--destructive); }
+}

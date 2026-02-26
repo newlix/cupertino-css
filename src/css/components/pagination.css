@@ -1,0 +1,14 @@
+/* ========== PAGINATION ========== */
+.pagination {
+  @apply flex items-center gap-0.5;
+}
+.pagination-item {
+  @apply inline-flex size-9 items-center justify-center rounded-[10px] text-[13px] font-medium text-muted-foreground cursor-pointer;
+  transition: all 0.2s var(--apple-ease);
+  &:hover { background: var(--surface-3); }
+  &[data-active] {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: var(--shadow-sm);
+  }
+  &:disabled { @apply pointer-events-none opacity-50; }
+}

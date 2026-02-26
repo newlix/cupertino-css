@@ -1,0 +1,19 @@
+/* ========== BUTTON GROUP ========== */
+.button-group {
+  @apply inline-flex rounded-[10px] bg-card;
+  box-shadow: 0 0 0 1px var(--panel-border), var(--shadow-sm);
+  & button, & a {
+    @apply inline-flex items-center justify-center bg-transparent px-4 py-2.5 text-[13px] font-medium text-foreground;
+    transition: all 0.15s var(--apple-ease);
+    &:hover { background: var(--surface-2); }
+    &:first-child { @apply rounded-l-[10px]; }
+    &:last-child { @apply rounded-r-[10px]; }
+    &:not(:first-child) {
+      border-left: 1px solid var(--panel-border);
+    }
+    &[data-active] {
+      @apply bg-primary text-primary-foreground;
+      &:hover { @apply bg-primary-hover; }
+    }
+  }
+}

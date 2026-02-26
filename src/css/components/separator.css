@@ -1,0 +1,19 @@
+/* ========== SEPARATOR ========== */
+.separator {
+  @apply shrink-0;
+  background: var(--panel-border);
+}
+.separator:not(.separator-vertical) {
+  @apply h-px w-full;
+}
+.separator-vertical {
+  @apply w-px self-stretch;
+}
+.separator-label {
+  @apply flex items-center gap-3 text-xs text-muted-foreground;
+  &::before, &::after {
+    content: "";
+    @apply h-px flex-1;
+    background: var(--panel-border);
+  }
+}

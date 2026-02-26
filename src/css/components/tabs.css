@@ -1,0 +1,43 @@
+/* ========== TABS ========== */
+.tabs {
+  /* wrapper */
+}
+.tabs-list {
+  @apply flex;
+  border-bottom: 1px solid var(--panel-border);
+}
+.tabs-trigger {
+  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer;
+  transition: color 0.2s var(--apple-ease);
+  &:hover { @apply text-foreground; }
+  &[data-active] {
+    color: var(--primary);
+    &::after {
+      content: "";
+      @apply absolute bottom-0 left-0 h-0.5 w-full;
+      border-radius: 1px 1px 0 0;
+      background: var(--primary);
+    }
+  }
+}
+.tabs-content {
+  @apply py-4;
+  &:not([data-active]) { @apply hidden; }
+}
+/* Pill variant — Apple segmented control */
+.tabs-pill {
+  & .tabs-list {
+    @apply inline-flex rounded-[10px] border-0 p-1;
+    background: var(--surface-4);
+  }
+  & .tabs-trigger {
+    @apply rounded-[7px] px-3.5 py-1.5 text-[13px];
+    transition: all 0.2s var(--apple-spring);
+    &[data-active] {
+      @apply text-foreground;
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+      &::after { display: none; }
+    }
+  }
+}

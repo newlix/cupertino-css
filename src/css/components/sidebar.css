@@ -1,0 +1,31 @@
+/* ========== SIDEBAR ========== */
+.sidebar {
+  @apply fixed left-0 top-0 flex h-full w-[260px] flex-col;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-right: 1px solid var(--panel-border);
+  & .sidebar-header {
+    @apply flex items-center gap-2.5 px-5 py-4;
+    border-bottom: 1px solid var(--panel-border);
+    & h2 { @apply text-[13px] font-semibold tracking-tight; }
+  }
+  & .sidebar-content {
+    @apply flex-1 overflow-y-auto px-3 py-3;
+  }
+  & .sidebar-section {
+    @apply mb-4;
+    & h3 { @apply mb-1 px-2 text-[11px] font-semibold text-muted-foreground; }
+  }
+  & .sidebar-item {
+    @apply flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] text-foreground/70 cursor-pointer;
+    transition: all 0.15s var(--apple-ease);
+    & svg { @apply size-4 text-muted-foreground; }
+    &:hover { background: var(--surface-3); @apply text-foreground; }
+    &[data-active] { background: var(--surface-4); @apply text-foreground font-medium; }
+  }
+  & .sidebar-footer {
+    @apply px-5 py-4;
+    border-top: 1px solid var(--panel-border);
+  }
+}

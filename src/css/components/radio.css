@@ -1,0 +1,13 @@
+/* ========== RADIO ========== */
+.radio {
+  @apply appearance-none size-[18px] shrink-0 rounded-full border bg-card cursor-pointer;
+  border-color: var(--input-border);
+  transition: all 0.2s var(--apple-ease);
+  &:checked {
+    border-color: var(--primary);
+    border-width: 5px;
+  }
+  &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
+  &:focus-visible { box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.15); }
+  &:disabled { @apply cursor-not-allowed opacity-50; }
+}

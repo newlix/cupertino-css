@@ -1,0 +1,25 @@
+/* ========== HOVER CARD ========== */
+.hover-card {
+  @apply relative inline-block;
+}
+.hover-card-content {
+  @apply pointer-events-none absolute z-50 mt-2 min-w-[280px] rounded-2xl p-4;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-lg), var(--float-ring);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
+}
+.hover-card:hover .hover-card-content {
+  @apply pointer-events-auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+.hover-card-bottom .hover-card-content {
+  @apply bottom-auto top-full mt-2;
+}
+.hover-card-top .hover-card-content {
+  @apply bottom-full top-auto mb-2 mt-0;
+}

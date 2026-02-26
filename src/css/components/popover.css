@@ -1,0 +1,19 @@
+/* ========== POPOVER ========== */
+.popover {
+  @apply relative inline-block;
+}
+.popover-content {
+  @apply absolute z-50 mt-2 min-w-[220px] rounded-2xl p-4;
+  display: none;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-lg), var(--float-ring);
+  animation: slideUp 0.2s var(--apple-spring);
+  &[data-open] { display: block; }
+}
+.popover-top {
+  & .popover-content {
+    @apply bottom-full top-auto mb-2 mt-0;
+  }
+}

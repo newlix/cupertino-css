@@ -1,0 +1,84 @@
+/* ========== TYPOGRAPHY (PROSE) ========== */
+.prose {
+  @apply max-w-[65ch] text-foreground;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.015em;
+  & > * + * { @apply mt-5; }
+  & h1 {
+    @apply font-bold tracking-tight text-foreground;
+    font-size: 34px;
+    line-height: 1.21;
+    &:not(:first-child) { @apply mt-12; }
+  }
+  & h2 {
+    @apply font-semibold tracking-tight text-foreground;
+    font-size: 22px;
+    line-height: 1.18;
+    &:not(:first-child) { @apply mt-10; }
+  }
+  & h3 {
+    @apply font-semibold tracking-tight text-foreground;
+    font-size: 20px;
+    line-height: 1.25;
+    &:not(:first-child) { @apply mt-8; }
+  }
+  & h4 {
+    @apply font-semibold text-foreground;
+    font-size: 17px;
+    line-height: 1.29;
+    &:not(:first-child) { @apply mt-6; }
+  }
+  & .lead {
+    @apply text-xl text-muted-foreground;
+    line-height: 1.4;
+  }
+  & .muted {
+    @apply text-[13px] text-muted-foreground;
+  }
+  & blockquote {
+    @apply border-l-2 pl-5 italic text-muted-foreground;
+    border-color: var(--border-solid);
+  }
+  & ul {
+    @apply list-disc pl-6 space-y-1.5;
+  }
+  & ol {
+    @apply list-decimal pl-6 space-y-1.5;
+  }
+  & li {
+    & > ul, & > ol { @apply mt-1.5; }
+  }
+  & code {
+    @apply rounded-md bg-secondary px-1.5 py-0.5 text-[13px] font-medium;
+  }
+  & pre {
+    @apply overflow-x-auto rounded-xl bg-secondary p-4;
+    & code {
+      @apply bg-transparent p-0;
+    }
+  }
+  & hr {
+    @apply my-8;
+    border-color: var(--border);
+  }
+  & table {
+    @apply w-full text-[13px];
+    & th {
+      @apply border-b px-4 py-2 text-left font-semibold;
+      border-color: var(--border-solid);
+    }
+    & td {
+      @apply border-b px-4 py-2;
+      border-color: var(--border);
+    }
+  }
+  & a {
+    @apply font-medium text-primary underline underline-offset-4;
+    &:hover { text-decoration-color: var(--primary); }
+  }
+  & img {
+    @apply rounded-xl;
+  }
+}

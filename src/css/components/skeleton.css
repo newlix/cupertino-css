@@ -1,0 +1,9 @@
+/* ========== SKELETON ========== */
+.skeleton,
+.skeleton-circle {
+  @apply animate-pulse rounded-lg;
+  background: var(--surface-4);
+}
+.skeleton-circle {
+  @apply rounded-full;
+}

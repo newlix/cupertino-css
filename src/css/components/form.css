@@ -1,0 +1,15 @@
+/* ========== FORM ========== */
+.fieldset {
+  @apply flex flex-col gap-5;
+  & legend {
+    @apply w-full text-base font-semibold tracking-tight text-foreground;
+    letter-spacing: -0.01em;
+    float: left;
+  }
+  & legend + p {
+    @apply mt-1 text-[13px] text-muted-foreground;
+  }
+  & hr {
+    background: var(--panel-border);
+  }
+}

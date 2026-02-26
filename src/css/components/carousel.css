@@ -1,0 +1,59 @@
+/* ========== CAROUSEL ========== */
+.carousel {
+  @apply relative w-full;
+  padding-inline: 3rem;
+}
+.carousel-content {
+  @apply flex gap-4 overflow-x-auto scroll-smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* overflow-x:auto forces overflow-y:auto per CSS spec, clipping shadows/borders.
+     Padding creates breathing room; negative margin keeps layout stable. */
+  padding-block: 8px;
+  margin-block: -8px;
+  &::-webkit-scrollbar { display: none; }
+}
+.carousel-item {
+  @apply shrink-0;
+  scroll-snap-align: start;
+  width: calc(100% - 2rem);
+}
+.carousel-item-half {
+  @apply shrink-0;
+  scroll-snap-align: start;
+  width: calc(50% - 0.5rem);
+}
+.carousel-item-third {
+  @apply shrink-0;
+  scroll-snap-align: start;
+  width: calc(33.333% - 0.75rem);
+}
+.carousel-prev,
+.carousel-next {
+  @apply absolute top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full text-foreground cursor-pointer;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow), var(--float-ring);
+  transition: all 0.2s var(--apple-ease);
+  &:hover { box-shadow: var(--shadow-md), var(--float-ring); }
+  &:active { transform: translateY(-50%) scale(var(--apple-press-scale)); }
+  &:disabled { @apply pointer-events-none opacity-30; }
+  & svg { @apply size-4; }
+}
+.carousel-prev { @apply -left-3; }
+.carousel-next { @apply -right-3; }
+.carousel-indicators {
+  @apply mt-4 flex items-center justify-center gap-1.5;
+}
+.carousel-indicator {
+  @apply rounded-full cursor-pointer;
+  width: 6px;
+  height: 6px;
+  background: oklch(from var(--foreground) l c h / 0.2);
+  transition: all 0.3s var(--apple-spring);
+  &[data-active] {
+    background: oklch(from var(--foreground) l c h / 0.6);
+    width: 1.5rem;
+  }
+}

@@ -1,0 +1,63 @@
+/* ========== COMMAND ========== */
+.command {
+  @apply flex flex-col rounded-2xl bg-card overflow-hidden;
+  box-shadow: var(--shadow-lg), var(--float-ring);
+  & > header {
+    @apply flex items-center gap-2 px-3.5;
+    border-bottom: 1px solid var(--panel-border);
+    & svg { @apply size-4 shrink-0 text-muted-foreground; }
+    & input {
+      @apply h-12 flex-1 bg-transparent text-[13px] text-foreground outline-none;
+      &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
+    }
+  }
+  & [role="menu"], & [role="listbox"] {
+    @apply max-h-72 overflow-y-auto p-1.5;
+    & [role="group"] {
+      & > [role="heading"], & > span[role="heading"] {
+        @apply block px-2.5 py-1.5 text-[11px] font-semibold text-muted-foreground;
+      }
+    }
+    & [role="menuitem"], & [role="option"] {
+      @apply flex items-center gap-2.5 rounded-[8px] px-2.5 py-2 text-[13px] text-foreground cursor-pointer;
+      transition: background-color 0.12s var(--apple-ease);
+      & svg { @apply size-4 shrink-0 text-muted-foreground; }
+      & span { @apply flex-1; }
+      &:hover { @apply bg-accent; }
+      &[data-active] { @apply bg-accent; }
+      &[aria-disabled="true"] { @apply opacity-50 pointer-events-none; }
+      &[data-selected]::before {
+        content: "";
+        display: inline-block;
+        width: 1rem; height: 1rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+      }
+    }
+    & hr[role="separator"], & hr {
+      @apply my-1 h-px;
+      background: var(--secondary);
+    }
+    &.command-empty::after {
+      content: attr(data-empty);
+      @apply block py-6 text-center text-[13px] text-muted-foreground;
+    }
+  }
+}
+dialog.command-dialog,
+.command-dialog {
+  @apply m-auto w-full max-w-lg rounded-[20px] border-0 bg-transparent p-0;
+  box-shadow: var(--shadow-xl);
+  &::backdrop {
+    background: var(--backdrop-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  &[open] { animation: dialogShow 0.25s var(--apple-spring); }
+  & > .command {
+    box-shadow: none;
+    border: 1px solid var(--panel-border);
+  }
+}

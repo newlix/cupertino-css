@@ -1,0 +1,23 @@
+/* ========== DIALOG ========== */
+dialog.dialog,
+.dialog {
+  @apply m-auto w-full max-w-md rounded-[20px] bg-card text-card-foreground p-0;
+  box-shadow: var(--shadow-xl), var(--float-ring);
+  &::backdrop {
+    background: var(--backdrop-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  &[open] { animation: dialogShow 0.28s var(--apple-spring); }
+  & > header {
+    @apply px-6 pt-6;
+    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & p { @apply mt-1.5 text-[13px] text-muted-foreground; }
+  }
+  & > section {
+    @apply px-6 pt-4;
+  }
+  & > footer {
+    @apply flex justify-end gap-2 px-6 pb-6 pt-6;
+  }
+}
