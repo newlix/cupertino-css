@@ -11,10 +11,10 @@ test.describe('Popover', () => {
     const trigger = preview.locator('[data-popover-trigger]');
     const content = preview.locator('.popover-content');
 
-    await expect(content).not.toHaveClass(/popover-open/);
+    await expect(content).not.toHaveAttribute('data-open', '');
 
     await trigger.click();
-    await expect(content).toHaveClass(/popover-open/);
+    await expect(content).toHaveAttribute('data-open', '');
   });
 
   test('click outside closes popover', async ({ page }) => {
@@ -23,10 +23,10 @@ test.describe('Popover', () => {
     const content = preview.locator('.popover-content');
 
     await trigger.click();
-    await expect(content).toHaveClass(/popover-open/);
+    await expect(content).toHaveAttribute('data-open', '');
 
     await page.locator('body').click({ position: { x: 0, y: 0 } });
-    await expect(content).not.toHaveClass(/popover-open/);
+    await expect(content).not.toHaveAttribute('data-open', '');
   });
 
   test('Escape key closes popover', async ({ page }) => {
@@ -35,9 +35,9 @@ test.describe('Popover', () => {
     const content = preview.locator('.popover-content');
 
     await trigger.click();
-    await expect(content).toHaveClass(/popover-open/);
+    await expect(content).toHaveAttribute('data-open', '');
 
     await page.keyboard.press('Escape');
-    await expect(content).not.toHaveClass(/popover-open/);
+    await expect(content).not.toHaveAttribute('data-open', '');
   });
 });

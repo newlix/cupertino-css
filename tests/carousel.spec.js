@@ -38,8 +38,8 @@ test.describe('Carousel', () => {
   });
 
   test('indicators update on scroll', async ({ page }) => {
-    // "With Indicators" example (third example)
-    const preview = page.locator('.docs-example-preview').nth(2);
+    // "With Indicators" example (fourth example)
+    const preview = page.locator('.docs-example-preview').nth(3);
     const indicators = preview.locator('.carousel-indicator');
     const next = preview.locator('.carousel-next');
 

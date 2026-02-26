@@ -11,14 +11,10 @@ test.describe('Dropdown Menu', () => {
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
-    // Dropdown starts without hidden class in docs preview.
-    // First click on trigger: JS sees it as open → closes it.
-    await trigger.click();
-    await expect(content).toHaveClass(/hidden/);
+    await expect(content).not.toHaveAttribute('data-open', '');
 
-    // Second click: JS sees it as closed → opens it.
     await trigger.click();
-    await expect(content).not.toHaveClass(/hidden/);
+    await expect(content).toHaveAttribute('data-open', '');
   });
 
   test('click outside closes dropdown', async ({ page }) => {
@@ -26,14 +22,11 @@ test.describe('Dropdown Menu', () => {
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
-    // Close first, then open
     await trigger.click();
-    await trigger.click();
-    await expect(content).not.toHaveClass(/hidden/);
+    await expect(content).toHaveAttribute('data-open', '');
 
-    // Click outside to close
     await page.locator('body').click({ position: { x: 0, y: 0 } });
-    await expect(content).toHaveClass(/hidden/);
+    await expect(content).not.toHaveAttribute('data-open', '');
   });
 
   test('click menu item closes dropdown', async ({ page }) => {
@@ -41,14 +34,11 @@ test.describe('Dropdown Menu', () => {
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
-    // Close first, then open
     await trigger.click();
-    await trigger.click();
-    await expect(content).not.toHaveClass(/hidden/);
+    await expect(content).toHaveAttribute('data-open', '');
 
-    // Use dispatchEvent since .dropdown-menu CSS has display:none baked in
     await content.locator('button:has-text("Profile")').dispatchEvent('click');
-    await expect(content).toHaveClass(/hidden/);
+    await expect(content).not.toHaveAttribute('data-open', '');
   });
 
   test('Escape key closes dropdown', async ({ page }) => {
@@ -56,12 +46,10 @@ test.describe('Dropdown Menu', () => {
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
-    // Close first, then open
     await trigger.click();
-    await trigger.click();
-    await expect(content).not.toHaveClass(/hidden/);
+    await expect(content).toHaveAttribute('data-open', '');
 
     await page.keyboard.press('Escape');
-    await expect(content).toHaveClass(/hidden/);
+    await expect(content).not.toHaveAttribute('data-open', '');
   });
 });

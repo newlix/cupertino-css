@@ -1263,8 +1263,8 @@
   }
   .pagination-item {
     display: inline-flex;
-    width: calc(var(--spacing) * 9);
     height: calc(var(--spacing) * 9);
+    min-width: calc(var(--spacing) * 9);
     cursor: pointer;
     align-items: center;
     justify-content: center;
