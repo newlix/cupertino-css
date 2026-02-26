@@ -142,6 +142,54 @@
     backdrop-filter: blur(4px);
   }
 
+  /* ─── Homepage ─── */
+  .home-nav {
+    @apply sticky top-0 z-50 border-b;
+    background: oklch(from var(--background) l c h / 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .home-nav-inner {
+    @apply mx-auto flex max-w-6xl items-center justify-between px-6 py-3;
+  }
+  .home-hero {
+    @apply mx-auto max-w-3xl px-6 py-20 text-center;
+  }
+  .home-section-title {
+    @apply mx-auto max-w-6xl px-6 pb-6 text-2xl font-bold tracking-tight text-foreground;
+  }
+  .home-bento-grid {
+    @apply mx-auto grid max-w-6xl gap-4 px-6 pb-20;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .bento-cell {
+    @apply overflow-hidden rounded-xl border;
+    background: var(--card);
+  }
+  .bento-cell-header {
+    @apply border-b px-5 py-3 text-[13px] font-semibold text-foreground;
+  }
+  .bento-cell-body {
+    @apply p-5;
+  }
+  .bento-2col { grid-column: span 2; }
+  .bento-2row { grid-row: span 2; }
+  .home-footer {
+    @apply border-t py-8 text-center text-sm text-muted-foreground;
+  }
+  @media (max-width: 1024px) {
+    .home-bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .home-bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .bento-2col { grid-column: span 1; }
+    .home-hero { @apply py-12; }
+  }
+
   /* Mobile responsive */
   @media (max-width: 768px) {
     .docs-sidebar {

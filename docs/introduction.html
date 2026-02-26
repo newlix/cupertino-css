@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cupertino — Apple-aesthetic UI components</title>
+  <link rel="stylesheet" href="docs.built.css">
+</head>
+<body>
+<main data-title="Introduction" data-description="Apple-aesthetic UI components as a Tailwind CSS plugin.">
+
+  <div class="mt-8 space-y-6 text-[15px] leading-relaxed text-foreground">
+    <p>
+      <strong>Cupertino</strong> is a set of UI components that bring Apple's design language to the web.
+      Built as semantic CSS classes on top of <strong>Tailwind CSS v4</strong>, every component follows the
+      <a href="https://developer.apple.com/design/human-interface-guidelines/" class="text-primary underline underline-offset-4">Apple Human Interface Guidelines</a>
+      — from typography and color to spacing and motion.
+    </p>
+
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="card">
+        <h3>Semantic Classes</h3>
+        <p>Use <code class="kbd">.btn</code>, <code class="kbd">.card</code>, <code class="kbd">.dialog</code> — clean, readable markup.</p>
+      </div>
+      <div class="card">
+        <h3>Apple HIG Typography</h3>
+        <p>13px macOS Body, 17px iOS Body for prose, SF Pro type scale with Apple-standard leading.</p>
+      </div>
+      <div class="card">
+        <h3>50+ Components</h3>
+        <p>Buttons, dialogs, drawers, carousels, command palettes, and more — all with dark mode.</p>
+      </div>
+    </div>
+
+    <h2 class="text-xl font-bold tracking-tight">Quick Start</h2>
+    <p>Install the package and import it into your CSS:</p>
+
+    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-bash">npm install cupertino-css</code></pre>
+    </div>
+
+    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden; margin-top: 0.75rem;">
+      <pre><code class="language-css">@import "tailwindcss";
+@import "cupertino-css";</code></pre>
+    </div>
+
+    <p>Then use the components in your HTML:</p>
+
+    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;button class="btn"&gt;Get Started&lt;/button&gt;
+&lt;div class="card"&gt;
+  &lt;h3&gt;Hello, Cupertino&lt;/h3&gt;
+  &lt;p&gt;Beautiful, semantic UI components.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+</main>
+<script type="module" src="docs.js"></script>
+</body>
+</html>

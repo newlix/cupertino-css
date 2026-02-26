@@ -5,7 +5,7 @@ const NAV = [
   {
     title: "Getting Started",
     items: [
-      { label: "Introduction", href: "index.html" },
+      { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
     ],
   },
@@ -112,7 +112,7 @@ function buildSidebar() {
   const current = currentHref();
   let html = `
     <div class="docs-sidebar-brand">
-      <a href="${base}index.html" class="flex items-center gap-2.5 no-underline">
+      <a href="${base}introduction.html" class="flex items-center gap-2.5 no-underline">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-primary">
           <rect width="24" height="24" rx="6" fill="currentColor" opacity="0.12"/>
           <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
