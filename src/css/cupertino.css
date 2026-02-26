@@ -610,7 +610,7 @@
   /* ========== DIALOG ========== */
   dialog.dialog,
   .dialog {
-    @apply m-auto w-full max-w-md rounded-[20px] bg-card p-0;
+    @apply m-auto w-full max-w-md rounded-[20px] bg-card text-card-foreground p-0;
     box-shadow: var(--shadow-xl), 0 0 0 1px oklch(0 0 0 / 0.05);
     &::backdrop {
       background: oklch(0 0 0 / 0.35);
@@ -630,7 +630,7 @@
       @apply flex justify-end gap-2 px-6 pb-6 pt-6;
     }
     &:is(.dark *) {
-      box-shadow: var(--shadow-xl), 0 0 0 1px oklch(1 0 0 / 0.08);
+      box-shadow: var(--shadow-xl), 0 0 0 1px oklch(1 0 0 / 0.15), 0 0 0 0.5px oklch(1 0 0 / 0.06);
     }
   }
 
@@ -1435,7 +1435,7 @@
   /* ========== SHEET ========== */
   dialog.sheet,
   .sheet {
-    @apply fixed m-0 h-full bg-card;
+    @apply fixed m-0 h-full bg-card text-card-foreground;
     max-height: 100vh;
     max-width: min(420px, 85vw);
     box-shadow: var(--shadow-xl);
@@ -1701,7 +1701,7 @@
   /* ========== DRAWER ========== */
   dialog.sheet-bottom,
   .sheet-bottom {
-    @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full bg-card;
+    @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full bg-card text-card-foreground;
     max-height: min(85vh, 600px);
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -8px 32px oklch(0 0 0 / 0.1), 0 0 0 1px oklch(0 0 0 / 0.05);
@@ -1741,7 +1741,7 @@
   }
   dialog.sheet-top,
   .sheet-top {
-    @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full bg-card;
+    @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full bg-card text-card-foreground;
     max-height: min(85vh, 600px);
     border-radius: 0 0 20px 20px;
     box-shadow: 0 8px 32px oklch(0 0 0 / 0.1), 0 0 0 1px oklch(0 0 0 / 0.05);

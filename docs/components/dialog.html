@@ -96,10 +96,11 @@
   </header>
   <section>
     <div class="flex gap-2">
-      <input type="text" value="https://example.com/doc/abc123" readonly class="flex-1" />
+      <input type="text" value="https://example.com/doc/abc123" readonly class="input flex-1" />
       <button class="btn" onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
     </div>
   </section>
+  <footer></footer>
 </dialog>
     </template>
   </section>
@@ -116,7 +117,7 @@
   <section>
     <div class="space-y-4">
       <div class="flex gap-2">
-        <input type="email" placeholder="email@example.com" class="flex-1" />
+        <input type="email" placeholder="email@example.com" class="input flex-1" />
         <button class="btn">Invite</button>
       </div>
       <div class="space-y-2">
@@ -138,7 +139,7 @@
               <p class="text-xs text-muted-foreground">john@example.com</p>
             </div>
           </div>
-          <select class="rounded-lg border bg-card px-2 py-1 text-xs text-foreground">
+          <select class="select h-auto w-auto py-1 pl-2 pr-8 text-xs rounded-lg">
             <option>Viewer</option>
             <option selected>Editor</option>
             <option>Admin</option>
