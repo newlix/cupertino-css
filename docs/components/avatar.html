@@ -20,11 +20,31 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="Sizes">
+    <template>
+<div class="flex flex-wrap items-end gap-4">
+  <div class="avatar avatar-sm bg-primary/10 text-primary text-xs">SM</div>
+  <div class="avatar bg-primary/10 text-primary">MD</div>
+  <div class="avatar avatar-lg bg-primary/10 text-primary text-lg">LG</div>
+</div>
+    </template>
+  </section>
+
   <section class="docs-example" data-example="With Status">
     <template>
-<div class="relative inline-block">
-  <div class="avatar">EF</div>
-  <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-success"></span>
+<div class="flex flex-wrap items-center gap-6">
+  <div class="relative inline-block">
+    <div class="avatar">EF</div>
+    <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-success"></span>
+  </div>
+  <div class="relative inline-block">
+    <div class="avatar"><img src="https://i.pravatar.cc/40?img=5" alt="Avatar" /></div>
+    <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-warning"></span>
+  </div>
+  <div class="relative inline-block">
+    <div class="avatar bg-secondary text-muted-foreground">GH</div>
+    <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-muted-foreground"></span>
+  </div>
 </div>
     </template>
   </section>
@@ -32,10 +52,31 @@
   <section class="docs-example" data-example="Group">
     <template>
 <div class="avatar-group">
-  <div class="avatar avatar-sm bg-blue-100 text-blue-600">A</div>
-  <div class="avatar avatar-sm bg-green-100 text-green-600">B</div>
-  <div class="avatar avatar-sm bg-amber-100 text-amber-600">C</div>
+  <div class="avatar avatar-sm bg-blue-100 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">A</div>
+  <div class="avatar avatar-sm bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400">B</div>
+  <div class="avatar avatar-sm bg-amber-100 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400">C</div>
   <div class="avatar avatar-sm text-muted-foreground">+3</div>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Name">
+    <template>
+<div class="space-y-4">
+  <div class="flex items-center gap-3">
+    <div class="avatar"><img src="https://i.pravatar.cc/40?img=12" alt="Avatar" /></div>
+    <div>
+      <p class="text-sm font-medium">Sarah Chen</p>
+      <p class="text-xs text-muted-foreground">sarah@example.com</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <div class="avatar bg-primary/10 text-primary">JD</div>
+    <div>
+      <p class="text-sm font-medium">John Doe</p>
+      <p class="text-xs text-muted-foreground">john@example.com</p>
+    </div>
+  </div>
 </div>
     </template>
   </section>

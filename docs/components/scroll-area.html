@@ -57,6 +57,79 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="Tag List">
+    <template>
+<div class="max-w-xs">
+  <h4 class="mb-2 text-sm font-semibold">Tags</h4>
+  <div class="scroll-area rounded-xl border" style="height: 160px;">
+    <div class="p-3 space-y-1.5">
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>JavaScript</span>
+        <span class="text-xs text-muted-foreground">1,234</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>TypeScript</span>
+        <span class="text-xs text-muted-foreground">987</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>React</span>
+        <span class="text-xs text-muted-foreground">856</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>CSS</span>
+        <span class="text-xs text-muted-foreground">654</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>HTML</span>
+        <span class="text-xs text-muted-foreground">543</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>Node.js</span>
+        <span class="text-xs text-muted-foreground">432</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>Python</span>
+        <span class="text-xs text-muted-foreground">321</span>
+      </div>
+      <div class="flex items-center justify-between rounded-lg px-3 py-2 text-sm hover:bg-accent transition-colors cursor-pointer">
+        <span>Rust</span>
+        <span class="text-xs text-muted-foreground">210</span>
+      </div>
+    </div>
+  </div>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Both Directions">
+    <template>
+<div class="scroll-area scroll-area-horizontal rounded-xl border p-4" style="height: 200px; max-width: 400px;">
+  <div style="width: 600px;">
+    <table class="w-full text-sm">
+      <thead>
+        <tr>
+          <th class="text-left px-3 py-2 font-medium text-muted-foreground whitespace-nowrap">Name</th>
+          <th class="text-left px-3 py-2 font-medium text-muted-foreground whitespace-nowrap">Email</th>
+          <th class="text-left px-3 py-2 font-medium text-muted-foreground whitespace-nowrap">Department</th>
+          <th class="text-left px-3 py-2 font-medium text-muted-foreground whitespace-nowrap">Location</th>
+          <th class="text-right px-3 py-2 font-medium text-muted-foreground whitespace-nowrap">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Alice Johnson</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">alice@example.com</td><td class="px-3 py-2 whitespace-nowrap">Engineering</td><td class="px-3 py-2 whitespace-nowrap">San Francisco</td><td class="px-3 py-2 text-right whitespace-nowrap">$145,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Bob Smith</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">bob@example.com</td><td class="px-3 py-2 whitespace-nowrap">Design</td><td class="px-3 py-2 whitespace-nowrap">New York</td><td class="px-3 py-2 text-right whitespace-nowrap">$130,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Carol Williams</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">carol@example.com</td><td class="px-3 py-2 whitespace-nowrap">Marketing</td><td class="px-3 py-2 whitespace-nowrap">Los Angeles</td><td class="px-3 py-2 text-right whitespace-nowrap">$115,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">David Brown</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">david@example.com</td><td class="px-3 py-2 whitespace-nowrap">Engineering</td><td class="px-3 py-2 whitespace-nowrap">Austin</td><td class="px-3 py-2 text-right whitespace-nowrap">$140,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Eva Martinez</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">eva@example.com</td><td class="px-3 py-2 whitespace-nowrap">Product</td><td class="px-3 py-2 whitespace-nowrap">Seattle</td><td class="px-3 py-2 text-right whitespace-nowrap">$135,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Frank Lee</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">frank@example.com</td><td class="px-3 py-2 whitespace-nowrap">Sales</td><td class="px-3 py-2 whitespace-nowrap">Chicago</td><td class="px-3 py-2 text-right whitespace-nowrap">$120,000</td></tr>
+        <tr class="border-t"><td class="px-3 py-2 whitespace-nowrap">Grace Kim</td><td class="px-3 py-2 whitespace-nowrap text-muted-foreground">grace@example.com</td><td class="px-3 py-2 whitespace-nowrap">Engineering</td><td class="px-3 py-2 whitespace-nowrap">Denver</td><td class="px-3 py-2 text-right whitespace-nowrap">$138,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

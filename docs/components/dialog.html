@@ -82,6 +82,79 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="With Close Button">
+    <template>
+<button onclick="document.getElementById('demo-dialog-close').showModal()" class="btn btn-outline">Share Link</button>
+
+<dialog id="demo-dialog-close" class="dialog">
+  <button onclick="document.getElementById('demo-dialog-close').close()" class="absolute top-4 right-4 inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <header>
+    <h2>Share Link</h2>
+    <p>Anyone with the link will be able to view this document.</p>
+  </header>
+  <section>
+    <div class="flex gap-2">
+      <input type="text" value="https://example.com/doc/abc123" readonly class="flex-1" />
+      <button class="btn" onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
+    </div>
+  </section>
+</dialog>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Custom Content">
+    <template>
+<button onclick="document.getElementById('demo-dialog-custom').showModal()" class="btn btn-outline">Invite Members</button>
+
+<dialog id="demo-dialog-custom" class="dialog" style="max-width: 480px;">
+  <header>
+    <h2>Invite Team Members</h2>
+    <p>Add colleagues to collaborate on this project.</p>
+  </header>
+  <section>
+    <div class="space-y-4">
+      <div class="flex gap-2">
+        <input type="email" placeholder="email@example.com" class="flex-1" />
+        <button class="btn">Invite</button>
+      </div>
+      <div class="space-y-2">
+        <div class="flex items-center justify-between rounded-lg border px-3 py-2">
+          <div class="flex items-center gap-2.5">
+            <div class="avatar avatar-sm bg-primary/10 text-primary text-xs">SC</div>
+            <div>
+              <p class="text-sm font-medium">Sarah Chen</p>
+              <p class="text-xs text-muted-foreground">sarah@example.com</p>
+            </div>
+          </div>
+          <span class="text-xs text-muted-foreground">Owner</span>
+        </div>
+        <div class="flex items-center justify-between rounded-lg border px-3 py-2">
+          <div class="flex items-center gap-2.5">
+            <div class="avatar avatar-sm bg-primary/10 text-primary text-xs">JD</div>
+            <div>
+              <p class="text-sm font-medium">John Doe</p>
+              <p class="text-xs text-muted-foreground">john@example.com</p>
+            </div>
+          </div>
+          <select class="rounded-lg border bg-card px-2 py-1 text-xs text-foreground">
+            <option>Viewer</option>
+            <option selected>Editor</option>
+            <option>Admin</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn">Done</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

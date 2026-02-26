@@ -74,6 +74,107 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="With Form">
+    <template>
+<button onclick="document.getElementById('demo-drawer-form').showModal()" class="btn btn-outline">Add Feedback</button>
+
+<dialog id="demo-drawer-form" class="sheet-bottom">
+  <div class="drawer-handle"></div>
+  <button onclick="document.getElementById('demo-drawer-form').close()" class="sheet-close">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <header>
+    <h2>Send Feedback</h2>
+    <p>We'd love to hear what you think.</p>
+  </header>
+  <section>
+    <form class="space-y-4" onsubmit="return false;">
+      <div class="field">
+        <label>Rating</label>
+        <div class="flex gap-2">
+          <button type="button" class="flex size-10 items-center justify-center rounded-lg border text-lg transition-colors hover:bg-accent cursor-pointer">&#128545;</button>
+          <button type="button" class="flex size-10 items-center justify-center rounded-lg border text-lg transition-colors hover:bg-accent cursor-pointer">&#128533;</button>
+          <button type="button" class="flex size-10 items-center justify-center rounded-lg border text-lg transition-colors hover:bg-accent cursor-pointer bg-accent">&#128528;</button>
+          <button type="button" class="flex size-10 items-center justify-center rounded-lg border text-lg transition-colors hover:bg-accent cursor-pointer">&#128522;</button>
+          <button type="button" class="flex size-10 items-center justify-center rounded-lg border text-lg transition-colors hover:bg-accent cursor-pointer">&#128525;</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Comments</label>
+        <textarea rows="3" placeholder="Tell us more..."></textarea>
+      </div>
+    </form>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-drawer-form').close()" class="btn w-full">Submit Feedback</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Scrollable Content">
+    <template>
+<button onclick="document.getElementById('demo-drawer-scroll').showModal()" class="btn btn-outline">View Changelog</button>
+
+<dialog id="demo-drawer-scroll" class="sheet-bottom">
+  <div class="drawer-handle"></div>
+  <button onclick="document.getElementById('demo-drawer-scroll').close()" class="sheet-close">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <header>
+    <h2>Changelog</h2>
+    <p>Recent updates and improvements.</p>
+  </header>
+  <section class="overflow-auto" style="max-height: 300px;">
+    <div class="space-y-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge-success"><span class="size-1.5 rounded-full bg-success"></span>v2.4.0</span>
+          <span class="text-xs text-muted-foreground">Feb 26, 2026</span>
+        </div>
+        <p class="mt-1 text-sm text-muted-foreground">Added dark mode support for all components. Improved accessibility across the board.</p>
+      </div>
+      <hr />
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge">v2.3.0</span>
+          <span class="text-xs text-muted-foreground">Feb 20, 2026</span>
+        </div>
+        <p class="mt-1 text-sm text-muted-foreground">New Drawer and Carousel components. Fixed sheet animation glitches on Safari.</p>
+      </div>
+      <hr />
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge">v2.2.0</span>
+          <span class="text-xs text-muted-foreground">Feb 14, 2026</span>
+        </div>
+        <p class="mt-1 text-sm text-muted-foreground">Added Input OTP component. Improved combobox keyboard navigation.</p>
+      </div>
+      <hr />
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge">v2.1.0</span>
+          <span class="text-xs text-muted-foreground">Feb 8, 2026</span>
+        </div>
+        <p class="mt-1 text-sm text-muted-foreground">Context menu component. Better popover positioning near viewport edges.</p>
+      </div>
+      <hr />
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge">v2.0.0</span>
+          <span class="text-xs text-muted-foreground">Feb 1, 2026</span>
+        </div>
+        <p class="mt-1 text-sm text-muted-foreground">Major release: migrated to Tailwind CSS v4. New design tokens and updated all components.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-drawer-scroll').close()" class="btn btn-outline w-full">Close</button>
+  </footer>
+</dialog>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

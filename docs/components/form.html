@@ -9,7 +9,7 @@
 <body>
 <main data-title="Form" data-description="Structured forms with fieldsets, validation, and layout patterns.">
 
-  <section class="docs-example" data-example="Login Form">
+  <section class="docs-example" data-example="Login">
     <template>
 <form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
   <fieldset class="fieldset">
@@ -29,7 +29,7 @@
     </template>
   </section>
 
-  <section class="docs-example" data-example="Profile Form with Validation">
+  <section class="docs-example" data-example="Profile with Validation">
     <template>
 <form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
   <fieldset class="fieldset">
@@ -53,6 +53,48 @@
   <div class="flex gap-3">
     <button type="submit" class="btn">Save</button>
     <button type="button" class="btn btn-outline">Cancel</button>
+  </div>
+</form>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Registration">
+    <template>
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Create Account</legend>
+    <p>Sign up for a new account to get started.</p>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" placeholder="John">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Doe">
+      </div>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="Create a password">
+      <p>Must be at least 8 characters.</p>
+    </div>
+    <div class="field">
+      <label class="inline-flex items-center gap-2.5 cursor-pointer">
+        <input type="checkbox" class="checkbox">
+        <span class="text-sm">I agree to the Terms of Service</span>
+      </label>
+    </div>
+  </fieldset>
+  <button type="submit" class="btn w-full">Create Account</button>
+  <div class="separator-label">or continue with</div>
+  <div class="flex gap-3">
+    <button type="button" class="btn btn-outline w-full">Google</button>
+    <button type="button" class="btn btn-outline w-full">GitHub</button>
   </div>
 </form>
     </template>

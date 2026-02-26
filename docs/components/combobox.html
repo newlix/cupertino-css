@@ -72,6 +72,63 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="In Form">
+    <template>
+<form class="form max-w-sm space-y-4" onsubmit="return false;">
+  <div class="field">
+    <label>Language</label>
+    <div class="combobox" style="width:100%;">
+      <button type="button">
+        <span data-placeholder>Select language…</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+      </button>
+      <div data-combobox-content>
+        <header>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search language…" autocomplete="off" spellcheck="false">
+        </header>
+        <div role="listbox" data-empty="No language found.">
+          <div role="option" data-value="en">English</div>
+          <div role="option" data-value="fr">French</div>
+          <div role="option" data-value="de">German</div>
+          <div role="option" data-value="es">Spanish</div>
+          <div role="option" data-value="pt">Portuguese</div>
+          <div role="option" data-value="ja">Japanese</div>
+          <div role="option" data-value="ko">Korean</div>
+          <div role="option" data-value="zh">Chinese</div>
+        </div>
+      </div>
+      <input type="hidden" name="language" value="">
+    </div>
+    <p class="text-xs text-muted-foreground">This is the language used in the dashboard.</p>
+  </div>
+  <button type="submit" class="btn">Submit</button>
+</form>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Disabled">
+    <template>
+<div class="combobox" style="width:200px;">
+  <button type="button" disabled class="opacity-50 pointer-events-none">
+    <span data-placeholder>Select status…</span>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+  </button>
+  <div data-combobox-content>
+    <header>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
+    </header>
+    <div role="listbox" data-empty="No results.">
+      <div role="option" data-value="active">Active</div>
+      <div role="option" data-value="inactive">Inactive</div>
+    </div>
+  </div>
+  <input type="hidden" name="status" value="">
+</div>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>

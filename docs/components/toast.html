@@ -24,9 +24,75 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="Variants">
+    <template>
+<div class="space-y-3">
+  <div class="toast">
+    <svg class="mt-0.5 size-5 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="flex-1">
+      <p class="toast-title">Success</p>
+      <p class="toast-message">Your file has been uploaded.</p>
+    </div>
+    <button onclick="this.parentElement.remove()" class="toast-close">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="toast">
+    <svg class="mt-0.5 size-5 shrink-0 text-destructive" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="flex-1">
+      <p class="toast-title">Error</p>
+      <p class="toast-message">Something went wrong. Please try again.</p>
+    </div>
+    <button onclick="this.parentElement.remove()" class="toast-close">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="toast">
+    <svg class="mt-0.5 size-5 shrink-0 text-warning" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+    <div class="flex-1">
+      <p class="toast-title">Warning</p>
+      <p class="toast-message">Your session is about to expire.</p>
+    </div>
+    <button onclick="this.parentElement.remove()" class="toast-close">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="toast">
+    <svg class="mt-0.5 size-5 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div class="flex-1">
+      <p class="toast-title">Info</p>
+      <p class="toast-message">A new version is available.</p>
+    </div>
+    <button onclick="this.parentElement.remove()" class="toast-close">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Action">
+    <template>
+<div class="toast">
+  <div class="flex-1">
+    <p class="toast-title">Event has been created</p>
+    <p class="toast-message">Friday, February 28, 2026 at 5:57 PM</p>
+  </div>
+  <button class="btn btn-outline text-xs px-2.5 py-1 h-auto" onclick="this.closest('.toast').remove()">Undo</button>
+</div>
+    </template>
+  </section>
+
   <section class="docs-example" data-example="Programmatic">
     <template>
-<button onclick="showToast('Hello!', 'This is a toast notification.')" class="btn">Show Toast</button>
+<div class="flex flex-wrap gap-2">
+  <button onclick="showToast('Hello!', 'This is a toast notification.')" class="btn">Show Toast</button>
+  <button onclick="showToast('Success', 'Your changes have been saved.', 'success')" class="btn btn-outline">Success Toast</button>
+  <button onclick="showToast('Error', 'Something went wrong.', 'error')" class="btn btn-destructive">Error Toast</button>
+</div>
     </template>
   </section>
 

@@ -33,6 +33,57 @@
     </template>
   </section>
 
+  <section class="docs-example" data-example="With Dropdown">
+    <template>
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  <div class="relative inline-block" data-dropdown>
+    <button data-dropdown-trigger class="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
+      Components
+      <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div data-dropdown-content class="dropdown-menu">
+      <a href="#">Alert</a>
+      <a href="#">Button</a>
+      <a href="#">Card</a>
+      <a href="#">Dialog</a>
+    </div>
+  </div>
+  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  <span>Breadcrumb</span>
+</nav>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Collapsed">
+    <template>
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  <span class="inline-flex size-6 items-center justify-center rounded-md border text-xs text-muted-foreground cursor-pointer hover:bg-accent">&hellip;</span>
+  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  <a href="#">Components</a>
+  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  <span>Breadcrumb</span>
+</nav>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="With Dot Separator">
+    <template>
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <span class="breadcrumb-separator">&middot;</span>
+  <a href="#">Products</a>
+  <span class="breadcrumb-separator">&middot;</span>
+  <a href="#">Electronics</a>
+  <span class="breadcrumb-separator">&middot;</span>
+  <span>Headphones</span>
+</nav>
+    </template>
+  </section>
+
 </main>
 <script type="module" src="../docs.js"></script>
 </body>
