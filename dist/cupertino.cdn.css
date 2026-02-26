@@ -2989,6 +2989,7 @@
   .carousel {
     position: relative;
     width: 100%;
+    padding-inline: 3rem;
   }
   .carousel-content {
     display: flex;
@@ -2997,6 +2998,8 @@
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    padding-block: 8px;
+    margin-block: -8px;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -3007,9 +3010,13 @@
     width: calc(100% - 2rem);
   }
   .carousel-item-half {
+    flex-shrink: 0;
+    scroll-snap-align: start;
     width: calc(50% - 0.5rem);
   }
   .carousel-item-third {
+    flex-shrink: 0;
+    scroll-snap-align: start;
     width: calc(33.333% - 0.75rem);
   }
   .carousel-prev, .carousel-next {

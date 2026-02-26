@@ -1711,11 +1711,16 @@
   /* ========== CAROUSEL ========== */
   .carousel {
     @apply relative w-full;
+    padding-inline: 3rem;
   }
   .carousel-content {
     @apply flex gap-4 overflow-x-auto scroll-smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    /* overflow-x:auto forces overflow-y:auto per CSS spec, clipping shadows/borders.
+       Padding creates breathing room; negative margin keeps layout stable. */
+    padding-block: 8px;
+    margin-block: -8px;
     &::-webkit-scrollbar { display: none; }
   }
   .carousel-item {
@@ -1724,9 +1729,13 @@
     width: calc(100% - 2rem);
   }
   .carousel-item-half {
+    @apply shrink-0;
+    scroll-snap-align: start;
     width: calc(50% - 0.5rem);
   }
   .carousel-item-third {
+    @apply shrink-0;
+    scroll-snap-align: start;
     width: calc(33.333% - 0.75rem);
   }
   .carousel-prev,
@@ -1758,4 +1767,5 @@
       width: 1.5rem;
     }
   }
+
 }
