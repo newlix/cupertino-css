@@ -507,14 +507,14 @@
       transition: transform 0.25s var(--apple-spring);
     }
     &:checked {
-      background: oklch(0.647 0.177 145.18); /* Apple Green #34C759 */
+      background: var(--primary);
       &::after { transform: translateX(20px); }
     }
     &:focus-visible { box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.15); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
     &:is(.dark *) {
       background: oklch(0.350 0.004 285.99);
-      &:checked { background: oklch(0.596 0.172 145.18); /* slightly darker green in dark */ }
+      &:checked { background: var(--primary); }
     }
   }
 
@@ -653,6 +653,10 @@
       &:hover {
         background: var(--surface-1);
       }
+    }
+    & tfoot tr {
+      border-top: 1px solid var(--panel-border);
+      background: var(--surface-1);
     }
   }
   .table-striped {
