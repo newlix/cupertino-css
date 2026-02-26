@@ -171,6 +171,16 @@
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(400%); }
   }
+
+  @keyframes sheetSlideInRight {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+  }
+
+  @keyframes sheetSlideInLeft {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+  }
 }
 
 /* ─── Components ─── */
@@ -840,6 +850,134 @@
           border-bottom-color: oklch(0.961 0.004 286.32);
         }
       }
+    }
+  }
+
+  /* ========== SEPARATOR ========== */
+  .separator {
+    @apply shrink-0;
+    background: var(--border);
+  }
+  .separator:not(.separator-vertical) {
+    @apply h-px w-full;
+  }
+  .separator-vertical {
+    @apply w-px self-stretch;
+  }
+  .separator-label {
+    @apply flex items-center gap-3 text-xs text-muted-foreground;
+    &::before, &::after {
+      content: "";
+      @apply h-px flex-1;
+      background: var(--border);
+    }
+  }
+
+  /* ========== COLLAPSIBLE ========== */
+  .collapsible {
+    & summary {
+      @apply flex cursor-pointer list-none items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-foreground transition-colors;
+      &:hover { @apply bg-accent; }
+      &::-webkit-details-marker { display: none; }
+      & svg:last-child {
+        @apply size-4 shrink-0 text-muted-foreground transition-transform duration-200;
+      }
+    }
+    &[open] > summary svg:last-child {
+      transform: rotate(180deg);
+    }
+    & > div, & > p {
+      @apply px-4 pb-3 text-sm text-muted-foreground;
+    }
+  }
+
+  /* ========== SHEET ========== */
+  dialog.sheet,
+  .sheet {
+    @apply fixed m-0 h-full border bg-card shadow-2xl;
+    max-height: 100vh;
+    max-width: min(400px, 85vw);
+    &::backdrop {
+      background: oklch(0 0 0 / 0.4);
+      backdrop-filter: blur(4px);
+    }
+    &[open] { animation: sheetSlideIn 0.3s ease-out; }
+    /* Right (default) */
+    &:not(.sheet-left) {
+      @apply right-0 top-0 border-l border-r-0;
+      &[open] { animation-name: sheetSlideInRight; }
+    }
+    /* Left */
+    &.sheet-left {
+      @apply left-0 top-0 border-r border-l-0;
+      &[open] { animation-name: sheetSlideInLeft; }
+    }
+    & > header {
+      @apply border-b px-6 py-5;
+      & h2 { @apply text-lg font-semibold tracking-tight text-foreground; }
+      & p { @apply mt-1 text-sm text-muted-foreground; }
+    }
+    & > section {
+      @apply overflow-y-auto px-6 py-5;
+    }
+    & > footer {
+      @apply border-t px-6 py-4;
+    }
+    & .sheet-close {
+      @apply absolute right-4 top-4 rounded-md p-1 text-muted-foreground transition-colors cursor-pointer;
+      &:hover { @apply text-foreground bg-accent; }
+      & svg { @apply size-4; }
+    }
+  }
+
+  /* ========== POPOVER ========== */
+  .popover {
+    @apply relative inline-block;
+  }
+  .popover-content {
+    @apply absolute z-50 mt-2 hidden min-w-[200px] rounded-xl border bg-card p-4 shadow-lg;
+    animation: slideUp 0.15s ease-out;
+    &.popover-open {
+      @apply block;
+    }
+  }
+  .popover-top {
+    & .popover-content {
+      @apply bottom-full top-auto mb-2 mt-0;
+    }
+  }
+
+  /* ========== TOGGLE ========== */
+  .toggle {
+    @apply inline-flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-all duration-200 cursor-pointer;
+    &:hover {
+      @apply text-foreground;
+      background: oklch(from var(--accent) l c h / 0.6);
+    }
+    &:active { transform: scale(var(--apple-press-scale)); }
+    &[data-active], &[aria-pressed="true"] {
+      @apply bg-accent text-foreground;
+      @at-root :is(.dark *) & {
+        background: oklch(0.371 0.017 285.82);
+      }
+    }
+    &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
+    & svg { @apply size-4; }
+  }
+  .toggle-sm { @apply size-8; & svg { @apply size-3.5; } }
+  .toggle-lg { @apply size-10; & svg { @apply size-5; } }
+  .toggle-outline {
+    @apply border;
+    border-color: var(--border-solid);
+    &[data-active], &[aria-pressed="true"] {
+      @apply border-primary/20 bg-primary/5 text-primary;
+    }
+  }
+  .toggle-group {
+    @apply inline-flex items-center gap-0.5 rounded-lg border p-0.5;
+    border-color: var(--border-solid);
+    & .toggle {
+      @apply rounded-md;
     }
   }
 }
