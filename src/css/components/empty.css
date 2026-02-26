@@ -6,7 +6,7 @@
     background: var(--surface-3);
     & svg { @apply size-6; }
   }
-  & h3 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+  & h3 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
   & p { @apply text-[13px] text-muted-foreground; max-width: 28ch; }
   & .empty-actions { @apply mt-3 flex gap-2; }
 }

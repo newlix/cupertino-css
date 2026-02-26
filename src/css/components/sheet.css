@@ -26,7 +26,7 @@ dialog.sheet,
   & > header {
     @apply px-6 py-5;
     border-bottom: 1px solid var(--panel-border);
-    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {

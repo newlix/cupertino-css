@@ -5,8 +5,8 @@
   & > header {
     @apply px-6 py-5;
     border-bottom: 1px solid var(--panel-border);
-    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
-    & p { @apply mt-0.5 text-[13px] text-muted-foreground; }
+    & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
+    & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
     @apply px-6 py-5;
@@ -18,8 +18,8 @@
   /* Basic card without header/section/footer = padded */
   &:not(:has(header)):not(:has(section)) {
     @apply p-6;
-    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
-    & p { @apply mt-1.5 text-[13px] text-muted-foreground; }
+    & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
+    & p { @apply mt-2 text-[13px] text-muted-foreground; }
   }
 }
 .card-interactive {
@@ -27,8 +27,8 @@
   box-shadow: var(--shadow), var(--panel-ring);
   transition: all 0.3s var(--apple-spring);
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
-  & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
-  & p { @apply mt-1.5 text-[13px] text-muted-foreground; }
+  & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
+  & p { @apply mt-2 text-[13px] text-muted-foreground; }
   &:hover {
     box-shadow: var(--shadow-md), var(--float-ring);
     transform: translateY(-1px);

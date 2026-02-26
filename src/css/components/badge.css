@@ -6,7 +6,7 @@
 .badge-warning,
 .badge-destructive,
 .badge-outline {
-  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-[3px] text-xs font-medium bg-secondary text-secondary-foreground;
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
   letter-spacing: 0;
 }
 /* Only text carries semantic color */

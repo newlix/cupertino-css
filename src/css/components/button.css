@@ -5,7 +5,7 @@
 .btn-outline,
 .btn-ghost,
 .btn-destructive {
-  @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-4 py-2.5 text-[13px] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 rounded-[12px] px-4 py-2.5 text-[13px] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.01em;
   &:active { transform: scale(var(--apple-press-scale)); }

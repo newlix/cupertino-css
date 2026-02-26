@@ -13,7 +13,7 @@ dialog.sheet-bottom,
   &[open] { animation: sheetSlideInBottom 0.35s var(--apple-spring); }
   & > header {
     @apply px-6 py-5;
-    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
@@ -48,7 +48,7 @@ dialog.sheet-top,
   &[open] { animation: sheetSlideInTop 0.35s var(--apple-spring); }
   & > header {
     @apply px-6 py-5;
-    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {

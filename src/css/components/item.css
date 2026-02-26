@@ -12,7 +12,7 @@
   }
   & .item-content {
     @apply flex flex-1 flex-col gap-0.5;
-    & h3 { @apply text-[13px] font-medium leading-snug; }
+    & h3 { @apply text-sm font-medium leading-snug; }
     & p { @apply text-[13px] text-muted-foreground; }
   }
   & .item-action {

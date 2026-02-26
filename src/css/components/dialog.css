@@ -11,8 +11,8 @@ dialog.dialog,
   &[open] { animation: dialogShow 0.28s var(--apple-spring); }
   & > header {
     @apply px-6 pt-6;
-    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
-    & p { @apply mt-1.5 text-[13px] text-muted-foreground; }
+    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
+    & p { @apply mt-2 text-[13px] text-muted-foreground; }
   }
   & > section {
     @apply px-6 pt-4;
