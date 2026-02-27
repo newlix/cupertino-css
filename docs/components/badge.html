@@ -7,53 +7,131 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Badge" data-description="Status indicators, labels, and tags.">
+<main data-title="Badge" data-description="">
 
-  <section class="docs-example" data-example="Variants">
-    <template>
-<span class="badge">Default</span>
-<span class="badge-primary">Primary</span>
-<span class="badge-success">Success</span>
-<span class="badge-warning">Warning</span>
-<span class="badge-destructive">Error</span>
-<span class="badge-outline">Outline</span>
-    </template>
-  </section>
+  <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
-  <section class="docs-example" data-example="With Indicator">
-    <template>
-<span class="badge-success">
-  <span class="size-1.5 rounded-full bg-success"></span>
-  Active
-</span>
-    </template>
-  </section>
+    <!-- Variants -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Variants</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider flex flex-wrap gap-2">
+            <span class="badge">Default</span>
+            <span class="badge-primary">Primary</span>
+            <span class="badge-success">Success</span>
+            <span class="badge-warning">Warning</span>
+            <span class="badge-destructive">Error</span>
+            <span class="badge-outline">Outline</span>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider flex flex-wrap gap-2"&gt;
+  &lt;span class="badge"&gt;Default&lt;/span&gt;
+  &lt;span class="badge-primary"&gt;Primary&lt;/span&gt;
+  &lt;span class="badge-success"&gt;Success&lt;/span&gt;
+  &lt;span class="badge-warning"&gt;Warning&lt;/span&gt;
+  &lt;span class="badge-destructive"&gt;Error&lt;/span&gt;
+  &lt;span class="badge-outline"&gt;Outline&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="With Icon">
-    <template>
-<span class="badge">
-  <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
-  Pending
-</span>
-<span class="badge-success">
-  <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></svg>
-  Approved
-</span>
-<span class="badge-destructive">
-  <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-  Rejected
-</span>
-    </template>
-  </section>
+    <!-- With Indicator -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">With indicator</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <span class="badge-success">
+              <span class="size-1.5 rounded-full bg-success"></span>
+              Active
+            </span>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;span class="badge-success"&gt;
+    &lt;span class="size-1.5 rounded-full bg-success"&gt;&lt;/span&gt;
+    Active
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="Link">
-    <template>
-<a href="#" class="badge-outline no-underline">
-  Documentation
-  <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
-</a>
-    </template>
-  </section>
+    <!-- With Icon -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">With icon</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider flex flex-wrap gap-2">
+            <span class="badge">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+              Pending
+            </span>
+            <span class="badge-success">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></svg>
+              Approved
+            </span>
+            <span class="badge-destructive">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              Rejected
+            </span>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider flex flex-wrap gap-2"&gt;
+  &lt;span class="badge"&gt;
+    &lt;svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;
+    Pending
+  &lt;/span&gt;
+  &lt;span class="badge-success"&gt;
+    &lt;svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/&gt;&lt;/svg&gt;
+    Approved
+  &lt;/span&gt;
+  &lt;span class="badge-destructive"&gt;
+    &lt;svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/&gt;&lt;/svg&gt;
+    Rejected
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Link -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Link</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <a href="#" class="badge-outline no-underline">
+              Documentation
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+            </a>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;a href="#" class="badge-outline no-underline"&gt;
+    Documentation
+    &lt;svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/&gt;&lt;polyline points="15 3 21 3 21 9"/&gt;&lt;line x1="10" x2="21" y1="14" y2="3"/&gt;&lt;/svg&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+  </div>
 
 </main>
 <script type="module" src="../docs.js"></script>
