@@ -68,7 +68,7 @@
 ### Display & Media
 
 - [Aspect Ratio](https://ciderui.com/components/aspect-ratio.html): Constrain content to an aspect ratio.
-- [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-sm` `avatar-lg` `avatar-group`
+- [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
 - [Button Group](https://ciderui.com/components/button-group.html): `btn-group` — grouped buttons.
 - [Carousel](https://ciderui.com/components/carousel.html): Image/content carousel. Requires `js/carousel.js`.
 - [File Tree](https://ciderui.com/components/file-tree.html): File/folder tree view.

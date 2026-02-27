@@ -6,8 +6,6 @@
   &:is(img) { @apply object-cover; }
   & img { @apply size-full rounded-full object-cover; }
 }
-.avatar-sm { @apply size-8 text-xs; }
-.avatar-lg { @apply size-14 text-[17px]; }
 .avatar-group {
   @apply flex -space-x-2;
   & .avatar {
