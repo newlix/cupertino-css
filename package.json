@@ -31,13 +31,13 @@
     "./popover.js": "./js/popover.js",
     "./select.js": "./js/select.js",
     "./sheet.js": "./js/sheet.js",
+    "./snippet.js": "./js/snippet.js",
     "./tabs.js": "./js/tabs.js",
     "./toast.js": "./js/toast.js",
     "./toggle.js": "./js/toggle.js"
   },
   "files": [
-    "src/css/ciderui.css",
-    "src/css/ciderui.cdn.css",
+    "src/css/",
     "js/"
   ],
   "scripts": {

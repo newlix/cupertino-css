@@ -53,6 +53,7 @@ const NAV = [
       { label: "Sheet", href: "components/sheet.html" },
       { label: "Sidebar", href: "components/sidebar.html" },
       { label: "Skeleton", href: "components/skeleton.html" },
+      { label: "Snippet", href: "components/snippet.html" },
       { label: "Slider", href: "components/slider.html" },
       { label: "Spinner", href: "components/spinner.html" },
       { label: "Switch", href: "components/switch.html" },
@@ -238,21 +239,15 @@ function initExamples() {
       ${exampleLabel ? `<h3 class="docs-example-label">${exampleLabel}</h3>` : ""}
       <div class="docs-example-card">
         <div class="docs-example-preview">${trimmed}</div>
-        <div class="docs-example-code" data-active>
-          <button class="docs-copy-btn">Copy</button>
+        <div class="docs-example-code snippet" data-snippet data-active>
+          <div class="snippet-header">
+            <span class="snippet-filename">HTML</span>
+            <button class="snippet-copy">Copy</button>
+          </div>
           <pre><code class="language-html">${escaped}</code></pre>
         </div>
       </div>
     `;
-
-    // Copy button
-    const copyBtn = section.querySelector(".docs-copy-btn");
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(dedented).then(() => {
-        copyBtn.textContent = "Copied!";
-        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
-      });
-    });
   });
 }
 
@@ -270,6 +265,7 @@ function loadComponentScripts() {
     "command.js",
     "combobox.js",
     "otp.js",
+    "snippet.js",
     "context-menu.js",
     "carousel.js",
   ];

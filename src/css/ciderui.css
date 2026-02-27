@@ -295,6 +295,7 @@
   @import "./components/pagination.css";
   @import "./components/progress.css";
   @import "./components/skeleton.css";
+  @import "./components/snippet.css";
   @import "./components/slider.css";
   @import "./components/spinner.css";
   @import "./components/toast.css";
