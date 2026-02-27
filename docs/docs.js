@@ -7,6 +7,8 @@ const NAV = [
     items: [
       { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
+      { label: "Container", href: "components/container.html" },
+      { label: "Typography", href: "components/typography.html" },
     ],
   },
   {
@@ -25,7 +27,6 @@ const NAV = [
       { label: "Carousel", href: "components/carousel.html" },
       { label: "Collapsible", href: "components/collapsible.html" },
       { label: "Command", href: "components/command.html" },
-      { label: "Container", href: "components/container.html" },
       { label: "Context Menu", href: "components/context-menu.html" },
       { label: "Dialog", href: "components/dialog.html" },
       { label: "Drawer", href: "components/drawer.html" },
@@ -52,7 +53,6 @@ const NAV = [
       { label: "Toggle", href: "components/toggle.html" },
       { label: "Toggle Group", href: "components/toggle-group.html" },
       { label: "Tooltip", href: "components/tooltip.html" },
-      { label: "Typography", href: "components/typography.html" },
     ],
   },
   {
