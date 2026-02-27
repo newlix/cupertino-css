@@ -1,0 +1,104 @@
+# Cider UI
+
+> Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names, no utility soup. Pure CSS with optional vanilla JS for interactive components. No framework required.
+
+## Getting Started
+
+- [Introduction](https://ciderui.com/introduction.html): Overview of Cider UI — semantic classes, dark mode, ~12 KB CSS + ~5 KB JS gzipped.
+- [Installation](https://ciderui.com/installation.html): CDN, npm/pnpm/bun/yarn, ES module imports, dark mode setup.
+
+## Components
+
+### Form & Input
+
+- [Button](https://ciderui.com/components/button.html): `btn` `btn-primary` `btn-secondary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg` `btn-icon`
+- [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
+- [Combobox](https://ciderui.com/components/combobox.html): Custom combobox with search filtering. Requires `js/combobox.js`.
+- [Field](https://ciderui.com/components/field.html): `field` — auto-styles label, input, and description children.
+- [Form](https://ciderui.com/components/form.html): Form layout patterns with field grouping.
+- [Input](https://ciderui.com/components/input.html): `input` — styled text input.
+- [Input Group](https://ciderui.com/components/input-group.html): Input with prefix/suffix addons.
+- [Input OTP](https://ciderui.com/components/input-otp.html): One-time password input with auto-advance. Requires `js/otp.js`.
+- [Label](https://ciderui.com/components/label.html): `label` — styled form label.
+- [Radio Group](https://ciderui.com/components/radio-group.html): `radio` — pure CSS radio styling.
+- [Select](https://ciderui.com/components/select.html): `select` for native, or custom select with `js/select.js`.
+- [Slider](https://ciderui.com/components/slider.html): `slider` — styled range input.
+- [Switch](https://ciderui.com/components/switch.html): `switch` — pure CSS toggle switch.
+- [Textarea](https://ciderui.com/components/textarea.html): `textarea` — styled textarea.
+
+### Layout & Navigation
+
+- [Accordion](https://ciderui.com/components/accordion.html): `accordion` — native `<details>` element styling.
+- [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — navigation breadcrumbs.
+- [Card](https://ciderui.com/components/card.html): `card` `card-interactive` with `header`, `section`, `footer` children.
+- [Pagination](https://ciderui.com/components/pagination.html): `pagination` `pagination-item` — page navigation.
+- [Scroll Area](https://ciderui.com/components/scroll-area.html): Custom scrollbar styling.
+- [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
+- [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
+- [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `tabs-pill`. Requires `js/tabs.js`.
+
+### Overlays & Dialogs
+
+- [Alert Dialog](https://ciderui.com/components/alert-dialog.html): Modal confirmation dialog.
+- [Collapsible](https://ciderui.com/components/collapsible.html): Expandable content section.
+- [Command](https://ciderui.com/components/command.html): Command palette with search. Requires `js/command.js`.
+- [Context Menu](https://ciderui.com/components/context-menu.html): Right-click menu. Requires `js/context-menu.js`.
+- [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Optional `js/dialog.js`.
+- [Drawer](https://ciderui.com/components/drawer.html): Slide-out panel from any edge.
+- [Dropdown Menu](https://ciderui.com/components/dropdown-menu.html): `dropdown-menu`. Requires `js/dropdown-menu.js`.
+- [Hover Card](https://ciderui.com/components/hover-card.html): Card shown on hover.
+- [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
+- [Sheet](https://ciderui.com/components/sheet.html): Full-height slide-out panel. Requires `js/sheet.js`.
+- [Tooltip](https://ciderui.com/components/tooltip.html): `tooltip` `tooltip-content` `tooltip-bottom` — pure CSS tooltips.
+
+### Feedback & Status
+
+- [Alert](https://ciderui.com/components/alert.html): `alert-info` `alert-success` `alert-warning` `alert-destructive`
+- [Badge](https://ciderui.com/components/badge.html): `badge` `badge-primary` `badge-success` `badge-warning` `badge-destructive` `badge-outline`
+- [Empty](https://ciderui.com/components/empty.html): Empty state placeholder.
+- [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
+- [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` `skeleton-circle` — loading placeholder.
+- [Spinner](https://ciderui.com/components/spinner.html): `spinner` `spinner-sm` `spinner-lg` — loading indicator.
+- [Toast](https://ciderui.com/components/toast.html): `toast` `toast-container`. Requires `js/toast.js`.
+
+### Display & Media
+
+- [Aspect Ratio](https://ciderui.com/components/aspect-ratio.html): Constrain content to an aspect ratio.
+- [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-sm` `avatar-lg` `avatar-group`
+- [Button Group](https://ciderui.com/components/button-group.html): `button-group` — grouped buttons.
+- [Carousel](https://ciderui.com/components/carousel.html): Image/content carousel. Requires `js/carousel.js`.
+- [File Tree](https://ciderui.com/components/file-tree.html): File/folder tree view.
+- [Item](https://ciderui.com/components/item.html): List item with icon, label, description.
+- [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling.
+- [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
+- [Theme Switcher](https://ciderui.com/components/theme-switcher.html): Light/dark/system theme toggle.
+- [Toggle](https://ciderui.com/components/toggle.html): `toggle` — pressable toggle button.
+- [Toggle Group](https://ciderui.com/components/toggle-group.html): Single/multi-select toggle group.
+- [Typography](https://ciderui.com/components/typography.html): Prose typography styles.
+
+## Quick Start
+
+```css
+@import "tailwindcss";
+@import "ciderui";
+```
+
+```html
+<button class="btn">Click me</button>
+```
+
+## Dark Mode
+
+Add `class="dark"` to `<html>`. All components adapt automatically via CSS variables.
+
+## Interactive Components (Optional)
+
+Most components are pure CSS. Import JS only for interactive behavior:
+
+```js
+import "ciderui/dialog.js";
+import "ciderui/dropdown-menu.js";
+import "ciderui/tabs.js";
+import "ciderui/select.js";
+import "ciderui/toast.js";
+```

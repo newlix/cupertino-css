@@ -18,7 +18,7 @@ docs/
   docs.css              # Tailwind + ciderui + docs-specific styles
   components/           # 52 component doc pages
 components/             # Standalone component preview HTML files (used by Playwright tests)
-tests/                  # 28 Playwright test files (99 tests)
+tests/                  # 29 Playwright test files (102 tests)
 preview.html            # All-components preview page
 preview.css             # Tailwind + ciderui (used by preview.html and some component previews)
 ```

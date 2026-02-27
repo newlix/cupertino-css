@@ -20,7 +20,20 @@
   "type": "module",
   "exports": {
     ".": "./src/css/ciderui.css",
-    "./cdn": "./src/css/ciderui.cdn.css"
+    "./cdn": "./src/css/ciderui.cdn.css",
+    "./carousel.js": "./js/carousel.js",
+    "./combobox.js": "./js/combobox.js",
+    "./command.js": "./js/command.js",
+    "./context-menu.js": "./js/context-menu.js",
+    "./dialog.js": "./js/dialog.js",
+    "./dropdown-menu.js": "./js/dropdown-menu.js",
+    "./otp.js": "./js/otp.js",
+    "./popover.js": "./js/popover.js",
+    "./select.js": "./js/select.js",
+    "./sheet.js": "./js/sheet.js",
+    "./tabs.js": "./js/tabs.js",
+    "./toast.js": "./js/toast.js",
+    "./toggle.js": "./js/toggle.js"
   },
   "files": [
     "src/css/ciderui.css",

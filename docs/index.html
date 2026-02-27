@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cider UI — Apple-aesthetic UI components for the web</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="docs.built.css">
   <script>
     if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -17,10 +18,8 @@
 <nav class="home-nav">
   <div class="home-nav-inner">
     <a href="index.html" class="flex items-center gap-2.5 no-underline">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-primary">
-        <rect width="24" height="24" rx="6" fill="currentColor" opacity="0.12"/>
-        <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+      <svg width="20" height="22" viewBox="0 0 64 72" fill="none" class="text-foreground">
+        <path d="M 10 6 C 10 4 54 4 54 6 L 48 32 C 46 40 38 44 34 46 L 34 54 L 44 56 C 48 57 48 62 44 62 L 20 62 C 16 62 16 57 20 56 L 30 54 L 30 46 C 26 44 18 40 16 32 Z" fill="currentColor"/>
       </svg>
       <span class="text-base font-bold tracking-tight text-foreground">Cider UI</span>
     </a>
@@ -180,52 +179,46 @@
   <!-- Row 3: Team Members + Payment (2-col) -->
   <div class="home-showcase-row home-showcase-2">
     <div class="home-showcase-cell">
-      <div class="home-showcase-card p-0!">
-        <div class="px-6 pt-6 pb-4">
-          <div class="home-showcase-card-head pb-0!">
-            <h3>Team Members</h3>
-            <p>Manage your team and permissions</p>
-          </div>
-        </div>
-        <div class="table" style="border:0;border-radius:0;">
-          <table class="whitespace-nowrap">
+      <div class="home-showcase-card p-0! flex flex-col">
+        <div class="table flex-1 flex flex-col" style="border:0;border-radius:0;box-shadow:none;">
+          <table class="flex-1">
             <thead>
               <tr>
-                <th>Member</th>
-                <th>Role</th>
+                <th class="w-8"><input type="checkbox" class="checkbox"></th>
+                <th>Task</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <div class="flex items-center gap-2.5">
-                    <div class="avatar avatar-sm bg-primary/10 text-primary">SC</div>
-                    <span class="font-medium">Sarah Chen</span>
-                  </div>
-                </td>
-                <td class="text-muted-foreground">Designer</td>
-                <td><span class="badge-success">Active</span></td>
+                <td><input type="checkbox" class="checkbox" checked></td>
+                <td class="font-medium">Update landing page</td>
+                <td><span class="badge-success"><span class="size-1.5 rounded-full bg-success"></span>Done</span></td>
               </tr>
               <tr>
-                <td>
-                  <div class="flex items-center gap-2.5">
-                    <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 150);color:oklch(0.4 0.1 150);">AK</div>
-                    <span class="font-medium">Alex Kim</span>
-                  </div>
-                </td>
-                <td class="text-muted-foreground">Engineer</td>
-                <td><span class="badge-success">Active</span></td>
+                <td><input type="checkbox" class="checkbox"></td>
+                <td class="font-medium">Fix login bug</td>
+                <td><span class="badge-warning"><span class="size-1.5 rounded-full bg-warning"></span>In Progress</span></td>
               </tr>
               <tr>
-                <td>
-                  <div class="flex items-center gap-2.5">
-                    <div class="avatar avatar-sm" style="background:oklch(0.9 0.05 280);color:oklch(0.4 0.1 280);">MR</div>
-                    <span class="font-medium">Maria Rodriguez</span>
-                  </div>
-                </td>
-                <td class="text-muted-foreground">PM</td>
-                <td><span class="badge-warning">Away</span></td>
+                <td><input type="checkbox" class="checkbox"></td>
+                <td class="font-medium">Write API docs</td>
+                <td><span class="badge">Todo</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="checkbox" checked></td>
+                <td class="font-medium">Set up CI pipeline</td>
+                <td><span class="badge-success"><span class="size-1.5 rounded-full bg-success"></span>Done</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="checkbox"></td>
+                <td class="font-medium">Design system tokens</td>
+                <td><span class="badge-warning"><span class="size-1.5 rounded-full bg-warning"></span>In Progress</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="checkbox"></td>
+                <td class="font-medium">Add dark mode tests</td>
+                <td><span class="badge">Todo</span></td>
               </tr>
             </tbody>
           </table>
@@ -276,10 +269,8 @@
   <!-- Row 4: FAQ + Alerts + Controls (3-col) -->
   <div class="home-showcase-row home-showcase-3">
     <div class="home-showcase-cell">
-      <div class="home-showcase-card p-0!">
-        <div class="px-6 pt-6 pb-3">
-          <h3 class="text-base font-semibold tracking-tight">FAQ</h3>
-        </div>
+      <div class="home-showcase-card">
+        <h3 class="text-base font-semibold tracking-tight pb-4">FAQ</h3>
         <div class="accordion">
           <details name="home-faq" open>
             <summary>
@@ -397,16 +388,16 @@
 </div>
 </div><!-- /components panel -->
 
-<!-- Panel 2: Mail (lazy-loaded from examples/mail.html) -->
+<!-- Panel 2: Mail (lazy-loaded from demos/mail.html) -->
 <div class="home-demo-panel" data-demo-panel="mail"></div>
 
-<!-- Panel 3: Dashboard (lazy-loaded from examples/dashboard.html) -->
+<!-- Panel 3: Dashboard (lazy-loaded from demos/dashboard.html) -->
 <div class="home-demo-panel" data-demo-panel="dashboard"></div>
 
-<!-- Panel 4: Settings (lazy-loaded from examples/settings.html) -->
+<!-- Panel 4: Settings (lazy-loaded from demos/settings.html) -->
 <div class="home-demo-panel" data-demo-panel="settings"></div>
 
-<!-- Panel 5: Authentication (lazy-loaded from examples/auth.html) -->
+<!-- Panel 5: Authentication (lazy-loaded from demos/auth.html) -->
 <div class="home-demo-panel" data-demo-panel="auth"></div>
 
 </div><!-- /home-demos -->
@@ -463,7 +454,7 @@
       const panel = document.querySelector(`[data-demo-panel="${name}"]`);
       panel.setAttribute("data-active", "");
       if (name !== "components" && !demoCache[name]) {
-        const res = await fetch(`examples/${name}.html`);
+        const res = await fetch(`demos/${name}.html`);
         panel.innerHTML = await res.text();
         demoCache[name] = true;
       }

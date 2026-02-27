@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESM Compatibility — Cider UI</title>
+  <link rel="stylesheet" href="../src/css/ciderui.cdn.css" />
+</head>
+<body class="min-h-screen">
+  <div class="mx-auto max-w-2xl px-6 py-12 space-y-8">
+
+    <!-- Tabs -->
+    <div class="tabs" data-tabs>
+      <div class="tabs-list" data-tab-list>
+        <button class="tabs-trigger" data-tab="esm-1" data-active>Tab 1</button>
+        <button class="tabs-trigger" data-tab="esm-2">Tab 2</button>
+      </div>
+      <div class="tabs-content" data-tab-panel="esm-1" data-active>
+        <p>Panel 1</p>
+      </div>
+      <div class="tabs-content" data-tab-panel="esm-2">
+        <p>Panel 2</p>
+      </div>
+    </div>
+
+    <!-- Dialog -->
+    <button onclick="document.getElementById('esm-dialog').showModal()" class="btn" id="open-dialog">Open Dialog</button>
+    <dialog id="esm-dialog" class="dialog">
+      <section><p>Dialog content</p></section>
+      <footer><button onclick="document.getElementById('esm-dialog').close()" class="btn">Close</button></footer>
+    </dialog>
+
+    <!-- Custom Select -->
+    <div data-select>
+      <button type="button" data-select-trigger>
+        <span data-select-value data-placeholder>Pick one...</span>
+      </button>
+      <div data-select-content class="hidden">
+        <button type="button" data-select-item="a">Alpha</button>
+        <button type="button" data-select-item="b">Beta</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Load all JS as ES modules to simulate bundler behavior -->
+  <script type="module" src="../js/tabs.js"></script>
+  <script type="module" src="../js/dialog.js"></script>
+  <script type="module" src="../js/select.js"></script>
+</body>
+</html>

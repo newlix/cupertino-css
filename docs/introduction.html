@@ -9,50 +9,60 @@
 <body>
 <main data-title="Introduction" data-description="Apple-aesthetic UI components as a Tailwind CSS plugin.">
 
-  <div class="mt-8 space-y-6 text-[15px] leading-relaxed text-foreground">
-    <p>
-      <strong>Cider UI</strong> is a set of UI components that bring Apple's design language to the web.
-      Built as semantic CSS classes on top of <strong>Tailwind CSS v4</strong>, every component follows the
-      <a href="https://developer.apple.com/design/human-interface-guidelines/" class="text-primary underline underline-offset-4">Apple Human Interface Guidelines</a>
-      — from typography and color to spacing and motion.
-    </p>
+  <div class="mt-8 space-y-12 text-[15px] leading-relaxed text-foreground">
 
-    <div class="grid gap-4 sm:grid-cols-3">
-      <div class="card">
-        <h3>Semantic Classes</h3>
-        <p>Use <code class="kbd">.btn</code>, <code class="kbd">.card</code>, <code class="kbd">.dialog</code> — clean, readable markup.</p>
+    <section class="max-w-xl">
+      <p class="text-lg text-muted-foreground">
+        Think <a href="https://ui.shadcn.com" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">shadcn/ui</a> for any traditional web stack — no React required.<br>
+        50+ components that speak <a href="https://developer.apple.com/design/human-interface-guidelines" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">Apple's design language</a>, built on <a href="https://tailwindcss.com" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">Tailwind CSS v4</a>.
+      </p>
+    </section>
+
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Semantic, not utility soup</h2>
+      <p class="text-muted-foreground">
+        Every class name reads like intent, not implementation.
+        Tailwind utilities are still there when you need them — for your layout, your spacing, your overrides.
+      </p>
+      <p class="mt-4 text-xs font-medium text-muted-foreground">This</p>
+      <div class="docs-example-code mt-2" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;button class="inline-flex items-center justify-center
+  rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium
+  text-white shadow-sm hover:bg-blue-600
+  active:scale-[0.97] transition-all"&gt;
+  Save Changes
+&lt;/button&gt;</code></pre>
       </div>
-      <div class="card">
-        <h3>Apple HIG Typography</h3>
-        <p>13px macOS Body, 17px iOS Body for prose, SF Pro type scale with Apple-standard leading.</p>
+      <p class="mt-4 text-xs font-medium text-muted-foreground">Turns into</p>
+      <div class="docs-example-code mt-2" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;button class="btn"&gt;Save Changes&lt;/button&gt;</code></pre>
       </div>
-      <div class="card">
-        <h3>50+ Components</h3>
-        <p>Buttons, dialogs, drawers, carousels, command palettes, and more — all with dark mode.</p>
-      </div>
-    </div>
+    </section>
 
-    <h2 class="text-xl font-bold tracking-tight">Quick Start</h2>
-    <p>Install the package and import it into your CSS:</p>
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Dark mode, everywhere</h2>
+      <p class="text-muted-foreground">
+        One class on <code class="kbd">&lt;html&gt;</code>. Every component adapts.
+        Colors, borders, shadows — all governed by CSS variables that swap cleanly between light and dark.
+      </p>
+    </section>
 
-    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-      <pre><code class="language-bash">npm install ciderui</code></pre>
-    </div>
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Extremely lightweight</h2>
+      <p class="text-muted-foreground">
+        ~12 KB CSS + ~5 KB JS gzipped. That's the entire library — 50+ components, dark mode, all interactions.
+        Most components are pure CSS. A handful — tabs, dialogs, selects — ship tiny vanilla scripts.
+        No runtime, no dependencies, no build step.
+      </p>
+    </section>
 
-    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden; margin-top: 0.75rem;">
-      <pre><code class="language-css">@import "tailwindcss";
-@import "ciderui";</code></pre>
-    </div>
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Try it yourself</h2>
+      <p class="text-muted-foreground">
+        See <a href="installation.html" class="text-primary underline underline-offset-4 hover:text-primary/80">Installation</a> for CDN, package manager, and bundler options.
+      </p>
+    </section>
 
-    <p>Then use the components in your HTML:</p>
-
-    <div class="docs-example-code" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-      <pre><code class="language-html">&lt;button class="btn"&gt;Get Started&lt;/button&gt;
-&lt;div class="card"&gt;
-  &lt;h3&gt;Hello, Cider UI&lt;/h3&gt;
-  &lt;p&gt;Beautiful, semantic UI components.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-    </div>
   </div>
 
 </main>

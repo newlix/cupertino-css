@@ -12,15 +12,15 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
   .docs-sidebar-brand {
-    @apply flex items-center gap-2.5 px-5 py-5;
+    @apply flex items-center gap-2.5 px-5 py-5 mb-1 border-b;
     & h1 {
       @apply text-base font-bold tracking-tight text-foreground;
     }
   }
   .docs-sidebar-section {
-    @apply px-3 pb-4;
+    @apply px-3 pt-4 pb-2;
     & h2 {
-      @apply px-2 pb-1.5 text-[11px] font-semibold text-muted-foreground;
+      @apply px-2 pb-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60;
     }
   }
   .docs-sidebar a {

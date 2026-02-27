@@ -32,13 +32,10 @@ jobs:
 
       - name: Assemble site
         run: |
-          mkdir -p _site/docs _site/js
-          cp -r docs/* _site/docs/
+          mkdir -p _site/js
+          cp -r docs/* _site/
           cp -r js/* _site/js/
-          cat > _site/index.html << 'HTML'
-          <!DOCTYPE html>
-          <meta http-equiv="refresh" content="0;url=docs/">
-          HTML
+          echo "ciderui.com" > _site/CNAME
 
       - uses: actions/upload-pages-artifact@v3
 

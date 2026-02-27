@@ -68,6 +68,17 @@ For quick prototyping without a build step:
 | Toast | `toast` `toast-container` | `js/toast.js` |
 | Tooltip | `tooltip` `tooltip-content` `tooltip-bottom` | — |
 
+### ES Module / Bundler (Vite, Webpack, etc.)
+
+JS files work with bundlers. Import them as side effects in your entry file:
+
+```js
+import "ciderui/dialog.js";
+import "ciderui/tabs.js";
+import "ciderui/select.js";
+import "ciderui/toast.js";
+```
+
 ## Dark Mode
 
 Add `class="dark"` to your `<html>` element. All components automatically adapt.

@@ -7,6 +7,7 @@ const NAV = [
     items: [
       { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
+      { label: "llms.txt", href: "llms.txt" },
     ],
   },
   {
@@ -113,10 +114,8 @@ function buildSidebar() {
   let html = `
     <div class="docs-sidebar-brand">
       <a href="${base}introduction.html" class="flex items-center gap-2.5 no-underline">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-primary">
-          <rect width="24" height="24" rx="6" fill="currentColor" opacity="0.12"/>
-          <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        <svg width="20" height="22" viewBox="0 0 64 72" fill="none" class="text-foreground">
+          <path d="M 10 6 C 10 4 54 4 54 6 L 48 32 C 46 40 38 44 34 46 L 34 54 L 44 56 C 48 57 48 62 44 62 L 20 62 C 16 62 16 57 20 56 L 30 54 L 30 46 C 26 44 18 40 16 32 Z" fill="currentColor"/>
         </svg>
         <h1>Cider UI</h1>
       </a>
@@ -299,7 +298,17 @@ function loadHighlightJS() {
   document.head.appendChild(script);
 }
 
+// ─── Favicon ───
+function injectFavicon() {
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/svg+xml";
+  link.href = isSubpage ? "../favicon.svg" : "favicon.svg";
+  document.head.appendChild(link);
+}
+
 // ─── Init ───
+injectFavicon();
 injectLayout();
 initExamples();
 loadComponentScripts();
