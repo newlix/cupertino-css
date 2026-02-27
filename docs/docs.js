@@ -7,6 +7,7 @@ const NAV = [
     items: [
       { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
+      { label: "Classless", href: "components/classless.html" },
       { label: "llms.txt", href: "llms.txt" },
     ],
   },

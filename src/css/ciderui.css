@@ -322,4 +322,5 @@
   @import "./components/input-otp.css";
   @import "./components/context-menu.css";
   @import "./components/carousel.css";
+  @import "./components/classless.css";
 }

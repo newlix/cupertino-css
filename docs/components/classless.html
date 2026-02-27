@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classless — Cider UI</title>
+  <link rel="stylesheet" href="../docs.built.css">
+</head>
+<body>
+<main data-title="Classless" data-description="Auto-style native HTML elements inside a .ciderui container. Write semantic HTML, get full Cider UI styling — no component classes needed.">
+
+  <section class="docs-example" data-example="Form">
+    <template>
+<div class="ciderui">
+  <form onsubmit="return false">
+    <fieldset>
+      <legend>Account Details</legend>
+      <div class="space-y-4">
+        <div>
+          <label for="cl-name">Full Name</label>
+          <input type="text" id="cl-name" placeholder="Jane Appleseed">
+        </div>
+        <div>
+          <label for="cl-email">Email</label>
+          <input type="email" id="cl-email" placeholder="jane@example.com">
+        </div>
+        <div>
+          <label for="cl-role">Role</label>
+          <select id="cl-role">
+            <option>Designer</option>
+            <option>Developer</option>
+            <option>Manager</option>
+          </select>
+        </div>
+        <div>
+          <label for="cl-bio">Bio</label>
+          <textarea id="cl-bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="cl-terms">
+          <label for="cl-terms">I agree to the terms</label>
+        </div>
+        <div class="space-y-2">
+          <label>Preference</label>
+          <div class="flex items-center gap-2">
+            <input type="radio" name="cl-pref" id="cl-pref-a">
+            <label for="cl-pref-a">Option A</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="radio" name="cl-pref" id="cl-pref-b">
+            <label for="cl-pref-b">Option B</label>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" role="switch" id="cl-notify">
+          <label for="cl-notify">Enable notifications</label>
+        </div>
+        <div class="flex gap-2">
+          <button type="submit">Save</button>
+          <button type="reset">Reset</button>
+          <button>Cancel</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Typography">
+    <template>
+<div class="ciderui">
+  <h1>Heading 1</h1>
+  <p>This is a paragraph with <a href="#">a link</a> and some <code>inline code</code> inside it. The classless container applies prose-like typography automatically.</p>
+  <h2>Heading 2</h2>
+  <p>Another paragraph below a second-level heading.</p>
+  <h3>Heading 3</h3>
+  <ul>
+    <li>Unordered list item one</li>
+    <li>Unordered list item two</li>
+    <li>Unordered list item three</li>
+  </ul>
+  <h4>Heading 4</h4>
+  <ol>
+    <li>Ordered list item one</li>
+    <li>Ordered list item two</li>
+  </ol>
+  <blockquote>Design is not just what it looks like. Design is how it works.</blockquote>
+  <pre><code>const greeting = "Hello, Cider UI!";</code></pre>
+  <p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.</p>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Table">
+    <template>
+<div class="ciderui">
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Status</th>
+        <th>Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Button</td>
+        <td>Stable</td>
+        <td>2.0</td>
+      </tr>
+      <tr>
+        <td>Dialog</td>
+        <td>Stable</td>
+        <td>1.8</td>
+      </tr>
+      <tr>
+        <td>Carousel</td>
+        <td>Beta</td>
+        <td>0.9</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Accordion">
+    <template>
+<div class="ciderui">
+  <details open>
+    <summary>Is it accessible?</summary>
+    <p>Yes. It uses native HTML details/summary elements for built-in accessibility.</p>
+  </details>
+  <details>
+    <summary>Do I need SVG icons?</summary>
+    <p>No. The chevron is generated automatically via CSS ::after pseudo-element.</p>
+  </details>
+  <details>
+    <summary>Can I still use .accordion?</summary>
+    <p>Yes. Explicit classes always override classless styles since :where() has zero specificity.</p>
+  </details>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Progress">
+    <template>
+<div class="ciderui space-y-4">
+  <progress value="70" max="100"></progress>
+  <progress value="40" max="100"></progress>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Mixed">
+    <template>
+<div class="ciderui">
+  <h2>Contact Us</h2>
+  <p>Fill out the form below and we'll get back to you.</p>
+  <hr class="my-4">
+  <form onsubmit="return false" class="space-y-4">
+    <div>
+      <label for="cl-mix-name">Name</label>
+      <input type="text" id="cl-mix-name" placeholder="Your name">
+    </div>
+    <div>
+      <label for="cl-mix-msg">Message</label>
+      <textarea id="cl-mix-msg" rows="3" placeholder="Your message..."></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
+  <hr class="my-4">
+  <small>We typically respond within 24 hours.</small>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Override with explicit classes">
+    <template>
+<div class="ciderui">
+  <p>Explicit classes still work inside <code>.ciderui</code>:</p>
+  <div class="flex gap-2 mt-3">
+    <button>Default</button>
+    <button class="btn-outline">Outline</button>
+    <button class="btn-primary btn-pill">Primary Pill</button>
+    <button class="btn-destructive">Delete</button>
+  </div>
+</div>
+    </template>
+  </section>
+
+</main>
+<script type="module" src="../docs.js"></script>
+</body>
+</html>
