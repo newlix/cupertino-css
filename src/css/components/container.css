@@ -54,6 +54,7 @@
   a {
     @apply font-medium text-primary underline underline-offset-4;
     &:hover { text-decoration-color: var(--primary); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 2px; }
   }
   ul {
     @apply list-disc pl-6 space-y-1.5;

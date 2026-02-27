@@ -7,23 +7,13 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Container" data-description="Auto-style native HTML elements with built-in responsive layout. Write semantic markup, get Apple-aesthetic styling — no component classes needed.">
+<main data-title="Container" data-description="Opt-in auto-styling for native HTML elements — buttons, inputs, tables, and typography. No component classes needed.">
 
   <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
-    <!-- Intro -->
+    <!-- Opt-in Auto-styling -->
     <section class="max-w-xl space-y-3">
-      <p class="text-lg text-muted-foreground">
-        Wrap any HTML in <code class="kbd">.cider</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. No layout opinion — works everywhere.
-      </p>
-      <p class="text-muted-foreground">
-        Uses <code class="kbd">@scope</code> so styles stay contained — explicit component classes and Tailwind utilities always win. Use <code class="kbd">.cider-reset</code> to create a boundary where <code class="kbd">.cider</code> styles stop. No JS required — pure CSS.
-      </p>
-    </section>
-
-    <!-- Default -->
-    <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Default</h2>
+      <h2 class="text-xl font-bold tracking-tight">Opt-in Auto-styling</h2>
       <p class="text-muted-foreground">
         <code class="kbd">.cider</code> adds no layout styles — it purely activates element auto-styling. Add your own padding, max-width, or any layout utilities as needed.
       </p>
@@ -49,18 +39,11 @@
 
     <!-- Fixed width -->
     <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Fixed width</h2>
+      <h2 class="text-xl font-bold tracking-tight">Centered layout</h2>
       <p class="text-muted-foreground">
-        Add <code class="kbd">.cider-fixed</code> alongside <code class="kbd">.cider</code> for a centered container with responsive max-width breakpoints.
+        <code class="kbd">.cider-fixed</code> is a convenient default — centered padding with responsive max-width breakpoints. Override any value with Tailwind utilities.
       </p>
       <div class="snippet mt-4">
-        <figure>
-          <div class="cider">
-            <h1>Hello</h1>
-            <p>Centered, responsive, and auto-styled.</p>
-            <button>Click me</button>
-          </div>
-        </figure>
         <header>
           <span>HTML</span>
           <button>Copy</button>
