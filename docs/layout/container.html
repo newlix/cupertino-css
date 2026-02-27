@@ -48,10 +48,29 @@
           <span>HTML</span>
           <button>Copy</button>
         </header>
-        <pre><code class="language-html">&lt;div class="cider cider-fixed"&gt;
-  &lt;h1&gt;Hello&lt;/h1&gt;
-  &lt;p&gt;Centered, responsive, and auto-styled.&lt;/p&gt;
-  &lt;button&gt;Click me&lt;/button&gt;
+        <pre><code class="language-html">&lt;!-- Default breakpoints --&gt;
+&lt;div class="cider cider-fixed"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override max-width --&gt;
+&lt;div class="cider cider-fixed max-w-6xl"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override padding --&gt;
+&lt;div class="cider cider-fixed px-8"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Constrained fluid (no fixed breakpoints) --&gt;
+&lt;div class="cider max-w-4xl mx-auto"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Custom fixed breakpoints --&gt;
+&lt;div class="cider cider-fixed max-w-6xl xl:max-w-7xl"&gt;
+  ...
 &lt;/div&gt;</code></pre>
       </div>
       <p class="text-sm text-muted-foreground mt-3">
@@ -101,29 +120,6 @@
       </div>
     </section>
 
-    <!-- Overriding with Tailwind -->
-    <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Custom breakpoints</h2>
-      <p class="text-muted-foreground">
-        Override the built-in breakpoints with Tailwind utilities for full control — utilities always win over component-layer styles.
-      </p>
-      <div class="snippet mt-4">
-        <header>
-          <span>HTML</span>
-          <button>Copy</button>
-        </header>
-        <pre><code class="language-html">&lt;!-- Constrained fluid --&gt;
-&lt;div class="cider max-w-4xl mx-auto"&gt;
-  ...
-&lt;/div&gt;
-
-&lt;!-- Custom fixed breakpoints --&gt;
-&lt;div class="cider cider-fixed max-w-6xl xl:max-w-7xl"&gt;
-  ...
-&lt;/div&gt;</code></pre>
-      </div>
-    </section>
-
     <!-- Reset -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Reset boundary</h2>
@@ -160,7 +156,7 @@
       <div class="snippet mt-4">
         <figure>
           <div class="cider">
-            <p>Auto-styled</p>
+            <button>Styled</button>
             <div class="cider-reset">
               <button>Unstyled</button>
               <div class="cider" style="margin-top:0.5rem">
@@ -174,7 +170,7 @@
           <button>Copy</button>
         </header>
         <pre><code class="language-html">&lt;div class="cider"&gt;
-  &lt;p&gt;Auto-styled&lt;/p&gt;
+  &lt;button&gt;Styled&lt;/button&gt;
 
   &lt;div class="cider-reset"&gt;
     &lt;button&gt;Unstyled&lt;/button&gt;
@@ -190,9 +186,6 @@
     <!-- Semantic containers -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
-      <p class="text-muted-foreground">
-        <code class="kbd">.cider</code> works on any element. Use semantic HTML tags for better accessibility and document structure.
-      </p>
       <div class="snippet mt-4">
         <header>
           <span>HTML</span>
