@@ -7,16 +7,13 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Typography" data-description="Apple-style typography for headings, body text, lists, and inline elements. All styles are applied automatically inside .cider.">
+<main data-title="Typography" data-description="">
 
   <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
     <!-- Font sizes -->
     <section class="space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Font sizes</h2>
-      <p class="max-w-xl text-muted-foreground">
-        All typography inside <code class="kbd">.cider</code> uses the SF Pro system font stack. Base body text is 15px with -0.015em letter-spacing.
-      </p>
       <div class="cider mt-4">
         <table>
           <thead>
@@ -78,109 +75,152 @@
     <!-- Headings -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Headings</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;h1&gt;Heading 1&lt;/h1&gt;
+  &lt;h2&gt;Heading 2&lt;/h2&gt;
+  &lt;h3&gt;Heading 3&lt;/h3&gt;
+  &lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Body text -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Paragraphs &amp; links</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <p>Design is not just what it looks like and feels like. Design is how it works. Every detail matters — the way text flows on a page, the spacing between elements, the careful balance of hierarchy.</p>
+            <p>When done right, typography becomes invisible, letting the <a href="#">content speak for itself</a>.</p>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;p&gt;Design is not just what it looks like...&lt;/p&gt;
+  &lt;p&gt;When done right, typography becomes invisible, letting the &lt;a href="#"&gt;content speak for itself&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Inline text -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Inline text</h2>
       <p class="text-muted-foreground">
-        Headings use tight letter-spacing with automatic vertical spacing between siblings.
+        For code blocks, use the <a href="snippet.html" class="font-medium text-primary hover:underline">Snippet</a> component.
       </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <p>Use the <code>@import "ciderui"</code> directive to include all styles.</p>
+            <p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.</p>
+            <p><small>This is helper text at a smaller size.</small></p>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;p&gt;Use the &lt;code&gt;@import "ciderui"&lt;/code&gt; directive to include all styles.&lt;/p&gt;
+  &lt;p&gt;Press &lt;kbd&gt;Cmd&lt;/kbd&gt; + &lt;kbd&gt;K&lt;/kbd&gt; to open the command palette.&lt;/p&gt;
+  &lt;p&gt;&lt;small&gt;This is helper text at a smaller size.&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Blockquote -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Blockquote</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <blockquote>
+              Simplicity is the ultimate sophistication.
+            </blockquote>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;blockquote&gt;
+    Simplicity is the ultimate sophistication.
+  &lt;/blockquote&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Lists -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Unordered list</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <ul>
+              <li>Clean, semantic HTML structure</li>
+              <li>Apple-inspired design tokens</li>
+              <li>Dark mode support built-in</li>
+            </ul>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Clean, semantic HTML structure&lt;/li&gt;
+    &lt;li&gt;Apple-inspired design tokens&lt;/li&gt;
+    &lt;li&gt;Dark mode support built-in&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Ordered list</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <ol>
+              <li>Install the Tailwind CSS plugin</li>
+              <li>Import the ciderui stylesheet</li>
+              <li>Start building beautiful interfaces</li>
+            </ol>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Install the Tailwind CSS plugin&lt;/li&gt;
+    &lt;li&gt;Import the ciderui stylesheet&lt;/li&gt;
+    &lt;li&gt;Start building beautiful interfaces&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+      </div>
     </section>
 
   </div>
-
-  <section class="docs-example" data-example="Headings">
-    <template>
-<div class="cider">
-  <h1>Heading 1</h1>
-  <h2>Heading 2</h2>
-  <h3>Heading 3</h3>
-  <h4>Heading 4</h4>
-</div>
-    </template>
-  </section>
-
-  <!-- Body text -->
-  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Body text</h2>
-    <p class="text-muted-foreground">
-      Paragraphs get automatic spacing between consecutive <code class="kbd">&lt;p&gt;</code> elements. Links are styled with primary color and underline.
-    </p>
-  </div>
-
-  <section class="docs-example" data-example="Paragraphs and links">
-    <template>
-<div class="cider">
-  <p>Design is not just what it looks like and feels like. Design is how it works. Every detail matters — the way text flows on a page, the spacing between elements, the careful balance of hierarchy.</p>
-  <p>When done right, typography becomes invisible, letting the <a href="#">content speak for itself</a>.</p>
-</div>
-    </template>
-  </section>
-
-  <!-- Inline text -->
-  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Inline text</h2>
-    <p class="text-muted-foreground">
-      Inline <code class="kbd">&lt;code&gt;</code> gets a rounded pill with secondary background. <code class="kbd">&lt;kbd&gt;</code> renders as a key cap. <code class="kbd">&lt;small&gt;</code> is muted helper text. For code blocks, use the <a href="snippet.html" class="font-medium text-primary hover:underline">Snippet</a> component.
-    </p>
-  </div>
-
-  <section class="docs-example" data-example="Inline elements">
-    <template>
-<div class="cider">
-  <p>Use the <code>@import "ciderui"</code> directive to include all styles.</p>
-  <p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.</p>
-  <p><small>This is helper text at a smaller size.</small></p>
-</div>
-    </template>
-  </section>
-
-  <!-- Blockquote -->
-  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Blockquote</h2>
-    <p class="text-muted-foreground">
-      Left-bordered italic text with muted color.
-    </p>
-  </div>
-
-  <section class="docs-example" data-example="Blockquote">
-    <template>
-<div class="cider">
-  <blockquote>
-    Simplicity is the ultimate sophistication.
-  </blockquote>
-</div>
-    </template>
-  </section>
-
-  <!-- Lists -->
-  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Lists</h2>
-    <p class="text-muted-foreground">
-      Unordered lists get disc markers, ordered lists get decimal markers. Both have vertical spacing between items.
-    </p>
-  </div>
-
-  <section class="docs-example" data-example="Unordered list">
-    <template>
-<div class="cider">
-  <ul>
-    <li>Clean, semantic HTML structure</li>
-    <li>Apple-inspired design tokens</li>
-    <li>Dark mode support built-in</li>
-  </ul>
-</div>
-    </template>
-  </section>
-
-  <section class="docs-example" data-example="Ordered list">
-    <template>
-<div class="cider">
-  <ol>
-    <li>Install the Tailwind CSS plugin</li>
-    <li>Import the ciderui stylesheet</li>
-    <li>Start building beautiful interfaces</li>
-  </ol>
-</div>
-    </template>
-  </section>
-
 
 </main>
 <script type="module" src="../docs.js"></script>
