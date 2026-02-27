@@ -7,16 +7,16 @@ const NAV = [
     items: [
       { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
-      { label: "Container", href: "components/container.html" },
       { label: "llms.txt", href: "llms.txt" },
     ],
   },
   {
     title: "Layout",
     items: [
-      { label: "Aspect Ratio", href: "components/aspect-ratio.html" },
-      { label: "Scroll Area", href: "components/scroll-area.html" },
-      { label: "Separator", href: "components/separator.html" },
+      { label: "Container", href: "layout/container.html" },
+      { label: "Aspect Ratio", href: "layout/aspect-ratio.html" },
+      { label: "Scroll Area", href: "layout/scroll-area.html" },
+      { label: "Separator", href: "layout/separator.html" },
     ],
   },
   {
@@ -96,7 +96,7 @@ const NAV = [
 ];
 
 // ─── Resolve base path ───
-const isSubpage = location.pathname.includes("/components/") || location.pathname.includes("/examples/");
+const isSubpage = location.pathname.includes("/components/") || location.pathname.includes("/layout/") || location.pathname.includes("/examples/");
 const base = isSubpage ? "../" : "";
 
 // ─── Current page matching ───
@@ -246,8 +246,8 @@ function initExamples() {
     const minIndent = Math.min(...indents);
     const dedented = lines.map(l => l.slice(minIndent)).join("\n");
 
-    // Strip <div class="ciderui">...</div> wrapper from code display
-    const unwrapped = dedented.replace(/^<div class="ciderui">\n?([\s\S]*?)\n?<\/div>$/, (_, inner) => {
+    // Strip <div class="ciderui ...">...</div> or <div class="ciderui-fluid ...">...</div> wrapper from code display
+    const unwrapped = dedented.replace(/^<div class="ciderui(?:-fluid)?(?:\s[^"]*)?">\n?([\s\S]*?)\n?<\/div>$/, (_, inner) => {
       // De-indent the inner content by one level
       const innerLines = inner.split("\n");
       const innerIndents = innerLines.filter(l => l.trim()).map(l => l.match(/^\s*/)[0].length);

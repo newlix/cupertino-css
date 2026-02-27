@@ -7,37 +7,139 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Container" data-description="Auto-style native HTML elements with zero-specificity CSS. Write semantic markup, get Apple-aesthetic styling — no component classes needed.">
+<main data-title="Container" data-description="Auto-style native HTML elements with built-in responsive layout. Write semantic markup, get Apple-aesthetic styling — no component classes needed.">
 
   <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
     <!-- Intro -->
     <section class="max-w-xl space-y-3">
       <p class="text-lg text-muted-foreground">
-        Wrap any HTML in <code class="kbd">.ciderui</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more.
+        Wrap any HTML in <code class="kbd">.ciderui</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. The container is centered with responsive max-widths built in.
       </p>
       <p class="text-muted-foreground">
-        All styles use <code class="kbd">:where()</code> for <strong>zero specificity</strong>, so any explicit Cider UI class (like <code class="kbd">btn-primary</code>) or Tailwind utility always wins. No JS required — it's pure CSS.
+        All element styles use <code class="kbd">:where()</code> for <strong>zero specificity</strong>, so any explicit Cider UI class or Tailwind utility always wins. No JS required — pure CSS.
       </p>
     </section>
 
-    <!-- Usage -->
+    <!-- Fixed width (default) -->
     <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-      <p class="text-muted-foreground">Add the <code class="kbd">ciderui</code> class to a wrapper element. Everything inside gets styled.</p>
+      <h2 class="text-xl font-bold tracking-tight">Fixed width</h2>
+      <p class="text-muted-foreground">
+        <code class="kbd">.ciderui</code> is a fixed-width container by default — centered, padded, and responsive. Content snaps to wider max-widths at each breakpoint.
+      </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
         <pre><code class="language-html">&lt;div class="ciderui"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
-  &lt;p&gt;This paragraph is styled automatically.&lt;/p&gt;
+  &lt;p&gt;Centered, responsive, and auto-styled.&lt;/p&gt;
   &lt;button&gt;Click me&lt;/button&gt;
 &lt;/div&gt;</code></pre>
+      </div>
+      <div class="ciderui mt-4">
+        <table>
+          <thead>
+            <tr>
+              <th>Breakpoint</th>
+              <th>Viewport</th>
+              <th>Max width</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Default</td>
+              <td>&lt; 768px</td>
+              <td>576px <span class="text-xs text-muted-foreground">(36rem)</span></td>
+            </tr>
+            <tr>
+              <td><code>md</code></td>
+              <td>&ge; 768px</td>
+              <td>672px <span class="text-xs text-muted-foreground">(42rem)</span></td>
+            </tr>
+            <tr>
+              <td><code>lg</code></td>
+              <td>&ge; 1024px</td>
+              <td>896px <span class="text-xs text-muted-foreground">(56rem)</span></td>
+            </tr>
+            <tr>
+              <td><code>xl</code></td>
+              <td>&ge; 1280px</td>
+              <td>1152px <span class="text-xs text-muted-foreground">(72rem)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Fluid width -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Fluid width</h2>
+      <p class="text-muted-foreground">
+        Use <code class="kbd">.ciderui-fluid</code> for a full-width container with no max-width caps. It provides the same element auto-styling as <code class="kbd">.ciderui</code> but fills the available space.
+      </p>
+      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;div class="ciderui-fluid"&gt;
+  &lt;h1&gt;Full width&lt;/h1&gt;
+  &lt;p&gt;Stretches to fill the viewport with padding.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Overriding with Tailwind -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Custom breakpoints</h2>
+      <p class="text-muted-foreground">
+        The built-in breakpoints are a sensible default. Override them with Tailwind utilities for full control — utilities always win over component-layer styles.
+      </p>
+      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;!-- Narrower container --&gt;
+&lt;div class="ciderui max-w-lg md:max-w-xl lg:max-w-3xl"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Wider container --&gt;
+&lt;div class="ciderui max-w-6xl xl:max-w-7xl"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- No max-width at all --&gt;
+&lt;div class="ciderui max-w-none"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Semantic containers -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
+      <p class="text-muted-foreground">
+        <code class="kbd">.ciderui</code> works on any element. Use semantic HTML tags for better accessibility and document structure.
+      </p>
+      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;body&gt;
+  &lt;header class="ciderui py-6"&gt;
+    &lt;h1&gt;My App&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main class="ciderui py-8"&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
+    &lt;form&gt;
+      &lt;label for="name"&gt;Name&lt;/label&gt;
+      &lt;input type="text" id="name"&gt;
+      &lt;button type="submit"&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="ciderui py-6"&gt;
+    &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
       </div>
     </section>
 
     <!-- Styled elements reference -->
     <section class="space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Styled elements</h2>
-      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.ciderui</code> receives opinionated styling. Here's what each element gets.</p>
+      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.ciderui</code> or <code class="kbd">.ciderui-fluid</code> receives opinionated styling. Here's what each element gets.</p>
       <div class="ciderui mt-4">
         <table>
           <thead>
@@ -278,9 +380,9 @@
 
   <!-- Overriding with classes -->
   <div class="mt-10 mb-6 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Overriding with classes</h2>
+    <h2 class="text-xl font-bold tracking-tight">Overriding element styles</h2>
     <p class="text-muted-foreground">
-      Because <code class="kbd">.ciderui</code> uses <code class="kbd">:where()</code>, it has zero specificity. Any explicit Cider UI class — like <code class="kbd">btn-primary</code>, <code class="kbd">btn-outline</code>, or <code class="kbd">btn-destructive</code> — automatically takes precedence. You never need <code class="kbd">!important</code>.
+      Because element styles use <code class="kbd">:where()</code>, they have zero specificity. Any explicit Cider UI class — like <code class="kbd">btn-primary</code>, <code class="kbd">btn-outline</code>, or <code class="kbd">btn-destructive</code> — automatically takes precedence. You never need <code class="kbd">!important</code>.
     </p>
   </div>
 
@@ -297,132 +399,6 @@
 </div>
     </template>
   </section>
-
-  <!-- Container layout patterns -->
-  <div class="mt-10 space-y-8 text-[15px] leading-relaxed text-foreground">
-
-    <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Container layouts</h2>
-      <p class="text-muted-foreground">
-        <code class="kbd">.ciderui</code> handles element styling but not layout width. Use Tailwind CSS utilities on the container to control width, centering, and responsive breakpoints.
-      </p>
-    </section>
-
-    <!-- Fixed width -->
-    <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Fixed width</h3>
-      <p class="text-muted-foreground">
-        Snap to a fixed <code class="kbd">max-width</code> at each breakpoint using Tailwind's <code class="kbd">container</code> class. Content jumps to the next width tier as the viewport grows.
-      </p>
-      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;div class="ciderui container mx-auto px-4"&gt;
-  &lt;h1&gt;Fixed width container&lt;/h1&gt;
-  &lt;p&gt;Max-width steps: 640px → 768px → 1024px → 1280px&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </section>
-
-    <!-- Fluid width -->
-    <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Fluid width</h3>
-      <p class="text-muted-foreground">
-        Set a single <code class="kbd">max-w-*</code> and let the container fill available space below that limit. No breakpoint jumps — width scales smoothly.
-      </p>
-      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;!-- Fluid, capped at 768px --&gt;
-&lt;div class="ciderui max-w-3xl mx-auto px-4"&gt;
-  ...
-&lt;/div&gt;
-
-&lt;!-- Full width with padding --&gt;
-&lt;div class="ciderui w-full px-4 lg:px-8"&gt;
-  ...
-&lt;/div&gt;</code></pre>
-      </div>
-    </section>
-
-    <!-- Breakpoints -->
-    <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Breakpoints</h3>
-      <p class="text-muted-foreground">
-        Change the max-width at specific breakpoints for more control over how the container scales.
-      </p>
-      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;!-- Narrow on mobile, wider on desktop --&gt;
-&lt;div class="ciderui mx-auto px-4 max-w-xl md:max-w-2xl lg:max-w-4xl"&gt;
-  ...
-&lt;/div&gt;</code></pre>
-      </div>
-      <div class="ciderui mt-4">
-        <table>
-          <thead>
-            <tr>
-              <th>Breakpoint</th>
-              <th>Min width</th>
-              <th>Typical max-w</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>sm</code></td>
-              <td>640px</td>
-              <td><code>max-w-xl</code> (576px)</td>
-            </tr>
-            <tr>
-              <td><code>md</code></td>
-              <td>768px</td>
-              <td><code>max-w-2xl</code> (672px)</td>
-            </tr>
-            <tr>
-              <td><code>lg</code></td>
-              <td>1024px</td>
-              <td><code>max-w-4xl</code> (896px)</td>
-            </tr>
-            <tr>
-              <td><code>xl</code></td>
-              <td>1280px</td>
-              <td><code>max-w-6xl</code> (1152px)</td>
-            </tr>
-            <tr>
-              <td><code>2xl</code></td>
-              <td>1536px</td>
-              <td><code>max-w-7xl</code> (1280px)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Semantic containers -->
-    <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Semantic containers</h3>
-      <p class="text-muted-foreground">
-        <code class="kbd">.ciderui</code> works on any element — not just <code class="kbd">&lt;div&gt;</code>. Use semantic HTML tags for better accessibility and document structure.
-      </p>
-      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;body&gt;
-  &lt;header class="ciderui max-w-4xl mx-auto px-4 py-6"&gt;
-    &lt;h1&gt;My App&lt;/h1&gt;
-  &lt;/header&gt;
-
-  &lt;main class="ciderui max-w-4xl mx-auto px-4 py-8"&gt;
-    &lt;h2&gt;Welcome&lt;/h2&gt;
-    &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
-    &lt;form&gt;
-      &lt;label for="name"&gt;Name&lt;/label&gt;
-      &lt;input type="text" id="name"&gt;
-      &lt;button type="submit"&gt;Send&lt;/button&gt;
-    &lt;/form&gt;
-  &lt;/main&gt;
-
-  &lt;footer class="ciderui max-w-4xl mx-auto px-4 py-6"&gt;
-    &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
-  &lt;/footer&gt;
-&lt;/body&gt;</code></pre>
-      </div>
-    </section>
-
-  </div>
 
 </main>
 <script type="module" src="../docs.js"></script>
