@@ -11,60 +11,68 @@
 
   <section class="docs-example" data-example="Default">
     <template>
-<textarea rows="3" placeholder="Type your message..." class="textarea"></textarea>
+<div class="ciderui">
+  <textarea rows="3" placeholder="Type your message..."></textarea>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Invalid">
     <template>
-<textarea rows="3" placeholder="Type your message..." class="textarea" aria-invalid="true"></textarea>
+<div class="ciderui">
+  <textarea rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Disabled">
     <template>
-<textarea rows="3" placeholder="Type your message..." class="textarea" disabled></textarea>
+<div class="ciderui">
+  <textarea rows="3" placeholder="Type your message..." disabled></textarea>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Label">
     <template>
-<div class="grid gap-3">
-  <label for="demo-ta-label" class="label">Message</label>
-  <textarea id="demo-ta-label" rows="3" class="textarea" placeholder="Type your message..."></textarea>
+<div class="ciderui grid gap-1.5">
+  <label for="demo-ta-label">Message</label>
+  <textarea id="demo-ta-label" rows="3" placeholder="Type your message..."></textarea>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Text">
     <template>
-<div class="grid gap-3">
-  <label for="demo-ta-text" class="label">Bio</label>
-  <textarea id="demo-ta-text" rows="3" class="textarea" placeholder="Type your message..."></textarea>
-  <p class="text-muted-foreground text-sm">Type your message and press enter to send.</p>
+<div class="ciderui grid gap-1.5">
+  <label for="demo-ta-text">Bio</label>
+  <textarea id="demo-ta-text" rows="3" placeholder="Type your message..."></textarea>
+  <small>Type your message and press enter to send.</small>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Button">
     <template>
-<div class="grid gap-3">
-  <textarea rows="3" class="textarea" placeholder="Type your message..."></textarea>
-  <button type="submit" class="btn">Submit</button>
+<div class="ciderui grid gap-3">
+  <textarea rows="3" placeholder="Type your message..."></textarea>
+  <button type="submit">Submit</button>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Form">
     <template>
-<form class="w-full flex flex-col gap-4" onsubmit="event.preventDefault()">
-  <div class="field">
-    <label>Bio</label>
-    <textarea rows="3" placeholder="Tell us a bit about yourself"></textarea>
-    <p>You can @mention other users and organizations.</p>
-  </div>
-  <button type="submit" class="btn">Submit</button>
-</form>
+<div class="ciderui">
+  <form class="flex flex-col gap-4" onsubmit="return false">
+    <div class="space-y-1.5">
+      <label for="demo-ta-form">Bio</label>
+      <textarea id="demo-ta-form" rows="3" placeholder="Tell us a bit about yourself"></textarea>
+      <small>You can @mention other users and organizations.</small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
     </template>
   </section>
 

@@ -16,8 +16,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'switch');
     await setDark(page);
 
-    const checked = page.locator('.docs-example-preview .switch:checked').first();
-    const unchecked = page.locator('.docs-example-preview .switch:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.docs-example-preview input[role="switch"]:checked').first();
+    const unchecked = page.locator('.docs-example-preview input[role="switch"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'backgroundColor')).not.toBe(await css(unchecked, 'backgroundColor'));
   });
@@ -56,8 +56,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'radio-group');
     await setDark(page);
 
-    const checked = page.locator('.docs-example-preview .radio:checked').first();
-    const unchecked = page.locator('.docs-example-preview .radio:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.docs-example-preview input[type="radio"]:checked').first();
+    const unchecked = page.locator('.docs-example-preview input[type="radio"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
@@ -83,7 +83,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'input');
     await setDark(page);
 
-    const input = preview(page).locator('.input').first();
+    const input = preview(page).locator('input[type="text"]').first();
     const borderRgb = parseRgb(await css(input, 'borderColor'));
     const bgRgb = parseRgb(await css(input, 'backgroundColor'));
 
@@ -96,7 +96,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'progress');
     await setDark(page);
 
-    const bar = preview(page).locator('.progress').first();
+    const bar = preview(page).locator('progress').first();
     await expect(bar).toBeVisible();
     // Progress track should have a background
     const bg = await css(bar, 'backgroundColor');

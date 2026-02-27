@@ -11,38 +11,46 @@
 
   <section class="docs-example" data-example="Default">
     <template>
-<label class="inline-flex items-center gap-2.5 cursor-pointer">
-  <input type="checkbox" class="checkbox" />
-  <span class="text-sm">Accept terms and conditions</span>
-</label>
+<div class="ciderui">
+  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+    <input type="checkbox" />
+    <span class="text-sm">Accept terms and conditions</span>
+  </label>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Checked">
     <template>
-<label class="inline-flex items-center gap-2.5 cursor-pointer">
-  <input type="checkbox" checked class="checkbox" />
-  <span class="text-sm">Remember me</span>
-</label>
+<div class="ciderui">
+  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+    <input type="checkbox" checked />
+    <span class="text-sm">Remember me</span>
+  </label>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Disabled">
     <template>
-<label class="inline-flex items-center gap-2.5 cursor-not-allowed opacity-60">
-  <input type="checkbox" class="checkbox" disabled />
-  <span class="text-sm">Accept terms and conditions</span>
-</label>
+<div class="ciderui">
+  <label class="inline-flex items-center gap-2.5 cursor-not-allowed opacity-60">
+    <input type="checkbox" disabled />
+    <span class="text-sm">Accept terms and conditions</span>
+  </label>
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Text">
     <template>
-<div class="flex items-start gap-2.5">
-  <input type="checkbox" id="demo-cb-text" class="checkbox mt-0.5">
-  <div class="grid gap-1">
-    <label for="demo-cb-text" class="text-sm font-medium cursor-pointer">Accept terms and conditions</label>
-    <p class="text-muted-foreground text-sm">By clicking this checkbox, you agree to the terms and conditions.</p>
+<div class="ciderui">
+  <div class="flex items-start gap-2.5">
+    <input type="checkbox" id="demo-cb-text" class="mt-0.5">
+    <div class="grid gap-1">
+      <label for="demo-cb-text" class="text-sm cursor-pointer">Accept terms and conditions</label>
+      <small>By clicking this checkbox, you agree to the terms and conditions.</small>
+    </div>
   </div>
 </div>
     </template>
@@ -50,15 +58,15 @@
 
   <section class="docs-example" data-example="Form">
     <template>
-<form class="form">
+<div class="ciderui">
   <div class="flex items-start gap-2.5 rounded-lg border p-4">
-    <input type="checkbox" id="demo-cb-form" class="checkbox mt-0.5">
+    <input type="checkbox" id="demo-cb-form" class="mt-0.5">
     <div class="flex flex-col gap-1">
-      <label for="demo-cb-form" class="text-sm font-medium cursor-pointer leading-snug">Use different settings for my mobile devices</label>
-      <p class="text-muted-foreground text-sm leading-snug">You can manage your mobile notifications in the mobile settings page.</p>
+      <label for="demo-cb-form" class="text-sm cursor-pointer leading-snug">Use different settings for my mobile devices</label>
+      <small>You can manage your mobile notifications in the mobile settings page.</small>
     </div>
   </div>
-</form>
+</div>
     </template>
   </section>
 

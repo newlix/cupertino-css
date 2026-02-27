@@ -4,7 +4,7 @@ import { goto, preview, css } from './helpers.js';
 test.describe('CSS Rendering', () => {
   test('button has correct dimensions and border-radius', async ({ page }) => {
     await goto(page, 'button');
-    const btn = preview(page).locator('button.btn').first();
+    const btn = preview(page).locator('button').first();
     await expect(btn).toBeVisible();
 
     const box = await btn.boundingBox();
@@ -42,7 +42,7 @@ test.describe('CSS Rendering', () => {
 
   test('progress bar has correct width from style', async ({ page }) => {
     await goto(page, 'progress');
-    const bar = preview(page).locator('.progress').first();
+    const bar = preview(page).locator('progress').first();
     await expect(bar).toBeVisible();
     expect(await css(bar, 'borderRadius')).not.toBe('0px');
   });
@@ -95,7 +95,7 @@ test.describe('CSS Rendering', () => {
 
   test('separator renders as thin line', async ({ page }) => {
     await goto(page, 'separator');
-    const sep = preview(page).locator('.separator').first();
+    const sep = preview(page).locator('hr').first();
     await expect(sep).toBeVisible();
     const box = await sep.boundingBox();
     expect(box.height).toBeLessThanOrEqual(2);

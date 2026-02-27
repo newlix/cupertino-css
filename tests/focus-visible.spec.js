@@ -5,7 +5,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('radio shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'radio-group');
 
-    const radio = page.locator('.docs-example-preview .radio').first();
+    const radio = page.locator('.docs-example-preview input[type="radio"]').first();
     const before = await css(radio, 'boxShadow');
 
     await focusViaKeyboard(page, radio);
@@ -18,7 +18,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('checkbox shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'checkbox');
 
-    const cb = page.locator('.docs-example-preview .checkbox').first();
+    const cb = page.locator('.docs-example-preview input[type="checkbox"]').first();
     await focusViaKeyboard(page, cb);
 
     expect(await css(cb, 'boxShadow')).not.toBe('none');
@@ -27,7 +27,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('switch shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'switch');
 
-    const sw = page.locator('.docs-example-preview .switch').first();
+    const sw = page.locator('.docs-example-preview input[role="switch"]').first();
     await focusViaKeyboard(page, sw);
 
     expect(await css(sw, 'boxShadow')).not.toBe('none');
@@ -36,7 +36,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('button shows outline on keyboard focus', async ({ page }) => {
     await goto(page, 'button');
 
-    const btn = page.locator('.docs-example-preview .btn').first();
+    const btn = page.locator('.docs-example-preview button').first();
     await focusViaKeyboard(page, btn);
 
     expect(await css(btn, 'outlineStyle')).not.toBe('none');

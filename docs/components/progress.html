@@ -11,38 +11,28 @@
 
   <section class="docs-example" data-example="Default">
     <template>
-<div class="progress">
-  <div class="progress-bar" style="width: 60%"></div>
+<div class="ciderui">
+  <progress value="60" max="100"></progress>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Label">
     <template>
-<div class="space-y-2">
+<div class="ciderui space-y-2">
   <div class="flex items-center justify-between text-sm">
     <span class="font-medium">Uploading...</span>
     <span class="text-muted-foreground">73%</span>
   </div>
-  <div class="progress">
-    <div class="progress-bar" style="width: 73%"></div>
-  </div>
-</div>
-    </template>
-  </section>
-
-  <section class="docs-example" data-example="Small">
-    <template>
-<div class="progress progress-sm">
-  <div class="progress-bar" style="width: 80%"></div>
+  <progress value="73" max="100"></progress>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Indeterminate">
     <template>
-<div class="progress progress-indeterminate">
-  <div class="progress-bar"></div>
+<div class="ciderui">
+  <progress max="100"></progress>
 </div>
     </template>
   </section>
@@ -54,8 +44,8 @@
     <h3 class="text-sm font-semibold">Storage</h3>
     <span class="text-xs text-muted-foreground">7.2 GB / 15 GB</span>
   </div>
-  <div class="progress mt-3">
-    <div class="progress-bar" style="width: 48%"></div>
+  <div class="ciderui mt-3">
+    <progress value="48" max="100"></progress>
   </div>
   <p class="mt-2 text-xs text-muted-foreground">48% of storage used. Upgrade for more space.</p>
 </div>

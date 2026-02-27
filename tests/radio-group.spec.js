@@ -7,7 +7,7 @@ test.describe('Radio Group', () => {
   });
 
   test('clicking radio selects it', async ({ page }) => {
-    const radios = preview(page).locator('.radio');
+    const radios = preview(page).locator('input[type="radio"]');
     const second = radios.nth(1);
     await expect(second).not.toBeChecked();
 
@@ -16,7 +16,7 @@ test.describe('Radio Group', () => {
   });
 
   test('selecting one deselects others in same group', async ({ page }) => {
-    const radios = preview(page).locator('.radio');
+    const radios = preview(page).locator('input[type="radio"]');
     const first = radios.first();
     const second = radios.nth(1);
 
@@ -28,7 +28,7 @@ test.describe('Radio Group', () => {
   });
 
   test('disabled radio cannot be selected', async ({ page }) => {
-    const disabled = page.locator('.docs-example-preview .radio[disabled]').first();
+    const disabled = page.locator('.docs-example-preview input[type="radio"][disabled]').first();
     await expect(disabled).toBeDisabled();
   });
 });

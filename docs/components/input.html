@@ -11,55 +11,61 @@
 
   <section class="docs-example" data-example="Default">
     <template>
-<input type="text" placeholder="Enter text..." class="input" />
+<div class="ciderui">
+  <input type="text" placeholder="Enter text..." />
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Label">
     <template>
-<div class="field">
-  <label>Email</label>
-  <input type="email" placeholder="you@example.com" />
-  <p>We'll never share your email.</p>
+<div class="ciderui space-y-1.5">
+  <label for="demo-email">Email</label>
+  <input type="email" id="demo-email" placeholder="you@example.com" />
+  <small>We'll never share your email.</small>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Error State">
     <template>
-<div class="field">
-  <label>Username</label>
-  <input type="text" value="ab" class="input-error" />
-  <p class="field-error">Username must be at least 3 characters.</p>
+<div class="ciderui space-y-1.5">
+  <label for="demo-username">Username</label>
+  <input type="text" id="demo-username" value="ab" aria-invalid="true" />
+  <small class="text-destructive">Username must be at least 3 characters.</small>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Disabled">
     <template>
-<input type="text" placeholder="Enter text..." class="input" disabled />
+<div class="ciderui">
+  <input type="text" placeholder="Enter text..." disabled />
+</div>
     </template>
   </section>
 
   <section class="docs-example" data-example="With Button">
     <template>
-<div class="flex gap-3">
-  <input type="email" placeholder="you@example.com" class="input" />
-  <button class="btn">Subscribe</button>
+<div class="ciderui flex gap-3">
+  <input type="email" placeholder="you@example.com" />
+  <button type="submit">Subscribe</button>
 </div>
     </template>
   </section>
 
   <section class="docs-example" data-example="Form">
     <template>
-<form class="form space-y-6">
-  <div class="field">
-    <label>Email</label>
-    <input type="email" placeholder="you@example.com">
-    <p>We'll never share your email with anyone else.</p>
-  </div>
-  <button type="submit" class="btn">Submit</button>
-</form>
+<div class="ciderui">
+  <form class="space-y-6" onsubmit="return false">
+    <div class="space-y-1.5">
+      <label for="demo-form-email">Email</label>
+      <input type="email" id="demo-form-email" placeholder="you@example.com">
+      <small>We'll never share your email with anyone else.</small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
     </template>
   </section>
 

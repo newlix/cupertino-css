@@ -7,7 +7,7 @@ test.describe('Checkbox', () => {
   });
 
   test('clicking checkbox toggles checked state', async ({ page }) => {
-    const cb = preview(page).locator('.checkbox');
+    const cb = preview(page).locator('input[type="checkbox"]');
     await expect(cb).not.toBeChecked();
 
     await cb.check();
@@ -19,7 +19,7 @@ test.describe('Checkbox', () => {
 
   test('clicking label toggles checkbox', async ({ page }) => {
     const label = preview(page).locator('label').first();
-    const cb = label.locator('.checkbox');
+    const cb = label.locator('input[type="checkbox"]');
     await expect(cb).not.toBeChecked();
 
     await label.locator('span').click();
@@ -27,7 +27,7 @@ test.describe('Checkbox', () => {
   });
 
   test('disabled checkbox cannot be toggled', async ({ page }) => {
-    const cb = page.locator('.docs-example-preview .checkbox[disabled]').first();
+    const cb = page.locator('.docs-example-preview input[type="checkbox"][disabled]').first();
     await expect(cb).toBeDisabled();
   });
 });
