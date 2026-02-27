@@ -9,62 +9,213 @@
 <body>
 <main data-title="Button" data-description="Primary actions, secondary options, and more.">
 
-  <section class="docs-example" data-example="Variants">
-    <template>
-<div class="cider">
-  <button type="submit">Primary</button>
-  <button>Secondary</button>
-  <button class="btn-outline">Outline</button>
-  <button type="reset">Ghost</button>
-  <button class="btn-destructive">Destructive</button>
-  <button class="btn-pill" type="submit">Pill</button>
-  <button class="btn-icon">
-    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-  </button>
-  <button disabled>Disabled</button>
-</div>
-    </template>
-  </section>
+  <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
-  <section class="docs-example" data-example="Sizes">
-    <template>
-<div class="cider">
-  <button class="btn-sm">Small</button>
-  <button>Default</button>
-  <button class="btn-lg">Large</button>
-</div>
-    </template>
-  </section>
+    <!-- Variants -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Variants</h2>
+      <p class="text-muted-foreground">
+        Use <code class="kbd">btn-*</code> classes to explicitly set a variant.
+      </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button class="btn-primary">Primary</button>
+            <button class="btn-secondary">Secondary</button>
+            <button class="btn-outline">Outline</button>
+            <button class="btn-ghost">Ghost</button>
+            <button class="btn-destructive">Destructive</button>
+            <button class="btn-primary" disabled>Disabled</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button class="btn-primary"&gt;Primary&lt;/button&gt;
+  &lt;button class="btn-secondary"&gt;Secondary&lt;/button&gt;
+  &lt;button class="btn-outline"&gt;Outline&lt;/button&gt;
+  &lt;button class="btn-ghost"&gt;Ghost&lt;/button&gt;
+  &lt;button class="btn-destructive"&gt;Destructive&lt;/button&gt;
+  &lt;button class="btn-primary" disabled&gt;Disabled&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="With Icon">
-    <template>
-<div class="cider">
-  <button type="submit">
-    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <!-- Default -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Default</h2>
+      <p class="text-muted-foreground">
+        Inside <code class="kbd">.cider</code>, buttons are auto-styled by their <code class="kbd">type</code> attribute — no classes needed.
+      </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button type="submit">Submit</button>
+            <button>Default</button>
+            <button type="reset">Reset</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;button&gt;Default&lt;/button&gt;
+  &lt;button type="reset"&gt;Reset&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <p class="text-sm text-muted-foreground mt-3">Or use classes for the same styles:</p>
+      <ul class="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
+        <li><code class="kbd">type="submit"</code> → <code class="kbd">btn-primary</code></li>
+        <li><code class="kbd">&lt;button&gt;</code> (no type) → <code class="kbd">btn-secondary</code></li>
+        <li><code class="kbd">type="reset"</code> → <code class="kbd">btn-ghost</code></li>
+      </ul>
+    </section>
+
+    <!-- Pill -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Pill</h2>
+      <p class="text-muted-foreground">
+        Add <code class="kbd">.btn-pill</code> to any variant for fully rounded corners.
+      </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button class="btn-primary btn-pill">Primary</button>
+            <button class="btn-secondary btn-pill">Secondary</button>
+            <button class="btn-outline btn-pill">Outline</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button class="btn-primary btn-pill"&gt;Primary&lt;/button&gt;
+  &lt;button class="btn-secondary btn-pill"&gt;Secondary&lt;/button&gt;
+  &lt;button class="btn-outline btn-pill"&gt;Outline&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Sizes</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button class="btn-primary btn-sm">Small</button>
+            <button class="btn-primary">Default</button>
+            <button class="btn-primary btn-lg">Large</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button class="btn-primary btn-sm"&gt;Small&lt;/button&gt;
+  &lt;button class="btn-primary"&gt;Default&lt;/button&gt;
+  &lt;button class="btn-primary btn-lg"&gt;Large&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Icon -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Icon</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button class="btn-icon">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button class="btn-icon"&gt;
+    &lt;svg class="size-4" ...&gt;...&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With Icon -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">With Icon</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button type="submit">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Login with Email
+            </button>
+            <button class="btn-outline">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              GitHub
+            </button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button type="submit"&gt;
+    &lt;svg class="size-4" ...&gt;...&lt;/svg&gt;
     Login with Email
-  </button>
-  <button class="btn-outline">
-    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-    GitHub
-  </button>
-</div>
-    </template>
-  </section>
+  &lt;/button&gt;
 
-  <section class="docs-example" data-example="Loading">
-    <template>
-<div class="cider">
-  <button type="submit" disabled>
-    <svg class="size-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle><path fill="currentColor" opacity="0.75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+  &lt;button class="btn-outline"&gt;
+    &lt;svg class="size-4" ...&gt;...&lt;/svg&gt;
+    GitHub
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Loading -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Loading</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <button type="submit" disabled>
+              <svg class="size-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle><path fill="currentColor" opacity="0.75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+              Loading…
+            </button>
+            <button class="btn-outline" disabled>
+              <svg class="size-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle><path fill="currentColor" opacity="0.75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+              Please wait
+            </button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;button type="submit" disabled&gt;
+    &lt;svg class="size-4 animate-spin" ...&gt;...&lt;/svg&gt;
     Loading…
-  </button>
-  <button class="btn-outline" disabled>
-    <svg class="size-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle><path fill="currentColor" opacity="0.75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+  &lt;/button&gt;
+
+  &lt;button class="btn-outline" disabled&gt;
+    &lt;svg class="size-4 animate-spin" ...&gt;...&lt;/svg&gt;
     Please wait
-  </button>
-</div>
-    </template>
-  </section>
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+  </div>
 
 </main>
 <script type="module" src="../docs.js"></script>
