@@ -1,23 +1,23 @@
 /* ========== CONTAINER ========== */
-/* Wrap semantic HTML in .ciderui / .ciderui-fluid to auto-style native elements.
-   Layout: .ciderui = fixed-width breakpoints, .ciderui-fluid = full width.
+/* Wrap semantic HTML in .cider / .cider-fixed to auto-style native elements.
+   Layout: .cider = fluid full-width (default), .cider-fixed = fixed-width breakpoints.
    Element styling uses :where() for zero specificity — explicit classes always override. */
 
 /* ─── Layout ─── */
-.ciderui {
-  @apply w-full mx-auto px-5;
-  max-width: 36rem;   /* 576px — base */
-}
-@media (min-width: 768px)  { .ciderui { max-width: 42rem; } }  /* 672px */
-@media (min-width: 1024px) { .ciderui { max-width: 56rem; } }  /* 896px */
-@media (min-width: 1280px) { .ciderui { max-width: 72rem; } }  /* 1152px */
-
-.ciderui-fluid {
+.cider {
   @apply w-full px-5 lg:px-8;
 }
 
+.cider-fixed {
+  @apply w-full mx-auto px-5;
+  max-width: 36rem;   /* 576px — base */
+}
+@media (min-width: 768px)  { .cider-fixed { max-width: 42rem; } }  /* 672px */
+@media (min-width: 1024px) { .cider-fixed { max-width: 56rem; } }  /* 896px */
+@media (min-width: 1280px) { .cider-fixed { max-width: 72rem; } }  /* 1152px */
+
 /* ─── Buttons ─── */
-:where(:is(.ciderui, .ciderui-fluid)) button {
+:where(:is(.cider, .cider-fixed)) button {
   @apply inline-flex items-center justify-center gap-2 rounded-[12px] px-4 py-2.5 text-[13px] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.01em;
@@ -26,19 +26,19 @@
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) button[type="submit"] {
+:where(:is(.cider, .cider-fixed)) button[type="submit"] {
   @apply bg-primary text-primary-foreground;
   box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.1);
   &:hover { @apply bg-primary-hover; box-shadow: var(--shadow), inset 0 1px 0 oklch(1 0 0 / 0.1); }
   &:active { @apply bg-primary-active; transform: scale(var(--apple-press-scale)); }
 }
-:where(:is(.ciderui, .ciderui-fluid)) button[type="reset"] {
+:where(:is(.cider, .cider-fixed)) button[type="reset"] {
   @apply bg-transparent text-foreground;
   &:hover { @apply bg-secondary; }
 }
 
 /* ─── Text inputs ─── */
-:where(:is(.ciderui, .ciderui-fluid)) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
+:where(:is(.cider, .cider-fixed)) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
   @apply w-full h-11 rounded-[12px] border px-3.5 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input-border);
@@ -50,7 +50,7 @@
 }
 
 /* ─── Textarea ─── */
-:where(:is(.ciderui, .ciderui-fluid)) textarea {
+:where(:is(.cider, .cider-fixed)) textarea {
   @apply w-full rounded-[12px] border px-3.5 py-3 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input-border);
@@ -62,7 +62,7 @@
 }
 
 /* ─── Select ─── */
-:where(:is(.ciderui, .ciderui-fluid)) select {
+:where(:is(.cider, .cider-fixed)) select {
   @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input);
@@ -80,7 +80,7 @@
 }
 
 /* ─── Checkbox ─── */
-:where(:is(.ciderui, .ciderui-fluid)) input[type="checkbox"]:not([role="switch"]) {
+:where(:is(.cider, .cider-fixed)) input[type="checkbox"]:not([role="switch"]) {
   @apply appearance-none size-[18px] shrink-0 rounded-[5px] border bg-card cursor-pointer;
   border-color: var(--input-border);
   transition: all 0.2s var(--apple-ease);
@@ -97,7 +97,7 @@
 }
 
 /* ─── Radio ─── */
-:where(:is(.ciderui, .ciderui-fluid)) input[type="radio"] {
+:where(:is(.cider, .cider-fixed)) input[type="radio"] {
   @apply appearance-none size-[18px] shrink-0 rounded-full border bg-card cursor-pointer;
   border-color: var(--input-border);
   transition: all 0.2s var(--apple-ease);
@@ -111,7 +111,7 @@
 }
 
 /* ─── Switch ─── */
-:where(:is(.ciderui, .ciderui-fluid)) input[type="checkbox"][role="switch"] {
+:where(:is(.cider, .cider-fixed)) input[type="checkbox"][role="switch"] {
   @apply appearance-none relative shrink-0 rounded-full cursor-pointer;
   width: 51px;
   height: 31px;
@@ -140,12 +140,12 @@
 }
 
 /* ─── Label ─── */
-:where(:is(.ciderui, .ciderui-fluid)) label {
+:where(:is(.cider, .cider-fixed)) label {
   @apply block text-[13px] font-medium text-foreground;
 }
 
 /* ─── Table ─── */
-:where(:is(.ciderui, .ciderui-fluid)) table {
+:where(:is(.cider, .cider-fixed)) table {
   @apply w-full text-left text-[13px] overflow-x-auto rounded-2xl bg-card;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & thead tr {
@@ -172,13 +172,13 @@
 }
 
 /* ─── Separator (hr) ─── */
-:where(:is(.ciderui, .ciderui-fluid)) hr {
+:where(:is(.cider, .cider-fixed)) hr {
   @apply shrink-0 h-px w-full border-none;
   background: var(--panel-border);
 }
 
 /* ─── Kbd ─── */
-:where(:is(.ciderui, .ciderui-fluid)) kbd {
+:where(:is(.cider, .cider-fixed)) kbd {
   @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[5px] px-1.5 text-[11px] font-medium text-muted-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
@@ -186,7 +186,7 @@
 }
 
 /* ─── Progress ─── */
-:where(:is(.ciderui, .ciderui-fluid)) progress {
+:where(:is(.cider, .cider-fixed)) progress {
   @apply block h-1.5 w-full overflow-hidden rounded-full appearance-none;
   background: var(--surface-4);
   &::-webkit-progress-bar {
@@ -205,69 +205,69 @@
 }
 
 /* ─── Typography ─── */
-:where(:is(.ciderui, .ciderui-fluid)) {
+:where(:is(.cider, .cider-fixed)) {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.47;
   letter-spacing: -0.015em;
   color: var(--foreground);
 }
-:where(:is(.ciderui, .ciderui-fluid)) h1 {
+:where(:is(.cider, .cider-fixed)) h1 {
   @apply font-bold tracking-tight text-foreground;
   font-size: 34px;
   line-height: 1.21;
   &:not(:first-child) { @apply mt-8; }
   & + * { @apply mt-4; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) h2 {
+:where(:is(.cider, .cider-fixed)) h2 {
   @apply font-semibold tracking-tight text-foreground;
   font-size: 22px;
   line-height: 1.18;
   &:not(:first-child) { @apply mt-8; }
   & + * { @apply mt-3; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) h3 {
+:where(:is(.cider, .cider-fixed)) h3 {
   @apply font-semibold tracking-tight text-foreground;
   font-size: 20px;
   line-height: 1.25;
   &:not(:first-child) { @apply mt-6; }
   & + * { @apply mt-2; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) h4 {
+:where(:is(.cider, .cider-fixed)) h4 {
   @apply font-semibold text-foreground;
   font-size: 17px;
   line-height: 1.29;
   &:not(:first-child) { @apply mt-4; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) p {
+:where(:is(.cider, .cider-fixed)) p {
   & + p { @apply mt-4; }
 }
-:where(:is(.ciderui, .ciderui-fluid)) a {
+:where(:is(.cider, .cider-fixed)) a {
   @apply font-medium text-primary underline underline-offset-4;
   &:hover { text-decoration-color: var(--primary); }
 }
-:where(:is(.ciderui, .ciderui-fluid)) ul {
+:where(:is(.cider, .cider-fixed)) ul {
   @apply list-disc pl-6 space-y-1.5;
 }
-:where(:is(.ciderui, .ciderui-fluid)) ol {
+:where(:is(.cider, .cider-fixed)) ol {
   @apply list-decimal pl-6 space-y-1.5;
 }
-:where(:is(.ciderui, .ciderui-fluid)) blockquote {
+:where(:is(.cider, .cider-fixed)) blockquote {
   @apply border-l-2 pl-5 italic text-muted-foreground;
   border-color: var(--border-solid);
 }
-:where(:is(.ciderui, .ciderui-fluid)) pre {
+:where(:is(.cider, .cider-fixed)) pre {
   @apply overflow-x-auto rounded-xl bg-secondary p-4;
   & code {
     @apply bg-transparent p-0;
   }
 }
-:where(:is(.ciderui, .ciderui-fluid)) code {
+:where(:is(.cider, .cider-fixed)) code {
   @apply rounded-md bg-secondary px-1.5 py-0.5 text-[13px] font-medium;
 }
 
 /* ─── Fieldset ─── */
-:where(:is(.ciderui, .ciderui-fluid)) fieldset {
+:where(:is(.cider, .cider-fixed)) fieldset {
   @apply rounded-2xl border p-5 space-y-4;
   border-color: var(--border);
   & > legend {
@@ -276,6 +276,6 @@
 }
 
 /* ─── Small (helper text) ─── */
-:where(:is(.ciderui, .ciderui-fluid)) small {
+:where(:is(.cider, .cider-fixed)) small {
   @apply text-xs text-muted-foreground;
 }

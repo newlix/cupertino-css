@@ -14,27 +14,42 @@
     <!-- Intro -->
     <section class="max-w-xl space-y-3">
       <p class="text-lg text-muted-foreground">
-        Wrap any HTML in <code class="kbd">.ciderui</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. The container is centered with responsive max-widths built in.
+        Wrap any HTML in <code class="kbd">.cider</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. Full-width by default, works everywhere.
       </p>
       <p class="text-muted-foreground">
         All element styles use <code class="kbd">:where()</code> for <strong>zero specificity</strong>, so any explicit Cider UI class or Tailwind utility always wins. No JS required — pure CSS.
       </p>
     </section>
 
-    <!-- Fixed width (default) -->
+    <!-- Fluid (default) -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Fluid (default)</h2>
+      <p class="text-muted-foreground">
+        <code class="kbd">.cider</code> is a full-width fluid container with horizontal padding. It fills the available space and auto-styles every native element inside.
+      </p>
+      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;h1&gt;Hello&lt;/h1&gt;
+  &lt;p&gt;Full width, padded, and auto-styled.&lt;/p&gt;
+  &lt;button&gt;Click me&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Fixed width -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Fixed width</h2>
       <p class="text-muted-foreground">
-        <code class="kbd">.ciderui</code> is a fixed-width container by default — centered, padded, and responsive. Content snaps to wider max-widths at each breakpoint.
+        Use <code class="kbd">.cider-fixed</code> for a centered container with responsive max-width breakpoints. Same element auto-styling as <code class="kbd">.cider</code>, but content snaps to fixed widths.
       </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;div class="ciderui"&gt;
+        <pre><code class="language-html">&lt;div class="cider-fixed"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
   &lt;p&gt;Centered, responsive, and auto-styled.&lt;/p&gt;
   &lt;button&gt;Click me&lt;/button&gt;
 &lt;/div&gt;</code></pre>
       </div>
-      <div class="ciderui mt-4">
+      <div class="cider mt-4">
         <table>
           <thead>
             <tr>
@@ -69,39 +84,20 @@
       </div>
     </section>
 
-    <!-- Fluid width -->
-    <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Fluid width</h2>
-      <p class="text-muted-foreground">
-        Use <code class="kbd">.ciderui-fluid</code> for a full-width container with no max-width caps. It provides the same element auto-styling as <code class="kbd">.ciderui</code> but fills the available space.
-      </p>
-      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;div class="ciderui-fluid"&gt;
-  &lt;h1&gt;Full width&lt;/h1&gt;
-  &lt;p&gt;Stretches to fill the viewport with padding.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </section>
-
     <!-- Overriding with Tailwind -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Custom breakpoints</h2>
       <p class="text-muted-foreground">
-        The built-in breakpoints are a sensible default. Override them with Tailwind utilities for full control — utilities always win over component-layer styles.
+        Override the built-in breakpoints with Tailwind utilities for full control — utilities always win over component-layer styles.
       </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;!-- Narrower container --&gt;
-&lt;div class="ciderui max-w-lg md:max-w-xl lg:max-w-3xl"&gt;
+        <pre><code class="language-html">&lt;!-- Constrained fluid --&gt;
+&lt;div class="cider max-w-4xl mx-auto"&gt;
   ...
 &lt;/div&gt;
 
-&lt;!-- Wider container --&gt;
-&lt;div class="ciderui max-w-6xl xl:max-w-7xl"&gt;
-  ...
-&lt;/div&gt;
-
-&lt;!-- No max-width at all --&gt;
-&lt;div class="ciderui max-w-none"&gt;
+&lt;!-- Custom fixed breakpoints --&gt;
+&lt;div class="cider-fixed max-w-6xl xl:max-w-7xl"&gt;
   ...
 &lt;/div&gt;</code></pre>
       </div>
@@ -111,15 +107,15 @@
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
       <p class="text-muted-foreground">
-        <code class="kbd">.ciderui</code> works on any element. Use semantic HTML tags for better accessibility and document structure.
+        <code class="kbd">.cider</code> works on any element. Use semantic HTML tags for better accessibility and document structure.
       </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
         <pre><code class="language-html">&lt;body&gt;
-  &lt;header class="ciderui py-6"&gt;
+  &lt;header class="cider py-6"&gt;
     &lt;h1&gt;My App&lt;/h1&gt;
   &lt;/header&gt;
 
-  &lt;main class="ciderui py-8"&gt;
+  &lt;main class="cider py-8"&gt;
     &lt;h2&gt;Welcome&lt;/h2&gt;
     &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
     &lt;form&gt;
@@ -129,7 +125,7 @@
     &lt;/form&gt;
   &lt;/main&gt;
 
-  &lt;footer class="ciderui py-6"&gt;
+  &lt;footer class="cider py-6"&gt;
     &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
   &lt;/footer&gt;
 &lt;/body&gt;</code></pre>
@@ -139,8 +135,8 @@
     <!-- Styled elements reference -->
     <section class="space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Styled elements</h2>
-      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.ciderui</code> or <code class="kbd">.ciderui-fluid</code> receives opinionated styling. Here's what each element gets.</p>
-      <div class="ciderui mt-4">
+      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.cider</code> or <code class="kbd">.cider-fixed</code> receives opinionated styling. Here's what each element gets.</p>
+      <div class="cider mt-4">
         <table>
           <thead>
             <tr>
@@ -232,7 +228,7 @@
 
   <section class="docs-example" data-example="Typography">
     <template>
-<div class="ciderui">
+<div class="cider">
   <h1>Heading 1</h1>
   <p>This is a paragraph with <a href="#">a link</a> and some <code>inline code</code> inside it. The container applies prose-like typography automatically.</p>
   <h2>Heading 2</h2>
@@ -257,7 +253,7 @@
 
   <section class="docs-example" data-example="Form">
     <template>
-<div class="ciderui">
+<div class="cider">
   <form onsubmit="return false">
     <fieldset>
       <legend>Account Details</legend>
@@ -315,7 +311,7 @@
 
   <section class="docs-example" data-example="Table">
     <template>
-<div class="ciderui">
+<div class="cider">
   <table>
     <thead>
       <tr>
@@ -348,7 +344,7 @@
 
   <section class="docs-example" data-example="Progress">
     <template>
-<div class="ciderui space-y-4">
+<div class="cider space-y-4">
   <progress value="70" max="100"></progress>
   <progress value="40" max="100"></progress>
 </div>
@@ -357,7 +353,7 @@
 
   <section class="docs-example" data-example="Mixed">
     <template>
-<div class="ciderui">
+<div class="cider">
   <h2>Contact Us</h2>
   <p>Fill out the form below and we'll get back to you.</p>
   <hr class="my-4">
@@ -388,8 +384,8 @@
 
   <section class="docs-example" data-example="Override with explicit classes">
     <template>
-<div class="ciderui">
-  <p>Explicit classes still work inside <code>.ciderui</code>:</p>
+<div class="cider">
+  <p>Explicit classes still work inside <code>.cider</code>:</p>
   <div class="flex gap-2 mt-3">
     <button>Default</button>
     <button class="btn-outline">Outline</button>

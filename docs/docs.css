@@ -69,10 +69,10 @@
   }
   .docs-example-preview {
     @apply relative z-10 py-6 flex flex-wrap gap-4 items-start;
-    & > .card, & > .field, & > .accordion, & > table, & > .alert, & > .alert-info, & > .alert-success, & > .alert-warning, & > .alert-destructive, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .item, & > .item-group, & > form, & > fieldset, & > .sidebar, & > .theme-switcher, & > .command, & > .ciderui, & > .ciderui-fluid {
+    & > .card, & > .field, & > .accordion, & > table, & > .alert, & > .alert-info, & > .alert-success, & > .alert-warning, & > .alert-destructive, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .item, & > .item-group, & > form, & > fieldset, & > .sidebar, & > .theme-switcher, & > .command, & > .cider, & > .cider-fixed {
       @apply w-full;
     }
-    & > :is(.ciderui, .ciderui-fluid) {
+    & > :is(.cider, .cider-fixed) {
       max-width: none;
       padding-left: 0;
       padding-right: 0;

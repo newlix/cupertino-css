@@ -3,8 +3,8 @@
  */
 
 /** Navigate to a component doc page and wait for ready. */
-export async function goto(page, component) {
-  await page.goto(`/docs/components/${component}.html`);
+export async function goto(page, component, section = 'components') {
+  await page.goto(`/docs/${section}/${component}.html`);
   await page.waitForLoadState('networkidle');
 }
 
