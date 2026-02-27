@@ -1,5 +1,5 @@
 /* ========== BUTTON GROUP ========== */
-.button-group {
+.btn-group {
   @apply inline-flex rounded-[12px] bg-card;
   box-shadow: 0 0 0 1px var(--panel-border), var(--shadow-sm);
   & button, & a {

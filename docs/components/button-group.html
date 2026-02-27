@@ -7,67 +7,82 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Button Group" data-description="Grouped action buttons.">
+<main data-title="Button Group" data-description="">
 
-  <section class="docs-example" data-example="Default">
-    <template>
-<div class="button-group">
-  <button>Left</button>
-  <button>Center</button>
-  <button>Right</button>
-</div>
-    </template>
-  </section>
+  <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
-  <section class="docs-example" data-example="With Active State">
-    <template>
-<div class="button-group">
-  <button data-active>Day</button>
-  <button>Week</button>
-  <button>Month</button>
-</div>
-    </template>
-  </section>
+    <!-- Default -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Default</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="btn-group">
+            <button>Left</button>
+            <button>Center</button>
+            <button>Right</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="btn-group"&gt;
+  &lt;button&gt;Left&lt;/button&gt;
+  &lt;button&gt;Center&lt;/button&gt;
+  &lt;button&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="Separator">
-    <template>
-<div class="button-group">
-  <button>Copy</button>
-  <button class="border-l" style="border-left:1px solid var(--border-solid);">Paste</button>
-</div>
-    </template>
-  </section>
+    <!-- Active State -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Active state</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="btn-group">
+            <button data-active>Day</button>
+            <button>Week</button>
+            <button>Month</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="btn-group"&gt;
+  &lt;button data-active&gt;Day&lt;/button&gt;
+  &lt;button&gt;Week&lt;/button&gt;
+  &lt;button&gt;Month&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="With Input">
-    <template>
-<div class="flex">
-  <input type="text" class="input rounded-r-none border-r-0" placeholder="Search…" />
-  <button class="btn btn-outline rounded-l-none">
-    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-  </button>
-</div>
-    </template>
-  </section>
+    <!-- With Input -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">With input</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="flex">
+            <input type="text" class="input rounded-r-none border-r-0" placeholder="Search…" />
+            <button class="btn btn-outline rounded-l-none">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="flex"&gt;
+  &lt;input type="text" class="input rounded-r-none border-r-0" placeholder="Search…" /&gt;
+  &lt;button class="btn btn-outline rounded-l-none"&gt;
+    &lt;svg class="size-4" ...&gt;...&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="Nested">
-    <template>
-<div class="button-group">
-  <div class="button-group" style="border:0;box-shadow:none;">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
   </div>
-  <div class="button-group" style="border:0;box-shadow:none;border-left:1px solid var(--border-solid);">
-    <button>
-      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-    <button>
-      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
-  </div>
-</div>
-    </template>
-  </section>
 
 </main>
 <script type="module" src="../docs.js"></script>

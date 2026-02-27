@@ -58,7 +58,7 @@ For quick prototyping without a build step:
 | Accordion | `accordion` (native `<details>`) | — |
 | Avatar | `avatar` `avatar-sm` `avatar-lg` `avatar-group` | — |
 | Breadcrumb | `breadcrumb` | — |
-| Button Group | `button-group` | — |
+| Button Group | `btn-group` | — |
 | Kbd | `kbd` | — |
 | Pagination | `pagination` `pagination-item` | — |
 | Progress | `progress` > `.progress-bar` `progress-sm` `progress-indeterminate` | — |

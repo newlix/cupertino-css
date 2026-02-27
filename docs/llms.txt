@@ -69,7 +69,7 @@
 
 - [Aspect Ratio](https://ciderui.com/components/aspect-ratio.html): Constrain content to an aspect ratio.
 - [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-sm` `avatar-lg` `avatar-group`
-- [Button Group](https://ciderui.com/components/button-group.html): `button-group` — grouped buttons.
+- [Button Group](https://ciderui.com/components/button-group.html): `btn-group` — grouped buttons.
 - [Carousel](https://ciderui.com/components/carousel.html): Image/content carousel. Requires `js/carousel.js`.
 - [File Tree](https://ciderui.com/components/file-tree.html): File/folder tree view.
 - [Item](https://ciderui.com/components/item.html): List item with icon, label, description.
