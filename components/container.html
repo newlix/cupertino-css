@@ -97,7 +97,6 @@
             <li>Ordered item two</li>
           </ol>
           <blockquote>Design is how it works.</blockquote>
-          <pre><code>const x = 42;</code></pre>
           <p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to search.</p>
         </div>
       </section>
@@ -144,6 +143,22 @@
         <div class="cider space-y-4">
           <progress value="70" max="100"></progress>
           <progress value="40" max="100"></progress>
+        </div>
+      </section>
+
+      <!-- Reset -->
+      <section>
+        <h2 class="mb-4 text-lg font-semibold">Reset boundary</h2>
+        <div class="cider">
+          <p>This paragraph is auto-styled by <code>.cider</code>.</p>
+          <div class="cider-reset">
+            <p style="margin-top:0.5rem">This paragraph is inside <code>.cider-reset</code> — no .cider styling.</p>
+            <button>Plain button</button>
+            <div class="cider" style="margin-top:0.5rem">
+              <p>Re-opened <code>.cider</code> scope — styled again.</p>
+              <button>Styled button</button>
+            </div>
+          </div>
         </div>
       </section>
 

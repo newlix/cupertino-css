@@ -17,7 +17,7 @@
         Wrap any HTML in <code class="kbd">.cider</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. No layout opinion — works everywhere.
       </p>
       <p class="text-muted-foreground">
-        All element styles use <code class="kbd">:where()</code> for <strong>zero specificity</strong>, so any explicit Cider UI class or Tailwind utility always wins. No JS required — pure CSS.
+        Uses <code class="kbd">@scope</code> so styles stay contained — explicit component classes and Tailwind utilities always win. Use <code class="kbd">.cider-reset</code> to create a boundary where <code class="kbd">.cider</code> styles stop. No JS required — pure CSS.
       </p>
     </section>
 
@@ -27,7 +27,18 @@
       <p class="text-muted-foreground">
         <code class="kbd">.cider</code> adds no layout styles — it purely activates element auto-styling. Add your own padding, max-width, or any layout utilities as needed.
       </p>
-      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <h1>Hello</h1>
+            <p>Auto-styled, layout is up to you.</p>
+            <button>Click me</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;div class="cider px-5"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
   &lt;p&gt;Auto-styled, layout is up to you.&lt;/p&gt;
@@ -42,7 +53,18 @@
       <p class="text-muted-foreground">
         Add <code class="kbd">.cider-fixed</code> alongside <code class="kbd">.cider</code> for a centered container with responsive max-width breakpoints.
       </p>
-      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <h1>Hello</h1>
+            <p>Centered, responsive, and auto-styled.</p>
+            <button>Click me</button>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;div class="cider cider-fixed"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
   &lt;p&gt;Centered, responsive, and auto-styled.&lt;/p&gt;
@@ -52,7 +74,11 @@
       <p class="text-sm text-muted-foreground mt-3">
         Behind the scenes, <code class="kbd">.cider-fixed</code> is just Tailwind utilities:
       </p>
-      <div class="docs-example-code mt-2" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-2">
+        <header>
+          <span>CSS</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-css">.cider-fixed {
   @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
 }</code></pre>
@@ -98,7 +124,11 @@
       <p class="text-muted-foreground">
         Override the built-in breakpoints with Tailwind utilities for full control — utilities always win over component-layer styles.
       </p>
-      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;!-- Constrained fluid --&gt;
 &lt;div class="cider max-w-4xl mx-auto"&gt;
   ...
@@ -111,13 +141,80 @@
       </div>
     </section>
 
+    <!-- Reset -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Reset boundary</h2>
+      <p class="text-muted-foreground">
+        Add <code class="kbd">.cider-reset</code> to stop <code class="kbd">.cider</code> styles from leaking into nested components. Useful when embedding UI components inside auto-styled content.
+      </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <h1>Styled by .cider</h1>
+            <p>This paragraph is auto-styled.</p>
+            <div class="cider-reset">
+              <button>Plain button (no .cider styling)</button>
+            </div>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;h1&gt;Styled by .cider&lt;/h1&gt;
+  &lt;p&gt;This paragraph is auto-styled.&lt;/p&gt;
+
+  &lt;div class="cider-reset"&gt;
+    &lt;!-- .cider styles stop here --&gt;
+    &lt;button&gt;Plain button (no .cider styling)&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <p class="text-muted-foreground mt-3">
+        To re-enable <code class="kbd">.cider</code> inside a reset boundary, add <code class="kbd">.cider</code> again — it opens a new scope:
+      </p>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <p>Auto-styled</p>
+            <div class="cider-reset">
+              <button>Unstyled</button>
+              <div class="cider" style="margin-top:0.5rem">
+                <button>Styled again</button>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;p&gt;Auto-styled&lt;/p&gt;
+
+  &lt;div class="cider-reset"&gt;
+    &lt;button&gt;Unstyled&lt;/button&gt;
+
+    &lt;div class="cider"&gt;
+      &lt;button&gt;Styled again&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
     <!-- Semantic containers -->
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
       <p class="text-muted-foreground">
         <code class="kbd">.cider</code> works on any element. Use semantic HTML tags for better accessibility and document structure.
       </p>
-      <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;body&gt;
   &lt;header class="cider py-6"&gt;
     &lt;h1&gt;My App&lt;/h1&gt;

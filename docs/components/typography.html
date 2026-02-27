@@ -117,7 +117,7 @@
   <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
     <h2 class="text-xl font-bold tracking-tight">Inline text</h2>
     <p class="text-muted-foreground">
-      Inline elements for code, keyboard shortcuts, and helper text.
+      Inline <code class="kbd">&lt;code&gt;</code> gets a rounded pill with secondary background. <code class="kbd">&lt;kbd&gt;</code> renders as a key cap. <code class="kbd">&lt;small&gt;</code> is muted helper text. For code blocks, use the <a href="snippet.html" class="font-medium text-primary hover:underline">Snippet</a> component.
     </p>
   </div>
 
@@ -181,22 +181,6 @@
     </template>
   </section>
 
-  <!-- Code blocks -->
-  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
-    <h2 class="text-xl font-bold tracking-tight">Code blocks</h2>
-    <p class="text-muted-foreground">
-      <code class="kbd">&lt;pre&gt;&lt;code&gt;</code> gets a rounded container with secondary background. The inner <code class="kbd">&lt;code&gt;</code> resets to transparent.
-    </p>
-  </div>
-
-  <section class="docs-example" data-example="Code block">
-    <template>
-<div class="cider">
-  <pre><code>const greeting = "Hello, Cider UI!";
-console.log(greeting);</code></pre>
-</div>
-    </template>
-  </section>
 
 </main>
 <script type="module" src="../docs.js"></script>
