@@ -9,7 +9,7 @@
   {
     "title": "Layout",
     "items": [
-      { "label": "Container", "href": "layout/container.html" },
+      { "label": "Container", "href": "components/container.html" },
       { "label": "Aspect Ratio", "href": "components/aspect-ratio.html" },
       { "label": "Scroll Area", "href": "components/scroll-area.html" },
       { "label": "Separator", "href": "components/separator.html" }
