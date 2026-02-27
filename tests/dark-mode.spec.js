@@ -26,7 +26,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'badge');
     await setDark(page);
 
-    for (const sel of ['.badge-primary', '.badge-success', '.badge-warning', '.badge-destructive']) {
+    for (const sel of ['.badge', '.badge-destructive']) {
       const badge = page.locator(`.snippet > figure ${sel}`).first();
       if ((await badge.count()) === 0) continue;
 

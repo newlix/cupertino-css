@@ -51,9 +51,9 @@ test.describe('CSS Rendering', () => {
     await goto(page, 'badge');
     const badges = preview(page).locator('span');
     const count = await badges.count();
-    expect(count).toBeGreaterThanOrEqual(4);
+    expect(count).toBeGreaterThanOrEqual(2);
 
-    for (let i = 0; i < Math.min(count, 6); i++) {
+    for (let i = 0; i < Math.min(count, 2); i++) {
       await expect(badges.nth(i)).toBeVisible();
       const box = await badges.nth(i).boundingBox();
       expect(box.height).toBeGreaterThan(10);

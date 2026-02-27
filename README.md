@@ -40,7 +40,8 @@ For quick prototyping without a build step:
 | Component | Class | JS |
 |-----------|-------|----|
 | Button | `btn` `btn-primary` `btn-secondary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg` `btn-icon` | — |
-| Badge | `badge` `badge-primary` `badge-success` `badge-warning` `badge-destructive` `badge-outline` | — |
+| Tag | `tag` | — |
+| Badge | `badge` (notification count) | — |
 | Card | `card` `card-interactive` (children: `header` `section` `footer`) | — |
 | Alert | `alert-info` `alert-success` `alert-warning` `alert-destructive` | — |
 | Input | `input` | — |

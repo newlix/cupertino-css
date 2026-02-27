@@ -58,7 +58,7 @@
 ### Feedback & Status
 
 - [Alert](https://ciderui.com/components/alert.html): `alert-info` `alert-success` `alert-warning` `alert-destructive`
-- [Badge](https://ciderui.com/components/badge.html): `badge` `badge-primary` `badge-success` `badge-warning` `badge-destructive` `badge-outline`
+- [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 - [Empty](https://ciderui.com/components/empty.html): Empty state placeholder.
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
 - [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` `skeleton-circle` — loading placeholder.
@@ -78,7 +78,7 @@
 - [Theme Switcher](https://ciderui.com/components/theme-switcher.html): Light/dark/system theme toggle.
 - [Toggle](https://ciderui.com/components/toggle.html): `toggle` — pressable toggle button.
 - [Toggle Group](https://ciderui.com/components/toggle-group.html): Single/multi-select toggle group.
-- [Typography](https://ciderui.com/components/typography.html): Prose typography styles.
+- [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
 
 ## Quick Start
 
