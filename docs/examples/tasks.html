@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks — Cider UI</title>
+  <link rel="stylesheet" href="../docs.built.css">
+</head>
+<body>
+<main data-title="Tasks" data-description="A project management board with kanban columns and task cards.">
+
+  <div class="rounded-xl border overflow-hidden" style="background:var(--card);">
+    <!-- Toolbar -->
+    <div class="flex items-center justify-between px-5 py-3 border-b">
+      <div class="flex items-center gap-3">
+        <h3 class="text-[15px] font-semibold">Project Board</h3>
+        <span class="badge badge-primary">Sprint 14</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="search" placeholder="Filter tasks..." style="font-size:13px;padding:0.375rem 0.75rem;width:200px;">
+        <button class="btn btn-sm">
+          <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          New Task
+        </button>
+      </div>
+    </div>
+    <!-- Board -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;min-height:500px;">
+      <!-- Todo column -->
+      <div class="border-r" style="padding:1rem;">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full" style="background:var(--muted-foreground);"></span>
+            <span class="text-[13px] font-semibold">Todo</span>
+            <span class="badge" style="font-size:11px;">4</span>
+          </div>
+          <button class="docs-theme-toggle" style="width:24px;height:24px;">
+            <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </button>
+        </div>
+        <div class="space-y-2">
+          <div class="card" style="padding:0.75rem;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Feature</span>
+              <span class="text-[11px] text-muted-foreground">CID-42</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Add file upload component</p>
+            <p class="text-[12px] text-muted-foreground mb-3">Drag & drop zone with progress indicator and file type validation.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex -space-x-1.5">
+                <div class="avatar" style="width:22px;height:22px;font-size:9px;border:2px solid var(--card);background:oklch(0.9 0.06 250);color:oklch(0.45 0.15 250);">LC</div>
+                <div class="avatar" style="width:22px;height:22px;font-size:9px;border:2px solid var(--card);background:oklch(0.9 0.06 150);color:oklch(0.4 0.12 150);">AR</div>
+              </div>
+              <span class="badge-warning" style="font-size:10px;">Medium</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Bug</span>
+              <span class="text-[11px] text-muted-foreground">CID-39</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Fix tooltip z-index on modals</p>
+            <p class="text-[12px] text-muted-foreground mb-3">Tooltips render behind dialog overlay.</p>
+            <div class="flex items-center justify-between">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 320);color:oklch(0.45 0.12 320);">PS</div>
+              <span class="badge-destructive" style="font-size:10px;">High</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Docs</span>
+              <span class="text-[11px] text-muted-foreground">CID-37</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Write carousel docs</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 50);color:oklch(0.45 0.12 50);">WK</div>
+              <span class="badge" style="font-size:10px;">Low</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Feature</span>
+              <span class="text-[11px] text-muted-foreground">CID-35</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Date picker component</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 250);color:oklch(0.45 0.15 250);">LC</div>
+              <span class="badge-warning" style="font-size:10px;">Medium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- In Progress column -->
+      <div class="border-r" style="padding:1rem;">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-primary"></span>
+            <span class="text-[13px] font-semibold">In Progress</span>
+            <span class="badge" style="font-size:11px;">2</span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="card" style="padding:0.75rem;border-color:var(--primary);border-left-width:2px;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Feature</span>
+              <span class="text-[11px] text-muted-foreground">CID-41</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Command palette keyboard navigation</p>
+            <p class="text-[12px] text-muted-foreground mb-3">Arrow keys, enter to select, esc to close. Handle nested groups.</p>
+            <div class="progress progress-sm mb-3" style="--progress:65%;"></div>
+            <div class="flex items-center justify-between">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 150);color:oklch(0.4 0.12 150);">AR</div>
+              <span class="badge-destructive" style="font-size:10px;">High</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;border-color:var(--primary);border-left-width:2px;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Improvement</span>
+              <span class="text-[11px] text-muted-foreground">CID-40</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2">Dark mode color contrast audit</p>
+            <p class="text-[12px] text-muted-foreground mb-3">Ensure all text passes WCAG AA contrast requirements.</p>
+            <div class="progress progress-sm mb-3" style="--progress:30%;--bar-bg:var(--success);"></div>
+            <div class="flex items-center justify-between">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 320);color:oklch(0.45 0.12 320);">PS</div>
+              <span class="badge-warning" style="font-size:10px;">Medium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Done column -->
+      <div style="padding:1rem;">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full" style="background:var(--success);"></span>
+            <span class="text-[13px] font-semibold">Done</span>
+            <span class="badge" style="font-size:11px;">3</span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="card" style="padding:0.75rem;opacity:0.7;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Feature</span>
+              <span class="text-[11px] text-muted-foreground">CID-38</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2 line-through">Toast notification system</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 150);color:oklch(0.4 0.12 150);">AR</div>
+              <span class="badge-success" style="font-size:10px;">Merged</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;opacity:0.7;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Bug</span>
+              <span class="text-[11px] text-muted-foreground">CID-36</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2 line-through">Accordion animation glitch on Safari</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 50);color:oklch(0.45 0.12 50);">WK</div>
+              <span class="badge-success" style="font-size:10px;">Merged</span>
+            </div>
+          </div>
+          <div class="card" style="padding:0.75rem;opacity:0.7;">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="badge badge-outline" style="font-size:10px;">Docs</span>
+              <span class="text-[11px] text-muted-foreground">CID-34</span>
+            </div>
+            <p class="text-[13px] font-medium mb-2 line-through">Update installation guide</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="avatar" style="width:22px;height:22px;font-size:9px;background:oklch(0.9 0.06 250);color:oklch(0.45 0.15 250);">LC</div>
+              <span class="badge-success" style="font-size:10px;">Merged</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+<script src="../docs.js"></script>
+</body>
+</html>

@@ -67,10 +67,19 @@ const NAV = [
       { label: "Typography", href: "components/typography.html" },
     ],
   },
+  {
+    title: "Examples",
+    items: [
+      { label: "Tasks", href: "examples/tasks.html" },
+      { label: "Music", href: "examples/music.html" },
+      { label: "Chat", href: "examples/chat.html" },
+      { label: "Blog", href: "examples/blog.html" },
+    ],
+  },
 ];
 
 // ─── Resolve base path ───
-const isSubpage = location.pathname.includes("/components/");
+const isSubpage = location.pathname.includes("/components/") || location.pathname.includes("/examples/");
 const base = isSubpage ? "../" : "";
 
 // ─── Current page matching ───
