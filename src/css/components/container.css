@@ -1,4 +1,4 @@
-/* ========== CLASSLESS CONTAINER ========== */
+/* ========== CONTAINER ========== */
 /* Wrap semantic HTML in .ciderui to auto-style native elements.
    Uses :where() for zero specificity — explicit classes always override. */
 
