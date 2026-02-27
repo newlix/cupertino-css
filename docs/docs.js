@@ -246,8 +246,8 @@ function initExamples() {
     const minIndent = Math.min(...indents);
     const dedented = lines.map(l => l.slice(minIndent)).join("\n");
 
-    // Strip <div class="cider ...">...</div> or <div class="cider-fixed ...">...</div> wrapper from code display
-    const unwrapped = dedented.replace(/^<div class="cider(?:-fixed)?(?:\s[^"]*)?">\n?([\s\S]*?)\n?<\/div>$/, (_, inner) => {
+    // Strip <div class="cider ...">...</div> wrapper from code display
+    const unwrapped = dedented.replace(/^<div class="cider(?:\s[^"]*)?">\n?([\s\S]*?)\n?<\/div>$/, (_, inner) => {
       // De-indent the inner content by one level
       const innerLines = inner.split("\n");
       const innerIndents = innerLines.filter(l => l.trim()).map(l => l.match(/^\s*/)[0].length);

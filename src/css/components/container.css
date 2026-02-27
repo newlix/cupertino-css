@@ -1,23 +1,16 @@
 /* ========== CONTAINER ========== */
-/* Wrap semantic HTML in .cider / .cider-fixed to auto-style native elements.
-   Layout: .cider = fluid full-width (default), .cider-fixed = fixed-width breakpoints.
+/* Wrap semantic HTML in .cider to auto-style native elements.
+   .cider = pure element styling, no layout opinion.
+   .cider-fixed = layout modifier — add alongside .cider for centered fixed-width breakpoints.
    Element styling uses :where() for zero specificity — explicit classes always override. */
 
 /* ─── Layout ─── */
-.cider {
-  @apply w-full px-5 lg:px-8;
-}
-
 .cider-fixed {
-  @apply w-full mx-auto px-5;
-  max-width: 36rem;   /* 576px — base */
+  @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
 }
-@media (min-width: 768px)  { .cider-fixed { max-width: 42rem; } }  /* 672px */
-@media (min-width: 1024px) { .cider-fixed { max-width: 56rem; } }  /* 896px */
-@media (min-width: 1280px) { .cider-fixed { max-width: 72rem; } }  /* 1152px */
 
 /* ─── Buttons ─── */
-:where(:is(.cider, .cider-fixed)) button {
+:where(.cider) button {
   @apply inline-flex items-center justify-center gap-2 rounded-[12px] px-4 py-2.5 text-[13px] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.01em;
@@ -26,19 +19,19 @@
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
 }
-:where(:is(.cider, .cider-fixed)) button[type="submit"] {
+:where(.cider) button[type="submit"] {
   @apply bg-primary text-primary-foreground;
   box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.1);
   &:hover { @apply bg-primary-hover; box-shadow: var(--shadow), inset 0 1px 0 oklch(1 0 0 / 0.1); }
   &:active { @apply bg-primary-active; transform: scale(var(--apple-press-scale)); }
 }
-:where(:is(.cider, .cider-fixed)) button[type="reset"] {
+:where(.cider) button[type="reset"] {
   @apply bg-transparent text-foreground;
   &:hover { @apply bg-secondary; }
 }
 
 /* ─── Text inputs ─── */
-:where(:is(.cider, .cider-fixed)) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
+:where(.cider) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
   @apply w-full h-11 rounded-[12px] border px-3.5 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input-border);
@@ -50,7 +43,7 @@
 }
 
 /* ─── Textarea ─── */
-:where(:is(.cider, .cider-fixed)) textarea {
+:where(.cider) textarea {
   @apply w-full rounded-[12px] border px-3.5 py-3 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input-border);
@@ -62,7 +55,7 @@
 }
 
 /* ─── Select ─── */
-:where(:is(.cider, .cider-fixed)) select {
+:where(.cider) select {
   @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[13px] text-foreground outline-none;
   background-color: var(--card);
   border-color: var(--input);
@@ -80,7 +73,7 @@
 }
 
 /* ─── Checkbox ─── */
-:where(:is(.cider, .cider-fixed)) input[type="checkbox"]:not([role="switch"]) {
+:where(.cider) input[type="checkbox"]:not([role="switch"]) {
   @apply appearance-none size-[18px] shrink-0 rounded-[5px] border bg-card cursor-pointer;
   border-color: var(--input-border);
   transition: all 0.2s var(--apple-ease);
@@ -97,7 +90,7 @@
 }
 
 /* ─── Radio ─── */
-:where(:is(.cider, .cider-fixed)) input[type="radio"] {
+:where(.cider) input[type="radio"] {
   @apply appearance-none size-[18px] shrink-0 rounded-full border bg-card cursor-pointer;
   border-color: var(--input-border);
   transition: all 0.2s var(--apple-ease);
@@ -111,7 +104,7 @@
 }
 
 /* ─── Switch ─── */
-:where(:is(.cider, .cider-fixed)) input[type="checkbox"][role="switch"] {
+:where(.cider) input[type="checkbox"][role="switch"] {
   @apply appearance-none relative shrink-0 rounded-full cursor-pointer;
   width: 51px;
   height: 31px;
@@ -140,12 +133,12 @@
 }
 
 /* ─── Label ─── */
-:where(:is(.cider, .cider-fixed)) label {
+:where(.cider) label {
   @apply block text-[13px] font-medium text-foreground;
 }
 
 /* ─── Table ─── */
-:where(:is(.cider, .cider-fixed)) table {
+:where(.cider) table {
   @apply w-full text-left text-[13px] overflow-x-auto rounded-2xl bg-card;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & thead tr {
@@ -172,13 +165,13 @@
 }
 
 /* ─── Separator (hr) ─── */
-:where(:is(.cider, .cider-fixed)) hr {
+:where(.cider) hr {
   @apply shrink-0 h-px w-full border-none;
   background: var(--panel-border);
 }
 
 /* ─── Kbd ─── */
-:where(:is(.cider, .cider-fixed)) kbd {
+:where(.cider) kbd {
   @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[5px] px-1.5 text-[11px] font-medium text-muted-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
@@ -186,7 +179,7 @@
 }
 
 /* ─── Progress ─── */
-:where(:is(.cider, .cider-fixed)) progress {
+:where(.cider) progress {
   @apply block h-1.5 w-full overflow-hidden rounded-full appearance-none;
   background: var(--surface-4);
   &::-webkit-progress-bar {
@@ -205,69 +198,69 @@
 }
 
 /* ─── Typography ─── */
-:where(:is(.cider, .cider-fixed)) {
+:where(.cider) {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.47;
   letter-spacing: -0.015em;
   color: var(--foreground);
 }
-:where(:is(.cider, .cider-fixed)) h1 {
+:where(.cider) h1 {
   @apply font-bold tracking-tight text-foreground;
   font-size: 34px;
   line-height: 1.21;
   &:not(:first-child) { @apply mt-8; }
   & + * { @apply mt-4; }
 }
-:where(:is(.cider, .cider-fixed)) h2 {
+:where(.cider) h2 {
   @apply font-semibold tracking-tight text-foreground;
   font-size: 22px;
   line-height: 1.18;
   &:not(:first-child) { @apply mt-8; }
   & + * { @apply mt-3; }
 }
-:where(:is(.cider, .cider-fixed)) h3 {
+:where(.cider) h3 {
   @apply font-semibold tracking-tight text-foreground;
   font-size: 20px;
   line-height: 1.25;
   &:not(:first-child) { @apply mt-6; }
   & + * { @apply mt-2; }
 }
-:where(:is(.cider, .cider-fixed)) h4 {
+:where(.cider) h4 {
   @apply font-semibold text-foreground;
   font-size: 17px;
   line-height: 1.29;
   &:not(:first-child) { @apply mt-4; }
 }
-:where(:is(.cider, .cider-fixed)) p {
+:where(.cider) p {
   & + p { @apply mt-4; }
 }
-:where(:is(.cider, .cider-fixed)) a {
+:where(.cider) a {
   @apply font-medium text-primary underline underline-offset-4;
   &:hover { text-decoration-color: var(--primary); }
 }
-:where(:is(.cider, .cider-fixed)) ul {
+:where(.cider) ul {
   @apply list-disc pl-6 space-y-1.5;
 }
-:where(:is(.cider, .cider-fixed)) ol {
+:where(.cider) ol {
   @apply list-decimal pl-6 space-y-1.5;
 }
-:where(:is(.cider, .cider-fixed)) blockquote {
+:where(.cider) blockquote {
   @apply border-l-2 pl-5 italic text-muted-foreground;
   border-color: var(--border-solid);
 }
-:where(:is(.cider, .cider-fixed)) pre {
+:where(.cider) pre {
   @apply overflow-x-auto rounded-xl bg-secondary p-4;
   & code {
     @apply bg-transparent p-0;
   }
 }
-:where(:is(.cider, .cider-fixed)) code {
+:where(.cider) code {
   @apply rounded-md bg-secondary px-1.5 py-0.5 text-[13px] font-medium;
 }
 
 /* ─── Fieldset ─── */
-:where(:is(.cider, .cider-fixed)) fieldset {
+:where(.cider) fieldset {
   @apply rounded-2xl border p-5 space-y-4;
   border-color: var(--border);
   & > legend {
@@ -276,6 +269,6 @@
 }
 
 /* ─── Small (helper text) ─── */
-:where(:is(.cider, .cider-fixed)) small {
+:where(.cider) small {
   @apply text-xs text-muted-foreground;
 }

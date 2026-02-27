@@ -14,23 +14,23 @@
     <!-- Intro -->
     <section class="max-w-xl space-y-3">
       <p class="text-lg text-muted-foreground">
-        Wrap any HTML in <code class="kbd">.cider</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. Full-width by default, works everywhere.
+        Wrap any HTML in <code class="kbd">.cider</code> and every native element gets styled automatically — buttons, inputs, tables, typography, and more. No layout opinion — works everywhere.
       </p>
       <p class="text-muted-foreground">
         All element styles use <code class="kbd">:where()</code> for <strong>zero specificity</strong>, so any explicit Cider UI class or Tailwind utility always wins. No JS required — pure CSS.
       </p>
     </section>
 
-    <!-- Fluid (default) -->
+    <!-- Default -->
     <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Fluid (default)</h2>
+      <h2 class="text-xl font-bold tracking-tight">Default</h2>
       <p class="text-muted-foreground">
-        <code class="kbd">.cider</code> is a full-width fluid container with horizontal padding. It fills the available space and auto-styles every native element inside.
+        <code class="kbd">.cider</code> adds no layout styles — it purely activates element auto-styling. Add your own padding, max-width, or any layout utilities as needed.
       </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;div class="cider"&gt;
+        <pre><code class="language-html">&lt;div class="cider px-5"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
-  &lt;p&gt;Full width, padded, and auto-styled.&lt;/p&gt;
+  &lt;p&gt;Auto-styled, layout is up to you.&lt;/p&gt;
   &lt;button&gt;Click me&lt;/button&gt;
 &lt;/div&gt;</code></pre>
       </div>
@@ -40,14 +40,22 @@
     <section class="max-w-xl space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Fixed width</h2>
       <p class="text-muted-foreground">
-        Use <code class="kbd">.cider-fixed</code> for a centered container with responsive max-width breakpoints. Same element auto-styling as <code class="kbd">.cider</code>, but content snaps to fixed widths.
+        Add <code class="kbd">.cider-fixed</code> alongside <code class="kbd">.cider</code> for a centered container with responsive max-width breakpoints.
       </p>
       <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;div class="cider-fixed"&gt;
+        <pre><code class="language-html">&lt;div class="cider cider-fixed"&gt;
   &lt;h1&gt;Hello&lt;/h1&gt;
   &lt;p&gt;Centered, responsive, and auto-styled.&lt;/p&gt;
   &lt;button&gt;Click me&lt;/button&gt;
 &lt;/div&gt;</code></pre>
+      </div>
+      <p class="text-sm text-muted-foreground mt-3">
+        Behind the scenes, <code class="kbd">.cider-fixed</code> is just Tailwind utilities:
+      </p>
+      <div class="docs-example-code mt-2" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-css">.cider-fixed {
+  @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
+}</code></pre>
       </div>
       <div class="cider mt-4">
         <table>
@@ -97,7 +105,7 @@
 &lt;/div&gt;
 
 &lt;!-- Custom fixed breakpoints --&gt;
-&lt;div class="cider-fixed max-w-6xl xl:max-w-7xl"&gt;
+&lt;div class="cider cider-fixed max-w-6xl xl:max-w-7xl"&gt;
   ...
 &lt;/div&gt;</code></pre>
       </div>
@@ -135,7 +143,7 @@
     <!-- Styled elements reference -->
     <section class="space-y-3">
       <h2 class="text-xl font-bold tracking-tight">Styled elements</h2>
-      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.cider</code> or <code class="kbd">.cider-fixed</code> receives opinionated styling. Here's what each element gets.</p>
+      <p class="max-w-xl text-muted-foreground">Every native HTML element inside <code class="kbd">.cider</code> receives opinionated styling. Here's what each element gets.</p>
       <div class="cider mt-4">
         <table>
           <thead>
