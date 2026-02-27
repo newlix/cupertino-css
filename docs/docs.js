@@ -14,6 +14,11 @@ const NAV = [
     items: [
       { label: "Container", href: "components/container.html" },
       { label: "Typography", href: "components/typography.html" },
+    ],
+  },
+  {
+    title: "Forms",
+    items: [
       { label: "Checkbox", href: "components/checkbox.html" },
       { label: "Combobox", href: "components/combobox.html" },
       { label: "Field", href: "components/field.html" },
