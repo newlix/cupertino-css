@@ -1,0 +1,71 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Alert Dialog" %}
+{% set description = "Confirmation dialogs that require user acknowledgement." %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<button onclick="document.getElementById('demo-alert-dialog').showModal()" class="btn-outline">Delete Account</button>
+
+<dialog id="demo-alert-dialog" class="dialog">
+  <header>
+    <h3>Are you absolutely sure?</h3>
+    <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-destructive">Continue</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("Destructive") %}
+<button onclick="document.getElementById('demo-alert-destructive').showModal()" class="btn-destructive">Delete Project</button>
+
+<dialog id="demo-alert-destructive" class="dialog">
+  <header>
+    <h3>Delete project?</h3>
+    <p>This will permanently delete the project "My Portfolio" and all of its files. This action is irreversible.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-alert-destructive').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-destructive').close()" class="btn-destructive">Delete Project</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("With Icon") %}
+<button onclick="document.getElementById('demo-alert-icon').showModal()" class="btn-outline">Sign Out</button>
+
+<dialog id="demo-alert-icon" class="dialog">
+  <header>
+    <div class="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-destructive/10">
+      <svg class="size-6 text-destructive" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+    </div>
+    <h3 class="text-center">Sign out of your account?</h3>
+    <p class="text-center">You will need to enter your credentials again to sign back in.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-alert-icon').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-icon').close()" class="btn-destructive">Sign Out</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("Confirmation") %}
+<button onclick="document.getElementById('demo-alert-confirm').showModal()">Publish Article</button>
+
+<dialog id="demo-alert-confirm" class="dialog">
+  <header>
+    <h3>Publish article?</h3>
+    <p>This article will be visible to all users. You can unpublish it later from the dashboard.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-alert-confirm').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-confirm').close()">Publish</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+{% endblock %}

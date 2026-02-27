@@ -1,0 +1,56 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Spinner" %}
+{% set description = "Loading spinners." %}
+
+{% block content %}
+
+  {% call example("Sizes") %}
+<div class="flex flex-wrap items-center gap-4">
+  <span class="spinner spinner-sm"></span>
+  <span class="spinner"></span>
+  <span class="spinner spinner-lg"></span>
+</div>
+{% endcall %}
+
+  {% call example("Color") %}
+<div class="flex items-center gap-6">
+  <span class="spinner text-red-500"></span>
+  <span class="spinner text-green-500"></span>
+  <span class="spinner text-blue-500"></span>
+  <span class="spinner text-yellow-500"></span>
+  <span class="spinner text-purple-500"></span>
+</div>
+{% endcall %}
+
+  {% call example("Button") %}
+<div class="flex flex-wrap items-center gap-4">
+  <button disabled>
+    <span class="spinner spinner-sm"></span>
+    Loading…
+  </button>
+  <button class="btn-outline" disabled>
+    <span class="spinner spinner-sm"></span>
+    Please wait
+  </button>
+  <button disabled>
+    <span class="spinner spinner-sm"></span>
+    Processing
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("Badge") %}
+<div class="flex items-center gap-4">
+  <span class="tag">
+    <span class="spinner spinner-sm"></span>
+    Syncing
+  </span>
+  <span class="tag">
+    <span class="spinner spinner-sm"></span>
+    Processing
+  </span>
+</div>
+{% endcall %}
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Form" %}
+{% set description = "Structured forms with fieldsets, validation, and layout patterns." %}
+
+{% block content %}
+
+  {% call example("Login") %}
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Log In</legend>
+    <p>Enter your credentials to access your account.</p>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+  </fieldset>
+  <button type="submit" class="w-full">Sign In</button>
+</form>
+{% endcall %}
+
+  {% call example("Profile with Validation") %}
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Profile</legend>
+    <p>Update your profile information.</p>
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" placeholder="John Doe">
+    </div>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" value="ab" class="input-error">
+      <p class="field-error">Username must be at least 3 characters.</p>
+    </div>
+    <div class="field">
+      <label>Bio</label>
+      <textarea placeholder="Tell us about yourself..." rows="3"></textarea>
+      <p>Max 200 characters.</p>
+    </div>
+  </fieldset>
+  <div class="flex gap-3">
+    <button type="submit">Save</button>
+    <button type="button" class="btn-outline">Cancel</button>
+  </div>
+</form>
+{% endcall %}
+
+  {% call example("Registration") %}
+<div class="cider">
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Create Account</legend>
+    <p>Sign up for a new account to get started.</p>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" placeholder="John">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Doe">
+      </div>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="Create a password">
+      <p>Must be at least 8 characters.</p>
+    </div>
+    <div class="field">
+      <label class="inline-flex items-center gap-2.5 cursor-pointer">
+        <input type="checkbox">
+        <span class="text-sm">I agree to the Terms of Service</span>
+      </label>
+    </div>
+  </fieldset>
+  <button type="submit" class="w-full">Create Account</button>
+  <div class="separator-label">or continue with</div>
+  <div class="flex gap-3">
+    <button type="button" class="btn-outline w-full">Google</button>
+    <button type="button" class="btn-outline w-full">GitHub</button>
+  </div>
+</form>
+</div>
+{% endcall %}
+
+  {% call example("Checkbox & Radio Group") %}
+<div class="cider">
+<form class="w-full max-w-sm flex flex-col gap-4" onsubmit="event.preventDefault()">
+  <fieldset class="fieldset">
+    <legend>Notifications</legend>
+    <p>Choose what you want to be notified about.</p>
+    <div class="flex flex-col gap-3">
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox" checked> Email notifications
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox"> Push notifications
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="checkbox"> SMS notifications
+      </label>
+    </div>
+  </fieldset>
+  <hr class="border-border">
+  <fieldset class="fieldset">
+    <legend>Frequency</legend>
+    <div class="flex flex-col gap-3">
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq" checked> Real-time
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq"> Daily digest
+      </label>
+      <label class="flex items-center gap-2.5 text-sm">
+        <input type="radio" name="freq"> Weekly summary
+      </label>
+    </div>
+  </fieldset>
+</form>
+</div>
+{% endcall %}
+
+{% endblock %}

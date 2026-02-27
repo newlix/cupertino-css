@@ -1,0 +1,162 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Container" %}
+{% set description = "Opt-in auto-styling for native HTML elements — buttons, inputs, tables, and typography. No component classes needed." %}
+
+{% block content %}
+
+  <!-- Opt-in Auto-styling -->
+  <p class="text-muted-foreground">
+      <code class="kbd">.cider</code> adds no layout styles — it purely activates element auto-styling. Add your own padding, max-width, or any layout utilities as needed.
+    </p>
+    {% call example("Opt-in Auto-styling") %}
+<div class="cider">
+  <h1>Hello</h1>
+  <p>Auto-styled, layout is up to you.</p>
+  <button>Click me</button>
+</div>
+{% endcall %}
+
+  <!-- Fixed width -->
+  <section class="space-y-3">
+    <h2 class="text-xl font-bold tracking-tight">Centered layout</h2>
+    <p class="text-muted-foreground">
+      <code class="kbd">.cider-fixed</code> is a convenient default — centered padding with responsive max-width breakpoints. Override any value with Tailwind utilities.
+    </p>
+    <div class="snippet mt-4">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-html">&lt;!-- Default breakpoints --&gt;
+&lt;div class="cider cider-fixed"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override max-width --&gt;
+&lt;div class="cider cider-fixed max-w-6xl"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override padding --&gt;
+&lt;div class="cider cider-fixed px-8"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Constrained fluid (no fixed breakpoints) --&gt;
+&lt;div class="cider max-w-4xl mx-auto"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Custom fixed breakpoints --&gt;
+&lt;div class="cider cider-fixed max-w-6xl xl:max-w-7xl"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+    </div>
+    <p class="text-sm text-muted-foreground mt-3">
+      Behind the scenes, <code class="kbd">.cider-fixed</code> is just Tailwind utilities:
+    </p>
+    <div class="snippet mt-2">
+      <header>
+        <span>CSS</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-css">.cider-fixed {
+  @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
+}</code></pre>
+    </div>
+    <div class="cider mt-4">
+      <table>
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Viewport</th>
+            <th>Max width</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Default</td>
+            <td>&lt; 768px</td>
+            <td>576px <span class="text-xs text-muted-foreground">(36rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>md</code></td>
+            <td>&ge; 768px</td>
+            <td>672px <span class="text-xs text-muted-foreground">(42rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>lg</code></td>
+            <td>&ge; 1024px</td>
+            <td>896px <span class="text-xs text-muted-foreground">(56rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>xl</code></td>
+            <td>&ge; 1280px</td>
+            <td>1152px <span class="text-xs text-muted-foreground">(72rem)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Reset -->
+  <p class="text-muted-foreground">
+      Add <code class="kbd">.cider-reset</code> to stop <code class="kbd">.cider</code> styles from leaking into nested components. Useful when embedding UI components inside auto-styled content.
+    </p>
+    {% call example("Reset boundary") %}
+<div class="cider">
+  <h1>Styled by .cider</h1>
+  <p>This paragraph is auto-styled.</p>
+  <div class="cider-reset">
+    <button>Plain button (no .cider styling)</button>
+  </div>
+</div>
+{% endcall %}
+
+  <p class="text-muted-foreground">
+      To re-enable <code class="kbd">.cider</code> inside a reset boundary, add <code class="kbd">.cider</code> again — it opens a new scope:
+    </p>
+    {% call example("Re-enabling inside reset") %}
+<div class="cider">
+  <button>Styled</button>
+  <div class="cider-reset">
+    <button>Unstyled</button>
+    <div class="cider" style="margin-top:0.5rem">
+      <button>Styled again</button>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+  <!-- Semantic containers -->
+  <section class="space-y-3">
+    <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
+    <div class="snippet mt-4">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-html">&lt;body&gt;
+  &lt;header class="cider py-6"&gt;
+    &lt;h1&gt;My App&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main class="cider py-8"&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
+    &lt;form&gt;
+      &lt;label for="name"&gt;Name&lt;/label&gt;
+      &lt;input type="text" id="name"&gt;
+      &lt;button type="submit"&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="cider py-6"&gt;
+    &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

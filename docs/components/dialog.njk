@@ -1,0 +1,157 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Dialog" %}
+{% set description = "Modal dialogs for confirmations and forms." %}
+
+{% block content %}
+
+  {% call example("Confirmation") %}
+<button onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
+
+<dialog id="demo-dialog-1" class="dialog">
+  <header>
+    <h2>Are you sure?</h2>
+    <p>This action cannot be undone. This will permanently delete your account.</p>
+  </header>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-destructive">Delete</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("Form Dialog") %}
+<button onclick="document.getElementById('demo-dialog-2').showModal()" class="btn-outline">Edit Profile</button>
+
+<dialog id="demo-dialog-2" class="dialog">
+  <header>
+    <h2>Edit Profile</h2>
+    <p>Make changes to your profile here.</p>
+  </header>
+  <section>
+    <div class="space-y-4">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" value="John Doe" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" value="john@example.com" />
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-2').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-2').close()">Save Changes</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("Scrollable Content") %}
+<button onclick="document.getElementById('demo-dialog-scroll').showModal()" class="btn-outline">Scrollable Dialog</button>
+
+<dialog id="demo-dialog-scroll" class="dialog" style="max-height:400px;">
+  <header>
+    <h2>Terms of Service</h2>
+    <p>Please read the following terms carefully.</p>
+  </header>
+  <section class="overflow-y-auto" style="max-height:200px;">
+    <div class="space-y-4 text-sm text-muted-foreground">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</p>
+      <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-scroll').close()" class="btn-outline">Decline</button>
+    <button onclick="document.getElementById('demo-dialog-scroll').close()">Accept</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  {% call example("With Close Button") %}
+<button onclick="document.getElementById('demo-dialog-close').showModal()" class="btn-outline">Share Link</button>
+
+<dialog id="demo-dialog-close" class="dialog">
+  <button onclick="document.getElementById('demo-dialog-close').close()" class="absolute top-4 right-4 inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <header>
+    <h2>Share Link</h2>
+    <p>Anyone with the link will be able to view this document.</p>
+  </header>
+  <section>
+    <div class="flex gap-2">
+      <input type="text" value="https://example.com/doc/abc123" readonly class="input flex-1" />
+      <button onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
+    </div>
+  </section>
+  <footer></footer>
+</dialog>
+{% endcall %}
+
+  {% call example("Custom Content") %}
+<button onclick="document.getElementById('demo-dialog-custom').showModal()" class="btn-outline">Invite Members</button>
+
+<dialog id="demo-dialog-custom" class="dialog" style="max-width: 480px;">
+  <header>
+    <h2>Invite Team Members</h2>
+    <p>Add colleagues to collaborate on this project.</p>
+  </header>
+  <section>
+    <div class="space-y-4">
+      <div class="flex gap-2">
+        <input type="email" placeholder="email@example.com" class="input flex-1" />
+        <button>Invite</button>
+      </div>
+      <div class="space-y-2">
+        <div class="flex items-center justify-between rounded-lg border px-3 py-2">
+          <div class="flex items-center gap-2.5">
+            <div class="avatar size-8 text-xs bg-primary/10 text-primary text-xs">SC</div>
+            <div>
+              <p class="text-sm font-medium">Sarah Chen</p>
+              <p class="text-xs text-muted-foreground">sarah@example.com</p>
+            </div>
+          </div>
+          <span class="text-xs text-muted-foreground">Owner</span>
+        </div>
+        <div class="flex items-center justify-between rounded-lg border px-3 py-2">
+          <div class="flex items-center gap-2.5">
+            <div class="avatar size-8 text-xs bg-primary/10 text-primary text-xs">JD</div>
+            <div>
+              <p class="text-sm font-medium">John Doe</p>
+              <p class="text-xs text-muted-foreground">john@example.com</p>
+            </div>
+          </div>
+          <select class="select h-auto w-auto py-1 pl-2 pr-8 text-xs rounded-lg">
+            <option>Viewer</option>
+            <option selected>Editor</option>
+            <option>Admin</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-custom').close()">Done</button>
+  </footer>
+</dialog>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close. The native <code class="kbd">&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
+    <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/dialog.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://unpkg.com/ciderui/js/dialog.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

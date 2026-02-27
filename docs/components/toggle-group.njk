@@ -1,0 +1,76 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Toggle Group" %}
+{% set description = "A set of two-state buttons that can be toggled on or off." %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="toggle-group" data-multiple>
+  <button class="toggle" data-active aria-pressed="true" title="Bold">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
+  </button>
+  <button class="toggle" aria-pressed="false" title="Italic">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m-2 0h4"/></svg>
+  </button>
+  <button class="toggle" aria-pressed="false" title="Underline">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a6 6 0 0012 0V4M4 20h16"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("Outline") %}
+<div class="toggle-group" data-multiple>
+  <button class="toggle toggle-outline" data-active aria-pressed="true" title="Bold">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
+  </button>
+  <button class="toggle toggle-outline" aria-pressed="false" title="Italic">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m-2 0h4"/></svg>
+  </button>
+  <button class="toggle toggle-outline" aria-pressed="false" title="Underline">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a6 6 0 0012 0V4M4 20h16"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("Single Select") %}
+<div class="toggle-group">
+  <button class="toggle" data-active aria-pressed="true">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"/></svg>
+  </button>
+  <button class="toggle" aria-pressed="false">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <button class="toggle" aria-pressed="false">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M8 12h8m-4 6h8"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("Disabled") %}
+<div class="toggle-group">
+  <button class="toggle" disabled aria-pressed="false" title="Bold">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
+  </button>
+  <button class="toggle" disabled aria-pressed="false" title="Italic">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m-2 0h4"/></svg>
+  </button>
+  <button class="toggle" disabled aria-pressed="false" title="Underline">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a6 6 0 0012 0V4M4 20h16"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-muted-foreground">Handles <code class="kbd">aria-pressed</code> toggling and single-select logic. Same script as Toggle.</p>
+    <div class="docs-example-code mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/toggle.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://unpkg.com/ciderui/js/toggle.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

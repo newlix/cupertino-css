@@ -1,0 +1,23 @@
+{#
+  example(label) — renders a preview + highlighted code snippet
+
+  Usage:
+    {% call example("Variants") %}
+    <div class="cider">...</div>
+    {% endcall %}
+#}
+{% macro example(label="") %}
+<section class="docs-example">
+  {%- if label %}
+  <h3 class="docs-example-label">{{ label }}</h3>
+  {%- endif %}
+  <div class="docs-example-code snippet">
+    <figure>{{ caller() }}</figure>
+    <header>
+      <span>HTML</span>
+      <button>Copy</button>
+    </header>
+    <pre><code class="language-html">{{ caller() | dedent | highlight("html") }}</code></pre>
+  </div>
+</section>
+{% endmacro %}

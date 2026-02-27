@@ -1,0 +1,202 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Table" %}
+{% set description = "Data tables with hover and striped variants." %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="cider">
+  <table>
+    <thead>
+      <tr>
+        <th>Invoice</th>
+        <th>Status</th>
+        <th>Method</th>
+        <th class="text-right">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-medium">INV-001</td>
+        <td>Paid</td>
+        <td>Credit Card</td>
+        <td class="text-right">$250.00</td>
+      </tr>
+      <tr>
+        <td class="font-medium">INV-002</td>
+        <td>Pending</td>
+        <td>PayPal</td>
+        <td class="text-right">$150.00</td>
+      </tr>
+      <tr>
+        <td class="font-medium">INV-003</td>
+        <td>Unpaid</td>
+        <td>Bank Transfer</td>
+        <td class="text-right">$350.00</td>
+      </tr>
+      <tr>
+        <td class="font-medium">INV-004</td>
+        <td>Paid</td>
+        <td>Credit Card</td>
+        <td class="text-right">$450.00</td>
+      </tr>
+      <tr>
+        <td class="font-medium">INV-005</td>
+        <td>Paid</td>
+        <td>Apple Pay</td>
+        <td class="text-right">$550.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="font-medium">Total</td>
+        <td class="text-right font-semibold">$1,750.00</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% endcall %}
+
+  {% call example("With Badges") %}
+<div class="cider">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-medium">John Doe</td>
+        <td class="text-muted-foreground">john@example.com</td>
+        <td class="text-muted-foreground">Admin</td>
+        <td><span class="tag"><span class="size-1.5 rounded-full bg-success"></span>Active</span></td>
+      </tr>
+      <tr>
+        <td class="font-medium">Jane Smith</td>
+        <td class="text-muted-foreground">jane@example.com</td>
+        <td class="text-muted-foreground">Editor</td>
+        <td><span class="tag"><span class="size-1.5 rounded-full bg-success"></span>Active</span></td>
+      </tr>
+      <tr>
+        <td class="font-medium">Bob Wilson</td>
+        <td class="text-muted-foreground">bob@example.com</td>
+        <td class="text-muted-foreground">Viewer</td>
+        <td><span class="tag">Inactive</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+  {% call example("With Actions") %}
+<div class="cider">
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Category</th>
+        <th class="text-right">Price</th>
+        <th class="text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-medium">Wireless Mouse</td>
+        <td class="text-muted-foreground">Peripherals</td>
+        <td class="text-right">$49.99</td>
+        <td class="text-right">
+          <div class="relative inline-block" data-dropdown>
+            <button data-dropdown-trigger class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+            </button>
+            <div data-dropdown-content class="dropdown-menu right-0">
+              <button>Edit</button>
+              <button>Duplicate</button>
+              <hr />
+              <button class="dropdown-destructive">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="font-medium">Mechanical Keyboard</td>
+        <td class="text-muted-foreground">Peripherals</td>
+        <td class="text-right">$129.99</td>
+        <td class="text-right">
+          <div class="relative inline-block" data-dropdown>
+            <button data-dropdown-trigger class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+            </button>
+            <div data-dropdown-content class="dropdown-menu right-0">
+              <button>Edit</button>
+              <button>Duplicate</button>
+              <hr />
+              <button class="dropdown-destructive">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="font-medium">USB-C Hub</td>
+        <td class="text-muted-foreground">Accessories</td>
+        <td class="text-right">$79.99</td>
+        <td class="text-right">
+          <div class="relative inline-block" data-dropdown>
+            <button data-dropdown-trigger class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+              <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+            </button>
+            <div data-dropdown-content class="dropdown-menu right-0">
+              <button>Edit</button>
+              <button>Duplicate</button>
+              <hr />
+              <button class="dropdown-destructive">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+  {% call example("With Checkboxes") %}
+<div class="cider">
+  <table>
+    <thead>
+      <tr>
+        <th class="w-10"><input type="checkbox" /></th>
+        <th>Task</th>
+        <th>Status</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" checked /></td>
+        <td class="font-medium">Update landing page</td>
+        <td><span class="tag"><span class="size-1.5 rounded-full bg-success"></span>Done</span></td>
+        <td class="text-muted-foreground">High</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td class="font-medium">Fix login bug</td>
+        <td><span class="tag"><span class="size-1.5 rounded-full bg-warning"></span>In Progress</span></td>
+        <td class="text-muted-foreground">Medium</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td class="font-medium">Write API docs</td>
+        <td><span class="tag">Todo</span></td>
+        <td class="text-muted-foreground">Low</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endcall %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Input" %}
+{% set description = "Text inputs for forms and data entry." %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="cider">
+  <input type="text" placeholder="Enter text..." />
+</div>
+{% endcall %}
+
+  {% call example("With Label") %}
+<div class="cider space-y-1.5">
+  <label for="demo-email">Email</label>
+  <input type="email" id="demo-email" placeholder="you@example.com" />
+  <small>We'll never share your email.</small>
+</div>
+{% endcall %}
+
+  {% call example("Error State") %}
+<div class="cider space-y-1.5">
+  <label for="demo-username">Username</label>
+  <input type="text" id="demo-username" value="ab" aria-invalid="true" />
+  <small class="text-destructive">Username must be at least 3 characters.</small>
+</div>
+{% endcall %}
+
+  {% call example("Disabled") %}
+<div class="cider">
+  <input type="text" placeholder="Enter text..." disabled />
+</div>
+{% endcall %}
+
+  {% call example("With Button") %}
+<div class="cider flex gap-3">
+  <input type="email" placeholder="you@example.com" />
+  <button type="submit">Subscribe</button>
+</div>
+{% endcall %}
+
+  {% call example("Form") %}
+<div class="cider">
+  <form class="space-y-6" onsubmit="return false">
+    <div class="space-y-1.5">
+      <label for="demo-form-email">Email</label>
+      <input type="email" id="demo-form-email" placeholder="you@example.com">
+      <small>We'll never share your email with anyone else.</small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+{% endcall %}
+
+{% endblock %}

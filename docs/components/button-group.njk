@@ -1,0 +1,32 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Button Group" %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="btn-group">
+  <button>Left</button>
+  <button>Center</button>
+  <button>Right</button>
+</div>
+{% endcall %}
+
+  {% call example("Active state") %}
+<div class="btn-group">
+  <button data-active>Day</button>
+  <button>Week</button>
+  <button>Month</button>
+</div>
+{% endcall %}
+
+  {% call example("With input") %}
+<div class="flex">
+  <input type="text" class="input rounded-r-none border-r-0" placeholder="Search…" />
+  <button class="btn-outline rounded-l-none">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+{% endblock %}

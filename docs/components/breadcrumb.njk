@@ -1,0 +1,28 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Breadcrumb" %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="cider">
+  <nav class="breadcrumb">
+    <a href="#">Home</a>
+    <a href="#">Components</a>
+    <span>Breadcrumb</span>
+  </nav>
+</div>
+{% endcall %}
+
+  {% call example("Collapsed") %}
+<div class="cider">
+  <nav class="breadcrumb">
+    <a href="#">Home</a>
+    <span>&hellip;</span>
+    <a href="#">Components</a>
+    <span>Breadcrumb</span>
+  </nav>
+</div>
+{% endcall %}
+
+{% endblock %}

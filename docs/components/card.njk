@@ -1,0 +1,59 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Card" %}
+{% set description = "Content containers with Apple-style borders and shadows." %}
+
+{% block content %}
+
+  {% call example("Basic") %}
+<div class="card">
+  <h3>Basic Card</h3>
+  <p>Simple card with title and description.</p>
+</div>
+{% endcall %}
+
+  {% call example("Interactive") %}
+<div class="card-interactive group">
+  <h3>Interactive Card</h3>
+  <p>Hover to see the effect.</p>
+  <span class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary transition-all duration-200 group-hover:gap-2">
+    Learn more <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </span>
+</div>
+{% endcall %}
+
+  {% call example("With Header & Footer") %}
+<div class="card">
+  <header>
+    <h3>Card with Header & Footer</h3>
+    <p>Structured layout</p>
+  </header>
+  <section>
+    <p class="text-sm text-muted-foreground">Card content goes here.</p>
+  </section>
+  <footer>
+    <button>Save</button>
+  </footer>
+</div>
+{% endcall %}
+
+  {% call example("With Image") %}
+<div class="card" style="max-width:380px;">
+  <section class="p-0">
+    <img src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&h=400&fit=crop" alt="Placeholder" class="w-full rounded-t-xl object-cover" style="height:180px;">
+  </section>
+  <header>
+    <h3>Beautiful Landscape</h3>
+    <p>Photography collection</p>
+  </header>
+  <section>
+    <p class="text-sm text-muted-foreground">A curated collection of stunning landscape photographs from around the world.</p>
+  </section>
+  <footer>
+    <button class="btn-outline btn-sm">View</button>
+    <button class="btn-sm">Download</button>
+  </footer>
+</div>
+{% endcall %}
+
+{% endblock %}

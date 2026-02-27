@@ -42,6 +42,7 @@
   ],
   "scripts": {
     "build": "tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
+    "build:docs": "node scripts/build-docs.js",
     "dev": "concurrently \"tailwindcss -i docs/docs.css -o docs/docs.built.css --watch\" \"npx serve -l tcp://0.0.0.0:3000\"",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui"
@@ -49,6 +50,8 @@
   "devDependencies": {
     "@playwright/test": "latest",
     "@tailwindcss/cli": "^4.2.1",
-    "concurrently": "latest"
+    "concurrently": "latest",
+    "highlight.js": "^11.11.1",
+    "nunjucks": "^3.2.4"
   }
 }

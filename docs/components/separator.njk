@@ -1,0 +1,46 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Separator" %}
+{% set description = "Visual dividers between content sections." %}
+
+{% block content %}
+
+  {% call example("Horizontal") %}
+<div class="cider">
+  <p class="text-sm">Content above</p>
+  <hr class="my-4">
+  <p class="text-sm">Content below</p>
+</div>
+{% endcall %}
+
+  {% call example("With Label") %}
+<div class="separator-label">or continue with</div>
+{% endcall %}
+
+  {% call example("In Profile Card") %}
+<div class="cider max-w-xs">
+  <div class="space-y-1">
+    <h3 class="text-base font-semibold">Cider UI</h3>
+    <small>Apple-aesthetic component library.</small>
+  </div>
+  <hr class="my-4">
+  <div class="flex items-center gap-4 text-sm">
+    <div>
+      <p class="font-medium">Framework</p>
+      <small>Tailwind CSS</small>
+    </div>
+    <div class="separator separator-vertical h-8"></div>
+    <div>
+      <p class="font-medium">Version</p>
+      <small>v2.4.0</small>
+    </div>
+    <div class="separator separator-vertical h-8"></div>
+    <div>
+      <p class="font-medium">Components</p>
+      <small>40+</small>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+{% endblock %}
