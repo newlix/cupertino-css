@@ -278,9 +278,6 @@
   @import "./components/card.css";
   @import "./components/alert.css";
   @import "./components/form-controls.css";
-  @import "./components/checkbox.css";
-  @import "./components/radio.css";
-  @import "./components/switch.css";
   @import "./components/label.css";
   @import "./components/field.css";
   @import "./components/dialog.css";

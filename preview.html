@@ -22,7 +22,7 @@
     </div>
   </header>
 
-  <main class="mx-auto max-w-5xl space-y-16 px-6 py-12">
+  <main class="ciderui mx-auto max-w-5xl space-y-16 px-6 py-12">
 
     <!-- ===== BUTTON ===== -->
     <section id="button">
@@ -168,11 +168,11 @@
       <p class="mt-1 text-sm text-muted-foreground">Toggle selection controls.</p>
       <div class="mt-6 space-y-3">
         <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" class="checkbox" />
+          <input type="checkbox" />
           <span class="text-sm">Accept terms and conditions</span>
         </label>
         <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" checked class="checkbox" />
+          <input type="checkbox" checked />
           <span class="text-sm">Remember me</span>
         </label>
       </div>
@@ -186,15 +186,15 @@
         <fieldset class="space-y-2.5">
           <legend class="label">Notification preference</legend>
           <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="radio" name="preview-notification" value="all" checked class="radio" />
+            <input type="radio" name="preview-notification" value="all" checked />
             <span class="text-sm">All notifications</span>
           </label>
           <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="radio" name="preview-notification" value="mentions" class="radio" />
+            <input type="radio" name="preview-notification" value="mentions" />
             <span class="text-sm">Mentions only</span>
           </label>
           <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="radio" name="preview-notification" value="none" class="radio" />
+            <input type="radio" name="preview-notification" value="none" />
             <span class="text-sm">None</span>
           </label>
         </fieldset>
@@ -207,11 +207,11 @@
       <p class="mt-1 text-sm text-muted-foreground">Toggle switches for on/off states.</p>
       <div class="mt-6 space-y-3">
         <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" class="switch" />
+          <input type="checkbox" role="switch" />
           <span class="text-sm">Airplane Mode</span>
         </label>
         <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" checked class="switch" />
+          <input type="checkbox" checked role="switch" />
           <span class="text-sm">Wi-Fi</span>
         </label>
       </div>
