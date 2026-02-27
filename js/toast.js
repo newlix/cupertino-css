@@ -1,4 +1,4 @@
-// Toast — cupertino-css
+// Toast — ciderui
 function showToast(title, message, type = "success") {
   const container =
     document.getElementById("toast-container") || createToastContainer();

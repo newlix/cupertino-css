@@ -1,4 +1,4 @@
-// Tabs — cupertino-css
+// Tabs — ciderui
 document.querySelectorAll("[data-tabs]").forEach((tabGroup) => {
   const buttons = tabGroup.querySelectorAll("[data-tab]");
   const panels = tabGroup.querySelectorAll("[data-tab-panel]");

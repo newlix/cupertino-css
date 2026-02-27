@@ -1,12 +1,12 @@
 {
-  "name": "cupertino-css",
+  "name": "ciderui",
   "version": "0.1.0",
   "description": "Apple-aesthetic UI components as a Tailwind CSS plugin",
   "license": "MIT",
   "author": "newlix",
   "repository": {
     "type": "git",
-    "url": "https://github.com/newlix/cupertino-css"
+    "url": "https://github.com/newlix/ciderui"
   },
   "keywords": [
     "tailwindcss",
@@ -14,21 +14,21 @@
     "css",
     "components",
     "apple",
-    "cupertino",
+    "cider",
     "ui"
   ],
   "type": "module",
   "exports": {
-    ".": "./src/css/cupertino.css",
-    "./cdn": "./src/css/cupertino.cdn.css"
+    ".": "./src/css/ciderui.css",
+    "./cdn": "./src/css/ciderui.cdn.css"
   },
   "files": [
-    "src/css/cupertino.css",
-    "src/css/cupertino.cdn.css",
+    "src/css/ciderui.css",
+    "src/css/ciderui.cdn.css",
     "js/"
   ],
   "scripts": {
-    "build": "tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.css && tailwindcss -i src/css/cupertino.cdn.css -o dist/cupertino.cdn.min.css --minify",
+    "build": "tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
     "dev": "concurrently \"tailwindcss -i docs/docs.css -o docs/docs.built.css --watch\" \"npx serve -l tcp://0.0.0.0:3000\"",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui"

@@ -1,4 +1,4 @@
-// Input OTP — cupertino-css
+// Input OTP — ciderui
 // Manages hidden input, auto-advance, backspace, paste for OTP slots.
 document.querySelectorAll(".input-otp").forEach((otp) => {
   const slots = otp.querySelectorAll(".input-otp-slot");

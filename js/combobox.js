@@ -1,4 +1,4 @@
-// Combobox — cupertino-css
+// Combobox — ciderui
 // Searchable select dropdown
 
 document.querySelectorAll(".combobox").forEach((combobox) => {

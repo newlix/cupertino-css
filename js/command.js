@@ -1,4 +1,4 @@
-// Command — cupertino-css
+// Command — ciderui
 // Handles search filtering in .command components
 
 document.querySelectorAll(".command").forEach((command) => {

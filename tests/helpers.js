@@ -1,5 +1,5 @@
 /**
- * Shared test utilities for cupertino-css Playwright tests.
+ * Shared test utilities for ciderui Playwright tests.
  */
 
 /** Navigate to a component doc page and wait for ready. */

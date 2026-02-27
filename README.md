@@ -1,11 +1,11 @@
-# Cupertino
+# Cider UI
 
 Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names like `btn`, `card`, `input` — no utility soup in your markup.
 
 ## Install
 
 ```bash
-npm install cupertino-css@github:newlix/cupertino-css
+npm install ciderui@github:newlix/ciderui
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install cupertino-css@github:newlix/cupertino-css
 ```css
 /* your main CSS file */
 @import "tailwindcss";
-@import "cupertino-css";
+@import "ciderui";
 ```
 
 ```html
@@ -32,7 +32,7 @@ npm install cupertino-css@github:newlix/cupertino-css
 For quick prototyping without a build step:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/newlix/cupertino-css@main/dist/cupertino.cdn.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/dist/ciderui.cdn.min.css" />
 ```
 
 ## Components (27)

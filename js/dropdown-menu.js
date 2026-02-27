@@ -1,4 +1,4 @@
-// Dropdown Menu — cupertino-css
+// Dropdown Menu — ciderui
 document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-dropdown-trigger]");
   if (trigger) {

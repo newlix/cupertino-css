@@ -1,0 +1,11 @@
+/*
+ * ciderui — CDN variant (includes Tailwind CSS)
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="path/to/ciderui.cdn.css" />
+ *
+ * This file includes Tailwind CSS + ciderui in one bundle.
+ * source(none) ensures Tailwind only generates classes used in ciderui.css.
+ */
+@import "tailwindcss" source(none);
+@import "./ciderui.css";
