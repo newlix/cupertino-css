@@ -8,24 +8,16 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const DOCS = path.join(ROOT, "docs");
 const SITE = path.join(ROOT, "site");
 
-// ─── 1. Build CSS ───
-console.log("Building CSS...");
-execSync(
-  `npx @tailwindcss/cli -i docs/docs.css -o site/docs.built.css`,
-  { cwd: ROOT, stdio: "inherit" }
-);
-
-// ─── 2. Configure Nunjucks ───
+// ─── Configure Nunjucks ───
 const env = nunjucks.configure(DOCS, {
   autoescape: false,
   trimBlocks: true,
   lstripBlocks: true,
+  noCache: true,
 });
 
-// dedent filter: trim leading/trailing blank lines, strip common indentation
 env.addFilter("dedent", (str) => {
   if (!str) return "";
-  // Trim leading/trailing blank lines
   const trimmed = str.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
   const lines = trimmed.split("\n");
   const indents = lines
@@ -35,7 +27,6 @@ env.addFilter("dedent", (str) => {
   return lines.map((l) => l.slice(minIndent)).join("\n");
 });
 
-// highlight filter: syntax highlight via highlight.js, HTML-escape is done by hljs
 env.addFilter("highlight", (str, lang) => {
   if (!str) return "";
   if (lang && hljs.getLanguage(lang)) {
@@ -44,48 +35,7 @@ env.addFilter("highlight", (str, lang) => {
   return hljs.highlightAuto(str).value;
 });
 
-// ─── 3. Load nav data ───
-const nav = JSON.parse(
-  fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8")
-);
-
-// ─── 4. Glob .njk pages ───
-function globNjk(dir) {
-  const results = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name.startsWith("_")) continue;
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      results.push(...globNjk(full));
-    } else if (entry.name.endsWith(".njk")) {
-      results.push(full);
-    }
-  }
-  return results;
-}
-
-const pages = globNjk(DOCS);
-console.log(`Found ${pages.length} .njk pages`);
-
-// ─── 5. Render each page ───
-for (const pagePath of pages) {
-  const rel = path.relative(DOCS, pagePath); // e.g. "components/button.njk"
-  const outRel = rel.replace(/\.njk$/, ".html");
-  const outPath = path.join(SITE, outRel);
-
-  // Compute base path and page href for active nav
-  const depth = rel.split(path.sep).length - 1;
-  const base = depth > 0 ? "../".repeat(depth) : "";
-  const pageHref = outRel.replace(/\\/g, "/"); // e.g. "components/button.html"
-
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-
-  const html = env.render(rel, { nav, base, page: pageHref });
-  fs.writeFileSync(outPath, html);
-  console.log(`  ${outRel}`);
-}
-
-// ─── 6. Copy static assets ───
+// ─── Helpers ───
 function copyFile(src, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.copyFileSync(src, dest);
@@ -104,23 +54,81 @@ function copyDir(src, dest) {
   }
 }
 
-// favicon
-if (fs.existsSync(path.join(DOCS, "favicon.svg"))) {
-  copyFile(path.join(DOCS, "favicon.svg"), path.join(SITE, "favicon.svg"));
+function globNjk(dir) {
+  const results = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith("_")) continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...globNjk(full));
+    } else if (entry.name.endsWith(".njk")) {
+      results.push(full);
+    }
+  }
+  return results;
 }
 
-// llms.txt
-if (fs.existsSync(path.join(DOCS, "llms.txt"))) {
-  copyFile(path.join(DOCS, "llms.txt"), path.join(SITE, "llms.txt"));
+// ─── Build ───
+function build() {
+  const start = performance.now();
+
+  // CSS
+  execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/docs.built.css`, {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
+
+  // Nav
+  const nav = JSON.parse(
+    fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8")
+  );
+
+  // Render pages
+  const pages = globNjk(DOCS);
+  for (const pagePath of pages) {
+    const rel = path.relative(DOCS, pagePath);
+    const outRel = rel.replace(/\.njk$/, ".html");
+    const outPath = path.join(SITE, outRel);
+    const depth = rel.split(path.sep).length - 1;
+    const base = depth > 0 ? "../".repeat(depth) : "";
+    const pageHref = outRel.replace(/\\/g, "/");
+
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, env.render(rel, { nav, base, page: pageHref }));
+  }
+
+  // Static assets
+  if (fs.existsSync(path.join(DOCS, "favicon.svg")))
+    copyFile(path.join(DOCS, "favicon.svg"), path.join(SITE, "favicon.svg"));
+  if (fs.existsSync(path.join(DOCS, "llms.txt")))
+    copyFile(path.join(DOCS, "llms.txt"), path.join(SITE, "llms.txt"));
+  if (fs.existsSync(path.join(DOCS, "demos")))
+    copyDir(path.join(DOCS, "demos"), path.join(SITE, "demos"));
+  copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
+
+  const ms = Math.round(performance.now() - start);
+  console.log(`Built ${pages.length} pages → ${SITE} (${ms}ms)`);
 }
 
-// demos (HTML fragments for homepage lazy-load)
-if (fs.existsSync(path.join(DOCS, "demos"))) {
-  copyDir(path.join(DOCS, "demos"), path.join(SITE, "demos"));
+// ─── Initial build ───
+build();
+
+// ─── Watch mode ───
+if (process.argv.includes("--watch")) {
+  let timer;
+  const rebuild = () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      try {
+        build();
+      } catch (e) {
+        console.error(e.message);
+      }
+    }, 200);
+  };
+
+  fs.watch(DOCS, { recursive: true }, rebuild);
+  fs.watch(path.join(ROOT, "src", "css"), { recursive: true }, rebuild);
+  fs.watch(path.join(ROOT, "js"), { recursive: true }, rebuild);
+  console.log("Watching for changes...");
 }
-
-// JS files
-copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
-
-console.log("Static assets copied.");
-console.log(`Build complete → ${SITE}`);

@@ -15,7 +15,6 @@ docs/
   _data/nav.json        # Sidebar navigation data
   docs.css              # Tailwind + ciderui + docs-specific styles
   components/*.njk      # Component doc pages (Nunjucks source)
-  examples/*.njk        # Showcase pages
   demos/*.html          # HTML fragments lazy-loaded on homepage
 scripts/
   build-docs.js         # SSG build: .njk → site/*.html + CSS + assets

@@ -1,18 +1,24 @@
 {#
-  example(label) — renders a preview + highlighted code snippet
+  example(label, preview) — renders a code snippet with optional preview
 
   Usage:
     {% call example("Variants") %}
     <div class="cider">...</div>
     {% endcall %}
+
+    {% call example("CSS Import", preview=false) %}
+    <link rel="stylesheet" href="ciderui.css" />
+    {% endcall %}
 #}
-{% macro example(label="") %}
-<section class="docs-example">
+{% macro example(label="", preview=true) %}
+<section class="mt-8">
   {%- if label %}
-  <h3 class="docs-example-label">{{ label }}</h3>
+  <h3 class="mb-3 text-lg font-semibold tracking-tight text-foreground">{{ label }}</h3>
   {%- endif %}
   <div class="snippet">
+    {%- if preview %}
     <figure>{{ caller() }}</figure>
+    {%- endif %}
     <header>
       <span>HTML</span>
       <button>Copy</button>
