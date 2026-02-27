@@ -94,7 +94,7 @@ test.describe('CSS Rendering', () => {
   });
 
   test('separator renders as thin line', async ({ page }) => {
-    await goto(page, 'separator', 'layout');
+    await goto(page, 'separator');
     const sep = preview(page).locator('hr').first();
     await expect(sep).toBeVisible();
     const box = await sep.boundingBox();

@@ -14,9 +14,9 @@ const NAV = [
     title: "Layout",
     items: [
       { label: "Container", href: "layout/container.html" },
-      { label: "Aspect Ratio", href: "layout/aspect-ratio.html" },
-      { label: "Scroll Area", href: "layout/scroll-area.html" },
-      { label: "Separator", href: "layout/separator.html" },
+      { label: "Aspect Ratio", href: "components/aspect-ratio.html" },
+      { label: "Scroll Area", href: "components/scroll-area.html" },
+      { label: "Separator", href: "components/separator.html" },
     ],
   },
   {
