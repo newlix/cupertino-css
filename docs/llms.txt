@@ -26,7 +26,11 @@
 - [Switch](https://ciderui.com/components/switch.html): `switch` — pure CSS toggle switch.
 - [Textarea](https://ciderui.com/components/textarea.html): `textarea` — styled textarea.
 
-### Layout & Navigation
+### Layout
+
+- [Container](https://ciderui.com/layout/container.html): `.cider` — auto-style native HTML elements (buttons, inputs, tables, typography). No layout opinion, pure styling hook. Add `.cider-fixed` alongside `.cider` for centered responsive max-width breakpoints.
+
+### Navigation
 
 - [Accordion](https://ciderui.com/components/accordion.html): `accordion` — native `<details>` element styling.
 - [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — navigation breadcrumbs.
