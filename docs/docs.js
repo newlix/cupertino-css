@@ -7,11 +7,6 @@ const NAV = [
     items: [
       { label: "Introduction", href: "introduction.html" },
       { label: "Installation", href: "installation.html" },
-    ],
-  },
-  {
-    title: "Essentials",
-    items: [
       { label: "Container", href: "components/container.html" },
       { label: "Typography", href: "components/typography.html" },
     ],
