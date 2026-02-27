@@ -73,12 +73,12 @@
 - [Carousel](https://ciderui.com/components/carousel.html): Image/content carousel. Requires `js/carousel.js`.
 - [File Tree](https://ciderui.com/components/file-tree.html): File/folder tree view.
 - [Item](https://ciderui.com/components/item.html): List item with icon, label, description.
-- [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 - [Theme Switcher](https://ciderui.com/components/theme-switcher.html): Light/dark/system theme toggle.
 - [Toggle](https://ciderui.com/components/toggle.html): `toggle` — pressable toggle button.
 - [Toggle Group](https://ciderui.com/components/toggle-group.html): Single/multi-select toggle group.
 - [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
+- [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
 
 ## Quick Start
 

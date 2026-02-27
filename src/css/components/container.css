@@ -52,7 +52,7 @@
     & + p { @apply mt-4; }
   }
   a {
-    @apply font-medium text-primary underline underline-offset-4;
+    @apply font-normal text-primary underline underline-offset-4;
     &:hover { text-decoration-color: var(--primary); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 2px; }
   }
@@ -270,5 +270,35 @@
   /* ─── Small (helper text) ─── */
   small {
     @apply text-xs text-muted-foreground;
+  }
+
+  /* ─── Description list ─── */
+  dl {
+    @apply grid gap-x-6 gap-y-3;
+    grid-template-columns: auto 1fr;
+  }
+  dt {
+    @apply font-semibold text-foreground;
+  }
+  dd {
+    @apply text-muted-foreground;
+  }
+
+  /* ─── Mark (highlight) ─── */
+  mark {
+    @apply rounded-sm px-1 py-0.5;
+    background: oklch(0.92 0.1 95);
+    color: var(--foreground);
+    &:is(.dark *) {
+      background: oklch(0.4 0.1 95);
+    }
+  }
+
+  /* ─── Abbreviation ─── */
+  abbr[title] {
+    @apply cursor-help;
+    text-decoration: underline dotted;
+    text-decoration-color: var(--muted-foreground);
+    text-underline-offset: 3px;
   }
 }
