@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Carousel', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/carousel.html');
+    await page.goto('/site/components/carousel.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

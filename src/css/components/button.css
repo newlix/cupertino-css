@@ -1,59 +1,41 @@
 /* ========== BUTTON ========== */
-.btn,
 .btn-primary,
-.btn-secondary,
 .btn-outline,
 .btn-ghost,
 .btn-destructive {
-  @apply inline-flex items-center justify-center gap-2 rounded-[12px] px-4 py-2.5 text-[13px] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-[15px] py-2 text-sm font-normal disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.016em;
+  @apply bg-secondary text-secondary-foreground;
+  &:hover { background: var(--secondary-hover); }
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
 }
 .btn-primary {
   @apply bg-primary text-primary-foreground;
-  box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.1);
-  &:hover { @apply bg-primary-hover; box-shadow: var(--shadow), inset 0 1px 0 oklch(1 0 0 / 0.1); }
-  &:active { @apply bg-primary-active; transform: scale(var(--apple-press-scale)); }
-}
-/* Default .btn alone = primary style (exclude color variants, not size/shape modifiers) */
-.btn:not(.btn-primary, .btn-secondary, .btn-outline, .btn-ghost, .btn-destructive, .btn-icon) {
-  @apply bg-primary text-primary-foreground;
-  box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.1);
-  &:hover { @apply bg-primary-hover; box-shadow: var(--shadow), inset 0 1px 0 oklch(1 0 0 / 0.1); }
-  &:active { @apply bg-primary-active; }
-}
-.btn-secondary {
-  @apply bg-secondary text-secondary-foreground;
-  &:hover { background: var(--secondary-hover); }
+  &:hover { background: oklch(from var(--primary) calc(l + 0.02) c h); }
+  &:active { transform: scale(var(--apple-press-scale)); }
 }
 .btn-outline {
-  @apply border bg-card text-card-foreground;
-  border-color: var(--border-solid);
-  box-shadow: var(--shadow-sm);
-  &:hover { background: var(--surface-2); box-shadow: var(--shadow); }
+  @apply border bg-transparent text-primary;
+  border-color: var(--primary);
+  &:hover { background: oklch(from var(--primary) l c h / 0.06); }
 }
 .btn-ghost {
-  @apply text-foreground;
+  @apply bg-transparent text-foreground;
   &:hover { @apply bg-secondary; }
 }
 .btn-destructive {
-  @apply bg-destructive text-destructive-foreground;
-  box-shadow: var(--shadow-sm);
-  &:hover { @apply bg-destructive-hover; box-shadow: var(--shadow); }
-  &:active { @apply bg-destructive-active; transform: scale(var(--apple-press-scale)); }
+  @apply bg-transparent text-destructive;
+  &:hover { background: oklch(from var(--destructive) l c h / 0.06); }
 }
-.btn-pill {
-  @apply rounded-full px-5;
+.btn-rect {
+  border-radius: 8px;
 }
 .btn-sm {
-  @apply px-3.5 py-1.5 text-xs gap-1.5;
+  @apply px-[10px] py-1 text-xs gap-1.5;
 }
 .btn-lg {
-  @apply px-6 py-3 text-base;
-}
-.btn-icon {
-  @apply size-9 p-0 rounded-full bg-secondary text-muted-foreground;
-  &:hover { background: var(--secondary-hover); }
+  @apply px-[21px] py-[11px] text-[17px];
+  letter-spacing: -0.022em;
 }

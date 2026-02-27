@@ -70,7 +70,7 @@
     ]
   },
   {
-    "title": "Examples",
+    "title": "Showcases",
     "items": [
       { "label": "Form", "href": "components/form.html" },
       { "label": "Tasks", "href": "examples/tasks.html" },

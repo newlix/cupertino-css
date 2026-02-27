@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Combobox', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/combobox.html');
+    await page.goto('/site/components/combobox.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

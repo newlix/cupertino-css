@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Dropdown Menu', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/dropdown-menu.html');
+    await page.goto('/site/components/dropdown-menu.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

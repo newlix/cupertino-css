@@ -1,6 +1,6 @@
 /* ========== SNIPPET (Code Block) ========== */
 .snippet {
-  @apply overflow-hidden border;
+  @apply overflow-hidden rounded-xl border;
   & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
     background: transparent;

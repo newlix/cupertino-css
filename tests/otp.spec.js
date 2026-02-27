@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Input OTP', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/input-otp.html');
+    await page.goto('/site/components/input-otp.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

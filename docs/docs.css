@@ -12,7 +12,7 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
   .docs-sidebar-brand {
-    @apply flex items-center gap-2.5 px-5 py-5 mb-1 border-b;
+    @apply flex items-center justify-between px-5 py-5 mb-1 border-b;
     & h1 {
       @apply text-base font-bold tracking-tight text-foreground;
     }
@@ -35,23 +35,10 @@
     }
   }
 
-  /* Header (top bar for mobile + breadcrumb) */
-  .docs-header {
-    @apply sticky top-0 z-30 border-b;
-    background: oklch(from var(--background) l c h / 0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  .docs-header-inner {
-    @apply flex items-center justify-between px-6 py-3;
-  }
 
   /* Main content area */
   .docs-main {
     @apply ml-[260px] min-h-screen;
-  }
-  .docs-content {
-    @apply mx-auto max-w-3xl px-8 py-10;
   }
   .docs-title {
     @apply text-3xl font-bold tracking-tight text-foreground;
@@ -66,9 +53,6 @@
   }
   .docs-example-label {
     @apply mb-3 text-lg font-semibold tracking-tight text-foreground;
-  }
-  .docs-example-code {
-    @apply relative overflow-hidden;
   }
   .snippet > figure {
     & > .card, & > .field, & > .accordion, & > table, & > .alert, & > .alert-info, & > .alert-success, & > .alert-warning, & > .alert-destructive, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .item, & > .item-group, & > form, & > fieldset, & > .sidebar, & > .theme-switcher, & > .command, & > .cider {
@@ -119,7 +103,11 @@
 
   /* Mobile hamburger */
   .docs-hamburger {
-    @apply hidden size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors cursor-pointer;
+    @apply hidden fixed top-4 left-4 z-50 size-9 items-center justify-center rounded-lg text-muted-foreground cursor-pointer border;
+    background: oklch(from var(--background) l c h / 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-color: var(--border);
     &:hover {
       @apply text-foreground;
       background: var(--accent);
@@ -330,9 +318,6 @@
     }
     .docs-hamburger {
       @apply inline-flex;
-    }
-    .docs-content {
-      @apply px-5 py-8;
     }
   }
 }

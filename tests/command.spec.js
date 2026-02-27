@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Command', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/command.html');
+    await page.goto('/site/components/command.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

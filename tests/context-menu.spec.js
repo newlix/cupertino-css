@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Context Menu', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/docs/components/context-menu.html');
+    await page.goto('/site/components/context-menu.html');
     await page.waitForFunction(() => typeof window.showToast === 'function');
   });
 

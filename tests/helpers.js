@@ -4,7 +4,7 @@
 
 /** Navigate to a component doc page and wait for ready. */
 export async function goto(page, component, section = 'components') {
-  await page.goto(`/docs/${section}/${component}.html`);
+  await page.goto(`/site/${section}/${component}.html`);
   await page.waitForLoadState('networkidle');
 }
 
