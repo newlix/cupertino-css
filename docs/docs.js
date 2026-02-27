@@ -246,22 +246,29 @@ function initExamples() {
     const minIndent = Math.min(...indents);
     const dedented = lines.map(l => l.slice(minIndent)).join("\n");
 
-    const escaped = dedented
+    // Strip <div class="ciderui">...</div> wrapper from code display
+    const unwrapped = dedented.replace(/^<div class="ciderui">\n?([\s\S]*?)\n?<\/div>$/, (_, inner) => {
+      // De-indent the inner content by one level
+      const innerLines = inner.split("\n");
+      const innerIndents = innerLines.filter(l => l.trim()).map(l => l.match(/^\s*/)[0].length);
+      const innerMin = Math.min(...innerIndents);
+      return innerLines.map(l => l.slice(innerMin)).join("\n");
+    });
+
+    const escaped = unwrapped
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
 
     section.innerHTML = `
       ${exampleLabel ? `<h3 class="docs-example-label">${exampleLabel}</h3>` : ""}
-      <div class="docs-example-card">
-        <div class="docs-example-preview">${trimmed}</div>
-        <div class="docs-example-code snippet" data-snippet data-active>
-          <div class="snippet-header">
-            <span class="snippet-filename">HTML</span>
-            <button class="snippet-copy">Copy</button>
-          </div>
-          <pre><code class="language-html">${escaped}</code></pre>
+      <div class="docs-example-preview">${trimmed}</div>
+      <div class="docs-example-code snippet" data-snippet data-active>
+        <div class="snippet-header">
+          <span class="snippet-filename">HTML</span>
+          <button class="snippet-copy">Copy</button>
         </div>
+        <pre><code class="language-html">${escaped}</code></pre>
       </div>
     `;
   });
