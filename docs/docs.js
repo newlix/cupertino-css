@@ -12,9 +12,10 @@ const NAV = [
   {
     title: "Essentials",
     items: [
+      { label: "Container", href: "components/container.html" },
+      { label: "Typography", href: "components/typography.html" },
       { label: "Checkbox", href: "components/checkbox.html" },
       { label: "Combobox", href: "components/combobox.html" },
-      { label: "Container", href: "components/container.html" },
       { label: "Field", href: "components/field.html" },
       { label: "Form", href: "components/form.html" },
       { label: "Input", href: "components/input.html" },
@@ -26,7 +27,6 @@ const NAV = [
       { label: "Slider", href: "components/slider.html" },
       { label: "Switch", href: "components/switch.html" },
       { label: "Textarea", href: "components/textarea.html" },
-      { label: "Typography", href: "components/typography.html" },
     ],
   },
   {
