@@ -1,16 +1,26 @@
 /* ========== BREADCRUMB ========== */
 .breadcrumb {
   @apply flex items-center gap-1.5 text-[13px];
-  & a {
+  & a, & span {
     @apply text-muted-foreground transition-colors;
     &:hover { @apply text-foreground; }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
   }
-  & svg { @apply size-3.5 text-muted-foreground; opacity: 0.6; }
-  & span:last-child, & [aria-current] {
+  & :last-child, & [aria-current] {
     @apply font-medium text-foreground;
   }
-  & .breadcrumb-separator {
-    @apply text-muted-foreground; opacity: 0.6;
+  /* Auto chevron separator */
+  & a + a::before,
+  & a + span::before {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 0.375rem;
+    border-right: 1.5px solid var(--muted-foreground);
+    border-top: 1.5px solid var(--muted-foreground);
+    transform: rotate(45deg);
+    opacity: 0.5;
+    vertical-align: middle;
   }
 }

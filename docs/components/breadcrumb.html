@@ -7,82 +7,67 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Breadcrumb" data-description="Navigation trail indicators.">
+<main data-title="Breadcrumb" data-description="">
 
-  <section class="docs-example" data-example="With Chevron">
-    <template>
-<nav class="breadcrumb">
-  <a href="#">Home</a>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <a href="#">Components</a>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <span>Breadcrumb</span>
-</nav>
-    </template>
-  </section>
+  <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
 
-  <section class="docs-example" data-example="With Slash">
-    <template>
-<nav class="breadcrumb">
-  <a href="#">Home</a>
-  <span class="breadcrumb-separator">/</span>
-  <a href="#">Settings</a>
-  <span class="breadcrumb-separator">/</span>
-  <span>Profile</span>
-</nav>
-    </template>
-  </section>
+    <!-- Default -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Default</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <nav class="breadcrumb">
+              <a href="#">Home</a>
+              <a href="#">Components</a>
+              <span>Breadcrumb</span>
+            </nav>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;nav class="breadcrumb"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Components&lt;/a&gt;
+    &lt;span&gt;Breadcrumb&lt;/span&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
 
-  <section class="docs-example" data-example="With Dropdown">
-    <template>
-<nav class="breadcrumb">
-  <a href="#">Home</a>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <div class="relative inline-block" data-dropdown>
-    <button data-dropdown-trigger class="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
-      Components
-      <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </button>
-    <div data-dropdown-content class="dropdown-menu">
-      <a href="#">Alert</a>
-      <a href="#">Button</a>
-      <a href="#">Card</a>
-      <a href="#">Dialog</a>
-    </div>
+    <!-- Collapsed -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Collapsed</h2>
+      <div class="snippet mt-4">
+        <figure>
+          <div class="cider">
+            <nav class="breadcrumb">
+              <a href="#">Home</a>
+              <span class="inline-flex size-6 items-center justify-center rounded-md border text-xs cursor-pointer hover:bg-accent">&hellip;</span>
+              <a href="#">Components</a>
+              <span>Breadcrumb</span>
+            </nav>
+          </div>
+        </figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;div class="cider"&gt;
+  &lt;nav class="breadcrumb"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;span class="inline-flex size-6 items-center justify-center rounded-md border text-xs cursor-pointer hover:bg-accent"&gt;&amp;hellip;&lt;/span&gt;
+    &lt;a href="#"&gt;Components&lt;/a&gt;
+    &lt;span&gt;Breadcrumb&lt;/span&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
   </div>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <span>Breadcrumb</span>
-</nav>
-    </template>
-  </section>
-
-  <section class="docs-example" data-example="Collapsed">
-    <template>
-<nav class="breadcrumb">
-  <a href="#">Home</a>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <span class="inline-flex size-6 items-center justify-center rounded-md border text-xs text-muted-foreground cursor-pointer hover:bg-accent">&hellip;</span>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <a href="#">Components</a>
-  <svg class="breadcrumb-separator" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  <span>Breadcrumb</span>
-</nav>
-    </template>
-  </section>
-
-  <section class="docs-example" data-example="With Dot Separator">
-    <template>
-<nav class="breadcrumb">
-  <a href="#">Home</a>
-  <span class="breadcrumb-separator">&middot;</span>
-  <a href="#">Products</a>
-  <span class="breadcrumb-separator">&middot;</span>
-  <a href="#">Electronics</a>
-  <span class="breadcrumb-separator">&middot;</span>
-  <span>Headphones</span>
-</nav>
-    </template>
-  </section>
 
 </main>
 <script type="module" src="../docs.js"></script>
