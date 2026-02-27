@@ -298,56 +298,128 @@
     </template>
   </section>
 
-  <!-- Tailwind CSS equivalents -->
+  <!-- Container layout patterns -->
   <div class="mt-10 space-y-8 text-[15px] leading-relaxed text-foreground">
 
     <section class="max-w-xl space-y-3">
-      <h2 class="text-xl font-bold tracking-tight">Tailwind CSS equivalents</h2>
+      <h2 class="text-xl font-bold tracking-tight">Container layouts</h2>
       <p class="text-muted-foreground">
-        <code class="kbd">.ciderui</code> is a convenience. You can always achieve the same styling with native Tailwind utilities for more control. Here are the key equivalents.
+        <code class="kbd">.ciderui</code> handles element styling but not layout width. Use Tailwind CSS utilities on the container to control width, centering, and responsive breakpoints.
       </p>
     </section>
 
+    <!-- Fixed width -->
     <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Button</h3>
+      <h3 class="text-base font-semibold tracking-tight">Fixed width</h3>
+      <p class="text-muted-foreground">
+        Snap to a fixed <code class="kbd">max-width</code> at each breakpoint using Tailwind's <code class="kbd">container</code> class. Content jumps to the next width tier as the viewport grows.
+      </p>
       <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;button class="inline-flex items-center justify-center gap-2
-  rounded-xl bg-secondary text-secondary-foreground
-  px-4 py-2.5 text-[13px] font-medium
-  hover:bg-secondary-hover active:scale-[0.97]
-  transition-all"&gt;
-  Cancel
-&lt;/button&gt;</code></pre>
+        <pre><code class="language-html">&lt;div class="ciderui container mx-auto px-4"&gt;
+  &lt;h1&gt;Fixed width container&lt;/h1&gt;
+  &lt;p&gt;Max-width steps: 640px → 768px → 1024px → 1280px&lt;/p&gt;
+&lt;/div&gt;</code></pre>
       </div>
     </section>
 
+    <!-- Fluid width -->
     <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Text input</h3>
+      <h3 class="text-base font-semibold tracking-tight">Fluid width</h3>
+      <p class="text-muted-foreground">
+        Set a single <code class="kbd">max-w-*</code> and let the container fill available space below that limit. No breakpoint jumps — width scales smoothly.
+      </p>
       <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;input class="w-full h-11 rounded-xl border
-  border-input-border bg-card px-3.5
-  text-[13px] text-foreground outline-none
-  hover:border-input-border-hover
-  focus:border-primary"
-  type="text" placeholder="Jane Appleseed"&gt;</code></pre>
-      </div>
-    </section>
-
-    <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Table</h3>
-      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">&lt;table class="w-full text-left text-[13px]
-  rounded-2xl bg-card shadow-sm"&gt;
+        <pre><code class="language-html">&lt;!-- Fluid, capped at 768px --&gt;
+&lt;div class="ciderui max-w-3xl mx-auto px-4"&gt;
   ...
-&lt;/table&gt;</code></pre>
+&lt;/div&gt;
+
+&lt;!-- Full width with padding --&gt;
+&lt;div class="ciderui w-full px-4 lg:px-8"&gt;
+  ...
+&lt;/div&gt;</code></pre>
       </div>
     </section>
 
+    <!-- Breakpoints -->
     <section class="max-w-xl space-y-2">
-      <h3 class="text-base font-semibold tracking-tight">Checkbox &amp; Switch</h3>
+      <h3 class="text-base font-semibold tracking-tight">Breakpoints</h3>
       <p class="text-muted-foreground">
-        Checkboxes and switches require <code class="kbd">appearance-none</code> plus SVG background-image tricks for the check icon and knob. These are significantly more complex to replicate with utilities alone — use <code class="kbd">.ciderui</code> or the dedicated <code class="kbd">checkbox</code> / <code class="kbd">switch</code> component classes instead.
+        Change the max-width at specific breakpoints for more control over how the container scales.
       </p>
+      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;!-- Narrow on mobile, wider on desktop --&gt;
+&lt;div class="ciderui mx-auto px-4 max-w-xl md:max-w-2xl lg:max-w-4xl"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+      </div>
+      <div class="ciderui mt-4">
+        <table>
+          <thead>
+            <tr>
+              <th>Breakpoint</th>
+              <th>Min width</th>
+              <th>Typical max-w</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>sm</code></td>
+              <td>640px</td>
+              <td><code>max-w-xl</code> (576px)</td>
+            </tr>
+            <tr>
+              <td><code>md</code></td>
+              <td>768px</td>
+              <td><code>max-w-2xl</code> (672px)</td>
+            </tr>
+            <tr>
+              <td><code>lg</code></td>
+              <td>1024px</td>
+              <td><code>max-w-4xl</code> (896px)</td>
+            </tr>
+            <tr>
+              <td><code>xl</code></td>
+              <td>1280px</td>
+              <td><code>max-w-6xl</code> (1152px)</td>
+            </tr>
+            <tr>
+              <td><code>2xl</code></td>
+              <td>1536px</td>
+              <td><code>max-w-7xl</code> (1280px)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Semantic containers -->
+    <section class="max-w-xl space-y-2">
+      <h3 class="text-base font-semibold tracking-tight">Semantic containers</h3>
+      <p class="text-muted-foreground">
+        <code class="kbd">.ciderui</code> works on any element — not just <code class="kbd">&lt;div&gt;</code>. Use semantic HTML tags for better accessibility and document structure.
+      </p>
+      <div class="docs-example-code mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+        <pre><code class="language-html">&lt;body&gt;
+  &lt;header class="ciderui max-w-4xl mx-auto px-4 py-6"&gt;
+    &lt;h1&gt;My App&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main class="ciderui max-w-4xl mx-auto px-4 py-8"&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
+    &lt;form&gt;
+      &lt;label for="name"&gt;Name&lt;/label&gt;
+      &lt;input type="text" id="name"&gt;
+      &lt;button type="submit"&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="ciderui max-w-4xl mx-auto px-4 py-6"&gt;
+    &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+      </div>
     </section>
 
   </div>
