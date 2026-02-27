@@ -2,7 +2,7 @@
 .breadcrumb {
   @apply flex items-center gap-1.5 text-[13px];
   & a, & span {
-    @apply text-muted-foreground transition-colors;
+    @apply text-muted-foreground no-underline transition-colors;
     &:hover { @apply text-foreground; }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
   }
