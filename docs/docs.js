@@ -262,12 +262,12 @@ function initExamples() {
 
     section.innerHTML = `
       ${exampleLabel ? `<h3 class="docs-example-label">${exampleLabel}</h3>` : ""}
-      <div class="docs-example-preview">${trimmed}</div>
-      <div class="docs-example-code snippet" data-snippet data-active>
-        <div class="snippet-header">
-          <span class="snippet-filename">HTML</span>
-          <button class="snippet-copy">Copy</button>
-        </div>
+      <div class="docs-example-code snippet">
+        <figure>${trimmed}</figure>
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">${escaped}</code></pre>
       </div>
     `;

@@ -7,7 +7,7 @@ test.describe('Input OTP', () => {
   });
 
   test('typing digit fills slot and auto-advances', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const slots = preview.locator('.input-otp-slot');
 
     await slots.nth(0).click();
@@ -24,7 +24,7 @@ test.describe('Input OTP', () => {
   });
 
   test('backspace clears current slot and moves back', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const slots = preview.locator('.input-otp-slot');
 
     await slots.nth(0).click();
@@ -39,14 +39,14 @@ test.describe('Input OTP', () => {
   });
 
   test('paste fills multiple slots', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const slots = preview.locator('.input-otp-slot');
 
     await slots.nth(0).click();
 
     // Dispatch paste event with clipboard data
     await page.evaluate(() => {
-      const slot = document.querySelector('.docs-example-preview .input-otp-slot[data-active]');
+      const slot = document.querySelector('.snippet > figure .input-otp-slot[data-active]');
       const dt = new DataTransfer();
       dt.setData('text/plain', '123456');
       slot.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true }));

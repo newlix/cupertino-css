@@ -26,7 +26,7 @@ test.describe('Slider', () => {
   });
 
   test('disabled slider is not interactive', async ({ page }) => {
-    const slider = page.locator('.docs-example-preview .slider[disabled]').first();
+    const slider = page.locator('.snippet > figure .slider[disabled]').first();
     await expect(slider).toBeDisabled();
   });
 });

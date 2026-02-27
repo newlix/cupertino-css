@@ -27,11 +27,11 @@ console.log(greeting);</code></pre>
 </div>
 
 <!-- With Header + Copy -->
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">app.js</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>app.js</span>
+    <button>Copy</button>
+  </header>
   <pre><code>import express from "express";
 
 const app = express();
@@ -44,27 +44,27 @@ app.listen(3000);</code></pre>
 </div>
 
 <!-- Multi-Tab -->
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <div class="snippet-tabs">
-      <button class="snippet-tab" data-snippet-tab="t1" data-active>index.js</button>
-      <button class="snippet-tab" data-snippet-tab="t2">style.css</button>
-      <button class="snippet-tab" data-snippet-tab="t3">package.json</button>
-    </div>
-    <button class="snippet-copy">Copy</button>
-  </div>
-  <pre data-snippet-panel="t1" data-active><code>import "./style.css";
+<div class="snippet">
+  <header>
+    <nav>
+      <button data-tab="t1" data-active>index.js</button>
+      <button data-tab="t2">style.css</button>
+      <button data-tab="t3">package.json</button>
+    </nav>
+    <button>Copy</button>
+  </header>
+  <pre data-panel="t1" data-active><code>import "./style.css";
 
 document.querySelector("#app").innerHTML = `
   &lt;h1&gt;Hello Cider UI&lt;/h1&gt;
 `;</code></pre>
-  <pre data-snippet-panel="t2"><code>.app {
+  <pre data-panel="t2"><code>.app {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   max-width: 640px;
   margin: 0 auto;
   padding: 2rem;
 }</code></pre>
-  <pre data-snippet-panel="t3"><code>{
+  <pre data-panel="t3"><code>{
   "name": "my-app",
   "private": true,
   "scripts": {
@@ -75,11 +75,11 @@ document.querySelector("#app").innerHTML = `
 </div>
 
 <!-- With Line Numbers -->
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">fibonacci.py</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>fibonacci.py</span>
+    <button>Copy</button>
+  </header>
   <pre><code><span class="snippet-lines"><span class="snippet-line">def fibonacci(n):</span>
 <span class="snippet-line">    if n &lt;= 1:</span>
 <span class="snippet-line">        return n</span>
@@ -90,11 +90,11 @@ document.querySelector("#app").innerHTML = `
 </div>
 
 <!-- Terminal -->
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">Terminal</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>Terminal</span>
+    <button>Copy</button>
+  </header>
   <pre><code>$ npm install ciderui
 $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
 </div>

@@ -10,7 +10,7 @@ export async function goto(page, component, section = 'components') {
 
 /** Get the nth example preview container. */
 export function preview(page, nth = 0) {
-  return page.locator('.docs-example-preview').nth(nth);
+  return page.locator('.snippet > figure').nth(nth);
 }
 
 /** Get a computed CSS property from a locator. */

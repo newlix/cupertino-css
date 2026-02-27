@@ -67,8 +67,10 @@
   .docs-example-label {
     @apply mb-3 text-lg font-semibold tracking-tight text-foreground;
   }
-  .docs-example-preview {
-    @apply relative z-10 py-6 flex flex-wrap gap-4 items-start;
+  .docs-example-code {
+    @apply relative overflow-hidden;
+  }
+  .snippet > figure {
     & > .card, & > .field, & > .accordion, & > table, & > .alert, & > .alert-info, & > .alert-success, & > .alert-warning, & > .alert-destructive, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .item, & > .item-group, & > form, & > fieldset, & > .sidebar, & > .theme-switcher, & > .command, & > .cider {
       @apply w-full;
     }
@@ -78,25 +80,10 @@
       padding-right: 0;
       margin: 0;
     }
-  }
-  .docs-example-code {
-    @apply relative border rounded-xl overflow-hidden;
-    background: oklch(0.971 0.003 285.66);
-  }
-  :is(.dark *).docs-example-code, :is(.dark) .docs-example-code {
-    background: oklch(0.08 0.01 285.82);
-  }
-  .docs-example-code pre {
-    @apply overflow-x-auto p-4 text-[13px] leading-relaxed;
-    & code {
-      @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace];
-      padding: 0 !important;
-      background: transparent !important;
-      color: oklch(0.370 0.004 285.99);
+    & pre {
+      background: transparent;
+      border-radius: 0;
     }
-  }
-  :is(.dark) .docs-example-code pre code {
-    color: oklch(0.869 0.008 285.82);
   }
   .docs-copy-btn {
     @apply absolute right-3 top-3 rounded-md border px-2 py-1 text-[11px] font-medium transition-all duration-200 cursor-pointer;

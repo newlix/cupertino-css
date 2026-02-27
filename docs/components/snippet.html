@@ -9,6 +9,22 @@
 <body>
 <main data-title="Snippet" data-description="Code blocks with optional filename header, copy button, multi-tab file switching, and line numbers.">
 
+  <section class="docs-example" data-example="With Preview">
+    <template>
+<div class="snippet">
+  <figure>
+    <button class="btn btn-primary">Click me</button>
+    <button class="btn btn-secondary">Cancel</button>
+  </figure>
+  <header>
+    <span>HTML</span>
+  </header>
+  <pre><code>&lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Cancel&lt;/button&gt;</code></pre>
+</div>
+    </template>
+  </section>
+
   <section class="docs-example" data-example="Basic">
     <template>
 <div class="snippet">
@@ -20,11 +36,11 @@ console.log(greeting);</code></pre>
 
   <section class="docs-example" data-example="With Header">
     <template>
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">app.js</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>app.js</span>
+    <button>Copy</button>
+  </header>
   <pre><code>import express from "express";
 
 const app = express();
@@ -40,27 +56,27 @@ app.listen(3000);</code></pre>
 
   <section class="docs-example" data-example="Multi-Tab">
     <template>
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <div class="snippet-tabs">
-      <button class="snippet-tab" data-snippet-tab="t1" data-active>index.js</button>
-      <button class="snippet-tab" data-snippet-tab="t2">style.css</button>
-      <button class="snippet-tab" data-snippet-tab="t3">package.json</button>
-    </div>
-    <button class="snippet-copy">Copy</button>
-  </div>
-  <pre data-snippet-panel="t1" data-active><code>import "./style.css";
+<div class="snippet">
+  <header>
+    <nav>
+      <button data-tab="t1" data-active>index.js</button>
+      <button data-tab="t2">style.css</button>
+      <button data-tab="t3">package.json</button>
+    </nav>
+    <button>Copy</button>
+  </header>
+  <pre data-panel="t1" data-active><code>import "./style.css";
 
 document.querySelector("#app").innerHTML = `
   &lt;h1&gt;Hello Cider UI&lt;/h1&gt;
 `;</code></pre>
-  <pre data-snippet-panel="t2"><code>.app {
+  <pre data-panel="t2"><code>.app {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   max-width: 640px;
   margin: 0 auto;
   padding: 2rem;
 }</code></pre>
-  <pre data-snippet-panel="t3"><code>{
+  <pre data-panel="t3"><code>{
   "name": "my-app",
   "private": true,
   "scripts": {
@@ -74,11 +90,11 @@ document.querySelector("#app").innerHTML = `
 
   <section class="docs-example" data-example="With Line Numbers">
     <template>
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">fibonacci.py</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>fibonacci.py</span>
+    <button>Copy</button>
+  </header>
   <pre><code><span class="snippet-lines"><span class="snippet-line">def fibonacci(n):</span>
 <span class="snippet-line">    if n &lt;= 1:</span>
 <span class="snippet-line">        return n</span>
@@ -92,11 +108,11 @@ document.querySelector("#app").innerHTML = `
 
   <section class="docs-example" data-example="Terminal">
     <template>
-<div class="snippet" data-snippet>
-  <div class="snippet-header">
-    <span class="snippet-filename">Terminal</span>
-    <button class="snippet-copy">Copy</button>
-  </div>
+<div class="snippet">
+  <header>
+    <span>Terminal</span>
+    <button>Copy</button>
+  </header>
   <pre><code>$ npm install ciderui
 $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
 </div>
@@ -105,12 +121,12 @@ $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Load <code class="kbd">snippet.js</code> for copy-to-clipboard and tab switching on <code class="kbd">[data-snippet]</code> containers.</p>
-    <div class="docs-example-code snippet mt-4" data-snippet data-active>
-      <div class="snippet-header">
-        <span class="snippet-filename">HTML</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <p class="mt-2 text-[15px] text-muted-foreground">Load <code class="kbd">snippet.js</code> for copy-to-clipboard and tab switching.</p>
+    <div class="docs-example-code snippet mt-4">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/snippet.js"&gt;&lt;/script&gt;
 
@@ -124,11 +140,11 @@ $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
     <p class="mt-2 text-[15px] text-muted-foreground">Snippet works with any syntax highlighter. Add a <code class="kbd">language-*</code> class to <code class="kbd">&lt;code&gt;</code> to enable highlighting. Here's an example with <a href="https://highlightjs.org" target="_blank" rel="noopener" class="font-medium text-primary hover:underline">highlight.js</a>:</p>
 
     <h3 class="mt-8 text-[15px] font-semibold">1. Load highlight.js</h3>
-    <div class="docs-example-code snippet mt-3" data-snippet data-active>
-      <div class="snippet-header">
-        <span class="snippet-filename">HTML</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="docs-example-code snippet mt-3">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-html">&lt;!-- Theme (pick one) --&gt;
 &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github.min.css"&gt;
 
@@ -141,11 +157,11 @@ $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
 
     <h3 class="mt-8 text-[15px] font-semibold">2. Set the language class</h3>
     <p class="mt-2 text-[13px] text-muted-foreground">Add <code class="kbd">class="language-{lang}"</code> to the <code class="kbd">&lt;code&gt;</code> element. Common languages:</p>
-    <div class="docs-example-code snippet mt-3" data-snippet data-active>
-      <div class="snippet-header">
-        <span class="snippet-filename">HTML</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="docs-example-code snippet mt-3">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-html">&lt;pre&gt;&lt;code class="language-javascript"&gt;...&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code class="language-typescript"&gt;...&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code class="language-python"&gt;...&lt;/code&gt;&lt;/pre&gt;
@@ -161,11 +177,11 @@ $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
     <h2 class="text-xl font-bold tracking-tight">Language Examples</h2>
 
     <h3 class="mt-6 text-[15px] font-semibold">JavaScript</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">server.js</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>server.js</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-javascript">import Fastify from "fastify";
 
 const app = Fastify({ logger: true });
@@ -179,11 +195,11 @@ app.listen({ port: 3000 });</code></pre>
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">TypeScript</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">types.ts</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>types.ts</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-typescript">interface User {
   id: string;
   name: string;
@@ -197,11 +213,11 @@ function greet(user: User): string {
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">Python</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">app.py</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>app.py</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-python">from fastapi import FastAPI
 
 app = FastAPI()
@@ -215,11 +231,11 @@ async def get_user(user_id: int):
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">CSS</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">styles.css</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>styles.css</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-css">@import "tailwindcss";
 @import "ciderui";
 
@@ -232,11 +248,11 @@ async def get_user(user_id: int):
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">Bash</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">Terminal</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>Terminal</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-bash"># Install dependencies
 npm install ciderui
 
@@ -245,11 +261,11 @@ npx @tailwindcss/cli -i input.css -o output.css --watch</code></pre>
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">JSON</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">tsconfig.json</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>tsconfig.json</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-json">{
   "compilerOptions": {
     "target": "ES2022",
@@ -263,11 +279,11 @@ npx @tailwindcss/cli -i input.css -o output.css --watch</code></pre>
     </div>
 
     <h3 class="mt-8 text-[15px] font-semibold">SQL</h3>
-    <div class="snippet mt-3" data-snippet>
-      <div class="snippet-header">
-        <span class="snippet-filename">schema.sql</span>
-        <button class="snippet-copy">Copy</button>
-      </div>
+    <div class="snippet mt-3">
+      <header>
+        <span>schema.sql</span>
+        <button>Copy</button>
+      </header>
       <pre><code class="language-sql">CREATE TABLE users (
   id    INTEGER PRIMARY KEY AUTOINCREMENT,
   name  TEXT NOT NULL,

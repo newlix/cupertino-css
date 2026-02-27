@@ -7,7 +7,7 @@ test.describe('Context Menu', () => {
   });
 
   test('right-click trigger shows context menu', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('.context-menu-trigger');
     const menu = preview.locator('.context-menu-content');
 
@@ -18,7 +18,7 @@ test.describe('Context Menu', () => {
   });
 
   test('clicking anywhere closes context menu', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('.context-menu-trigger');
     const menu = preview.locator('.context-menu-content');
 
@@ -30,7 +30,7 @@ test.describe('Context Menu', () => {
   });
 
   test('Escape key closes context menu', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('.context-menu-trigger');
     const menu = preview.locator('.context-menu-content');
 
@@ -42,7 +42,7 @@ test.describe('Context Menu', () => {
   });
 
   test('context menu has correct items', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('.context-menu-trigger');
     const menu = preview.locator('.context-menu-content');
 

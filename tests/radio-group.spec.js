@@ -28,7 +28,7 @@ test.describe('Radio Group', () => {
   });
 
   test('disabled radio cannot be selected', async ({ page }) => {
-    const disabled = page.locator('.docs-example-preview input[type="radio"][disabled]').first();
+    const disabled = page.locator('.snippet > figure input[type="radio"][disabled]').first();
     await expect(disabled).toBeDisabled();
   });
 });

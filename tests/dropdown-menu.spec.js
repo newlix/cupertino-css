@@ -7,7 +7,7 @@ test.describe('Dropdown Menu', () => {
   });
 
   test('click trigger toggles menu visibility', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
@@ -18,7 +18,7 @@ test.describe('Dropdown Menu', () => {
   });
 
   test('click outside closes dropdown', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
@@ -30,7 +30,7 @@ test.describe('Dropdown Menu', () => {
   });
 
   test('click menu item closes dropdown', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 
@@ -42,7 +42,7 @@ test.describe('Dropdown Menu', () => {
   });
 
   test('Escape key closes dropdown', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const trigger = preview.locator('[data-dropdown-trigger]');
     const content = preview.locator('[data-dropdown-content]');
 

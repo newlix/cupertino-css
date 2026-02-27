@@ -7,7 +7,7 @@ test.describe('Combobox', () => {
   });
 
   test('click trigger opens dropdown', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const combobox = preview.locator('.combobox').first();
     const trigger = combobox.locator('button');
 
@@ -18,7 +18,7 @@ test.describe('Combobox', () => {
   });
 
   test('select option updates display and closes', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const combobox = preview.locator('.combobox').first();
     const trigger = combobox.locator('button');
 
@@ -33,7 +33,7 @@ test.describe('Combobox', () => {
   });
 
   test('type to filter options', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const combobox = preview.locator('.combobox').first();
     const trigger = combobox.locator('button');
 
@@ -48,7 +48,7 @@ test.describe('Combobox', () => {
   });
 
   test('Escape closes combobox', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const combobox = preview.locator('.combobox').first();
     const trigger = combobox.locator('button');
 

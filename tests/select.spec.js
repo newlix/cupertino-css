@@ -7,7 +7,7 @@ test.describe('Select', () => {
   });
 
   test('native select allows choosing an option', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const select = preview.locator('select');
 
     await expect(select).toHaveValue('');
@@ -17,7 +17,7 @@ test.describe('Select', () => {
   });
 
   test('grouped select works', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').nth(1);
+    const preview = page.locator('.snippet > figure').nth(1);
     const select = preview.locator('select');
 
     await select.selectOption('strawberry');
@@ -25,7 +25,7 @@ test.describe('Select', () => {
   });
 
   test('disabled select cannot be changed', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').nth(2);
+    const preview = page.locator('.snippet > figure').nth(2);
     const select = preview.locator('select');
 
     await expect(select).toBeDisabled();

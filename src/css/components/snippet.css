@@ -1,59 +1,62 @@
 /* ========== SNIPPET (Code Block) ========== */
 .snippet {
-  @apply overflow-hidden rounded-xl;
-  background: var(--surface-1);
-  box-shadow: var(--panel-ring);
-  & pre {
+  @apply overflow-hidden border;
+  & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
+    background: transparent;
+    border-radius: 0;
     & code {
       @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px];
       background: transparent !important;
-      padding: 0 !important;
       color: var(--foreground);
     }
   }
-}
-.snippet-header {
-  @apply flex items-center justify-between px-4 py-2;
-  border-bottom: 1px solid var(--panel-border);
-  background: var(--surface-2);
-}
-.snippet-filename {
-  @apply text-[12px] font-medium text-muted-foreground;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-.snippet-tabs {
-  @apply flex gap-0.5;
-}
-.snippet-tab {
-  @apply rounded-md px-2.5 py-1 text-[12px] font-medium text-muted-foreground cursor-pointer;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  transition: all 0.15s var(--apple-ease);
-  &:hover {
-    @apply text-foreground;
-    background: var(--surface-3);
+  & > header {
+    @apply flex items-center justify-between px-4 py-2;
+    border-bottom: 1px solid var(--panel-border);
+    background: var(--surface-2);
+    & > span {
+      @apply text-[12px] font-medium text-muted-foreground;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    & > nav {
+      @apply flex gap-0.5;
+      & > button {
+        @apply rounded-md px-2.5 py-1 text-[12px] font-medium text-muted-foreground cursor-pointer;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        transition: all 0.15s var(--apple-ease);
+        &:hover {
+          @apply text-foreground;
+          background: var(--surface-3);
+        }
+        &[data-active] {
+          @apply text-foreground;
+          background: var(--surface-4);
+        }
+      }
+    }
+    & > button {
+      @apply rounded-md border px-2 py-1 text-[11px] font-medium cursor-pointer;
+      background: var(--surface-2);
+      border-color: var(--panel-border);
+      color: var(--muted-foreground);
+      transition: all 0.15s var(--apple-ease);
+      &:hover {
+        background: var(--surface-4);
+        color: var(--foreground);
+      }
+      &:active {
+        transform: scale(var(--apple-press-scale));
+      }
+    }
   }
-  &[data-active] {
-    @apply text-foreground;
-    background: var(--surface-4);
+  & > figure {
+    @apply py-6 px-6 m-0 flex flex-wrap gap-4 items-start;
+    border-bottom: 1px solid var(--panel-border);
   }
-}
-.snippet-copy {
-  @apply rounded-md border px-2 py-1 text-[11px] font-medium cursor-pointer;
-  background: var(--surface-2);
-  border-color: var(--panel-border);
-  color: var(--muted-foreground);
-  transition: all 0.15s var(--apple-ease);
-  &:hover {
-    background: var(--surface-4);
-    color: var(--foreground);
+  & > pre[data-panel]:not([data-active]) {
+    @apply hidden;
   }
-  &:active {
-    transform: scale(var(--apple-press-scale));
-  }
-}
-.snippet pre[data-snippet-panel]:not([data-active]) {
-  @apply hidden;
 }
 .snippet-lines {
   counter-reset: line;

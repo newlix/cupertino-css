@@ -7,7 +7,7 @@ test.describe('Command', () => {
   });
 
   test('search filters menu items', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const command = preview.locator('.command');
     const input = command.locator('header input');
     const items = command.locator('[role="menuitem"]');
@@ -26,7 +26,7 @@ test.describe('Command', () => {
   });
 
   test('search with no matches shows empty state', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const command = preview.locator('.command');
     const input = command.locator('header input');
 

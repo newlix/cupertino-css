@@ -16,8 +16,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'switch');
     await setDark(page);
 
-    const checked = page.locator('.docs-example-preview input[role="switch"]:checked').first();
-    const unchecked = page.locator('.docs-example-preview input[role="switch"]:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.snippet > figure input[role="switch"]:checked').first();
+    const unchecked = page.locator('.snippet > figure input[role="switch"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'backgroundColor')).not.toBe(await css(unchecked, 'backgroundColor'));
   });
@@ -27,7 +27,7 @@ test.describe('Dark Mode', () => {
     await setDark(page);
 
     for (const sel of ['.badge-primary', '.badge-success', '.badge-warning', '.badge-destructive']) {
-      const badge = page.locator(`.docs-example-preview ${sel}`).first();
+      const badge = page.locator(`.snippet > figure ${sel}`).first();
       if ((await badge.count()) === 0) continue;
 
       const color = parseRgb(await css(badge, 'color'));
@@ -56,8 +56,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'radio-group');
     await setDark(page);
 
-    const checked = page.locator('.docs-example-preview input[type="radio"]:checked').first();
-    const unchecked = page.locator('.docs-example-preview input[type="radio"]:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.snippet > figure input[type="radio"]:checked').first();
+    const unchecked = page.locator('.snippet > figure input[type="radio"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
@@ -67,7 +67,7 @@ test.describe('Dark Mode', () => {
     await setDark(page);
 
     for (const sel of ['.alert-info', '.alert-success', '.alert-warning', '.alert-destructive']) {
-      const alert = page.locator(`.docs-example-preview ${sel}`).first();
+      const alert = page.locator(`.snippet > figure ${sel}`).first();
       if ((await alert.count()) === 0) continue;
 
       const borderRgb = parseRgb(await css(alert, 'borderColor'));

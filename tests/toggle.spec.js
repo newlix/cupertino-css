@@ -7,7 +7,7 @@ test.describe('Toggle', () => {
   });
 
   test('clicking toggle flips data-active and aria-pressed', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const toggle = preview.locator('.toggle');
 
     await expect(toggle).toHaveAttribute('aria-pressed', 'false');
@@ -23,7 +23,7 @@ test.describe('Toggle', () => {
   });
 
   test('toggle group single-select: only one active at a time', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').last();
+    const preview = page.locator('.snippet > figure').last();
     const toggles = preview.locator('.toggle-group .toggle');
 
     await expect(toggles.nth(0)).toHaveAttribute('aria-pressed', 'true');

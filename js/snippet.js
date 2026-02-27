@@ -20,41 +20,41 @@ function copyText(text) {
 }
 
 document.addEventListener("click", function (e) {
-  // Copy button
-  var copyBtn = e.target.closest(".snippet-copy");
-  if (copyBtn) {
-    var snippet = copyBtn.closest("[data-snippet]");
+  // Copy button — direct child button of snippet > header
+  var btn = e.target.closest(".snippet > header > button");
+  if (btn) {
+    var snippet = btn.closest(".snippet");
     if (!snippet) return;
 
     var activePanel = snippet.querySelector(
-      "pre[data-snippet-panel][data-active] code"
+      "pre[data-panel][data-active] code"
     );
     var code = activePanel || snippet.querySelector("pre code");
     if (!code) return;
 
-    var original = copyBtn.textContent;
+    var original = btn.textContent;
     copyText(code.textContent).then(function () {
-      copyBtn.textContent = "Copied!";
-      setTimeout(function () { copyBtn.textContent = original; }, 1500);
+      btn.textContent = "Copied!";
+      setTimeout(function () { btn.textContent = original; }, 1500);
     });
     return;
   }
 
   // Tab switching
-  var tab = e.target.closest("[data-snippet-tab]");
+  var tab = e.target.closest(".snippet > header > nav > button[data-tab]");
   if (tab) {
-    var snippet = tab.closest("[data-snippet]");
+    var snippet = tab.closest(".snippet");
     if (!snippet) return;
 
-    var target = tab.getAttribute("data-snippet-tab");
+    var target = tab.getAttribute("data-tab");
 
-    snippet.querySelectorAll("[data-snippet-tab]").forEach(function (t) {
+    snippet.querySelectorAll("header > nav > button[data-tab]").forEach(function (t) {
       t.removeAttribute("data-active");
     });
     tab.setAttribute("data-active", "");
 
-    snippet.querySelectorAll("[data-snippet-panel]").forEach(function (p) {
-      if (p.getAttribute("data-snippet-panel") === target) {
+    snippet.querySelectorAll("pre[data-panel]").forEach(function (p) {
+      if (p.getAttribute("data-panel") === target) {
         p.setAttribute("data-active", "");
       } else {
         p.removeAttribute("data-active");

@@ -7,42 +7,171 @@
   <link rel="stylesheet" href="../docs.built.css">
 </head>
 <body>
-<main data-title="Typography" data-description="Styles for headings, paragraphs, lists and more.">
+<main data-title="Typography" data-description="Apple-style typography for headings, body text, lists, and inline elements. All styles are applied automatically inside .cider.">
 
-  <section class="docs-example" data-example="Article">
+  <div class="mt-8 space-y-10 text-[15px] leading-relaxed text-foreground">
+
+    <!-- Font sizes -->
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Font sizes</h2>
+      <p class="max-w-xl text-muted-foreground">
+        All typography inside <code class="kbd">.cider</code> uses the SF Pro system font stack. Base body text is 15px with -0.015em letter-spacing.
+      </p>
+      <div class="cider mt-4">
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Size</th>
+              <th>Weight</th>
+              <th>Line height</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Body</td>
+              <td>15px</td>
+              <td>Regular</td>
+              <td>1.47</td>
+            </tr>
+            <tr>
+              <td><code>h1</code></td>
+              <td>34px</td>
+              <td>Bold</td>
+              <td>1.21</td>
+            </tr>
+            <tr>
+              <td><code>h2</code></td>
+              <td>22px</td>
+              <td>Semibold</td>
+              <td>1.18</td>
+            </tr>
+            <tr>
+              <td><code>h3</code></td>
+              <td>20px</td>
+              <td>Semibold</td>
+              <td>1.25</td>
+            </tr>
+            <tr>
+              <td><code>h4</code></td>
+              <td>17px</td>
+              <td>Semibold</td>
+              <td>1.29</td>
+            </tr>
+            <tr>
+              <td><code>small</code></td>
+              <td>12px</td>
+              <td>Regular</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><code>code</code></td>
+              <td>13px</td>
+              <td>Medium</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Headings -->
+    <section class="max-w-xl space-y-3">
+      <h2 class="text-xl font-bold tracking-tight">Headings</h2>
+      <p class="text-muted-foreground">
+        Headings use tight letter-spacing with automatic vertical spacing between siblings.
+      </p>
+    </section>
+
+  </div>
+
+  <section class="docs-example" data-example="Headings">
     <template>
 <div class="cider">
-  <h1>The Art of Simplicity</h1>
-  <p>Design is not just what it looks like and feels like. Design is how it works.</p>
-  <p>Every detail matters. The way text flows on a page, the spacing between elements, the careful balance of hierarchy — these are the foundations of great design. When done right, typography becomes invisible, letting the content speak for itself.</p>
-  <h2>Getting Started</h2>
-  <p>The <code>.cider</code> container automatically styles child elements with Apple-inspired typography. No additional classes needed on child elements.</p>
-  <h3>Key Features</h3>
-  <p>Clean headings with tight tracking, generous line-height for body text, and subtle styling for secondary elements like blockquotes and code.</p>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
 </div>
     </template>
   </section>
+
+  <!-- Body text -->
+  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
+    <h2 class="text-xl font-bold tracking-tight">Body text</h2>
+    <p class="text-muted-foreground">
+      Paragraphs get automatic spacing between consecutive <code class="kbd">&lt;p&gt;</code> elements. Links are styled with primary color and underline.
+    </p>
+  </div>
+
+  <section class="docs-example" data-example="Paragraphs and links">
+    <template>
+<div class="cider">
+  <p>Design is not just what it looks like and feels like. Design is how it works. Every detail matters — the way text flows on a page, the spacing between elements, the careful balance of hierarchy.</p>
+  <p>When done right, typography becomes invisible, letting the <a href="#">content speak for itself</a>.</p>
+</div>
+    </template>
+  </section>
+
+  <!-- Inline text -->
+  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
+    <h2 class="text-xl font-bold tracking-tight">Inline text</h2>
+    <p class="text-muted-foreground">
+      Inline elements for code, keyboard shortcuts, and helper text.
+    </p>
+  </div>
+
+  <section class="docs-example" data-example="Inline elements">
+    <template>
+<div class="cider">
+  <p>Use the <code>@import "ciderui"</code> directive to include all styles.</p>
+  <p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.</p>
+  <p><small>This is helper text at a smaller size.</small></p>
+</div>
+    </template>
+  </section>
+
+  <!-- Blockquote -->
+  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
+    <h2 class="text-xl font-bold tracking-tight">Blockquote</h2>
+    <p class="text-muted-foreground">
+      Left-bordered italic text with muted color.
+    </p>
+  </div>
 
   <section class="docs-example" data-example="Blockquote">
     <template>
 <div class="cider">
   <blockquote>
-    "Simplicity is the ultimate sophistication."
+    Simplicity is the ultimate sophistication.
   </blockquote>
 </div>
     </template>
   </section>
 
-  <section class="docs-example" data-example="Lists">
+  <!-- Lists -->
+  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
+    <h2 class="text-xl font-bold tracking-tight">Lists</h2>
+    <p class="text-muted-foreground">
+      Unordered lists get disc markers, ordered lists get decimal markers. Both have vertical spacing between items.
+    </p>
+  </div>
+
+  <section class="docs-example" data-example="Unordered list">
     <template>
 <div class="cider">
-  <h4>Unordered List</h4>
   <ul>
     <li>Clean, semantic HTML structure</li>
     <li>Apple-inspired design tokens</li>
     <li>Dark mode support built-in</li>
   </ul>
-  <h4>Ordered List</h4>
+</div>
+    </template>
+  </section>
+
+  <section class="docs-example" data-example="Ordered list">
+    <template>
+<div class="cider">
   <ol>
     <li>Install the Tailwind CSS plugin</li>
     <li>Import the ciderui stylesheet</li>
@@ -52,10 +181,19 @@
     </template>
   </section>
 
-  <section class="docs-example" data-example="Inline Code">
+  <!-- Code blocks -->
+  <div class="mt-10 mb-3 space-y-3 text-[15px] leading-relaxed text-foreground max-w-xl">
+    <h2 class="text-xl font-bold tracking-tight">Code blocks</h2>
+    <p class="text-muted-foreground">
+      <code class="kbd">&lt;pre&gt;&lt;code&gt;</code> gets a rounded container with secondary background. The inner <code class="kbd">&lt;code&gt;</code> resets to transparent.
+    </p>
+  </div>
+
+  <section class="docs-example" data-example="Code block">
     <template>
 <div class="cider">
-  <p>Use the <code>@import "ciderui"</code> directive to include all component styles. You can also use <code>.btn</code> for buttons and <code>.card</code> for cards.</p>
+  <pre><code>const greeting = "Hello, Cider UI!";
+console.log(greeting);</code></pre>
 </div>
     </template>
   </section>

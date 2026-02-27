@@ -7,7 +7,7 @@ test.describe('Toast', () => {
   });
 
   test('static toast is visible and close button removes it', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const toast = preview.locator('.toast');
 
     await expect(toast).toBeVisible();
@@ -18,7 +18,7 @@ test.describe('Toast', () => {
   });
 
   test('programmatic showToast creates toast', async ({ page }) => {
-    const programmaticPreview = page.locator('.docs-example-preview').last();
+    const programmaticPreview = page.locator('.snippet > figure').last();
     await programmaticPreview.locator('button:has-text("Show Toast")').click();
 
     const toast = page.locator('#toast-container .toast');

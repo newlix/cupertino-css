@@ -7,7 +7,7 @@ test.describe('Carousel', () => {
   });
 
   test('prev button is disabled at start', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const prev = preview.locator('.carousel-prev');
 
     // carousel.js updateState() sets prev.disabled = true when at index 0
@@ -15,7 +15,7 @@ test.describe('Carousel', () => {
   });
 
   test('clicking next scrolls to next item', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const next = preview.locator('.carousel-next');
     const prev = preview.locator('.carousel-prev');
 
@@ -25,7 +25,7 @@ test.describe('Carousel', () => {
   });
 
   test('clicking next then prev returns to start', async ({ page }) => {
-    const preview = page.locator('.docs-example-preview').first();
+    const preview = page.locator('.snippet > figure').first();
     const next = preview.locator('.carousel-next');
     const prev = preview.locator('.carousel-prev');
 
@@ -39,7 +39,7 @@ test.describe('Carousel', () => {
 
   test('indicators update on scroll', async ({ page }) => {
     // "With Indicators" example (fourth example)
-    const preview = page.locator('.docs-example-preview').nth(3);
+    const preview = page.locator('.snippet > figure').nth(3);
     const indicators = preview.locator('.carousel-indicator');
     const next = preview.locator('.carousel-next');
 

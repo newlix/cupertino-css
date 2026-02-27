@@ -24,7 +24,7 @@ test.describe('Switch', () => {
   });
 
   test('disabled switch cannot be toggled', async ({ page }) => {
-    const sw = page.locator('.docs-example-preview input[role="switch"][disabled]').first();
+    const sw = page.locator('.snippet > figure input[role="switch"][disabled]').first();
     await expect(sw).toBeDisabled();
   });
 });

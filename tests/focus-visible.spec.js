@@ -5,7 +5,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('radio shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'radio-group');
 
-    const radio = page.locator('.docs-example-preview input[type="radio"]').first();
+    const radio = page.locator('.snippet > figure input[type="radio"]').first();
     const before = await css(radio, 'boxShadow');
 
     await focusViaKeyboard(page, radio);
@@ -18,7 +18,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('checkbox shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'checkbox');
 
-    const cb = page.locator('.docs-example-preview input[type="checkbox"]').first();
+    const cb = page.locator('.snippet > figure input[type="checkbox"]').first();
     await focusViaKeyboard(page, cb);
 
     expect(await css(cb, 'boxShadow')).not.toBe('none');
@@ -27,7 +27,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('switch shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'switch');
 
-    const sw = page.locator('.docs-example-preview input[role="switch"]').first();
+    const sw = page.locator('.snippet > figure input[role="switch"]').first();
     await focusViaKeyboard(page, sw);
 
     expect(await css(sw, 'boxShadow')).not.toBe('none');
@@ -36,7 +36,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('button shows outline on keyboard focus', async ({ page }) => {
     await goto(page, 'button');
 
-    const btn = page.locator('.docs-example-preview button').first();
+    const btn = page.locator('.snippet > figure button').first();
     await focusViaKeyboard(page, btn);
 
     expect(await css(btn, 'outlineStyle')).not.toBe('none');
@@ -45,7 +45,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('toggle shows outline on keyboard focus', async ({ page }) => {
     await goto(page, 'toggle');
 
-    const toggle = page.locator('.docs-example-preview .toggle').first();
+    const toggle = page.locator('.snippet > figure .toggle').first();
     await focusViaKeyboard(page, toggle);
 
     expect(await css(toggle, 'outlineStyle')).not.toBe('none');
@@ -54,7 +54,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('accordion summary shows outline on keyboard focus', async ({ page }) => {
     await goto(page, 'accordion');
 
-    const summary = page.locator('.docs-example-preview .accordion summary').first();
+    const summary = page.locator('.snippet > figure .accordion summary').first();
     await focusViaKeyboard(page, summary);
 
     expect(await css(summary, 'outlineStyle')).not.toBe('none');
@@ -63,7 +63,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('slider removes default outline on keyboard focus', async ({ page }) => {
     await goto(page, 'slider');
 
-    const slider = page.locator('.docs-example-preview .slider').first();
+    const slider = page.locator('.snippet > figure .slider').first();
     await focusViaKeyboard(page, slider);
 
     // The slider sets outline: none and applies box-shadow on ::-webkit-slider-thumb (pseudo-element).
@@ -75,7 +75,7 @@ test.describe('Focus Visible Accessibility', () => {
   test('tabs trigger shows outline on keyboard focus', async ({ page }) => {
     await goto(page, 'tabs');
 
-    const tab = page.locator('.docs-example-preview [data-tab]').first();
+    const tab = page.locator('.snippet > figure [data-tab]').first();
     await focusViaKeyboard(page, tab);
 
     expect(await css(tab, 'outlineStyle')).not.toBe('none');
