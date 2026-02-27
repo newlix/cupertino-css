@@ -10,8 +10,7 @@
     @apply font-medium text-foreground;
   }
   /* Auto chevron separator */
-  & a + a::before,
-  & a + span::before {
+  & > :not(:first-child)::before {
     content: "";
     display: inline-block;
     width: 0.5em;
