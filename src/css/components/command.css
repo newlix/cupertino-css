@@ -7,7 +7,7 @@
     border-bottom: 1px solid var(--panel-border);
     & svg { @apply size-4 shrink-0 text-muted-foreground; }
     & input {
-      @apply h-12 flex-1 bg-transparent text-[13px] text-foreground outline-none;
+      @apply h-12 flex-1 border-0 rounded-none bg-transparent px-0 text-[13px] text-foreground outline-none;
       &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
     }
   }

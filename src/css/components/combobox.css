@@ -23,7 +23,7 @@
       @apply flex items-center gap-2 border-b px-3;
       & svg { @apply size-4 shrink-0 text-muted-foreground; }
       & input {
-        @apply h-10 flex-1 bg-transparent text-[13px] text-foreground outline-none;
+        @apply h-10 flex-1 border-0 rounded-none bg-transparent px-0 text-[13px] text-foreground outline-none;
         &::placeholder { @apply text-muted-foreground; opacity: 0.5; }
       }
     }
