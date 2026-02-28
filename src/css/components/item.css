@@ -1,6 +1,7 @@
 /* ========== ITEM ========== */
 .item {
   @apply flex items-center gap-4 rounded-2xl p-4 text-[13px];
+  corner-shape: squircle;
   transition: background-color 0.15s var(--apple-ease);
   & .item-icon {
     @apply flex size-9 shrink-0 items-center justify-center rounded-[10px] text-muted-foreground;
@@ -35,6 +36,7 @@ a.item, button.item {
 }
 .item-group {
   @apply flex flex-col rounded-2xl bg-card;
+  corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & .item { @apply rounded-none; }
   & .item:first-child { @apply rounded-t-2xl; }

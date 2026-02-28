@@ -1,6 +1,7 @@
 /* ========== SNIPPET (Code Block) ========== */
 .snippet {
   @apply rounded-[10px] border;
+  corner-shape: squircle;
   & > :first-child {
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;

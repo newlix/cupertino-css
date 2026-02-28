@@ -1,6 +1,7 @@
 /* ========== ASPECT RATIO ========== */
 .aspect-ratio {
   @apply relative w-full overflow-hidden rounded-xl;
+  corner-shape: squircle;
   & > img, & > video {
     @apply absolute inset-0 h-full w-full object-cover;
   }

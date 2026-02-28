@@ -1,6 +1,7 @@
 /* ========== TOGGLE ========== */
 .toggle {
   @apply inline-flex size-10 items-center justify-center rounded-[8px] text-muted-foreground cursor-pointer;
+  corner-shape: squircle;
   transition: all 0.2s var(--apple-ease);
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &:hover {
@@ -29,6 +30,7 @@
 }
 .toggle-group {
   @apply inline-flex items-center gap-0.5 rounded-[10px] p-0.5;
+  corner-shape: squircle;
   background: var(--surface-3);
   & .toggle {
     @apply rounded-[7px];

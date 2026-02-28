@@ -4,6 +4,7 @@
 }
 .context-menu-content {
   @apply fixed z-50 min-w-[200px] rounded-xl p-1.5;
+  corner-shape: squircle;
   display: none;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);

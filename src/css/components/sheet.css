@@ -2,6 +2,7 @@
 dialog.sheet,
 .sheet {
   @apply fixed m-0 h-full bg-card text-card-foreground;
+  corner-shape: squircle;
   max-height: 100vh;
   max-width: min(420px, 85vw);
   box-shadow: var(--shadow-xl);

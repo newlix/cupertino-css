@@ -5,6 +5,7 @@
 .alert-warning,
 .alert-destructive {
   @apply flex gap-3 rounded-xl p-4;
+  corner-shape: squircle;
   background: var(--card);
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & svg:first-child { @apply size-5 shrink-0; margin-top: 1px; color: var(--muted-foreground); }

@@ -1,6 +1,7 @@
 /* ========== TOAST ========== */
 .toast {
   @apply flex w-full max-w-[360px] items-start gap-3 rounded-2xl p-4;
+  corner-shape: squircle;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);

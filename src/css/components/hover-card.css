@@ -4,6 +4,7 @@
 }
 .hover-card-content {
   @apply pointer-events-none absolute z-50 mt-2 min-w-[280px] rounded-xl p-4;
+  corner-shape: squircle;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);

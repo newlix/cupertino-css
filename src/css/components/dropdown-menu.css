@@ -1,6 +1,7 @@
 /* ========== DROPDOWN MENU ========== */
 .dropdown-menu {
   @apply absolute z-50 mt-1.5 min-w-[200px] rounded-xl p-1.5;
+  corner-shape: squircle;
   display: none;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);

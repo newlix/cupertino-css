@@ -76,6 +76,7 @@
   /* ─── Text inputs ─── */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
     @apply w-full h-11 rounded-[12px] border px-3.5 text-[13px] text-foreground outline-none;
+    corner-shape: squircle;
     background-color: var(--card);
     border-color: var(--input-border);
     transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
@@ -89,6 +90,7 @@
   /* ─── Textarea ─── */
   textarea {
     @apply w-full rounded-[12px] border px-3.5 py-3 text-[13px] text-foreground outline-none;
+    corner-shape: squircle;
     background-color: var(--card);
     border-color: var(--input-border);
     transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
@@ -102,6 +104,7 @@
   /* ─── Select ─── */
   select {
     @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[13px] text-foreground outline-none;
+    corner-shape: squircle;
     background-color: var(--card);
     border-color: var(--input-border);
     transition: border-color 0.2s var(--apple-ease);
@@ -187,6 +190,7 @@
   /* ─── Table ─── */
   table {
     @apply w-full text-left text-[13px] rounded-2xl bg-card;
+    corner-shape: squircle;
     box-shadow: var(--shadow-sm), var(--panel-ring);
     & thead tr {
       border-bottom: 1px solid var(--panel-border);
@@ -248,6 +252,7 @@
   /* ─── Fieldset ─── */
   fieldset {
     @apply rounded-xl border p-5 space-y-4;
+    corner-shape: squircle;
     border-color: var(--border);
     & > legend {
       @apply px-2 text-[13px] font-semibold text-foreground;

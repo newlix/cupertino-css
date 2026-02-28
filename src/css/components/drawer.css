@@ -2,6 +2,7 @@
 dialog.sheet-bottom,
 .sheet-bottom {
   @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  corner-shape: squircle;
   max-height: min(85vh, 600px);
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -8px 32px oklch(0 0 0 / 0.1), var(--float-ring);
@@ -42,6 +43,7 @@ dialog.sheet-bottom,
 dialog.sheet-top,
 .sheet-top {
   @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  corner-shape: squircle;
   max-height: min(85vh, 600px);
   border-radius: 0 0 20px 20px;
   box-shadow: 0 8px 32px oklch(0 0 0 / 0.1), var(--float-ring);

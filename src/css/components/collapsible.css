@@ -1,6 +1,7 @@
 /* ========== COLLAPSIBLE ========== */
 .collapsible {
   @apply rounded-2xl bg-card;
+  corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   interpolate-size: allow-keywords;
   & summary {

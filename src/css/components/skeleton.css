@@ -2,6 +2,7 @@
 .skeleton,
 .skeleton-circle {
   @apply rounded-lg;
+  corner-shape: squircle;
   background: linear-gradient(
     90deg,
     var(--surface-4) 25%,

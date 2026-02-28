@@ -1,6 +1,7 @@
 /* ========== TABLE (overflow wrapper — table content styled by container.css) ========== */
 .table {
   @apply overflow-x-auto rounded-2xl bg-card;
+  corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & table {
     box-shadow: none;

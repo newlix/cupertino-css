@@ -1,6 +1,7 @@
 /* ========== ACCORDION ========== */
 .accordion {
   @apply rounded-2xl bg-card;
+  corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & details + details {
     border-top: 1px solid var(--panel-border);

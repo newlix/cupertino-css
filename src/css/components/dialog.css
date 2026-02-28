@@ -2,6 +2,7 @@
 dialog.dialog,
 .dialog {
   @apply m-auto w-full max-w-md rounded-[16px] bg-card text-card-foreground p-0;
+  corner-shape: squircle;
   box-shadow: var(--shadow-xl), var(--float-ring);
   &::backdrop {
     background: var(--backdrop-bg);

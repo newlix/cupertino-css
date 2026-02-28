@@ -1,6 +1,7 @@
 /* ========== COMMAND ========== */
 .command {
   @apply flex flex-col rounded-2xl bg-card overflow-hidden;
+  corner-shape: squircle;
   box-shadow: var(--shadow-lg), var(--float-ring);
   & > header {
     @apply flex items-center gap-2 px-3.5;
@@ -50,6 +51,7 @@
 dialog.command-dialog,
 .command-dialog {
   @apply m-auto w-full max-w-lg rounded-[18px] border-0 bg-transparent p-0;
+  corner-shape: squircle;
   box-shadow: var(--shadow-xl);
   &::backdrop {
     background: var(--backdrop-bg);
