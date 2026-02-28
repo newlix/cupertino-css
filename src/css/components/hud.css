@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-/* Base: HUD pill capsule */
+/* HUD pill capsule — transient operation confirmation */
 .hud {
   @apply inline-flex items-center gap-2.5 px-5 py-3;
   border-radius: 9999px;
@@ -16,36 +16,6 @@
   -webkit-backdrop-filter: blur(30px) saturate(1.8);
   box-shadow: var(--shadow-lg), var(--float-ring);
   pointer-events: auto;
-  animation: hudIn 0.3s var(--apple-spring);
-  &[data-closing] { animation: hudOut 0.2s var(--apple-ease) forwards; }
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-semibold whitespace-nowrap; color: oklch(0.95 0 0); }
-}
-
-/* Notification mode: richer with title + message */
-.hud-notification {
-  @apply flex-col items-center text-center px-6 py-4;
-  border-radius: var(--radius-lg);
-  corner-shape: squircle;
-  & svg:first-child { @apply size-8; }
-  & .hud-title { @apply text-[14px] font-semibold; color: oklch(0.95 0 0); }
-  & .hud-message { @apply mt-0.5 text-[13px]; color: oklch(0.78 0 0); }
-}
-
-/* Type variant — icon color (notification mode only) */
-.hud-notification.hud-destructive { & svg:first-child { color: var(--color-destructive); } }
-
-/* Animations */
-@keyframes hudIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes hudOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.96); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hud { animation: none; }
-  .hud[data-closing] { animation: none; opacity: 0; }
 }
