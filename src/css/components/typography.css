@@ -7,21 +7,24 @@
   letter-spacing: -0.015em;
   & > * + * { @apply mt-5; }
   & h1 {
-    @apply font-bold tracking-tight text-foreground;
+    @apply font-bold text-foreground;
     font-size: 34px;
     line-height: 1.21;
+    letter-spacing: 0.011em;
     &:not(:first-child) { @apply mt-12; }
   }
   & h2 {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply font-semibold text-foreground;
     font-size: 22px;
     line-height: 1.18;
+    letter-spacing: 0.016em;
     &:not(:first-child) { @apply mt-10; }
   }
   & h3 {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply font-semibold text-foreground;
     font-size: 20px;
     line-height: 1.25;
+    letter-spacing: 0.019em;
     &:not(:first-child) { @apply mt-8; }
   }
   & h4 {
@@ -75,8 +78,8 @@
     }
   }
   & a {
-    @apply font-normal text-primary underline underline-offset-4;
-    &:hover { text-decoration-color: var(--primary); }
+    @apply font-normal text-primary no-underline;
+    &:hover { @apply underline underline-offset-4; text-decoration-color: var(--primary); }
   }
   & img {
     @apply rounded-xl;

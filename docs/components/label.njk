@@ -5,23 +5,21 @@
 {% block content %}
 
   {% call example("With Checkbox") %}
-<div class="cider">
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
-    <input type="checkbox" />
-    <span>Accept terms and conditions</span>
-  </label>
-</div>
+<label class="inline-flex items-center gap-2.5 cursor-pointer">
+  <input type="checkbox" />
+  <span>Accept terms and conditions</span>
+</label>
 {% endcall %}
 
   {% call example("With Input") %}
-<div class="cider space-y-1.5">
+<div class="space-y-1.5">
   <label for="demo-label-email">Your email address</label>
   <input type="email" id="demo-label-email" placeholder="you@example.com">
 </div>
 {% endcall %}
 
   {% call example("Variants") %}
-<div class="cider space-y-3">
+<div class="space-y-3">
   <label>Default</label>
   <label>Required <span class="text-destructive">*</span></label>
   <label>Optional <span class="text-xs font-normal text-muted-foreground">(optional)</span></label>
@@ -29,8 +27,7 @@
 {% endcall %}
 
   {% call example("Payment Form") %}
-<div class="cider">
-  <form class="max-w-md space-y-4" onsubmit="return false;">
+<form class="max-w-md space-y-4" onsubmit="return false;">
     <div class="space-y-1">
       <h3 class="text-lg font-semibold">Payment Method</h3>
       <small>Add a new payment method to your account.</small>
@@ -108,11 +105,10 @@
       <button class="btn-outline" type="reset">Cancel</button>
     </div>
   </form>
-</div>
 {% endcall %}
 
   {% call example("Disabled") %}
-<div class="cider space-y-1.5">
+<div class="space-y-1.5">
   <label for="demo-label-disabled">Email</label>
   <input type="email" id="demo-label-disabled" placeholder="Email" disabled>
 </div>

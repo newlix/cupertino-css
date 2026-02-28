@@ -5,32 +5,26 @@
 {% block content %}
 
   {% call example("Default") %}
-<div class="cider">
-  <textarea rows="3" placeholder="Type your message..."></textarea>
-</div>
+<textarea rows="3" placeholder="Type your message..."></textarea>
 {% endcall %}
 
   {% call example("Invalid") %}
-<div class="cider">
-  <textarea rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
-</div>
+<textarea rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
 {% endcall %}
 
   {% call example("Disabled") %}
-<div class="cider">
-  <textarea rows="3" placeholder="Type your message..." disabled></textarea>
-</div>
+<textarea rows="3" placeholder="Type your message..." disabled></textarea>
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="cider grid gap-1.5">
+<div class="grid gap-1.5">
   <label for="demo-ta-label">Message</label>
   <textarea id="demo-ta-label" rows="3" placeholder="Type your message..."></textarea>
 </div>
 {% endcall %}
 
   {% call example("With Text") %}
-<div class="cider grid gap-1.5">
+<div class="grid gap-1.5">
   <label for="demo-ta-text">Bio</label>
   <textarea id="demo-ta-text" rows="3" placeholder="Type your message..."></textarea>
   <small>Type your message and press enter to send.</small>
@@ -38,23 +32,21 @@
 {% endcall %}
 
   {% call example("With Button") %}
-<div class="cider grid gap-3">
+<div class="grid gap-3">
   <textarea rows="3" placeholder="Type your message..."></textarea>
   <button type="submit">Submit</button>
 </div>
 {% endcall %}
 
   {% call example("Form") %}
-<div class="cider">
-  <form class="flex flex-col gap-4" onsubmit="return false">
-    <div class="space-y-1.5">
-      <label for="demo-ta-form">Bio</label>
-      <textarea id="demo-ta-form" rows="3" placeholder="Tell us a bit about yourself"></textarea>
-      <small>You can @mention other users and organizations.</small>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-</div>
+<form class="flex flex-col gap-4" onsubmit="return false">
+  <div class="space-y-1.5">
+    <label for="demo-ta-form">Bio</label>
+    <textarea id="demo-ta-form" rows="3" placeholder="Tell us a bit about yourself"></textarea>
+    <small>You can @mention other users and organizations.</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>
 {% endcall %}
 
 {% endblock %}

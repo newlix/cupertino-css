@@ -3,22 +3,24 @@
   @apply relative inline-block;
 }
 .tooltip-content {
-  @apply pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium;
+  @apply pointer-events-none absolute bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
   --tooltip-bg: oklch(0.200 0.004 285.99);
   --tooltip-fg: white;
   background: var(--tooltip-bg);
   color: var(--tooltip-fg);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   opacity: 0;
-  transform: translateX(-50%) translateY(2px);
-  transition: opacity 0.15s var(--apple-ease), transform 0.15s var(--apple-ease);
+  translate: -50% 2px;
+  transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
   .tooltip:hover > & {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    translate: -50% 0;
+    transition-delay: 0.5s;
   }
   &::after {
     content: "";
-    @apply absolute left-1/2 top-full -translate-x-1/2;
+    @apply absolute left-1/2 top-full;
+    translate: -50%;
     border: 4px solid transparent;
     border-top-color: var(--tooltip-bg);
   }
@@ -30,8 +32,8 @@
 .tooltip-bottom {
   & .tooltip-content {
     @apply bottom-auto top-full mb-0 mt-2;
-    transform: translateX(-50%) translateY(-2px);
-    .tooltip:hover > & { transform: translateX(-50%) translateY(0); }
+    translate: -50% -2px;
+    .tooltip:hover > & { translate: -50% 0; }
     &::after {
       @apply top-auto bottom-full;
       border-top-color: transparent;
@@ -42,11 +44,12 @@
 
 .tooltip-right {
   & .tooltip-content {
-    @apply bottom-auto left-full top-1/2 mb-0 ml-2 -translate-y-1/2 translate-x-0;
-    transform: translateY(-50%) translateX(-2px);
-    .tooltip:hover > & { transform: translateY(-50%) translateX(0); }
+    @apply bottom-auto left-full top-1/2 mb-0 ml-2;
+    translate: -2px -50%;
+    .tooltip:hover > & { translate: 0 -50%; }
     &::after {
-      @apply left-auto right-full top-1/2 -translate-y-1/2;
+      @apply left-auto right-full top-1/2;
+      translate: 0 -50%;
       border-top-color: transparent;
       border-right-color: var(--tooltip-bg);
     }
@@ -54,11 +57,12 @@
 }
 .tooltip-left {
   & .tooltip-content {
-    @apply bottom-auto right-full left-auto top-1/2 mb-0 mr-2 -translate-y-1/2 translate-x-0;
-    transform: translateY(-50%) translateX(2px);
-    .tooltip:hover > & { transform: translateY(-50%) translateX(0); }
+    @apply bottom-auto right-full left-auto top-1/2 mb-0 mr-2;
+    translate: 2px -50%;
+    .tooltip:hover > & { translate: 0 -50%; }
     &::after {
-      @apply right-auto left-full top-1/2 -translate-y-1/2;
+      @apply right-auto left-full top-1/2;
+      translate: 0 -50%;
       border-top-color: transparent;
       border-left-color: var(--tooltip-bg);
     }

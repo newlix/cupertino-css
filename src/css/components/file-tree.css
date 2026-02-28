@@ -49,5 +49,15 @@
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & > svg { @apply size-4 shrink-0; }
+    &[data-selected], &[aria-selected="true"] {
+      @apply text-primary-foreground;
+      background: var(--primary);
+    }
+  }
+
+  /* Selected state for folder summary */
+  & summary[data-selected], & summary[aria-selected="true"] {
+    @apply text-primary-foreground;
+    background: var(--primary);
   }
 }

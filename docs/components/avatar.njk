@@ -5,14 +5,14 @@
 {% block content %}
 
   {% call example("Default") %}
-<div class="cider flex items-center gap-4">
+<div class="flex items-center gap-4">
   <img class="avatar" src="https://i.pravatar.cc/40" alt="Avatar" />
   <div class="avatar">JD</div>
 </div>
 {% endcall %}
 
   {% call example("Sizes") %}
-<div class="cider flex items-center gap-4">
+<div class="flex items-center gap-4">
   <img class="avatar size-8" src="https://i.pravatar.cc/32" alt="Avatar" />
   <img class="avatar" src="https://i.pravatar.cc/40" alt="Avatar" />
   <img class="avatar size-14" src="https://i.pravatar.cc/56" alt="Avatar" />
@@ -23,7 +23,7 @@
 {% endcall %}
 
   {% call example("With Status") %}
-<div class="cider flex items-center gap-6">
+<div class="flex items-center gap-6">
   <div class="relative inline-block">
     <div class="avatar">EF</div>
     <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-success"></span>
@@ -40,18 +40,16 @@
 {% endcall %}
 
   {% call example("Group") %}
-<div class="cider">
-  <div class="avatar-group">
-    <div class="avatar size-8 text-xs">A</div>
-    <div class="avatar size-8 text-xs">B</div>
-    <div class="avatar size-8 text-xs">C</div>
-    <div class="avatar size-8 text-xs text-muted-foreground">+3</div>
-  </div>
+<div class="avatar-group">
+  <div class="avatar size-8 text-xs">A</div>
+  <div class="avatar size-8 text-xs">B</div>
+  <div class="avatar size-8 text-xs">C</div>
+  <div class="avatar size-8 text-xs text-muted-foreground">+3</div>
 </div>
 {% endcall %}
 
   {% call example("With Name") %}
-<div class="cider space-y-4">
+<div class="space-y-4">
   <div class="flex items-center gap-3">
     <img class="avatar" src="https://i.pravatar.cc/40?img=12" alt="Avatar" />
     <div>
@@ -70,7 +68,7 @@
 {% endcall %}
 
   {% call example("Placeholder") %}
-<div class="cider flex items-center gap-4">
+<div class="flex items-center gap-4">
   <div class="avatar">
     <svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
   </div>
@@ -81,7 +79,7 @@
 {% endcall %}
 
   {% call example("Link") %}
-<div class="cider flex items-center gap-4">
+<div class="flex items-center gap-4">
   <a href="#">
     <img class="avatar" src="https://i.pravatar.cc/40?img=3" alt="Avatar" />
   </a>

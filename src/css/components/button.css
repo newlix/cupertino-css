@@ -3,7 +3,7 @@
 .btn-outline,
 .btn-ghost,
 .btn-destructive {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-[15px] py-2 text-sm font-normal disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-[15px] py-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.016em;
   @apply bg-secondary text-secondary-foreground;
@@ -13,7 +13,7 @@
 }
 .btn-primary {
   @apply bg-primary text-primary-foreground;
-  &:hover { background: oklch(from var(--primary) calc(l + 0.02) c h); }
+  &:hover { background: oklch(from var(--primary) calc(l - 0.03) c h); }
   &:active { transform: scale(var(--apple-press-scale)); }
 }
 .btn-outline {

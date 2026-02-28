@@ -5,63 +5,55 @@
 {% block content %}
 
   {% call example("Native Select") %}
-<div class="cider">
-  <select>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-</div>
+<select>
+  <option value="" disabled selected>Select an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
 {% endcall %}
 
   {% call example("With Groups") %}
-<div class="cider">
-  <select>
-    <option value="" disabled selected>Select a fruit</option>
-    <optgroup label="Citrus">
-      <option value="orange">Orange</option>
-      <option value="lemon">Lemon</option>
-      <option value="grapefruit">Grapefruit</option>
-    </optgroup>
-    <optgroup label="Berries">
-      <option value="strawberry">Strawberry</option>
-      <option value="blueberry">Blueberry</option>
-      <option value="raspberry">Raspberry</option>
-    </optgroup>
-    <optgroup label="Tropical">
-      <option value="mango">Mango</option>
-      <option value="pineapple">Pineapple</option>
-      <option value="papaya">Papaya</option>
-    </optgroup>
-  </select>
-</div>
+<select>
+  <option value="" disabled selected>Select a fruit</option>
+  <optgroup label="Citrus">
+    <option value="orange">Orange</option>
+    <option value="lemon">Lemon</option>
+    <option value="grapefruit">Grapefruit</option>
+  </optgroup>
+  <optgroup label="Berries">
+    <option value="strawberry">Strawberry</option>
+    <option value="blueberry">Blueberry</option>
+    <option value="raspberry">Raspberry</option>
+  </optgroup>
+  <optgroup label="Tropical">
+    <option value="mango">Mango</option>
+    <option value="pineapple">Pineapple</option>
+    <option value="papaya">Papaya</option>
+  </optgroup>
+</select>
 {% endcall %}
 
   {% call example("Disabled") %}
-<div class="cider">
-  <select disabled>
-    <option value="" disabled selected>Select an option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </select>
-</div>
+<select disabled>
+  <option value="" disabled selected>Select an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</select>
 {% endcall %}
 
   {% call example("Invalid State") %}
-<div class="cider">
-  <select aria-invalid="true">
-    <option value="" disabled selected>Select a role</option>
-    <option value="admin">Admin</option>
-    <option value="editor">Editor</option>
-    <option value="viewer">Viewer</option>
-  </select>
-</div>
+<select aria-invalid="true">
+  <option value="" disabled selected>Select a role</option>
+  <option value="admin">Admin</option>
+  <option value="editor">Editor</option>
+  <option value="viewer">Viewer</option>
+</select>
 {% endcall %}
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Enhances <code class="kbd">[data-select]</code> elements into custom searchable dropdowns.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Enhances <code>[data-select]</code> elements into custom searchable dropdowns.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/select.js"&gt;&lt;/script&gt;

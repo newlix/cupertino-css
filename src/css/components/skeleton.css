@@ -1,8 +1,15 @@
 /* ========== SKELETON ========== */
 .skeleton,
 .skeleton-circle {
-  @apply animate-pulse rounded-lg;
-  background: var(--surface-4);
+  @apply rounded-lg;
+  background: linear-gradient(
+    90deg,
+    var(--surface-4) 25%,
+    var(--surface-2) 50%,
+    var(--surface-4) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 .skeleton-circle {
   @apply rounded-full;

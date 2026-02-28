@@ -13,7 +13,12 @@
     background: var(--surface-6);
     border: 1px solid transparent;
     background-clip: content-box;
+    transition: background 0.2s var(--apple-ease);
     &:hover { background: var(--surface-7); background-clip: content-box; }
+  }
+  &:hover::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
   }
   scrollbar-width: thin;
   scrollbar-color: var(--surface-6) transparent;

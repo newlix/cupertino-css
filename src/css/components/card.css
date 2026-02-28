@@ -30,8 +30,8 @@
   & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
   & p { @apply mt-2 text-[13px] text-muted-foreground; }
   &:hover {
+    background: var(--surface-1);
     box-shadow: var(--shadow-md), var(--float-ring);
-    transform: translateY(-1px);
   }
-  &:active { transform: translateY(0) scale(var(--apple-press-scale)); }
+  &:active { transform: scale(var(--apple-press-scale)); }
 }

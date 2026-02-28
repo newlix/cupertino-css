@@ -5,24 +5,20 @@
 {% block content %}
 
   {% call example("Default") %}
-<div class="cider">
-  <nav class="breadcrumb">
-    <a href="#">Home</a>
-    <a href="#">Components</a>
-    <span>Breadcrumb</span>
-  </nav>
-</div>
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <a href="#">Components</a>
+  <span>Breadcrumb</span>
+</nav>
 {% endcall %}
 
   {% call example("Collapsed") %}
-<div class="cider">
-  <nav class="breadcrumb">
-    <a href="#">Home</a>
-    <span>&hellip;</span>
-    <a href="#">Components</a>
-    <span>Breadcrumb</span>
-  </nav>
-</div>
+<nav class="breadcrumb">
+  <a href="#">Home</a>
+  <span>&hellip;</span>
+  <a href="#">Components</a>
+  <span>Breadcrumb</span>
+</nav>
 {% endcall %}
 
 {% endblock %}

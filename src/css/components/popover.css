@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .popover-content {
-  @apply absolute z-50 mt-2 min-w-[220px] rounded-2xl p-4;
+  @apply absolute z-50 mt-3 min-w-[220px] rounded-xl p-4;
   display: none;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
@@ -11,9 +11,28 @@
   box-shadow: var(--shadow-lg), var(--float-ring);
   animation: slideUp 0.2s var(--apple-spring);
   &[data-open] { display: block; }
+  &[data-closing] { animation: slideDown 0.15s var(--apple-ease) forwards; }
+  /* Arrow */
+  &::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--glass-bg-opaque);
+    box-shadow: var(--float-ring);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
 }
 .popover-top {
   & .popover-content {
-    @apply bottom-full top-auto mb-2 mt-0;
+    @apply bottom-full top-auto mb-3 mt-0;
+    &::before {
+      top: auto;
+      bottom: -6px;
+      transform: translateX(-50%) rotate(225deg);
+    }
   }
 }

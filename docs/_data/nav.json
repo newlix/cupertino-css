@@ -4,7 +4,7 @@
     "items": [
       { "label": "Introduction", "href": "introduction.html" },
       { "label": "Installation", "href": "installation.html" },
-      { "label": "Scope", "href": "components/scope.html" },
+      { "label": "Container", "href": "components/container.html" },
       { "label": "Typography", "href": "components/typography.html" }
     ]
   },

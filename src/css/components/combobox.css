@@ -35,11 +35,11 @@
         }
       }
       & [role="option"] {
-        @apply flex items-center gap-2 rounded-lg px-2 py-2 text-[13px] text-foreground cursor-pointer transition-colors;
+        @apply flex items-center gap-2 rounded-lg px-2 py-1.5 text-[13px] text-foreground cursor-pointer transition-colors;
         & svg { @apply size-4 shrink-0 text-muted-foreground; }
-        &:hover { @apply bg-accent; }
+        &:hover { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
         &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-        &[data-active] { @apply bg-accent; }
+        &[data-active] { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
         &[data-selected] {
           @apply bg-accent font-medium;
           &::after {

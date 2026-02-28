@@ -16,7 +16,7 @@
 
 <!-- ─── Nav ─── -->
 <nav class="home-nav">
-  <div class="home-nav-inner">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
     <a href="index.html" class="flex items-center gap-2.5 no-underline">
       <svg width="20" height="22" viewBox="0 0 64 72" fill="none" class="text-foreground">
         <path d="M 10 6 C 10 4 54 4 54 6 L 48 32 C 46 40 38 44 34 46 L 34 54 L 44 56 C 48 57 48 62 44 62 L 20 62 C 16 62 16 57 20 56 L 30 54 L 30 46 C 26 44 18 40 16 32 Z" fill="currentColor"/>
@@ -38,7 +38,7 @@
 </nav>
 
 <!-- ─── Hero ─── -->
-<section class="home-hero">
+<section class="home-hero mx-auto max-w-3xl px-6 py-20 text-center">
   <h1 class="text-5xl font-bold tracking-tight text-foreground sm:text-6xl">Build beautiful<br>Apple-aesthetic UIs</h1>
   <p class="mt-4 text-lg text-muted-foreground">50+ accessible components following the Apple Human Interface Guidelines.<br>Semantic CSS classes on Tailwind CSS v4. Copy and paste into your project.</p>
   <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -54,10 +54,10 @@
 </section>
 
 <!-- ─── Demo Tabs ─── -->
-<div class="home-demos">
-<h2 class="home-section-title" style="max-width:none;padding:0;">Built with Cider UI</h2>
+<div class="mx-auto max-w-6xl px-6 pb-20">
+<h2 class="pb-6 text-2xl font-bold tracking-tight text-foreground">Built with Cider UI</h2>
 
-<div class="home-demo-tabs-list">
+<div class="flex justify-center mb-6">
   <div class="tabs-pill">
     <div class="tabs-list">
       <button class="tabs-trigger" data-demo="components" data-active>Components</button>
@@ -77,9 +77,9 @@
   <div class="home-showcase-row home-showcase-2">
     <div class="home-showcase-cell">
       <div class="home-showcase-card">
-        <div class="home-showcase-card-head">
-          <h3>Create an account</h3>
-          <p>Enter your details to get started</p>
+        <div class="pb-4">
+          <h3 class="text-base font-semibold tracking-tight text-foreground">Create an account</h3>
+          <p class="text-[13px] text-muted-foreground mt-0.5">Enter your details to get started</p>
         </div>
         <form onsubmit="return false" class="space-y-3">
           <div class="field">
@@ -92,7 +92,7 @@
           </div>
           <div class="field">
             <label>Role</label>
-            <select class="select">
+            <select>
               <option value="" disabled selected>Select a role</option>
               <option>Designer</option>
               <option>Developer</option>
@@ -109,9 +109,9 @@
     </div>
     <div class="home-showcase-cell">
       <div class="home-showcase-card">
-        <div class="home-showcase-card-head">
-          <h3>Notifications</h3>
-          <p>Choose what you want to be notified about</p>
+        <div class="pb-4">
+          <h3 class="text-base font-semibold tracking-tight text-foreground">Notifications</h3>
+          <p class="text-[13px] text-muted-foreground mt-0.5">Choose what you want to be notified about</p>
         </div>
         <div class="space-y-4">
           <label class="flex items-center justify-between cursor-pointer">
@@ -121,7 +121,7 @@
             </div>
             <input type="checkbox" role="switch" checked>
           </label>
-          <div class="separator"></div>
+          <hr>
           <label class="flex items-center justify-between cursor-pointer">
             <div>
               <p class="text-sm font-medium">Email Digest</p>
@@ -129,7 +129,7 @@
             </div>
             <input type="checkbox" role="switch">
           </label>
-          <div class="separator"></div>
+          <hr>
           <label class="flex items-center justify-between cursor-pointer">
             <div>
               <p class="text-sm font-medium">Marketing</p>
@@ -157,17 +157,17 @@
               <div role="menuitem">
                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                 <span>Calendar</span>
-                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">C</kbd></span>
+                <span class="ml-auto flex gap-1"><kbd>&#8984;</kbd><kbd>C</kbd></span>
               </div>
               <div role="menuitem">
                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 <span>Search Files</span>
-                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">F</kbd></span>
+                <span class="ml-auto flex gap-1"><kbd>&#8984;</kbd><kbd>F</kbd></span>
               </div>
               <div role="menuitem">
                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                 <span>Settings</span>
-                <span class="ml-auto flex gap-1"><kbd class="kbd">&#8984;</kbd><kbd class="kbd">,</kbd></span>
+                <span class="ml-auto flex gap-1"><kbd>&#8984;</kbd><kbd>,</kbd></span>
               </div>
             </div>
           </div>
@@ -227,9 +227,9 @@
     </div>
     <div class="home-showcase-cell">
       <div class="home-showcase-card">
-        <div class="home-showcase-card-head">
-          <h3>Payment Method</h3>
-          <p>Add a payment method to your account</p>
+        <div class="pb-4">
+          <h3 class="text-base font-semibold tracking-tight text-foreground">Payment Method</h3>
+          <p class="text-[13px] text-muted-foreground mt-0.5">Add a payment method to your account</p>
         </div>
         <div class="tabs" data-tabs>
           <div class="tabs-list" data-tab-list>
@@ -284,7 +284,7 @@
               Dark mode support?
               <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </summary>
-            <div>Yes. Add the <code class="kbd">.dark</code> class.</div>
+            <div>Yes. Add the <code>.dark</code> class.</div>
           </details>
           <details name="home-faq">
             <summary>
@@ -330,7 +330,7 @@
               </div>
             </div>
           </div>
-          <div class="separator"></div>
+          <hr>
           <div class="flex items-center justify-between">
             <p class="text-[13px] font-medium text-muted-foreground">Format</p>
             <div class="toggle-group" data-multiple>
@@ -345,7 +345,7 @@
               </button>
             </div>
           </div>
-          <div class="separator"></div>
+          <hr>
           <div>
             <p class="text-[13px] font-medium text-muted-foreground mb-2">Volume</p>
             <input type="range" min="0" max="100" value="65" class="slider w-full">
@@ -403,7 +403,7 @@
 </div><!-- /home-demos -->
 
 <!-- ─── Footer ─── -->
-<footer class="home-footer">
+<footer class="border-t py-8 text-center text-sm text-muted-foreground">
   <p>Built by <a href="https://github.com/newlix" class="text-foreground underline underline-offset-4">newlix</a>. Source on <a href="https://github.com/newlix/ciderui" class="text-foreground underline underline-offset-4">GitHub</a>.</p>
 </footer>
 

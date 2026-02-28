@@ -31,7 +31,7 @@ dialog.sheet-bottom,
     & svg { @apply size-4; }
   }
   & .drawer-handle {
-    @apply mx-auto mt-2 mb-1 h-1 w-9 rounded-full;
+    @apply mx-auto mt-2 mb-1 h-[5px] w-9 rounded-full;
     background: var(--surface-7);
   }
 }

@@ -1,13 +1,7 @@
-/* ========== SEPARATOR ========== */
-.separator {
-  @apply shrink-0;
-  background: var(--panel-border);
-}
-.separator:not(.separator-vertical) {
-  @apply h-px w-full;
-}
+/* ========== SEPARATOR (variants only — horizontal hr styled by container.css) ========== */
 .separator-vertical {
-  @apply w-px self-stretch;
+  @apply w-px shrink-0 self-stretch;
+  background: var(--panel-border);
 }
 .separator-label {
   @apply flex items-center gap-3 text-xs text-muted-foreground;

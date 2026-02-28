@@ -23,9 +23,16 @@
     @apply rounded-b-2xl;
   }
   & details[open] > summary svg:last-child {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
   }
   & details > div, & details > p {
     @apply px-5 pb-4 text-[13px] text-muted-foreground;
+  }
+  /* Smooth height animation for content */
+  & details {
+    interpolate-size: allow-keywords;
+    & > div, & > p {
+      overflow: hidden;
+    }
   }
 }

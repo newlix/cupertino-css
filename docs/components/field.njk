@@ -35,7 +35,7 @@
   {% call example("Error State") %}
 <div class="field">
   <label>Username</label>
-  <input type="text" value="ab" class="input-error">
+  <input type="text" value="ab" aria-invalid="true">
   <p class="field-error">Username must be at least 3 characters.</p>
 </div>
 {% endcall %}
@@ -48,7 +48,6 @@
 {% endcall %}
 
   {% call example("Checkbox Field") %}
-<div class="cider">
 <div class="field">
   <label class="inline-flex items-center gap-2.5 cursor-pointer">
     <input type="checkbox">
@@ -56,11 +55,9 @@
   </label>
   <p>You must agree before continuing.</p>
 </div>
-</div>
 {% endcall %}
 
   {% call example("Radio Group Field") %}
-<div class="cider">
 <div class="field">
   <label>Plan</label>
   <fieldset class="space-y-2.5">
@@ -79,18 +76,15 @@
   </fieldset>
   <p>Select the plan that works for you.</p>
 </div>
-</div>
 {% endcall %}
 
   {% call example("Switch Field") %}
-<div class="cider">
 <div class="field">
   <div class="flex items-center justify-between">
     <label for="demo-field-switch" class="text-sm font-medium">Airplane Mode</label>
     <input type="checkbox" id="demo-field-switch" role="switch">
   </div>
   <p>Disable all wireless connections.</p>
-</div>
 </div>
 {% endcall %}
 

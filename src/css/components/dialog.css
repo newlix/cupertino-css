@@ -9,6 +9,7 @@ dialog.dialog,
     -webkit-backdrop-filter: var(--glass-blur);
   }
   &[open] { animation: dialogShow 0.28s var(--apple-spring); }
+  &[data-closing] { animation: dialogHide 0.2s var(--apple-ease) forwards; }
   & > header {
     @apply px-6 pt-6;
     & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }

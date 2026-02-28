@@ -19,13 +19,13 @@
       }
     }
     & [role="menuitem"], & [role="option"] {
-      @apply flex items-center gap-2.5 rounded-[8px] px-2.5 py-2 text-[13px] text-foreground cursor-pointer;
+      @apply flex items-center gap-2.5 rounded-[8px] px-2.5 py-1.5 text-[13px] text-foreground cursor-pointer;
       transition: background-color 0.12s var(--apple-ease);
       & svg { @apply size-4 shrink-0 text-muted-foreground; }
       & span { @apply flex-1; }
-      &:hover { @apply bg-accent; }
+      &:hover { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
       &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-      &[data-active] { @apply bg-accent; }
+      &[data-active] { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
       &[aria-disabled="true"] { @apply opacity-50 pointer-events-none; }
       &[data-selected]::before {
         content: "";

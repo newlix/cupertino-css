@@ -235,6 +235,16 @@
     to   { opacity: 1; transform: scale(1); }
   }
 
+  @keyframes dialogHide {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.95); }
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
   @keyframes indeterminate {
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(400%); }
@@ -277,8 +287,6 @@
   @import "./components/badge.css";
   @import "./components/card.css";
   @import "./components/alert.css";
-  @import "./components/form-controls.css";
-  @import "./components/label.css";
   @import "./components/field.css";
   @import "./components/dialog.css";
   @import "./components/dropdown-menu.css";
@@ -288,7 +296,6 @@
   @import "./components/avatar.css";
   @import "./components/breadcrumb.css";
   @import "./components/button-group.css";
-  @import "./components/kbd.css";
   @import "./components/pagination.css";
   @import "./components/progress.css";
   @import "./components/skeleton.css";
@@ -319,5 +326,5 @@
   @import "./components/input-otp.css";
   @import "./components/context-menu.css";
   @import "./components/carousel.css";
-  @import "./components/scope.css";
+  @import "./components/container.css";
 }

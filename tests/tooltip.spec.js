@@ -21,7 +21,7 @@ test.describe('Tooltip', () => {
     const content = tooltip.locator('.tooltip-content');
 
     await tooltip.hover();
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(700);
 
     const opacity = await css(content, 'opacity');
     const visibility = await css(content, 'visibility');

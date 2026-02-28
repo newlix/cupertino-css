@@ -84,7 +84,7 @@
   </header>
   <section>
     <div class="flex gap-2">
-      <input type="text" value="https://example.com/doc/abc123" readonly class="input flex-1" />
+      <input type="text" value="https://example.com/doc/abc123" readonly class="flex-1" />
       <button onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
     </div>
   </section>
@@ -103,7 +103,7 @@
   <section>
     <div class="space-y-4">
       <div class="flex gap-2">
-        <input type="email" placeholder="email@example.com" class="input flex-1" />
+        <input type="email" placeholder="email@example.com" class="flex-1" />
         <button>Invite</button>
       </div>
       <div class="space-y-2">
@@ -125,7 +125,7 @@
               <p class="text-xs text-muted-foreground">john@example.com</p>
             </div>
           </div>
-          <select class="select h-auto w-auto py-1 pl-2 pr-8 text-xs rounded-lg">
+          <select class="h-auto w-auto py-1 pl-2 pr-8 text-xs rounded-lg">
             <option>Viewer</option>
             <option selected>Editor</option>
             <option>Admin</option>
@@ -143,7 +143,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close. The native <code class="kbd">&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/dialog.js"&gt;&lt;/script&gt;

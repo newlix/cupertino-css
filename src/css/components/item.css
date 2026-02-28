@@ -31,6 +31,9 @@ a.item, button.item {
   &:hover { background: var(--surface-2); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
 }
+.item[data-selected], .item[aria-selected="true"] {
+  background: oklch(from var(--primary) l c h / 0.1);
+}
 .item-group {
   @apply flex flex-col rounded-2xl bg-card;
   box-shadow: var(--shadow-sm), var(--panel-ring);

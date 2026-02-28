@@ -5,13 +5,11 @@
 {% block content %}
 
   {% call example("Default") %}
-<div class="cider">
-  <progress value="60" max="100"></progress>
-</div>
+<progress value="60" max="100"></progress>
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="cider space-y-2">
+<div class="space-y-2">
   <div class="flex items-center justify-between text-sm">
     <span class="font-medium">Uploading...</span>
     <span class="text-muted-foreground">73%</span>
@@ -21,9 +19,7 @@
 {% endcall %}
 
   {% call example("Indeterminate") %}
-<div class="cider">
-  <progress max="100"></progress>
-</div>
+<progress max="100"></progress>
 {% endcall %}
 
   {% call example("In Card") %}
@@ -32,7 +28,7 @@
     <h3 class="text-sm font-semibold">Storage</h3>
     <span class="text-xs text-muted-foreground">7.2 GB / 15 GB</span>
   </div>
-  <div class="cider mt-3">
+  <div class="mt-3">
     <progress value="48" max="100"></progress>
   </div>
   <p class="mt-2 text-xs text-muted-foreground">48% of storage used. Upgrade for more space.</p>

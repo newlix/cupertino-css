@@ -17,12 +17,12 @@
 <body>
 
 <nav class="docs-sidebar" id="docs-sidebar">
-  <div class="docs-sidebar-brand">
+  <div class="flex items-center justify-between px-5 py-5 mb-1 border-b">
     <a href="{{ base }}introduction.html" class="flex items-center gap-2.5 no-underline">
       <svg width="20" height="22" viewBox="0 0 64 72" fill="none" class="text-foreground">
         <path d="M 10 6 C 10 4 54 4 54 6 L 48 32 C 46 40 38 44 34 46 L 34 54 L 44 56 C 48 57 48 62 44 62 L 20 62 C 16 62 16 57 20 56 L 30 54 L 30 46 C 26 44 18 40 16 32 Z" fill="currentColor"/>
       </svg>
-      <h1>Cider UI</h1>
+      <h1 class="text-base font-bold tracking-tight text-foreground">Cider UI</h1>
     </a>
     <div class="flex items-center gap-1">
       <a href="https://github.com/newlix/ciderui" target="_blank" rel="noopener" class="docs-theme-toggle" title="GitHub">
@@ -35,8 +35,8 @@
     </div>
   </div>
   {%- for section in nav %}
-  <div class="docs-sidebar-section">
-    {%- if section.title %}<h2>{{ section.title }}</h2>{%- endif %}
+  <div class="px-3 pt-4 pb-2">
+    {%- if section.title %}<h2 class="px-2 pb-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60">{{ section.title }}</h2>{%- endif %}
     <div class="flex flex-col gap-0.5">
       {%- for item in section.items %}
       <a href="{{ base }}{{ item.href }}"{% if item.href == page %} data-active{% endif %}>{{ item.label }}</a>
@@ -52,12 +52,12 @@
 </button>
 
 <div class="docs-main">
-  <div class="cider-fixed max-w-3xl py-8 md:py-10">
+  <div class="cider cider-fixed max-w-3xl py-8 md:py-10">
     {%- if title %}
-    <h1 class="docs-title">{{ title }}</h1>
+    <h1 class="text-3xl font-bold tracking-tight text-foreground">{{ title }}</h1>
     {%- endif %}
     {%- if description %}
-    <p class="docs-description">{{ description }}</p>
+    <p class="mt-2 text-base text-muted-foreground">{{ description }}</p>
     {%- endif %}
     {% block content %}{% endblock %}
   </div>

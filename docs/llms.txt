@@ -28,7 +28,7 @@
 
 ### Layout
 
-- [Scope](https://ciderui.com/components/scope.html): `.cider` — auto-style native HTML elements (buttons, inputs, tables, typography). No layout opinion, pure styling hook. Add `.cider-fixed` alongside `.cider` for centered responsive max-width breakpoints.
+- [Container](https://ciderui.com/components/container.html): `.cider` — auto-style native HTML elements (buttons, inputs, tables, typography). No layout opinion, pure styling hook. Add `.cider-fixed` alongside `.cider` for centered responsive max-width breakpoints.
 
 ### Navigation
 

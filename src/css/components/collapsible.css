@@ -17,9 +17,13 @@
     @apply rounded-b-none;
   }
   &[open] > summary svg:last-child {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
   }
   & > div, & > p {
     @apply px-5 pb-4 text-[13px] text-muted-foreground;
+  }
+  interpolate-size: allow-keywords;
+  & > div, & > p {
+    overflow: hidden;
   }
 }
