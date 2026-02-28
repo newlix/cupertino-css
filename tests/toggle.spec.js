@@ -23,6 +23,8 @@ test.describe('Toggle', () => {
   });
 
   test('toggle group single-select: only one active at a time', async ({ page }) => {
+    await page.goto('/site/components/toggle-group.html');
+    await page.waitForFunction(() => typeof window.showToast === 'function');
     const preview = page.locator('.snippet-preview > figure').last();
     const toggles = preview.locator('.toggle-group .toggle');
 

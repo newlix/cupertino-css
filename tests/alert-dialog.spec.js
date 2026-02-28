@@ -10,7 +10,7 @@ test.describe('Alert Dialog', () => {
     const dialog = page.locator('#demo-alert-dialog');
     await expect(dialog).not.toBeVisible();
 
-    await preview(page).locator('button:has-text("Delete Account")').click();
+    await preview(page).locator('button:has-text("Close Document")').click();
     await expect(dialog).toBeVisible();
 
     await dialog.locator('button:has-text("Cancel")').click();
@@ -31,7 +31,7 @@ test.describe('Alert Dialog', () => {
   test('close alert dialog via backdrop click', async ({ page }) => {
     const dialog = page.locator('#demo-alert-dialog');
 
-    await preview(page).locator('button:has-text("Delete Account")').click();
+    await preview(page).locator('button:has-text("Close Document")').click();
     await expect(dialog).toBeVisible();
 
     await dialog.evaluate(d => d.dispatchEvent(new MouseEvent('click', { bubbles: true })));

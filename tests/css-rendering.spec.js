@@ -15,7 +15,7 @@ test.describe('CSS Rendering', () => {
 
   test('card has border-radius and shadow', async ({ page }) => {
     await goto(page, 'card');
-    const card = preview(page).locator('.card').first();
+    const card = preview(page, 1).locator('.card').first();
     await expect(card).toBeVisible();
     expect(await css(card, 'borderRadius')).not.toBe('0px');
   });

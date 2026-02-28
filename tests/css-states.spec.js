@@ -35,8 +35,8 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/checkbox.html');
     await page.waitForLoadState('networkidle');
 
-    // Second example ("Checked") has a pre-checked checkbox
-    const cb = page.locator('.snippet-preview > figure').nth(1).locator('input[type="checkbox"]');
+    // First example has an unchecked and a checked checkbox — target the checked one
+    const cb = page.locator('.snippet-preview > figure input[type="checkbox"]:checked').first();
     const bgBefore = await css(cb, 'backgroundColor');
     const borderBefore = await css(cb, 'borderColor');
 

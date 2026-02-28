@@ -25,7 +25,7 @@ test.describe('Select', () => {
   });
 
   test('disabled select cannot be changed', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').nth(2);
+    const preview = page.locator('.snippet-preview > figure').nth(3);
     const select = preview.locator('select');
 
     await expect(select).toBeDisabled();
