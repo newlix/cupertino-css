@@ -44,6 +44,7 @@
   --destructive-active: oklch(0.494 0.226 27.33);/* red-700 */
   --destructive-foreground: #fff;
   --destructive-bg: oklch(0.971 0.037 17.72);   /* red-50 */
+  --destructive-border: oklch(0.577 0.245 27.33 / 0.2);
 
   --success: oklch(0.596 0.172 145.18);          /* green-500 */
   --success-bg: oklch(0.962 0.044 156.74);       /* green-50 */
@@ -139,6 +140,7 @@
   --warning-border: oklch(0.666 0.179 58.32 / 0.2);
 
   --destructive-bg: oklch(0.577 0.245 27.33 / 0.05);
+  --destructive-border: oklch(0.577 0.245 27.33 / 0.2);
 
   --shadow-sm: 0 1px 3px oklch(1 0 0 / 0.08), 0 1px 2px oklch(1 0 0 / 0.04);
   --shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 1px 3px oklch(0 0 0 / 0.15);
@@ -185,6 +187,7 @@
   --color-destructive-active: var(--destructive-active);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-destructive-bg: var(--destructive-bg);
+  --color-destructive-border: var(--destructive-border);
   --color-success: var(--success);
   --color-success-bg: var(--success-bg);
   --color-success-text: var(--success-text);

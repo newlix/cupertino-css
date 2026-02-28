@@ -14,7 +14,7 @@
 }
 /* Semantic variants: tinted background + icon color */
 .alert         { background: var(--surface-3); }
-.alert-info    { background: var(--info-bg);    & svg:first-child { color: var(--info); } }
-.alert-success { background: var(--success-bg); & svg:first-child { color: var(--success); } }
-.alert-warning { background: var(--warning-bg); & svg:first-child { color: var(--warning); } }
-.alert-destructive { background: var(--destructive-bg); & svg:first-child { color: var(--destructive); } }
+.alert-info    { background: var(--info-bg);    border: 1px solid var(--info-border);    & svg:first-child { color: var(--info); } }
+.alert-success { background: var(--success-bg); border: 1px solid var(--success-border); & svg:first-child { color: var(--success); } }
+.alert-warning { background: var(--warning-bg); border: 1px solid var(--warning-border); & svg:first-child { color: var(--warning); } }
+.alert-destructive { background: var(--destructive-bg); border: 1px solid var(--destructive-border); & svg:first-child { color: var(--destructive); } }

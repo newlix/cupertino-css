@@ -1,7 +1,7 @@
 /* ========== TAG ========== */
 .tag {
   @apply inline-flex items-center gap-1 px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   letter-spacing: 0;
 }
 
@@ -17,7 +17,7 @@
   max-width: 5rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  box-shadow: 0 1px 2px oklch(0 0 0 / 0.15);
+  box-shadow: var(--shadow-sm);
 }
 .badge-dot {
   @apply block rounded-full bg-destructive;

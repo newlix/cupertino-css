@@ -14,7 +14,7 @@ dialog.sheet,
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { animation: sheetSlideIn 0.35s var(--apple-spring); }
+  &[open] { animation: sheetSlideIn 0.3s var(--apple-spring); }
   /* Right (default) */
   &:not(.sheet-left) {
     @apply right-0 top-0;

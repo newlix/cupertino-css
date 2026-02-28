@@ -2,6 +2,7 @@
 function closePopover(el) {
   if (el.hasAttribute("data-closing")) return;
   el.setAttribute("data-closing", "");
+  el.removeAttribute("role");
   setTimeout(() => {
     el.removeAttribute("data-open");
     el.removeAttribute("data-closing");
@@ -12,7 +13,9 @@ document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-popover-trigger]");
   if (trigger) {
     const popover = trigger.closest("[data-popover]");
+    if (!popover) return;
     const content = popover.querySelector(".popover-content");
+    if (!content) return;
     const isOpen = content.hasAttribute("data-open");
 
     // Close all other popovers
@@ -22,6 +25,11 @@ document.addEventListener("click", (e) => {
 
     if (!isOpen) {
       content.setAttribute("data-open", "");
+      content.setAttribute("role", "dialog");
+      requestAnimationFrame(() => {
+        const firstFocusable = content.querySelector("button, a, input, [tabindex]:not([tabindex='-1'])");
+        if (firstFocusable) firstFocusable.focus();
+      });
     }
     return;
   }

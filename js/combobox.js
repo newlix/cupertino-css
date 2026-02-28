@@ -17,8 +17,13 @@ function init() {
     const options = listbox.querySelectorAll("[role='option']");
     const groups = listbox.querySelectorAll("[role='group']");
 
+    var savedValue = null;
+
     function open() {
       combobox.setAttribute("data-open", "");
+      // Store current selection for Escape restore
+      var selected = listbox.querySelector("[role='option'][data-selected]");
+      savedValue = selected ? selected.dataset.value || selected.textContent.trim() : null;
       if (input) {
         input.value = "";
         input.dispatchEvent(new Event("input"));
@@ -30,6 +35,22 @@ function init() {
       combobox.removeAttribute("data-open");
       const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
       if (highlighted) highlighted.removeAttribute("data-highlighted");
+      savedValue = null;
+    }
+
+    function cancelAndClose() {
+      combobox.removeAttribute("data-open");
+      const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
+      if (highlighted) highlighted.removeAttribute("data-highlighted");
+      // Restore display if user typed but didn't select
+      if (savedValue && valueDisplay) {
+        var selectedOpt = listbox.querySelector("[role='option'][data-selected]");
+        if (selectedOpt) {
+          valueDisplay.textContent = selectedOpt.textContent.trim();
+        }
+      }
+      savedValue = null;
+      trigger.focus();
     }
 
     function isOpen() {
@@ -145,11 +166,21 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Close on Escape
+// Close on Escape (cancel without selecting)
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelectorAll(".combobox[data-open]").forEach((el) => {
+      // Clear search input and reset filter
+      var input = el.querySelector("[data-combobox-content] header input");
+      if (input) {
+        input.value = "";
+        input.dispatchEvent(new Event("input"));
+      }
       el.removeAttribute("data-open");
+      var highlighted = el.querySelector("[role='option'][data-highlighted]");
+      if (highlighted) highlighted.removeAttribute("data-highlighted");
+      var trigger = el.querySelector("button");
+      if (trigger) trigger.focus();
     });
   }
 });

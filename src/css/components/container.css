@@ -76,7 +76,7 @@
 
   /* ─── Text inputs ─── */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
-    @apply w-full h-11 rounded-[12px] border px-3.5 text-[13px] text-foreground outline-none;
+    @apply w-full h-11 rounded-[12px] border px-4 text-[13px] text-foreground outline-none;
     corner-shape: squircle;
     background-color: var(--card);
     border-color: var(--input-border);
@@ -123,7 +123,7 @@
 
   /* ─── Checkbox ─── */
   input[type="checkbox"]:not([role="switch"]) {
-    @apply appearance-none size-5 shrink-0 rounded-[5px] border bg-card cursor-pointer;
+    @apply appearance-none size-6 shrink-0 rounded-[6px] border bg-card cursor-pointer;
     border-color: var(--input-border);
     transition: all 0.2s var(--apple-ease);
     &:checked {

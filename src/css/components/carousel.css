@@ -55,6 +55,7 @@
   background: oklch(from var(--foreground) l c h / 0.2);
   transition: all 0.3s var(--apple-spring);
   &:hover { background: oklch(from var(--foreground) l c h / 0.35); }
+  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &[data-active] {
     background: oklch(from var(--foreground) l c h / 0.6);
     width: 1rem;

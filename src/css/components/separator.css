@@ -2,7 +2,7 @@
 .separator {
   @apply h-px w-full border-none;
   background: var(--panel-border);
-  margin-block: 0;
+  margin: 0;
 }
 .separator-vertical {
   @apply w-px shrink-0 self-stretch;

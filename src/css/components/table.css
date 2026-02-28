@@ -2,20 +2,20 @@
 .table {
   @apply overflow-x-auto rounded-2xl bg-card;
   corner-shape: squircle;
-  box-shadow: var(--shadow), var(--panel-ring);
+  box-shadow: var(--shadow-sm), var(--panel-ring);
   & table {
     box-shadow: none;
     border-radius: 0;
     background: transparent;
   }
   & th {
-    @apply text-left text-[12px] font-semibold uppercase text-muted-foreground;
-    letter-spacing: 0.04em;
+    @apply text-left text-[13px] font-semibold text-muted-foreground;
+    letter-spacing: -0.01em;
     background: var(--surface-1);
-    padding: 10px 16px;
+    padding: 12px 16px;
   }
   & td {
-    padding: 11px 16px;
+    padding: 12px 16px;
     @apply text-[13px];
   }
   & tbody tr {
@@ -29,7 +29,7 @@
 }
 .table-striped {
   & tbody tr {
-    transition: background-color 0.2s var(--apple-ease);
+    transition: background-color 0.15s var(--apple-ease);
   }
   & tbody tr:nth-child(even) {
     background: var(--surface-1);

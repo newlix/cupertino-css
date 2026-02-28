@@ -12,7 +12,7 @@ function showToast(title, message, type = "success") {
   };
 
   const toast = document.createElement("div");
-  toast.className = "toast";
+  toast.className = "toast toast-" + type;
   toast.setAttribute("role", "status");
   toast.setAttribute("aria-live", "polite");
 
@@ -34,13 +34,14 @@ function showToast(title, message, type = "success") {
   content.appendChild(messageEl);
   toast.appendChild(content);
 
+  let dismissTimeout;
   function dismissToast() {
-    clearTimeout(dismissTimeout);
+    if (dismissTimeout) clearTimeout(dismissTimeout);
     if (!toast.parentElement) return;
-    toast.style.animation = "toastSlideOut 0.3s var(--apple-spring) forwards";
+    toast.setAttribute("data-closing", "");
     setTimeout(() => {
       if (toast.parentElement) toast.remove();
-    }, 300);
+    }, 200);
   }
 
   // Close button
@@ -54,7 +55,7 @@ function showToast(title, message, type = "success") {
   container.appendChild(toast);
 
   // Auto-remove after 4 seconds
-  const dismissTimeout = setTimeout(dismissToast, 4000);
+  dismissTimeout = setTimeout(dismissToast, 4000);
 }
 
 function createToastContainer() {

@@ -27,6 +27,14 @@
   from { opacity: 1; transform: translateY(0) scale(1); }
   to   { opacity: 0; transform: translateY(-8px) scale(0.97); }
 }
+.toast-success    { & svg:first-child { color: var(--success); } }
+.toast-warning    { & svg:first-child { color: var(--warning); } }
+.toast-destructive { & svg:first-child { color: var(--destructive); } }
+.toast-info       { & svg:first-child { color: var(--info); } }
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+  .toast[data-closing] { animation: none; opacity: 0; }
+}
 .toast-container {
   @apply fixed top-4 right-4 z-[100] flex flex-col gap-2.5;
 }

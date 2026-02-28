@@ -13,10 +13,11 @@
   &[data-closing] { animation: slideDown 0.12s var(--apple-ease) forwards; }
   & button, & a {
     @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
-    transition: background-color 0.06s linear;
+    transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
+    &[disabled], &[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
   }
   & .menu-divider, & hr {
     @apply my-1 h-px mx-1.5;

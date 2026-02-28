@@ -29,6 +29,13 @@ document.addEventListener("contextmenu", (e) => {
   menu.style.left = e.clientX + "px";
   menu.style.top = e.clientY + "px";
   menu.setAttribute("data-open", "");
+  menu.setAttribute("role", "menu");
+
+  // Focus first item
+  requestAnimationFrame(() => {
+    const firstItem = menu.querySelector("button, a");
+    if (firstItem) firstItem.focus();
+  });
 
   // Adjust if overflowing viewport
   requestAnimationFrame(() => {
@@ -42,10 +49,12 @@ document.addEventListener("contextmenu", (e) => {
   });
 });
 
-// Close on click anywhere
-document.addEventListener("click", () => {
+// Close on click outside menu
+document.addEventListener("click", (e) => {
   document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
-    closeContextMenu(el);
+    if (!el.contains(e.target)) {
+      closeContextMenu(el);
+    }
   });
 });
 

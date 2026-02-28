@@ -4,8 +4,7 @@
   /* Default fallback styling */
   @apply bg-secondary text-muted-foreground;
   overflow: hidden;
-  border: 1px solid oklch(0 0 0 / 0.12);
-  .dark & { border-color: oklch(1 0 0 / 0.15); }
+  border: 1px solid var(--panel-border);
   &:is(img) { @apply object-cover; }
   & img { @apply size-full rounded-full object-cover; }
   &:is(button, a) {

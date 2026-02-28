@@ -9,6 +9,7 @@ function init() {
     if (list) list.setAttribute("role", "tablist");
 
     buttons.forEach((btn) => {
+      if (!btn.id) btn.id = "tab-" + Math.random().toString(36).substr(2, 9);
       btn.setAttribute("role", "tab");
       const isActive = btn.hasAttribute("data-active");
       btn.setAttribute("aria-selected", isActive ? "true" : "false");
@@ -17,6 +18,9 @@ function init() {
 
     panels.forEach((panel) => {
       panel.setAttribute("role", "tabpanel");
+      const panelTarget = panel.getAttribute("data-tab-panel");
+      const matchingBtn = Array.from(buttons).find((b) => b.getAttribute("data-tab") === panelTarget);
+      if (matchingBtn) panel.setAttribute("aria-labelledby", matchingBtn.id);
     });
 
     function activate(btn) {

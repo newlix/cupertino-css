@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .hover-card-content {
-  @apply pointer-events-none absolute z-50 mt-0 min-w-[280px] rounded-xl;
+  @apply absolute z-50 mt-0 min-w-[280px] rounded-xl;
   padding: 12px 16px;
   corner-shape: squircle;
   background: var(--glass-bg-opaque);
@@ -12,7 +12,7 @@
   box-shadow: var(--shadow-lg), var(--float-ring);
   opacity: 0;
   transform: translateY(4px) scale(0.97);
-  transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
+  transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-spring);
   transition-delay: 0.1s;
   /* Transparent bridge covering the gap between trigger and card */
   &::before {
@@ -25,14 +25,21 @@
   }
 }
 .hover-card:hover .hover-card-content {
-  @apply pointer-events-auto;
   opacity: 1;
   transform: translateY(0) scale(1);
   transition-delay: 0.15s;
 }
 .hover-card-bottom .hover-card-content {
   @apply bottom-auto top-full mt-2;
+  &::before {
+    top: -8px;
+    bottom: auto;
+  }
 }
 .hover-card-top .hover-card-content {
   @apply bottom-full top-auto mb-2 mt-0;
+  &::before {
+    top: auto;
+    bottom: -8px;
+  }
 }

@@ -23,6 +23,8 @@ function copyText(text) {
   return Promise.resolve();
 }
 
+if (window._ciderSnippetInit) { /* already initialized */ } else {
+window._ciderSnippetInit = true;
 document.addEventListener("click", function (e) {
   // Copy button — direct child button of snippet > header
   var btn = e.target.closest(".snippet > header > button");
@@ -59,8 +61,10 @@ document.addEventListener("click", function (e) {
 
     snippet.querySelectorAll("header > nav > button[data-tab]").forEach(function (t) {
       t.removeAttribute("data-active");
+      t.setAttribute("aria-selected", "false");
     });
     tab.setAttribute("data-active", "");
+    tab.setAttribute("aria-selected", "true");
 
     snippet.querySelectorAll("pre[data-panel]").forEach(function (p) {
       if (p.getAttribute("data-panel") === target) {
@@ -71,3 +75,4 @@ document.addEventListener("click", function (e) {
     });
   }
 });
+}

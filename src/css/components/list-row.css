@@ -31,9 +31,14 @@
 a.list-row, button.list-row {
   &:hover { background: var(--surface-2); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+  &[data-selected]:hover, &[aria-selected="true"]:hover {
+    background: oklch(from var(--primary) l c h / 0.15);
+    .dark & { background: oklch(from var(--primary) l c h / 0.28); }
+  }
 }
 .list-row[data-selected], .list-row[aria-selected="true"] {
   background: oklch(from var(--primary) l c h / 0.1);
+  .dark & { background: oklch(from var(--primary) l c h / 0.22); }
 }
 .list-section {
   @apply flex flex-col rounded-2xl bg-card;

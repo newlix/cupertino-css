@@ -1,11 +1,14 @@
 /* ========== DRAWER ========== */
 dialog.sheet-bottom,
 .sheet-bottom {
-  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full text-card-foreground;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   max-height: min(85vh, 600px);
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -12px 48px oklch(0 0 0 / 0.18);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: 0 -16px 48px oklch(0 0 0 / 0.12), 0 -4px 16px oklch(0 0 0 / 0.06);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
@@ -35,19 +38,22 @@ dialog.sheet-bottom,
   & .drawer-handle {
     @apply mx-auto mt-2 mb-1 h-[5px] w-9 rounded-full;
     cursor: grab;
-    background: oklch(0 0 0 / 0.3);
+    background: var(--surface-7);
     transition: background-color 0.2s var(--apple-ease);
-    .dark & { background: oklch(1 0 0 / 0.3); }
-    &:hover { background: oklch(0 0 0 / 0.4); .dark & { background: oklch(1 0 0 / 0.4); } }
+    &:hover { opacity: 0.8; }
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
   }
 }
 dialog.sheet-top,
 .sheet-top {
-  @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full bg-card text-card-foreground;
+  @apply fixed top-0 left-0 right-0 bottom-auto m-0 w-full max-w-full text-card-foreground;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   max-height: min(85vh, 600px);
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 12px 48px oklch(0 0 0 / 0.18);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  box-shadow: 0 16px 48px oklch(0 0 0 / 0.12), 0 4px 16px oklch(0 0 0 / 0.06);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);

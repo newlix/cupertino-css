@@ -4,6 +4,8 @@
 }
 .popover-content {
   @apply absolute z-50 mt-3 min-w-[240px] max-w-[320px] rounded-xl p-4;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
   corner-shape: squircle;
   display: none;
   background: var(--glass-bg-opaque);

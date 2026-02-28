@@ -5,7 +5,7 @@
   box-shadow: var(--shadow-sm), var(--panel-ring);
   interpolate-size: allow-keywords;
   & summary {
-    @apply flex cursor-pointer list-none items-center justify-between rounded-2xl px-5 py-4 text-[15px] font-medium text-foreground;
+    @apply flex cursor-pointer list-none items-center justify-between rounded-2xl px-4 py-4 text-[15px] font-medium text-foreground;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
@@ -22,7 +22,7 @@
     transform: rotate(90deg);
   }
   & > div, & > p {
-    @apply px-5 pt-2 pb-4 text-[13px] text-muted-foreground;
+    @apply px-4 pt-3 pb-4 text-[13px] text-muted-foreground;
     overflow: hidden;
     transition: height 0.3s var(--apple-spring);
   }

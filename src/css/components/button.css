@@ -14,28 +14,28 @@
 .btn-gray {
   @apply bg-secondary text-secondary-foreground;
   &:hover { background: var(--secondary-hover); }
-  &:active { transform: scale(var(--apple-press-scale)); background: var(--surface-4); }
+  &:active { background: var(--surface-4); }
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;
   &:hover { background: var(--primary-hover); }
-  &:active { transform: scale(var(--apple-press-scale)); background: var(--primary-active); }
+  &:active { background: var(--primary-active); }
 }
 .btn-tinted {
   @apply bg-transparent text-primary;
   background: oklch(from var(--primary) l c h / 0.12);
   &:hover { background: oklch(from var(--primary) l c h / 0.18); }
-  &:active { transform: scale(var(--apple-press-scale)); background: oklch(from var(--primary) l c h / 0.22); }
+  &:active { background: oklch(from var(--primary) l c h / 0.22); }
 }
 .btn-plain {
   @apply bg-transparent text-foreground;
   &:hover { background: var(--surface-2); }
-  &:active { transform: scale(var(--apple-press-scale)); background: var(--surface-3); }
+  &:active { background: var(--surface-3); }
 }
 .btn-destructive {
   @apply bg-destructive text-destructive-foreground;
   &:hover { background: var(--destructive-hover); }
-  &:active { transform: scale(var(--apple-press-scale)); background: var(--destructive-active); }
+  &:active { background: var(--destructive-active); }
 }
 .btn-capsule {
   border-radius: 9999px;
