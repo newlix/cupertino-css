@@ -34,15 +34,13 @@ test.describe('HUD', () => {
     expect(classes).toBe('hud');
   });
 
-  test('notification mode shows colored icon, title and message', async ({ page }) => {
+  test('notification mode shows icon, title and message', async ({ page }) => {
     const notificationPreview = page.locator('.snippet-preview > figure').nth(1);
     const hud = notificationPreview.locator('.hud-notification').first();
 
     await expect(hud).toBeVisible();
-    await expect(hud.locator('.hud-title')).toHaveText('Upload Failed');
-    await expect(hud.locator('.hud-message')).toHaveText('The file exceeds the 10 MB limit.');
-    const classes = await hud.getAttribute('class');
-    expect(classes).toContain('hud-destructive');
+    await expect(hud.locator('.hud-title')).toHaveText('Payment Received');
+    await expect(hud.locator('.hud-message')).toHaveText('$49.00 has been added to your account.');
   });
 
   test('programmatic notification mode creates HUD with message and type', async ({ page }) => {

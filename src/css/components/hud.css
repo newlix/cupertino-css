@@ -32,11 +32,8 @@
   & .hud-message { @apply mt-0.5 text-[13px]; color: oklch(0.78 0 0); }
 }
 
-/* Type variants — icon color (notification mode only) */
-.hud-notification.hud-success     { & svg:first-child { color: var(--color-success); } }
-.hud-notification.hud-warning     { & svg:first-child { color: var(--color-warning); } }
+/* Type variant — icon color (notification mode only) */
 .hud-notification.hud-destructive { & svg:first-child { color: var(--color-destructive); } }
-.hud-notification.hud-info        { & svg:first-child { color: var(--color-info); } }
 
 /* Animations */
 @keyframes hudIn {

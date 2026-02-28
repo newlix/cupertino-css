@@ -70,7 +70,7 @@ test.describe('CSS Rendering', () => {
 
   test('banner variants are visible', async ({ page }) => {
     await goto(page, 'banner');
-    for (const cls of ['.banner-info', '.banner-success', '.banner-warning', '.banner-destructive']) {
+    for (const cls of ['.banner', '.banner-destructive']) {
       const banner = page.locator(`.snippet-preview > figure ${cls}`).first();
       await expect(banner).toBeVisible();
       const box = await banner.boundingBox();

@@ -23,15 +23,15 @@
 
   {% call example("Notification") %}
 <div class="space-y-3 flex flex-col items-center">
+  <div class="hud hud-notification">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <p class="hud-title">Payment Received</p>
+    <p class="hud-message">$49.00 has been added to your account.</p>
+  </div>
   <div class="hud hud-destructive hud-notification">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     <p class="hud-title">Upload Failed</p>
     <p class="hud-message">The file exceeds the 10 MB limit.</p>
-  </div>
-  <div class="hud hud-success hud-notification">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-    <p class="hud-title">Payment Received</p>
-    <p class="hud-message">$49.00 has been added to your account.</p>
   </div>
 </div>
 {% endcall %}
@@ -52,12 +52,12 @@
 showHUD("Saved")
 showHUD("Copied")
 
-// Notification (icon color + title + message)
+// Notification (title + message)
+showHUD("Sent", { message: "Your message has been delivered." })
 showHUD("Error", { message: "Something went wrong.", type: "error" })
-showHUD("Sent", { message: "Your message has been delivered.", type: "success" })
 
 // Options: { type, message, duration }
-// type only colors the icon in notification mode</code></pre>
+// type: "error" shows destructive red icon</code></pre>
     </div>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;

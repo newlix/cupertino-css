@@ -6,34 +6,30 @@ function showHUD(label, optionsOrMessage, legacyType) {
   }
 
   var opts = optionsOrMessage || {};
-  var type = opts.type || "success";
+  var type = opts.type || "default";
   var message = opts.message || null;
   var isNotification = !!message;
+  var isDestructive = type === "error" || type === "destructive";
   var duration = opts.duration || (isNotification ? 4000 : 3000);
 
   var container =
     document.getElementById("hud-container") || createHUDContainer();
 
   var iconsSVG = {
-    success:
+    default:
       '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
     error:
       '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
-    warning:
-      '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>',
-    info:
-      '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
   };
 
   var hud = document.createElement("div");
-  var typeClass = type === "error" ? "hud-destructive" : "hud-" + type;
-  hud.className = isNotification ? "hud " + typeClass + " hud-notification" : "hud";
+  hud.className = isNotification ? "hud " + (isDestructive ? "hud-destructive " : "") + "hud-notification" : "hud";
   hud.setAttribute("role", "status");
   hud.setAttribute("aria-live", "polite");
 
   // Icon
   var iconWrapper = document.createElement("template");
-  iconWrapper.innerHTML = iconsSVG[type] || iconsSVG.success;
+  iconWrapper.innerHTML = isDestructive ? iconsSVG.error : iconsSVG.default;
   hud.appendChild(iconWrapper.content);
 
   if (isNotification) {

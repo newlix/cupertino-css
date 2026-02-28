@@ -66,7 +66,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'banner');
     await setDark(page);
 
-    for (const sel of ['.banner-info', '.banner-success', '.banner-warning', '.banner-destructive']) {
+    for (const sel of ['.banner', '.banner-destructive']) {
       const banner = page.locator(`.snippet-preview > figure ${sel}`).first();
       if ((await banner.count()) === 0) continue;
       await expect(banner).toBeVisible();

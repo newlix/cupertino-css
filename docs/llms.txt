@@ -57,7 +57,7 @@
 
 ### Feedback & Status
 
-- [Banner](https://ciderui.com/components/banner.html): `banner` `banner-info` `banner-success` `banner-warning` `banner-destructive`
+- [Banner](https://ciderui.com/components/banner.html): `banner` `banner-destructive`
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 - [Empty](https://ciderui.com/components/empty.html): Empty state placeholder.
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`

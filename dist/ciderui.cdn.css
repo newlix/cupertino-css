@@ -65,9 +65,6 @@
     --color-destructive-hover: var(--color-destructive-hover);
     --color-destructive-active: var(--color-destructive-active);
     --color-destructive-foreground: var(--color-destructive-foreground);
-    --color-success: var(--color-success);
-    --color-warning: var(--color-warning);
-    --color-info: var(--color-info);
   }
 }
 @layer base {
@@ -243,9 +240,6 @@
   --color-destructive-hover: oklch(0.605 0.215 28.47);
   --color-destructive-active: oklch(0.554 0.195 28.41);
   --color-destructive-foreground: #fff;
-  --color-success: oklch(0.730 0.194 147.44);
-  --color-warning: oklch(0.765 0.175 62.57);
-  --color-info: oklch(0.563 0.193 256.16);
   --input-border: oklch(0.800 0.007 286.02);
   --input-border-hover: oklch(0.580 0.010 286.01);
   --apple-press-scale: 0.97;
@@ -300,9 +294,6 @@
   --color-destructive: oklch(0.663 0.224 28.29);
   --color-destructive-hover: oklch(0.614 0.206 28.02);
   --color-destructive-active: oklch(0.563 0.187 27.66);
-  --color-info: oklch(0.669 0.181 251.84);
-  --color-success: oklch(0.756 0.208 146.98);
-  --color-warning: oklch(0.782 0.171 67.22);
   --shadow-sm: 0 1px 3px oklch(1 0 0 / 0.08), 0 1px 2px oklch(1 0 0 / 0.04);
   --shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 1px 3px oklch(0 0 0 / 0.15);
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.25), 0 2px 4px oklch(0 0 0 / 0.15);
@@ -740,12 +731,16 @@
   }
   .banner {
     display: flex;
+    align-items: flex-start;
     gap: calc(var(--spacing) * 3);
-    border-radius: var(--radius-xl);
-    padding: calc(var(--spacing) * 4);
+    border-radius: 10px;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 3);
+    font-size: 13px;
+    --tw-leading: var(--leading-snug);
+    line-height: var(--leading-snug);
     corner-shape: squircle;
-    background: var(--surface-3);
-    box-shadow: var(--panel-ring);
+    background: var(--surface-2);
     & svg:first-child {
       width: calc(var(--spacing) * 5);
       height: calc(var(--spacing) * 5);
@@ -753,34 +748,23 @@
       margin-top: 1px;
       color: var(--color-muted-foreground);
     }
-    & p:first-child, & p:first-of-type {
-      font-size: 13px;
-      --tw-font-weight: var(--font-weight-medium);
-      font-weight: var(--font-weight-medium);
+    & p:first-of-type {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-foreground);
     }
     & p:last-child:not(:first-child) {
       margin-top: calc(var(--spacing) * 0.5);
-      font-size: 13px;
+      --tw-font-weight: var(--font-weight-normal);
+      font-weight: var(--font-weight-normal);
       color: var(--color-muted-foreground);
     }
   }
-  .banner-info {
-    & svg:first-child {
-      color: var(--color-info);
-    }
-  }
-  .banner-success {
-    & svg:first-child {
-      color: var(--color-success);
-    }
-  }
-  .banner-warning {
-    & svg:first-child {
-      color: var(--color-warning);
-    }
-  }
   .banner-destructive {
+    background: oklch(from var(--color-destructive) l c h / 0.08);
+    .dark & {
+      background: oklch(from var(--color-destructive) l c h / 0.12);
+    }
     & svg:first-child {
       color: var(--color-destructive);
     }
@@ -1688,24 +1672,9 @@
       color: oklch(0.78 0 0);
     }
   }
-  .hud-notification.hud-success {
-    & svg:first-child {
-      color: var(--color-success);
-    }
-  }
-  .hud-notification.hud-warning {
-    & svg:first-child {
-      color: var(--color-warning);
-    }
-  }
   .hud-notification.hud-destructive {
     & svg:first-child {
       color: var(--color-destructive);
-    }
-  }
-  .hud-notification.hud-info {
-    & svg:first-child {
-      color: var(--color-info);
     }
   }
   @keyframes hudIn {
