@@ -7,6 +7,7 @@
   @apply flex gap-4 overflow-x-auto scroll-smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   /* overflow-x:auto forces overflow-y:auto per CSS spec, clipping shadows/borders.
      Padding creates breathing room; negative margin keeps layout stable. */
   padding-block: 8px;
@@ -39,7 +40,7 @@
   &:hover { box-shadow: var(--shadow-md), var(--float-ring); }
   &:active { transform: translateY(-50%) scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
-  &:disabled { @apply pointer-events-none opacity-30; }
+  &:disabled { @apply pointer-events-none; opacity: 0.3; transition: opacity 0.15s var(--apple-ease); }
   & svg { @apply size-4; }
 }
 .carousel-prev { @apply -left-3; }
@@ -53,6 +54,7 @@
   height: 6px;
   background: oklch(from var(--foreground) l c h / 0.2);
   transition: all 0.3s var(--apple-spring);
+  &:hover { background: oklch(from var(--foreground) l c h / 0.35); }
   &[data-active] {
     background: oklch(from var(--foreground) l c h / 0.6);
     width: 1.5rem;

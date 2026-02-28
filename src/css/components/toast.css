@@ -13,7 +13,7 @@
     @apply shrink-0 text-muted-foreground cursor-pointer;
     transition: color 0.15s var(--apple-ease);
     &:hover { @apply text-foreground; }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
+    &:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 4px; }
     & svg { @apply size-4; }
   }
 }

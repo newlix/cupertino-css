@@ -3,9 +3,15 @@
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   /* Default fallback styling */
   @apply bg-secondary text-muted-foreground;
-  box-shadow: inset 0 0 0 0.5px oklch(0 0 0 / 0.08);
+  box-shadow: inset 0 0 0 0.5px oklch(0 0 0 / 0.12);
   &:is(img) { @apply object-cover; }
   & img { @apply size-full rounded-full object-cover; }
+  &:is(button, a) {
+    @apply cursor-pointer;
+    transition: all 0.15s var(--apple-ease);
+    &:hover { filter: brightness(0.95); }
+    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+  }
 }
 .avatar-group {
   @apply flex -space-x-2;

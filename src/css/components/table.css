@@ -9,6 +9,9 @@
   }
 }
 .table-striped {
+  & tbody tr {
+    transition: background-color 0.15s var(--apple-ease);
+  }
   & tbody tr:nth-child(even) {
     background: var(--surface-1);
   }

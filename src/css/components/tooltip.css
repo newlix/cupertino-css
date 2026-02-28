@@ -24,7 +24,7 @@
     border: 4px solid transparent;
     border-top-color: var(--tooltip-bg);
   }
-  &:is(.dark *) {
+  .dark & {
     --tooltip-bg: oklch(0.940 0.003 285.66);
     --tooltip-fg: oklch(0.200 0.004 285.99);
   }

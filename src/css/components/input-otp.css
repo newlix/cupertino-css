@@ -5,7 +5,7 @@
 .input-otp-slot {
   @apply flex size-12 items-center justify-center rounded-[12px] border text-[17px] font-medium text-foreground;
   border-color: var(--input-border);
-  background: var(--surface-1);
+  background: var(--card);
   caret-color: transparent;
   transition: border-color 0.2s var(--apple-ease);
   &:focus-within, &[data-active] {

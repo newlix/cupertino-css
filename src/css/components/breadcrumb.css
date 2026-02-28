@@ -1,8 +1,9 @@
 /* ========== BREADCRUMB ========== */
 .breadcrumb {
   @apply flex items-center gap-1.5 text-[13px];
-  & a, & span {
-    @apply text-muted-foreground no-underline transition-colors;
+  & a {
+    @apply text-muted-foreground no-underline;
+    transition: color 0.15s var(--apple-ease);
     &:hover { @apply text-foreground; }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
   }
@@ -19,7 +20,7 @@
     border-right: 1.5px solid var(--muted-foreground);
     border-top: 1.5px solid var(--muted-foreground);
     transform: rotate(45deg);
-    opacity: 0.5;
+    opacity: 0.6;
     vertical-align: middle;
   }
 }

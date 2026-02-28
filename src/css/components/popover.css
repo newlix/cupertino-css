@@ -11,7 +11,7 @@
   box-shadow: var(--shadow-lg), var(--float-ring);
   animation: slideUp 0.2s var(--apple-spring);
   &[data-open] { display: block; }
-  &[data-closing] { animation: slideDown 0.15s var(--apple-ease) forwards; }
+  &[data-closing] { animation: slideDown 0.2s var(--apple-ease) forwards; }
   /* Arrow */
   &::before {
     content: "";

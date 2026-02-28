@@ -245,7 +245,7 @@
 
   /* ─── Fieldset ─── */
   fieldset {
-    @apply rounded-2xl border p-5 space-y-4;
+    @apply rounded-xl border p-5 space-y-4;
     border-color: var(--border);
     & > legend {
       @apply px-2 text-[13px] font-semibold text-foreground;

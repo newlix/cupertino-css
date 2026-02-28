@@ -8,7 +8,7 @@
     &:hover:not(:focus) { border-color: var(--border-solid); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     & span { @apply flex-1 truncate text-left; }
-    & span[data-placeholder] { @apply text-muted-foreground; opacity: 0.5; }
+    & span[data-placeholder] { @apply text-muted-foreground; }
     & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }
   }
   & [data-combobox-content] {

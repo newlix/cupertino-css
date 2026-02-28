@@ -10,11 +10,16 @@
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-lg), var(--float-ring);
   & button, & a {
-    @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-1.5 text-left text-[13px] text-foreground;
+    @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
     transition: background-color 0.12s var(--apple-ease);
-    &:hover { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
+    &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
+  }
+  & .context-menu-destructive {
+    color: var(--destructive);
+    &:hover { background: oklch(from var(--destructive) l c h / 0.08); }
+    &:is(.dark *):hover { background: oklch(from var(--destructive) l c h / 0.12); }
   }
   & hr {
     @apply my-1 h-px mx-1.5;
