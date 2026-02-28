@@ -1,10 +1,17 @@
 /* ========== SNIPPET (Code Block) ========== */
 .snippet {
-  @apply overflow-hidden rounded-xl border;
+  @apply rounded-xl border;
+  & > :first-child {
+    border-top-left-radius: calc(var(--radius-xl) - 1px);
+    border-top-right-radius: calc(var(--radius-xl) - 1px);
+  }
+  & > :last-child {
+    border-bottom-left-radius: calc(var(--radius-xl) - 1px);
+    border-bottom-right-radius: calc(var(--radius-xl) - 1px);
+  }
   & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
     background: transparent;
-    border-radius: 0;
     & code {
       @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;
       background: transparent !important;
@@ -12,7 +19,7 @@
     }
   }
   & > header {
-    @apply flex items-center justify-between px-4 py-2;
+    @apply flex items-center justify-between px-4 py-2 overflow-hidden;
     border-bottom: 1px solid var(--panel-border);
     background: var(--surface-2);
     & > span {
