@@ -7,9 +7,9 @@
   border-bottom: 1px solid var(--panel-border);
 }
 .tabs-trigger {
-  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer;
+  @apply relative rounded-none bg-transparent px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer;
   transition: color 0.2s var(--apple-ease);
-  &:hover { @apply text-foreground; }
+  &:hover { @apply bg-transparent text-foreground; }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
   &[data-active] {
     color: var(--primary);
