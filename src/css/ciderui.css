@@ -64,7 +64,7 @@
   --input-border: oklch(0.800 0.007 286.02);       /* Apple input border */
   --input-border-hover: oklch(0.580 0.010 286.01); /* Darker on hover */
 
-  --apple-press-scale: 0.98;
+  --apple-press-scale: 0.97;
   --apple-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
   --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 
