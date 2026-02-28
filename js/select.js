@@ -1,6 +1,8 @@
 // Custom Select — ciderui
 function init() {
   document.querySelectorAll("[data-select]").forEach((select) => {
+    if (select.dataset.initialized) return;
+    select.dataset.initialized = "true";
     const trigger = select.querySelector("[data-select-trigger]");
     const content = select.querySelector("[data-select-content]");
     const valueEl = select.querySelector("[data-select-value]");

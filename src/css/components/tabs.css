@@ -11,6 +11,7 @@
   transition: color 0.2s var(--apple-ease);
   &:hover { @apply text-foreground; }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+  &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
   &[data-active] {
     color: var(--primary);
     &::after {

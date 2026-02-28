@@ -6,6 +6,7 @@ function init() {
 
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
+        if (btn.disabled) return;
         const target = btn.getAttribute("data-tab");
 
         // Deactivate all

@@ -270,6 +270,26 @@
     to   { transform: translateY(0); }
   }
 
+  @keyframes sheetSlideOutRight {
+    from { transform: translateX(0); }
+    to   { transform: translateX(100%); }
+  }
+
+  @keyframes sheetSlideOutLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
+  @keyframes sheetSlideOutBottom {
+    from { transform: translateY(0); }
+    to   { transform: translateY(100%); }
+  }
+
+  @keyframes sheetSlideOutTop {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-100%); }
+  }
+
   /* Reduced motion — disable animations/transitions for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

@@ -16,12 +16,14 @@ dialog.sheet,
     @apply right-0 top-0;
     border-left: 1px solid var(--panel-border);
     &[open] { animation-name: sheetSlideInRight; }
+    &[data-closing] { animation: sheetSlideOutRight 0.3s var(--apple-ease) forwards; }
   }
   /* Left */
   &.sheet-left {
     @apply left-0 top-0;
     border-right: 1px solid var(--panel-border);
     &[open] { animation-name: sheetSlideInLeft; }
+    &[data-closing] { animation: sheetSlideOutLeft 0.3s var(--apple-ease) forwards; }
   }
   & > header {
     @apply px-6 py-5;

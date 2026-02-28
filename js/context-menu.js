@@ -1,5 +1,13 @@
 // Context Menu — ciderui
 // Right-click triggered menu, reuses dropdown-menu styling.
+function closeContextMenu(el) {
+  el.setAttribute("data-closing", "");
+  setTimeout(() => {
+    el.removeAttribute("data-open");
+    el.removeAttribute("data-closing");
+  }, 120);
+}
+
 document.addEventListener("contextmenu", (e) => {
   const trigger = e.target.closest(".context-menu-trigger");
   if (!trigger) return;
@@ -9,6 +17,7 @@ document.addEventListener("contextmenu", (e) => {
   // Close all context menus first
   document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
     el.removeAttribute("data-open");
+    el.removeAttribute("data-closing");
   });
 
   const menu = trigger.querySelector(".context-menu-content") ||
@@ -35,7 +44,7 @@ document.addEventListener("contextmenu", (e) => {
 // Close on click anywhere
 document.addEventListener("click", () => {
   document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
-    el.removeAttribute("data-open");
+    closeContextMenu(el);
   });
 });
 
@@ -43,7 +52,7 @@ document.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closeContextMenu(el);
     });
   }
 });

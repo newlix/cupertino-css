@@ -69,11 +69,13 @@ document.addEventListener("keydown", (e) => {
     const key = parts.pop();
     const needsMeta = parts.includes("meta") || parts.includes("cmd");
     const needsCtrl = parts.includes("ctrl");
+    const needsShift = parts.includes("shift");
 
     const metaMatch = needsMeta ? (e.metaKey || e.ctrlKey) : true;
     const ctrlMatch = needsCtrl ? e.ctrlKey : true;
+    const shiftMatch = needsShift ? e.shiftKey : !e.shiftKey;
 
-    if (metaMatch && ctrlMatch && e.key.toLowerCase() === key) {
+    if (metaMatch && ctrlMatch && shiftMatch && e.key.toLowerCase() === key) {
       e.preventDefault();
       if (dialog.open) {
         dialog.close();

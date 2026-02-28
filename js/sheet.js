@@ -1,10 +1,18 @@
 // Sheet — ciderui
-// Uses native <dialog> element. Adds backdrop-click-to-close.
+// Uses native <dialog> element. Adds backdrop-click-to-close with exit animation.
+function closeSheet(sheet) {
+  sheet.setAttribute("data-closing", "");
+  sheet.addEventListener("animationend", () => {
+    sheet.removeAttribute("data-closing");
+    sheet.close();
+  }, { once: true });
+}
+
 function init() {
-  document.querySelectorAll("dialog.sheet").forEach((sheet) => {
+  document.querySelectorAll("dialog.sheet, dialog.sheet-bottom, dialog.sheet-top").forEach((sheet) => {
     sheet.addEventListener("click", (e) => {
       if (e.target === sheet) {
-        sheet.close();
+        closeSheet(sheet);
       }
     });
   });

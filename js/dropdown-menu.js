@@ -1,4 +1,12 @@
 // Dropdown Menu — ciderui
+function closeDropdown(el) {
+  el.setAttribute("data-closing", "");
+  setTimeout(() => {
+    el.removeAttribute("data-open");
+    el.removeAttribute("data-closing");
+  }, 120);
+}
+
 document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-dropdown-trigger]");
   if (trigger) {
@@ -8,7 +16,7 @@ document.addEventListener("click", (e) => {
 
     // Close all other dropdowns
     document.querySelectorAll("[data-dropdown-content][data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closeDropdown(el);
     });
 
     if (!isOpen) {
@@ -19,13 +27,13 @@ document.addEventListener("click", (e) => {
 
   // Close if clicking an item inside the dropdown
   if (e.target.closest("[data-dropdown-content] button")) {
-    e.target.closest("[data-dropdown-content]").removeAttribute("data-open");
+    closeDropdown(e.target.closest("[data-dropdown-content]"));
     return;
   }
 
   // Close all dropdowns on outside click
   document.querySelectorAll("[data-dropdown-content][data-open]").forEach((el) => {
-    el.removeAttribute("data-open");
+    closeDropdown(el);
   });
 });
 
@@ -33,7 +41,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelectorAll("[data-dropdown-content][data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closeDropdown(el);
     });
   }
 });

@@ -1,4 +1,12 @@
 // Popover — ciderui
+function closePopover(el) {
+  el.setAttribute("data-closing", "");
+  setTimeout(() => {
+    el.removeAttribute("data-open");
+    el.removeAttribute("data-closing");
+  }, 150);
+}
+
 document.addEventListener("click", (e) => {
   const trigger = e.target.closest("[data-popover-trigger]");
   if (trigger) {
@@ -8,7 +16,7 @@ document.addEventListener("click", (e) => {
 
     // Close all other popovers
     document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closePopover(el);
     });
 
     if (!isOpen) {
@@ -20,7 +28,7 @@ document.addEventListener("click", (e) => {
   // Close all popovers on outside click
   if (!e.target.closest(".popover-content")) {
     document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closePopover(el);
     });
   }
 });
@@ -29,7 +37,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      el.removeAttribute("data-open");
+      closePopover(el);
     });
   }
 });
