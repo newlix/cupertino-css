@@ -12,7 +12,7 @@
     "title": "Components",
     "items": [
       { "label": "Banner", "href": "components/banner.html" },
-      { "label": "Alert Dialog", "href": "components/alert-dialog.html" },
+      { "label": "Alert", "href": "components/alert.html" },
 
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },

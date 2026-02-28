@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { goto, preview } from './helpers.js';
 
-test.describe('Alert Dialog', () => {
+test.describe('Alert', () => {
   test.beforeEach(async ({ page }) => {
-    await goto(page, 'alert-dialog');
+    await goto(page, 'alert');
   });
 
-  test('open alert dialog and close via cancel', async ({ page }) => {
+  test('open alert and close via cancel', async ({ page }) => {
     const dialog = page.locator('#demo-alert-dialog');
     await expect(dialog).not.toBeVisible();
 
@@ -17,7 +17,7 @@ test.describe('Alert Dialog', () => {
     await expect(dialog).not.toBeVisible();
   });
 
-  test('destructive alert dialog opens and closes', async ({ page }) => {
+  test('destructive alert opens and closes', async ({ page }) => {
     const dialog = page.locator('#demo-alert-destructive');
     await expect(dialog).not.toBeVisible();
 
@@ -28,7 +28,7 @@ test.describe('Alert Dialog', () => {
     await expect(dialog).not.toBeVisible();
   });
 
-  test('close alert dialog via backdrop click', async ({ page }) => {
+  test('close alert via backdrop click', async ({ page }) => {
     const dialog = page.locator('#demo-alert-dialog');
 
     await preview(page).locator('button:has-text("Close Document")').click();

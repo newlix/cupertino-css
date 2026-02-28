@@ -41,7 +41,7 @@
 
 ### Overlays & Dialogs
 
-- [Alert Dialog](https://ciderui.com/components/alert-dialog.html): Modal confirmation dialog.
+- [Alert](https://ciderui.com/components/alert.html): Modal confirmation dialog.
 - [Context Menu](https://ciderui.com/components/context-menu.html): Right-click menu. Requires `js/context-menu.js`. Dropdown menu (`menu` class) also defined here; requires `js/dropdown-menu.js`.
 - [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Optional `js/dialog.js`.
 - [Drawer](https://ciderui.com/components/drawer.html): Slide-out panel from any edge.
