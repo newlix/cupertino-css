@@ -30,58 +30,6 @@
 </div>
 {% endcall %}
 
-  {% call example("Multiple Open") %}
-<div class="accordion">
-  <details open>
-    <summary>
-      What is Cider UI?
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>An Apple-aesthetic UI component library built as a Tailwind CSS plugin.</div>
-  </details>
-  <details open>
-    <summary>
-      How do I install it?
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>Install with <code class="rounded-md bg-secondary px-1.5 py-0.5 text-xs">npm install ciderui</code> and import it alongside Tailwind CSS.</div>
-  </details>
-  <details>
-    <summary>
-      Does it support dark mode?
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>Yes. All components support both light and dark mode using the <code class="rounded-md bg-secondary px-1.5 py-0.5 text-xs">.dark</code> class on the html element.</div>
-  </details>
-</div>
-{% endcall %}
-
-  {% call example("Disabled") %}
-<div class="accordion">
-  <details name="accordion-disabled">
-    <summary>
-      Available Section
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>This section is interactive and can be expanded or collapsed.</div>
-  </details>
-  <details name="accordion-disabled" class="pointer-events-none opacity-50">
-    <summary>
-      Disabled Section
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>This section cannot be interacted with.</div>
-  </details>
-  <details name="accordion-disabled">
-    <summary>
-      Another Available Section
-      <svg class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div>This section is also interactive.</div>
-  </details>
-</div>
-{% endcall %}
-
   {% call example("With Border") %}
 <div class="accordion rounded-xl border">
   <details name="accordion-border" class="border-b last:border-b-0 px-4">

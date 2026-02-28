@@ -97,65 +97,6 @@
 </dialog>
 {% endcall %}
 
-  {% call example("Scrollable") %}
-<div class="command" style="width:100%;">
-  <header>
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input type="text" placeholder="Search actions..." autocomplete="off" spellcheck="false">
-  </header>
-  <div role="menu" data-empty="No results found." style="max-height: 200px;">
-    <div role="group">
-      <span role="heading">Actions</span>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-        <span>New File</span>
-        <kbd class="ml-auto">&#8984;N</kbd>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        <span>New Folder</span>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-        <span>Save</span>
-        <kbd class="ml-auto">&#8984;S</kbd>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        <span>Rename</span>
-        <kbd class="ml-auto">F2</kbd>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span>Duplicate</span>
-        <kbd class="ml-auto">&#8984;D</kbd>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
-        <span>Share</span>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-        <span>Delete</span>
-        <kbd class="ml-auto">Del</kbd>
-      </div>
-    </div>
-    <hr role="separator">
-    <div role="group">
-      <span role="heading">View</span>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        <span>Grid View</span>
-      </div>
-      <div role="menuitem">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
-        <span>List View</span>
-      </div>
-    </div>
-  </div>
-</div>
-{% endcall %}
-
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
     <p class="mt-2 text-[15px] text-muted-foreground">Handles search filtering in <code>.command</code> components.</p>

@@ -4,21 +4,6 @@
 
 {% block content %}
 
-  {% call example("Confirmation") %}
-<button class="btn-gray" onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
-
-<dialog id="demo-dialog-1" class="dialog">
-  <header>
-    <h2>Are you sure?</h2>
-    <p>This action cannot be undone. This will permanently delete your account.</p>
-  </header>
-  <footer>
-    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-tinted">Cancel</button>
-    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-filled btn-destructive">Delete</button>
-  </footer>
-</dialog>
-{% endcall %}
-
   {% call example("Form Dialog") %}
 <button onclick="document.getElementById('demo-dialog-2').showModal()" class="btn-tinted">Edit Profile</button>
 

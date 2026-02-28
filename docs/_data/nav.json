@@ -28,7 +28,6 @@
       { "label": "Command", "href": "components/command.html" },
       { "label": "Context Menu", "href": "components/context-menu.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
-      { "label": "Drawer", "href": "components/drawer.html" },
       { "label": "Menu", "href": "components/menu.html" },
       { "label": "Empty", "href": "components/empty.html" },
       { "label": "Field", "href": "components/field.html" },

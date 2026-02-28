@@ -25,7 +25,7 @@
 </div>
 {% endcall %}
 
-  {% call example("macOS Shortcuts") %}
+  {% call example("Shortcuts") %}
 <div class="cider space-y-3">
   <div class="flex items-center gap-2">
     <span class="text-sm text-muted-foreground w-24">Copy</span>
@@ -52,100 +52,14 @@
     <kbd>&#8984;</kbd> + <kbd>A</kbd>
   </div>
   <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Spotlight</span>
-    <kbd>&#8984;</kbd> + <kbd>Space</kbd>
-  </div>
-  <div class="flex items-center gap-2">
     <span class="text-sm text-muted-foreground w-24">Screenshot</span>
     <kbd>&#8984;</kbd> + <kbd>&#x21E7;</kbd> + <kbd>4</kbd>
   </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Force Quit</span>
-    <kbd>&#8984;</kbd> + <kbd>&#8997;</kbd> + <kbd>Esc</kbd>
-  </div>
 </div>
 {% endcall %}
 
-  {% call example("Windows Shortcuts") %}
-<div class="cider space-y-3">
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Copy</span>
-    <kbd>Ctrl</kbd> + <kbd>C</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Paste</span>
-    <kbd>Ctrl</kbd> + <kbd>V</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Undo</span>
-    <kbd>Ctrl</kbd> + <kbd>Z</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Save</span>
-    <kbd>Ctrl</kbd> + <kbd>S</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Find</span>
-    <kbd>Ctrl</kbd> + <kbd>F</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Select All</span>
-    <kbd>Ctrl</kbd> + <kbd>A</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Search</span>
-    <kbd>Win</kbd> + <kbd>S</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Screenshot</span>
-    <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Task Manager</span>
-    <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>
-  </div>
-</div>
-{% endcall %}
-
-  {% call example("Linux Shortcuts") %}
-<div class="cider space-y-3">
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Copy</span>
-    <kbd>Ctrl</kbd> + <kbd>C</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Paste</span>
-    <kbd>Ctrl</kbd> + <kbd>V</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Undo</span>
-    <kbd>Ctrl</kbd> + <kbd>Z</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Save</span>
-    <kbd>Ctrl</kbd> + <kbd>S</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Find</span>
-    <kbd>Ctrl</kbd> + <kbd>F</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Select All</span>
-    <kbd>Ctrl</kbd> + <kbd>A</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Terminal</span>
-    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">Screenshot</span>
-    <kbd>PrtSc</kbd>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-sm text-muted-foreground w-24">System Monitor</span>
-    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
-  </div>
-</div>
+  {% call example("Inline") %}
+<p class="cider text-sm">Press <kbd>&#8984;</kbd> + <kbd>S</kbd> to save your document. Use <kbd>&#8984;</kbd> + <kbd>&#x21E7;</kbd> + <kbd>P</kbd> to open the command palette.</p>
 {% endcall %}
 
 {% endblock %}

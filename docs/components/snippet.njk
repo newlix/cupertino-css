@@ -163,6 +163,7 @@ $ npx @tailwindcss/cli -i input.css -o output.css</code></pre>
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Language Examples</h2>
+    <p class="mt-2 text-[13px] text-muted-foreground">Add <code>class="language-{lang}"</code> to <code>&lt;code&gt;</code> for syntax highlighting. Works with any highlighter (e.g., <a href="https://highlightjs.org" target="_blank" rel="noopener" class="font-medium text-primary hover:underline">highlight.js</a>).</p>
 
     <h3 class="mt-6 text-[15px] font-semibold">JavaScript</h3>
     <div class="snippet mt-3">
@@ -182,24 +183,6 @@ app.get("/api/users", async (request, reply) => {
 app.listen({ port: 3000 });</code></pre>
     </div>
 
-    <h3 class="mt-8 text-[15px] font-semibold">TypeScript</h3>
-    <div class="snippet mt-3">
-      <header>
-        <span>types.ts</span>
-        <button>Copy</button>
-      </header>
-      <pre><code class="language-typescript">interface User {
-  id: string;
-  name: string;
-  email: string;
-  createdAt: Date;
-}
-
-function greet(user: User): string {
-  return `Hello, ${user.name}!`;
-}</code></pre>
-    </div>
-
     <h3 class="mt-8 text-[15px] font-semibold">Python</h3>
     <div class="snippet mt-3">
       <header>
@@ -216,74 +199,6 @@ async def get_user(user_id: int):
         "SELECT * FROM users WHERE id = :id", {"id": user_id}
     )
     return {"user": user}</code></pre>
-    </div>
-
-    <h3 class="mt-8 text-[15px] font-semibold">CSS</h3>
-    <div class="snippet mt-3">
-      <header>
-        <span>styles.css</span>
-        <button>Copy</button>
-      </header>
-      <pre><code class="language-css">@import "tailwindcss";
-@import "ciderui";
-
-.hero {
-  display: grid;
-  place-items: center;
-  min-height: 100dvh;
-  background: linear-gradient(to bottom, var(--background), var(--secondary));
-}</code></pre>
-    </div>
-
-    <h3 class="mt-8 text-[15px] font-semibold">Bash</h3>
-    <div class="snippet mt-3">
-      <header>
-        <span>Terminal</span>
-        <button>Copy</button>
-      </header>
-      <pre><code class="language-bash"># Install dependencies
-npm install ciderui
-
-# Build CSS
-npx @tailwindcss/cli -i input.css -o output.css --watch</code></pre>
-    </div>
-
-    <h3 class="mt-8 text-[15px] font-semibold">JSON</h3>
-    <div class="snippet mt-3">
-      <header>
-        <span>tsconfig.json</span>
-        <button>Copy</button>
-      </header>
-      <pre><code class="language-json">{
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  }
-}</code></pre>
-    </div>
-
-    <h3 class="mt-8 text-[15px] font-semibold">SQL</h3>
-    <div class="snippet mt-3">
-      <header>
-        <span>schema.sql</span>
-        <button>Copy</button>
-      </header>
-      <pre><code class="language-sql">CREATE TABLE users (
-  id    INTEGER PRIMARY KEY AUTOINCREMENT,
-  name  TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-SELECT u.name, COUNT(p.id) AS post_count
-FROM users u
-LEFT JOIN posts p ON p.author_id = u.id
-GROUP BY u.id
-ORDER BY post_count DESC;</code></pre>
     </div>
   </section>
 

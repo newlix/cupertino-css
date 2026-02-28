@@ -5,17 +5,16 @@
 {% block content %}
 
   {% call example("Default") %}
-<label class="inline-flex items-center gap-2.5 cursor-pointer">
-  <input type="checkbox" role="switch" />
-  <span class="text-sm">Airplane Mode</span>
-</label>
-{% endcall %}
-
-  {% call example("Checked") %}
-<label class="inline-flex items-center gap-2.5 cursor-pointer">
-  <input type="checkbox" role="switch" checked />
-  <span class="text-sm">Wi-Fi</span>
-</label>
+<div class="space-y-3">
+  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+    <input type="checkbox" role="switch" />
+    <span class="text-sm">Airplane Mode</span>
+  </label>
+  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+    <input type="checkbox" role="switch" checked />
+    <span class="text-sm">Wi-Fi</span>
+  </label>
+</div>
 {% endcall %}
 
   {% call example("Disabled") %}
