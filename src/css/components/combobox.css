@@ -12,7 +12,7 @@
     & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }
   }
   & [data-combobox-content] {
-    @apply absolute z-50 mt-1.5 w-full min-w-[200px] rounded-xl overflow-hidden;
+    @apply absolute z-50 mt-1.5 w-full min-w-[200px] rounded-[12px] overflow-hidden;
     display: none;
     background: var(--glass-bg-opaque);
     backdrop-filter: var(--glass-blur);
@@ -24,7 +24,7 @@
       & svg { @apply size-4 shrink-0 text-muted-foreground; }
       & input {
         @apply h-10 flex-1 border-0 rounded-none bg-transparent px-0 text-[13px] text-foreground outline-none;
-        &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
+        &::placeholder { @apply text-muted-foreground; opacity: 0.65; }
       }
     }
     & [role="listbox"] {
@@ -37,7 +37,7 @@
       & [role="option"] {
         @apply flex items-center gap-2 rounded-lg px-2 py-1.5 text-[13px] text-foreground cursor-pointer transition-colors;
         & svg { @apply size-4 shrink-0 text-muted-foreground; }
-        &:hover { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
+        &:hover { background: var(--surface-2); }
         &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
         &[data-active] { @apply bg-primary text-primary-foreground; & svg { @apply text-primary-foreground; } }
         &[data-selected] {

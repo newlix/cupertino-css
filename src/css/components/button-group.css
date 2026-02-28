@@ -4,7 +4,7 @@
   box-shadow: 0 0 0 1px var(--panel-border), var(--shadow-sm);
   & button, & a {
     @apply inline-flex items-center justify-center px-4 py-2.5 text-[13px] font-medium;
-    transition: all 0.15s var(--apple-ease);
+    transition: all 0.2s var(--apple-ease);
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     &:first-child { @apply rounded-l-[12px]; }

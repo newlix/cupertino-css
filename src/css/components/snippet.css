@@ -1,13 +1,13 @@
 /* ========== SNIPPET (Code Block) ========== */
 .snippet {
-  @apply rounded-xl border;
+  @apply rounded-[10px] border;
   & > :first-child {
-    border-top-left-radius: calc(var(--radius-xl) - 1px);
-    border-top-right-radius: calc(var(--radius-xl) - 1px);
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
   }
   & > :last-child {
-    border-bottom-left-radius: calc(var(--radius-xl) - 1px);
-    border-bottom-right-radius: calc(var(--radius-xl) - 1px);
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
   }
   & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;

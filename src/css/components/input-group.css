@@ -3,7 +3,7 @@
   @apply relative;
   & .input-group-icon {
     @apply absolute top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground;
-    & svg { @apply size-4; }
+    & svg { @apply size-5; }
   }
   & .input-group-icon-left {
     @apply left-3;
@@ -25,7 +25,7 @@
   @apply flex items-stretch;
   & .input-group-addon {
     @apply flex items-center border px-3 text-[13px] text-muted-foreground;
-    background: var(--muted);
+    background: var(--surface-2);
   }
   & .input-group-addon:first-child {
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);

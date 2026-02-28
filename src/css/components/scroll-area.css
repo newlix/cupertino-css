@@ -17,8 +17,8 @@
     &:hover { background: var(--surface-7); background-clip: content-box; }
   }
   &:hover::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
   }
   scrollbar-width: thin;
   scrollbar-color: var(--surface-6) transparent;

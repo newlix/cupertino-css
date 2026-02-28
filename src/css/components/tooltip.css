@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .tooltip-content {
-  @apply pointer-events-none absolute bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
+  @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-lg px-2 py-1 text-xs font-normal;
   --tooltip-bg: oklch(0.200 0.004 285.99);
   --tooltip-fg: white;
   background: var(--tooltip-bg);

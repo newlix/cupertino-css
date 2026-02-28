@@ -15,15 +15,15 @@
   }
   & .sidebar-section {
     @apply mb-4;
-    & h3 { @apply mb-1 px-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground; }
+    & h3 { @apply mb-1 px-2 text-[12px] font-semibold tracking-normal text-muted-foreground; }
   }
   & .sidebar-item {
     @apply flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-[13px] text-muted-foreground cursor-pointer;
-    transition: all 0.15s var(--apple-ease);
-    & svg { @apply size-4 text-muted-foreground; transition: color 0.15s var(--apple-ease); }
+    transition: all 0.2s var(--apple-ease);
+    & svg { @apply size-4 text-muted-foreground; transition: color 0.2s var(--apple-ease); }
     &:hover { background: var(--surface-3); @apply text-foreground; & svg { @apply text-foreground; } }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-    &[data-active] { background: var(--surface-4); @apply text-foreground font-medium; & svg { @apply text-foreground; } }
+    &[data-active] { background: var(--primary); @apply text-primary-foreground font-medium; & svg { @apply text-primary-foreground; } }
   }
   & .sidebar-footer {
     @apply px-5 py-4;

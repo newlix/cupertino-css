@@ -6,7 +6,7 @@
     border-top: 1px solid var(--panel-border);
   }
   & summary {
-    @apply flex cursor-pointer items-center justify-between px-5 py-4 text-[13px] font-medium text-foreground;
+    @apply flex cursor-pointer items-center justify-between px-5 py-4 text-[15px] font-medium text-foreground;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }

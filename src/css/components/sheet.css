@@ -15,6 +15,7 @@ dialog.sheet,
   &:not(.sheet-left) {
     @apply right-0 top-0;
     border-left: 1px solid var(--panel-border);
+    border-radius: 20px 0 0 20px;
     &[open] { animation-name: sheetSlideInRight; }
     &[data-closing] { animation: sheetSlideOutRight 0.3s var(--apple-ease) forwards; }
   }
@@ -22,6 +23,7 @@ dialog.sheet,
   &.sheet-left {
     @apply left-0 top-0;
     border-right: 1px solid var(--panel-border);
+    border-radius: 0 20px 20px 0;
     &[open] { animation-name: sheetSlideInLeft; }
     &[data-closing] { animation: sheetSlideOutLeft 0.3s var(--apple-ease) forwards; }
   }

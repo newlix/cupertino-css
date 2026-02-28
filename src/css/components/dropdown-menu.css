@@ -7,7 +7,7 @@
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-lg), var(--float-ring);
   &[data-open] { display: block; animation: slideUp 0.15s var(--apple-spring); }
-  &[data-closing] { animation: slideDown 0.12s var(--apple-ease) forwards; }
+  &[data-closing] { animation: slideDown 0.15s var(--apple-ease) forwards; }
   & button, & a {
     @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
     transition: background-color 0.12s var(--apple-ease);

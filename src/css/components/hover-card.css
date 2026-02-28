@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .hover-card-content {
-  @apply pointer-events-none absolute z-50 mt-2 min-w-[280px] rounded-2xl p-4;
+  @apply pointer-events-none absolute z-50 mt-2 min-w-[280px] rounded-xl p-4;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -16,6 +16,7 @@
   @apply pointer-events-auto;
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.15s;
 }
 .hover-card-bottom .hover-card-content {
   @apply bottom-auto top-full mt-2;

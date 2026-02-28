@@ -8,7 +8,7 @@
   &:hover:not([data-active]) { background: var(--surface-3); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &[data-active] {
-    @apply bg-primary text-primary-foreground;
+    @apply bg-primary text-primary-foreground font-semibold;
     box-shadow: var(--shadow-sm);
   }
   &:disabled { @apply pointer-events-none opacity-50; }

@@ -1,6 +1,6 @@
 /* ========== PROGRESS ========== */
 .progress {
-  @apply h-1.5 w-full overflow-hidden rounded-full;
+  @apply h-1 w-full overflow-hidden rounded-full;
   background: var(--surface-4);
   & .progress-bar {
     @apply h-full rounded-full bg-primary;

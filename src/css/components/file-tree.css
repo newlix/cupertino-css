@@ -11,7 +11,7 @@
 
   /* Root header */
   & > summary {
-    @apply flex items-center justify-between rounded-2xl px-4 py-3 text-[13px] font-medium text-foreground;
+    @apply flex items-center justify-between rounded-2xl px-4 py-3 text-[14px] font-semibold text-foreground;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
   }
@@ -31,14 +31,14 @@
 
     & .file-tree-chevron {
       @apply size-3.5 shrink-0 text-muted-foreground;
-      transition: transform 0.2s var(--apple-ease);
+      transition: transform 0.2s var(--apple-spring);
     }
     & details[open] > summary > .file-tree-chevron {
       transform: rotate(90deg);
     }
 
-    /* 12px per nesting level (Xcode-like density) */
-    & details > div { @apply pl-3; }
+    /* 16px per nesting level (Xcode-like density) */
+    & details > div { @apply pl-4; }
   }
 
   /* File item */

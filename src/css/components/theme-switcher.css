@@ -1,6 +1,6 @@
 /* ========== THEME SWITCHER ========== */
 .theme-switcher {
-  @apply inline-flex items-center rounded-[10px] p-0.5;
+  @apply inline-flex items-center rounded-[10px] p-1;
   background: var(--surface-4);
   & button {
     @apply flex size-8 items-center justify-center rounded-[7px] text-muted-foreground;

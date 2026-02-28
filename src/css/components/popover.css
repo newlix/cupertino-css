@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .popover-content {
-  @apply absolute z-50 mt-3 min-w-[220px] rounded-xl p-4;
+  @apply absolute z-50 mt-3 min-w-[240px] rounded-xl p-4;
   display: none;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);

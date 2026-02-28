@@ -33,7 +33,10 @@ dialog.sheet-bottom,
   }
   & .drawer-handle {
     @apply mx-auto mt-2 mb-1 h-[5px] w-9 rounded-full;
-    background: var(--surface-7);
+    background: oklch(0 0 0 / 0.3);
+    transition: background-color 0.2s var(--apple-ease);
+    .dark & { background: oklch(1 0 0 / 0.3); }
+    &:hover { background: oklch(0 0 0 / 0.4); .dark & { background: oklch(1 0 0 / 0.4); } }
   }
 }
 dialog.sheet-top,

@@ -1,6 +1,6 @@
 /* ========== CARD ========== */
 .card {
-  @apply rounded-2xl bg-card text-card-foreground;
+  @apply rounded-xl bg-card text-card-foreground;
   box-shadow: var(--shadow), var(--panel-ring);
   & > header {
     @apply px-6 py-5;
@@ -23,9 +23,9 @@
   }
 }
 .card-interactive {
-  @apply rounded-2xl bg-card p-6 text-card-foreground cursor-pointer;
+  @apply rounded-xl bg-card p-6 text-card-foreground cursor-pointer;
   box-shadow: var(--shadow), var(--panel-ring);
-  transition: all 0.3s var(--apple-spring);
+  transition: all 0.25s var(--apple-spring);
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
   & p { @apply mt-2 text-[13px] text-muted-foreground; }

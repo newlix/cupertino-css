@@ -64,7 +64,7 @@ function init() {
       if (scrolling) return;
       scrolling = true;
       scrollToIndex(index);
-      setTimeout(() => { scrolling = false; }, 350);
+      setTimeout(() => { scrolling = false; }, 250);
     }
     if (prevBtn) prevBtn.addEventListener("click", () => navTo(getCurrentIndex() - 1));
     if (nextBtn) nextBtn.addEventListener("click", () => navTo(getCurrentIndex() + 1));

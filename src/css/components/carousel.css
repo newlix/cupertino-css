@@ -57,7 +57,7 @@
   &:hover { background: oklch(from var(--foreground) l c h / 0.35); }
   &[data-active] {
     background: oklch(from var(--foreground) l c h / 0.6);
-    width: 1.5rem;
+    width: 1rem;
   }
   .dark & {
     background: oklch(from var(--foreground) l c h / 0.4);

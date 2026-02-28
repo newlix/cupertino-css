@@ -49,11 +49,29 @@ document.addEventListener("click", () => {
   });
 });
 
-// Close on Escape
+// Close on Escape + arrow key navigation
 document.addEventListener("keydown", (e) => {
+  const openMenu = document.querySelector(".context-menu-content[data-open]");
+  if (!openMenu) return;
+
   if (e.key === "Escape") {
-    document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
-      closeContextMenu(el);
-    });
+    closeContextMenu(openMenu);
+    return;
+  }
+
+  const items = Array.from(openMenu.querySelectorAll("button, a")).filter(
+    (el) => !el.disabled && el.offsetParent !== null
+  );
+  if (!items.length) return;
+  const current = items.indexOf(document.activeElement);
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    const next = current < items.length - 1 ? current + 1 : 0;
+    items[next].focus();
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    const prev = current > 0 ? current - 1 : items.length - 1;
+    items[prev].focus();
   }
 });

@@ -1,6 +1,6 @@
 /* ========== TOGGLE ========== */
 .toggle {
-  @apply inline-flex size-9 items-center justify-center rounded-[8px] text-muted-foreground cursor-pointer;
+  @apply inline-flex size-10 items-center justify-center rounded-[8px] text-muted-foreground cursor-pointer;
   transition: all 0.2s var(--apple-ease);
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
   &:hover {
@@ -19,6 +19,7 @@
 .toggle-lg { @apply size-10; & svg { @apply size-5; } }
 .toggle-outline {
   box-shadow: inset 0 0 0 1px var(--border-solid);
+  &:hover:not([data-active]):not([aria-pressed="true"]) { background: var(--surface-2); }
   &[data-active], &[aria-pressed="true"] {
     @apply text-primary;
     background: oklch(from var(--primary) l c h / 0.06);

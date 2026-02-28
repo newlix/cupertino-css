@@ -16,7 +16,8 @@
 }
 .btn-primary {
   @apply bg-primary text-primary-foreground;
-  &:hover { background: oklch(from var(--primary) calc(l - 0.03) c h); }
+  &:hover { background: var(--primary-hover); }
+  &:active { transform: scale(var(--apple-press-scale)); background: var(--primary-active); }
 }
 .btn-outline {
   @apply border bg-transparent text-primary;
@@ -25,7 +26,7 @@
 }
 .btn-ghost {
   @apply bg-transparent text-foreground;
-  &:hover { @apply bg-secondary; }
+  &:hover { background: var(--surface-2); }
 }
 .btn-destructive {
   @apply bg-transparent text-destructive;
