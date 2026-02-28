@@ -12,7 +12,9 @@ document.addEventListener("click", function (e) {
   var trigger = e.target.closest("[data-dropdown-trigger]");
   if (trigger) {
     var dropdown = trigger.closest("[data-dropdown]");
+    if (!dropdown) return;
     var content = dropdown.querySelector("[data-dropdown-content]");
+    if (!content) return;
     var isOpen = content.hasAttribute("data-open");
 
     // Close all other dropdowns

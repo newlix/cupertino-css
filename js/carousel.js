@@ -60,6 +60,7 @@ function init() {
       var items = getItems();
       items.forEach(function (_, i) {
         var dot = document.createElement("button");
+        dot.type = "button";
         dot.className = "carousel-indicator";
         dot.setAttribute("aria-label", "Go to slide " + (i + 1));
         dot.setAttribute("aria-pressed", i === 0 ? "true" : "false");

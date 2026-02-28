@@ -11,6 +11,7 @@
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-lg), var(--float-ring);
   opacity: 0;
+  pointer-events: none;
   transform: translateY(4px) scale(0.97);
   transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-spring);
   transition-delay: 0.1s;
@@ -26,6 +27,7 @@
 }
 .hover-card:hover .hover-card-content {
   opacity: 1;
+  pointer-events: auto;
   transform: translateY(0) scale(1);
   transition-delay: 0.4s;
 }
