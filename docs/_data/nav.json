@@ -12,7 +12,7 @@
     "title": "Components",
     "items": [
       { "label": "Accordion", "href": "components/accordion.html" },
-      { "label": "Alert", "href": "components/alert.html" },
+      { "label": "Banner", "href": "components/banner.html" },
       { "label": "Alert Dialog", "href": "components/alert-dialog.html" },
       { "label": "Aspect Ratio", "href": "components/aspect-ratio.html" },
       { "label": "Avatar", "href": "components/avatar.html" },
@@ -58,7 +58,7 @@
       { "label": "Tabs", "href": "components/tabs.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
       { "label": "Theme Switcher", "href": "components/theme-switcher.html" },
-      { "label": "Toast", "href": "components/toast.html" },
+      { "label": "HUD", "href": "components/hud.html" },
       { "label": "Toggle", "href": "components/toggle.html" },
       { "label": "Toggle Group", "href": "components/toggle-group.html" },
       { "label": "Tooltip", "href": "components/tooltip.html" }

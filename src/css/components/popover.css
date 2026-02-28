@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .popover-content {
-  @apply absolute z-50 mt-3 min-w-[240px] max-w-[320px] rounded-xl p-4;
+  @apply absolute z-50 mt-2 min-w-[180px] max-w-[320px] rounded-[10px] p-4;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
   corner-shape: squircle;
@@ -25,12 +25,12 @@
     width: 12px;
     height: 12px;
     background: var(--glass-bg-opaque);
-    box-shadow: -1px -1px 0 0 oklch(0 0 0 / 0.06);
+    box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
   }
 }
 .popover-top {
   & .popover-content {
-    @apply bottom-full top-auto mb-3 mt-0;
+    @apply bottom-full top-auto mb-2 mt-0;
     &::before {
       top: auto;
       bottom: -6px;

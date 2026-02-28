@@ -2,7 +2,7 @@
 .accordion {
   @apply rounded-2xl bg-card;
   corner-shape: squircle;
-  box-shadow: var(--shadow-sm), var(--panel-ring);
+  box-shadow: var(--panel-ring);
   & details + details {
     border-top: 1px solid var(--panel-border);
   }
@@ -11,7 +11,7 @@
     min-height: 44px;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
     &::-webkit-details-marker { display: none; }
     & svg:last-child {
       @apply size-5 shrink-0 text-muted-foreground;

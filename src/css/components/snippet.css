@@ -45,7 +45,7 @@
       }
     }
     & > button {
-      @apply rounded-md border px-2 py-1 text-[11px] font-medium;
+      @apply rounded-md border px-2 py-1 text-[12px] font-medium;
       background: var(--surface-2);
       border-color: var(--color-border);
       color: var(--color-muted-foreground);

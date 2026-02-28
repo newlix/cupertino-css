@@ -1,6 +1,9 @@
 /* ========== COMMAND ========== */
 .command {
-  @apply flex flex-col rounded-2xl bg-card overflow-hidden;
+  @apply flex flex-col rounded-2xl overflow-hidden;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   box-shadow: var(--shadow-lg), var(--float-ring);
   & > header {
@@ -8,7 +11,7 @@
     border-bottom: 1px solid var(--panel-border);
     & svg { @apply size-4 shrink-0 text-muted-foreground; }
     & input {
-      @apply h-12 flex-1 border-0 rounded-none bg-transparent px-0 text-[13px] text-foreground outline-none;
+      @apply h-14 flex-1 border-0 rounded-none bg-transparent px-0 text-[18px] text-foreground outline-none;
       &::placeholder { @apply text-muted-foreground; opacity: 0.6; }
     }
   }
@@ -25,20 +28,21 @@
       & svg { @apply size-4 shrink-0 text-muted-foreground; }
       & span { @apply flex-1; }
       &:hover { background: var(--surface-2); }
-      &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-      &[data-active] { background: oklch(from var(--primary) l c h / 0.15); color: var(--foreground); & svg { color: var(--primary); } }
+      &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
+      &[data-active] { background: oklch(from var(--color-primary) l c h / 0.15); color: var(--color-foreground); & svg { color: var(--color-primary); } }
       &[aria-disabled="true"] { @apply opacity-50 pointer-events-none; }
       &[data-selected]::after {
         content: "";
         display: inline-block;
         width: 1rem; height: 1rem; margin-left: auto;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231D1D1F' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-        background-size: contain;
-        background-repeat: no-repeat;
+        background: currentColor;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='black' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='black' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
         flex-shrink: 0;
-        .dark & {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23F5F5F7' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-        }
       }
     }
     & hr[role="separator"], & hr {
@@ -53,7 +57,7 @@
 }
 dialog.command-dialog,
 .command-dialog {
-  @apply m-auto w-full max-w-lg rounded-[18px] border-0 bg-transparent p-0;
+  @apply m-auto w-full max-w-2xl rounded-[18px] border-0 bg-transparent p-0;
   corner-shape: squircle;
   box-shadow: var(--shadow-xl);
   &::backdrop {

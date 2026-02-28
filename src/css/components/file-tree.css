@@ -2,7 +2,7 @@
 .file-tree {
   @apply rounded-2xl bg-card;
   corner-shape: squircle;
-  box-shadow: var(--shadow-sm), var(--panel-ring);
+  box-shadow: var(--panel-ring);
 
   & summary {
     list-style: none;
@@ -26,7 +26,7 @@
       @apply flex items-center gap-1.5 rounded-lg px-2 py-1 text-[13px] text-foreground;
       transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
-      &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+      &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
       & > svg { @apply size-4 shrink-0 text-muted-foreground; transition: color 0.15s var(--apple-ease); }
     }
 
@@ -48,17 +48,17 @@
     padding-left: 1.75rem; /* aligns file icon with folder icon: px-2 + chevron + gap */
     transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     & > svg { @apply size-4 shrink-0; }
     &[data-selected], &[aria-selected="true"] {
       @apply text-primary;
-      background: oklch(from var(--primary) l c h / 0.12);
+      background: oklch(from var(--color-primary) l c h / 0.18);
     }
   }
 
   /* Selected state for folder summary */
   & summary[data-selected], & summary[aria-selected="true"] {
     @apply text-primary;
-    background: oklch(from var(--primary) l c h / 0.12);
+    background: oklch(from var(--color-primary) l c h / 0.18);
   }
 }

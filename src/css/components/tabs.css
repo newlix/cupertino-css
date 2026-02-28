@@ -10,19 +10,19 @@
   @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground;
   transition: color 0.2s var(--apple-ease);
   &:hover { @apply text-foreground; }
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
   &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
   &::after {
     content: "";
     @apply absolute bottom-0 left-0 h-0.5 w-full;
     border-radius: 1px 1px 0 0;
-    background: var(--primary);
+    background: var(--color-primary);
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.2s var(--apple-spring);
   }
   &[data-active] {
-    color: var(--primary);
+    color: var(--color-foreground);
     &::after {
       transform: scaleX(1);
     }
@@ -37,17 +37,17 @@
   & .tabs-list {
     @apply inline-flex rounded-[10px] border-0 p-1;
     corner-shape: squircle;
-    background: var(--secondary);
+    background: var(--color-secondary);
   }
   & .tabs-trigger {
     @apply rounded-[7px] px-3.5 py-1.5 text-[13px];
     transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring), transform 0.15s var(--apple-spring);
     &:active { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
     &[data-active] {
       @apply text-foreground;
-      background: var(--card);
-      box-shadow: 0 1px 3px oklch(0 0 0 / 0.12), 0 1px 2px oklch(0 0 0 / 0.08), 0 0 0 0.5px oklch(0 0 0 / 0.06);
+      background: var(--color-card);
+      box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.06);
       &::after { display: none; }
     }
   }

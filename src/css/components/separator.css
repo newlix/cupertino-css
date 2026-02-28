@@ -1,12 +1,12 @@
 /* ========== SEPARATOR ========== */
 .separator {
   @apply h-px w-full border-none;
-  background: var(--panel-border);
+  background: var(--color-border);
   margin: 0;
 }
 .separator-vertical {
   @apply w-px shrink-0 self-stretch;
-  background: var(--panel-border);
+  background: var(--color-border);
 }
 .separator-label {
   @apply flex items-center gap-2 text-xs text-muted-foreground;

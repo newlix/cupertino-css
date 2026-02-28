@@ -33,7 +33,7 @@
     "./sheet.js": "./js/sheet.js",
     "./snippet.js": "./js/snippet.js",
     "./tabs.js": "./js/tabs.js",
-    "./toast.js": "./js/toast.js",
+    "./hud.js": "./js/hud.js",
     "./toggle.js": "./js/toggle.js"
   },
   "files": [

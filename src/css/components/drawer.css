@@ -7,8 +7,8 @@ dialog.sheet-bottom,
   -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   max-height: min(85vh, 600px);
-  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-  box-shadow: 0 -16px 48px oklch(0 0 0 / 0.12), 0 -4px 16px oklch(0 0 0 / 0.06);
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: var(--shadow-xl);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
@@ -18,7 +18,7 @@ dialog.sheet-bottom,
   &[data-closing] { animation: sheetSlideOutBottom 0.3s var(--apple-ease) forwards; }
   & > header {
     @apply px-6 py-5;
-    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
@@ -32,16 +32,12 @@ dialog.sheet-bottom,
     @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
     transition: all 0.2s var(--apple-ease);
     &:hover { @apply text-foreground bg-accent; }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     & svg { @apply size-4; }
   }
-  & .drawer-handle {
+  & .sheet-grabber {
     @apply mx-auto mt-2 mb-1 h-[5px] w-9 rounded-full;
-    cursor: grab;
     background: var(--surface-7);
-    transition: background-color 0.2s var(--apple-ease);
-    &:hover { opacity: 0.8; }
-    &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
   }
 }
 dialog.sheet-top,
@@ -52,8 +48,8 @@ dialog.sheet-top,
   -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   max-height: min(85vh, 600px);
-  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-  box-shadow: 0 16px 48px oklch(0 0 0 / 0.12), 0 4px 16px oklch(0 0 0 / 0.06);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-xl);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
@@ -63,7 +59,7 @@ dialog.sheet-top,
   &[data-closing] { animation: sheetSlideOutTop 0.3s var(--apple-ease) forwards; }
   & > header {
     @apply px-6 py-5;
-    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
@@ -77,7 +73,7 @@ dialog.sheet-top,
     @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
     transition: all 0.2s var(--apple-ease);
     &:hover { @apply text-foreground bg-accent; }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     & svg { @apply size-4; }
   }
 }

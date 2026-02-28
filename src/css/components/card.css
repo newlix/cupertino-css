@@ -28,11 +28,11 @@
   corner-shape: squircle;
   box-shadow: var(--shadow), var(--panel-ring);
   transition: background-color 0.25s var(--apple-spring), box-shadow 0.25s var(--apple-spring), transform 0.1s var(--apple-spring);
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
   & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
   & p { @apply mt-2 text-[13px] text-muted-foreground; }
   &:hover {
-    background: color-mix(in oklch, var(--card), var(--foreground) 3%);
+    background: color-mix(in oklch, var(--color-card), var(--color-foreground) 3%);
     box-shadow: var(--shadow-md), var(--float-ring);
   }
   &:active { transform: scale(var(--apple-press-scale)); }

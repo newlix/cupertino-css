@@ -14,12 +14,12 @@ dialog.sheet,
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { animation: sheetSlideIn 0.3s var(--apple-spring); }
+  &[open] { animation: sheetSlideInRight 0.3s var(--apple-spring); }
   /* Right (default) */
   &:not(.sheet-left) {
     @apply right-0 top-0;
     border-left: 1px solid var(--panel-border);
-    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
     &[open] { animation-name: sheetSlideInRight; }
     &[data-closing] { animation: sheetSlideOutRight 0.3s var(--apple-ease) forwards; }
   }
@@ -27,14 +27,14 @@ dialog.sheet,
   &.sheet-left {
     @apply left-0 top-0;
     border-right: 1px solid var(--panel-border);
-    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     &[open] { animation-name: sheetSlideInLeft; }
     &[data-closing] { animation: sheetSlideOutLeft 0.3s var(--apple-ease) forwards; }
   }
   & > header {
     @apply px-6 py-5;
     border-bottom: 1px solid var(--panel-border);
-    & h2 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
@@ -48,7 +48,7 @@ dialog.sheet,
     @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
     transition: all 0.2s var(--apple-ease);
     &:hover { @apply text-foreground bg-accent; }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     & svg { @apply size-4; }
   }
 }

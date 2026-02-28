@@ -2,7 +2,7 @@
 .table {
   @apply overflow-x-auto rounded-2xl bg-card;
   corner-shape: squircle;
-  box-shadow: var(--shadow-sm), var(--panel-ring);
+  box-shadow: var(--panel-ring);
   & table {
     box-shadow: none;
     border-radius: 0;

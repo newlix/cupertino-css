@@ -6,12 +6,12 @@
   @apply flex size-12 items-center justify-center rounded-[12px] border text-[17px] font-medium text-foreground;
   corner-shape: squircle;
   border-color: var(--input-border);
-  background: var(--card);
+  background: var(--color-card);
   caret-color: transparent;
   transition: border-color 0.2s var(--apple-ease);
   &:focus-within, &[data-active] {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.2);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.2);
   }
 }
 .input-otp-separator {
@@ -19,6 +19,5 @@
   & span { @apply mx-0.5 text-xl; }
 }
 .input-otp[data-error] .input-otp-slot {
-  border-color: var(--destructive);
-  color: var(--destructive);
+  border-color: var(--color-destructive);
 }

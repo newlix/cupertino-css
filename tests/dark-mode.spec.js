@@ -62,20 +62,14 @@ test.describe('Dark Mode', () => {
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
 
-  test('alert variants have visible borders', async ({ page }) => {
-    await goto(page, 'alert');
+  test('banner variants are visible in dark mode', async ({ page }) => {
+    await goto(page, 'banner');
     await setDark(page);
 
-    for (const sel of ['.alert-info', '.alert-success', '.alert-warning', '.alert-destructive']) {
-      const alert = page.locator(`.snippet-preview > figure ${sel}`).first();
-      if ((await alert.count()) === 0) continue;
-
-      const borderRgb = parseRgb(await css(alert, 'borderColor'));
-      const bgRgb = parseRgb(await css(alert, 'backgroundColor'));
-
-      if (borderRgb && bgRgb) {
-        expect(contrast(borderRgb, bgRgb), `${sel} border contrast`).toBeGreaterThan(1.05);
-      }
+    for (const sel of ['.banner-info', '.banner-success', '.banner-warning', '.banner-destructive']) {
+      const banner = page.locator(`.snippet-preview > figure ${sel}`).first();
+      if ((await banner.count()) === 0) continue;
+      await expect(banner).toBeVisible();
     }
   });
 

@@ -1,0 +1,15 @@
+/* ========== BANNER ========== */
+.banner {
+  @apply flex gap-3 rounded-xl p-4;
+  corner-shape: squircle;
+  background: var(--surface-3);
+  box-shadow: var(--panel-ring);
+  & svg:first-child { @apply size-5 shrink-0; margin-top: 1px; color: var(--color-muted-foreground); }
+  & p:first-child, & p:first-of-type { @apply text-[13px] font-medium text-foreground; }
+  & p:last-child:not(:first-child) { @apply mt-0.5 text-[13px] text-muted-foreground; }
+}
+/* Semantic variants: icon color only */
+.banner-info    { & svg:first-child { color: var(--color-info); } }
+.banner-success { & svg:first-child { color: var(--color-success); } }
+.banner-warning { & svg:first-child { color: var(--color-warning); } }
+.banner-destructive { & svg:first-child { color: var(--color-destructive); } }

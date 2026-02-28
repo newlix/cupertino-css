@@ -5,9 +5,11 @@
 .tooltip-content {
   @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-lg px-2 py-1 text-xs font-normal;
   letter-spacing: -0.01em;
-  --tooltip-bg: var(--foreground);
-  --tooltip-fg: var(--background);
+  --tooltip-bg: oklch(0.15 0 0 / 0.9);
+  --tooltip-fg: oklch(0.95 0 0);
   background: var(--tooltip-bg);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
   color: var(--tooltip-fg);
   box-shadow: var(--shadow-sm);
   opacity: 0;
@@ -17,7 +19,7 @@
   .tooltip:focus-within > & {
     opacity: 1;
     translate: -50% 0;
-    transition-delay: 0.35s;
+    transition-delay: 1s;
   }
   &::after {
     content: "";

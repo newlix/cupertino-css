@@ -23,8 +23,8 @@
     & svg { @apply size-4 text-muted-foreground; transition: color 0.2s var(--apple-ease); }
     &:hover { background: var(--surface-3); @apply text-foreground; & svg { @apply text-foreground; } }
     &:active { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-    &[data-active] { background: oklch(from var(--primary) l c h / 0.12); @apply text-primary font-medium; & svg { color: var(--primary); } }
+    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
+    &[data-active] { background: oklch(from var(--color-primary) l c h / 0.18); @apply text-foreground font-medium; & svg { color: var(--color-foreground); } }
   }
   & .sidebar-footer {
     @apply px-5 py-4;

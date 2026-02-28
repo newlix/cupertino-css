@@ -3,28 +3,28 @@
 .btn-filled,
 .btn-tinted,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-2.5 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   corner-shape: squircle;
   transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
   letter-spacing: -0.016em;
   &:active { transform: scale(var(--apple-press-scale)); }
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
 }
 .btn-gray {
-  @apply bg-secondary text-primary;
-  &:hover { background: var(--secondary-hover); }
+  @apply bg-secondary text-secondary-foreground;
+  &:hover { background: var(--color-secondary-hover); }
   &:active { background: var(--surface-4); }
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;
-  &:hover { background: var(--primary-hover); }
-  &:active { background: var(--primary-active); }
+  &:hover { background: var(--color-primary-hover); }
+  &:active { background: var(--color-primary-active); }
 }
 .btn-tinted {
   @apply bg-transparent text-primary;
-  background: oklch(from var(--primary) l c h / 0.12);
-  &:hover { background: oklch(from var(--primary) l c h / 0.18); }
-  &:active { background: oklch(from var(--primary) l c h / 0.22); }
+  background: oklch(from var(--color-primary) l c h / 0.12);
+  &:hover { background: oklch(from var(--color-primary) l c h / 0.18); }
+  &:active { background: oklch(from var(--color-primary) l c h / 0.22); }
 }
 .btn-plain {
   @apply bg-transparent text-primary;
@@ -33,24 +33,24 @@
 }
 /* ── Destructive modifier ── */
 .btn-destructive {
-  &:focus-visible { outline-color: oklch(from var(--destructive) l c h / 0.3); }
+  &:focus-visible { outline-color: oklch(from var(--color-destructive) l c h / 0.3); }
 }
 .btn-filled.btn-destructive {
   @apply bg-destructive text-destructive-foreground;
-  &:hover { background: var(--destructive-hover); }
-  &:active { background: var(--destructive-active); }
+  &:hover { background: var(--color-destructive-hover); }
+  &:active { background: var(--color-destructive-active); }
 }
 .btn-gray.btn-destructive {
-  color: var(--destructive);
+  color: var(--color-destructive);
 }
 .btn-tinted.btn-destructive {
-  color: var(--destructive);
-  background: oklch(from var(--destructive) l c h / 0.12);
-  &:hover { background: oklch(from var(--destructive) l c h / 0.18); }
-  &:active { background: oklch(from var(--destructive) l c h / 0.22); }
+  color: var(--color-destructive);
+  background: oklch(from var(--color-destructive) l c h / 0.12);
+  &:hover { background: oklch(from var(--color-destructive) l c h / 0.18); }
+  &:active { background: oklch(from var(--color-destructive) l c h / 0.22); }
 }
 .btn-plain.btn-destructive {
-  color: var(--destructive);
+  color: var(--color-destructive);
 }
 .btn-capsule {
   border-radius: 9999px;

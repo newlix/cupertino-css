@@ -57,13 +57,13 @@
 
 ### Feedback & Status
 
-- [Alert](https://ciderui.com/components/alert.html): `alert-info` `alert-success` `alert-warning` `alert-destructive`
+- [Banner](https://ciderui.com/components/banner.html): `banner` `banner-info` `banner-success` `banner-warning` `banner-destructive`
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 - [Empty](https://ciderui.com/components/empty.html): Empty state placeholder.
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
 - [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` `skeleton-circle` — loading placeholder.
 - [Spinner](https://ciderui.com/components/spinner.html): `spinner` `spinner-sm` `spinner-lg` — loading indicator.
-- [Toast](https://ciderui.com/components/toast.html): `toast` `toast-container`. Requires `js/toast.js`.
+- [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
 
 ### Display & Media
 
@@ -104,5 +104,5 @@ import "ciderui/dialog.js";
 import "ciderui/dropdown-menu.js";
 import "ciderui/tabs.js";
 import "ciderui/select.js";
-import "ciderui/toast.js";
+import "ciderui/hud.js";
 ```

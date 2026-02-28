@@ -1,7 +1,6 @@
 /* ========== LIST ROW ========== */
 .list-row {
-  @apply flex items-center gap-4 rounded-2xl p-4 text-[13px];
-  corner-shape: squircle;
+  @apply flex items-center gap-4 p-4 text-[13px];
   min-height: 44px;
   transition: background-color 0.15s var(--apple-ease);
   & .list-row-icon {
@@ -30,26 +29,35 @@
 }
 a.list-row, button.list-row {
   &:hover { background: var(--surface-2); }
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
   &[data-selected]:hover, &[aria-selected="true"]:hover {
-    background: oklch(from var(--primary) l c h / 0.15);
-    .dark & { background: oklch(from var(--primary) l c h / 0.28); }
+    background: oklch(from var(--color-primary) l c h / 0.15);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.28); }
   }
 }
 .list-row[data-selected], .list-row[aria-selected="true"] {
-  background: oklch(from var(--primary) l c h / 0.1);
-  .dark & { background: oklch(from var(--primary) l c h / 0.22); }
+  background: oklch(from var(--color-primary) l c h / 0.1);
+  .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
 }
 .list-section {
   @apply flex flex-col rounded-2xl bg-card;
   corner-shape: squircle;
-  box-shadow: var(--shadow-sm), var(--panel-ring);
+  box-shadow: var(--panel-ring);
   & .list-row { @apply rounded-none; }
   & .list-row:first-child { @apply rounded-t-2xl; }
   & .list-row:last-child { @apply rounded-b-2xl; }
   & .list-row:first-child { corner-shape: squircle; }
   & .list-row:last-child { corner-shape: squircle; }
   & .list-row + .list-row {
-    border-top: 1px solid var(--panel-border);
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 1rem;
+      height: 1px;
+      background: var(--panel-border);
+    }
   }
 }

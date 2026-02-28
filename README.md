@@ -66,7 +66,7 @@ For quick prototyping without a build step:
 | Skeleton | `skeleton` `skeleton-circle` | — |
 | Slider | `slider` | — |
 | Spinner | `spinner` `spinner-sm` `spinner-lg` | — |
-| Toast | `toast` `toast-container` | `js/toast.js` |
+| HUD | `hud` `hud-container` | `js/hud.js` |
 | Tooltip | `tooltip` `tooltip-content` `tooltip-bottom` | — |
 
 ### ES Module / Bundler (Vite, Webpack, etc.)
@@ -77,16 +77,23 @@ JS files work with bundlers. Import them as side effects in your entry file:
 import "ciderui/dialog.js";
 import "ciderui/tabs.js";
 import "ciderui/select.js";
-import "ciderui/toast.js";
+import "ciderui/hud.js";
 ```
 
 ## Dark Mode
 
-Add `class="dark"` to your `<html>` element. All components automatically adapt.
+Add `class="dark"` to your `<html>` element. All components automatically adapt. Use `.light` inside a `.dark` container to create light sections — nesting works at any depth.
 
 ```js
 // Toggle dark mode
 document.documentElement.classList.toggle('dark');
+```
+
+```html
+<!-- Scoped theme: light section inside dark page -->
+<div class="light" style="background: var(--background); color: var(--foreground);">
+  <button class="btn-filled">Always light</button>
+</div>
 ```
 
 ## Design Tokens

@@ -39,7 +39,7 @@
   transition: all 0.2s var(--apple-ease);
   &:hover { box-shadow: var(--shadow-md), var(--float-ring); }
   &:active { transform: translateY(-50%) scale(var(--apple-press-scale)); }
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
   &:disabled { @apply pointer-events-none; opacity: 0.3; transition: opacity 0.15s var(--apple-ease); }
   & svg { @apply size-4; }
 }
@@ -52,17 +52,16 @@
   @apply rounded-full cursor-pointer;
   width: 7px;
   height: 7px;
-  background: oklch(from var(--foreground) l c h / 0.2);
+  background: oklch(from var(--color-foreground) l c h / 0.2);
   transition: all 0.3s var(--apple-spring);
-  &:hover { background: oklch(from var(--foreground) l c h / 0.35); }
-  &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
+  &:hover { background: oklch(from var(--color-foreground) l c h / 0.35); }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
   &[data-active] {
-    background: oklch(from var(--foreground) l c h / 0.6);
-    width: 1rem;
+    background: oklch(from var(--color-foreground) l c h / 0.6);
   }
   .dark & {
-    background: oklch(from var(--foreground) l c h / 0.4);
-    &:hover { background: oklch(from var(--foreground) l c h / 0.55); }
-    &[data-active] { background: oklch(from var(--foreground) l c h / 0.75); }
+    background: oklch(from var(--color-foreground) l c h / 0.4);
+    &:hover { background: oklch(from var(--color-foreground) l c h / 0.55); }
+    &[data-active] { background: oklch(from var(--color-foreground) l c h / 0.75); }
   }
 }

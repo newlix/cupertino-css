@@ -68,12 +68,12 @@ test.describe('CSS Rendering', () => {
     expect(radius).toBeGreaterThan(100);
   });
 
-  test('alert variants are visible', async ({ page }) => {
-    await goto(page, 'alert');
-    for (const cls of ['.alert-info', '.alert-success', '.alert-warning', '.alert-destructive']) {
-      const alert = page.locator(`.snippet-preview > figure ${cls}`).first();
-      await expect(alert).toBeVisible();
-      const box = await alert.boundingBox();
+  test('banner variants are visible', async ({ page }) => {
+    await goto(page, 'banner');
+    for (const cls of ['.banner-info', '.banner-success', '.banner-warning', '.banner-destructive']) {
+      const banner = page.locator(`.snippet-preview > figure ${cls}`).first();
+      await expect(banner).toBeVisible();
+      const box = await banner.boundingBox();
       expect(box.height).toBeGreaterThan(30);
     }
   });

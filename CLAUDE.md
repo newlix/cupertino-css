@@ -9,7 +9,7 @@ src/css/
   ciderui.css          # Main entry — CSS variables, theme tokens, base, @import components
   ciderui.cdn.css      # CDN bundle — includes Tailwind + ciderui.css via source(none)
   components/           # 48 component CSS files (button, card, dialog, …)
-js/                     # 13 JS files for interactive components (dialog, tabs, toast, …)
+js/                     # 13 JS files for interactive components (dialog, tabs, hud, …)
 docs/
   _includes/            # Nunjucks templates (layout.njk, macros.njk)
   _data/nav.json        # Sidebar navigation data
