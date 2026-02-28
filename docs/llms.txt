@@ -36,7 +36,6 @@
 - [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — navigation breadcrumbs.
 - [Card](https://ciderui.com/components/card.html): `card` `card-interactive` with `header`, `section`, `footer` children.
 - [Pagination](https://ciderui.com/components/pagination.html): `pagination` `pagination-item` — page navigation.
-- [Scroll Area](https://ciderui.com/components/scroll-area.html): Custom scrollbar styling.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
 - [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `segmented-control`. Requires `js/tabs.js`.

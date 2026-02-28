@@ -43,7 +43,6 @@
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },
-      { "label": "Scroll Area", "href": "components/scroll-area.html" },
       { "label": "Segmented Control", "href": "components/segmented-control.html" },
       { "label": "Select", "href": "components/select.html" },
       { "label": "Separator", "href": "components/separator.html" },
