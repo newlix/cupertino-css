@@ -9,7 +9,8 @@
   &:is(button, a) {
     @apply cursor-pointer;
     transition: all 0.15s var(--apple-ease);
-    &:hover { opacity: 0.8; }
+    &:hover { filter: brightness(0.92); }
+    &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
   }
 }

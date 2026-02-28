@@ -1,12 +1,19 @@
 /* ========== SEPARATOR ========== */
 .separator {
-  @apply h-px w-full border-none;
+  @apply w-full border-none;
+  height: 0.5px;
   background: var(--color-border);
   margin: 0;
+}
+@supports not (height: 0.5px) {
+  .separator { height: 1px; }
 }
 .separator-vertical {
   @apply w-px shrink-0 self-stretch;
   background: var(--color-border);
+}
+.separator-inset {
+  margin-left: 1rem;
 }
 .separator-label {
   @apply flex items-center gap-2 text-xs text-muted-foreground;

@@ -1,39 +1,23 @@
 /* ========== SHEET ========== */
 dialog.sheet,
 .sheet {
-  @apply fixed m-0 h-full text-card-foreground;
+  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full text-card-foreground;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
-  max-height: 100vh;
-  max-width: min(420px, 85vw);
+  max-height: min(85vh, 600px);
+  border-radius: var(--radius) var(--radius) 0 0;
   box-shadow: var(--shadow-xl);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { animation: sheetSlideInRight 0.3s var(--apple-spring); }
-  /* Right (default) */
-  &:not(.sheet-left) {
-    @apply right-0 top-0;
-    border-left: 1px solid var(--panel-border);
-    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-    &[open] { animation-name: sheetSlideInRight; }
-    &[data-closing] { animation: sheetSlideOutRight 0.3s var(--apple-ease) forwards; }
-  }
-  /* Left */
-  &.sheet-left {
-    @apply left-0 top-0;
-    border-right: 1px solid var(--panel-border);
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-    &[open] { animation-name: sheetSlideInLeft; }
-    &[data-closing] { animation: sheetSlideOutLeft 0.3s var(--apple-ease) forwards; }
-  }
+  &[open] { animation: sheetSlideInBottom 0.35s var(--apple-spring); }
+  &[data-closing] { animation: sheetSlideOutBottom 0.3s var(--apple-ease) forwards; }
   & > header {
     @apply px-6 py-5;
-    border-bottom: 1px solid var(--panel-border);
     & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
@@ -50,5 +34,9 @@ dialog.sheet,
     &:hover { @apply text-foreground bg-accent; }
     &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     & svg { @apply size-4; }
+  }
+  & .sheet-grabber {
+    @apply mx-auto mt-[5px] mb-[3px] h-[5px] w-9 rounded-full;
+    background: var(--surface-7);
   }
 }

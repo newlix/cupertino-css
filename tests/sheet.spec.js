@@ -8,13 +8,13 @@ test.describe('Sheet', () => {
 
   test('open sheet via button, close via close button', async ({ page }) => {
     const preview = page.locator('.snippet-preview > figure').first();
-    const sheet = page.locator('#demo-sheet-right');
+    const sheet = page.locator('#demo-sheet');
 
     await expect(sheet).not.toBeVisible();
 
     await preview.locator('button:has-text("Open Sheet")').click();
     await expect(sheet).toBeVisible();
-    await expect(sheet.locator('h2')).toHaveText('Edit Profile');
+    await expect(sheet.locator('h2')).toHaveText('Move Goal');
 
     await sheet.locator('.sheet-close').click();
     await expect(sheet).not.toBeVisible();
@@ -22,7 +22,7 @@ test.describe('Sheet', () => {
 
   test('close sheet via backdrop click', async ({ page }) => {
     const preview = page.locator('.snippet-preview > figure').first();
-    const sheet = page.locator('#demo-sheet-right');
+    const sheet = page.locator('#demo-sheet');
 
     await preview.locator('button:has-text("Open Sheet")').click();
     await expect(sheet).toBeVisible();

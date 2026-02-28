@@ -4,66 +4,28 @@
 
 {% block content %}
 
-  {% call example("Right (Default)") %}
-<button class="btn-gray" onclick="document.getElementById('demo-sheet-right').showModal()">Open Sheet</button>
+  {% call example("Default") %}
+<button class="btn-gray" onclick="document.getElementById('demo-sheet').showModal()">Open Sheet</button>
 
-<dialog id="demo-sheet-right" class="sheet">
-  <button onclick="document.getElementById('demo-sheet-right').close()" class="sheet-close">
+<dialog id="demo-sheet" class="sheet">
+  <div class="sheet-grabber"></div>
+  <button onclick="document.getElementById('demo-sheet').close()" class="sheet-close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
-    <h2>Edit Profile</h2>
-    <p>Make changes to your profile here.</p>
+    <h2>Move Goal</h2>
+    <p>Set your daily move goal.</p>
   </header>
   <section>
-    <div class="space-y-4">
-      <div class="field">
-        <label>Name</label>
-        <input type="text" value="John Doe" />
-      </div>
-      <div class="field">
-        <label>Username</label>
-        <input type="text" value="@johndoe" />
-      </div>
+    <div class="flex flex-col items-center gap-4 py-4">
+      <div class="text-6xl font-bold text-primary">350</div>
+      <p class="text-sm text-muted-foreground">calories per day</p>
+      <input type="range" class="slider w-full max-w-xs" min="100" max="800" value="350" />
     </div>
   </section>
   <footer>
-    <button class="btn-filled" onclick="document.getElementById('demo-sheet-right').close()">Save changes</button>
+    <button onclick="document.getElementById('demo-sheet').close()" class="btn-filled w-full">Submit</button>
   </footer>
-</dialog>
-{% endcall %}
-
-  {% call example("Left") %}
-<button onclick="document.getElementById('demo-sheet-left').showModal()" class="btn-tinted">Open Left Sheet</button>
-
-<dialog id="demo-sheet-left" class="sheet sheet-left">
-  <button onclick="document.getElementById('demo-sheet-left').close()" class="sheet-close">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-  </button>
-  <header>
-    <h2>Navigation</h2>
-    <p>Browse sections of the app.</p>
-  </header>
-  <section>
-    <nav class="space-y-1">
-      <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground bg-accent">
-        <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Dashboard
-      </a>
-      <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-accent">
-        <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Team
-      </a>
-      <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-accent">
-        <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        Settings
-      </a>
-      <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-accent">
-        <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Profile
-      </a>
-    </nav>
-  </section>
 </dialog>
 {% endcall %}
 
@@ -71,6 +33,7 @@
 <button onclick="document.getElementById('demo-sheet-form').showModal()" class="btn-tinted">Create Account</button>
 
 <dialog id="demo-sheet-form" class="sheet">
+  <div class="sheet-grabber"></div>
   <button onclick="document.getElementById('demo-sheet-form').close()" class="sheet-close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
@@ -100,12 +63,6 @@
           <option>Viewer</option>
         </select>
       </div>
-      <div class="field">
-        <label class="inline-flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" />
-          <span class="text-sm">Send welcome email</span>
-        </label>
-      </div>
     </form>
   </section>
   <footer>
@@ -119,6 +76,7 @@
 <button onclick="document.getElementById('demo-sheet-noclose').showModal()" class="btn-tinted">Terms & Conditions</button>
 
 <dialog id="demo-sheet-noclose" class="sheet">
+  <div class="sheet-grabber"></div>
   <header>
     <h2>Terms of Service</h2>
     <p>Please read and accept the terms to continue.</p>
@@ -137,70 +95,9 @@
 </dialog>
 {% endcall %}
 
-  {% call example("Bottom") %}
-<button class="btn-gray" onclick="document.getElementById('demo-sheet-bottom').showModal()">Open Bottom Sheet</button>
-
-<dialog id="demo-sheet-bottom" class="sheet-bottom">
-  <div class="sheet-grabber"></div>
-  <button onclick="document.getElementById('demo-sheet-bottom').close()" class="sheet-close">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-  </button>
-  <header>
-    <h2>Move Goal</h2>
-    <p>Set your daily move goal.</p>
-  </header>
-  <section>
-    <div class="flex flex-col items-center gap-4 py-4">
-      <div class="text-6xl font-bold text-primary">350</div>
-      <p class="text-sm text-muted-foreground">calories per day</p>
-      <input type="range" class="slider w-full max-w-xs" min="100" max="800" value="350" />
-    </div>
-  </section>
-  <footer>
-    <button onclick="document.getElementById('demo-sheet-bottom').close()" class="btn-filled w-full">Submit</button>
-  </footer>
-</dialog>
-{% endcall %}
-
-  {% call example("Top") %}
-<button onclick="document.getElementById('demo-sheet-top').showModal()" class="btn-tinted">Open Top Sheet</button>
-
-<dialog id="demo-sheet-top" class="sheet-top">
-  <button onclick="document.getElementById('demo-sheet-top').close()" class="sheet-close">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-  </button>
-  <header>
-    <h2>Notifications</h2>
-    <p>You have 3 unread messages.</p>
-  </header>
-  <section>
-    <div class="space-y-3">
-      <div class="flex items-start gap-3 rounded-lg bg-secondary p-3">
-        <div class="mt-0.5 flex size-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </div>
-        <div>
-          <p class="text-sm font-medium">New message from Alex</p>
-          <p class="text-xs text-muted-foreground">Hey, are we still meeting today?</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-3 rounded-lg bg-secondary p-3">
-        <div class="mt-0.5 flex size-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div>
-          <p class="text-sm font-medium">Task completed</p>
-          <p class="text-xs text-muted-foreground">Your export is ready to download.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</dialog>
-{% endcall %}
-
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close for <code>&lt;dialog&gt;</code>-based sheets. Use <code>.sheet</code> / <code>.sheet-left</code> for side sheets, <code>.sheet-bottom</code> / <code>.sheet-top</code> for vertical sheets. Bottom sheets support a <code>.sheet-grabber</code> drag handle.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Bottom sheet using native <code>&lt;dialog&gt;</code>. Adds backdrop click to close with exit animation. Supports a <code>.sheet-grabber</code> drag handle.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/sheet.js"&gt;&lt;/script&gt;

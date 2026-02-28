@@ -16,7 +16,12 @@
     }
     &[data-active] {
       @apply bg-primary text-primary-foreground;
+      border-left-color: transparent;
       &:hover { background: var(--color-primary-hover); }
+    }
+    &[data-active] + button,
+    &[data-active] + a {
+      border-left-color: transparent;
     }
     &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
   }

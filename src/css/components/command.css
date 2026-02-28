@@ -29,7 +29,7 @@
       & span { @apply flex-1; }
       &:hover { background: var(--surface-2); }
       &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
-      &[data-active] { background: oklch(from var(--color-primary) l c h / 0.15); color: var(--color-foreground); & svg { color: var(--color-primary); } }
+      &[data-active], &[data-highlighted] { background: oklch(from var(--color-primary) l c h / 0.15); color: var(--color-foreground); & svg { color: var(--color-primary); } }
       &[aria-disabled="true"] { @apply opacity-50 pointer-events-none; }
       &[data-selected]::after {
         content: "";
@@ -46,7 +46,7 @@
       }
     }
     & hr[role="separator"], & hr {
-      @apply my-1 h-px;
+      @apply my-1 h-px border-0;
       background: var(--panel-border);
     }
     &.command-empty::after {

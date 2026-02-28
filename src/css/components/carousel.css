@@ -1,7 +1,6 @@
 /* ========== CAROUSEL ========== */
 .carousel {
   @apply relative w-full;
-  padding-inline: 3rem;
 }
 .carousel-content {
   @apply flex gap-4 overflow-x-auto scroll-smooth;
@@ -31,20 +30,25 @@
 }
 .carousel-prev,
 .carousel-next {
-  @apply absolute top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full text-foreground cursor-pointer;
+  @apply absolute top-1/2 z-10 flex size-8 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground cursor-pointer;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: var(--shadow), var(--float-ring);
-  transition: all 0.2s var(--apple-ease);
-  &:hover { box-shadow: var(--shadow-md), var(--float-ring); }
+  box-shadow: var(--shadow-sm), var(--float-ring);
+  opacity: 0;
+  transition: all 0.2s var(--apple-ease), opacity 0.2s var(--apple-ease);
+  &:hover { box-shadow: var(--shadow), var(--float-ring); }
   &:active { transform: translateY(-50%) scale(var(--apple-press-scale)); }
-  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
-  &:disabled { @apply pointer-events-none; opacity: 0.3; transition: opacity 0.15s var(--apple-ease); }
+  &:focus-visible { opacity: 1; outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
+  &:disabled { @apply pointer-events-none; opacity: 0; }
   & svg { @apply size-4; }
 }
-.carousel-prev { @apply -left-3; }
-.carousel-next { @apply -right-3; }
+.carousel:hover .carousel-prev:not(:disabled),
+.carousel:hover .carousel-next:not(:disabled) {
+  opacity: 1;
+}
+.carousel-prev { left: 0.75rem; }
+.carousel-next { right: 0.75rem; }
 .carousel-indicators {
   @apply mt-4 flex items-center justify-center gap-1.5;
 }
@@ -57,6 +61,7 @@
   &:hover { background: oklch(from var(--color-foreground) l c h / 0.35); }
   &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
   &[data-active] {
+    width: 21px;
     background: oklch(from var(--color-foreground) l c h / 0.6);
   }
   .dark & {

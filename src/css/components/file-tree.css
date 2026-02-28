@@ -44,7 +44,7 @@
 
   /* File item */
   & .file-tree-item {
-    @apply flex cursor-pointer items-center gap-1.5 rounded-lg py-1 pr-2 text-[13px] text-muted-foreground;
+    @apply flex cursor-pointer items-center gap-1.5 rounded-lg py-1 pr-2 text-[13px] text-foreground;
     padding-left: 1.75rem; /* aligns file icon with folder icon: px-2 + chevron + gap */
     transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }

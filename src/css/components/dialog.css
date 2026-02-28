@@ -1,7 +1,7 @@
 /* ========== DIALOG ========== */
 dialog.dialog,
 .dialog {
-  @apply m-auto w-full max-w-md rounded-[16px] text-card-foreground p-0;
+  @apply m-auto w-full max-w-md rounded-[14px] text-card-foreground p-0;
   corner-shape: squircle;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);

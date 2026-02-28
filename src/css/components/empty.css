@@ -2,11 +2,11 @@
 .empty {
   @apply flex min-w-0 flex-1 flex-col items-center justify-center gap-3 p-10 text-center text-balance;
   & .empty-icon {
-    @apply mb-1 flex size-16 shrink-0 items-center justify-center rounded-xl text-muted-foreground;
-    background: var(--surface-3);
-    & svg { @apply size-8; }
+    @apply mb-1 flex size-16 shrink-0 items-center justify-center text-muted-foreground;
+    opacity: 0.5;
+    & svg { @apply size-10; }
   }
   & h3 { @apply text-[20px] font-semibold tracking-tight text-foreground; }
-  & p { @apply text-[15px] text-muted-foreground; max-width: 28ch; }
+  & p { @apply text-[15px] text-muted-foreground; max-width: 36ch; }
   & .empty-actions { @apply mt-3 flex gap-2; }
 }

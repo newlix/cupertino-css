@@ -12,10 +12,10 @@
   }
   & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
-    background: var(--surface-1);
-    & code {
+    background: var(--surface-2);
+    & code, & code[class*="language-"], & code.hljs {
       @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;
-      background: transparent !important;
+      background: transparent;
       color: var(--color-foreground);
     }
   }
@@ -50,15 +50,19 @@
       border-color: var(--color-border);
       color: var(--color-muted-foreground);
       transition: all 0.15s var(--apple-ease);
+      opacity: 0;
       &:hover {
         background: var(--surface-4);
         color: var(--color-foreground);
       }
-      &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+      &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; opacity: 1; }
       &:active {
         transform: scale(var(--apple-press-scale));
       }
     }
+  }
+  &:hover > header > button {
+    opacity: 1;
   }
   & > .snippet-preview {
     border-bottom: 1px solid var(--panel-border);

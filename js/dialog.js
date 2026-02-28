@@ -52,9 +52,8 @@ function trapFocus(dialog) {
 
 function init() {
   document.querySelectorAll("dialog").forEach(function (dialog) {
-    // Skip sheets/drawers (handled by sheet.js)
-    if (dialog.classList.contains("sheet") || dialog.classList.contains("sheet-left") ||
-        dialog.classList.contains("sheet-bottom") || dialog.classList.contains("sheet-top")) return;
+    // Skip sheets (handled by sheet.js)
+    if (dialog.classList.contains("sheet")) return;
 
     // Guard against duplicate listeners on re-init
     if (dialog._cancelHandler) {

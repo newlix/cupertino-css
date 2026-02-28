@@ -3,7 +3,11 @@
   @apply relative;
   & .input-group-icon {
     @apply absolute top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground;
+    transition: color 0.2s var(--apple-ease);
     & svg { @apply size-5; }
+  }
+  &:focus-within .input-group-icon {
+    color: var(--color-foreground);
   }
   & .input-group-icon-left {
     @apply left-3;

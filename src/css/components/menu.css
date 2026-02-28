@@ -10,14 +10,23 @@
   max-height: 400px;
   overflow-y: auto;
   &[data-open] { display: block; animation: slideUp 0.15s var(--apple-spring); }
-  &[data-closing] { animation: slideDown 0.12s var(--apple-ease) forwards; }
+  &[data-closing] { animation: slideDown 0.15s var(--apple-ease) forwards; }
   & button, & a {
-    @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-1.5 text-left text-[13px] text-foreground;
+    @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
     &[disabled], &[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
+  }
+  & .menu-shortcut {
+    @apply ml-auto text-xs text-muted-foreground;
+    min-width: 3rem;
+    text-align: right;
+  }
+  & .menu-label {
+    @apply px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground;
+    pointer-events: none;
   }
   & .menu-divider, & hr {
     @apply my-1 h-px mx-1.5;

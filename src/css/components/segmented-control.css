@@ -1,0 +1,26 @@
+/* ========== SEGMENTED CONTROL ========== */
+.segmented-control {
+  /* wrapper */
+}
+.segmented-control-list {
+  @apply relative inline-flex rounded-[10px] p-1;
+  corner-shape: squircle;
+  background: var(--color-secondary);
+}
+.segmented-control-trigger {
+  @apply rounded-[7px] px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground;
+  transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring), transform 0.15s var(--apple-spring);
+  &:hover { @apply text-foreground; }
+  &:active { transform: scale(var(--apple-press-scale)); }
+  &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
+  &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
+  &[data-active] {
+    @apply text-foreground;
+    background: var(--color-card);
+    box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.06);
+  }
+}
+.segmented-control-content {
+  @apply py-4;
+  &:not([data-active]) { @apply hidden; }
+}

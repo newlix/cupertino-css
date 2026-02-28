@@ -4,7 +4,7 @@
 
 {% block content %}
 
-  {% call example("Underline") %}
+  {% call example("Default") %}
 <div class="tabs" data-tabs>
   <div class="tabs-list" data-tab-list>
     <button data-tab="tab-1" data-active class="tabs-trigger">Account</button>
@@ -19,25 +19,6 @@
   </div>
   <div data-tab-panel="tab-3" class="tabs-content">
     <p class="text-sm text-muted-foreground">Configure your notification settings.</p>
-  </div>
-</div>
-{% endcall %}
-
-  {% call example("Segmented Control") %}
-<div class="tabs segmented-control" data-tabs>
-  <div class="tabs-list" data-tab-list>
-    <button data-tab="pill-1" data-active class="tabs-trigger">Overview</button>
-    <button data-tab="pill-2" class="tabs-trigger">Analytics</button>
-    <button data-tab="pill-3" class="tabs-trigger">Reports</button>
-  </div>
-  <div data-tab-panel="pill-1" data-active class="tabs-content">
-    <p class="text-sm text-muted-foreground">Overview content here.</p>
-  </div>
-  <div data-tab-panel="pill-2" class="tabs-content">
-    <p class="text-sm text-muted-foreground">Analytics content here.</p>
-  </div>
-  <div data-tab-panel="pill-3" class="tabs-content">
-    <p class="text-sm text-muted-foreground">Reports content here.</p>
   </div>
 </div>
 {% endcall %}
@@ -104,31 +85,6 @@
   </div>
   <div data-tab-panel="dis-3" class="tabs-content">
     <p class="text-sm text-muted-foreground">Manage your settings here.</p>
-  </div>
-</div>
-{% endcall %}
-
-  {% call example("With Icons") %}
-<div class="tabs segmented-control" data-tabs>
-  <div class="tabs-list" data-tab-list>
-    <button data-tab="icon-1" data-active class="tabs-trigger">
-      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      Preview
-    </button>
-    <button data-tab="icon-2" class="tabs-trigger">
-      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      Code
-    </button>
-  </div>
-  <div data-tab-panel="icon-1" data-active class="tabs-content">
-    <div class="rounded-xl border p-6">
-      <p class="text-sm text-muted-foreground">This is the preview of the component.</p>
-    </div>
-  </div>
-  <div data-tab-panel="icon-2" class="tabs-content">
-    <div class="rounded-xl border bg-secondary/30 p-4">
-      <code class="text-sm text-muted-foreground">&lt;Button variant="outline"&gt;Click me&lt;/Button&gt;</code>
-    </div>
   </div>
 </div>
 {% endcall %}

@@ -7,7 +7,7 @@
     border-top: 1px solid var(--panel-border);
   }
   & summary {
-    @apply flex cursor-pointer items-center justify-between px-4 py-4 text-[15px] font-medium text-foreground;
+    @apply flex cursor-pointer list-none items-center justify-between px-4 py-4 text-[15px] font-medium text-foreground;
     min-height: 44px;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
@@ -39,6 +39,7 @@
     interpolate-size: allow-keywords;
     & > div, & > p {
       overflow: hidden;
+      transition: height 0.3s var(--apple-spring);
     }
   }
 }

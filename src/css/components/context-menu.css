@@ -3,7 +3,7 @@
   @apply cursor-default;
 }
 .context-menu-content {
-  @apply fixed z-50 min-w-[200px] rounded-[8px] p-1;
+  @apply fixed z-50 min-w-[200px] rounded-[10px] p-1;
   corner-shape: squircle;
   display: none;
   background: var(--glass-bg-opaque);
@@ -11,8 +11,8 @@
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-lg), var(--float-ring);
   & button, & a {
-    @apply flex w-full items-center gap-2.5 rounded-[5px] px-2.5 py-1.5 text-left text-[13px] text-foreground;
-    transition: background-color 0.1s var(--apple-ease);
+    @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
+    transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
@@ -33,6 +33,6 @@
     text-align: right;
   }
   max-width: calc(100vw - 1rem);
-  &[data-open] { display: block; animation: dialogShow 0.15s var(--apple-spring); }
+  &[data-open] { display: block; animation: slideUp 0.12s var(--apple-spring); }
   &[data-closing] { animation: slideDown 0.15s var(--apple-ease) forwards; }
 }

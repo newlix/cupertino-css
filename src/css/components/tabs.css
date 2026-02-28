@@ -19,7 +19,7 @@
     background: var(--color-primary);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.2s var(--apple-spring);
+    transition: transform 0.2s var(--apple-ease);
   }
   &[data-active] {
     color: var(--color-foreground);
@@ -31,24 +31,4 @@
 .tabs-content {
   @apply py-4;
   &:not([data-active]) { @apply hidden; }
-}
-/* Segmented control — Apple HIG pill tabs */
-.segmented-control {
-  & .tabs-list {
-    @apply inline-flex rounded-[10px] border-0 p-1;
-    corner-shape: squircle;
-    background: var(--color-secondary);
-  }
-  & .tabs-trigger {
-    @apply rounded-[7px] px-3.5 py-1.5 text-[13px];
-    transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring), transform 0.15s var(--apple-spring);
-    &:active { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
-    &[data-active] {
-      @apply text-foreground;
-      background: var(--color-card);
-      box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.06);
-      &::after { display: none; }
-    }
-  }
 }

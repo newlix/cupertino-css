@@ -1,0 +1,63 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Segmented Control" %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="segmented-control" data-tabs>
+  <div class="segmented-control-list" data-tab-list>
+    <button data-tab="seg-1" data-active class="segmented-control-trigger">Overview</button>
+    <button data-tab="seg-2" class="segmented-control-trigger">Analytics</button>
+    <button data-tab="seg-3" class="segmented-control-trigger">Reports</button>
+  </div>
+  <div data-tab-panel="seg-1" data-active class="segmented-control-content">
+    <p class="text-sm text-muted-foreground">Overview content here.</p>
+  </div>
+  <div data-tab-panel="seg-2" class="segmented-control-content">
+    <p class="text-sm text-muted-foreground">Analytics content here.</p>
+  </div>
+  <div data-tab-panel="seg-3" class="segmented-control-content">
+    <p class="text-sm text-muted-foreground">Reports content here.</p>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("With Icons") %}
+<div class="segmented-control" data-tabs>
+  <div class="segmented-control-list" data-tab-list>
+    <button data-tab="icon-1" data-active class="segmented-control-trigger">
+      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      Preview
+    </button>
+    <button data-tab="icon-2" class="segmented-control-trigger">
+      <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Code
+    </button>
+  </div>
+  <div data-tab-panel="icon-1" data-active class="segmented-control-content">
+    <div class="rounded-xl border p-6">
+      <p class="text-sm text-muted-foreground">This is the preview of the component.</p>
+    </div>
+  </div>
+  <div data-tab-panel="icon-2" class="segmented-control-content">
+    <div class="rounded-xl border bg-secondary/30 p-4">
+      <code class="text-sm text-muted-foreground">&lt;Button variant="outline"&gt;Click me&lt;/Button&gt;</code>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-muted-foreground">Apple HIG segmented control. Uses the same <code>[data-tabs]</code> JS as Tabs.</p>
+    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/tabs.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://unpkg.com/ciderui/js/tabs.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

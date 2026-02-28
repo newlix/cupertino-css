@@ -49,7 +49,7 @@ function trapFocus(sheet) {
 }
 
 function init() {
-  document.querySelectorAll("dialog.sheet, dialog.sheet-left, dialog.sheet-bottom, dialog.sheet-top").forEach(function (sheet) {
+  document.querySelectorAll("dialog.sheet").forEach(function (sheet) {
     // Guard against duplicate listeners on re-init
     if (sheet._cancelHandler) {
       sheet.removeEventListener("cancel", sheet._cancelHandler);
