@@ -740,7 +740,9 @@
     --tw-leading: var(--leading-snug);
     line-height: var(--leading-snug);
     corner-shape: squircle;
-    background: var(--surface-2);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--panel-ring);
     & svg:first-child {
       width: calc(var(--spacing) * 5);
       height: calc(var(--spacing) * 5);
@@ -761,10 +763,6 @@
     }
   }
   .banner-destructive {
-    background: oklch(from var(--color-destructive) l c h / 0.08);
-    .dark & {
-      background: oklch(from var(--color-destructive) l c h / 0.12);
-    }
     & svg:first-child {
       color: var(--color-destructive);
     }
