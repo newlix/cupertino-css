@@ -586,51 +586,21 @@
     overflow: hidden;
     border-radius: var(--radius-xl);
     background-color: var(--color-card);
+    padding: calc(var(--spacing) * 6);
     color: var(--color-card-foreground);
     corner-shape: squircle;
     box-shadow: var(--shadow), var(--panel-ring);
-    & > header {
-      padding-inline: calc(var(--spacing) * 6);
-      padding-block: calc(var(--spacing) * 5);
-      &:not(:last-child) {
-        border-bottom: 1px solid var(--panel-border);
-      }
-      & h2, & h3 {
-        font-size: 17px;
-        --tw-font-weight: var(--font-weight-semibold);
-        font-weight: var(--font-weight-semibold);
-        --tw-tracking: var(--tracking-tight);
-        letter-spacing: var(--tracking-tight);
-      }
-      & p {
-        margin-top: calc(var(--spacing) * 2);
-        font-size: 13px;
-        color: var(--color-muted-foreground);
-      }
+    & h2, & h3 {
+      font-size: 17px;
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+      --tw-tracking: var(--tracking-tight);
+      letter-spacing: var(--tracking-tight);
     }
-    & > section {
-      padding-inline: calc(var(--spacing) * 6);
-      padding-block: calc(var(--spacing) * 5);
-    }
-    & > footer {
-      padding-inline: calc(var(--spacing) * 6);
-      padding-block: calc(var(--spacing) * 4);
-      border-top: 1px solid var(--panel-border);
-    }
-    &:not(:has(header)):not(:has(section)) {
-      padding: calc(var(--spacing) * 6);
-      & h2, & h3 {
-        font-size: 17px;
-        --tw-font-weight: var(--font-weight-semibold);
-        font-weight: var(--font-weight-semibold);
-        --tw-tracking: var(--tracking-tight);
-        letter-spacing: var(--tracking-tight);
-      }
-      & p {
-        margin-top: calc(var(--spacing) * 2);
-        font-size: 13px;
-        color: var(--color-muted-foreground);
-      }
+    & p {
+      margin-top: calc(var(--spacing) * 2);
+      font-size: 13px;
+      color: var(--color-muted-foreground);
     }
   }
   .card-interactive {

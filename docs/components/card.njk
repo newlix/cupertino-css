@@ -4,6 +4,13 @@
 
 {% block content %}
 
+  {% call example("Basic") %}
+<div class="card">
+  <h3>Card Title</h3>
+  <p>A simple container for grouping related content.</p>
+</div>
+{% endcall %}
+
   {% call example("Interactive") %}
 <div class="card-interactive group">
   <h3>Interactive Card</h3>
@@ -14,37 +21,13 @@
 </div>
 {% endcall %}
 
-  {% call example("With Header & Footer") %}
-<div class="card">
-  <header>
-    <h3>Card with Header & Footer</h3>
-    <p>Structured layout</p>
-  </header>
-  <section>
-    <p class="text-sm text-muted-foreground">Card content goes here.</p>
-  </section>
-  <footer>
-    <button class="btn-gray">Save</button>
-  </footer>
-</div>
-{% endcall %}
-
   {% call example("With Image") %}
-<div class="card" style="max-width:380px;">
-  <section class="p-0">
-    <img src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&h=400&fit=crop" alt="Placeholder" class="w-full object-cover" style="height:180px;">
-  </section>
-  <header>
+<div class="card p-0" style="max-width:380px;">
+  <img src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&h=400&fit=crop" alt="Placeholder" class="w-full object-cover" style="height:180px;">
+  <div class="p-6">
     <h3>Beautiful Landscape</h3>
-    <p>Photography collection</p>
-  </header>
-  <section>
-    <p class="text-sm text-muted-foreground">A curated collection of stunning landscape photographs from around the world.</p>
-  </section>
-  <footer>
-    <button class="btn-tinted btn-sm">View</button>
-    <button class="btn-gray btn-sm">Download</button>
-  </footer>
+    <p>A curated collection of stunning landscape photographs from around the world.</p>
+  </div>
 </div>
 {% endcall %}
 

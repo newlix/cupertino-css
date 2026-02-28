@@ -33,7 +33,7 @@
 ### Navigation
 
 - [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — navigation breadcrumbs.
-- [Card](https://ciderui.com/components/card.html): `card` `card-interactive` with `header`, `section`, `footer` children.
+- [Card](https://ciderui.com/components/card.html): `card` `card-interactive` — simple padded container.
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` `page-control-dot` — Apple-style dot page indicator.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.

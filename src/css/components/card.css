@@ -1,27 +1,10 @@
 /* ========== CARD ========== */
 .card {
-  @apply rounded-xl bg-card text-card-foreground overflow-hidden;
+  @apply rounded-xl bg-card text-card-foreground p-6 overflow-hidden;
   corner-shape: squircle;
   box-shadow: var(--shadow), var(--panel-ring);
-  & > header {
-    @apply px-6 py-5;
-    &:not(:last-child) { border-bottom: 1px solid var(--panel-border); }
-    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
-    & p { @apply mt-2 text-[13px] text-muted-foreground; }
-  }
-  & > section {
-    @apply px-6 py-5;
-  }
-  & > footer {
-    @apply px-6 py-4;
-    border-top: 1px solid var(--panel-border);
-  }
-  /* Basic card without header/section/footer = padded */
-  &:not(:has(header)):not(:has(section)) {
-    @apply p-6;
-    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
-    & p { @apply mt-2 text-[13px] text-muted-foreground; }
-  }
+  & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
+  & p { @apply mt-2 text-[13px] text-muted-foreground; }
 }
 .card-interactive {
   @apply rounded-xl bg-card p-6 text-card-foreground cursor-pointer;

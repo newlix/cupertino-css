@@ -2,53 +2,25 @@
 {% set title = "Introduction" %}
 
 {% block content %}
-  <div class="mt-8 space-y-12 text-[15px] leading-relaxed text-foreground">
+  <div class="mt-8 space-y-8 text-[15px] leading-relaxed text-foreground">
 
     <p class="text-lg text-muted-foreground">
-      50+ Apple-aesthetic components for <a href="https://tailwindcss.com" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">Tailwind CSS v4</a>.<br>
+      Apple-aesthetic components for <a href="https://tailwindcss.com" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">Tailwind CSS v4</a>.<br>
       No framework. No build step. Just HTML.
     </p>
 
-    <section class="space-y-4">
-      <h2 class="text-xl font-bold tracking-tight">Write HTML, get Apple</h2>
-      <p class="text-muted-foreground">Semantic class names instead of utility soup. Tailwind is still there for your layout and overrides.</p>
-      <div class="snippet" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">{{ '<div class="card">\n  <div class="card-header">\n    <h3 class="card-title">Sign In</h3>\n  </div>\n  <div class="card-content space-y-4">\n    <div class="field">\n      <label>Email</label>\n      <input type="email" placeholder="you@example.com" />\n    </div>\n    <div class="field">\n      <label>Password</label>\n      <input type="password" />\n    </div>\n  </div>\n  <div class="card-footer">\n    <button class="btn-gray">Continue</button>\n  </div>\n</div>' | highlight("html") }}</code></pre>
-      </div>
-      <figure>
-        <div class="cider" style="max-width: 380px;">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Sign In</h3>
-            </div>
-            <div class="card-content space-y-4">
-              <div class="field">
-                <label>Email</label>
-                <input type="email" placeholder="you@example.com" />
-              </div>
-              <div class="field">
-                <label>Password</label>
-                <input type="password" />
-              </div>
-            </div>
-            <div class="card-footer">
-              <button class="btn-gray">Continue</button>
-            </div>
-          </div>
-        </div>
-      </figure>
-    </section>
+    <div class="snippet" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-css">{{ '@import "tailwindcss";\n@import "ciderui";' | highlight("css") }}</code></pre>
+    </div>
 
-    <section class="space-y-4">
-      <h2 class="text-xl font-bold tracking-tight">Highlights</h2>
-      <ul class="space-y-2 text-muted-foreground">
-        <li><strong class="text-foreground">Semantic classes</strong> — <code>card</code>, <code>dialog</code>, <code>tabs</code>, not 12 utilities per element</li>
-        <li><strong class="text-foreground">Dark mode</strong> — add <code>.dark</code> to <code>&lt;html&gt;</code>, everything adapts. Use <code>.light</code> inside <code>.dark</code> to create light sections.</li>
-        <li><strong class="text-foreground">~12 KB CSS + ~5 KB JS</strong> — gzipped, 50+ components, no dependencies</li>
-        <li><strong class="text-foreground">No framework</strong> — works with any stack, or no stack at all</li>
-        <li><strong class="text-foreground">Tailwind v4 plugin</strong> — <code>@import "ciderui"</code> alongside <code>@import "tailwindcss"</code></li>
-      </ul>
-    </section>
+    <div class="snippet" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">{{ '<button class="btn-filled">Continue</button>' | highlight("html") }}</code></pre>
+    </div>
+    <figure>
+      <div class="cider">
+        <button class="btn-filled">Continue</button>
+      </div>
+    </figure>
 
     <p class="text-muted-foreground">
       <a href="installation.html" class="text-primary underline underline-offset-4 hover:text-primary/80">Get started →</a>
