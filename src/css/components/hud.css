@@ -16,6 +16,12 @@
   -webkit-backdrop-filter: blur(30px) saturate(1.8);
   box-shadow: var(--shadow-lg), var(--float-ring);
   pointer-events: auto;
+  animation: slideUp 0.25s var(--apple-spring);
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-semibold whitespace-nowrap; color: oklch(0.95 0 0); }
+}
+
+/* Dismiss animation (set by JS via data-closing attribute) */
+.hud[data-closing] {
+  animation: slideDown 0.2s var(--apple-ease) forwards;
 }

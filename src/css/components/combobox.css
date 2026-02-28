@@ -7,7 +7,7 @@
     background-color: var(--color-card);
     border-color: var(--input-border);
     &:hover:not(:focus) { border-color: var(--color-border-solid); }
-    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
+    &:focus-visible { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
     & span { @apply flex-1 truncate text-left; }
     & span[data-placeholder] { @apply text-muted-foreground; }
     & svg { @apply size-4 shrink-0 text-muted-foreground opacity-50; }

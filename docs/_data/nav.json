@@ -16,7 +16,6 @@
 
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
-      { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
       { "label": "Card", "href": "components/card.html" },
 

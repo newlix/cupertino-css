@@ -57,7 +57,6 @@ For quick prototyping without a build step:
 | Tabs | `tabs` `tabs-list` `tabs-trigger` `tabs-content` `tabs-pill` | `js/tabs.js` |
 | Table | `table` `table-striped` | — |
 | Avatar | `avatar` `avatar-group` | — |
-| Breadcrumb | `breadcrumb` | — |
 | Button Group | `btn-group` | — |
 | Kbd | `kbd` | — |
 | Pagination | `pagination` `pagination-item` | — |

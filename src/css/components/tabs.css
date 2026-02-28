@@ -17,14 +17,13 @@
     @apply absolute bottom-0 left-0 h-0.5 w-full;
     border-radius: 1px 1px 0 0;
     background: var(--color-primary);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.2s var(--apple-ease);
+    opacity: 0;
+    transition: opacity 0.2s var(--apple-ease);
   }
   &[data-active] {
     color: var(--color-foreground);
     &::after {
-      transform: scaleX(1);
+      opacity: 1;
     }
   }
 }

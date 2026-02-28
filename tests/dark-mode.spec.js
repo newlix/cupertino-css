@@ -43,7 +43,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'card');
     await setDark(page);
 
-    const card = darkPreview(page, 1).locator('.card').first();
+    const card = darkPreview(page, 0).locator('.card').first();
     const borderRgb = parseRgb(await css(card, 'borderColor'));
     const bgRgb = parseRgb(await css(card, 'backgroundColor'));
 

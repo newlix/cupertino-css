@@ -15,7 +15,7 @@ test.describe('CSS Rendering', () => {
 
   test('card has border-radius and shadow', async ({ page }) => {
     await goto(page, 'card');
-    const card = preview(page, 1).locator('.card').first();
+    const card = preview(page, 0).locator('.card').first();
     await expect(card).toBeVisible();
     expect(await css(card, 'borderRadius')).not.toBe('0px');
   });
@@ -83,14 +83,6 @@ test.describe('CSS Rendering', () => {
     const indicator = preview(page).locator('.activity-indicator').first();
     await expect(indicator).toBeVisible();
     expect(await css(indicator, 'animationName')).not.toBe('none');
-  });
-
-  test('breadcrumb renders links and separators', async ({ page }) => {
-    await goto(page, 'breadcrumb');
-    const nav = preview(page).locator('.breadcrumb').first();
-    await expect(nav).toBeVisible();
-    const links = nav.locator('a');
-    expect(await links.count()).toBeGreaterThanOrEqual(1);
   });
 
   test('separator renders as thin line', async ({ page }) => {
