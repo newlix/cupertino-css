@@ -31,8 +31,7 @@
     "./sheet.js": "./js/sheet.js",
 
     "./tabs.js": "./js/tabs.js",
-    "./hud.js": "./js/hud.js",
-    "./toggle.js": "./js/toggle.js"
+    "./hud.js": "./js/hud.js"
   },
   "files": [
     "src/css/",

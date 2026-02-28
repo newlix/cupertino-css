@@ -271,7 +271,6 @@
 
   @import "./components/sheet.css";
   @import "./components/popover.css";
-  @import "./components/toggle.css";
   @import "./components/input-otp.css";
   @import "./components/context-menu.css";
   @import "./components/container.css";

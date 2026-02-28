@@ -68,8 +68,6 @@
 - [List Row](https://ciderui.com/components/list-row.html): List row with icon, label, description. `list-row` `list-section`.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 
-- [Toggle](https://ciderui.com/components/toggle.html): `toggle` — pressable toggle button.
-- [Toggle Group](https://ciderui.com/components/toggle-group.html): Single/multi-select toggle group.
 - [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
 - [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
 

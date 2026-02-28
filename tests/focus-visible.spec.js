@@ -42,15 +42,6 @@ test.describe('Focus Visible Accessibility', () => {
     expect(await css(btn, 'outlineStyle')).not.toBe('none');
   });
 
-  test('toggle shows outline on keyboard focus', async ({ page }) => {
-    await goto(page, 'toggle');
-
-    const toggle = page.locator('.snippet-preview > figure .toggle').first();
-    await focusViaKeyboard(page, toggle);
-
-    expect(await css(toggle, 'outlineStyle')).not.toBe('none');
-  });
-
   test('slider removes default outline on keyboard focus', async ({ page }) => {
     await goto(page, 'slider');
 

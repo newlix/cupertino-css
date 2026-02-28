@@ -52,8 +52,6 @@
       { "label": "Textarea", "href": "components/textarea.html" },
 
       { "label": "HUD", "href": "components/hud.html" },
-      { "label": "Toggle", "href": "components/toggle.html" },
-      { "label": "Toggle Group", "href": "components/toggle-group.html" },
       { "label": "Tooltip", "href": "components/tooltip.html" }
     ]
   },
