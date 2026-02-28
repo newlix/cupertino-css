@@ -1,39 +1,43 @@
 /* ========== BUTTON ========== */
-.btn-secondary,
-.btn-primary,
-.btn-outline,
-.btn-ghost,
+.btn-gray,
+.btn-filled,
+.btn-tinted,
+.btn-plain,
 .btn-destructive {
   @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-[15px] py-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   corner-shape: squircle;
-  transition: all 0.25s var(--apple-spring);
+  transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
   letter-spacing: -0.016em;
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
 }
-.btn-secondary {
+.btn-gray {
   @apply bg-secondary text-secondary-foreground;
   &:hover { background: var(--secondary-hover); }
+  &:active { transform: scale(var(--apple-press-scale)); background: var(--surface-4); }
 }
-.btn-primary {
+.btn-filled {
   @apply bg-primary text-primary-foreground;
   &:hover { background: var(--primary-hover); }
   &:active { transform: scale(var(--apple-press-scale)); background: var(--primary-active); }
 }
-.btn-outline {
-  @apply border bg-transparent text-primary;
-  border-color: var(--primary);
-  &:hover { background: oklch(from var(--primary) l c h / 0.06); }
+.btn-tinted {
+  @apply bg-transparent text-primary;
+  background: oklch(from var(--primary) l c h / 0.12);
+  &:hover { background: oklch(from var(--primary) l c h / 0.18); }
+  &:active { transform: scale(var(--apple-press-scale)); background: oklch(from var(--primary) l c h / 0.22); }
 }
-.btn-ghost {
+.btn-plain {
   @apply bg-transparent text-foreground;
   &:hover { background: var(--surface-2); }
+  &:active { transform: scale(var(--apple-press-scale)); background: var(--surface-3); }
 }
 .btn-destructive {
-  @apply bg-transparent text-destructive;
-  &:hover { background: oklch(from var(--destructive) l c h / 0.06); }
+  @apply bg-destructive text-destructive-foreground;
+  &:hover { background: var(--destructive-hover); }
+  &:active { transform: scale(var(--apple-press-scale)); background: var(--destructive-active); }
 }
-.btn-pill {
+.btn-capsule {
   border-radius: 9999px;
   corner-shape: round;
 }
@@ -41,6 +45,6 @@
   @apply px-[10px] py-1 text-xs gap-1.5;
 }
 .btn-lg {
-  @apply px-[21px] py-[11px] text-[17px];
+  @apply px-[21px] py-[11px] text-[17px] leading-[1.29];
   letter-spacing: -0.022em;
 }

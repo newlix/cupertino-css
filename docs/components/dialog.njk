@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Confirmation") %}
-<button class="btn-secondary" onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
+<button class="btn-gray" onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
 
 <dialog id="demo-dialog-1" class="dialog">
   <header>
@@ -13,14 +13,14 @@
     <p>This action cannot be undone. This will permanently delete your account.</p>
   </header>
   <footer>
-    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-outline">Cancel</button>
+    <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-tinted">Cancel</button>
     <button onclick="document.getElementById('demo-dialog-1').close()" class="btn-destructive">Delete</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("Form Dialog") %}
-<button onclick="document.getElementById('demo-dialog-2').showModal()" class="btn-outline">Edit Profile</button>
+<button onclick="document.getElementById('demo-dialog-2').showModal()" class="btn-tinted">Edit Profile</button>
 
 <dialog id="demo-dialog-2" class="dialog">
   <header>
@@ -40,14 +40,14 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-dialog-2').close()" class="btn-outline">Cancel</button>
-    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-2').close()">Save Changes</button>
+    <button onclick="document.getElementById('demo-dialog-2').close()" class="btn-tinted">Cancel</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-dialog-2').close()">Save Changes</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("Scrollable Content") %}
-<button onclick="document.getElementById('demo-dialog-scroll').showModal()" class="btn-outline">Scrollable Dialog</button>
+<button onclick="document.getElementById('demo-dialog-scroll').showModal()" class="btn-tinted">Scrollable Dialog</button>
 
 <dialog id="demo-dialog-scroll" class="dialog" style="max-height:400px;">
   <header>
@@ -65,14 +65,14 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-dialog-scroll').close()" class="btn-outline">Decline</button>
-    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-scroll').close()">Accept</button>
+    <button onclick="document.getElementById('demo-dialog-scroll').close()" class="btn-tinted">Decline</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-dialog-scroll').close()">Accept</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("With Close Button") %}
-<button onclick="document.getElementById('demo-dialog-close').showModal()" class="btn-outline">Share Link</button>
+<button onclick="document.getElementById('demo-dialog-close').showModal()" class="btn-tinted">Share Link</button>
 
 <dialog id="demo-dialog-close" class="dialog">
   <button onclick="document.getElementById('demo-dialog-close').close()" class="absolute top-4 right-4 inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
@@ -85,7 +85,7 @@
   <section>
     <div class="flex gap-2">
       <input type="text" value="https://example.com/doc/abc123" readonly class="flex-1" />
-      <button class="btn-secondary" onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
+      <button class="btn-gray" onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
     </div>
   </section>
   <footer></footer>
@@ -93,7 +93,7 @@
 {% endcall %}
 
   {% call example("Custom Content") %}
-<button onclick="document.getElementById('demo-dialog-custom').showModal()" class="btn-outline">Invite Members</button>
+<button onclick="document.getElementById('demo-dialog-custom').showModal()" class="btn-tinted">Invite Members</button>
 
 <dialog id="demo-dialog-custom" class="dialog" style="max-width: 480px;">
   <header>
@@ -104,7 +104,7 @@
     <div class="space-y-4">
       <div class="flex gap-2">
         <input type="email" placeholder="email@example.com" class="flex-1" />
-        <button class="btn-secondary">Invite</button>
+        <button class="btn-gray">Invite</button>
       </div>
       <div class="space-y-2">
         <div class="flex items-center justify-between rounded-lg border px-3 py-2">
@@ -135,8 +135,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn-outline">Cancel</button>
-    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-custom').close()">Done</button>
+    <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn-tinted">Cancel</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-dialog-custom').close()">Done</button>
   </footer>
 </dialog>
 {% endcall %}

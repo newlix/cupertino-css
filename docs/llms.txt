@@ -11,7 +11,7 @@
 
 ### Form & Input
 
-- [Button](https://ciderui.com/components/button.html): `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg`
+- [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
 - [Combobox](https://ciderui.com/components/combobox.html): Custom combobox with search filtering. Requires `js/combobox.js`.
 - [Field](https://ciderui.com/components/field.html): `field` — auto-styles label, input, and description children.
@@ -39,7 +39,7 @@
 - [Scroll Area](https://ciderui.com/components/scroll-area.html): Custom scrollbar styling.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
-- [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `tabs-pill`. Requires `js/tabs.js`.
+- [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `segmented-control`. Requires `js/tabs.js`.
 
 ### Overlays & Dialogs
 
@@ -49,7 +49,7 @@
 - [Context Menu](https://ciderui.com/components/context-menu.html): Right-click menu. Requires `js/context-menu.js`.
 - [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Optional `js/dialog.js`.
 - [Drawer](https://ciderui.com/components/drawer.html): Slide-out panel from any edge.
-- [Dropdown Menu](https://ciderui.com/components/dropdown-menu.html): `dropdown-menu`. Requires `js/dropdown-menu.js`.
+- [Menu](https://ciderui.com/components/menu.html): `menu`. Requires `js/dropdown-menu.js`.
 - [Hover Card](https://ciderui.com/components/hover-card.html): Card shown on hover.
 - [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
 - [Sheet](https://ciderui.com/components/sheet.html): Full-height slide-out panel. Requires `js/sheet.js`.
@@ -72,7 +72,7 @@
 - [Button Group](https://ciderui.com/components/button-group.html): `btn-group` — grouped buttons.
 - [Carousel](https://ciderui.com/components/carousel.html): Image/content carousel. Requires `js/carousel.js`.
 - [File Tree](https://ciderui.com/components/file-tree.html): File/folder tree view.
-- [Item](https://ciderui.com/components/item.html): List item with icon, label, description.
+- [List Row](https://ciderui.com/components/list-row.html): List row with icon, label, description. `list-row` `list-section`.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 - [Theme Switcher](https://ciderui.com/components/theme-switcher.html): Light/dark/system theme toggle.
 - [Toggle](https://ciderui.com/components/toggle.html): `toggle` — pressable toggle button.
@@ -88,7 +88,7 @@
 ```
 
 ```html
-<button class="btn-primary">Click me</button>
+<button class="btn-filled">Click me</button>
 ```
 
 ## Dark Mode

@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Right (Default)") %}
-<button class="btn-secondary" onclick="document.getElementById('demo-sheet-right').showModal()">Open Sheet</button>
+<button class="btn-gray" onclick="document.getElementById('demo-sheet-right').showModal()">Open Sheet</button>
 
 <dialog id="demo-sheet-right" class="sheet">
   <button onclick="document.getElementById('demo-sheet-right').close()" class="sheet-close">
@@ -28,13 +28,13 @@
     </div>
   </section>
   <footer>
-    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-right').close()">Save changes</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-sheet-right').close()">Save changes</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("Left") %}
-<button onclick="document.getElementById('demo-sheet-left').showModal()" class="btn-outline">Open Left Sheet</button>
+<button onclick="document.getElementById('demo-sheet-left').showModal()" class="btn-tinted">Open Left Sheet</button>
 
 <dialog id="demo-sheet-left" class="sheet sheet-left">
   <button onclick="document.getElementById('demo-sheet-left').close()" class="sheet-close">
@@ -68,7 +68,7 @@
 {% endcall %}
 
   {% call example("With Form") %}
-<button onclick="document.getElementById('demo-sheet-form').showModal()" class="btn-outline">Create Account</button>
+<button onclick="document.getElementById('demo-sheet-form').showModal()" class="btn-tinted">Create Account</button>
 
 <dialog id="demo-sheet-form" class="sheet">
   <button onclick="document.getElementById('demo-sheet-form').close()" class="sheet-close">
@@ -109,14 +109,14 @@
     </form>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet-form').close()" class="btn-outline">Cancel</button>
-    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-form').close()">Create</button>
+    <button onclick="document.getElementById('demo-sheet-form').close()" class="btn-tinted">Cancel</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-sheet-form').close()">Create</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("No Close Button") %}
-<button onclick="document.getElementById('demo-sheet-noclose').showModal()" class="btn-outline">Terms & Conditions</button>
+<button onclick="document.getElementById('demo-sheet-noclose').showModal()" class="btn-tinted">Terms & Conditions</button>
 
 <dialog id="demo-sheet-noclose" class="sheet">
   <header>
@@ -131,8 +131,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet-noclose').close()" class="btn-outline">Decline</button>
-    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-noclose').close()">Accept</button>
+    <button onclick="document.getElementById('demo-sheet-noclose').close()" class="btn-tinted">Decline</button>
+    <button class="btn-gray" onclick="document.getElementById('demo-sheet-noclose').close()">Accept</button>
   </footer>
 </dialog>
 {% endcall %}

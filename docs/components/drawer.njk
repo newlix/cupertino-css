@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Bottom (Default)") %}
-<button class="btn-secondary" onclick="document.getElementById('demo-drawer-bottom').showModal()">Open Drawer</button>
+<button class="btn-gray" onclick="document.getElementById('demo-drawer-bottom').showModal()">Open Drawer</button>
 
 <dialog id="demo-drawer-bottom" class="sheet-bottom">
   <div class="drawer-handle"></div>
@@ -24,13 +24,13 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-drawer-bottom').close()" class="btn-secondary w-full">Submit</button>
+    <button onclick="document.getElementById('demo-drawer-bottom').close()" class="btn-gray w-full">Submit</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("From Top") %}
-<button onclick="document.getElementById('demo-drawer-top').showModal()" class="btn-outline">Open Top Drawer</button>
+<button onclick="document.getElementById('demo-drawer-top').showModal()" class="btn-tinted">Open Top Drawer</button>
 
 <dialog id="demo-drawer-top" class="sheet-top">
   <button onclick="document.getElementById('demo-drawer-top').close()" class="sheet-close">
@@ -66,7 +66,7 @@
 {% endcall %}
 
   {% call example("With Form") %}
-<button onclick="document.getElementById('demo-drawer-form').showModal()" class="btn-outline">Add Feedback</button>
+<button onclick="document.getElementById('demo-drawer-form').showModal()" class="btn-tinted">Add Feedback</button>
 
 <dialog id="demo-drawer-form" class="sheet-bottom">
   <div class="drawer-handle"></div>
@@ -96,13 +96,13 @@
     </form>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-drawer-form').close()" class="btn-secondary w-full">Submit Feedback</button>
+    <button onclick="document.getElementById('demo-drawer-form').close()" class="btn-gray w-full">Submit Feedback</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("Scrollable Content") %}
-<button onclick="document.getElementById('demo-drawer-scroll').showModal()" class="btn-outline">View Changelog</button>
+<button onclick="document.getElementById('demo-drawer-scroll').showModal()" class="btn-tinted">View Changelog</button>
 
 <dialog id="demo-drawer-scroll" class="sheet-bottom">
   <div class="drawer-handle"></div>
@@ -157,7 +157,7 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-drawer-scroll').close()" class="btn-outline w-full">Close</button>
+    <button onclick="document.getElementById('demo-drawer-scroll').close()" class="btn-tinted w-full">Close</button>
   </footer>
 </dialog>
 {% endcall %}

@@ -71,14 +71,14 @@
     <p class="toast-title">Event has been created</p>
     <p class="toast-message">Friday, February 28, 2026 at 5:57 PM</p>
   </div>
-  <button class="btn-outline text-xs px-2.5 py-1 h-auto" onclick="this.closest('.toast').remove()">Undo</button>
+  <button class="btn-tinted text-xs px-2.5 py-1 h-auto" onclick="this.closest('.toast').remove()">Undo</button>
 </div>
 {% endcall %}
 
   {% call example("Programmatic") %}
 <div class="flex flex-wrap gap-2">
-  <button class="btn-secondary" onclick="showToast('Hello!', 'This is a toast notification.')">Show Toast</button>
-  <button onclick="showToast('Success', 'Your changes have been saved.', 'success')" class="btn-outline">Success Toast</button>
+  <button class="btn-gray" onclick="showToast('Hello!', 'This is a toast notification.')">Show Toast</button>
+  <button onclick="showToast('Success', 'Your changes have been saved.', 'success')" class="btn-tinted">Success Toast</button>
   <button onclick="showToast('Error', 'Something went wrong.', 'error')" class="btn-destructive">Error Toast</button>
 </div>
 {% endcall %}

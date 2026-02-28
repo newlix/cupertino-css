@@ -1,47 +1,50 @@
-/* ========== ITEM ========== */
-.item {
+/* ========== LIST ROW ========== */
+.list-row {
   @apply flex items-center gap-4 rounded-2xl p-4 text-[13px];
   corner-shape: squircle;
+  min-height: 44px;
   transition: background-color 0.15s var(--apple-ease);
-  & .item-icon {
-    @apply flex size-9 shrink-0 items-center justify-center rounded-[10px] text-muted-foreground;
+  & .list-row-icon {
+    @apply flex size-8 shrink-0 items-center justify-center rounded-[8px] text-muted-foreground;
     background: var(--surface-3);
     & svg { @apply size-4; }
   }
-  & .item-avatar {
+  & .list-row-avatar {
     @apply size-10 shrink-0 rounded-full object-cover;
   }
-  & .item-content {
+  & .list-row-content {
     @apply flex flex-1 flex-col gap-0.5;
     & h3 { @apply text-sm font-medium leading-snug; }
     & p { @apply text-[13px] text-muted-foreground; }
   }
-  & .item-action {
+  & .list-row-action {
     @apply flex items-center gap-2 text-muted-foreground;
     & svg { @apply size-4; }
   }
 }
-.item-outline {
+.list-row-outline {
   box-shadow: var(--float-ring);
 }
-.item-muted {
+.list-row-muted {
   background: var(--surface-1);
 }
-a.item, button.item {
+a.list-row, button.list-row {
   &:hover { background: var(--surface-2); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
 }
-.item[data-selected], .item[aria-selected="true"] {
+.list-row[data-selected], .list-row[aria-selected="true"] {
   background: oklch(from var(--primary) l c h / 0.1);
 }
-.item-group {
+.list-section {
   @apply flex flex-col rounded-2xl bg-card;
   corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
-  & .item { @apply rounded-none; }
-  & .item:first-child { @apply rounded-t-2xl; }
-  & .item:last-child { @apply rounded-b-2xl; }
-  & .item + .item {
-    border-top: 1px solid var(--surface-3);
+  & .list-row { @apply rounded-none; }
+  & .list-row:first-child { @apply rounded-t-2xl; }
+  & .list-row:last-child { @apply rounded-b-2xl; }
+  & .list-row:first-child { corner-shape: squircle; }
+  & .list-row:last-child { corner-shape: squircle; }
+  & .list-row + .list-row {
+    border-top: 1px solid var(--panel-border);
   }
 }

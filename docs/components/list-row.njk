@@ -1,92 +1,92 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
-{% set title = "Item" %}
+{% set title = "List Row" %}
 
 {% block content %}
 
   {% call example("Default") %}
-<div class="item item-outline">
-  <div class="item-icon">
+<div class="list-row list-row-outline">
+  <div class="list-row-icon">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
   </div>
-  <div class="item-content">
+  <div class="list-row-content">
     <h3>Project Files</h3>
     <p>Last updated 2 hours ago</p>
   </div>
-  <button class="btn-outline btn-sm">Open</button>
+  <button class="btn-tinted btn-sm">Open</button>
 </div>
 {% endcall %}
 
   {% call example("Link Item") %}
-<a href="#" class="item item-outline no-underline">
-  <div class="item-icon">
+<a href="#" class="list-row list-row-outline no-underline">
+  <div class="list-row-icon">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
   </div>
-  <div class="item-content">
+  <div class="list-row-content">
     <h3>Your profile has been verified</h3>
     <p>Click to view your profile settings.</p>
   </div>
-  <div class="item-action">
+  <div class="list-row-action">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
   </div>
 </a>
 {% endcall %}
 
   {% call example("With Avatar") %}
-<div class="item item-outline">
-  <img src="https://i.pravatar.cc/80?img=12" alt="Avatar" class="item-avatar">
-  <div class="item-content">
+<div class="list-row list-row-outline">
+  <img src="https://i.pravatar.cc/80?img=12" alt="Avatar" class="list-row-avatar">
+  <div class="list-row-content">
     <h3>Sarah Chen</h3>
     <p>sarah@example.com</p>
   </div>
-  <button class="btn-outline btn-sm">Follow</button>
+  <button class="btn-tinted btn-sm">Follow</button>
 </div>
 {% endcall %}
 
   {% call example("Muted Variant") %}
-<div class="item item-muted">
-  <div class="item-icon">
+<div class="list-row list-row-muted">
+  <div class="list-row-icon">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
   </div>
-  <div class="item-content">
+  <div class="list-row-content">
     <h3>Security Alert</h3>
     <p>New login detected from unknown device.</p>
   </div>
-  <button class="btn-outline btn-sm">Review</button>
+  <button class="btn-tinted btn-sm">Review</button>
 </div>
 {% endcall %}
 
   {% call example("Group") %}
-<div class="item-group border rounded-xl">
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=33" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+<div class="list-section border rounded-xl">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=33" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Alex Johnson</h3>
       <p>alex@example.com</p>
     </div>
-    <div class="item-action">
+    <div class="list-row-action">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
     </div>
   </div>
   <hr>
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=47" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=47" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Jamie Lee</h3>
       <p>jamie@example.com</p>
     </div>
-    <div class="item-action">
+    <div class="list-row-action">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
     </div>
   </div>
   <hr>
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=60" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=60" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Morgan Smith</h3>
       <p>morgan@example.com</p>
     </div>
-    <div class="item-action">
+    <div class="list-row-action">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
     </div>
   </div>
@@ -94,32 +94,32 @@
 {% endcall %}
 
   {% call example("Header") %}
-<div class="item-group border rounded-xl">
+<div class="list-section border rounded-xl">
   <div class="px-4 py-2">
     <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Team Members</h3>
   </div>
   <hr>
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=12" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=12" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Sarah Chen</h3>
       <p>Admin</p>
     </div>
     <span class="tag text-xs">Active</span>
   </div>
   <hr>
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=33" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=33" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Alex Johnson</h3>
       <p>Editor</p>
     </div>
     <span class="tag text-xs">Away</span>
   </div>
   <hr>
-  <div class="item">
-    <img src="https://i.pravatar.cc/80?img=47" alt="Avatar" class="item-avatar">
-    <div class="item-content">
+  <div class="list-row">
+    <img src="https://i.pravatar.cc/80?img=47" alt="Avatar" class="list-row-avatar">
+    <div class="list-row-content">
       <h3>Jamie Lee</h3>
       <p>Viewer</p>
     </div>

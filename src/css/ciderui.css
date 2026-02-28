@@ -244,6 +244,11 @@
     to   { opacity: 0; transform: scale(0.95); }
   }
 
+  @keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
   @keyframes shimmer {
     0%   { background-position: -200% 0; }
     100% { background-position: 200% 0; }
@@ -255,43 +260,43 @@
   }
 
   @keyframes sheetSlideInRight {
-    from { transform: translateX(100%); }
-    to   { transform: translateX(0); }
+    from { opacity: 0; transform: translateX(100%); }
+    to   { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes sheetSlideInLeft {
-    from { transform: translateX(-100%); }
-    to   { transform: translateX(0); }
+    from { opacity: 0; transform: translateX(-100%); }
+    to   { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes sheetSlideInBottom {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
+    from { opacity: 0; transform: translateY(100%); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes sheetSlideInTop {
-    from { transform: translateY(-100%); }
-    to   { transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes sheetSlideOutRight {
-    from { transform: translateX(0); }
-    to   { transform: translateX(100%); }
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(100%); }
   }
 
   @keyframes sheetSlideOutLeft {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-100%); }
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(-100%); }
   }
 
   @keyframes sheetSlideOutBottom {
-    from { transform: translateY(0); }
-    to   { transform: translateY(100%); }
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(100%); }
   }
 
   @keyframes sheetSlideOutTop {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-100%); }
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-100%); }
   }
 
   /* Reduced motion — disable animations/transitions for users who prefer it */
@@ -313,7 +318,7 @@
   @import "./components/alert.css";
   @import "./components/field.css";
   @import "./components/dialog.css";
-  @import "./components/dropdown-menu.css";
+  @import "./components/menu.css";
   @import "./components/tabs.css";
   @import "./components/table.css";
   @import "./components/accordion.css";
@@ -330,7 +335,7 @@
   @import "./components/tooltip.css";
   @import "./components/separator.css";
   @import "./components/input-group.css";
-  @import "./components/item.css";
+  @import "./components/list-row.css";
   @import "./components/form.css";
   @import "./components/sidebar.css";
   @import "./components/theme-switcher.css";
