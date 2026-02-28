@@ -1,8 +1,8 @@
-/* ========== INPUT OTP ========== */
-.input-otp {
+/* ========== VERIFICATION CODE ========== */
+.verification-code {
   @apply flex items-center gap-2;
 }
-.input-otp-slot {
+.verification-code-slot {
   @apply flex size-12 items-center justify-center rounded-[12px] border text-[17px] font-medium text-foreground;
   corner-shape: squircle;
   border-color: var(--input-border);
@@ -14,10 +14,10 @@
     box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.2);
   }
 }
-.input-otp-separator {
+.verification-code-separator {
   @apply flex items-center text-muted-foreground;
   & span { @apply mx-0.5 text-xl; }
 }
-.input-otp[data-error] .input-otp-slot {
+.verification-code[data-error] .verification-code-slot {
   border-color: var(--color-destructive);
 }

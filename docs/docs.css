@@ -31,7 +31,7 @@
 
   .snippet-preview > figure {
     position: relative;
-    & > .card, & > .field, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .command, & > .cider {
+    & > .card, & > .field, & > table, & > .inline-alert, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .command, & > .cider {
       @apply w-full;
     }
     & > .cider {

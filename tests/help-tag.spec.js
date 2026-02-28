@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { goto, preview, css } from './helpers.js';
 
-test.describe('Tooltip', () => {
+test.describe('Help Tag', () => {
   test.beforeEach(async ({ page }) => {
-    await goto(page, 'tooltip');
+    await goto(page, 'help-tag');
   });
 
-  test('tooltip content is hidden by default', async ({ page }) => {
-    const content = preview(page).locator('.tooltip-content').first();
-    // Tooltip content should be hidden (opacity 0 or visibility hidden or display none)
+  test('help-tag content is hidden by default', async ({ page }) => {
+    const content = preview(page).locator('.help-tag-content').first();
+    // Help tag content should be hidden (opacity 0 or visibility hidden or display none)
     const opacity = await css(content, 'opacity');
     const visibility = await css(content, 'visibility');
 
@@ -16,11 +16,11 @@ test.describe('Tooltip', () => {
     expect(isHidden).toBe(true);
   });
 
-  test('hover shows tooltip content', async ({ page }) => {
-    const tooltip = preview(page).locator('.tooltip').first();
-    const content = tooltip.locator('.tooltip-content');
+  test('hover shows help-tag content', async ({ page }) => {
+    const helpTag = preview(page).locator('.help-tag').first();
+    const content = helpTag.locator('.help-tag-content');
 
-    await tooltip.hover();
+    await helpTag.hover();
     await page.waitForTimeout(1300);
 
     const opacity = await css(content, 'opacity');

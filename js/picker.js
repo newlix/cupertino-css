@@ -1,16 +1,16 @@
-// Combobox — ciderui
+// Picker — ciderui
 // Searchable select dropdown
 
 function init() {
-  document.querySelectorAll(".combobox").forEach((combobox) => {
-    if (combobox.dataset.initialized) return;
-    combobox.dataset.initialized = "true";
-    const trigger = combobox.querySelector("button");
-    const content = combobox.querySelector("[data-combobox-content]");
+  document.querySelectorAll(".picker").forEach((picker) => {
+    if (picker.dataset.initialized) return;
+    picker.dataset.initialized = "true";
+    const trigger = picker.querySelector("button");
+    const content = picker.querySelector("[data-picker-content]");
     const input = content ? content.querySelector("header input") : null;
     const listbox = content ? content.querySelector("[role='listbox']") : null;
     const valueDisplay = trigger ? trigger.querySelector("span") : null;
-    const hiddenInput = combobox.querySelector("input[type='hidden']");
+    const hiddenInput = picker.querySelector("input[type='hidden']");
 
     if (!trigger || !content || !listbox) return;
 
@@ -20,7 +20,7 @@ function init() {
     var savedValue = null;
 
     function open() {
-      combobox.setAttribute("data-open", "");
+      picker.setAttribute("data-open", "");
       // Store current selection for Escape restore
       var selected = listbox.querySelector("[role='option'][data-selected]");
       savedValue = selected ? selected.dataset.value || selected.textContent.trim() : null;
@@ -32,14 +32,14 @@ function init() {
     }
 
     function close() {
-      combobox.removeAttribute("data-open");
+      picker.removeAttribute("data-open");
       const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
       if (highlighted) highlighted.removeAttribute("data-highlighted");
       savedValue = null;
     }
 
     function cancelAndClose() {
-      combobox.removeAttribute("data-open");
+      picker.removeAttribute("data-open");
       const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
       if (highlighted) highlighted.removeAttribute("data-highlighted");
       // Restore display if user typed but didn't select
@@ -54,14 +54,14 @@ function init() {
     }
 
     function isOpen() {
-      return combobox.hasAttribute("data-open");
+      return picker.hasAttribute("data-open");
     }
 
     // Toggle on trigger click
     trigger.addEventListener("click", () => {
-      // Close all other comboboxes
-      document.querySelectorAll(".combobox[data-open]").forEach((el) => {
-        if (el !== combobox) el.removeAttribute("data-open");
+      // Close all other pickeres
+      document.querySelectorAll(".picker[data-open]").forEach((el) => {
+        if (el !== picker) el.removeAttribute("data-open");
       });
       if (isOpen()) {
         close();
@@ -144,7 +144,7 @@ function init() {
 
         // Toggle empty state
         if (listbox.hasAttribute("data-empty")) {
-          listbox.classList.toggle("combobox-empty", !anyVisible);
+          listbox.classList.toggle("picker-empty", !anyVisible);
         }
       });
     }
@@ -159,8 +159,8 @@ if (document.readyState === "loading") {
 
 // Close on outside click
 document.addEventListener("click", (e) => {
-  if (!e.target.closest(".combobox")) {
-    document.querySelectorAll(".combobox[data-open]").forEach((el) => {
+  if (!e.target.closest(".picker")) {
+    document.querySelectorAll(".picker[data-open]").forEach((el) => {
       el.removeAttribute("data-open");
     });
   }
@@ -169,9 +169,9 @@ document.addEventListener("click", (e) => {
 // Close on Escape (cancel without selecting)
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    document.querySelectorAll(".combobox[data-open]").forEach((el) => {
+    document.querySelectorAll(".picker[data-open]").forEach((el) => {
       // Clear search input and reset filter
-      var input = el.querySelector("[data-combobox-content] header input");
+      var input = el.querySelector("[data-picker-content] header input");
       if (input) {
         input.value = "";
         input.dispatchEvent(new Event("input"));

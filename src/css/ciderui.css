@@ -250,7 +250,7 @@
   @import "./components/button.css";
   @import "./components/badge.css";
   @import "./components/card.css";
-  @import "./components/banner.css";
+  @import "./components/inline-alert.css";
   @import "./components/field.css";
   @import "./components/dialog.css";
   @import "./components/tabs.css";
@@ -263,15 +263,15 @@
   @import "./components/slider.css";
   @import "./components/activity-indicator.css";
   @import "./components/hud.css";
-  @import "./components/tooltip.css";
+  @import "./components/help-tag.css";
   @import "./components/separator.css";
   @import "./components/input-group.css";
   @import "./components/list-row.css";
-  @import "./components/combobox.css";
+  @import "./components/picker.css";
 
   @import "./components/sheet.css";
   @import "./components/popover.css";
-  @import "./components/input-otp.css";
+  @import "./components/verification-code.css";
   @import "./components/context-menu.css";
   @import "./components/container.css";
 }

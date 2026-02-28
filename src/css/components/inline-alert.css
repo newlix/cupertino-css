@@ -1,5 +1,5 @@
-/* ========== BANNER ========== */
-.banner {
+/* ========== INLINE ALERT ========== */
+.inline-alert {
   @apply flex items-start gap-3 rounded-[10px] px-4 py-3 text-[13px] leading-snug;
   corner-shape: squircle;
   background: var(--color-card);
@@ -11,6 +11,6 @@
 }
 
 /* Destructive — icon only, no background tint (Apple HIG) */
-.banner-destructive {
+.inline-alert-destructive {
   & svg:first-child { color: var(--color-destructive); }
 }

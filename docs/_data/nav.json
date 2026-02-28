@@ -11,7 +11,7 @@
   {
     "title": "Components",
     "items": [
-      { "label": "Banner", "href": "components/banner.html" },
+      { "label": "Inline Alert", "href": "components/inline-alert.html" },
       { "label": "Alert", "href": "components/alert.html" },
 
       { "label": "Avatar", "href": "components/avatar.html" },
@@ -20,7 +20,7 @@
       { "label": "Card", "href": "components/card.html" },
 
       { "label": "Checkbox", "href": "components/checkbox.html" },
-      { "label": "Combobox", "href": "components/combobox.html" },
+      { "label": "Picker", "href": "components/picker.html" },
       { "label": "Context Menu", "href": "components/context-menu.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
 
@@ -30,7 +30,7 @@
 
       { "label": "Input", "href": "components/input.html" },
       { "label": "Input Group", "href": "components/input-group.html" },
-      { "label": "Input OTP", "href": "components/input-otp.html" },
+      { "label": "Verification Code", "href": "components/verification-code.html" },
       { "label": "List Row", "href": "components/list-row.html" },
       { "label": "Kbd", "href": "components/kbd.html" },
       { "label": "Label", "href": "components/label.html" },
@@ -52,7 +52,7 @@
       { "label": "Textarea", "href": "components/textarea.html" },
 
       { "label": "HUD", "href": "components/hud.html" },
-      { "label": "Tooltip", "href": "components/tooltip.html" }
+      { "label": "Help Tag", "href": "components/help-tag.html" }
     ]
   },
   {

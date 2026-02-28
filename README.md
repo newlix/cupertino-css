@@ -65,7 +65,7 @@ For quick prototyping without a build step:
 | Slider | `slider` | — |
 | Activity Indicator | `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` | — |
 | HUD | `hud` `hud-container` | `js/hud.js` |
-| Tooltip | `tooltip` `tooltip-content` `tooltip-bottom` | — |
+| Help Tag | `help-tag` `help-tag-content` `help-tag-bottom` | — |
 
 ### ES Module / Bundler (Vite, Webpack, etc.)
 

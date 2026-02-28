@@ -1,0 +1,54 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Verification Code" %}
+
+{% block content %}
+
+  {% call example("6-Digit") %}
+<div class="verification-code" data-name="code">
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+</div>
+{% endcall %}
+
+  {% call example("With Separator") %}
+<div class="verification-code" data-name="verify">
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-separator"><span>&ndash;</span></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+  <div class="verification-code-slot"></div>
+</div>
+{% endcall %}
+
+  {% call example("Error State") %}
+<div class="verification-code" data-name="error-demo" data-error>
+  <div class="verification-code-slot">1</div>
+  <div class="verification-code-slot">2</div>
+  <div class="verification-code-slot">3</div>
+  <div class="verification-code-slot">4</div>
+  <div class="verification-code-slot">5</div>
+  <div class="verification-code-slot">6</div>
+</div>
+<p class="mt-2 text-sm" style="color: var(--destructive);">Invalid verification code.</p>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-muted-foreground">Handles auto-advance, backspace, and paste for <code>.verification-code</code> slots.</p>
+    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/verification-code.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://unpkg.com/ciderui/js/verification-code.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

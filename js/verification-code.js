@@ -1,10 +1,10 @@
-// Input OTP — ciderui
-// Manages hidden input, auto-advance, backspace, paste for OTP slots.
+// Verification Code — ciderui
+// Manages hidden input, auto-advance, backspace, paste for verification code slots.
 function init() {
-  document.querySelectorAll(".input-otp").forEach((otp) => {
+  document.querySelectorAll(".verification-code").forEach((otp) => {
     if (otp.dataset.initialized) return;
     otp.dataset.initialized = "true";
-    const slots = otp.querySelectorAll(".input-otp-slot");
+    const slots = otp.querySelectorAll(".verification-code-slot");
     if (!slots.length) return;
 
     // Create hidden input for the full value
@@ -12,7 +12,7 @@ function init() {
     if (!hidden) {
       hidden = document.createElement("input");
       hidden.type = "hidden";
-      hidden.name = otp.dataset.name || "otp";
+      hidden.name = otp.dataset.name || "code";
       otp.appendChild(hidden);
     }
 
@@ -80,7 +80,7 @@ function init() {
 
     // Click the container focuses the first empty slot
     otp.addEventListener("click", (e) => {
-      if (e.target.closest(".input-otp-slot")) return;
+      if (e.target.closest(".verification-code-slot")) return;
       const firstEmpty = Array.from(slots).findIndex((s) => !s.textContent.trim());
       focusSlot(firstEmpty >= 0 ? firstEmpty : slots.length - 1);
     });

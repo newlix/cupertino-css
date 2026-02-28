@@ -13,12 +13,12 @@
 
 - [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
-- [Combobox](https://ciderui.com/components/combobox.html): Custom combobox with search filtering. Requires `js/combobox.js`.
+- [Picker](https://ciderui.com/components/picker.html): Custom picker with search filtering. Requires `js/picker.js`.
 - [Field](https://ciderui.com/components/field.html): `field` — auto-styles label, input, and description children.
 
 - [Input](https://ciderui.com/components/input.html): `input` — styled text input.
 - [Input Group](https://ciderui.com/components/input-group.html): Input with prefix/suffix addons.
-- [Input OTP](https://ciderui.com/components/input-otp.html): One-time password input with auto-advance. Requires `js/otp.js`.
+- [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
 - [Label](https://ciderui.com/components/label.html): `label` — styled form label.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `radio` — pure CSS radio styling.
 - [Select](https://ciderui.com/components/select.html): Native `<select>` styling.
@@ -47,11 +47,11 @@
 
 - [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
 - [Sheet](https://ciderui.com/components/sheet.html): Full-height slide-out panel. Requires `js/sheet.js`.
-- [Tooltip](https://ciderui.com/components/tooltip.html): `tooltip` `tooltip-content` `tooltip-bottom` — pure CSS tooltips.
+- [Help Tag](https://ciderui.com/components/help-tag.html): `help-tag` `help-tag-content` `help-tag-bottom` — pure CSS help tags.
 
 ### Feedback & Status
 
-- [Banner](https://ciderui.com/components/banner.html): `banner` `banner-destructive`
+- [Inline Alert](https://ciderui.com/components/inline-alert.html): `inline-alert` `inline-alert-destructive`
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`

@@ -1,52 +1,52 @@
-/* ========== TOOLTIP ========== */
-.tooltip {
+/* ========== HELP TAG ========== */
+.help-tag {
   @apply relative inline-block;
 }
-.tooltip-content {
+.help-tag-content {
   @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
   letter-spacing: -0.01em;
-  --tooltip-bg: oklch(0.15 0 0 / 0.9);
-  --tooltip-fg: oklch(0.95 0 0);
-  background: var(--tooltip-bg);
+  --help-tag-bg: oklch(0.15 0 0 / 0.9);
+  --help-tag-fg: oklch(0.95 0 0);
+  background: var(--help-tag-bg);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  color: var(--tooltip-fg);
+  color: var(--help-tag-fg);
   box-shadow: var(--shadow-sm);
   opacity: 0;
   translate: -50% 2px;
   transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
-  .tooltip:hover > &,
-  .tooltip:focus-within > & {
+  .help-tag:hover > &,
+  .help-tag:focus-within > & {
     opacity: 1;
     translate: -50% 0;
     transition-delay: 0.5s;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .tooltip-content { transition: none; }
+  .help-tag-content { transition: none; }
 }
-.tooltip-bottom {
-  & .tooltip-content {
+.help-tag-bottom {
+  & .help-tag-content {
     @apply bottom-auto top-full mb-0 mt-2;
     translate: -50% -2px;
-    .tooltip:hover > &,
-    .tooltip:focus-within > & { translate: -50% 0; }
+    .help-tag:hover > &,
+    .help-tag:focus-within > & { translate: -50% 0; }
   }
 }
 
-.tooltip-right {
-  & .tooltip-content {
+.help-tag-right {
+  & .help-tag-content {
     @apply bottom-auto left-full top-1/2 mb-0 ml-2;
     translate: -2px -50%;
-    .tooltip:hover > &,
-    .tooltip:focus-within > & { translate: 0 -50%; }
+    .help-tag:hover > &,
+    .help-tag:focus-within > & { translate: 0 -50%; }
   }
 }
-.tooltip-left {
-  & .tooltip-content {
+.help-tag-left {
+  & .help-tag-content {
     @apply bottom-auto right-full left-auto top-1/2 mb-0 mr-2;
     translate: 2px -50%;
-    .tooltip:hover > &,
-    .tooltip:focus-within > & { translate: 0 -50%; }
+    .help-tag:hover > &,
+    .help-tag:focus-within > & { translate: 0 -50%; }
   }
 }

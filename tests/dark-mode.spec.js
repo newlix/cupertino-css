@@ -2,11 +2,11 @@ import { test, expect } from '@playwright/test';
 import { goto, darkPreview, css, setDark, parseRgb, contrast } from './helpers.js';
 
 test.describe('Dark Mode', () => {
-  test('OTP slots have visible background against card', async ({ page }) => {
-    await goto(page, 'input-otp');
+  test('verification code slots have visible background against card', async ({ page }) => {
+    await goto(page, 'verification-code');
     await setDark(page);
 
-    const slot = darkPreview(page).locator('.input-otp-slot').first();
+    const slot = darkPreview(page).locator('.verification-code-slot').first();
     const container = darkPreview(page);
 
     expect(await css(slot, 'backgroundColor')).not.toBe(await css(container, 'backgroundColor'));
@@ -62,14 +62,14 @@ test.describe('Dark Mode', () => {
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
 
-  test('banner variants are visible in dark mode', async ({ page }) => {
-    await goto(page, 'banner');
+  test('inline-alert variants are visible in dark mode', async ({ page }) => {
+    await goto(page, 'inline-alert');
     await setDark(page);
 
-    for (const sel of ['.banner', '.banner-destructive']) {
-      const banner = page.locator(`.snippet-preview > figure ${sel}`).first();
-      if ((await banner.count()) === 0) continue;
-      await expect(banner).toBeVisible();
+    for (const sel of ['.inline-alert', '.inline-alert-destructive']) {
+      const alert = page.locator(`.snippet-preview > figure ${sel}`).first();
+      if ((await alert.count()) === 0) continue;
+      await expect(alert).toBeVisible();
     }
   });
 

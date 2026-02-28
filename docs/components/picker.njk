@@ -1,16 +1,16 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
-{% set title = "Combobox" %}
+{% set title = "Picker" %}
 
 {% block content %}
 
   {% call example("Default") %}
-<div class="combobox" style="width:200px;">
+<div class="picker" style="width:200px;">
   <button type="button">
     <span data-placeholder>Select framework…</span>
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
   </button>
-  <div data-combobox-content>
+  <div data-picker-content>
     <header>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="text" placeholder="Search framework…" autocomplete="off" spellcheck="false">
@@ -28,12 +28,12 @@
 {% endcall %}
 
   {% call example("With Groups") %}
-<div class="combobox" style="width:260px;">
+<div class="picker" style="width:260px;">
   <button type="button">
     <span data-placeholder>Select timezone…</span>
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
   </button>
-  <div data-combobox-content>
+  <div data-picker-content>
     <header>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="text" placeholder="Search timezone…" autocomplete="off" spellcheck="false">
@@ -67,12 +67,12 @@
 <form class="form max-w-sm space-y-4" onsubmit="return false;">
   <div class="field">
     <label>Language</label>
-    <div class="combobox" style="width:100%;">
+    <div class="picker" style="width:100%;">
       <button type="button">
         <span data-placeholder>Select language…</span>
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
       </button>
-      <div data-combobox-content>
+      <div data-picker-content>
         <header>
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" placeholder="Search language…" autocomplete="off" spellcheck="false">
@@ -97,12 +97,12 @@
 {% endcall %}
 
   {% call example("Disabled") %}
-<div class="combobox" style="width:200px;">
+<div class="picker" style="width:200px;">
   <button type="button" disabled class="opacity-50 pointer-events-none">
     <span data-placeholder>Select status…</span>
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
   </button>
-  <div data-combobox-content>
+  <div data-picker-content>
     <header>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
@@ -118,13 +118,13 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Handles open/close, search filtering, keyboard navigation, and selection for <code>[data-combobox]</code> elements.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Handles open/close, search filtering, keyboard navigation, and selection for <code>[data-picker]</code> elements.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
-&lt;script src="node_modules/ciderui/js/combobox.js"&gt;&lt;/script&gt;
+&lt;script src="node_modules/ciderui/js/picker.js"&gt;&lt;/script&gt;
 
 &lt;!-- CDN --&gt;
-&lt;script src="https://unpkg.com/ciderui/js/combobox.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://unpkg.com/ciderui/js/picker.js"&gt;&lt;/script&gt;</code></pre>
     </div>
   </section>
 
