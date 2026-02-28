@@ -14,13 +14,13 @@
   </header>
   <footer>
     <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-tinted">Cancel</button>
-    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-destructive">Continue</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-filled btn-destructive">Continue</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("Destructive") %}
-<button onclick="document.getElementById('demo-alert-destructive').showModal()" class="btn-destructive">Delete Project</button>
+<button onclick="document.getElementById('demo-alert-destructive').showModal()" class="btn-filled btn-destructive">Delete Project</button>
 
 <dialog id="demo-alert-destructive" class="dialog">
   <header>
@@ -29,7 +29,7 @@
   </header>
   <footer>
     <button onclick="document.getElementById('demo-alert-destructive').close()" class="btn-tinted">Cancel</button>
-    <button onclick="document.getElementById('demo-alert-destructive').close()" class="btn-destructive">Delete Project</button>
+    <button onclick="document.getElementById('demo-alert-destructive').close()" class="btn-filled btn-destructive">Delete Project</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -47,7 +47,7 @@
   </header>
   <footer>
     <button onclick="document.getElementById('demo-alert-icon').close()" class="btn-tinted">Cancel</button>
-    <button onclick="document.getElementById('demo-alert-icon').close()" class="btn-destructive">Sign Out</button>
+    <button onclick="document.getElementById('demo-alert-icon').close()" class="btn-filled btn-destructive">Sign Out</button>
   </footer>
 </dialog>
 {% endcall %}

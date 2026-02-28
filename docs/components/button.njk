@@ -4,17 +4,15 @@
 
 {% block content %}
 {% call example("Variants") %}
-<div class="grid grid-cols-5 gap-3 justify-items-center">
+<div class="grid grid-cols-4 gap-3 justify-items-center">
   <button class="btn-filled">Filled</button>
   <button class="btn-gray">Gray</button>
   <button class="btn-tinted">Tinted</button>
   <button class="btn-plain">Plain</button>
-  <button class="btn-destructive">Destructive</button>
   <button class="btn-filled" disabled>Filled</button>
   <button class="btn-gray" disabled>Gray</button>
   <button class="btn-tinted" disabled>Tinted</button>
   <button class="btn-plain" disabled>Plain</button>
-  <button class="btn-destructive" disabled>Destructive</button>
 </div>
 {% endcall %}
 
@@ -34,6 +32,19 @@
 <button class="btn-tinted btn-capsule">Watch Video</button>
 {% endcall %}
 
+  <p class="text-muted-foreground">
+    Use <code>btn-destructive</code> as a modifier with any variant.
+  </p>
+
+{% call example("Destructive") %}
+<div class="flex flex-wrap gap-3">
+  <button class="btn-filled btn-destructive">Filled</button>
+  <button class="btn-gray btn-destructive">Gray</button>
+  <button class="btn-tinted btn-destructive">Tinted</button>
+  <button class="btn-plain btn-destructive">Plain</button>
+</div>
+{% endcall %}
+
 {% call example("") %}
 <div class="max-w-xs space-y-3">
   <button class="btn-filled w-full">Sign In</button>
@@ -48,7 +59,7 @@
 <div class="flex gap-3">
   <button class="btn-filled btn-sm">Save</button>
   <button class="btn-plain btn-sm">Discard</button>
-  <button class="btn-destructive btn-sm">Delete</button>
+  <button class="btn-filled btn-destructive btn-sm">Delete</button>
 </div>
 {% endcall %}
 

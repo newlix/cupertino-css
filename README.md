@@ -19,8 +19,8 @@ npm install ciderui@github:newlix/ciderui
 ```
 
 ```html
-<button class="btn-primary">Click me</button>
-<button class="btn-destructive">Delete</button>
+<button class="btn-filled">Click me</button>
+<button class="btn-filled btn-destructive">Delete</button>
 <div class="card">
   <header><h2>Title</h2></header>
   <section>Content</section>
@@ -39,7 +39,7 @@ For quick prototyping without a build step:
 
 | Component | Class | JS |
 |-----------|-------|----|
-| Button | `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg` | — |
+| Button | `btn-filled` `btn-gray` `btn-tinted` `btn-plain` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg` | — |
 | Tag | `tag` | — |
 | Badge | `badge` (notification count) | — |
 | Card | `card` `card-interactive` (children: `header` `section` `footer`) | — |

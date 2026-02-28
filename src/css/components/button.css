@@ -2,8 +2,7 @@
 .btn-gray,
 .btn-filled,
 .btn-tinted,
-.btn-plain,
-.btn-destructive {
+.btn-plain {
   @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-2.5 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   corner-shape: squircle;
   transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
@@ -32,10 +31,26 @@
   &:hover { background: var(--surface-2); }
   &:active { background: var(--surface-3); }
 }
+/* ── Destructive modifier ── */
 .btn-destructive {
+  &:focus-visible { outline-color: oklch(from var(--destructive) l c h / 0.3); }
+}
+.btn-filled.btn-destructive {
   @apply bg-destructive text-destructive-foreground;
   &:hover { background: var(--destructive-hover); }
   &:active { background: var(--destructive-active); }
+}
+.btn-gray.btn-destructive {
+  color: var(--destructive);
+}
+.btn-tinted.btn-destructive {
+  color: var(--destructive);
+  background: oklch(from var(--destructive) l c h / 0.12);
+  &:hover { background: oklch(from var(--destructive) l c h / 0.18); }
+  &:active { background: oklch(from var(--destructive) l c h / 0.22); }
+}
+.btn-plain.btn-destructive {
+  color: var(--destructive);
 }
 .btn-capsule {
   border-radius: 9999px;
