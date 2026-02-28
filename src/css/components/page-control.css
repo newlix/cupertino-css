@@ -1,0 +1,35 @@
+/* ========== PAGE CONTROL ========== */
+/* Apple UIPageControl — dot indicators for paged content */
+.page-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.page-control-dot {
+  all: unset;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.3s var(--apple-ease), transform 0.3s var(--apple-spring);
+  &[data-active], &[aria-current="page"] {
+    opacity: 0.85;
+  }
+  &:hover:not([data-active]):not([aria-current="page"]) {
+    opacity: 0.4;
+  }
+  &:active:not(:disabled) {
+    transform: scale(1.3);
+  }
+  &:focus-visible {
+    outline: 3px solid oklch(from var(--color-primary) l c h / 0.3);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.1;
+  }
+}

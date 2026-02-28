@@ -18,12 +18,10 @@
       { "label": "Badge", "href": "components/badge.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
-      { "label": "Button Group", "href": "components/button-group.html" },
       { "label": "Card", "href": "components/card.html" },
 
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Combobox", "href": "components/combobox.html" },
-      { "label": "Command", "href": "components/command.html" },
       { "label": "Context Menu", "href": "components/context-menu.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
 
@@ -37,7 +35,7 @@
       { "label": "List Row", "href": "components/list-row.html" },
       { "label": "Kbd", "href": "components/kbd.html" },
       { "label": "Label", "href": "components/label.html" },
-      { "label": "Pagination", "href": "components/pagination.html" },
+      { "label": "Page Control", "href": "components/page-control.html" },
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },

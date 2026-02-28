@@ -105,6 +105,8 @@ function build() {
   if (fs.existsSync(path.join(DOCS, "demos")))
     copyDir(path.join(DOCS, "demos"), path.join(SITE, "demos"));
   copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
+  if (fs.existsSync(path.join(DOCS, "snippet.js")))
+    copyFile(path.join(DOCS, "snippet.js"), path.join(SITE, "snippet.js"));
 
   const ms = Math.round(performance.now() - start);
   console.log(`Built ${pages.length} pages → ${SITE} (${ms}ms)`);

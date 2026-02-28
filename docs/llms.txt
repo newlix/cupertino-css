@@ -21,7 +21,7 @@
 - [Input OTP](https://ciderui.com/components/input-otp.html): One-time password input with auto-advance. Requires `js/otp.js`.
 - [Label](https://ciderui.com/components/label.html): `label` — styled form label.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `radio` — pure CSS radio styling.
-- [Select](https://ciderui.com/components/select.html): `select` for native, or custom select with `js/select.js`.
+- [Select](https://ciderui.com/components/select.html): Native `<select>` styling.
 - [Slider](https://ciderui.com/components/slider.html): `slider` — styled range input.
 - [Switch](https://ciderui.com/components/switch.html): `switch` — pure CSS toggle switch.
 - [Textarea](https://ciderui.com/components/textarea.html): `textarea` — styled textarea.
@@ -34,7 +34,7 @@
 
 - [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — navigation breadcrumbs.
 - [Card](https://ciderui.com/components/card.html): `card` `card-interactive` with `header`, `section`, `footer` children.
-- [Pagination](https://ciderui.com/components/pagination.html): `pagination` `pagination-item` — page navigation.
+- [Page Control](https://ciderui.com/components/page-control.html): `page-control` `page-control-dot` — Apple-style dot page indicator.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
 - [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `segmented-control`. Requires `js/tabs.js`.
@@ -42,7 +42,6 @@
 ### Overlays & Dialogs
 
 - [Alert Dialog](https://ciderui.com/components/alert-dialog.html): Modal confirmation dialog.
-- [Command](https://ciderui.com/components/command.html): Command palette with search. Requires `js/command.js`.
 - [Context Menu](https://ciderui.com/components/context-menu.html): Right-click menu. Requires `js/context-menu.js`. Dropdown menu (`menu` class) also defined here; requires `js/dropdown-menu.js`.
 - [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Optional `js/dialog.js`.
 - [Drawer](https://ciderui.com/components/drawer.html): Slide-out panel from any edge.
@@ -65,7 +64,6 @@
 
 
 - [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
-- [Button Group](https://ciderui.com/components/button-group.html): `btn-group` — grouped buttons.
 
 
 - [List Row](https://ciderui.com/components/list-row.html): List row with icon, label, description. `list-row` `list-section`.
@@ -99,6 +97,5 @@ Most components are pure CSS. Import JS only for interactive behavior:
 import "ciderui/dialog.js";
 import "ciderui/dropdown-menu.js";
 import "ciderui/tabs.js";
-import "ciderui/select.js";
 import "ciderui/hud.js";
 ```
