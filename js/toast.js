@@ -34,21 +34,27 @@ function showToast(title, message, type = "success") {
   content.appendChild(messageEl);
   toast.appendChild(content);
 
+  function dismissToast() {
+    clearTimeout(dismissTimeout);
+    if (!toast.parentElement) return;
+    toast.style.animation = "toastSlideOut 0.3s var(--apple-spring) forwards";
+    setTimeout(() => {
+      if (toast.parentElement) toast.remove();
+    }, 300);
+  }
+
   // Close button
   const closeBtn = document.createElement("button");
   closeBtn.className = "toast-close";
   closeBtn.setAttribute("aria-label", "Close");
   closeBtn.innerHTML = '<svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>';
-  closeBtn.addEventListener("click", () => toast.remove());
+  closeBtn.addEventListener("click", dismissToast);
   toast.appendChild(closeBtn);
 
   container.appendChild(toast);
 
   // Auto-remove after 4 seconds
-  setTimeout(() => {
-    toast.style.animation = "toastSlideOut 0.3s var(--apple-ease) forwards";
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
+  const dismissTimeout = setTimeout(dismissToast, 4000);
 }
 
 function createToastContainer() {

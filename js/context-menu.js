@@ -34,10 +34,10 @@ document.addEventListener("contextmenu", (e) => {
   requestAnimationFrame(() => {
     const rect = menu.getBoundingClientRect();
     if (rect.right > window.innerWidth) {
-      menu.style.left = (e.clientX - rect.width) + "px";
+      menu.style.left = Math.max(8, e.clientX - rect.width) + "px";
     }
     if (rect.bottom > window.innerHeight) {
-      menu.style.top = (e.clientY - rect.height) + "px";
+      menu.style.top = Math.max(8, e.clientY - rect.height) + "px";
     }
   });
 });

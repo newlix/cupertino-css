@@ -2,6 +2,8 @@
 // Manages hidden input, auto-advance, backspace, paste for OTP slots.
 function init() {
   document.querySelectorAll(".input-otp").forEach((otp) => {
+    if (otp.dataset.initialized) return;
+    otp.dataset.initialized = "true";
     const slots = otp.querySelectorAll(".input-otp-slot");
     if (!slots.length) return;
 

@@ -3,16 +3,16 @@
   @apply rounded-[10px] border;
   corner-shape: squircle;
   & > :first-child {
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
+    border-top-left-radius: calc(var(--radius) - 1px);
+    border-top-right-radius: calc(var(--radius) - 1px);
   }
   & > :last-child {
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: calc(var(--radius) - 1px);
+    border-bottom-right-radius: calc(var(--radius) - 1px);
   }
   & > pre {
     @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
-    background: transparent;
+    background: var(--surface-1);
     & code {
       @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;
       background: transparent !important;
@@ -35,7 +35,7 @@
         transition: all 0.15s var(--apple-ease);
         &:hover {
           @apply text-foreground;
-          background: var(--surface-2);
+          background: var(--surface-3);
         }
         &:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
         &[data-active] {
@@ -47,7 +47,7 @@
     & > button {
       @apply rounded-md border px-2 py-1 text-[11px] font-medium;
       background: var(--surface-2);
-      border-color: var(--panel-border);
+      border-color: var(--border);
       color: var(--muted-foreground);
       transition: all 0.15s var(--apple-ease);
       &:hover {
@@ -75,7 +75,8 @@
     &::before {
       counter-increment: line;
       content: counter(line);
-      @apply inline-block w-8 shrink-0 text-right pr-4 text-muted-foreground/40 select-none;
+      @apply inline-block shrink-0 text-right pr-4 text-muted-foreground/40 select-none;
+      min-width: 2rem;
       font-variant-numeric: tabular-nums;
     }
   }

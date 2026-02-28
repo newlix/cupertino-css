@@ -16,7 +16,7 @@
 }
 .carousel-item {
   @apply shrink-0;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   width: calc(100% - 2rem);
 }
 .carousel-item-half {
@@ -31,7 +31,7 @@
 }
 .carousel-prev,
 .carousel-next {
-  @apply absolute top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full text-foreground cursor-pointer;
+  @apply absolute top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full text-foreground cursor-pointer;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -50,8 +50,8 @@
 }
 .carousel-indicator {
   @apply rounded-full cursor-pointer;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background: oklch(from var(--foreground) l c h / 0.2);
   transition: all 0.3s var(--apple-spring);
   &:hover { background: oklch(from var(--foreground) l c h / 0.35); }

@@ -3,7 +3,7 @@
   @apply relative inline-block;
 }
 .popover-content {
-  @apply absolute z-50 mt-3 min-w-[240px] rounded-xl p-4;
+  @apply absolute z-50 mt-3 min-w-[240px] max-w-[320px] rounded-xl p-4;
   corner-shape: squircle;
   display: none;
   background: var(--glass-bg-opaque);
@@ -23,8 +23,7 @@
     width: 12px;
     height: 12px;
     background: var(--glass-bg-opaque);
-    box-shadow: var(--float-ring);
-    clip-path: polygon(0 0, 100% 0, 0 100%);
+    box-shadow: -1px -1px 0 0 oklch(0 0 0 / 0.06);
   }
 }
 .popover-top {

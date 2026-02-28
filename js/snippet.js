@@ -43,6 +43,7 @@ document.addEventListener("click", function (e) {
       btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
     }).catch(function () {
       btn.textContent = "Failed";
+      if (btn._copyTimer) clearTimeout(btn._copyTimer);
       btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
     });
     return;

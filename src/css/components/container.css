@@ -25,7 +25,7 @@
     @apply font-bold text-foreground;
     font-size: 34px;
     line-height: 1.21;
-    letter-spacing: 0.011em;
+    letter-spacing: -0.003em;
     &:not(:first-child) { @apply mt-8; }
     & + * { @apply mt-4; }
   }
@@ -49,6 +49,7 @@
     @apply font-semibold text-foreground;
     font-size: 17px;
     line-height: 1.29;
+    letter-spacing: -0.022em;
     &:not(:first-child) { @apply mt-4; }
   }
   p {
@@ -116,7 +117,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2398989D' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
     }
     &:hover:not(:focus) { border-color: var(--border-solid); }
-    &:focus { border-color: var(--primary); box-shadow: 0 0 0 2px oklch(from var(--primary) l c h / 0.15); }
+    &:focus { border-color: var(--primary); box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.15); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
   }
 

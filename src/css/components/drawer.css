@@ -5,7 +5,7 @@ dialog.sheet-bottom,
   corner-shape: squircle;
   max-height: min(85vh, 600px);
   border-radius: 20px 20px 0 0;
-  box-shadow: 0 -8px 32px oklch(0 0 0 / 0.1), var(--float-ring);
+  box-shadow: 0 -12px 48px oklch(0 0 0 / 0.18);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
@@ -34,6 +34,7 @@ dialog.sheet-bottom,
   }
   & .drawer-handle {
     @apply mx-auto mt-2 mb-1 h-[5px] w-9 rounded-full;
+    cursor: grab;
     background: oklch(0 0 0 / 0.3);
     transition: background-color 0.2s var(--apple-ease);
     .dark & { background: oklch(1 0 0 / 0.3); }
@@ -46,7 +47,7 @@ dialog.sheet-top,
   corner-shape: squircle;
   max-height: min(85vh, 600px);
   border-radius: 0 0 20px 20px;
-  box-shadow: 0 8px 32px oklch(0 0 0 / 0.1), var(--float-ring);
+  box-shadow: 0 12px 48px oklch(0 0 0 / 0.18);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);

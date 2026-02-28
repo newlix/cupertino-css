@@ -60,6 +60,7 @@ function init() {
     }
 
     let scrolling = false;
+    let scrollTimer = null;
     function navTo(index) {
       if (scrolling) return;
       scrolling = true;
@@ -70,8 +71,8 @@ function init() {
     if (nextBtn) nextBtn.addEventListener("click", () => navTo(getCurrentIndex() + 1));
 
     content.addEventListener("scroll", () => {
-      clearTimeout(content._scrollTimer);
-      content._scrollTimer = setTimeout(updateState, 50);
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(updateState, 50);
     });
 
     updateState();

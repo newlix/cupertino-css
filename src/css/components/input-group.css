@@ -24,15 +24,16 @@
 .input-group-attached {
   @apply flex items-stretch;
   & .input-group-addon {
-    @apply flex items-center border px-3 text-[13px] text-muted-foreground;
+    @apply flex items-center px-3 text-[13px] text-muted-foreground;
+    border: 1px solid var(--input-border);
     background: var(--surface-2);
   }
   & .input-group-addon:first-child {
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    border-radius: var(--radius) 0 0 var(--radius);
     @apply border-r-0;
   }
   & .input-group-addon:last-child {
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
     @apply border-l-0;
   }
   & .input, & input {

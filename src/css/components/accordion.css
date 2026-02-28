@@ -8,26 +8,31 @@
   }
   & summary {
     @apply flex cursor-pointer items-center justify-between px-5 py-4 text-[15px] font-medium text-foreground;
+    min-height: 44px;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--surface-1); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     &::-webkit-details-marker { display: none; }
     & svg:last-child {
       @apply size-4 shrink-0 text-muted-foreground;
+      transform: rotate(0deg);
       transition: transform 0.25s var(--apple-spring);
     }
   }
   & details:first-child > summary {
     @apply rounded-t-2xl;
   }
-  & details:last-child:not([open]) > summary {
+  & details:last-child > summary {
     @apply rounded-b-2xl;
+  }
+  & details:last-child[open] > summary {
+    @apply rounded-b-none;
   }
   & details[open] > summary svg:last-child {
     transform: rotate(90deg);
   }
   & details > div, & details > p {
-    @apply px-5 pb-4 text-[13px] text-muted-foreground;
+    @apply px-5 pt-2 pb-4 text-[13px] text-muted-foreground;
   }
   /* Smooth height animation for content */
   & details {

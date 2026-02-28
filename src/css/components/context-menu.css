@@ -12,10 +12,11 @@
   box-shadow: var(--shadow-lg), var(--float-ring);
   & button, & a {
     @apply flex w-full items-center gap-2.5 rounded-[8px] px-3 py-2 text-left text-[13px] text-foreground;
-    transition: background-color 0.12s var(--apple-ease);
+    transition: background-color 0.06s linear;
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
     & svg { @apply size-4 text-muted-foreground; }
+    &[disabled], &[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
   }
   & .context-menu-destructive {
     color: var(--destructive);
@@ -28,7 +29,10 @@
   }
   & .context-menu-shortcut {
     @apply ml-auto text-xs text-muted-foreground;
+    min-width: 3rem;
+    text-align: right;
   }
-  &[data-open] { display: block; animation: slideUp 0.12s var(--apple-spring); }
+  max-width: calc(100vw - 1rem);
+  &[data-open] { display: block; animation: dialogShow 0.12s var(--apple-spring); }
   &[data-closing] { animation: slideDown 0.12s var(--apple-ease) forwards; }
 }

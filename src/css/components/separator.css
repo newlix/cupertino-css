@@ -1,10 +1,15 @@
-/* ========== SEPARATOR (variants only — horizontal hr styled by container.css) ========== */
+/* ========== SEPARATOR ========== */
+.separator {
+  @apply h-px w-full border-none;
+  background: var(--panel-border);
+  margin-block: 0;
+}
 .separator-vertical {
   @apply w-px shrink-0 self-stretch;
   background: var(--panel-border);
 }
 .separator-label {
-  @apply flex items-center gap-3 text-xs text-muted-foreground;
+  @apply flex items-center gap-2 text-xs text-muted-foreground;
   &::before, &::after {
     content: "";
     @apply h-px flex-1;

@@ -8,11 +8,18 @@
   }
 }
 .progress-sm {
-  @apply h-1;
+  @apply h-0.5;
 }
 .progress-indeterminate {
   & .progress-bar {
     @apply w-1/3;
-    animation: indeterminate 1.5s ease-in-out infinite;
+    background: linear-gradient(90deg, var(--primary) 0%, oklch(from var(--primary) calc(l + 0.15) c h) 50%, var(--primary) 100%);
+    animation: indeterminate 1.8s var(--apple-ease) infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-indeterminate .progress-bar {
+    animation: none;
+    transform: translateX(-25%);
   }
 }

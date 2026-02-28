@@ -28,6 +28,8 @@ function init() {
 
     function close() {
       combobox.removeAttribute("data-open");
+      const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
+      if (highlighted) highlighted.removeAttribute("data-highlighted");
     }
 
     function isOpen() {
@@ -99,6 +101,10 @@ function init() {
       input.addEventListener("input", () => {
         const query = input.value.toLowerCase().trim();
         let anyVisible = false;
+
+        // Clear stale highlight before filtering
+        const prev = listbox.querySelector("[role='option'][data-highlighted]");
+        if (prev) prev.removeAttribute("data-highlighted");
 
         options.forEach((option) => {
           const text = (option.dataset.value || option.textContent || "").toLowerCase();

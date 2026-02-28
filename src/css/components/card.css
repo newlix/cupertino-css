@@ -6,8 +6,8 @@
   & > header {
     @apply px-6 py-5;
     &:not(:last-child) { border-bottom: 1px solid var(--panel-border); }
-    & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
-    & p { @apply mt-1 text-[13px] text-muted-foreground; }
+    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
+    & p { @apply mt-2 text-[13px] text-muted-foreground; }
   }
   & > section {
     @apply px-6 py-5;
@@ -19,7 +19,7 @@
   /* Basic card without header/section/footer = padded */
   &:not(:has(header)):not(:has(section)) {
     @apply p-6;
-    & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
+    & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
     & p { @apply mt-2 text-[13px] text-muted-foreground; }
   }
 }
@@ -27,9 +27,9 @@
   @apply rounded-xl bg-card p-6 text-card-foreground cursor-pointer;
   corner-shape: squircle;
   box-shadow: var(--shadow), var(--panel-ring);
-  transition: all 0.25s var(--apple-spring);
+  transition: background-color 0.25s var(--apple-spring), box-shadow 0.25s var(--apple-spring), transform 0.1s var(--apple-spring);
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
-  & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
+  & h2, & h3 { @apply text-[17px] font-semibold tracking-tight; }
   & p { @apply mt-2 text-[13px] text-muted-foreground; }
   &:hover {
     background: color-mix(in oklch, var(--card), var(--foreground) 3%);

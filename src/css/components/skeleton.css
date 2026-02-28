@@ -1,19 +1,26 @@
 /* ========== SKELETON ========== */
-.skeleton,
-.skeleton-circle {
+.skeleton {
   @apply rounded-lg;
   corner-shape: squircle;
   background: linear-gradient(
     90deg,
-    var(--surface-4) 25%,
+    var(--surface-4) 20%,
     var(--surface-2) 50%,
-    var(--surface-4) 75%
+    var(--surface-4) 80%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
+  animation: shimmer 1.8s linear infinite;
 }
 .skeleton-circle {
   @apply rounded-full;
+  background: linear-gradient(
+    90deg,
+    var(--surface-4) 20%,
+    var(--surface-2) 50%,
+    var(--surface-4) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .skeleton,

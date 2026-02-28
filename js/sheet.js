@@ -10,6 +10,12 @@ function closeSheet(sheet) {
 
 function init() {
   document.querySelectorAll("dialog.sheet, dialog.sheet-bottom, dialog.sheet-top").forEach((sheet) => {
+    // Intercept Escape to trigger close animation instead of instant close
+    sheet.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      closeSheet(sheet);
+    });
+
     sheet.addEventListener("click", (e) => {
       if (e.target === sheet) {
         closeSheet(sheet);

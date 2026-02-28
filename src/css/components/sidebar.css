@@ -15,15 +15,16 @@
   }
   & .sidebar-section {
     @apply mb-4;
-    & h3 { @apply mb-1 px-2 text-[12px] font-semibold tracking-normal text-muted-foreground; }
+    & h3 { @apply mb-1 px-2 text-[11px] font-semibold uppercase text-muted-foreground; letter-spacing: 0.06em; }
   }
   & .sidebar-item {
-    @apply flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-[13px] text-muted-foreground cursor-pointer;
-    transition: all 0.2s var(--apple-ease);
+    @apply flex items-center gap-2.5 rounded-[8px] px-2.5 py-1.5 text-[13px] text-muted-foreground cursor-pointer;
+    transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
     & svg { @apply size-4 text-muted-foreground; transition: color 0.2s var(--apple-ease); }
     &:hover { background: var(--surface-3); @apply text-foreground; & svg { @apply text-foreground; } }
+    &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
-    &[data-active] { background: var(--primary); @apply text-primary-foreground font-medium; & svg { @apply text-primary-foreground; } }
+    &[data-active] { background: oklch(from var(--primary) l c h / 0.12); @apply text-primary font-medium; & svg { color: var(--primary); } }
   }
   & .sidebar-footer {
     @apply px-5 py-4;

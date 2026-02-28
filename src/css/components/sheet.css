@@ -1,7 +1,10 @@
 /* ========== SHEET ========== */
 dialog.sheet,
 .sheet {
-  @apply fixed m-0 h-full bg-card text-card-foreground;
+  @apply fixed m-0 h-full text-card-foreground;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
   max-height: 100vh;
   max-width: min(420px, 85vw);
@@ -16,7 +19,7 @@ dialog.sheet,
   &:not(.sheet-left) {
     @apply right-0 top-0;
     border-left: 1px solid var(--panel-border);
-    border-radius: 20px 0 0 20px;
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
     &[open] { animation-name: sheetSlideInRight; }
     &[data-closing] { animation: sheetSlideOutRight 0.3s var(--apple-ease) forwards; }
   }
@@ -24,7 +27,7 @@ dialog.sheet,
   &.sheet-left {
     @apply left-0 top-0;
     border-right: 1px solid var(--panel-border);
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
     &[open] { animation-name: sheetSlideInLeft; }
     &[data-closing] { animation: sheetSlideOutLeft 0.3s var(--apple-ease) forwards; }
   }

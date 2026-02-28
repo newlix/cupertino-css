@@ -13,7 +13,8 @@
   & p:last-child:not(:first-child) { @apply mt-0.5 text-[13px] text-muted-foreground; }
 }
 /* Semantic variants: tinted background + icon color */
-.alert-info    { background: var(--info-bg);    border-left: 4px solid var(--info); & svg:first-child { color: var(--info); } }
-.alert-success { background: var(--success-bg); border-left: 4px solid var(--success); & svg:first-child { color: var(--success); } }
-.alert-warning { background: var(--warning-bg); border-left: 4px solid var(--warning); & svg:first-child { color: var(--warning); } }
-.alert-destructive { background: var(--destructive-bg); border-left: 4px solid var(--destructive); & svg:first-child { color: var(--destructive); } }
+.alert         { background: var(--surface-3); }
+.alert-info    { background: var(--info-bg);    & svg:first-child { color: var(--info); } }
+.alert-success { background: var(--success-bg); & svg:first-child { color: var(--success); } }
+.alert-warning { background: var(--warning-bg); & svg:first-child { color: var(--warning); } }
+.alert-destructive { background: var(--destructive-bg); & svg:first-child { color: var(--destructive); } }

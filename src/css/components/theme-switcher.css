@@ -4,14 +4,15 @@
   corner-shape: squircle;
   background: var(--surface-4);
   & button {
-    @apply flex size-8 items-center justify-center rounded-[7px] text-muted-foreground;
-    transition: all 0.2s var(--apple-spring);
+    @apply flex size-9 items-center justify-center rounded-[7px] text-muted-foreground;
+    transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
     & svg { @apply size-4; }
     &:hover { @apply text-foreground; }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     &[data-active] {
       @apply text-foreground;
       background: var(--card);
+      border: 1px solid var(--panel-border);
       box-shadow: var(--shadow-sm);
     }
   }

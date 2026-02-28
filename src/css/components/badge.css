@@ -1,21 +1,26 @@
 /* ========== TAG ========== */
 .tag {
-  @apply inline-flex items-center gap-1 rounded-full px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
+  @apply inline-flex items-center gap-1 px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
+  border-radius: 6px;
   letter-spacing: 0;
 }
 
 /* ========== BADGE ========== */
 .badge {
-  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold;
+  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
   font-size: 11px;
   font-variant-numeric: tabular-nums;
   min-width: 20px;
   height: 20px;
   padding: 0 6px;
   letter-spacing: 0;
+  max-width: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 1px 2px oklch(0 0 0 / 0.15);
 }
 .badge-dot {
   @apply block rounded-full bg-destructive;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }

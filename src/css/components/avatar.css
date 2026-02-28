@@ -3,6 +3,7 @@
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   /* Default fallback styling */
   @apply bg-secondary text-muted-foreground;
+  overflow: hidden;
   border: 1px solid oklch(0 0 0 / 0.12);
   .dark & { border-color: oklch(1 0 0 / 0.15); }
   &:is(img) { @apply object-cover; }

@@ -1,5 +1,6 @@
 // Popover — ciderui
 function closePopover(el) {
+  if (el.hasAttribute("data-closing")) return;
   el.setAttribute("data-closing", "");
   setTimeout(() => {
     el.removeAttribute("data-open");
