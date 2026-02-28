@@ -14,25 +14,25 @@
       { "label": "Accordion", "href": "components/accordion.html" },
       { "label": "Banner", "href": "components/banner.html" },
       { "label": "Alert Dialog", "href": "components/alert-dialog.html" },
-      { "label": "Aspect Ratio", "href": "components/aspect-ratio.html" },
+
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
       { "label": "Button Group", "href": "components/button-group.html" },
       { "label": "Card", "href": "components/card.html" },
-      { "label": "Carousel", "href": "components/carousel.html" },
+
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Collapsible", "href": "components/collapsible.html" },
       { "label": "Combobox", "href": "components/combobox.html" },
       { "label": "Command", "href": "components/command.html" },
       { "label": "Context Menu", "href": "components/context-menu.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
-      { "label": "Menu", "href": "components/menu.html" },
-      { "label": "Empty", "href": "components/empty.html" },
+
+
       { "label": "Field", "href": "components/field.html" },
 
-      { "label": "Hover Card", "href": "components/hover-card.html" },
+
       { "label": "Input", "href": "components/input.html" },
       { "label": "Input Group", "href": "components/input-group.html" },
       { "label": "Input OTP", "href": "components/input-otp.html" },
@@ -49,13 +49,13 @@
       { "label": "Sheet", "href": "components/sheet.html" },
       { "label": "Skeleton", "href": "components/skeleton.html" },
       { "label": "Slider", "href": "components/slider.html" },
-      { "label": "Snippet", "href": "components/snippet.html" },
+
       { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
       { "label": "Switch", "href": "components/switch.html" },
       { "label": "Table", "href": "components/table.html" },
       { "label": "Tabs", "href": "components/tabs.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
-      { "label": "Theme Switcher", "href": "components/theme-switcher.html" },
+
       { "label": "HUD", "href": "components/hud.html" },
       { "label": "Toggle", "href": "components/toggle.html" },
       { "label": "Toggle Group", "href": "components/toggle-group.html" },

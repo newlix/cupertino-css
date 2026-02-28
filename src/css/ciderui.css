@@ -253,7 +253,6 @@
   @import "./components/banner.css";
   @import "./components/field.css";
   @import "./components/dialog.css";
-  @import "./components/menu.css";
   @import "./components/tabs.css";
   @import "./components/segmented-control.css";
   @import "./components/table.css";
@@ -264,7 +263,6 @@
   @import "./components/pagination.css";
   @import "./components/progress.css";
   @import "./components/skeleton.css";
-  @import "./components/snippet.css";
   @import "./components/slider.css";
   @import "./components/activity-indicator.css";
   @import "./components/hud.css";
@@ -272,20 +270,14 @@
   @import "./components/separator.css";
   @import "./components/input-group.css";
   @import "./components/list-row.css";
-  @import "./components/form.css";
-  @import "./components/theme-switcher.css";
   @import "./components/command.css";
   @import "./components/combobox.css";
-  @import "./components/empty.css";
   @import "./components/collapsible.css";
 
   @import "./components/sheet.css";
   @import "./components/popover.css";
   @import "./components/toggle.css";
-  @import "./components/aspect-ratio.css";
-  @import "./components/hover-card.css";
   @import "./components/input-otp.css";
   @import "./components/context-menu.css";
-  @import "./components/carousel.css";
   @import "./components/container.css";
 }

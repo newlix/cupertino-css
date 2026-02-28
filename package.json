@@ -21,7 +21,7 @@
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
-    "./carousel.js": "./js/carousel.js",
+
     "./combobox.js": "./js/combobox.js",
     "./command.js": "./js/command.js",
     "./context-menu.js": "./js/context-menu.js",
@@ -31,7 +31,7 @@
     "./popover.js": "./js/popover.js",
     "./select.js": "./js/select.js",
     "./sheet.js": "./js/sheet.js",
-    "./snippet.js": "./js/snippet.js",
+
     "./tabs.js": "./js/tabs.js",
     "./hud.js": "./js/hud.js",
     "./toggle.js": "./js/toggle.js"

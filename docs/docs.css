@@ -31,7 +31,7 @@
 
   .snippet-preview > figure {
     position: relative;
-    & > .card, & > .field, & > .accordion, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .theme-switcher, & > .command, & > .cider {
+    & > .card, & > .field, & > .accordion, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .command, & > .cider {
       @apply w-full;
     }
     & > .cider {
@@ -247,6 +247,96 @@
     }
     .demo-dashboard-stats {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* ========== SNIPPET (Code Block — docs only) ========== */
+  .snippet {
+    @apply rounded-[10px] border;
+    corner-shape: squircle;
+    & > :first-child {
+      border-top-left-radius: calc(var(--radius) - 1px);
+      border-top-right-radius: calc(var(--radius) - 1px);
+    }
+    & > :last-child {
+      border-bottom-left-radius: calc(var(--radius) - 1px);
+      border-bottom-right-radius: calc(var(--radius) - 1px);
+    }
+    & > pre {
+      @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
+      background: var(--surface-2);
+      & code, & code[class*="language-"], & code.hljs {
+        @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;
+        background: transparent;
+        color: var(--color-foreground);
+      }
+    }
+    & > header {
+      @apply flex items-center justify-between px-4 py-2 overflow-hidden;
+      border-bottom: 1px solid var(--panel-border);
+      background: var(--surface-2);
+      & > span {
+        @apply text-[12px] font-medium text-muted-foreground;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+      & > nav {
+        @apply flex gap-0.5;
+        & > button {
+          @apply rounded-md px-2 py-1 text-[12px] font-medium text-muted-foreground;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          transition: all 0.15s var(--apple-ease);
+          &:hover {
+            @apply text-foreground;
+            background: var(--surface-3);
+          }
+          &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+          &[data-active] {
+            @apply text-foreground;
+            background: var(--surface-4);
+          }
+        }
+      }
+      & > button {
+        @apply rounded-md border px-2 py-1 text-[12px] font-medium;
+        background: var(--surface-2);
+        border-color: var(--color-border);
+        color: var(--color-muted-foreground);
+        transition: all 0.15s var(--apple-ease);
+        opacity: 0;
+        &:hover {
+          background: var(--surface-4);
+          color: var(--color-foreground);
+        }
+        &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; opacity: 1; }
+        &:active {
+          transform: scale(var(--apple-press-scale));
+        }
+      }
+    }
+    &:hover > header > button {
+      opacity: 1;
+    }
+    & > .snippet-preview {
+      border-bottom: 1px solid var(--panel-border);
+      & > figure {
+        @apply py-6 px-6 m-0;
+      }
+    }
+    & > pre[data-panel]:not([data-active]) {
+      @apply hidden;
+    }
+  }
+  .snippet-lines {
+    counter-reset: line;
+    & .snippet-line {
+      display: flex;
+      &::before {
+        counter-increment: line;
+        content: counter(line);
+        @apply inline-block shrink-0 text-right pr-4 text-muted-foreground/40 select-none;
+        min-width: 2rem;
+        font-variant-numeric: tabular-nums;
+      }
     }
   }
 
