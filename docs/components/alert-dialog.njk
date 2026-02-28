@@ -5,16 +5,17 @@
 {% block content %}
 
   {% call example("Default") %}
-<button onclick="document.getElementById('demo-alert-dialog').showModal()" class="btn-tinted">Delete Account</button>
+<button onclick="document.getElementById('demo-alert-dialog').showModal()" class="btn-tinted">Close Document</button>
 
 <dialog id="demo-alert-dialog" class="dialog">
   <header>
-    <h3>Are you absolutely sure?</h3>
-    <p>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+    <h3>Save changes to "Untitled"?</h3>
+    <p>Your changes will be lost if you don't save them.</p>
   </header>
   <footer>
-    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-tinted">Cancel</button>
-    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-filled btn-destructive">Continue</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-tinted">Don't Save</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-gray">Cancel</button>
+    <button onclick="document.getElementById('demo-alert-dialog').close()" class="btn-filled">Save</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -62,7 +63,7 @@
   </header>
   <footer>
     <button onclick="document.getElementById('demo-alert-confirm').close()" class="btn-tinted">Cancel</button>
-    <button class="btn-gray" onclick="document.getElementById('demo-alert-confirm').close()">Publish</button>
+    <button class="btn-filled" onclick="document.getElementById('demo-alert-confirm').close()">Publish</button>
   </footer>
 </dialog>
 {% endcall %}
