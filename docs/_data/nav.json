@@ -31,7 +31,7 @@
       { "label": "Menu", "href": "components/menu.html" },
       { "label": "Empty", "href": "components/empty.html" },
       { "label": "Field", "href": "components/field.html" },
-      { "label": "File Tree", "href": "components/file-tree.html" },
+
       { "label": "Hover Card", "href": "components/hover-card.html" },
       { "label": "Input", "href": "components/input.html" },
       { "label": "Input Group", "href": "components/input-group.html" },
