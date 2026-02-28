@@ -7,7 +7,7 @@ test.describe('Popover', () => {
   });
 
   test('click trigger opens popover', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
     const trigger = preview.locator('[data-popover-trigger]');
     const content = preview.locator('.popover-content');
 
@@ -18,7 +18,7 @@ test.describe('Popover', () => {
   });
 
   test('click outside closes popover', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
     const trigger = preview.locator('[data-popover-trigger]');
     const content = preview.locator('.popover-content');
 
@@ -30,7 +30,7 @@ test.describe('Popover', () => {
   });
 
   test('Escape key closes popover', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
     const trigger = preview.locator('[data-popover-trigger]');
     const content = preview.locator('.popover-content');
 

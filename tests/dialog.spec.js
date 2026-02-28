@@ -7,7 +7,7 @@ test.describe('Dialog', () => {
   });
 
   test('open dialog via button and close via cancel', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
     const dialog = page.locator('#demo-dialog-1');
 
     await expect(dialog).not.toBeVisible();
@@ -21,7 +21,7 @@ test.describe('Dialog', () => {
   });
 
   test('close dialog via backdrop click', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
     const dialog = page.locator('#demo-dialog-1');
 
     await preview.locator('button:has-text("Open Dialog")').click();

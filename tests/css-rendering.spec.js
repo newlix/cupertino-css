@@ -71,7 +71,7 @@ test.describe('CSS Rendering', () => {
   test('alert variants are visible', async ({ page }) => {
     await goto(page, 'alert');
     for (const cls of ['.alert-info', '.alert-success', '.alert-warning', '.alert-destructive']) {
-      const alert = page.locator(`.snippet > figure ${cls}`).first();
+      const alert = page.locator(`.snippet-preview > figure ${cls}`).first();
       await expect(alert).toBeVisible();
       const box = await alert.boundingBox();
       expect(box.height).toBeGreaterThan(30);

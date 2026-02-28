@@ -27,7 +27,7 @@ test.describe('Checkbox', () => {
   });
 
   test('disabled checkbox cannot be toggled', async ({ page }) => {
-    const cb = page.locator('.snippet > figure input[type="checkbox"][disabled]').first();
+    const cb = page.locator('.snippet-preview > figure input[type="checkbox"][disabled]').first();
     await expect(cb).toBeDisabled();
   });
 });

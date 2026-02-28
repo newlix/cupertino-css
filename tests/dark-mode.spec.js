@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { goto, preview, css, setDark, parseRgb, contrast } from './helpers.js';
+import { goto, darkPreview, css, setDark, parseRgb, contrast } from './helpers.js';
 
 test.describe('Dark Mode', () => {
   test('OTP slots have visible background against card', async ({ page }) => {
     await goto(page, 'input-otp');
     await setDark(page);
 
-    const slot = preview(page).locator('.input-otp-slot').first();
-    const container = preview(page);
+    const slot = darkPreview(page).locator('.input-otp-slot').first();
+    const container = darkPreview(page);
 
     expect(await css(slot, 'backgroundColor')).not.toBe(await css(container, 'backgroundColor'));
   });
@@ -16,8 +16,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'switch');
     await setDark(page);
 
-    const checked = page.locator('.snippet > figure input[role="switch"]:checked').first();
-    const unchecked = page.locator('.snippet > figure input[role="switch"]:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.snippet-preview > figure input[role="switch"]:checked').first();
+    const unchecked = page.locator('.snippet-preview > figure input[role="switch"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'backgroundColor')).not.toBe(await css(unchecked, 'backgroundColor'));
   });
@@ -27,7 +27,7 @@ test.describe('Dark Mode', () => {
     await setDark(page);
 
     for (const sel of ['.badge', '.badge-destructive']) {
-      const badge = page.locator(`.snippet > figure ${sel}`).first();
+      const badge = page.locator(`.snippet-preview > figure ${sel}`).first();
       if ((await badge.count()) === 0) continue;
 
       const color = parseRgb(await css(badge, 'color'));
@@ -43,7 +43,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'card');
     await setDark(page);
 
-    const card = preview(page).locator('.card').first();
+    const card = darkPreview(page).locator('.card').first();
     const borderRgb = parseRgb(await css(card, 'borderColor'));
     const bgRgb = parseRgb(await css(card, 'backgroundColor'));
 
@@ -56,8 +56,8 @@ test.describe('Dark Mode', () => {
     await goto(page, 'radio-group');
     await setDark(page);
 
-    const checked = page.locator('.snippet > figure input[type="radio"]:checked').first();
-    const unchecked = page.locator('.snippet > figure input[type="radio"]:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.snippet-preview > figure input[type="radio"]:checked').first();
+    const unchecked = page.locator('.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)').first();
 
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
@@ -67,7 +67,7 @@ test.describe('Dark Mode', () => {
     await setDark(page);
 
     for (const sel of ['.alert-info', '.alert-success', '.alert-warning', '.alert-destructive']) {
-      const alert = page.locator(`.snippet > figure ${sel}`).first();
+      const alert = page.locator(`.snippet-preview > figure ${sel}`).first();
       if ((await alert.count()) === 0) continue;
 
       const borderRgb = parseRgb(await css(alert, 'borderColor'));
@@ -83,7 +83,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'input');
     await setDark(page);
 
-    const input = preview(page).locator('input[type="text"]').first();
+    const input = darkPreview(page).locator('input[type="text"]').first();
     const borderRgb = parseRgb(await css(input, 'borderColor'));
     const bgRgb = parseRgb(await css(input, 'backgroundColor'));
 
@@ -96,7 +96,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'progress');
     await setDark(page);
 
-    const bar = preview(page).locator('progress').first();
+    const bar = darkPreview(page).locator('progress').first();
     await expect(bar).toBeVisible();
     // Progress track should have a background
     const bg = await css(bar, 'backgroundColor');

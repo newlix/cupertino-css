@@ -7,7 +7,7 @@ test.describe('CSS State Specificity', () => {
     await page.waitForLoadState('networkidle');
 
     // First radio in the Default example is pre-checked
-    const radio = page.locator('.snippet > figure input[type="radio"]:checked').first();
+    const radio = page.locator('.snippet-preview > figure input[type="radio"]:checked').first();
     const before = await css(radio, 'borderColor');
 
     await radio.hover();
@@ -21,7 +21,7 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
-    const radio = page.locator('.snippet > figure input[type="radio"]:not(:checked):not(:disabled)').first();
+    const radio = page.locator('.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)').first();
     const before = await css(radio, 'borderColor');
 
     await radio.hover();
@@ -36,7 +36,7 @@ test.describe('CSS State Specificity', () => {
     await page.waitForLoadState('networkidle');
 
     // Second example ("Checked") has a pre-checked checkbox
-    const cb = page.locator('.snippet > figure').nth(1).locator('input[type="checkbox"]');
+    const cb = page.locator('.snippet-preview > figure').nth(1).locator('input[type="checkbox"]');
     const bgBefore = await css(cb, 'backgroundColor');
     const borderBefore = await css(cb, 'borderColor');
 
@@ -51,8 +51,8 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/switch.html');
     await page.waitForLoadState('networkidle');
 
-    const checked = page.locator('.snippet > figure input[role="switch"]:checked').first();
-    const unchecked = page.locator('.snippet > figure input[role="switch"]:not(:checked):not(:disabled)').first();
+    const checked = page.locator('.snippet-preview > figure input[role="switch"]:checked').first();
+    const unchecked = page.locator('.snippet-preview > figure input[role="switch"]:not(:checked):not(:disabled)').first();
 
     const bgOn = await css(checked, 'backgroundColor');
     const bgOff = await css(unchecked, 'backgroundColor');
@@ -64,7 +64,7 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
-    const disabled = page.locator('.snippet > figure input[type="radio"][disabled]').first();
+    const disabled = page.locator('.snippet-preview > figure input[type="radio"][disabled]').first();
     expect(parseFloat(await css(disabled, 'opacity'))).toBeLessThanOrEqual(0.5);
   });
 
@@ -72,7 +72,7 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/checkbox.html');
     await page.waitForLoadState('networkidle');
 
-    const disabled = page.locator('.snippet > figure input[type="checkbox"][disabled]').first();
+    const disabled = page.locator('.snippet-preview > figure input[type="checkbox"][disabled]').first();
     expect(await css(disabled, 'cursor')).toBe('not-allowed');
   });
 
@@ -80,7 +80,7 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/button.html');
     await page.waitForLoadState('networkidle');
 
-    const disabled = page.locator('.snippet > figure button[disabled]').first();
+    const disabled = page.locator('.snippet-preview > figure button[disabled]').first();
     expect(parseFloat(await css(disabled, 'opacity'))).toBeLessThan(1);
     expect(await css(disabled, 'pointerEvents')).toBe('none');
   });
@@ -89,7 +89,7 @@ test.describe('CSS State Specificity', () => {
     await page.goto('/site/components/input.html');
     await page.waitForLoadState('networkidle');
 
-    const input = page.locator('.snippet > figure input[type="text"]').first();
+    const input = page.locator('.snippet-preview > figure input[type="text"]').first();
     const beforeColor = await css(input, 'borderColor');
 
     await input.focus();

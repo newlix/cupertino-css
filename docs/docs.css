@@ -7,7 +7,7 @@
   /* Sidebar */
   .docs-sidebar {
     @apply fixed left-0 top-0 z-40 h-screen w-[260px] overflow-y-auto border-r;
-    background: oklch(from var(--background) l c h / 0.72);
+    background: oklch(from var(--color-background) l c h / 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
@@ -15,11 +15,11 @@
     @apply flex items-center rounded-lg px-2 py-1.5 text-[13px] font-medium text-muted-foreground transition-colors duration-150;
     &:hover {
       @apply text-foreground;
-      background: oklch(from var(--accent) l c h / 0.6);
+      background: oklch(from var(--color-accent) l c h / 0.6);
     }
     &[data-active] {
       @apply text-primary;
-      background: oklch(from var(--primary) l c h / 0.08);
+      background: oklch(from var(--color-primary) l c h / 0.08);
     }
   }
 
@@ -29,7 +29,8 @@
     @apply ml-[260px] min-h-screen;
   }
 
-  .snippet > figure {
+  .snippet-preview > figure {
+    position: relative;
     & > .card, & > .field, & > .accordion, & > table, & > .alert, & > .alert-info, & > .alert-success, & > .alert-warning, & > .alert-destructive, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .sidebar, & > .theme-switcher, & > .command, & > .cider {
       @apply w-full;
     }
@@ -42,6 +43,17 @@
     & pre {
       background: transparent;
       border-radius: 0;
+    }
+    &::after {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-muted-foreground);
+      opacity: 0.5;
     }
   }
   .docs-copy-btn {
@@ -72,20 +84,20 @@
     @apply flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors cursor-pointer;
     &:hover {
       @apply text-foreground;
-      background: var(--accent);
+      background: var(--color-accent);
     }
   }
 
   /* Mobile hamburger */
   .docs-hamburger {
     @apply hidden fixed top-4 left-4 z-50 size-9 items-center justify-center rounded-lg text-muted-foreground cursor-pointer border;
-    background: oklch(from var(--background) l c h / 0.72);
+    background: oklch(from var(--color-background) l c h / 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-color: var(--border);
+    border-color: var(--color-border);
     &:hover {
       @apply text-foreground;
-      background: var(--accent);
+      background: var(--color-accent);
     }
   }
   .docs-overlay {
@@ -97,7 +109,7 @@
   /* ─── Homepage ─── */
   .home-nav {
     @apply sticky top-0 z-50 border-b;
-    background: oklch(from var(--background) l c h / 0.72);
+    background: oklch(from var(--color-background) l c h / 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
@@ -121,7 +133,7 @@
   }
   .home-showcase-card {
     @apply rounded-2xl border overflow-hidden;
-    background: var(--card);
+    background: var(--color-card);
     padding: 1.5rem;
     flex: 1;
     box-shadow: 0 1px 3px rgb(0 0 0 / 0.02), 0 4px 16px rgb(0 0 0 / 0.03);
@@ -144,7 +156,7 @@
   }
   .home-demo-frame {
     @apply rounded-2xl border overflow-hidden;
-    background: var(--card);
+    background: var(--color-card);
     min-height: 500px;
   }
 
@@ -225,7 +237,7 @@
       display: none;
     }
     .demo-mail-detail {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--color-border);
     }
     .demo-settings-layout {
       grid-template-columns: 1fr;

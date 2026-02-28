@@ -7,7 +7,7 @@ test.describe('Tabs', () => {
   });
 
   test('clicking tab switches active panel', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
 
     const tab1 = preview.locator('[data-tab="tab-1"]');
     const tab2 = preview.locator('[data-tab="tab-2"]');
@@ -27,7 +27,7 @@ test.describe('Tabs', () => {
   });
 
   test('clicking third tab shows third panel', async ({ page }) => {
-    const preview = page.locator('.snippet > figure').first();
+    const preview = page.locator('.snippet-preview > figure').first();
 
     const tab3 = preview.locator('[data-tab="tab-3"]');
     const panel3 = preview.locator('[data-tab-panel="tab-3"]');

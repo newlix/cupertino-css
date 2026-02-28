@@ -10,7 +10,12 @@ export async function goto(page, component, section = 'components') {
 
 /** Get the nth example preview container. */
 export function preview(page, nth = 0) {
-  return page.locator('.snippet > figure').nth(nth);
+  return page.locator('.snippet-preview > figure').nth(nth);
+}
+
+/** Get the nth preview container in dark mode (call setDark first). */
+export function darkPreview(page, nth = 0) {
+  return page.locator('.snippet-preview > figure').nth(nth);
 }
 
 /** Get a computed CSS property from a locator. */
