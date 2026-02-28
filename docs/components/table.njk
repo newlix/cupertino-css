@@ -57,42 +57,7 @@
 </div>
 {% endcall %}
 
-  {% call example("With Badges") %}
-<div class="table">
-<table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="font-medium">John Doe</td>
-        <td class="text-muted-foreground">john@example.com</td>
-        <td class="text-muted-foreground">Admin</td>
-        <td><span class="tag"><span class="size-1.5 rounded-full bg-green-500"></span>Active</span></td>
-      </tr>
-      <tr>
-        <td class="font-medium">Jane Smith</td>
-        <td class="text-muted-foreground">jane@example.com</td>
-        <td class="text-muted-foreground">Editor</td>
-        <td><span class="tag"><span class="size-1.5 rounded-full bg-green-500"></span>Active</span></td>
-      </tr>
-      <tr>
-        <td class="font-medium">Bob Wilson</td>
-        <td class="text-muted-foreground">bob@example.com</td>
-        <td class="text-muted-foreground">Viewer</td>
-        <td><span class="tag">Inactive</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-{% endcall %}
-
-  {% call example("With Actions") %}
+{% call example("With Actions") %}
 <div class="table">
 <table>
     <thead>
@@ -170,28 +135,34 @@
       <tr>
         <th class="w-10"><input type="checkbox" /></th>
         <th>Task</th>
-        <th>Status</th>
         <th>Priority</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><input type="checkbox" checked /></td>
-        <td class="font-medium">Update landing page</td>
-        <td><span class="tag"><span class="size-1.5 rounded-full bg-green-500"></span>Done</span></td>
+        <td><span class="font-medium line-through text-muted-foreground">Update landing page</span></td>
         <td class="text-muted-foreground">High</td>
       </tr>
       <tr>
-        <td><input type="checkbox" /></td>
-        <td class="font-medium">Fix login bug</td>
-        <td><span class="tag"><span class="size-1.5 rounded-full bg-amber-500"></span>In Progress</span></td>
+        <td><input type="checkbox" checked /></td>
+        <td><span class="font-medium line-through text-muted-foreground">Review pull requests</span></td>
         <td class="text-muted-foreground">Medium</td>
       </tr>
       <tr>
         <td><input type="checkbox" /></td>
-        <td class="font-medium">Write API docs</td>
-        <td><span class="tag">Todo</span></td>
+        <td class="font-medium">Fix authentication bug</td>
+        <td class="text-muted-foreground">High</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td class="font-medium">Write API documentation</td>
         <td class="text-muted-foreground">Low</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td class="font-medium">Set up CI/CD pipeline</td>
+        <td class="text-muted-foreground">Medium</td>
       </tr>
     </tbody>
   </table>

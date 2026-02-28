@@ -51,15 +51,6 @@ test.describe('Focus Visible Accessibility', () => {
     expect(await css(toggle, 'outlineStyle')).not.toBe('none');
   });
 
-  test('accordion summary shows outline on keyboard focus', async ({ page }) => {
-    await goto(page, 'accordion');
-
-    const summary = page.locator('.snippet-preview > figure .accordion summary').first();
-    await focusViaKeyboard(page, summary);
-
-    expect(await css(summary, 'outlineStyle')).not.toBe('none');
-  });
-
   test('slider removes default outline on keyboard focus', async ({ page }) => {
     await goto(page, 'slider');
 

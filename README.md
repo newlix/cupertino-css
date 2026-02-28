@@ -56,7 +56,6 @@ For quick prototyping without a build step:
 | Dropdown | `dropdown-menu` | `js/dropdown-menu.js` |
 | Tabs | `tabs` `tabs-list` `tabs-trigger` `tabs-content` `tabs-pill` | `js/tabs.js` |
 | Table | `table` `table-striped` | — |
-| Accordion | `accordion` (native `<details>`) | — |
 | Avatar | `avatar` `avatar-group` | — |
 | Breadcrumb | `breadcrumb` | — |
 | Button Group | `btn-group` | — |

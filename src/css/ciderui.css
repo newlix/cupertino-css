@@ -256,7 +256,6 @@
   @import "./components/tabs.css";
   @import "./components/segmented-control.css";
   @import "./components/table.css";
-  @import "./components/accordion.css";
   @import "./components/avatar.css";
   @import "./components/breadcrumb.css";
   @import "./components/button-group.css";
@@ -272,7 +271,6 @@
   @import "./components/list-row.css";
   @import "./components/command.css";
   @import "./components/combobox.css";
-  @import "./components/collapsible.css";
 
   @import "./components/sheet.css";
   @import "./components/popover.css";

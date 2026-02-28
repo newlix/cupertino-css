@@ -11,7 +11,6 @@
   {
     "title": "Components",
     "items": [
-      { "label": "Accordion", "href": "components/accordion.html" },
       { "label": "Banner", "href": "components/banner.html" },
       { "label": "Alert Dialog", "href": "components/alert-dialog.html" },
 
@@ -23,7 +22,6 @@
       { "label": "Card", "href": "components/card.html" },
 
       { "label": "Checkbox", "href": "components/checkbox.html" },
-      { "label": "Collapsible", "href": "components/collapsible.html" },
       { "label": "Combobox", "href": "components/combobox.html" },
       { "label": "Command", "href": "components/command.html" },
       { "label": "Context Menu", "href": "components/context-menu.html" },

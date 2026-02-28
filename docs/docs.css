@@ -31,7 +31,7 @@
 
   .snippet-preview > figure {
     position: relative;
-    & > .card, & > .field, & > .accordion, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .command, & > .cider {
+    & > .card, & > .field, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .input-group, & > .input-group-attached, & > .list-row, & > .list-section, & > form, & > fieldset, & > .command, & > .cider {
       @apply w-full;
     }
     & > .cider {
@@ -147,107 +147,6 @@
   @media (max-width: 640px) {
     .home-hero { @apply py-12; }
     .home-showcase-2, .home-showcase-3 { grid-template-columns: 1fr; }
-  }
-
-  /* ─── Homepage Demo Tabs ─── */
-  .home-demo-panel {
-    display: none;
-    &[data-active] { display: block; }
-  }
-  .home-demo-frame {
-    @apply rounded-2xl border overflow-hidden;
-    background: var(--color-card);
-    min-height: 500px;
-  }
-
-  /* Mail demo */
-  .demo-mail-layout {
-    display: grid;
-    grid-template-columns: 220px 280px 1fr;
-    min-height: 500px;
-  }
-  .demo-mail-sidebar {
-    @apply border-r p-0;
-    & .sidebar-item {
-      @apply flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] text-foreground/70 cursor-pointer;
-      & svg { @apply size-4 text-muted-foreground; }
-      &:hover { background: var(--surface-3); @apply text-foreground; }
-      &[data-active] { background: var(--surface-4); @apply text-foreground font-medium; }
-    }
-  }
-
-  .demo-dashboard-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .demo-dashboard-bottom {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Settings demo */
-  .demo-settings-layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    min-height: 500px;
-  }
-  .demo-settings-nav {
-    @apply border-r p-4;
-    & .sidebar-item {
-      @apply flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] text-foreground/70 cursor-pointer;
-      & svg { @apply size-4 text-muted-foreground; }
-      &:hover { background: var(--surface-3); @apply text-foreground; }
-      &[data-active] { background: var(--surface-4); @apply text-foreground font-medium; }
-    }
-  }
-
-  /* Auth demo */
-  .demo-auth {
-    @apply flex items-center justify-center p-8;
-    min-height: 500px;
-    background: linear-gradient(160deg, oklch(0.96 0.015 240) 0%, oklch(0.94 0.025 270) 40%, oklch(0.96 0.018 300) 100%);
-  }
-  :is(.dark) .demo-auth {
-    background: linear-gradient(160deg, oklch(0.17 0.015 240) 0%, oklch(0.14 0.025 270) 40%, oklch(0.17 0.018 300) 100%);
-  }
-
-  /* Demo responsive */
-  @media (max-width: 1024px) {
-    .demo-mail-layout {
-      grid-template-columns: 260px 1fr;
-    }
-    .demo-mail-sidebar {
-      display: none;
-    }
-    .demo-dashboard-stats {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .demo-dashboard-bottom {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (max-width: 768px) {
-    .demo-mail-layout {
-      grid-template-columns: 1fr;
-    }
-    .demo-mail-list {
-      display: none;
-    }
-    .demo-mail-detail {
-      border-top: 1px solid var(--color-border);
-    }
-    .demo-settings-layout {
-      grid-template-columns: 1fr;
-    }
-    .demo-settings-nav {
-      display: none;
-    }
-    .demo-dashboard-stats {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
