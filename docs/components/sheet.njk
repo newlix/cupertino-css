@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Right (Default)") %}
-<button onclick="document.getElementById('demo-sheet-right').showModal()">Open Sheet</button>
+<button class="btn-secondary" onclick="document.getElementById('demo-sheet-right').showModal()">Open Sheet</button>
 
 <dialog id="demo-sheet-right" class="sheet">
   <button onclick="document.getElementById('demo-sheet-right').close()" class="sheet-close">
@@ -28,7 +28,7 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet-right').close()">Save changes</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-right').close()">Save changes</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -110,7 +110,7 @@
   </section>
   <footer>
     <button onclick="document.getElementById('demo-sheet-form').close()" class="btn-outline">Cancel</button>
-    <button onclick="document.getElementById('demo-sheet-form').close()">Create</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-form').close()">Create</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -132,7 +132,7 @@
   </section>
   <footer>
     <button onclick="document.getElementById('demo-sheet-noclose').close()" class="btn-outline">Decline</button>
-    <button onclick="document.getElementById('demo-sheet-noclose').close()">Accept</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-sheet-noclose').close()">Accept</button>
   </footer>
 </dialog>
 {% endcall %}

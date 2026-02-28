@@ -12,7 +12,6 @@
 <div class="cider">
   <h1>Hello</h1>
   <p>Auto-styled, layout is up to you.</p>
-  <button>Click me</button>
 </div>
 {% endcall %}
 
@@ -108,7 +107,7 @@
   <h1>Styled by .cider</h1>
   <p>This paragraph is auto-styled.</p>
   <div class="cider-reset">
-    <button>Plain button (no .cider styling)</button>
+    <code>no .cider styling</code>
   </div>
 </div>
 {% endcall %}
@@ -118,11 +117,11 @@
     </p>
     {% call example("Re-enabling inside reset") %}
 <div class="cider">
-  <button>Styled</button>
+  <code>Styled</code>
   <div class="cider-reset">
-    <button>Unstyled</button>
+    <code>Unstyled</code>
     <div class="cider" style="margin-top:0.5rem">
-      <button>Styled again</button>
+      <code>Styled again</code>
     </div>
   </div>
 </div>
@@ -147,7 +146,7 @@
     &lt;form&gt;
       &lt;label for="name"&gt;Name&lt;/label&gt;
       &lt;input type="text" id="name"&gt;
-      &lt;button type="submit"&gt;Send&lt;/button&gt;
+      &lt;button class="btn-secondary" type="submit"&gt;Send&lt;/button&gt;
     &lt;/form&gt;
   &lt;/main&gt;
 

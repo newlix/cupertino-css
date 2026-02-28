@@ -73,16 +73,6 @@
     @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-medium;
   }
 
-  /* ─── Buttons ─── */
-  button {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-[15px] py-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer bg-secondary text-secondary-foreground;
-    transition: all 0.25s var(--apple-spring);
-    letter-spacing: -0.016em;
-    &:hover { background: var(--secondary-hover); }
-    &:active { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
-  }
-
   /* ─── Text inputs ─── */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
     @apply w-full h-11 rounded-[8px] border px-3.5 text-[13px] text-foreground outline-none;
@@ -91,7 +81,7 @@
     transition: border-color 0.2s var(--apple-ease);
     &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
     &:hover:not(:focus) { border-color: var(--input-border-hover); }
-    &:focus { border-color: var(--primary); box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.15); }
+    &:focus { border-color: var(--primary); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
     &[aria-invalid="true"] { border-color: var(--destructive); &:focus { border-color: var(--destructive); } }
   }
@@ -104,7 +94,7 @@
     transition: border-color 0.2s var(--apple-ease);
     &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
     &:hover:not(:focus) { border-color: var(--input-border-hover); }
-    &:focus { border-color: var(--primary); box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.15); }
+    &:focus { border-color: var(--primary); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
     &[aria-invalid="true"] { border-color: var(--destructive); &:focus { border-color: var(--destructive); } }
   }

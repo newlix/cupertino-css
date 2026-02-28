@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Bottom (Default)") %}
-<button onclick="document.getElementById('demo-drawer-bottom').showModal()">Open Drawer</button>
+<button class="btn-secondary" onclick="document.getElementById('demo-drawer-bottom').showModal()">Open Drawer</button>
 
 <dialog id="demo-drawer-bottom" class="sheet-bottom">
   <div class="drawer-handle"></div>
@@ -24,7 +24,7 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-drawer-bottom').close()" class="w-full">Submit</button>
+    <button onclick="document.getElementById('demo-drawer-bottom').close()" class="btn-secondary w-full">Submit</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -96,7 +96,7 @@
     </form>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-drawer-form').close()" class="w-full">Submit Feedback</button>
+    <button onclick="document.getElementById('demo-drawer-form').close()" class="btn-secondary w-full">Submit Feedback</button>
   </footer>
 </dialog>
 {% endcall %}

@@ -13,7 +13,7 @@
       <h2 class="text-xl font-bold tracking-tight">Write HTML, get Apple</h2>
       <p class="text-muted-foreground">Semantic class names instead of utility soup. Tailwind is still there for your layout and overrides.</p>
       <div class="snippet" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
-        <pre><code class="language-html">{{ '<div class="card">\n  <div class="card-header">\n    <h3 class="card-title">Sign In</h3>\n  </div>\n  <div class="card-content space-y-4">\n    <div class="field">\n      <label>Email</label>\n      <input type="email" placeholder="you@example.com" />\n    </div>\n    <div class="field">\n      <label>Password</label>\n      <input type="password" />\n    </div>\n  </div>\n  <div class="card-footer">\n    <button>Continue</button>\n  </div>\n</div>' | highlight("html") }}</code></pre>
+        <pre><code class="language-html">{{ '<div class="card">\n  <div class="card-header">\n    <h3 class="card-title">Sign In</h3>\n  </div>\n  <div class="card-content space-y-4">\n    <div class="field">\n      <label>Email</label>\n      <input type="email" placeholder="you@example.com" />\n    </div>\n    <div class="field">\n      <label>Password</label>\n      <input type="password" />\n    </div>\n  </div>\n  <div class="card-footer">\n    <button class="btn-secondary">Continue</button>\n  </div>\n</div>' | highlight("html") }}</code></pre>
       </div>
       <figure>
         <div class="cider" style="max-width: 380px;">
@@ -32,7 +32,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <button>Continue</button>
+              <button class="btn-secondary">Continue</button>
             </div>
           </div>
         </div>

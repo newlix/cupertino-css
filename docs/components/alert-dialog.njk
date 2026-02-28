@@ -53,7 +53,7 @@
 {% endcall %}
 
   {% call example("Confirmation") %}
-<button onclick="document.getElementById('demo-alert-confirm').showModal()">Publish Article</button>
+<button class="btn-secondary" onclick="document.getElementById('demo-alert-confirm').showModal()">Publish Article</button>
 
 <dialog id="demo-alert-confirm" class="dialog">
   <header>
@@ -62,7 +62,7 @@
   </header>
   <footer>
     <button onclick="document.getElementById('demo-alert-confirm').close()" class="btn-outline">Cancel</button>
-    <button onclick="document.getElementById('demo-alert-confirm').close()">Publish</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-alert-confirm').close()">Publish</button>
   </footer>
 </dialog>
 {% endcall %}

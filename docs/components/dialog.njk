@@ -5,7 +5,7 @@
 {% block content %}
 
   {% call example("Confirmation") %}
-<button onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
+<button class="btn-secondary" onclick="document.getElementById('demo-dialog-1').showModal()">Open Dialog</button>
 
 <dialog id="demo-dialog-1" class="dialog">
   <header>
@@ -41,7 +41,7 @@
   </section>
   <footer>
     <button onclick="document.getElementById('demo-dialog-2').close()" class="btn-outline">Cancel</button>
-    <button onclick="document.getElementById('demo-dialog-2').close()">Save Changes</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-2').close()">Save Changes</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -66,7 +66,7 @@
   </section>
   <footer>
     <button onclick="document.getElementById('demo-dialog-scroll').close()" class="btn-outline">Decline</button>
-    <button onclick="document.getElementById('demo-dialog-scroll').close()">Accept</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-scroll').close()">Accept</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -85,7 +85,7 @@
   <section>
     <div class="flex gap-2">
       <input type="text" value="https://example.com/doc/abc123" readonly class="flex-1" />
-      <button onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
+      <button class="btn-secondary" onclick="navigator.clipboard && navigator.clipboard.writeText('https://example.com/doc/abc123')">Copy</button>
     </div>
   </section>
   <footer></footer>
@@ -104,7 +104,7 @@
     <div class="space-y-4">
       <div class="flex gap-2">
         <input type="email" placeholder="email@example.com" class="flex-1" />
-        <button>Invite</button>
+        <button class="btn-secondary">Invite</button>
       </div>
       <div class="space-y-2">
         <div class="flex items-center justify-between rounded-lg border px-3 py-2">
@@ -136,7 +136,7 @@
   </section>
   <footer>
     <button onclick="document.getElementById('demo-dialog-custom').close()" class="btn-outline">Cancel</button>
-    <button onclick="document.getElementById('demo-dialog-custom').close()">Done</button>
+    <button class="btn-secondary" onclick="document.getElementById('demo-dialog-custom').close()">Done</button>
   </footer>
 </dialog>
 {% endcall %}

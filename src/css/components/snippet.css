@@ -22,7 +22,7 @@
     & > nav {
       @apply flex gap-0.5;
       & > button {
-        @apply rounded-md px-2.5 py-1 text-[12px] font-medium text-muted-foreground cursor-pointer;
+        @apply rounded-md px-2.5 py-1 text-[12px] font-medium text-muted-foreground;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         transition: all 0.15s var(--apple-ease);
         &:hover {
@@ -36,7 +36,7 @@
       }
     }
     & > button {
-      @apply rounded-md border px-2 py-1 text-[11px] font-medium cursor-pointer;
+      @apply rounded-md border px-2 py-1 text-[11px] font-medium;
       background: var(--surface-2);
       border-color: var(--panel-border);
       color: var(--muted-foreground);

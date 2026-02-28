@@ -27,7 +27,6 @@
   background: var(--surface-1);
 }
 a.item, button.item {
-  @apply cursor-pointer;
   &:hover { background: var(--surface-2); }
   &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }
 }
