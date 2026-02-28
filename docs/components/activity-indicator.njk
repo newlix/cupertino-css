@@ -1,0 +1,51 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Activity Indicator" %}
+
+{% block content %}
+
+  {% call example("Sizes") %}
+<div class="flex flex-wrap items-center gap-4">
+  <span class="activity-indicator activity-indicator-sm"></span>
+  <span class="activity-indicator"></span>
+  <span class="activity-indicator activity-indicator-lg"></span>
+</div>
+{% endcall %}
+
+  {% call example("Color") %}
+<div class="flex items-center gap-6">
+  <span class="activity-indicator text-red-500"></span>
+  <span class="activity-indicator text-green-500"></span>
+  <span class="activity-indicator text-blue-500"></span>
+  <span class="activity-indicator text-yellow-500"></span>
+  <span class="activity-indicator text-purple-500"></span>
+</div>
+{% endcall %}
+
+  {% call example("Button") %}
+<div class="flex flex-wrap items-center gap-4">
+  <button class="btn-gray" disabled>
+    <span class="activity-indicator activity-indicator-sm"></span>
+    Loading…
+  </button>
+  <button class="btn-tinted" disabled>
+    <span class="activity-indicator activity-indicator-sm"></span>
+    Please wait
+  </button>
+  <button class="btn-filled" disabled>
+    <span class="activity-indicator activity-indicator-sm"></span>
+    Processing
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("HUD") %}
+<div class="relative h-48 rounded-lg bg-secondary flex items-center justify-center">
+  <div class="hud flex-col gap-3 px-8 py-6" style="position:static;">
+    <span class="activity-indicator activity-indicator-lg"></span>
+    <span class="text-sm font-medium">Loading</span>
+  </div>
+</div>
+{% endcall %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+/* ========== ACTIVITY INDICATOR ========== */
+/* Apple-style UIActivityIndicatorView — 8 radial spokes with trailing-fade */
+@keyframes activity-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.activity-indicator {
+  @apply inline-block size-5;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='translate(50,50)'%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.95'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.85' transform='rotate(45)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.7' transform='rotate(90)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.55' transform='rotate(135)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.4' transform='rotate(180)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.3' transform='rotate(225)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.2' transform='rotate(270)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.1' transform='rotate(315)'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='translate(50,50)'%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.95'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.85' transform='rotate(45)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.7' transform='rotate(90)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.55' transform='rotate(135)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.4' transform='rotate(180)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.3' transform='rotate(225)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.2' transform='rotate(270)'/%3E%3Crect x='-4' y='-40' width='8' height='20' rx='4' opacity='0.1' transform='rotate(315)'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: activity-spin 1s steps(8, end) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .activity-indicator { animation: none; opacity: 0.5; }
+}
+.activity-indicator-sm {
+  @apply size-4;
+}
+.activity-indicator-lg {
+  @apply size-8;
+}

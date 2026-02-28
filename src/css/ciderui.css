@@ -295,14 +295,13 @@
   @import "./components/skeleton.css";
   @import "./components/snippet.css";
   @import "./components/slider.css";
-  @import "./components/spinner.css";
+  @import "./components/activity-indicator.css";
   @import "./components/hud.css";
   @import "./components/tooltip.css";
   @import "./components/separator.css";
   @import "./components/input-group.css";
   @import "./components/list-row.css";
   @import "./components/form.css";
-  @import "./components/sidebar.css";
   @import "./components/theme-switcher.css";
   @import "./components/command.css";
   @import "./components/combobox.css";

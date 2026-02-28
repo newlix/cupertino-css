@@ -78,11 +78,11 @@ test.describe('CSS Rendering', () => {
     }
   });
 
-  test('spinner has animation', async ({ page }) => {
-    await goto(page, 'spinner');
-    const spinner = preview(page).locator('.spinner').first();
-    await expect(spinner).toBeVisible();
-    expect(await css(spinner, 'animationName')).not.toBe('none');
+  test('activity indicator has animation', async ({ page }) => {
+    await goto(page, 'activity-indicator');
+    const indicator = preview(page).locator('.activity-indicator').first();
+    await expect(indicator).toBeVisible();
+    expect(await css(indicator, 'animationName')).not.toBe('none');
   });
 
   test('breadcrumb renders links and separators', async ({ page }) => {

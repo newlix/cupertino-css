@@ -65,7 +65,7 @@ For quick prototyping without a build step:
 | Progress | `progress` > `.progress-bar` `progress-sm` `progress-indeterminate` | — |
 | Skeleton | `skeleton` `skeleton-circle` | — |
 | Slider | `slider` | — |
-| Spinner | `spinner` `spinner-sm` `spinner-lg` | — |
+| Activity Indicator | `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` | — |
 | HUD | `hud` `hud-container` | `js/hud.js` |
 | Tooltip | `tooltip` `tooltip-content` `tooltip-bottom` | — |
 

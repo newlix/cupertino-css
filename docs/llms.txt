@@ -62,7 +62,7 @@
 - [Empty](https://ciderui.com/components/empty.html): Empty state placeholder.
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
 - [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` `skeleton-circle` — loading placeholder.
-- [Spinner](https://ciderui.com/components/spinner.html): `spinner` `spinner-sm` `spinner-lg` — loading indicator.
+- [Activity Indicator](https://ciderui.com/components/activity-indicator.html): `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` — Apple-style loading indicator.
 - [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
 
 ### Display & Media
