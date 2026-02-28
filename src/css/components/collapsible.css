@@ -12,6 +12,7 @@
     &::-webkit-details-marker { display: none; }
     & svg:last-child {
       @apply size-5 shrink-0 text-muted-foreground;
+      transform: rotate(0deg);
       transition: transform 0.25s var(--apple-spring);
     }
   }
@@ -23,6 +24,7 @@
   }
   & > div, & > p {
     @apply px-4 pt-3 pb-4 text-[13px] text-muted-foreground;
+    interpolate-size: allow-keywords;
     overflow: hidden;
     transition: height 0.3s var(--apple-spring);
   }

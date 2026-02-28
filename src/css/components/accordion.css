@@ -42,4 +42,11 @@
       transition: height 0.3s var(--apple-spring);
     }
   }
+  /* Neutralize standalone styling when nested in a card */
+  .card & {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    corner-shape: unset;
+  }
 }

@@ -1,6 +1,6 @@
 /* ========== TOGGLE ========== */
 .toggle {
-  @apply inline-flex size-11 items-center justify-center rounded-[8px] text-muted-foreground cursor-pointer;
+  @apply inline-flex size-11 items-center justify-center gap-1.5 rounded-[8px] text-[13px] font-medium text-muted-foreground cursor-pointer;
   corner-shape: squircle;
   transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
   &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
@@ -14,7 +14,10 @@
     background: var(--surface-5);
   }
   &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
-  & svg { @apply size-4; }
+  & svg { @apply size-4 shrink-0; }
+}
+.toggle-text {
+  @apply w-auto h-9 px-3;
 }
 .toggle-sm { @apply size-8; & svg { @apply size-3.5; } }
 .toggle-lg { @apply size-12; & svg { @apply size-5; } }
@@ -29,7 +32,7 @@
   }
 }
 .toggle-group {
-  @apply inline-flex items-center gap-0.5 rounded-[--radius-sm] p-0.5;
+  @apply inline-flex items-center gap-0.5 rounded-[var(--radius-sm)] p-0.5;
   corner-shape: squircle;
   background: var(--surface-3);
   & .toggle {

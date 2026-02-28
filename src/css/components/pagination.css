@@ -3,7 +3,7 @@
   @apply flex items-center gap-0.5;
 }
 .pagination-item {
-  @apply inline-flex h-8 min-w-8 items-center justify-center rounded-[8px] text-[13px] font-medium text-muted-foreground cursor-pointer;
+  @apply inline-flex h-8 min-w-8 items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-muted-foreground cursor-pointer;
   corner-shape: squircle;
   transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
   &:hover:not([data-active]) { background: var(--surface-3); }

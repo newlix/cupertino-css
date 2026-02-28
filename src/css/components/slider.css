@@ -1,6 +1,6 @@
 /* ========== SLIDER ========== */
 .slider {
-  @apply w-full cursor-pointer appearance-none rounded-full;
+  @apply block w-full cursor-pointer appearance-none rounded-full;
   height: 4px;
   background: var(--surface-5);
   accent-color: var(--color-primary);
@@ -23,6 +23,7 @@
     background: white;
     width: 22px;
     height: 22px;
+    margin-top: -9px;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 1px oklch(0 0 0 / 0.04);
     transition: box-shadow 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
   }

@@ -41,7 +41,9 @@
     @apply border-l-0;
   }
   & .input, & input {
-    @apply flex-1;
+    @apply flex-1 min-w-0;
+    width: auto;
+    corner-shape: initial;
   }
   & .input:not(:first-child):not(:last-child), & input:not(:first-child):not(:last-child) {
     @apply rounded-none;

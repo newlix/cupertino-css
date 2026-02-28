@@ -75,7 +75,7 @@
   }
 
   /* ─── Text inputs ─── */
-  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"]) {
+  input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"])) {
     @apply w-full h-11 rounded-[12px] border px-4 text-[13px] text-foreground outline-none;
     corner-shape: squircle;
     background-color: var(--color-card);

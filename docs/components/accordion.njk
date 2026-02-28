@@ -58,11 +58,12 @@
 
   {% call example("In Card") %}
 <div class="card max-w-md">
-  <div class="px-6 pt-6">
-    <h3 class="text-lg font-semibold">Frequently Asked Questions</h3>
-    <p class="mt-1 text-sm text-muted-foreground">Everything you need to know about the product.</p>
-  </div>
-  <div class="accordion px-2 pb-2">
+  <header>
+    <h3>Frequently Asked Questions</h3>
+    <p>Everything you need to know about the product.</p>
+  </header>
+  <section class="pt-0">
+    <div class="accordion">
     <details name="accordion-card" open>
       <summary>
         How does billing work?
@@ -84,7 +85,8 @@
       </summary>
       <div>Yes, we offer a 14-day free trial on all paid plans. No credit card required.</div>
     </details>
-  </div>
+    </div>
+  </section>
 </div>
 {% endcall %}
 

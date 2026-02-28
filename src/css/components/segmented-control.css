@@ -8,7 +8,7 @@
   background: var(--color-secondary);
 }
 .segmented-control-trigger {
-  @apply rounded-[7px] px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground;
+  @apply inline-flex items-center gap-1.5 rounded-[7px] px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground;
   transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring), transform 0.15s var(--apple-spring);
   &:hover { @apply text-foreground; }
   &:active { transform: scale(var(--apple-press-scale)); }
