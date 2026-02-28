@@ -222,6 +222,7 @@
   *::before,
   *::after {
     @apply border-border;
+    corner-shape: squircle;
   }
 
   @keyframes slideUp {
