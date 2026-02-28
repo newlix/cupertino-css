@@ -14,10 +14,11 @@ document.addEventListener("contextmenu", (e) => {
 
   e.preventDefault();
 
-  // Close all context menus first
+  // Close all context menus first (instant close for re-open at new position)
   document.querySelectorAll(".context-menu-content[data-open]").forEach((el) => {
-    el.removeAttribute("data-open");
     el.removeAttribute("data-closing");
+    el.removeAttribute("data-open");
+    el.style.display = "";
   });
 
   const menu = trigger.querySelector(".context-menu-content") ||

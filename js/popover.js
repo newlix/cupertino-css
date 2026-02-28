@@ -4,7 +4,7 @@ function closePopover(el) {
   setTimeout(() => {
     el.removeAttribute("data-open");
     el.removeAttribute("data-closing");
-  }, 150);
+  }, 200);
 }
 
 document.addEventListener("click", (e) => {

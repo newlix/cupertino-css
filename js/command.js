@@ -3,6 +3,8 @@
 
 function init() {
   document.querySelectorAll(".command").forEach((command) => {
+    if (command.dataset.initialized) return;
+    command.dataset.initialized = "true";
     const input = command.querySelector("header input");
     if (!input) return;
 
@@ -73,7 +75,7 @@ document.addEventListener("keydown", (e) => {
 
     const metaMatch = needsMeta ? (e.metaKey || e.ctrlKey) : true;
     const ctrlMatch = needsCtrl ? e.ctrlKey : true;
-    const shiftMatch = needsShift ? e.shiftKey : !e.shiftKey;
+    const shiftMatch = !needsShift || e.shiftKey;
 
     if (metaMatch && ctrlMatch && shiftMatch && e.key.toLowerCase() === key) {
       e.preventDefault();

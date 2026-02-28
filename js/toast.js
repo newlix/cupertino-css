@@ -46,8 +46,8 @@ function showToast(title, message, type = "success") {
 
   // Auto-remove after 4 seconds
   setTimeout(() => {
-    toast.style.animation = "slideDown 0.2s ease-in forwards";
-    setTimeout(() => toast.remove(), 200);
+    toast.style.animation = "toastSlideOut 0.3s var(--apple-ease) forwards";
+    setTimeout(() => toast.remove(), 300);
   }, 4000);
 }
 

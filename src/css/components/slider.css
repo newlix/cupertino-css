@@ -5,7 +5,8 @@
   background: var(--surface-5);
   accent-color: var(--primary);
   &::-webkit-slider-thumb {
-    @apply appearance-none rounded-full bg-white;
+    @apply appearance-none rounded-full;
+    background: white;
     width: 22px;
     height: 22px;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 1px oklch(0 0 0 / 0.04);
@@ -20,7 +21,8 @@
     transform: scale(0.95);
   }
   &::-moz-range-thumb {
-    @apply rounded-full bg-white;
+    @apply rounded-full;
+    background: white;
     width: 22px;
     height: 22px;
     border: none;
@@ -45,4 +47,14 @@
     }
   }
   &:disabled { @apply cursor-not-allowed opacity-50; }
+  .dark & {
+    &::-webkit-slider-thumb {
+      background: oklch(0.95 0 0);
+      box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+    &::-moz-range-thumb {
+      background: oklch(0.95 0 0);
+      box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+  }
 }

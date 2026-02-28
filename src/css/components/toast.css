@@ -21,6 +21,10 @@
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
 .toast-container {
   @apply fixed top-4 right-4 z-[100] flex flex-col gap-2.5;
 }

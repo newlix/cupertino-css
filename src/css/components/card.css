@@ -30,7 +30,7 @@
   & h2, & h3 { @apply text-[20px] font-semibold tracking-tight; }
   & p { @apply mt-2 text-[13px] text-muted-foreground; }
   &:hover {
-    background: var(--surface-1);
+    background: color-mix(in oklch, var(--card), var(--foreground) 3%);
     box-shadow: var(--shadow-md), var(--float-ring);
   }
   &:active { transform: scale(var(--apple-press-scale)); }

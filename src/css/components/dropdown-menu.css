@@ -22,8 +22,6 @@
   & .dropdown-destructive {
     color: var(--destructive);
     &:hover { background: oklch(from var(--destructive) l c h / 0.08); }
-    &:is(.dark *) {
-      &:hover { background: oklch(from var(--destructive) l c h / 0.12); }
-    }
+    .dark &:hover { background: oklch(from var(--destructive) l c h / 0.12); }
   }
 }

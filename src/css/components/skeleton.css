@@ -14,3 +14,10 @@
 .skeleton-circle {
   @apply rounded-full;
 }
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .skeleton-circle {
+    animation: none;
+    background: var(--surface-3);
+  }
+}

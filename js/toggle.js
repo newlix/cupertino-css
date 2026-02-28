@@ -1,6 +1,5 @@
 // Toggle — ciderui
-document.addEventListener("click", (e) => {
-  const toggle = e.target.closest(".toggle");
+function handleToggle(toggle) {
   if (!toggle || toggle.disabled) return;
 
   // If inside a toggle-group, handle single-select
@@ -21,6 +20,20 @@ document.addEventListener("click", (e) => {
     } else {
       toggle.setAttribute("data-active", "");
       toggle.setAttribute("aria-pressed", "true");
+    }
+  }
+}
+
+document.addEventListener("click", (e) => {
+  handleToggle(e.target.closest(".toggle"));
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === " " || e.key === "Enter") {
+    const toggle = e.target.closest(".toggle");
+    if (toggle) {
+      e.preventDefault();
+      handleToggle(toggle);
     }
   }
 });

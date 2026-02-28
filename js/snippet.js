@@ -3,10 +3,14 @@ function fallbackCopy(text) {
   var ta = document.createElement("textarea");
   ta.value = text;
   ta.style.cssText = "position:fixed;opacity:0";
-  document.body.appendChild(ta);
-  ta.select();
-  document.execCommand("copy");
-  document.body.removeChild(ta);
+  try {
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = document.execCommand("copy");
+    if (!ok) throw new Error("execCommand failed");
+  } finally {
+    document.body.removeChild(ta);
+  }
 }
 
 function copyText(text) {
@@ -33,9 +37,13 @@ document.addEventListener("click", function (e) {
     if (!code) return;
 
     var original = btn.textContent;
+    if (btn._copyTimer) clearTimeout(btn._copyTimer);
     copyText(code.textContent).then(function () {
       btn.textContent = "Copied!";
-      setTimeout(function () { btn.textContent = original; }, 1500);
+      btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
+    }).catch(function () {
+      btn.textContent = "Failed";
+      btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
     });
     return;
   }

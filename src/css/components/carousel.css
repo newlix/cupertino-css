@@ -59,4 +59,9 @@
     background: oklch(from var(--foreground) l c h / 0.6);
     width: 1.5rem;
   }
+  .dark & {
+    background: oklch(from var(--foreground) l c h / 0.4);
+    &:hover { background: oklch(from var(--foreground) l c h / 0.55); }
+    &[data-active] { background: oklch(from var(--foreground) l c h / 0.75); }
+  }
 }

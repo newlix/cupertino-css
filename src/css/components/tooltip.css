@@ -12,7 +12,8 @@
   opacity: 0;
   translate: -50% 2px;
   transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
-  .tooltip:hover > & {
+  .tooltip:hover > &,
+  .tooltip:focus-within > & {
     opacity: 1;
     translate: -50% 0;
     transition-delay: 0.5s;
@@ -33,7 +34,8 @@
   & .tooltip-content {
     @apply bottom-auto top-full mb-0 mt-2;
     translate: -50% -2px;
-    .tooltip:hover > & { translate: -50% 0; }
+    .tooltip:hover > &,
+    .tooltip:focus-within > & { translate: -50% 0; }
     &::after {
       @apply top-auto bottom-full;
       border-top-color: transparent;
@@ -46,7 +48,8 @@
   & .tooltip-content {
     @apply bottom-auto left-full top-1/2 mb-0 ml-2;
     translate: -2px -50%;
-    .tooltip:hover > & { translate: 0 -50%; }
+    .tooltip:hover > &,
+    .tooltip:focus-within > & { translate: 0 -50%; }
     &::after {
       @apply left-auto right-full top-1/2;
       translate: 0 -50%;
@@ -59,7 +62,8 @@
   & .tooltip-content {
     @apply bottom-auto right-full left-auto top-1/2 mb-0 mr-2;
     translate: 2px -50%;
-    .tooltip:hover > & { translate: 0 -50%; }
+    .tooltip:hover > &,
+    .tooltip:focus-within > & { translate: 0 -50%; }
     &::after {
       @apply right-auto left-full top-1/2;
       translate: 0 -50%;

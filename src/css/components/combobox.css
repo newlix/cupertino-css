@@ -4,7 +4,7 @@
   & > button {
     @apply flex h-11 items-center justify-between gap-2 rounded-[12px] border px-3.5 text-[13px] transition-all duration-200;
     background-color: var(--card);
-    border-color: var(--input);
+    border-color: var(--input-border);
     &:hover:not(:focus) { border-color: var(--border-solid); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: 2px; }
     & span { @apply flex-1 truncate text-left; }
@@ -24,7 +24,7 @@
       & svg { @apply size-4 shrink-0 text-muted-foreground; }
       & input {
         @apply h-10 flex-1 border-0 rounded-none bg-transparent px-0 text-[13px] text-foreground outline-none;
-        &::placeholder { @apply text-muted-foreground; opacity: 0.5; }
+        &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
       }
     }
     & [role="listbox"] {

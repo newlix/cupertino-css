@@ -11,8 +11,8 @@
   & p:first-child, & p:first-of-type { @apply text-[13px] font-medium text-foreground; }
   & p:last-child:not(:first-child) { @apply mt-0.5 text-[13px] text-muted-foreground; }
 }
-/* Only the icon carries semantic color */
-.alert-info    { & svg:first-child { color: var(--primary); } }
-.alert-success { & svg:first-child { color: var(--success); } }
-.alert-warning { & svg:first-child { color: var(--warning); } }
-.alert-destructive { & svg:first-child { color: var(--destructive); } }
+/* Semantic variants: tinted background + icon color */
+.alert-info    { background: var(--info-bg);    & svg:first-child { color: var(--info); } }
+.alert-success { background: var(--success-bg); & svg:first-child { color: var(--success); } }
+.alert-warning { background: var(--warning-bg); & svg:first-child { color: var(--warning); } }
+.alert-destructive { background: var(--destructive-bg); & svg:first-child { color: var(--destructive); } }

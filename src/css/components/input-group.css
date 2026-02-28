@@ -28,10 +28,12 @@
     background: var(--muted);
   }
   & .input-group-addon:first-child {
-    @apply rounded-l-[8px] border-r-0;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    @apply border-r-0;
   }
   & .input-group-addon:last-child {
-    @apply rounded-r-[8px] border-l-0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    @apply border-l-0;
   }
   & .input, & input {
     @apply flex-1;

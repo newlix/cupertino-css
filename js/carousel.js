@@ -14,11 +14,12 @@ function init() {
 
     function getCurrentIndex() {
       const items = getItems();
-      const scrollLeft = content.scrollLeft;
+      const viewCenter = content.scrollLeft + content.clientWidth / 2;
       let closest = 0;
       let minDist = Infinity;
       items.forEach((item, i) => {
-        const dist = Math.abs(item.offsetLeft - scrollLeft);
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const dist = Math.abs(itemCenter - viewCenter);
         if (dist < minDist) { minDist = dist; closest = i; }
       });
       return closest;
@@ -58,8 +59,15 @@ function init() {
       });
     }
 
-    if (prevBtn) prevBtn.addEventListener("click", () => scrollToIndex(getCurrentIndex() - 1));
-    if (nextBtn) nextBtn.addEventListener("click", () => scrollToIndex(getCurrentIndex() + 1));
+    let scrolling = false;
+    function navTo(index) {
+      if (scrolling) return;
+      scrolling = true;
+      scrollToIndex(index);
+      setTimeout(() => { scrolling = false; }, 350);
+    }
+    if (prevBtn) prevBtn.addEventListener("click", () => navTo(getCurrentIndex() - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => navTo(getCurrentIndex() + 1));
 
     content.addEventListener("scroll", () => {
       clearTimeout(content._scrollTimer);

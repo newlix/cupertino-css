@@ -36,6 +36,7 @@
           @apply text-foreground;
           background: var(--surface-2);
         }
+        &:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
         &[data-active] {
           @apply text-foreground;
           background: var(--surface-4);
@@ -52,6 +53,7 @@
         background: var(--surface-4);
         color: var(--foreground);
       }
+      &:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
       &:active {
         transform: scale(var(--apple-press-scale));
       }

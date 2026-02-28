@@ -3,6 +3,8 @@
 
 function init() {
   document.querySelectorAll(".combobox").forEach((combobox) => {
+    if (combobox.dataset.initialized) return;
+    combobox.dataset.initialized = "true";
     const trigger = combobox.querySelector("button");
     const content = combobox.querySelector("[data-combobox-content]");
     const input = content ? content.querySelector("header input") : null;
@@ -69,6 +71,28 @@ function init() {
         close();
       });
     });
+
+    // Keyboard navigation
+    if (input) {
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const visibleOptions = Array.from(listbox.querySelectorAll("[role='option']:not([hidden])"));
+          if (!visibleOptions.length) return;
+          const focused = listbox.querySelector("[role='option'][data-highlighted]");
+          let idx = focused ? visibleOptions.indexOf(focused) : -1;
+          if (e.key === "ArrowDown") idx = Math.min(idx + 1, visibleOptions.length - 1);
+          else idx = Math.max(idx - 1, 0);
+          visibleOptions.forEach((o) => o.removeAttribute("data-highlighted"));
+          visibleOptions[idx].setAttribute("data-highlighted", "");
+          visibleOptions[idx].scrollIntoView({ block: "nearest" });
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          const highlighted = listbox.querySelector("[role='option'][data-highlighted]");
+          if (highlighted) highlighted.click();
+        }
+      });
+    }
 
     // Search filtering
     if (input) {

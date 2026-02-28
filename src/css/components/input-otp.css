@@ -10,6 +10,7 @@
   transition: border-color 0.2s var(--apple-ease);
   &:focus-within, &[data-active] {
     border-color: var(--primary);
+    box-shadow: 0 0 0 3px oklch(from var(--primary) l c h / 0.15);
   }
 }
 .input-otp-separator {

@@ -103,13 +103,13 @@
   select {
     @apply w-full h-11 rounded-[8px] border appearance-none pl-3.5 pr-10 text-[13px] text-foreground outline-none;
     background-color: var(--card);
-    border-color: var(--input);
+    border-color: var(--input-border);
     transition: border-color 0.2s var(--apple-ease);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1rem;
-    &:is(.dark *) {
+    .dark & {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2398989D' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
     }
     &:hover:not(:focus) { border-color: var(--border-solid); }
@@ -153,7 +153,7 @@
     @apply appearance-none relative shrink-0 rounded-full cursor-pointer;
     width: 51px;
     height: 31px;
-    background: oklch(0.862 0.007 286.02);
+    background: var(--surface-5);
     transition: background-color 0.25s var(--apple-ease);
     &::after {
       content: "";
@@ -171,8 +171,7 @@
     }
     &:focus-visible { box-shadow: 0 0 0 4px oklch(from var(--primary) l c h / 0.15); }
     &:disabled { @apply cursor-not-allowed opacity-50; }
-    &:is(.dark *) {
-      background: oklch(0.350 0.004 285.99);
+    .dark & {
       &:checked { background: var(--primary); }
     }
   }
@@ -274,7 +273,7 @@
     @apply rounded-sm px-1 py-0.5;
     background: oklch(0.92 0.1 95);
     color: var(--foreground);
-    &:is(.dark *) {
+    .dark & {
       background: oklch(0.4 0.1 95);
     }
   }
