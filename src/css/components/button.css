@@ -4,7 +4,7 @@
 .btn-outline,
 .btn-ghost,
 .btn-destructive {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-[15px] py-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-[15px] py-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   transition: all 0.25s var(--apple-spring);
   letter-spacing: -0.016em;
   &:active { transform: scale(var(--apple-press-scale)); }
@@ -32,8 +32,8 @@
   @apply bg-transparent text-destructive;
   &:hover { background: oklch(from var(--destructive) l c h / 0.06); }
 }
-.btn-rect {
-  border-radius: 8px;
+.btn-pill {
+  border-radius: 9999px;
 }
 .btn-sm {
   @apply px-[10px] py-1 text-xs gap-1.5;

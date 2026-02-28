@@ -39,7 +39,7 @@ For quick prototyping without a build step:
 
 | Component | Class | JS |
 |-----------|-------|----|
-| Button | `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-rect` `btn-sm` `btn-lg` | — |
+| Button | `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg` | — |
 | Tag | `tag` | — |
 | Badge | `badge` (notification count) | — |
 | Card | `card` `card-interactive` (children: `header` `section` `footer`) | — |

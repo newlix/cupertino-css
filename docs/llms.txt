@@ -11,7 +11,7 @@
 
 ### Form & Input
 
-- [Button](https://ciderui.com/components/button.html): `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-rect` `btn-sm` `btn-lg`
+- [Button](https://ciderui.com/components/button.html): `btn-primary` `btn-outline` `btn-ghost` `btn-destructive` `btn-pill` `btn-sm` `btn-lg`
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
 - [Combobox](https://ciderui.com/components/combobox.html): Custom combobox with search filtering. Requires `js/combobox.js`.
 - [Field](https://ciderui.com/components/field.html): `field` — auto-styles label, input, and description children.
