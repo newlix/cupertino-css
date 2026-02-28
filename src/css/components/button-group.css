@@ -3,7 +3,7 @@
   @apply inline-flex rounded-[12px] bg-card;
   box-shadow: 0 0 0 1px var(--panel-border), var(--shadow-sm);
   & button, & a {
-    @apply inline-flex items-center justify-center bg-transparent px-4 py-2.5 text-[13px] font-medium text-foreground;
+    @apply inline-flex items-center justify-center rounded-none bg-transparent px-4 py-2.5 text-[13px] font-medium text-foreground;
     transition: all 0.15s var(--apple-ease);
     &:hover { background: var(--surface-2); }
     &:focus-visible { outline: 3px solid oklch(from var(--primary) l c h / 0.3); outline-offset: -3px; }

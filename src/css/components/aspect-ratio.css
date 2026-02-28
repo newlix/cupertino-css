@@ -1,6 +1,6 @@
 /* ========== ASPECT RATIO ========== */
 .aspect-ratio {
-  @apply relative overflow-hidden rounded-xl;
+  @apply relative w-full overflow-hidden rounded-xl;
   & > img, & > video {
     @apply absolute inset-0 h-full w-full object-cover;
   }
