@@ -4,6 +4,7 @@
 .btn-tinted,
 .btn-plain {
   @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  text-decoration: none;
   corner-shape: squircle;
   transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
   letter-spacing: -0.016em;
