@@ -12,9 +12,9 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
   .docs-sidebar a {
-    @apply flex items-center rounded-lg px-2 py-1.5 text-[13px] font-medium text-muted-foreground transition-colors duration-150;
+    @apply flex items-center rounded-lg px-2 py-1.5 text-[13px] font-medium text-muted-foreground no-underline transition-colors duration-150;
     &:hover {
-      @apply text-foreground;
+      @apply text-foreground no-underline;
       background: oklch(from var(--color-accent) l c h / 0.6);
     }
     &[data-active] {
@@ -56,38 +56,6 @@
       opacity: 0.5;
     }
   }
-  .docs-copy-btn {
-    @apply absolute right-3 top-3 rounded-md border px-2 py-1 text-[11px] font-medium transition-all duration-200 cursor-pointer;
-    background: oklch(0.971 0.003 285.66 / 0.8);
-    border-color: oklch(0.862 0.007 286.02);
-    color: oklch(0.540 0.008 286.01);
-    &:hover {
-      background: oklch(0.920 0.003 285.66);
-      color: oklch(0.232 0.004 285.99);
-    }
-    &:active {
-      transform: scale(var(--apple-press-scale));
-    }
-  }
-  :is(.dark) .docs-copy-btn {
-    background: oklch(0.274 0.004 285.99 / 0.6);
-    border-color: oklch(0.350 0.004 285.99);
-    color: oklch(0.630 0.006 286.01);
-    &:hover {
-      background: oklch(0.350 0.004 285.99);
-      color: oklch(0.971 0.003 285.66);
-    }
-  }
-
-  /* Theme toggle */
-  .docs-theme-toggle {
-    @apply flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors cursor-pointer;
-    &:hover {
-      @apply text-foreground;
-      background: var(--color-accent);
-    }
-  }
-
   /* Mobile hamburger */
   .docs-hamburger {
     @apply hidden fixed top-4 left-4 z-50 size-9 items-center justify-center rounded-lg text-muted-foreground cursor-pointer border;
@@ -104,49 +72,6 @@
     @apply fixed inset-0 z-30 hidden;
     background: oklch(0 0 0 / 0.4);
     backdrop-filter: blur(4px);
-  }
-
-  /* ─── Homepage ─── */
-  .home-nav {
-    @apply sticky top-0 z-50 border-b;
-    background: oklch(from var(--color-background) l c h / 0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  .home-showcase {
-    @apply mx-auto px-6;
-    max-width: 64rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .home-showcase-row {
-    display: grid;
-    gap: 1.5rem;
-  }
-  .home-showcase-2 { grid-template-columns: repeat(2, 1fr); }
-  .home-showcase-3 { grid-template-columns: repeat(3, 1fr); }
-  .home-showcase-cell {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-  .home-showcase-card {
-    @apply rounded-2xl border overflow-hidden;
-    background: var(--color-card);
-    padding: 1.5rem;
-    flex: 1;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.02), 0 4px 16px rgb(0 0 0 / 0.03);
-  }
-  @media (max-width: 900px) {
-    .home-showcase-3 {
-      grid-template-columns: repeat(2, 1fr);
-      & > :last-child:nth-child(odd) { grid-column: 1 / -1; }
-    }
-  }
-  @media (max-width: 640px) {
-    .home-hero { @apply py-12; }
-    .home-showcase-2, .home-showcase-3 { grid-template-columns: 1fr; }
   }
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
