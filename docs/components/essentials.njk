@@ -1,0 +1,315 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Essentials" %}
+
+{% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.cider</code></dt>
+    <dd>Opt-in scope — auto-styles native HTML elements inside it (typography, forms, tables, etc.).</dd>
+    <dt><code>.cider-fixed</code></dt>
+    <dd>Centered responsive page layout. Use alongside <code>.cider</code>.</dd>
+    <dt><code>.cider-reset</code></dt>
+    <dd>Stops <code>.cider</code> auto-styling from leaking into nested components.</dd>
+  </dl>
+
+  {% call example("Cider Scope") %}
+<div class="cider">
+  <h1>Hello</h1>
+  <p>Native elements are auto-styled inside a <code>.cider</code> scope.</p>
+</div>
+{% endcall %}
+
+  <!-- Page layout -->
+  <section class="mt-12 space-y-3">
+    <h2 class="text-xl font-bold tracking-tight">Page layout</h2>
+    <p class="text-muted-foreground">
+      <code>.cider-fixed</code> adds centered padding with responsive max-width breakpoints. Override any value with Tailwind utilities.
+    </p>
+    <div class="snippet mt-4">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-html">&lt;!-- Default breakpoints --&gt;
+&lt;div class="cider cider-fixed"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override max-width --&gt;
+&lt;div class="cider cider-fixed max-w-6xl"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Override padding --&gt;
+&lt;div class="cider cider-fixed px-8"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Constrained fluid (no fixed breakpoints) --&gt;
+&lt;div class="cider max-w-4xl mx-auto"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;!-- Custom fixed breakpoints --&gt;
+&lt;div class="cider cider-fixed max-w-6xl xl:max-w-7xl"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+    </div>
+    <p class="text-sm text-muted-foreground mt-3">
+      Behind the scenes, <code>.cider-fixed</code> is just Tailwind utilities:
+    </p>
+    <div class="snippet mt-2">
+      <header>
+        <span>CSS</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-css">.cider-fixed {
+  @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
+}</code></pre>
+    </div>
+    <div class="cider mt-4">
+      <table>
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Viewport</th>
+            <th>Max width</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Default</td>
+            <td>&lt; 768px</td>
+            <td>576px <span class="text-xs text-muted-foreground">(36rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>md</code></td>
+            <td>&ge; 768px</td>
+            <td>672px <span class="text-xs text-muted-foreground">(42rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>lg</code></td>
+            <td>&ge; 1024px</td>
+            <td>896px <span class="text-xs text-muted-foreground">(56rem)</span></td>
+          </tr>
+          <tr>
+            <td><code>xl</code></td>
+            <td>&ge; 1280px</td>
+            <td>1152px <span class="text-xs text-muted-foreground">(72rem)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Semantic containers -->
+  <section class="mt-12 space-y-3">
+    <h2 class="text-xl font-bold tracking-tight">Semantic containers</h2>
+    <p class="text-muted-foreground">
+      Apply <code>.cider</code> to any element — <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, or a <code>&lt;div&gt;</code>. Each opens its own auto-styling scope.
+    </p>
+    <div class="snippet mt-4">
+      <header>
+        <span>HTML</span>
+        <button>Copy</button>
+      </header>
+      <pre><code class="language-html">&lt;body&gt;
+  &lt;header class="cider py-6"&gt;
+    &lt;h1&gt;My App&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main class="cider py-8"&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;All elements inside are styled automatically.&lt;/p&gt;
+    &lt;form&gt;
+      &lt;label for="name"&gt;Name&lt;/label&gt;
+      &lt;input type="text" id="name"&gt;
+      &lt;button class="btn-gray" type="submit"&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="cider py-6"&gt;
+    &lt;small&gt;&amp;copy; 2026 My App&lt;/small&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Scope boundary -->
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Scope boundary</h2>
+    <p class="mt-2 text-muted-foreground">
+      Add <code>.cider-reset</code> to stop auto-styling from leaking into nested components. Nest <code>.cider</code> again to re-open a new scope.
+    </p>
+
+  {% call example("Reset boundary") %}
+<div class="cider">
+  <h1>Styled by .cider</h1>
+  <p>This paragraph is auto-styled.</p>
+  <div class="cider-reset">
+    <code>no .cider styling</code>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("Re-enabling inside reset") %}
+<div class="cider">
+  <code>Styled</code>
+  <div class="cider-reset">
+    <code>Unstyled</code>
+    <div class="cider" style="margin-top:0.5rem">
+      <code>Styled again</code>
+    </div>
+  </div>
+</div>
+{% endcall %}
+
+  </section>
+
+  <!-- Typography -->
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Typography</h2>
+    <p class="mt-2 text-muted-foreground">Headings, paragraphs, lists, and inline elements are auto-styled inside a <code>.cider</code> scope.</p>
+
+  {% call example("Font sizes") %}
+<table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Size</th>
+        <th>Weight</th>
+        <th>Line height</th>
+        <th>Margin top</th>
+        <th>Margin bottom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Body</td>
+        <td>15px</td>
+        <td>Regular</td>
+        <td>1.47</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>h1</code></td>
+        <td>34px</td>
+        <td>Bold</td>
+        <td>1.21</td>
+        <td>32px</td>
+        <td>16px</td>
+      </tr>
+      <tr>
+        <td><code>h2</code></td>
+        <td>22px</td>
+        <td>Semibold</td>
+        <td>1.18</td>
+        <td>32px</td>
+        <td>12px</td>
+      </tr>
+      <tr>
+        <td><code>h3</code></td>
+        <td>20px</td>
+        <td>Semibold</td>
+        <td>1.25</td>
+        <td>24px</td>
+        <td>8px</td>
+      </tr>
+      <tr>
+        <td><code>h4</code></td>
+        <td>17px</td>
+        <td>Semibold</td>
+        <td>1.29</td>
+        <td>16px</td>
+        <td>4px</td>
+      </tr>
+      <tr>
+        <td><code>small</code></td>
+        <td>12px</td>
+        <td>Regular</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>code</code></td>
+        <td>13px</td>
+        <td>Medium</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+{% endcall %}
+
+  {% call example("Headings") %}
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+{% endcall %}
+
+  {% call example("Paragraphs &amp; links") %}
+<p>Design is not just what it looks like and feels like. Design is how it works. Every detail matters — the way text flows on a page, the spacing between elements, the careful balance of hierarchy.</p>
+<p>When done right, typography becomes invisible, letting the <a href="#">content speak for itself</a>.</p>
+{% endcall %}
+
+  {% call example("Inline text") %}
+<p>Use the <code>@import "ciderui"</code> directive to include all styles.</p>
+<p>Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.</p>
+<p>Use <mark>mark</mark> to <mark>highlight</mark> important text.</p>
+<p>Build interfaces with <abbr title="Cascading Style Sheets">CSS</abbr> and <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+<p><small>This is helper text at a smaller size.</small></p>
+{% endcall %}
+
+  {% call example("Tag") %}
+<div class="flex flex-wrap gap-2">
+  <span class="tag">Design</span>
+  <span class="tag">CSS</span>
+  <span class="tag">
+    <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+    Pending
+  </span>
+</div>
+{% endcall %}
+
+  {% call example("Blockquote") %}
+<blockquote>
+  Simplicity is the ultimate sophistication.
+</blockquote>
+{% endcall %}
+
+  {% call example("Unordered list") %}
+<ul>
+  <li>Clean, semantic HTML structure</li>
+  <li>Apple-inspired design tokens</li>
+  <li>Dark mode support built-in</li>
+</ul>
+{% endcall %}
+
+  {% call example("Ordered list") %}
+<ol>
+  <li>Install the Tailwind CSS plugin</li>
+  <li>Import the ciderui stylesheet</li>
+  <li>Start building beautiful interfaces</li>
+</ol>
+{% endcall %}
+
+  {% call example("Description list") %}
+<dl>
+  <dt>Cider UI</dt>
+  <dd>Apple-aesthetic UI components as a Tailwind CSS v4 plugin.</dd>
+  <dt>Dark mode</dt>
+  <dd>Add class="dark" to your html element. All components adapt automatically.</dd>
+  <dt>Framework</dt>
+  <dd>No framework required. Pure CSS with optional vanilla JS.</dd>
+</dl>
+{% endcall %}
+
+  </section>
+
+{% endblock %}

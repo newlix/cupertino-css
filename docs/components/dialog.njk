@@ -4,6 +4,14 @@
 
 {% block content %}
 
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.dialog</code></dt>
+    <dd>Centered modal overlay with glass background and backdrop.</dd>
+    <dt><code>.dialog-close</code></dt>
+    <dd>Positioned close button (top-right corner).</dd>
+  </dl>
+
   {% call example("Default") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Close Document</button>
 
@@ -175,7 +183,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Adds backdrop click to close with exit animation, focus trapping, scroll lock, and focus restoration. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/dialog.js"&gt;&lt;/script&gt;

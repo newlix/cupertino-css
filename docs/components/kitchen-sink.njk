@@ -1,0 +1,483 @@
+{% extends "_includes/layout.njk" %}
+{% set title = "Kitchen Sink" %}
+{% set description = "Every component on one page." %}
+
+{% block content %}
+
+  <!-- Typography -->
+  <section class="mt-10">
+    <h2 class="text-xl font-bold tracking-tight">Typography</h2>
+    <div class="mt-4 space-y-4">
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <p>Design is not just what it looks like and feels like. Design is how it works. Every detail matters — the way text flows on a page, the spacing between elements, the careful balance of hierarchy.</p>
+      <p>When done right, typography becomes invisible, letting the <a href="#">content speak for itself</a>.</p>
+      <blockquote>Simplicity is the ultimate sophistication.</blockquote>
+      <ul>
+        <li>Clean, semantic HTML structure</li>
+        <li>Apple-inspired design tokens</li>
+        <li>Dark mode support built-in</li>
+      </ul>
+      <ol>
+        <li>Install the Tailwind CSS plugin</li>
+        <li>Import the ciderui stylesheet</li>
+        <li>Start building beautiful interfaces</li>
+      </ol>
+      <p>Use the <code>@import "ciderui"</code> directive. Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette. Use <mark>mark</mark> to highlight text. <small>This is helper text.</small></p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag">Design</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Tailwind</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Buttons -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Button</h2>
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <button class="btn-filled">Filled</button>
+      <button class="btn-gray">Gray</button>
+      <button class="btn-tinted">Tinted</button>
+      <button class="btn-plain">Plain</button>
+      <button class="btn-filled btn-destructive">Destructive</button>
+      <button class="btn-filled" disabled>Disabled</button>
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-3">
+      <button class="btn-filled btn-sm">Small</button>
+      <button class="btn-filled">Default</button>
+      <button class="btn-filled btn-lg">Large</button>
+      <button class="btn-filled btn-capsule">Capsule</button>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Form -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Form</h2>
+    <div class="mt-4 space-y-5 max-w-md">
+      <label class="space-y-2">Name
+        <input type="text" placeholder="Enter your name" />
+      </label>
+      <label class="space-y-2">Email
+        <input type="email" placeholder="name@example.com" />
+      </label>
+      <label class="space-y-2">Bio
+        <textarea placeholder="Tell us about yourself" rows="3"></textarea>
+      </label>
+      <label class="space-y-2">Country
+        <select>
+          <option>United States</option>
+          <option>United Kingdom</option>
+          <option>Japan</option>
+          <option>Taiwan</option>
+        </select>
+      </label>
+      <label class="space-y-2">Volume
+        <input type="range" min="0" max="100" value="60" />
+      </label>
+      <div class="space-y-2.5">
+        <label><input type="checkbox" /> I agree to the terms</label>
+        <label><input type="checkbox" checked /> Subscribe to newsletter</label>
+        <label><input type="checkbox" disabled /> Unavailable option</label>
+      </div>
+      <fieldset>
+        <legend>Preferred contact</legend>
+        <label><input type="radio" name="ks-contact" checked /> Email</label>
+        <label><input type="radio" name="ks-contact" /> Phone</label>
+        <label><input type="radio" name="ks-contact" /> Mail</label>
+      </fieldset>
+      <div class="space-y-2.5">
+        <label class="inline-flex items-center gap-2.5 cursor-pointer">
+          <input type="checkbox" role="switch" checked />
+          <span class="text-sm">Notifications</span>
+        </label>
+        <label class="inline-flex items-center gap-2.5 cursor-pointer">
+          <input type="checkbox" role="switch" />
+          <span class="text-sm">Airplane Mode</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Verification Code -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Verification Code</h2>
+    <div class="mt-4">
+      <div class="verification-code" data-name="ks-code">
+        <input><input><input>
+        <span>&ndash;</span>
+        <input><input><input>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Card -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Card</h2>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="card">
+        <div class="flex items-center gap-3">
+          <span class="avatar">
+            <svg class="size-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 .75-7.425A4.502 4.502 0 0 0 14.25 7.5a4.5 4.5 0 0 0-4.39 3.51A3 3 0 0 0 8.25 15h-6Z"/></svg>
+          </span>
+          <div>
+            <h4>iCloud Storage</h4>
+            <p class="text-sm text-muted-foreground">5 GB of 50 GB used</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="progress"><div class="progress-bar" style="width: 10%"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Weekly Summary</h4>
+        <p class="text-sm text-muted-foreground mt-1">You closed 12 tasks this week. Keep up the great work.</p>
+        <button class="btn-tinted btn-sm mt-4">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Avatar & Badge -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Avatar &amp; Badge</h2>
+    <div class="mt-4 flex items-center gap-6">
+      <div class="flex items-center gap-3">
+        <img class="avatar" src="https://i.pravatar.cc/40?img=1" alt="Avatar" />
+        <img class="avatar" src="https://i.pravatar.cc/40?img=2" alt="Avatar" />
+        <div class="avatar">JD</div>
+        <div class="avatar">
+          <svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge">3</span>
+        <span class="badge">99+</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Banner -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Banner</h2>
+    <div class="mt-4">
+      <div class="banner">
+        <h4>Software Update</h4>
+        <p>A new version of macOS is available. Update now to get the latest features and security improvements.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- List -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">List</h2>
+    <div class="mt-4">
+      <div class="list">
+        <div>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <h3>Project Files</h3>
+            <p>Last updated 2 hours ago</p>
+          </div>
+          <button class="btn-tinted btn-sm">Open</button>
+        </div>
+        <a href="#">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div>
+            <h3>Profile verified</h3>
+            <p>Click to view your profile settings.</p>
+          </div>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <div>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          <div>
+            <h3>Security Alert</h3>
+            <p>New login detected from unknown device.</p>
+          </div>
+          <button class="btn-tinted btn-sm">Review</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Table -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Table</h2>
+    <div class="mt-4">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Invoice</th>
+            <th scope="col">Status</th>
+            <th scope="col">Method</th>
+            <th scope="col" class="text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-medium">INV-001</td>
+            <td>Paid</td>
+            <td>Credit Card</td>
+            <td class="text-right">$250.00</td>
+          </tr>
+          <tr>
+            <td class="font-medium">INV-002</td>
+            <td>Pending</td>
+            <td>PayPal</td>
+            <td class="text-right">$150.00</td>
+          </tr>
+          <tr>
+            <td class="font-medium">INV-003</td>
+            <td>Unpaid</td>
+            <td>Bank Transfer</td>
+            <td class="text-right">$350.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="font-medium">Total</td>
+            <td class="text-right font-semibold">$750.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Tabs -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Tabs</h2>
+    <div class="mt-4">
+      <div class="tabs" data-tabs>
+        <div data-tab-list>
+          <button data-tab="ks-tab-1" data-active>Account</button>
+          <button data-tab="ks-tab-2">Password</button>
+          <button data-tab="ks-tab-3" disabled>Disabled</button>
+        </div>
+        <div data-tab-panel="ks-tab-1" data-active>
+          <p class="text-sm text-muted-foreground">Make changes to your account here.</p>
+        </div>
+        <div data-tab-panel="ks-tab-2">
+          <p class="text-sm text-muted-foreground">Change your password here.</p>
+        </div>
+        <div data-tab-panel="ks-tab-3">
+          <p class="text-sm text-muted-foreground">This tab is disabled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Segmented Control -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Segmented Control</h2>
+    <div class="mt-4">
+      <div class="segmented-control" data-tabs>
+        <div data-tab-list>
+          <button data-tab="ks-seg-1" data-active>Overview</button>
+          <button data-tab="ks-seg-2">Analytics</button>
+          <button data-tab="ks-seg-3">Reports</button>
+        </div>
+        <div data-tab-panel="ks-seg-1" data-active>
+          <p class="text-sm text-muted-foreground">Overview content here.</p>
+        </div>
+        <div data-tab-panel="ks-seg-2">
+          <p class="text-sm text-muted-foreground">Analytics content here.</p>
+        </div>
+        <div data-tab-panel="ks-seg-3">
+          <p class="text-sm text-muted-foreground">Reports content here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Breadcrumb -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Breadcrumb</h2>
+    <div class="mt-4">
+      <nav class="breadcrumb">
+        <a href="#">Home</a>
+        <a href="#">Components</a>
+        <span aria-current="page">Kitchen Sink</span>
+      </nav>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Pagination & Page Control -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Pagination &amp; Page Control</h2>
+    <div class="mt-4 space-y-6">
+      <nav class="pagination" aria-label="Pagination">
+        <button aria-label="Previous page" disabled>
+          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button data-active>1</button>
+        <button>2</button>
+        <button>3</button>
+        <span>...</span>
+        <button>10</button>
+        <button aria-label="Next page">
+          <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </nav>
+      <nav class="page-control" aria-label="Page control">
+        <button aria-label="Page 1" aria-current="page"></button>
+        <button aria-label="Page 2"></button>
+        <button aria-label="Page 3"></button>
+        <button aria-label="Page 4"></button>
+        <button aria-label="Page 5"></button>
+      </nav>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Progress & Activity Indicator -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Progress &amp; Activity Indicator</h2>
+    <div class="mt-4 space-y-4">
+      <progress value="60" max="100"></progress>
+      <div class="progress"><div class="progress-bar" style="width: 35%"></div></div>
+      <div class="progress"><div class="progress-bar progress-indeterminate"></div></div>
+      <div class="flex items-center gap-4 mt-2">
+        <span class="activity-indicator activity-indicator-sm"></span>
+        <span class="activity-indicator"></span>
+        <span class="activity-indicator activity-indicator-lg"></span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Popover -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Popover</h2>
+    <div class="mt-4 flex flex-wrap gap-4">
+      <div class="popover">
+        <button class="btn-tinted">Open Popover</button>
+        <div popover>
+          <h4 class="text-sm font-semibold">Dimensions</h4>
+          <p class="mt-1 text-xs text-muted-foreground">Set the dimensions for the layer.</p>
+          <div class="mt-3 space-y-2">
+            <label class="space-y-2">Width
+              <input type="text" value="100%" />
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="popover popover-menu">
+        <button class="btn-plain">
+          Options
+          <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div popover>
+          <button>Profile</button>
+          <button>Settings</button>
+          <hr />
+          <button class="text-destructive">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Dialog -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Dialog</h2>
+    <div class="mt-4">
+      <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Open Dialog</button>
+      <dialog class="dialog">
+        <header>
+          <h3>Save changes to "Untitled"?</h3>
+          <p>Your changes will be lost if you don't save them.</p>
+        </header>
+        <footer>
+          <button onclick="this.closest('dialog').close()" class="btn-tinted">Don't Save</button>
+          <button onclick="this.closest('dialog').close()" class="btn-gray">Cancel</button>
+          <button onclick="this.closest('dialog').close()" class="btn-filled">Save</button>
+        </footer>
+      </dialog>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Sheet -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Sheet</h2>
+    <div class="mt-4">
+      <button class="btn-gray" onclick="this.nextElementSibling.showModal()">Open Sheet</button>
+      <dialog class="sheet">
+        <div class="sheet-grabber"></div>
+        <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <header>
+          <h2>Move Goal</h2>
+          <p>Set your daily move goal.</p>
+        </header>
+        <section>
+          <div class="flex flex-col items-center gap-4 py-4">
+            <div class="text-6xl font-bold text-primary">350</div>
+            <p class="text-sm text-muted-foreground">calories per day</p>
+            <input type="range" class="slider w-full max-w-xs" min="100" max="800" value="350" />
+          </div>
+        </section>
+        <footer>
+          <button onclick="this.closest('dialog').close()" class="btn-filled w-full">Submit</button>
+        </footer>
+      </dialog>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- HUD -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">HUD</h2>
+    <div class="mt-4 flex flex-wrap gap-3">
+      <button class="btn-filled" onclick="showHUD('Settings saved')">Show HUD</button>
+      <button class="btn-gray" onclick="showHUD('Copied to clipboard', { icon: '<svg fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;><path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75&quot;/></svg>' })">Custom Icon</button>
+    </div>
+  </section>
+
+  <hr class="my-12">
+
+  <!-- Kbd -->
+  <section>
+    <h2 class="text-xl font-bold tracking-tight">Kbd</h2>
+    <div class="mt-4 flex flex-wrap items-center gap-2">
+      <kbd>&#8984;</kbd> + <kbd>K</kbd>
+      <span class="mx-2 text-muted-foreground">|</span>
+      <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>
+      <span class="mx-2 text-muted-foreground">|</span>
+      <kbd>Esc</kbd>
+    </div>
+  </section>
+
+{% endblock %}

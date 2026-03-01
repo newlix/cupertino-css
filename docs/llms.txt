@@ -26,7 +26,7 @@
 
 ### Layout
 
-- [Container](https://ciderui.com/components/container.html): `.cider` — auto-style native HTML elements (buttons, inputs, tables, typography). No layout opinion, pure styling hook. Add `.cider-fixed` alongside `.cider` for centered responsive max-width breakpoints.
+- [Essentials](https://ciderui.com/components/essentials.html): `.cider` — auto-style native HTML elements (buttons, inputs, tables, typography). No layout opinion, pure styling hook. Add `.cider-fixed` alongside `.cider` for centered responsive max-width breakpoints.
 
 ### Navigation
 
@@ -64,7 +64,6 @@
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 
-- [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
 - [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
 
 ## Quick Start

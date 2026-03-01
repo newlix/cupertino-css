@@ -4,6 +4,16 @@
 
 {% block content %}
 
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.sheet</code></dt>
+    <dd>Bottom sheet modal overlay with slide-up animation.</dd>
+    <dt><code>.sheet-close</code></dt>
+    <dd>Positioned close button inside the sheet.</dd>
+    <dt><code>.sheet-grabber</code></dt>
+    <dd>Drag handle indicator at top of sheet.</dd>
+  </dl>
+
   {% call example("Default") %}
 <button class="btn-gray" onclick="this.nextElementSibling.showModal()">Open Sheet</button>
 
@@ -93,7 +103,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Bottom sheet using native <code>&lt;dialog&gt;</code>. Adds backdrop click to close with exit animation. Supports a <code>.sheet-grabber</code> drag handle.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Bottom sheet using native <code>&lt;dialog&gt;</code>. Adds backdrop click to close with exit animation, focus trapping, scroll lock, and focus restoration. Supports a <code>.sheet-grabber</code> drag handle.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/sheet.js"&gt;&lt;/script&gt;

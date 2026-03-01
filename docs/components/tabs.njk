@@ -4,6 +4,18 @@
 
 {% block content %}
 
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.tabs</code></dt>
+    <dd>Wrapper for underline-style tab navigation.</dd>
+    <dt><code>[data-tab-list]</code></dt>
+    <dd>Container for tab buttons.</dd>
+    <dt><code>[data-tab]</code></dt>
+    <dd>Individual tab button with underline indicator.</dd>
+    <dt><code>[data-tab-panel]</code></dt>
+    <dd>Content panel toggled by the active tab.</dd>
+  </dl>
+
   {% call example("Default") %}
 <div class="tabs" data-tabs>
   <div data-tab-list>
@@ -25,7 +37,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Handles tab switching on <code>[data-tabs]</code> containers.</p>
+    <p class="mt-2 text-[15px] text-muted-foreground">Handles tab switching on <code>[data-tabs]</code> containers. Sets ARIA roles and attributes, and adds keyboard navigation (Arrow keys, Home, End).</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/tabs.js"&gt;&lt;/script&gt;
