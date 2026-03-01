@@ -82,7 +82,7 @@
   }
   @media (pointer: coarse) {
     min-height: 44px;
-    &::-webkit-slider-thumb { width: 28px; height: 28px; }
+    &::-webkit-slider-thumb { width: 28px; height: 28px; margin-top: -12px; }
     &::-moz-range-thumb { width: 28px; height: 28px; }
   }
 }
