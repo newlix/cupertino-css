@@ -16,7 +16,7 @@
   animation: activity-spin 1s steps(8, end) infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .activity-indicator { animation: none; opacity: 0.5; }
+  .activity-indicator { animation: none; }
 }
 .activity-indicator-sm {
   @apply size-4;
