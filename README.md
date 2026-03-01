@@ -55,7 +55,6 @@ For quick prototyping without a build step:
 | Dialog | `dialog` (children: `header` `section` `footer`) | `js/dialog.js` (optional) |
 | Menu | `menu` | `js/menu.js` |
 | Tabs | `tabs` + `[data-tab-list]` `[data-tab]` `[data-tab-panel]` | `js/tabs.js` |
-| Table | `table` `table-striped` | — |
 | Avatar | `avatar` `avatar-group` | — |
 | Button Group | `btn-group` | — |
 | Kbd | `kbd` | — |
