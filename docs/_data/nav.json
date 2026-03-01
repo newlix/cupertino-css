@@ -2,7 +2,6 @@
   {
     "title": "Getting Started",
     "items": [
-      { "label": "Introduction", "href": "introduction.html" },
       { "label": "Installation", "href": "installation.html" },
       { "label": "Essentials", "href": "components/essentials.html" },
       { "label": "Kitchen Sink", "href": "components/kitchen-sink.html" }

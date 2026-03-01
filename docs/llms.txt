@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-- [Introduction](https://ciderui.com/introduction.html): Overview of Cider UI — semantic classes, dark mode, ~12 KB CSS + ~5 KB JS gzipped.
+- [Home](https://ciderui.com/index.html): Overview of Cider UI — semantic classes, dark mode, ~12 KB CSS + ~5 KB JS gzipped.
 - [Installation](https://ciderui.com/installation.html): CDN, npm/pnpm/bun/yarn, ES module imports, dark mode setup.
 
 ## Components
