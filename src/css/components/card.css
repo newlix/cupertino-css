@@ -2,6 +2,7 @@
 .card {
   @apply rounded-xl bg-card text-card-foreground p-6;
   corner-shape: squircle;
+  overflow: hidden;
   box-shadow: var(--shadow), var(--panel-ring);
   & > :not(:first-child) { margin-top: 0.75rem; }
 }
