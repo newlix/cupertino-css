@@ -11,30 +11,24 @@
   {
     "title": "Components",
     "items": [
-      { "label": "Inline Alert", "href": "components/inline-alert.html" },
+      { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
       { "label": "Alert", "href": "components/alert.html" },
-
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
+      { "label": "Banner", "href": "components/banner.html" },
+      { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
       { "label": "Card", "href": "components/card.html" },
-
       { "label": "Checkbox", "href": "components/checkbox.html" },
-      { "label": "Picker", "href": "components/picker.html" },
-      { "label": "Context Menu", "href": "components/context-menu.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
-
-
-      { "label": "Field", "href": "components/field.html" },
-
-
+      { "label": "HUD", "href": "components/hud.html" },
       { "label": "Input", "href": "components/input.html" },
-      { "label": "Input Group", "href": "components/input-group.html" },
-      { "label": "Verification Code", "href": "components/verification-code.html" },
-      { "label": "List Row", "href": "components/list-row.html" },
       { "label": "Kbd", "href": "components/kbd.html" },
-      { "label": "Label", "href": "components/label.html" },
+      { "label": "List", "href": "components/list.html" },
+      { "label": "Menu", "href": "components/menu.html" },
       { "label": "Page Control", "href": "components/page-control.html" },
+      { "label": "Pagination", "href": "components/pagination.html" },
+      { "label": "Picker", "href": "components/picker.html" },
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },
@@ -44,15 +38,11 @@
       { "label": "Sheet", "href": "components/sheet.html" },
       { "label": "Skeleton", "href": "components/skeleton.html" },
       { "label": "Slider", "href": "components/slider.html" },
-
-      { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
       { "label": "Switch", "href": "components/switch.html" },
       { "label": "Table", "href": "components/table.html" },
       { "label": "Tabs", "href": "components/tabs.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
-
-      { "label": "HUD", "href": "components/hud.html" },
-      { "label": "Help Tag", "href": "components/help-tag.html" }
+      { "label": "Verification Code", "href": "components/verification-code.html" }
     ]
   },
   {
