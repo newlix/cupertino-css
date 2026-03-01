@@ -25,11 +25,13 @@ function showHUD(label, options) {
   container.appendChild(hud);
 
   var dismissTimeout;
+  var animTimer;
   function dismiss() {
     if (dismissTimeout) clearTimeout(dismissTimeout);
+    if (animTimer) clearTimeout(animTimer);
     if (!hud.parentElement) return;
     hud.setAttribute("data-closing", "");
-    setTimeout(function () {
+    animTimer = setTimeout(function () {
       if (hud.parentElement) hud.remove();
     }, 200);
   }

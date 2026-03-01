@@ -13,7 +13,11 @@ function init() {
 
     var isMenu = wrapper.classList.contains("popover-menu");
 
-    popover.addEventListener("toggle", function (e) {
+    // Store and clean up toggle handler to prevent listener leaks on re-init
+    if (popover._toggleHandler) {
+      popover.removeEventListener("toggle", popover._toggleHandler);
+    }
+    popover._toggleHandler = function (e) {
       if (e.newState === "open") {
         var rect = trigger.getBoundingClientRect();
         popover.style.margin = "0";
@@ -50,7 +54,20 @@ function init() {
       } else {
         trigger.focus();
       }
-    });
+    };
+    popover.addEventListener("toggle", popover._toggleHandler);
+
+    // Escape key to close popover
+    if (popover._escHandler) {
+      popover.removeEventListener("keydown", popover._escHandler);
+    }
+    popover._escHandler = function (e) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        popover.hidePopover();
+      }
+    };
+    popover.addEventListener("keydown", popover._escHandler);
 
     if (isMenu) {
       popover.addEventListener("click", function (e) {
@@ -60,16 +77,21 @@ function init() {
       });
 
       popover.addEventListener("keydown", function (e) {
-        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
-        e.preventDefault();
         var items = Array.from(popover.querySelectorAll("button:not([disabled]), a:not([disabled])"));
         if (!items.length) return;
         var idx = items.indexOf(document.activeElement);
-        if (idx < 0) idx = -1;
-        if (e.key === "ArrowDown") {
-          items[idx < items.length - 1 ? idx + 1 : 0].focus();
-        } else {
-          items[idx > 0 ? idx - 1 : items.length - 1].focus();
+
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          if (idx < 0) idx = -1;
+          if (e.key === "ArrowDown") {
+            items[idx < items.length - 1 ? idx + 1 : 0].focus();
+          } else {
+            items[idx > 0 ? idx - 1 : items.length - 1].focus();
+          }
+        } else if (e.key === "Tab") {
+          // Close popover on Tab to prevent focus escaping
+          popover.hidePopover();
         }
       });
     }

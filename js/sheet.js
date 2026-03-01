@@ -14,14 +14,18 @@ function closeSheet(sheet) {
       sheet.close();
     }
   }, duration);
-  sheet.addEventListener("animationend", function () {
+  if (sheet._closeAnimHandler) {
+    sheet.removeEventListener("animationend", sheet._closeAnimHandler);
+  }
+  sheet._closeAnimHandler = function () {
     if (!closed) {
       closed = true;
       clearTimeout(timer);
       sheet.removeAttribute("data-closing");
       sheet.close();
     }
-  }, { once: true });
+  };
+  sheet.addEventListener("animationend", sheet._closeAnimHandler, { once: true });
 }
 
 function trapFocus(sheet) {

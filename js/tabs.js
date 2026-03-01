@@ -58,10 +58,13 @@ function init() {
       // Keyboard navigation
       btn.addEventListener("keydown", (e) => {
         let targetBtn = null;
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        const isRTL = document.documentElement.dir === "rtl";
+        const nextKey = isRTL ? "ArrowLeft" : "ArrowRight";
+        const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
+        if (e.key === nextKey || e.key === "ArrowDown") {
           e.preventDefault();
           targetBtn = buttons[(i + 1) % buttons.length];
-        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        } else if (e.key === prevKey || e.key === "ArrowUp") {
           e.preventDefault();
           targetBtn = buttons[(i - 1 + buttons.length) % buttons.length];
         } else if (e.key === "Home") {

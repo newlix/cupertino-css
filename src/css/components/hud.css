@@ -19,6 +19,10 @@
   animation: slideUp 0.25s var(--apple-spring);
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-semibold whitespace-nowrap; color: oklch(0.95 0 0); }
+  .dark & {
+    background: oklch(0.30 0 0 / 0.75);
+    box-shadow: var(--shadow-lg), 0 0 0 1px oklch(1 0 0 / 0.1);
+  }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */

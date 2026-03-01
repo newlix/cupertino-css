@@ -66,6 +66,7 @@
   --glass-bg: oklch(from var(--color-card) l c h / 0.85);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.35);
+  --hover-brightness: 0.92;
 
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
 
@@ -115,7 +116,7 @@
   --color-destructive-hover: oklch(0.614 0.206 28.02); /* #E63E35 */
   --color-destructive-active: oklch(0.563 0.187 27.66);/* #CC3730 */
 
-  --shadow-sm: 0 1px 3px oklch(1 0 0 / 0.08), 0 1px 2px oklch(1 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.12), 0 1px 2px oklch(0 0 0 / 0.08);
   --shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 1px 3px oklch(0 0 0 / 0.15);
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.25), 0 2px 4px oklch(0 0 0 / 0.15);
   --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.3), 0 2px 8px oklch(0 0 0 / 0.2);
@@ -133,6 +134,9 @@
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
   --glass-bg: oklch(from var(--color-card) l c h / 0.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.85);
+
+  --backdrop-bg: oklch(0 0 0 / 0.55);
+  --hover-brightness: 1.12;
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
 }

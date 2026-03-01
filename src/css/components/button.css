@@ -72,6 +72,10 @@
     backdrop-filter: blur(20px) saturate(1.5);
     -webkit-backdrop-filter: blur(20px) saturate(1.5);
     color: oklch(0.95 0 0);
+    .dark & {
+      background: oklch(0.85 0 0 / 0.9);
+      color: oklch(0.1 0 0);
+    }
     box-shadow: var(--shadow-sm);
     opacity: 0;
     translate: -50% 2px;

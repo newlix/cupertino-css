@@ -15,14 +15,18 @@ function closeDialog(dialog) {
       dialog.close();
     }
   }, duration);
-  dialog.addEventListener("animationend", function () {
+  if (dialog._closeAnimHandler) {
+    dialog.removeEventListener("animationend", dialog._closeAnimHandler);
+  }
+  dialog._closeAnimHandler = function () {
     if (!closed) {
       closed = true;
       clearTimeout(timer);
       dialog.removeAttribute("data-closing");
       dialog.close();
     }
-  }, { once: true });
+  };
+  dialog.addEventListener("animationend", dialog._closeAnimHandler, { once: true });
 }
 
 function trapFocus(dialog) {
