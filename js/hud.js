@@ -10,6 +10,7 @@ function showHUD(label, options) {
   hud.className = "hud";
   hud.setAttribute("role", "status");
   hud.setAttribute("aria-live", "polite");
+  hud.setAttribute("aria-atomic", "true");
 
   // Icon
   var iconWrapper = document.createElement("template");

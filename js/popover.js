@@ -70,13 +70,20 @@ function init() {
     popover.addEventListener("keydown", popover._escHandler);
 
     if (isMenu) {
-      popover.addEventListener("click", function (e) {
+      if (popover._menuClickHandler) {
+        popover.removeEventListener("click", popover._menuClickHandler);
+      }
+      popover._menuClickHandler = function (e) {
         var item = e.target.closest("button, a");
         if (!item || !popover.contains(item)) return;
         popover.hidePopover();
-      });
+      };
+      popover.addEventListener("click", popover._menuClickHandler);
 
-      popover.addEventListener("keydown", function (e) {
+      if (popover._menuKeyHandler) {
+        popover.removeEventListener("keydown", popover._menuKeyHandler);
+      }
+      popover._menuKeyHandler = function (e) {
         var items = Array.from(popover.querySelectorAll("button:not([disabled]), a:not([disabled])"));
         if (!items.length) return;
         var idx = items.indexOf(document.activeElement);
@@ -93,7 +100,8 @@ function init() {
           // Close popover on Tab to prevent focus escaping
           popover.hidePopover();
         }
-      });
+      };
+      popover.addEventListener("keydown", popover._menuKeyHandler);
     }
   });
 }
