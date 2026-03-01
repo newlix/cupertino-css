@@ -6,6 +6,7 @@
     corner-shape: squircle;
     transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
     &:hover:not([data-active]) { background: var(--surface-3); }
+    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
     &:active:not([data-active]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
     &[data-active], &[aria-current="page"] {
       @apply text-foreground font-medium;
