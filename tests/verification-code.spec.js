@@ -56,4 +56,45 @@ test.describe('Verification Code', () => {
     const hidden = preview(page).locator('input[type="hidden"]');
     await expect(hidden).toHaveValue('123456');
   });
+
+  test('hidden input syncs value as digits are typed', async ({ page }) => {
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
+    const hidden = preview(page).locator('input[type="hidden"]');
+
+    await inputs.nth(0).click();
+    await page.keyboard.press('4');
+    await expect(hidden).toHaveValue('4');
+
+    await page.keyboard.press('2');
+    await expect(hidden).toHaveValue('42');
+
+    await page.keyboard.press('0');
+    await expect(hidden).toHaveValue('420');
+  });
+
+  test('non-numeric input is rejected', async ({ page }) => {
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
+
+    await inputs.nth(0).click();
+    await page.keyboard.press('a');
+    await expect(inputs.nth(0)).toHaveValue('');
+
+    // Should stay on the same input since no digit was entered
+    await page.keyboard.press('1');
+    await expect(inputs.nth(0)).toHaveValue('1');
+    await expect(inputs.nth(1)).toBeFocused();
+  });
+
+  test('arrow keys navigate between slots', async ({ page }) => {
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
+
+    await inputs.nth(1).click();
+    await expect(inputs.nth(1)).toBeFocused();
+
+    await page.keyboard.press('ArrowLeft');
+    await expect(inputs.nth(0)).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+    await expect(inputs.nth(1)).toBeFocused();
+  });
 });

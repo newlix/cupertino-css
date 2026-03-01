@@ -63,16 +63,20 @@ function init() {
         const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
         if (e.key === nextKey || e.key === "ArrowDown") {
           e.preventDefault();
-          targetBtn = buttons[(i + 1) % buttons.length];
+          var idx = (i + 1) % buttons.length;
+          while (idx !== i && buttons[idx].disabled) idx = (idx + 1) % buttons.length;
+          targetBtn = buttons[idx];
         } else if (e.key === prevKey || e.key === "ArrowUp") {
           e.preventDefault();
-          targetBtn = buttons[(i - 1 + buttons.length) % buttons.length];
+          var idx = (i - 1 + buttons.length) % buttons.length;
+          while (idx !== i && buttons[idx].disabled) idx = (idx - 1 + buttons.length) % buttons.length;
+          targetBtn = buttons[idx];
         } else if (e.key === "Home") {
           e.preventDefault();
-          targetBtn = buttons[0];
+          targetBtn = Array.from(buttons).find(function(b) { return !b.disabled; });
         } else if (e.key === "End") {
           e.preventDefault();
-          targetBtn = buttons[buttons.length - 1];
+          targetBtn = Array.from(buttons).reverse().find(function(b) { return !b.disabled; });
         }
 
         if (targetBtn && !targetBtn.disabled) {

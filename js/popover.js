@@ -41,6 +41,7 @@ function init() {
       var top;
       if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
         top = rect.top - ph - gap;
+        if (top < 0) top = 0;
       } else {
         top = rect.bottom + gap;
       }
