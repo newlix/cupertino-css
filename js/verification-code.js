@@ -1,13 +1,13 @@
 // Verification Code — ciderui
-// Manages hidden input, auto-advance, backspace, paste for verification code slots.
+// Auto-advance, backspace, paste for verification code inputs.
 function init() {
   document.querySelectorAll(".verification-code").forEach((otp) => {
     if (otp.dataset.initialized) return;
     otp.dataset.initialized = "true";
-    const slots = otp.querySelectorAll(".verification-code-slot");
-    if (!slots.length) return;
+    const inputs = otp.querySelectorAll('input:not([type="hidden"])');
+    if (!inputs.length) return;
+    inputs.forEach((input) => { input.maxLength = 1; input.inputMode = "numeric"; });
 
-    // Create hidden input for the full value
     let hidden = otp.querySelector("input[type=hidden]");
     if (!hidden) {
       hidden = document.createElement("input");
@@ -16,73 +16,46 @@ function init() {
       otp.appendChild(hidden);
     }
 
-    function syncValue() {
-      hidden.value = Array.from(slots).map((s) => s.textContent.trim()).join("");
-      // Update active state
-      slots.forEach((s) => s.removeAttribute("data-active"));
+    function sync() {
+      hidden.value = Array.from(inputs).map((i) => i.value).join("");
     }
 
-    function focusSlot(index) {
-      if (index >= 0 && index < slots.length) {
-        slots[index].focus();
-        slots.forEach((s) => s.removeAttribute("data-active"));
-        slots[index].setAttribute("data-active", "");
-      }
-    }
-
-    slots.forEach((slot, i) => {
-      slot.setAttribute("tabindex", "0");
-      slot.setAttribute("role", "textbox");
-      slot.setAttribute("aria-label", `Digit ${i + 1}`);
-
-      slot.addEventListener("focus", () => {
-        slots.forEach((s) => s.removeAttribute("data-active"));
-        slot.setAttribute("data-active", "");
+    inputs.forEach((input, i) => {
+      input.addEventListener("input", (e) => {
+        const v = input.value.replace(/\D/g, "");
+        input.value = v.slice(-1);
+        sync();
+        if (v && i < inputs.length - 1) inputs[i + 1].focus();
       });
 
-      slot.addEventListener("blur", () => {
-        slot.removeAttribute("data-active");
-      });
-
-      slot.addEventListener("keydown", (e) => {
-        if (e.key === "Backspace") {
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !input.value && i > 0) {
           e.preventDefault();
-          if (slot.textContent.trim()) {
-            slot.textContent = "";
-            syncValue();
-          } else if (i > 0) {
-            slots[i - 1].textContent = "";
-            focusSlot(i - 1);
-            syncValue();
-          }
-          return;
+          inputs[i - 1].value = "";
+          inputs[i - 1].focus();
+          sync();
         }
-        if (e.key === "ArrowLeft") { e.preventDefault(); focusSlot(i - 1); return; }
-        if (e.key === "ArrowRight") { e.preventDefault(); focusSlot(i + 1); return; }
-        if (e.key.length === 1 && /\d/.test(e.key)) {
-          e.preventDefault();
-          slot.textContent = e.key;
-          syncValue();
-          focusSlot(i + 1);
-        }
+        if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); inputs[i - 1].focus(); }
+        if (e.key === "ArrowRight" && i < inputs.length - 1) { e.preventDefault(); inputs[i + 1].focus(); }
       });
 
-      slot.addEventListener("paste", (e) => {
+      input.addEventListener("paste", (e) => {
         e.preventDefault();
         const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
-        for (let j = 0; j < text.length && i + j < slots.length; j++) {
-          slots[i + j].textContent = text[j];
+        for (let j = 0; j < text.length && i + j < inputs.length; j++) {
+          inputs[i + j].value = text[j];
         }
-        syncValue();
-        focusSlot(Math.min(i + text.length, slots.length - 1));
+        sync();
+        inputs[Math.min(i + text.length, inputs.length - 1)].focus();
       });
+
+      input.addEventListener("focus", () => input.select());
     });
 
-    // Click the container focuses the first empty slot
     otp.addEventListener("click", (e) => {
-      if (e.target.closest(".verification-code-slot")) return;
-      const firstEmpty = Array.from(slots).findIndex((s) => !s.textContent.trim());
-      focusSlot(firstEmpty >= 0 ? firstEmpty : slots.length - 1);
+      if (e.target.closest('input:not([type="hidden"])')) return;
+      const firstEmpty = Array.from(inputs).findIndex((i) => !i.value);
+      inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
     });
   });
 }

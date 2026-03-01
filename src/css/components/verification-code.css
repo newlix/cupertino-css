@@ -1,23 +1,18 @@
 /* ========== VERIFICATION CODE ========== */
+/* Use inside .cider — inherits input border, bg, focus ring from container scope. */
 .verification-code {
   @apply flex items-center gap-2;
 }
-.verification-code-slot {
-  @apply flex size-12 items-center justify-center rounded-[12px] border text-[17px] font-medium text-foreground;
-  corner-shape: squircle;
-  border-color: var(--input-border);
-  background: var(--color-card);
+.verification-code input:not([type="hidden"]) {
+  @apply size-12 text-center p-0 text-[17px] font-medium;
   caret-color: transparent;
-  transition: border-color 0.2s var(--apple-ease);
-  &:focus-within, &[data-active] {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.2);
-  }
 }
-.verification-code-separator {
-  @apply flex items-center text-muted-foreground;
-  & span { @apply mx-0.5 text-xl; }
+.verification-code > span {
+  @apply text-xl text-muted-foreground;
 }
-.verification-code[data-error] .verification-code-slot {
+.verification-code[data-error] input:not([type="hidden"]) {
   border-color: var(--color-destructive);
+}
+.verification-code[data-error] + small {
+  @apply text-destructive;
 }

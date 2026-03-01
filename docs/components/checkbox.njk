@@ -6,48 +6,46 @@
 
   {% call example("Default") %}
 <div class="space-y-2.5">
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+  <label>
     <input type="checkbox" />
-    <span class="text-sm">Accept terms and conditions</span>
+    Accept terms and conditions
   </label>
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+  <label>
     <input type="checkbox" checked />
-    <span class="text-sm">Remember me</span>
+    Remember me
   </label>
 </div>
 {% endcall %}
 
   {% call example("Disabled") %}
-<label class="inline-flex items-center gap-2.5 cursor-not-allowed opacity-60">
+<label>
   <input type="checkbox" disabled />
-  <span class="text-sm">Accept terms and conditions</span>
+  Accept terms and conditions
 </label>
 {% endcall %}
 
   {% call example("With Text") %}
-<div class="flex items-start gap-2.5">
-  <input type="checkbox" id="demo-cb-text" class="mt-0.5">
-  <div class="grid gap-1">
-    <label for="demo-cb-text" class="text-sm cursor-pointer">Accept terms and conditions</label>
-    <small>By clicking this checkbox, you agree to the terms and conditions.</small>
-  </div>
-</div>
+<label>
+  <input type="checkbox" />
+  <span>Accept terms and conditions</span>
+  <small>By clicking this checkbox, you agree to the terms and conditions.</small>
+</label>
 {% endcall %}
 
   {% call example("Group") %}
-<fieldset class="space-y-2.5">
-  <legend class="text-sm font-medium mb-2">Interests</legend>
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+<fieldset>
+  <legend>Interests</legend>
+  <label>
     <input type="checkbox" name="interests" value="design" checked />
-    <span class="text-sm">Design</span>
+    Design
   </label>
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+  <label>
     <input type="checkbox" name="interests" value="engineering" />
-    <span class="text-sm">Engineering</span>
+    Engineering
   </label>
-  <label class="inline-flex items-center gap-2.5 cursor-pointer">
+  <label>
     <input type="checkbox" name="interests" value="marketing" />
-    <span class="text-sm">Marketing</span>
+    Marketing
   </label>
 </fieldset>
 {% endcall %}

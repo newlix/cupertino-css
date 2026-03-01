@@ -1,9 +1,0 @@
-/* ========== FIELD (layout + error text — form controls styled by container.css) ========== */
-.field {
-  @apply space-y-2;
-  & > p { @apply text-[13px] text-muted-foreground; }
-  & > p.field-error { color: var(--color-destructive); }
-  &:has(input:disabled, textarea:disabled, select:disabled) {
-    @apply opacity-50 pointer-events-none;
-  }
-}

@@ -1,0 +1,60 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Pagination" %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<nav class="pagination" aria-label="Pagination">
+  <button aria-label="Previous page" disabled>
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button data-active>1</button>
+  <button>2</button>
+  <button>3</button>
+  <span>...</span>
+  <button>10</button>
+  <button aria-label="Next page">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</nav>
+{% endcall %}
+
+  {% call example("Simple (Numbers Only)") %}
+<nav class="pagination" aria-label="Pagination">
+  <button data-active>1</button>
+  <button>2</button>
+  <button>3</button>
+  <button>4</button>
+  <button>5</button>
+</nav>
+{% endcall %}
+
+  {% call example("Icons Only") %}
+<nav class="pagination" aria-label="Pagination">
+  <button aria-label="Previous page" disabled>
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button aria-label="Next page">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</nav>
+{% endcall %}
+
+  {% call example("With Text Buttons") %}
+<nav class="pagination" aria-label="Pagination">
+  <button class="px-3 gap-1" disabled>
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    Previous
+  </button>
+  <button data-active>1</button>
+  <button>2</button>
+  <button>3</button>
+  <button class="px-3 gap-1">
+    Next
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</nav>
+{% endcall %}
+
+{% endblock %}

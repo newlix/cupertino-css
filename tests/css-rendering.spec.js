@@ -68,14 +68,12 @@ test.describe('CSS Rendering', () => {
     expect(radius).toBeGreaterThan(100);
   });
 
-  test('inline-alert variants are visible', async ({ page }) => {
-    await goto(page, 'inline-alert');
-    for (const cls of ['.inline-alert', '.inline-alert-destructive']) {
-      const alert = page.locator(`.snippet-preview > figure ${cls}`).first();
-      await expect(alert).toBeVisible();
-      const box = await alert.boundingBox();
-      expect(box.height).toBeGreaterThan(30);
-    }
+  test('banner is visible', async ({ page }) => {
+    await goto(page, 'banner');
+    const alert = page.locator('.snippet-preview > figure .banner').first();
+    await expect(alert).toBeVisible();
+    const box = await alert.boundingBox();
+    expect(box.height).toBeGreaterThan(30);
   });
 
   test('activity indicator has animation', async ({ page }) => {

@@ -11,13 +11,13 @@
 
 ### Form & Input
 
-- [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`
+- [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`. Help tag: add `data-help="Label"` for hover tooltip.
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
 - [Picker](https://ciderui.com/components/picker.html): Custom picker with search filtering. Requires `js/picker.js`.
-- [Field](https://ciderui.com/components/field.html): `field` — auto-styles label, input, and description children.
+
 
 - [Input](https://ciderui.com/components/input.html): `input` — styled text input.
-- [Input Group](https://ciderui.com/components/input-group.html): Input with prefix/suffix addons.
+
 - [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
 - [Label](https://ciderui.com/components/label.html): `label` — styled form label.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `radio` — pure CSS radio styling.
@@ -32,26 +32,25 @@
 
 ### Navigation
 
-- [Card](https://ciderui.com/components/card.html): `card` `card-interactive` — simple padded container.
+- [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` `page-control-dot` — Apple-style dot page indicator.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
-- [Tabs](https://ciderui.com/components/tabs.html): `tabs` `tabs-list` `tabs-trigger` `tabs-content` `segmented-control`. Requires `js/tabs.js`.
+- [Tabs](https://ciderui.com/components/tabs.html): `tabs` with `[data-tab-list]` `[data-tab]` `[data-tab-panel]`. Requires `js/tabs.js`.
 
 ### Overlays & Dialogs
 
-- [Alert](https://ciderui.com/components/alert.html): Modal confirmation dialog.
-- [Context Menu](https://ciderui.com/components/context-menu.html): Right-click menu. Requires `js/context-menu.js`. Dropdown menu (`menu` class) also defined here; requires `js/dropdown-menu.js`.
-- [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Optional `js/dialog.js`.
-- [Drawer](https://ciderui.com/components/drawer.html): Slide-out panel from any edge.
+- [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Alerts and form dialogs. Optional `js/dialog.js`.
+- [Menu](https://ciderui.com/components/menu.html): `menu` — dropdown menu using native Popover API. Requires `js/menu.js`.
+
 
 - [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
 - [Sheet](https://ciderui.com/components/sheet.html): Full-height slide-out panel. Requires `js/sheet.js`.
-- [Help Tag](https://ciderui.com/components/help-tag.html): `help-tag` `help-tag-content` `help-tag-bottom` — pure CSS help tags.
+
 
 ### Feedback & Status
 
-- [Inline Alert](https://ciderui.com/components/inline-alert.html): `inline-alert` `inline-alert-destructive`
+- [Banner](https://ciderui.com/components/banner.html): `banner`
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
@@ -65,7 +64,7 @@
 - [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
 
 
-- [List Row](https://ciderui.com/components/list-row.html): List row with icon, label, description. `list-row` `list-section`.
+- [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 
 - [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
@@ -92,7 +91,7 @@ Most components are pure CSS. Import JS only for interactive behavior:
 
 ```js
 import "ciderui/dialog.js";
-import "ciderui/dropdown-menu.js";
+import "ciderui/menu.js";
 import "ciderui/tabs.js";
 import "ciderui/hud.js";
 ```

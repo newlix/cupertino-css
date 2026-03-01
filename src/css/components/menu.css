@@ -1,0 +1,52 @@
+/* ========== MENU ========== */
+.menu {
+  @apply relative inline-block;
+
+  & [popover] {
+    @apply absolute z-50 mt-1 min-w-[160px] rounded-[10px] p-1;
+    corner-shape: squircle;
+    inset: unset;
+    margin: 0;
+    border: none;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-lg), var(--float-ring);
+    max-height: 400px;
+    overflow: hidden auto;
+
+    /* Open/close animation */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.15s var(--apple-ease), transform 0.15s var(--apple-spring), display 0.15s allow-discrete, overlay 0.15s allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @starting-style {
+      &:popover-open {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+    }
+
+    & button, & a {
+      @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
+      transition: background-color 0.15s var(--apple-ease);
+      &:hover { background: var(--surface-2); }
+      &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
+      & svg { @apply size-4 text-muted-foreground; }
+      &[disabled], &[aria-disabled="true"] {
+        @apply text-[11px] font-medium text-muted-foreground;
+        pointer-events: none;
+        &:hover { background: transparent; }
+      }
+    }
+  }
+  & .menu-divider, & [popover] hr {
+    @apply my-1 h-px mx-1.5;
+    background: var(--panel-border);
+  }
+}

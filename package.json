@@ -23,9 +23,8 @@
     "./cdn": "./src/css/ciderui.cdn.css",
 
     "./picker.js": "./js/picker.js",
-    "./context-menu.js": "./js/context-menu.js",
     "./dialog.js": "./js/dialog.js",
-    "./dropdown-menu.js": "./js/dropdown-menu.js",
+    "./menu.js": "./js/menu.js",
     "./verification-code.js": "./js/verification-code.js",
     "./popover.js": "./js/popover.js",
     "./sheet.js": "./js/sheet.js",

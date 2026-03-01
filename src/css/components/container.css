@@ -22,31 +22,28 @@
     color: var(--color-foreground);
   }
   h1 {
-    @apply font-bold text-foreground;
+    @apply font-bold text-foreground mb-4;
     font-size: 34px;
     line-height: 1.21;
     letter-spacing: -0.003em;
     &:not(:first-child) { @apply mt-8; }
-    & + * { @apply mt-4; }
   }
   h2 {
-    @apply font-semibold text-foreground;
+    @apply font-semibold text-foreground mb-3;
     font-size: 22px;
     line-height: 1.18;
     letter-spacing: 0.016em;
     &:not(:first-child) { @apply mt-8; }
-    & + * { @apply mt-3; }
   }
   h3 {
-    @apply font-semibold text-foreground;
+    @apply font-semibold text-foreground mb-2;
     font-size: 20px;
     line-height: 1.25;
     letter-spacing: 0.019em;
     &:not(:first-child) { @apply mt-6; }
-    & + * { @apply mt-2; }
   }
   h4 {
-    @apply font-semibold text-foreground;
+    @apply font-semibold text-foreground mb-1;
     font-size: 17px;
     line-height: 1.29;
     letter-spacing: -0.022em;
@@ -123,13 +120,15 @@
 
   /* ─── Checkbox ─── */
   input[type="checkbox"]:not([role="switch"]) {
-    @apply appearance-none size-6 shrink-0 rounded-[6px] border bg-card cursor-pointer;
+    @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
+    width: 18px;
+    height: 18px;
     border-color: var(--input-border);
     transition: all 0.2s var(--apple-ease);
     &:checked {
       @apply bg-primary border-primary;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-      background-size: 12px;
+      background-size: 10px;
       background-position: center;
       background-repeat: no-repeat;
     }
@@ -140,7 +139,9 @@
 
   /* ─── Radio ─── */
   input[type="radio"] {
-    @apply appearance-none size-5 shrink-0 rounded-full border bg-card cursor-pointer;
+    @apply appearance-none shrink-0 rounded-full border bg-card cursor-pointer;
+    width: 18px;
+    height: 18px;
     border-color: var(--input-border);
     transition: all 0.2s var(--apple-ease);
     &:checked {
@@ -186,6 +187,34 @@
   /* ─── Label ─── */
   label {
     @apply block text-[13px] font-medium text-foreground;
+    &:has(input[type="checkbox"], input[type="radio"]) {
+      @apply flex items-center gap-2.5 cursor-pointer;
+      &:has(> small) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 0.625rem;
+        row-gap: 0.25rem;
+        align-items: start;
+        & > input { @apply mt-0.5; }
+        & > small { grid-column: 2; }
+      }
+    }
+    &:has(input:disabled) {
+      @apply cursor-not-allowed opacity-50;
+    }
+  }
+  label:has(+ :is(input, textarea, select):required)::after {
+    content: " *";
+    color: var(--color-destructive);
+  }
+  label + input, label + textarea, label + select {
+    @apply mt-1.5;
+  }
+  input + small, textarea + small, select + small {
+    @apply mt-1.5;
+  }
+  :is(input, textarea, select)[aria-invalid="true"] + small {
+    @apply text-destructive;
   }
 
   /* ─── Table ─── */
@@ -252,11 +281,15 @@
 
   /* ─── Fieldset ─── */
   fieldset {
-    @apply rounded-xl border p-5 space-y-4;
+    @apply rounded-xl border p-5;
     corner-shape: squircle;
     border-color: var(--color-border);
     & > legend {
       @apply px-2 text-[13px] font-semibold text-foreground;
+    }
+    @apply space-y-4;
+    &:has(input[type="checkbox"], input[type="radio"]) {
+      @apply space-y-2.5;
     }
   }
 

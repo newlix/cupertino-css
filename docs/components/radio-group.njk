@@ -5,110 +5,60 @@
 {% block content %}
 
   {% call example("Default") %}
-<fieldset class="space-y-2.5">
+<fieldset>
     <legend>Notification preference</legend>
-    <label class="flex items-center gap-2.5 cursor-pointer">
+    <label>
       <input type="radio" name="notification" value="all" checked />
-      <span class="text-sm">All notifications</span>
+      All notifications
     </label>
-    <label class="flex items-center gap-2.5 cursor-pointer">
+    <label>
       <input type="radio" name="notification" value="mentions" />
-      <span class="text-sm">Mentions only</span>
+      Mentions only
     </label>
-    <label class="flex items-center gap-2.5 cursor-pointer">
+    <label>
       <input type="radio" name="notification" value="none" />
-      <span class="text-sm">None</span>
+      None
     </label>
   </fieldset>
 {% endcall %}
 
   {% call example("With Description") %}
-<fieldset class="space-y-3">
+<fieldset>
     <legend>Spacing</legend>
-    <label class="flex items-start gap-2.5 cursor-pointer">
-      <input type="radio" name="spacing" value="default" checked class="mt-0.5" />
-      <div>
-        <span class="text-sm font-medium">Default</span>
-        <p class="text-xs text-muted-foreground">Standard spacing that works for most use cases.</p>
-      </div>
+    <label>
+      <input type="radio" name="spacing" value="default" checked />
+      <span>Default</span>
+      <small>Standard spacing that works for most use cases.</small>
     </label>
-    <label class="flex items-start gap-2.5 cursor-pointer">
-      <input type="radio" name="spacing" value="comfortable" class="mt-0.5" />
-      <div>
-        <span class="text-sm font-medium">Comfortable</span>
-        <p class="text-xs text-muted-foreground">More breathing room between elements.</p>
-      </div>
+    <label>
+      <input type="radio" name="spacing" value="comfortable" />
+      <span>Comfortable</span>
+      <small>More breathing room between elements.</small>
     </label>
-    <label class="flex items-start gap-2.5 cursor-pointer">
-      <input type="radio" name="spacing" value="compact" class="mt-0.5" />
-      <div>
-        <span class="text-sm font-medium">Compact</span>
-        <p class="text-xs text-muted-foreground">Reduced spacing for dense interfaces.</p>
-      </div>
-    </label>
-  </fieldset>
-{% endcall %}
-
-  {% call example("Card Selection") %}
-<fieldset class="grid grid-cols-3 gap-3" style="max-width: 480px;">
-    <legend class="col-span-3 mb-1">Choose a plan</legend>
-    <label class="flex flex-col items-center gap-2 rounded-xl border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-colors">
-      <input type="radio" name="plan" value="starter" class="sr-only" />
-      <span class="text-sm font-semibold">Starter</span>
-      <span class="text-xs text-muted-foreground">$9/mo</span>
-    </label>
-    <label class="flex flex-col items-center gap-2 rounded-xl border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-colors">
-      <input type="radio" name="plan" value="pro" checked class="sr-only" />
-      <span class="text-sm font-semibold">Pro</span>
-      <span class="text-xs text-muted-foreground">$29/mo</span>
-    </label>
-    <label class="flex flex-col items-center gap-2 rounded-xl border p-4 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-colors">
-      <input type="radio" name="plan" value="enterprise" class="sr-only" />
-      <span class="text-sm font-semibold">Enterprise</span>
-      <span class="text-xs text-muted-foreground">$99/mo</span>
+    <label>
+      <input type="radio" name="spacing" value="compact" />
+      <span>Compact</span>
+      <small>Reduced spacing for dense interfaces.</small>
     </label>
   </fieldset>
 {% endcall %}
 
   {% call example("Disabled") %}
-<fieldset class="space-y-2.5">
+<fieldset>
     <legend>Status</legend>
-    <label class="flex items-center gap-2.5 cursor-pointer">
+    <label>
       <input type="radio" name="status" value="active" checked />
-      <span class="text-sm">Active</span>
+      Active
     </label>
-    <label class="flex items-center gap-2.5 opacity-50 cursor-not-allowed">
+    <label>
       <input type="radio" name="status" value="pending" disabled />
-      <span class="text-sm">Pending (unavailable)</span>
+      Pending (unavailable)
     </label>
-    <label class="flex items-center gap-2.5 cursor-pointer">
+    <label>
       <input type="radio" name="status" value="archived" />
-      <span class="text-sm">Archived</span>
+      Archived
     </label>
   </fieldset>
-{% endcall %}
-
-  {% call example("Form") %}
-<form class="space-y-6" onsubmit="return false;">
-  <div class="flex flex-col gap-3">
-    <label>Notify me about…</label>
-    <fieldset class="space-y-2.5">
-      <label class="flex items-center gap-2.5 cursor-pointer">
-        <input type="radio" name="demo-radio-form" value="all" />
-        <span class="text-sm">All new messages</span>
-      </label>
-      <label class="flex items-center gap-2.5 cursor-pointer">
-        <input type="radio" name="demo-radio-form" value="mentions" />
-        <span class="text-sm">Direct messages and mentions</span>
-      </label>
-      <label class="flex items-center gap-2.5 cursor-pointer">
-        <input type="radio" name="demo-radio-form" value="none" />
-        <span class="text-sm">Nothing</span>
-      </label>
-    </fieldset>
-  </div>
-  <button class="btn-gray" type="submit">Submit</button>
-</form>
 {% endcall %}
 
 {% endblock %}

@@ -9,36 +9,44 @@
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="space-y-1.5">
-  <label for="demo-email">Email</label>
-  <input type="email" id="demo-email" placeholder="you@example.com" />
-  <small>We'll never share your email.</small>
-</div>
+<label for="demo-email">Email</label>
+<input type="email" id="demo-email" placeholder="you@example.com" />
+<small>We'll never share your email.</small>
+{% endcall %}
+
+  {% call example("Required") %}
+<label for="demo-required">Email</label>
+<input type="email" id="demo-required" placeholder="you@example.com" required />
+{% endcall %}
+
+  <p class="text-muted-foreground">
+    A red <code>*</code> is added automatically when the input has <code>required</code>.
+  </p>
+
+  {% call example("Optional Hint") %}
+<label for="demo-optional">Company name <small>(optional)</small></label>
+<input type="text" id="demo-optional" placeholder="Acme Inc." />
 {% endcall %}
 
   {% call example("Error State") %}
-<div class="space-y-1.5">
-  <label for="demo-username">Username</label>
-  <input type="text" id="demo-username" value="ab" aria-invalid="true" />
-  <small class="text-destructive">Username must be at least 3 characters.</small>
+<label for="demo-username">Username</label>
+<input type="text" id="demo-username" value="ab" aria-invalid="true" />
+<small>Username must be at least 3 characters.</small>
+{% endcall %}
+
+  <p class="text-muted-foreground">
+    Add <code>aria-invalid="true"</code> to turn the helper text red automatically.
+  </p>
+
+  {% call example("With Icon") %}
+<div class="relative">
+  <svg class="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <input type="text" class="pl-9" placeholder="Search..." />
 </div>
 {% endcall %}
 
   {% call example("Disabled") %}
 <input type="text" placeholder="Enter text..." disabled />
-{% endcall %}
-
-  {% call example("Form") %}
-<form class="space-y-6" onsubmit="return false">
-  <div class="space-y-1.5">
-    <label for="demo-form-email">Email</label>
-    <input type="email" id="demo-form-email" placeholder="you@example.com">
-    <small>We'll never share your email with anyone else.</small>
-  </div>
-  <div class="flex gap-3">
-    <button class="btn-gray" type="submit">Submit</button>
-  </div>
-</form>
 {% endcall %}
 
 {% endblock %}

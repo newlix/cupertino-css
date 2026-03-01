@@ -6,7 +6,7 @@ test.describe('Dark Mode', () => {
     await goto(page, 'verification-code');
     await setDark(page);
 
-    const slot = darkPreview(page).locator('.verification-code-slot').first();
+    const slot = darkPreview(page).locator('.verification-code input:not([type="hidden"])').first();
     const container = darkPreview(page);
 
     expect(await css(slot, 'backgroundColor')).not.toBe(await css(container, 'backgroundColor'));
@@ -62,15 +62,12 @@ test.describe('Dark Mode', () => {
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
 
-  test('inline-alert variants are visible in dark mode', async ({ page }) => {
-    await goto(page, 'inline-alert');
+  test('banner is visible in dark mode', async ({ page }) => {
+    await goto(page, 'banner');
     await setDark(page);
 
-    for (const sel of ['.inline-alert', '.inline-alert-destructive']) {
-      const alert = page.locator(`.snippet-preview > figure ${sel}`).first();
-      if ((await alert.count()) === 0) continue;
-      await expect(alert).toBeVisible();
-    }
+    const alert = page.locator('.snippet-preview > figure .banner').first();
+    await expect(alert).toBeVisible();
   });
 
   test('input border is visible against background', async ({ page }) => {

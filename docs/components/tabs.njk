@@ -6,85 +6,19 @@
 
   {% call example("Default") %}
 <div class="tabs" data-tabs>
-  <div class="tabs-list" data-tab-list>
-    <button data-tab="tab-1" data-active class="tabs-trigger">Account</button>
-    <button data-tab="tab-2" class="tabs-trigger">Password</button>
-    <button data-tab="tab-3" class="tabs-trigger">Notifications</button>
+  <div data-tab-list>
+    <button data-tab="tab-1" data-active>Account</button>
+    <button data-tab="tab-2">Password</button>
+    <button data-tab="tab-3" disabled>Disabled</button>
   </div>
-  <div data-tab-panel="tab-1" data-active class="tabs-content">
+  <div data-tab-panel="tab-1" data-active>
     <p class="text-sm text-muted-foreground">Make changes to your account here.</p>
   </div>
-  <div data-tab-panel="tab-2" class="tabs-content">
+  <div data-tab-panel="tab-2">
     <p class="text-sm text-muted-foreground">Change your password here.</p>
   </div>
-  <div data-tab-panel="tab-3" class="tabs-content">
-    <p class="text-sm text-muted-foreground">Configure your notification settings.</p>
-  </div>
-</div>
-{% endcall %}
-
-  {% call example("With Cards") %}
-<div class="tabs" data-tabs>
-  <div class="tabs-list" data-tab-list>
-    <button data-tab="card-account" data-active class="tabs-trigger">Account</button>
-    <button data-tab="card-password" class="tabs-trigger">Password</button>
-  </div>
-  <div data-tab-panel="card-account" data-active class="tabs-content">
-    <div class="card p-6">
-      <h3 class="text-lg font-semibold">Account</h3>
-      <p class="mt-1 text-sm text-muted-foreground">Make changes to your account here. Click save when you're done.</p>
-      <form class="mt-4 space-y-4" onsubmit="return false;">
-        <div class="field">
-          <label>Name</label>
-          <input type="text" value="John Doe" />
-        </div>
-        <div class="field">
-          <label>Username</label>
-          <input type="text" value="@johndoe" />
-        </div>
-        <button class="btn-gray" type="submit">Save changes</button>
-      </form>
-    </div>
-  </div>
-  <div data-tab-panel="card-password" class="tabs-content">
-    <div class="card p-6">
-      <h3 class="text-lg font-semibold">Password</h3>
-      <p class="mt-1 text-sm text-muted-foreground">Change your password here. After saving, you'll be logged out.</p>
-      <form class="mt-4 space-y-4" onsubmit="return false;">
-        <div class="field">
-          <label>Current password</label>
-          <input type="password" />
-        </div>
-        <div class="field">
-          <label>New password</label>
-          <input type="password" />
-        </div>
-        <div class="field">
-          <label>Confirm password</label>
-          <input type="password" />
-        </div>
-        <button class="btn-gray" type="submit">Save password</button>
-      </form>
-    </div>
-  </div>
-</div>
-{% endcall %}
-
-  {% call example("Disabled") %}
-<div class="tabs" data-tabs>
-  <div class="tabs-list" data-tab-list>
-    <button data-tab="dis-1" data-active class="tabs-trigger">Home</button>
-    <button data-tab="dis-2" class="tabs-trigger" disabled>Disabled</button>
-    <button data-tab="dis-3" class="tabs-trigger">Settings</button>
-  </div>
-  <div data-tab-panel="dis-1" data-active class="tabs-content">
-    <p class="text-sm text-muted-foreground">Welcome to the home tab.</p>
-  </div>
-  <div data-tab-panel="dis-2" class="tabs-content">
+  <div data-tab-panel="tab-3">
     <p class="text-sm text-muted-foreground">This tab is disabled.</p>
-  </div>
-  <div data-tab-panel="dis-3" class="tabs-content">
-    <p class="text-sm text-muted-foreground">Manage your settings here.</p>
   </div>
 </div>
 {% endcall %}

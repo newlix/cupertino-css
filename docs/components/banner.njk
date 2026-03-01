@@ -1,0 +1,21 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Banner" %}
+
+{% block content %}
+
+  {% call example("Default") %}
+<div class="banner">
+  <h4>Software Update</h4>
+  <p>A new version of macOS is available. Update now to get the latest features and security improvements.</p>
+</div>
+{% endcall %}
+
+  {% call example("Destructive") %}
+<div class="banner">
+  <h4 class="text-destructive">Threat Notification</h4>
+  <p>Apple sent you a threat notification via email and iMessage on July 9, 2024.</p>
+</div>
+{% endcall %}
+
+{% endblock %}

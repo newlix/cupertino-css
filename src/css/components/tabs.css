@@ -1,12 +1,9 @@
 /* ========== TABS ========== */
-.tabs {
-  /* wrapper */
-}
-.tabs-list {
+.tabs [data-tab-list] {
   @apply flex;
   border-bottom: 1px solid var(--panel-border);
 }
-.tabs-trigger {
+.tabs [data-tab] {
   @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground;
   transition: color 0.2s var(--apple-ease);
   &:hover { @apply text-foreground; }
@@ -20,14 +17,14 @@
     opacity: 0;
     transition: opacity 0.2s var(--apple-ease);
   }
+  &[data-active]::after {
+    opacity: 1;
+  }
   &[data-active] {
     color: var(--color-foreground);
-    &::after {
-      opacity: 1;
-    }
   }
 }
-.tabs-content {
+.tabs [data-tab-panel] {
   @apply py-4;
   &:not([data-active]) { @apply hidden; }
 }

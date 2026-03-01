@@ -1,65 +1,59 @@
 import { test, expect } from '@playwright/test';
+import { goto, preview } from './helpers.js';
 
 test.describe('Verification Code', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/site/components/verification-code.html');
-    await page.waitForFunction(() => typeof window.showToast === 'function');
+    await goto(page, 'verification-code');
   });
 
   test('typing digit fills slot and auto-advances', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').first();
-    const slots = preview.locator('.verification-code-slot');
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
 
-    await slots.nth(0).click();
-    await expect(slots.nth(0)).toHaveAttribute('data-active', '');
-
+    await inputs.nth(0).click();
     await page.keyboard.press('1');
-    await expect(slots.nth(0)).toHaveText('1');
-    await expect(slots.nth(1)).toHaveAttribute('data-active', '');
+    await expect(inputs.nth(0)).toHaveValue('1');
+    await expect(inputs.nth(1)).toBeFocused();
 
     await page.keyboard.press('2');
-    await expect(slots.nth(1)).toHaveText('2');
+    await expect(inputs.nth(1)).toHaveValue('2');
     await page.keyboard.press('3');
-    await expect(slots.nth(2)).toHaveText('3');
+    await expect(inputs.nth(2)).toHaveValue('3');
   });
 
   test('backspace clears current slot and moves back', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').first();
-    const slots = preview.locator('.verification-code-slot');
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
 
-    await slots.nth(0).click();
+    await inputs.nth(0).click();
     await page.keyboard.press('1');
     await page.keyboard.press('2');
 
     await page.keyboard.press('Backspace');
-    await expect(slots.nth(1)).toHaveText('');
+    await expect(inputs.nth(1)).toHaveValue('');
 
     await page.keyboard.press('Backspace');
-    await expect(slots.nth(0)).toHaveText('');
+    await expect(inputs.nth(0)).toHaveValue('');
   });
 
   test('paste fills multiple slots', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').first();
-    const slots = preview.locator('.verification-code-slot');
+    const inputs = preview(page).locator('.verification-code input:not([type="hidden"])');
 
-    await slots.nth(0).click();
+    await inputs.nth(0).click();
 
-    // Dispatch paste event with clipboard data
     await page.evaluate(() => {
-      const slot = document.querySelector('.snippet-preview > figure .verification-code-slot[data-active]');
+      const input = document.querySelector('.snippet-preview > figure .verification-code input:not([type="hidden"])');
       const dt = new DataTransfer();
       dt.setData('text/plain', '123456');
-      slot.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true }));
+      input.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true }));
     });
 
-    await expect(slots.nth(0)).toHaveText('1');
-    await expect(slots.nth(1)).toHaveText('2');
-    await expect(slots.nth(2)).toHaveText('3');
-    await expect(slots.nth(3)).toHaveText('4');
-    await expect(slots.nth(4)).toHaveText('5');
-    await expect(slots.nth(5)).toHaveText('6');
+    await expect(inputs.nth(0)).toHaveValue('1');
+    await expect(inputs.nth(1)).toHaveValue('2');
+    await expect(inputs.nth(2)).toHaveValue('3');
+    await expect(inputs.nth(3)).toHaveValue('4');
+    await expect(inputs.nth(4)).toHaveValue('5');
+    await expect(inputs.nth(5)).toHaveValue('6');
 
-    const hidden = preview.locator('input[type="hidden"]');
+    const hidden = preview(page).locator('input[type="hidden"]');
     await expect(hidden).toHaveValue('123456');
   });
 });

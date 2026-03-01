@@ -12,8 +12,7 @@
     "title": "Components",
     "items": [
       { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
-      { "label": "Alert", "href": "components/alert.html" },
-      { "label": "Avatar", "href": "components/avatar.html" },
+{ "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
       { "label": "Banner", "href": "components/banner.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },

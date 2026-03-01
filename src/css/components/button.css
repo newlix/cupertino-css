@@ -63,3 +63,30 @@
   @apply px-[21px] py-3 text-[17px] leading-[1.29];
   letter-spacing: -0.022em;
 }
+/* ── Help Tag ── */
+/* Usage: <button data-help="Label">…</button> */
+[data-help] {
+  @apply relative;
+  &::after {
+    content: attr(data-help);
+    @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
+    letter-spacing: -0.01em;
+    background: oklch(0.15 0 0 / 0.9);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    color: oklch(0.95 0 0);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    translate: -50% 2px;
+    transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    translate: -50% 0;
+    transition-delay: 0.5s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-help]::after { transition: none; }
+}
