@@ -9,7 +9,7 @@
 
 <dialog id="demo-sheet" class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="document.getElementById('demo-sheet').close()" class="sheet-close">
+  <button onclick="document.getElementById('demo-sheet').close()" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -34,7 +34,7 @@
 
 <dialog id="demo-sheet-form" class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="document.getElementById('demo-sheet-form').close()" class="sheet-close">
+  <button onclick="document.getElementById('demo-sheet-form').close()" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -44,20 +44,20 @@
   <section>
     <form class="space-y-4" onsubmit="return false;">
       <div class="space-y-2">
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your name" />
+        <label for="demo-sheet-name">Full Name</label>
+        <input id="demo-sheet-name" type="text" placeholder="Enter your name" />
       </div>
       <div class="space-y-2">
-        <label>Email</label>
-        <input type="email" placeholder="name@example.com" />
+        <label for="demo-sheet-email">Email</label>
+        <input id="demo-sheet-email" type="email" placeholder="name@example.com" />
       </div>
       <div class="space-y-2">
-        <label>Password</label>
-        <input type="password" placeholder="Create a password" />
+        <label for="demo-sheet-password">Password</label>
+        <input id="demo-sheet-password" type="password" placeholder="Create a password" />
       </div>
       <div class="space-y-2">
-        <label>Role</label>
-        <select>
+        <label for="demo-sheet-role">Role</label>
+        <select id="demo-sheet-role">
           <option>Member</option>
           <option>Admin</option>
           <option>Viewer</option>

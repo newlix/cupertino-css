@@ -8,10 +8,10 @@
 <table>
   <thead>
     <tr>
-      <th>Invoice</th>
-      <th>Status</th>
-      <th>Method</th>
-      <th class="text-right">Amount</th>
+      <th scope="col">Invoice</th>
+      <th scope="col">Status</th>
+      <th scope="col">Method</th>
+      <th scope="col" class="text-right">Amount</th>
     </tr>
   </thead>
   <tbody>
@@ -59,10 +59,10 @@
 <table>
   <thead>
     <tr>
-      <th>Product</th>
-      <th>Category</th>
-      <th class="text-right">Price</th>
-      <th class="text-right">Actions</th>
+      <th scope="col">Product</th>
+      <th scope="col">Category</th>
+      <th scope="col" class="text-right">Price</th>
+      <th scope="col" class="text-right">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -72,7 +72,7 @@
       <td class="text-right">$49.99</td>
       <td class="text-right">
         <div class="popover popover-menu popover-end">
-          <button class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+          <button aria-label="Actions" class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
           </button>
           <div popover>
@@ -90,7 +90,7 @@
       <td class="text-right">$129.99</td>
       <td class="text-right">
         <div class="popover popover-menu popover-end">
-          <button class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+          <button aria-label="Actions" class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
           </button>
           <div popover>
@@ -108,7 +108,7 @@
       <td class="text-right">$79.99</td>
       <td class="text-right">
         <div class="popover popover-menu popover-end">
-          <button class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+          <button aria-label="Actions" class="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
           </button>
           <div popover>
@@ -128,9 +128,9 @@
 <table>
   <thead>
     <tr>
-      <th class="w-10"><input type="checkbox" /></th>
-      <th>Task</th>
-      <th>Priority</th>
+      <th scope="col" class="w-10"><input type="checkbox" aria-label="Select all" /></th>
+      <th scope="col">Task</th>
+      <th scope="col">Priority</th>
     </tr>
   </thead>
   <tbody>
@@ -167,9 +167,9 @@
 <table class="table-striped">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Description</th>
-      <th class="text-right">Amount</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col" class="text-right">Amount</th>
     </tr>
   </thead>
   <tbody>
