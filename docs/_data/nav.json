@@ -34,7 +34,6 @@
       { "label": "Select", "href": "components/select.html" },
       { "label": "Separator", "href": "components/separator.html" },
       { "label": "Sheet", "href": "components/sheet.html" },
-      { "label": "Skeleton", "href": "components/skeleton.html" },
       { "label": "Slider", "href": "components/slider.html" },
       { "label": "Switch", "href": "components/switch.html" },
       { "label": "Table", "href": "components/table.html" },

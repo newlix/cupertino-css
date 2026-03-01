@@ -20,13 +20,6 @@ test.describe('CSS Rendering', () => {
     expect(await css(card, 'borderRadius')).not.toBe('0px');
   });
 
-  test('skeleton has pulse animation', async ({ page }) => {
-    await goto(page, 'skeleton');
-    const skeleton = preview(page).locator('.skeleton').first();
-    await expect(skeleton).toBeVisible();
-    expect(await css(skeleton, 'animationName')).not.toBe('none');
-  });
-
   test('dark mode toggle works', async ({ page }) => {
     await goto(page, 'button');
     const html = page.locator('html');

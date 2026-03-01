@@ -52,7 +52,6 @@
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 
 - [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
-- [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` `skeleton-circle` — loading placeholder.
 - [Activity Indicator](https://ciderui.com/components/activity-indicator.html): `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` — Apple-style loading indicator.
 - [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
 

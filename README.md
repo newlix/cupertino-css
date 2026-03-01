@@ -61,7 +61,6 @@ For quick prototyping without a build step:
 | Kbd | `kbd` | — |
 | Pagination | `pagination` | — |
 | Progress | `progress` > `.progress-bar` `progress-sm` `progress-indeterminate` | — |
-| Skeleton | `skeleton` `skeleton-circle` | — |
 | Slider | `slider` | — |
 | Activity Indicator | `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` | — |
 | HUD | `hud` `hud-container` | `js/hud.js` |
