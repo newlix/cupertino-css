@@ -1,6 +1,9 @@
 // Tabs — ciderui
 function init() {
   document.querySelectorAll("[data-tabs]").forEach((tabGroup) => {
+    if (tabGroup._tabsInit) return;
+    tabGroup._tabsInit = true;
+
     const buttons = tabGroup.querySelectorAll("[data-tab]");
     const panels = tabGroup.querySelectorAll("[data-tab-panel]");
 
