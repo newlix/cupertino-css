@@ -58,7 +58,7 @@ h4 {
   letter-spacing: -0.022em;
   &:not(:first-child) { @apply mt-4; }
 }
-a {
+a:not([class*="btn-"]) {
   @apply font-normal text-primary no-underline;
   &:hover { @apply underline underline-offset-4; text-decoration-color: var(--color-primary); }
 }
