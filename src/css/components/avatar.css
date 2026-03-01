@@ -4,8 +4,8 @@
   /* Default fallback styling */
   @apply bg-secondary text-muted-foreground;
   overflow: hidden;
-  &:is(img) { @apply object-cover; }
-  & img { @apply size-full rounded-full object-cover; }
+  &:is(img) { @apply object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+  & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {
     @apply cursor-pointer;
     transition: all 0.15s var(--apple-ease);
