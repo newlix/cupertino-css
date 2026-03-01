@@ -53,7 +53,7 @@
 {% endcall %}
 
   {% call example("Positioning") %}
-<div class="grid grid-cols-3 gap-6">
+<div class="grid grid-cols-2 gap-6">
   <!-- Default: below, left-aligned -->
   <div class="space-y-1">
     <div class="popover popover-menu">
@@ -109,38 +109,6 @@
       </div>
     </div>
     <p class="text-xs text-muted-foreground">Above, right-aligned</p>
-  </div>
-  <!-- Auto-flip: no popover-end, trigger at right edge → auto right-aligns -->
-  <div class="flex flex-col items-end space-y-1">
-    <div class="popover popover-menu">
-      <button class="btn-plain">
-        Flip &rarr;
-        <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div popover>
-        <button>Profile</button>
-        <button>Settings</button>
-      </div>
-    </div>
-    <p class="text-xs text-muted-foreground">Right edge &rarr; auto right-aligns</p>
-  </div>
-  <!-- Auto-flip: no popover-top, near bottom edge → auto opens above -->
-  <div class="space-y-1">
-    <div class="popover popover-menu">
-      <button class="btn-plain">
-        Flip &uarr;
-        <svg class="size-4 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div popover>
-        <button>Profile</button>
-        <button>Settings</button>
-        <button>Billing</button>
-        <button>Notifications</button>
-        <hr />
-        <button class="text-destructive">Sign Out</button>
-      </div>
-    </div>
-    <p class="text-xs text-muted-foreground">Bottom edge &rarr; auto opens above</p>
   </div>
 </div>
 {% endcall %}

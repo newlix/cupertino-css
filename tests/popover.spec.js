@@ -114,3 +114,52 @@ test.describe('Popover Menu', () => {
     await expect(firstItem).toBeFocused();
   });
 });
+
+test.describe('Popover Auto-flip', () => {
+  test('auto-flips horizontally when popover would overflow right edge', async ({ page }) => {
+    // Narrow viewport so the "Default" popover (left-aligned) overflows right
+    await page.setViewportSize({ width: 600, height: 720 });
+    await goto(page, 'popover');
+
+    const p = preview(page, 2); // Positioning example
+    // "Default" popover-menu (index 0), no popover-end class
+    const wrapper = p.locator('.popover-menu').nth(0);
+    const trigger = wrapper.locator('button').first();
+    const popover = wrapper.locator('[popover]');
+
+    await trigger.scrollIntoViewIfNeeded();
+    await trigger.click();
+    await expect(popover).toBeVisible();
+
+    // Popover should not overflow the viewport right edge
+    const vw = await page.evaluate(() => document.documentElement.clientWidth);
+    const popoverBox = await popover.boundingBox();
+    expect(popoverBox.x + popoverBox.width).toBeLessThanOrEqual(vw);
+  });
+
+  test('auto-flips vertically when popover would overflow bottom edge', async ({ page }) => {
+    // Short viewport so popover can't open below
+    await page.setViewportSize({ width: 1280, height: 400 });
+    await goto(page, 'popover');
+
+    const p = preview(page, 1); // Menu example
+    const wrapper = p.locator('.popover-menu');
+    const trigger = wrapper.locator('button').first();
+    const popover = wrapper.locator('[popover]');
+
+    // Scroll trigger to near the bottom of the viewport
+    await trigger.evaluate(el => {
+      const rect = el.getBoundingClientRect();
+      window.scrollBy(0, rect.top - (window.innerHeight - rect.height - 10));
+    });
+    await page.waitForTimeout(50);
+
+    await trigger.click();
+    await expect(popover).toBeVisible();
+
+    // Popover should appear above the trigger
+    const triggerBox = await trigger.boundingBox();
+    const popoverBox = await popover.boundingBox();
+    expect(popoverBox.y + popoverBox.height).toBeLessThanOrEqual(triggerBox.y);
+  });
+});
