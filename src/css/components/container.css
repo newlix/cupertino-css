@@ -244,6 +244,12 @@
       border-top: 1px solid var(--panel-border);
       background: var(--surface-1);
     }
+    &.table-striped tbody tr:nth-child(even) {
+      background: var(--surface-1);
+    }
+    &.table-striped tbody tr:hover {
+      background: var(--surface-2);
+    }
   }
 
   /* ─── Separator (hr) ─── */
