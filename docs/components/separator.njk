@@ -1,8 +1,21 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Separator" %}
+{% set description = "Thin horizontal line to divide content sections." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.separator</code></dt>
+    <dd>Horizontal thin divider line.</dd>
+    <dt><code>.separator-vertical</code></dt>
+    <dd>Vertical divider for inline layouts.</dd>
+    <dt><code>.separator-inset</code></dt>
+    <dd>Left-indented horizontal separator.</dd>
+    <dt><code>.separator-label</code></dt>
+    <dd>Centered text label with lines on both sides.</dd>
+  </dl>
 
   {% call example("Horizontal") %}
 <p class="text-sm">Content above</p>

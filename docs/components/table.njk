@@ -1,8 +1,17 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Table" %}
+{% set description = "Structured data grid with headers and rows." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>table</code></dt>
+    <dd>Auto-styled data table within .cider scope. Includes rounded corners, hover rows, and ring shadow.</dd>
+    <dt><code>.table-striped</code></dt>
+    <dd>Alternating row background modifier.</dd>
+  </dl>
 
   {% call example("Default") %}
 <table>

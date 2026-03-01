@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Pagination" %}
+{% set description = "Numbered page navigation with previous and next controls." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.pagination</code></dt>
+    <dd>Numbered page navigation with active and disabled states.</dd>
+  </dl>
 
   {% call example("Default") %}
 <nav class="pagination" aria-label="Pagination">

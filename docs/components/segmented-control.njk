@@ -1,8 +1,21 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Segmented Control" %}
+{% set description = "Horizontal toggle between mutually exclusive options." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.segmented-control</code></dt>
+    <dd>Wrapper for the pill-shaped segmented control.</dd>
+    <dt><code>[data-tab-list]</code></dt>
+    <dd>Container for segment buttons.</dd>
+    <dt><code>[data-tab]</code></dt>
+    <dd>Individual segment button.</dd>
+    <dt><code>[data-tab-panel]</code></dt>
+    <dd>Content panel toggled by the active segment.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="segmented-control" data-tabs>

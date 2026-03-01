@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "List" %}
+{% set description = "Vertical stack of rows with icons, labels, and accessories." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.list</code></dt>
+    <dd>Vertical item list with icon, title/description slots, and auto separators.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="list">

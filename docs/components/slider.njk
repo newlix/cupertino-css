@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Slider" %}
+{% set description = "Draggable range input for selecting a numeric value." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.slider</code></dt>
+    <dd>Range input styled as macOS-style slider with thumb and track.</dd>
+  </dl>
 
   {% call example("Default") %}
 <input type="range" min="0" max="100" value="33" class="slider w-full max-w-sm" />

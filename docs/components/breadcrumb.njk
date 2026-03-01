@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Breadcrumb" %}
+{% set description = "Navigation trail showing the current page hierarchy." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.breadcrumb</code></dt>
+    <dd>Horizontal navigation trail with auto chevron separators.</dd>
+  </dl>
 
   {% call example("Default") %}
 <nav class="breadcrumb">

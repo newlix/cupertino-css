@@ -1,9 +1,33 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Button" %}
+{% set description = "Clickable actions in multiple styles and sizes." %}
 
 {% block content %}
-{% call example("Variants") %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.btn-filled</code></dt>
+    <dd>Primary solid background button.</dd>
+    <dt><code>.btn-gray</code></dt>
+    <dd>Secondary gray background button.</dd>
+    <dt><code>.btn-tinted</code></dt>
+    <dd>Translucent primary-tinted button.</dd>
+    <dt><code>.btn-plain</code></dt>
+    <dd>Text-only button with hover background.</dd>
+    <dt><code>.btn-sm</code></dt>
+    <dd>Small button size.</dd>
+    <dt><code>.btn-lg</code></dt>
+    <dd>Large button size.</dd>
+    <dt><code>.btn-capsule</code></dt>
+    <dd>Fully rounded pill shape.</dd>
+    <dt><code>.btn-destructive</code></dt>
+    <dd>Destructive color modifier for any variant.</dd>
+    <dt><code>[data-help]</code></dt>
+    <dd>Hover tooltip via data attribute.</dd>
+  </dl>
+
+  {% call example("Variants") %}
 <div class="grid grid-cols-4 gap-3 justify-items-center">
   <button class="btn-filled">Filled</button>
   <button class="btn-gray">Gray</button>

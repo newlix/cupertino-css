@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Select" %}
+{% set description = "Styled native dropdown for choosing from a list." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>select</code></dt>
+    <dd>Auto-styled dropdown within .cider scope. Includes custom chevron icon.</dd>
+  </dl>
 
   {% call example("Native Select") %}
 <select>

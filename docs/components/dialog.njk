@@ -1,6 +1,7 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Dialog" %}
+{% set description = "Centered modal overlay for alerts and forms." %}
 
 {% block content %}
 
@@ -48,8 +49,8 @@
 
 <dialog class="dialog">
   <header>
-    <div class="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-destructive/10">
-      <svg class="size-6 text-destructive" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+    <div class="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-muted">
+      <svg class="size-6 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
     </div>
     <h3 class="text-center">Sign out of your account?</h3>
     <p class="text-center">You will need to enter your credentials again to sign back in.</p>

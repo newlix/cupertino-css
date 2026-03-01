@@ -1,8 +1,19 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Activity Indicator" %}
+{% set description = "Spinning loader for indeterminate wait states." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.activity-indicator</code></dt>
+    <dd>Spinning indicator with 8 radial spokes.</dd>
+    <dt><code>.activity-indicator-sm</code></dt>
+    <dd>Small size (16px).</dd>
+    <dt><code>.activity-indicator-lg</code></dt>
+    <dd>Large size (32px).</dd>
+  </dl>
 
   {% call example("Sizes") %}
 <div class="flex flex-wrap items-center gap-4">

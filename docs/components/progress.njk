@@ -1,8 +1,21 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Progress" %}
+{% set description = "Horizontal bar showing task completion percentage." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.progress</code></dt>
+    <dd>Track container for the progress bar.</dd>
+    <dt><code>.progress-bar</code></dt>
+    <dd>Filled bar inside the track (set width via style).</dd>
+    <dt><code>.progress-sm</code></dt>
+    <dd>Thinner track height.</dd>
+    <dt><code>.progress-indeterminate</code></dt>
+    <dd>Sliding bar animation for indeterminate progress.</dd>
+  </dl>
 
   {% call example("Default") %}
 <progress value="60" max="100"></progress>
@@ -23,7 +36,9 @@
 {% endcall %}
 
   {% call example("Indeterminate") %}
-<progress max="100"></progress>
+<div class="progress progress-indeterminate">
+  <div class="progress-bar"></div>
+</div>
 {% endcall %}
 
   {% call example("In Card") %}

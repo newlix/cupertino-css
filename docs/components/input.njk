@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Input" %}
+{% set description = "Styled text field for single-line user input." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>input</code></dt>
+    <dd>Auto-styled text input within .cider scope. Includes hover, focus ring, disabled, and error states.</dd>
+  </dl>
 
   {% call example("Default") %}
 <input type="text" placeholder="Enter text..." />

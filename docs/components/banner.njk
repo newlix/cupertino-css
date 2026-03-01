@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Banner" %}
+{% set description = "Prominent notice for important messages." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.banner</code></dt>
+    <dd>Rounded notice container with border.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="banner">

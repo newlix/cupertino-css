@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Kbd" %}
+{% set description = "Keyboard key indicator for shortcuts and hotkeys." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>kbd</code></dt>
+    <dd>Auto-styled keyboard shortcut within .cider scope.</dd>
+  </dl>
 
   {% call example("Keys") %}
 <div class="cider flex flex-wrap items-center gap-3">

@@ -1,8 +1,19 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "HUD" %}
+{% set description = "Transient pill-shaped notification that auto-dismisses." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.hud-container</code></dt>
+    <dd>Fixed top-center container for HUD notifications.</dd>
+    <dt><code>.hud</code></dt>
+    <dd>Pill-shaped transient notification with blur backdrop.</dd>
+    <dt><code>.hud-label</code></dt>
+    <dd>Text label inside the HUD pill.</dd>
+  </dl>
 
   {% call example("HUD") %}
 <div class="space-y-3 flex flex-col items-center">

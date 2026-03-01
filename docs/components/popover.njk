@@ -1,8 +1,21 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Popover" %}
+{% set description = "Floating panel anchored to a trigger element." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.popover</code></dt>
+    <dd>Positioned floating content container.</dd>
+    <dt><code>.popover-menu</code></dt>
+    <dd>Action list variant with item styling.</dd>
+    <dt><code>.popover-arrow</code></dt>
+    <dd>Adds a directional arrow indicator.</dd>
+    <dt><code>.popover-top</code></dt>
+    <dd>Positions popover above the trigger.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="popover">

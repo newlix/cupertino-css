@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Textarea" %}
+{% set description = "Multi-line text field for longer input." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>textarea</code></dt>
+    <dd>Auto-styled textarea within .cider scope. Includes hover, focus ring, disabled, and error states.</dd>
+  </dl>
 
   {% call example("Default") %}
 <textarea rows="3" placeholder="Type your message..."></textarea>

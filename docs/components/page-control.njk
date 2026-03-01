@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Page Control" %}
+{% set description = "Dot indicators showing the current page in a sequence." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.page-control</code></dt>
+    <dd>Dot indicators for paged content.</dd>
+  </dl>
 
   {% call example("Default") %}
 <nav class="page-control" aria-label="Page control">

@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Checkbox" %}
+{% set description = "Auto-styled native checkbox with check icon." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>input[type="checkbox"]</code></dt>
+    <dd>Auto-styled checkbox within .cider scope.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="space-y-2.5">

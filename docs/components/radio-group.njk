@@ -1,8 +1,15 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Radio" %}
+{% set description = "Auto-styled native radio buttons for single selection." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>input[type="radio"]</code></dt>
+    <dd>Auto-styled radio button within .cider scope.</dd>
+  </dl>
 
   {% call example("Default") %}
 <fieldset>

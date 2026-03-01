@@ -1,8 +1,17 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Avatar" %}
+{% set description = "Circular container for user photos or initials." %}
 
 {% block content %}
+
+  <h3>Classes</h3>
+  <dl>
+    <dt><code>.avatar</code></dt>
+    <dd>Circular container for initials or image.</dd>
+    <dt><code>.avatar-group</code></dt>
+    <dd>Overlapping stack of avatars with ring spacing.</dd>
+  </dl>
 
   {% call example("Default") %}
 <div class="flex items-center gap-4">
