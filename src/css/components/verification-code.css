@@ -12,7 +12,7 @@
 }
 .verification-code[data-error] input:not([type="hidden"]) {
   border-color: var(--color-destructive);
-  &:focus { border-color: var(--color-destructive); box-shadow: 0 0 0 3px var(--color-ring); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); }
+  &:focus { border-color: var(--color-destructive); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); }
 }
 .verification-code[data-error] + small {
   @apply text-destructive;
