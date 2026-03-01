@@ -3,9 +3,11 @@
   @apply flex items-center gap-1.5 text-[13px];
   & a {
     @apply text-muted-foreground no-underline;
-    transition: color 0.15s var(--apple-ease);
-    &:hover { @apply text-foreground; }
-    &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; border-radius: 4px; }
+    transition: color 0.15s var(--apple-ease), text-decoration-color 0.15s var(--apple-ease);
+    &:hover {
+      @apply text-foreground underline underline-offset-2;
+      text-decoration-color: var(--color-muted-foreground);
+    }
   }
   & [aria-current="page"] {
     @apply font-medium text-foreground;
