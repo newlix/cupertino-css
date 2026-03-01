@@ -6,23 +6,42 @@
 
   /* Sidebar */
   .docs-sidebar {
-    @apply fixed left-0 top-0 z-40 h-screen w-[260px] overflow-y-auto border-r;
-    background: oklch(from var(--color-background) l c h / 0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    @apply fixed left-0 top-0 z-40 h-screen w-[260px] flex flex-col bg-background;
+    & a { @apply no-underline; &:hover { @apply no-underline; } }
   }
-  .docs-sidebar a {
-    @apply flex items-center rounded-lg px-2 py-1.5 text-[13px] font-medium text-muted-foreground no-underline transition-colors duration-150;
-    &:hover {
-      @apply text-foreground no-underline;
-      background: oklch(from var(--color-accent) l c h / 0.6);
+  .docs-sidebar-header {
+    @apply flex items-center justify-between px-5 py-4 shrink-0;
+  }
+  .docs-icon-btn {
+    @apply inline-flex items-center justify-center size-8 p-0 rounded-md cursor-pointer;
+    color: var(--color-muted-foreground) !important;
+    transition: color 0.15s;
+    &:hover { color: var(--color-foreground) !important; }
+  }
+  .docs-nav {
+    @apply flex-1 overflow-y-auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    &:hover { scrollbar-color: var(--surface-5) transparent; }
+    & h2 {
+      @apply px-2 pb-1 pt-0 text-[13px] font-medium text-muted-foreground;
     }
-    &[data-active] {
-      @apply text-primary;
-      background: oklch(from var(--color-primary) l c h / 0.08);
+    & a[href] {
+      @apply flex items-center rounded-md px-2 py-1.5 text-sm;
+      color: var(--color-muted-foreground);
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+      &:hover {
+        color: var(--color-foreground);
+        text-decoration: none;
+      }
+      &[data-active] {
+        @apply font-medium;
+        color: var(--color-foreground);
+        background: var(--color-accent);
+      }
     }
   }
-
 
   /* Main content area */
   .docs-main {
@@ -58,15 +77,8 @@
   }
   /* Mobile hamburger */
   .docs-hamburger {
-    @apply hidden fixed top-4 left-4 z-50 size-9 items-center justify-center rounded-lg text-muted-foreground cursor-pointer border;
-    background: oklch(from var(--color-background) l c h / 0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-color: var(--color-border);
-    &:hover {
-      @apply text-foreground;
-      background: var(--color-accent);
-    }
+    @apply hidden fixed top-4 left-4 z-50 size-9 items-center justify-center rounded-lg text-muted-foreground cursor-pointer border bg-background;
+    &:hover { @apply text-foreground bg-accent; }
   }
   .docs-overlay {
     @apply fixed inset-0 z-30 hidden;
