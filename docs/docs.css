@@ -91,7 +91,7 @@
     @apply rounded-[10px] border overflow-hidden;
     corner-shape: squircle;
     & > pre {
-      @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
+      @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed rounded-none;
       background: var(--surface-2);
       & code, & code[class*="language-"], & code.hljs {
         @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;

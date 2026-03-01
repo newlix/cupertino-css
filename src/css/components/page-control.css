@@ -8,6 +8,8 @@
 }
 .page-control > button {
   all: unset;
+  display: inline-block;
+  box-sizing: border-box;
   width: 7px;
   height: 7px;
   border-radius: 50%;

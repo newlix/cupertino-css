@@ -1,6 +1,6 @@
 /* ========== BREADCRUMB ========== */
 .breadcrumb {
-  @apply flex items-center gap-1.5 text-[13px];
+  @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
     @apply text-muted-foreground no-underline;
     transition: color 0.15s var(--apple-ease), text-decoration-color 0.15s var(--apple-ease);

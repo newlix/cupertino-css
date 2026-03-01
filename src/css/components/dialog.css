@@ -2,6 +2,8 @@
 dialog.dialog,
 .dialog {
   @apply m-auto w-full max-w-md rounded-[14px] text-card-foreground p-0;
+  max-height: min(85vh, 600px);
+  overflow-y: auto;
   corner-shape: squircle;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
@@ -15,6 +17,7 @@ dialog.dialog,
   &[open] { animation: dialogShow 0.24s var(--apple-spring); }
   &[open]::backdrop { animation: backdropFadeIn 0.24s var(--apple-ease); }
   &[data-closing] { animation: dialogHide 0.2s var(--apple-ease) forwards; }
+  &[data-closing]::backdrop { animation: backdropFadeIn 0.2s var(--apple-ease) reverse forwards; }
   & .dialog-close {
     @apply absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground cursor-pointer;
     transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease);

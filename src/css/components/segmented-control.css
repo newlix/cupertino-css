@@ -3,6 +3,9 @@
   @apply relative inline-flex rounded-[10px] p-1;
   corner-shape: squircle;
   background: var(--color-secondary);
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
 .segmented-control [data-tab] {
   @apply inline-flex items-center gap-1.5 rounded-[7px] px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground;
@@ -16,7 +19,7 @@
     background: var(--color-card);
     box-shadow: var(--shadow-sm), var(--float-ring);
     .dark & {
-      background: oklch(0.27 0.004 286.18);
+      background: var(--color-secondary);
     }
   }
 }

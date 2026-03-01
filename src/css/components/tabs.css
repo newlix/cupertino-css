@@ -1,10 +1,13 @@
 /* ========== TABS ========== */
 .tabs [data-tab-list] {
   @apply flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
   border-bottom: 1px solid var(--panel-border);
 }
 .tabs [data-tab] {
-  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground;
+  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer;
   transition: color 0.2s var(--apple-ease);
   &:hover { @apply text-foreground; }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }

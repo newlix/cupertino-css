@@ -6,6 +6,7 @@
   accent-color: var(--color-primary);
   &::-webkit-slider-runnable-track {
     height: 4px;
+    background: var(--surface-5);
     border-radius: 9999px;
   }
   &::-moz-range-track {
@@ -78,6 +79,12 @@
     }
     &::-moz-range-thumb:active {
       box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+    &:focus-visible::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
+    }
+    &:focus-visible::-moz-range-thumb {
+      box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
     }
   }
   @media (pointer: coarse) {

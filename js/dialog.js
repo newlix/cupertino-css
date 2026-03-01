@@ -30,16 +30,16 @@ function closeDialog(dialog) {
 }
 
 function trapFocus(dialog) {
-  var focusable = dialog.querySelectorAll(
-    'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"])'
-  );
-  if (!focusable.length) return;
-  var first = focusable[0];
-  var last = focusable[focusable.length - 1];
-  first.focus();
+  var selector = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"])';
+  var focusable = dialog.querySelectorAll(selector);
+  if (focusable.length) focusable[0].focus();
 
   function handler(e) {
     if (e.key !== "Tab") return;
+    var current = dialog.querySelectorAll(selector);
+    if (!current.length) return;
+    var first = current[0];
+    var last = current[current.length - 1];
     if (e.shiftKey) {
       if (document.activeElement === first) { e.preventDefault(); last.focus(); }
     } else {

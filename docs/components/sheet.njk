@@ -20,7 +20,7 @@
 
 <dialog class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
+  <button onclick="closeSheet(this.closest('dialog'))" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -35,7 +35,7 @@
     </div>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-filled w-full">Submit</button>
+    <button onclick="closeSheet(this.closest('dialog'))" class="btn-filled w-full">Submit</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -45,7 +45,7 @@
 
 <dialog class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
+  <button onclick="closeSheet(this.closest('dialog'))" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -73,8 +73,8 @@
     </form>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
-    <button class="btn-filled" onclick="this.closest('dialog').close()">Create</button>
+    <button onclick="closeSheet(this.closest('dialog'))" class="btn-tinted">Cancel</button>
+    <button class="btn-filled" onclick="closeSheet(this.closest('dialog'))">Create</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -96,8 +96,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Decline</button>
-    <button class="btn-filled" onclick="this.closest('dialog').close()">Accept</button>
+    <button onclick="closeSheet(this.closest('dialog'))" class="btn-tinted">Decline</button>
+    <button class="btn-filled" onclick="closeSheet(this.closest('dialog'))">Accept</button>
   </footer>
 </dialog>
 {% endcall %}

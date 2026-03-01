@@ -17,41 +17,49 @@ function init() {
     if (popover._toggleHandler) {
       popover.removeEventListener("toggle", popover._toggleHandler);
     }
+    function positionPopover() {
+      var rect = trigger.getBoundingClientRect();
+      popover.style.margin = "0";
+
+      var pw = popover.offsetWidth;
+      var ph = popover.offsetHeight;
+      var gap = 8;
+      var vw = document.documentElement.clientWidth;
+      var vh = window.innerHeight;
+
+      // Horizontal: default left-aligned, flip if overflows or popover-end
+      var left;
+      if (wrapper.classList.contains("popover-end")) {
+        left = rect.right - pw;
+      } else {
+        left = rect.left;
+        if (left + pw > vw) left = rect.right - pw;
+      }
+      if (left < 0) left = 0;
+
+      // Vertical: default below trigger, flip above if overflows or popover-top
+      var top;
+      if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
+        top = rect.top - ph - gap;
+      } else {
+        top = rect.bottom + gap;
+      }
+
+      popover.style.top = top + "px";
+      popover.style.left = left + "px";
+    }
+
     popover._toggleHandler = function (e) {
       if (e.newState === "open") {
-        var rect = trigger.getBoundingClientRect();
-        popover.style.margin = "0";
-
-        var pw = popover.offsetWidth;
-        var ph = popover.offsetHeight;
-        var gap = 8;
-        var vw = document.documentElement.clientWidth;
-        var vh = window.innerHeight;
-
-        // Horizontal: default left-aligned, flip if overflows or popover-end
-        var left;
-        if (wrapper.classList.contains("popover-end")) {
-          left = rect.right - pw;
-        } else {
-          left = rect.left;
-          if (left + pw > vw) left = rect.right - pw;
-        }
-        if (left < 0) left = 0;
-
-        // Vertical: default below trigger, flip above if overflows or popover-top
-        var top;
-        if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
-          top = rect.top - ph - gap;
-        } else {
-          top = rect.bottom + gap;
-        }
-
-        popover.style.top = (top + window.scrollY) + "px";
-        popover.style.left = (left + window.scrollX) + "px";
+        positionPopover();
+        window.addEventListener("scroll", positionPopover, true);
+        window.addEventListener("resize", positionPopover);
 
         var first = popover.querySelector("button:not([disabled]), a:not([disabled]), input, select, textarea, [tabindex]:not([tabindex='-1'])");
         if (first) first.focus();
       } else {
+        window.removeEventListener("scroll", positionPopover, true);
+        window.removeEventListener("resize", positionPopover);
         trigger.focus();
       }
     };

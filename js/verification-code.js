@@ -65,3 +65,7 @@ if (document.readyState === "loading") {
 } else {
   init();
 }
+
+document.addEventListener("htmx:afterSettle", init);
+window.CiderUI = window.CiderUI || {};
+window.CiderUI.verificationCode = { init: init };

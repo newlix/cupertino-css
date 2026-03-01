@@ -22,9 +22,9 @@
     <p>Your changes will be lost if you don't save them.</p>
   </header>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Don't Save</button>
-    <button onclick="this.closest('dialog').close()" class="btn-gray">Cancel</button>
-    <button onclick="this.closest('dialog').close()" class="btn-filled">Save</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Don't Save</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-gray">Cancel</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-filled">Save</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -38,8 +38,8 @@
     <p>This will permanently delete the project "My Portfolio" and all of its files. This action is irreversible.</p>
   </header>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
-    <button onclick="this.closest('dialog').close()" class="btn-filled btn-destructive">Delete Project</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Cancel</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-filled btn-destructive">Delete Project</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -56,8 +56,8 @@
     <p class="text-center">You will need to enter your credentials again to sign back in.</p>
   </header>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
-    <button onclick="this.closest('dialog').close()" class="btn-filled btn-destructive">Sign Out</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Cancel</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-filled btn-destructive">Sign Out</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -81,8 +81,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
-    <button class="btn-filled" onclick="this.closest('dialog').close()">Save Changes</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Cancel</button>
+    <button class="btn-filled" onclick="closeDialog(this.closest('dialog'))">Save Changes</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -106,8 +106,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Decline</button>
-    <button class="btn-filled" onclick="this.closest('dialog').close()">Accept</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Decline</button>
+    <button class="btn-filled" onclick="closeDialog(this.closest('dialog'))">Accept</button>
   </footer>
 </dialog>
 {% endcall %}
@@ -116,7 +116,7 @@
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Share Link</button>
 
 <dialog class="dialog">
-  <button aria-label="Close" onclick="this.closest('dialog').close()" class="absolute top-4 right-4 inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
+  <button aria-label="Close" onclick="closeDialog(this.closest('dialog'))" class="absolute top-4 right-4 inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -176,8 +176,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
-    <button class="btn-filled" onclick="this.closest('dialog').close()">Done</button>
+    <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Cancel</button>
+    <button class="btn-filled" onclick="closeDialog(this.closest('dialog'))">Done</button>
   </footer>
 </dialog>
 {% endcall %}

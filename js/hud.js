@@ -45,6 +45,11 @@ function showHUD(label, options) {
 // Backward compat alias
 var showToast = showHUD;
 
+if (typeof window !== "undefined") {
+  window.showHUD = showHUD;
+  window.showToast = showToast;
+}
+
 function createHUDContainer() {
   var container = document.createElement("div");
   container.id = "hud-container";

@@ -9,6 +9,7 @@
 }
 .progress-sm {
   @apply h-0.5;
+  &::-webkit-progress-bar { height: 2px; }
 }
 .progress-indeterminate {
   & .progress-bar {

@@ -17,6 +17,7 @@ dialog.sheet,
   }
   &[open] { animation: sheetSlideInBottom 0.35s var(--apple-spring); }
   &[data-closing] { animation: sheetSlideOutBottom 0.3s var(--apple-ease) forwards; }
+  &[data-closing]::backdrop { animation: backdropFadeIn 0.3s var(--apple-ease) reverse forwards; }
   & > header {
     @apply px-6 py-5;
     & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
