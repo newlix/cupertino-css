@@ -446,6 +446,10 @@
     &:active {
       transform: scale(var(--apple-press-scale));
     }
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
   }
   .btn-gray {
     background-color: var(--color-secondary);
@@ -681,6 +685,12 @@
         background-color: var(--color-accent);
         color: var(--color-foreground);
       }
+      &:focus-visible {
+        background-color: var(--color-accent);
+        color: var(--color-foreground);
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
+      }
       & svg {
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
@@ -731,6 +741,10 @@
     transition: color 0.2s var(--apple-ease);
     &:hover {
       color: var(--color-foreground);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
     }
     &:disabled, &[disabled] {
       pointer-events: none;
@@ -784,6 +798,10 @@
     &:hover {
       color: var(--color-foreground);
     }
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+    }
     &:active {
       transform: scale(var(--apple-press-scale));
     }
@@ -794,7 +812,7 @@
     &[data-active] {
       color: var(--color-foreground);
       background: var(--color-card);
-      box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.06);
+      box-shadow: var(--shadow-sm), var(--float-ring);
     }
   }
   .segmented-control [data-tab-panel] {
@@ -818,12 +836,18 @@
     overflow: hidden;
     &:is(img) {
       object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
     }
     & img {
       width: 100%;
       height: 100%;
       border-radius: calc(infinity * 1px);
       object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
     }
     &:is(button, a) {
       cursor: pointer;
@@ -864,10 +888,14 @@
     opacity: 0.2;
     cursor: pointer;
     transition: opacity 0.3s var(--apple-ease);
-    &[data-active], &[aria-current="page"] {
+    &[aria-current="page"] {
       opacity: 0.85;
     }
-    &:hover:not([data-active]):not([aria-current="page"]) {
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    &:hover:not([aria-current="page"]) {
       opacity: 0.4;
     }
     &:active:not(:disabled) {
@@ -899,6 +927,10 @@
       transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
       &:hover:not([data-active]) {
         background: var(--surface-3);
+      }
+      &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
       }
       &:active:not([data-active]):not(:disabled) {
         transform: scale(var(--apple-press-scale));
@@ -1052,9 +1084,21 @@
         background: oklch(0.95 0 0);
         box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
       }
+      &::-webkit-slider-thumb:hover {
+        box-shadow: 0 2px 8px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+      }
+      &::-webkit-slider-thumb:active {
+        box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+      }
       &::-moz-range-thumb {
         background: oklch(0.95 0 0);
         box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
+      }
+      &::-moz-range-thumb:hover {
+        box-shadow: 0 2px 8px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+      }
+      &::-moz-range-thumb:active {
+        box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
       }
     }
     @media (pointer: coarse) {
@@ -1093,7 +1137,6 @@
   @media (prefers-reduced-motion: reduce) {
     .activity-indicator {
       animation: none;
-      opacity: 0.5;
     }
   }
   .activity-indicator-sm {
@@ -1250,6 +1293,11 @@
         background: var(--surface-2);
         text-decoration: none;
       }
+      &:focus-visible {
+        background: var(--surface-2);
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
+      }
       &[data-selected]:hover, &[aria-selected="true"]:hover {
         background: oklch(from var(--color-primary) l c h / 0.15);
         .dark & {
@@ -1332,6 +1380,12 @@
         background-color: var(--color-accent);
         color: var(--color-foreground);
       }
+      &:focus-visible {
+        background-color: var(--color-accent);
+        color: var(--color-foreground);
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
+      }
       & svg {
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
@@ -1405,6 +1459,10 @@
         transition: background-color 0.15s var(--apple-ease);
         &:hover {
           background: var(--surface-2);
+        }
+        &:focus-visible {
+          background: var(--surface-2);
+          outline: none;
         }
         & svg {
           width: calc(var(--spacing) * 4);
@@ -1732,6 +1790,9 @@
         background-position: center;
         background-repeat: no-repeat;
       }
+      &:focus-visible {
+        box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
+      }
       &:hover:not(:checked) {
         border-color: var(--input-border-hover);
       }
@@ -1755,6 +1816,9 @@
       &:checked {
         border-color: var(--color-primary);
         border-width: 5px;
+      }
+      &:focus-visible {
+        box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
       }
       &:hover:not(:checked) {
         border-color: var(--input-border-hover);
@@ -1791,6 +1855,9 @@
         &::after {
           transform: translateX(20px);
         }
+      }
+      &:focus-visible {
+        box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
       }
       &:disabled {
         cursor: not-allowed;
