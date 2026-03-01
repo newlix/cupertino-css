@@ -46,6 +46,7 @@
       @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
       transition: background-color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
+      &:focus-visible { background: var(--surface-2); outline: none; }
       & svg { @apply size-4 text-muted-foreground; }
       &[disabled], &[aria-disabled="true"] {
         @apply text-[11px] font-medium text-muted-foreground;
