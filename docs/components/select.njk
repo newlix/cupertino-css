@@ -35,9 +35,8 @@
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="space-y-1.5">
-  <label for="demo-select-lang">Language</label>
-  <select id="demo-select-lang">
+<label class="space-y-1.5">Language
+  <select>
     <option value="" disabled selected>Select a language</option>
     <option value="en">English</option>
     <option value="es">Spanish</option>
@@ -45,7 +44,7 @@
     <option value="ja">Japanese</option>
   </select>
   <small>This applies to your dashboard display language.</small>
-</div>
+</label>
 {% endcall %}
 
   {% call example("Disabled") %}

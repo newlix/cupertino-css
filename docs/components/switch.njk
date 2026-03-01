@@ -33,20 +33,20 @@
   {% call example("Form") %}
 <form class="grid gap-4" onsubmit="return false">
   <h3 class="text-lg font-medium">Email Notifications</h3>
-  <div class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4">
+  <label class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4 cursor-pointer">
     <div class="flex flex-col gap-0.5">
-      <label for="demo-switch-marketing" class="text-sm leading-normal">Marketing emails</label>
+      <span class="text-sm leading-normal">Marketing emails</span>
       <small>Receive emails about new products, features, and more.</small>
     </div>
-    <input type="checkbox" role="switch" id="demo-switch-marketing">
-  </div>
-  <div class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4 opacity-60">
+    <input type="checkbox" role="switch">
+  </label>
+  <label class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4 opacity-60 cursor-not-allowed">
     <div class="flex flex-col gap-0.5">
-      <label for="demo-switch-security" class="text-sm leading-normal">Security emails</label>
+      <span class="text-sm leading-normal">Security emails</span>
       <small>Receive emails about your account security.</small>
     </div>
-    <input type="checkbox" role="switch" id="demo-switch-security" checked disabled>
-  </div>
+    <input type="checkbox" role="switch" checked disabled>
+  </label>
 </form>
 {% endcall %}
 

@@ -8,7 +8,7 @@ test.describe('Sheet', () => {
 
   test('open sheet via button, close via close button', async ({ page }) => {
     const preview = page.locator('.snippet-preview > figure').first();
-    const sheet = page.locator('#demo-sheet');
+    const sheet = preview.locator('dialog');
 
     await expect(sheet).not.toBeVisible();
 
@@ -22,7 +22,7 @@ test.describe('Sheet', () => {
 
   test('close sheet via backdrop click', async ({ page }) => {
     const preview = page.locator('.snippet-preview > figure').first();
-    const sheet = page.locator('#demo-sheet');
+    const sheet = preview.locator('dialog');
 
     await preview.locator('button:has-text("Open Sheet")').click();
     await expect(sheet).toBeVisible();

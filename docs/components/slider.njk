@@ -9,22 +9,22 @@
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="max-w-sm space-y-3">
+<label class="max-w-sm space-y-3">
   <div class="flex items-center justify-between">
-    <label for="demo-slider-temp">Temperature</label>
+    <span>Temperature</span>
     <span class="text-sm text-muted-foreground">0.7</span>
   </div>
-  <input id="demo-slider-temp" type="range" min="0" max="100" value="70" step="1" class="slider w-full" />
-</div>
+  <input type="range" min="0" max="100" value="70" step="1" class="slider w-full" />
+</label>
 {% endcall %}
 
   {% call example("With Ticks") %}
-<div class="max-w-sm space-y-3">
+<label class="max-w-sm space-y-3">
   <div class="flex items-center justify-between">
-    <label for="demo-slider-vol">Volume</label>
+    <span>Volume</span>
     <span class="text-sm text-muted-foreground">50%</span>
   </div>
-  <input id="demo-slider-vol" type="range" min="0" max="100" value="50" step="25" class="slider w-full" />
+  <input type="range" min="0" max="100" value="50" step="25" class="slider w-full" />
   <div class="flex justify-between text-xs text-muted-foreground">
     <span>0</span>
     <span>25</span>
@@ -32,7 +32,7 @@
     <span>75</span>
     <span>100</span>
   </div>
-</div>
+</label>
 {% endcall %}
 
   {% call example("Disabled") %}

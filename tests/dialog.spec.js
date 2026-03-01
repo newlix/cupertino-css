@@ -7,7 +7,7 @@ test.describe('Dialog', () => {
   });
 
   test('open alert and close via cancel', async ({ page }) => {
-    const dialog = page.locator('#demo-alert-dialog');
+    const dialog = preview(page).locator('dialog');
     await expect(dialog).not.toBeVisible();
 
     await preview(page).locator('button:has-text("Close Document")').click();
@@ -18,7 +18,7 @@ test.describe('Dialog', () => {
   });
 
   test('destructive alert opens and closes', async ({ page }) => {
-    const dialog = page.locator('#demo-alert-destructive');
+    const dialog = preview(page, 1).locator('dialog');
     await expect(dialog).not.toBeVisible();
 
     await preview(page, 1).locator('button:has-text("Delete Project")').first().click();
@@ -29,7 +29,7 @@ test.describe('Dialog', () => {
   });
 
   test('open form dialog via button and close via cancel', async ({ page }) => {
-    const dialog = page.locator('#demo-dialog-2');
+    const dialog = preview(page, 3).locator('dialog');
 
     await expect(dialog).not.toBeVisible();
 
@@ -42,7 +42,7 @@ test.describe('Dialog', () => {
   });
 
   test('close dialog via backdrop click', async ({ page }) => {
-    const dialog = page.locator('#demo-alert-dialog');
+    const dialog = preview(page).locator('dialog');
 
     await preview(page).locator('button:has-text("Close Document")').click();
     await expect(dialog).toBeVisible();

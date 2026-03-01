@@ -17,19 +17,17 @@
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="grid gap-1.5">
-  <label for="demo-ta-label">Message</label>
-  <textarea id="demo-ta-label" rows="3" placeholder="Type your message..."></textarea>
-</div>
+<label class="grid gap-1.5">Message
+  <textarea rows="3" placeholder="Type your message..."></textarea>
+</label>
 {% endcall %}
 
   {% call example("Form") %}
 <form class="flex flex-col gap-4" onsubmit="return false">
-  <div class="space-y-1.5">
-    <label for="demo-ta-form">Bio</label>
-    <textarea id="demo-ta-form" rows="3" placeholder="Tell us a bit about yourself"></textarea>
+  <label class="space-y-1.5">Bio
+    <textarea rows="3" placeholder="Tell us a bit about yourself"></textarea>
     <small>You can @mention other users and organizations.</small>
-  </div>
+  </label>
   <button class="btn-gray" type="submit">Submit</button>
 </form>
 {% endcall %}

@@ -5,11 +5,11 @@
 {% block content %}
 
   {% call example("Default") %}
-<button class="btn-gray" onclick="document.getElementById('demo-sheet').showModal()">Open Sheet</button>
+<button class="btn-gray" onclick="this.nextElementSibling.showModal()">Open Sheet</button>
 
-<dialog id="demo-sheet" class="sheet">
+<dialog class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="document.getElementById('demo-sheet').close()" class="sheet-close" aria-label="Close">
+  <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -24,17 +24,17 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet').close()" class="btn-filled w-full">Submit</button>
+    <button onclick="this.closest('dialog').close()" class="btn-filled w-full">Submit</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("With Form") %}
-<button onclick="document.getElementById('demo-sheet-form').showModal()" class="btn-tinted">Create Account</button>
+<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Create Account</button>
 
-<dialog id="demo-sheet-form" class="sheet">
+<dialog class="sheet">
   <div class="sheet-grabber"></div>
-  <button onclick="document.getElementById('demo-sheet-form').close()" class="sheet-close" aria-label="Close">
+  <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
   <header>
@@ -43,39 +43,35 @@
   </header>
   <section>
     <form class="space-y-4" onsubmit="return false;">
-      <div class="space-y-2">
-        <label for="demo-sheet-name">Full Name</label>
-        <input id="demo-sheet-name" type="text" placeholder="Enter your name" />
-      </div>
-      <div class="space-y-2">
-        <label for="demo-sheet-email">Email</label>
-        <input id="demo-sheet-email" type="email" placeholder="name@example.com" />
-      </div>
-      <div class="space-y-2">
-        <label for="demo-sheet-password">Password</label>
-        <input id="demo-sheet-password" type="password" placeholder="Create a password" />
-      </div>
-      <div class="space-y-2">
-        <label for="demo-sheet-role">Role</label>
-        <select id="demo-sheet-role">
+      <label class="space-y-2">Full Name
+        <input type="text" placeholder="Enter your name" />
+      </label>
+      <label class="space-y-2">Email
+        <input type="email" placeholder="name@example.com" />
+      </label>
+      <label class="space-y-2">Password
+        <input type="password" placeholder="Create a password" />
+      </label>
+      <label class="space-y-2">Role
+        <select>
           <option>Member</option>
           <option>Admin</option>
           <option>Viewer</option>
         </select>
-      </div>
+      </label>
     </form>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet-form').close()" class="btn-tinted">Cancel</button>
-    <button class="btn-filled" onclick="document.getElementById('demo-sheet-form').close()">Create</button>
+    <button onclick="this.closest('dialog').close()" class="btn-tinted">Cancel</button>
+    <button class="btn-filled" onclick="this.closest('dialog').close()">Create</button>
   </footer>
 </dialog>
 {% endcall %}
 
   {% call example("No Close Button") %}
-<button onclick="document.getElementById('demo-sheet-noclose').showModal()" class="btn-tinted">Terms & Conditions</button>
+<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Terms & Conditions</button>
 
-<dialog id="demo-sheet-noclose" class="sheet">
+<dialog class="sheet">
   <div class="sheet-grabber"></div>
   <header>
     <h2>Terms of Service</h2>
@@ -89,8 +85,8 @@
     </div>
   </section>
   <footer>
-    <button onclick="document.getElementById('demo-sheet-noclose').close()" class="btn-tinted">Decline</button>
-    <button class="btn-filled" onclick="document.getElementById('demo-sheet-noclose').close()">Accept</button>
+    <button onclick="this.closest('dialog').close()" class="btn-tinted">Decline</button>
+    <button class="btn-filled" onclick="this.closest('dialog').close()">Accept</button>
   </footer>
 </dialog>
 {% endcall %}
