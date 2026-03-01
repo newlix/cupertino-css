@@ -151,16 +151,8 @@
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
   .snippet {
-    @apply rounded-[10px] border;
+    @apply rounded-[10px] border overflow-hidden;
     corner-shape: squircle;
-    & > :first-child {
-      border-top-left-radius: calc(var(--radius) - 1px);
-      border-top-right-radius: calc(var(--radius) - 1px);
-    }
-    & > :last-child {
-      border-bottom-left-radius: calc(var(--radius) - 1px);
-      border-bottom-right-radius: calc(var(--radius) - 1px);
-    }
     & > pre {
       @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed;
       background: var(--surface-2);

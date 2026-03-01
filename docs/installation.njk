@@ -8,7 +8,11 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight">CDN</h2>
       <p class="mt-2 text-muted-foreground">The simplest way to get started. No build step needed.</p>
-      <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;link rel="stylesheet" href="https://unpkg.com/ciderui/dist/ciderui.cdn.css"&gt;
 
 &lt;!-- Optional: interactive components --&gt;
@@ -24,36 +28,27 @@
       <p class="mt-2 text-muted-foreground">
         Requires <a href="https://tailwindcss.com/docs/installation" target="_blank" class="text-primary underline underline-offset-4 hover:text-primary/80">Tailwind CSS v4</a>.
       </p>
-      <div class="tabs mt-4" data-tabs>
-        <div data-tab-list>
-          <button data-tab="pm-npm" data-active>npm</button>
-          <button data-tab="pm-pnpm">pnpm</button>
-          <button data-tab="pm-bun">bun</button>
-          <button data-tab="pm-yarn">yarn</button>
-        </div>
-        <div data-tab-panel="pm-npm" data-active class="!p-0">
-          <div class="snippet" data-active style="border-radius: 0; overflow: hidden;">
-            <pre><code class="language-bash">npm install ciderui</code></pre>
-          </div>
-        </div>
-        <div data-tab-panel="pm-pnpm" class="!p-0">
-          <div class="snippet" data-active style="border-radius: 0; overflow: hidden;">
-            <pre><code class="language-bash">pnpm add ciderui</code></pre>
-          </div>
-        </div>
-        <div data-tab-panel="pm-bun" class="!p-0">
-          <div class="snippet" data-active style="border-radius: 0; overflow: hidden;">
-            <pre><code class="language-bash">bun add ciderui</code></pre>
-          </div>
-        </div>
-        <div data-tab-panel="pm-yarn" class="!p-0">
-          <div class="snippet" data-active style="border-radius: 0; overflow: hidden;">
-            <pre><code class="language-bash">yarn add ciderui</code></pre>
-          </div>
-        </div>
+      <div class="snippet mt-4">
+        <header>
+          <nav>
+            <button data-tab="pm-npm" data-active>npm</button>
+            <button data-tab="pm-pnpm">pnpm</button>
+            <button data-tab="pm-bun">bun</button>
+            <button data-tab="pm-yarn">yarn</button>
+          </nav>
+          <button>Copy</button>
+        </header>
+        <pre data-panel="pm-npm" data-active><code class="language-bash">npm install ciderui</code></pre>
+        <pre data-panel="pm-pnpm"><code class="language-bash">pnpm add ciderui</code></pre>
+        <pre data-panel="pm-bun"><code class="language-bash">bun add ciderui</code></pre>
+        <pre data-panel="pm-yarn"><code class="language-bash">yarn add ciderui</code></pre>
       </div>
       <p class="mt-3">In your main CSS file:</p>
-      <div class="snippet mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-3">
+        <header>
+          <span>CSS</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-css">@import "tailwindcss";
 @import "ciderui";</code></pre>
       </div>
@@ -62,7 +57,11 @@
         Most components are pure CSS. For interactive behavior (dialog backdrop close, dropdown menus, tabs, HUD),
         import the JS files:
       </p>
-      <div class="snippet mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-3">
+        <header>
+          <span>JS</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-js">import "ciderui/dialog.js";
 import "ciderui/popover.js";
 import "ciderui/tabs.js";
@@ -75,13 +74,21 @@ import "ciderui/hud.js";</code></pre>
       <p class="mt-2 text-muted-foreground">
         Cider UI uses a class-based dark mode. Add the <code>dark</code> class to your <code>&lt;html&gt;</code> element:
       </p>
-      <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-4">
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-html">&lt;html class="dark"&gt;
   ...
 &lt;/html&gt;</code></pre>
       </div>
       <p class="mt-3">Or toggle it with JavaScript:</p>
-      <div class="snippet mt-3" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <div class="snippet mt-3">
+        <header>
+          <span>JS</span>
+          <button>Copy</button>
+        </header>
         <pre><code class="language-js">document.documentElement.classList.toggle('dark');</code></pre>
       </div>
     </section>
