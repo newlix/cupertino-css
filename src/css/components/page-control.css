@@ -15,10 +15,10 @@
   opacity: 0.2;
   cursor: pointer;
   transition: opacity 0.3s var(--apple-ease);
-  &[data-active], &[aria-current="page"] {
+  &[aria-current="page"] {
     opacity: 0.85;
   }
-  &:hover:not([data-active]):not([aria-current="page"]) {
+  &:hover:not([aria-current="page"]) {
     opacity: 0.4;
   }
   &:active:not(:disabled) {
