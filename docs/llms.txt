@@ -31,7 +31,7 @@
 ### Navigation
 
 - [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
-- [Page Control](https://ciderui.com/components/page-control.html): `page-control` `page-control-dot` — Apple-style dot page indicator.
+- [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
 - [Tabs](https://ciderui.com/components/tabs.html): `tabs` with `[data-tab-list]` `[data-tab]` `[data-tab-panel]`. Requires `js/tabs.js`.

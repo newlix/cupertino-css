@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 8px;
 }
-.page-control-dot {
+.page-control > button {
   all: unset;
   width: 7px;
   height: 7px;
