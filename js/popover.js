@@ -1,52 +1,71 @@
 // Popover — ciderui
-function closePopover(el) {
-  if (el.hasAttribute("data-closing")) return;
-  el.setAttribute("data-closing", "");
-  el.removeAttribute("role");
-  setTimeout(() => {
-    el.removeAttribute("data-open");
-    el.removeAttribute("data-closing");
-  }, 200);
-}
+document.querySelectorAll(".popover [popover]").forEach(function (popover) {
+  var wrapper = popover.closest(".popover");
+  var trigger = wrapper.querySelector("button:not([popover] button), a:not([popover] a)");
+  if (!trigger) return;
 
-document.addEventListener("click", (e) => {
-  const trigger = e.target.closest("[data-popover-trigger]");
-  if (trigger) {
-    const popover = trigger.closest("[data-popover]");
-    if (!popover) return;
-    const content = popover.querySelector(".popover-content");
-    if (!content) return;
-    const isOpen = content.hasAttribute("data-open");
+  trigger.popoverTargetElement = popover;
+  trigger.popoverTargetAction = "toggle";
 
-    // Close all other popovers
-    document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      closePopover(el);
-    });
+  var isMenu = wrapper.classList.contains("popover-menu");
 
-    if (!isOpen) {
-      content.setAttribute("data-open", "");
-      content.setAttribute("role", "dialog");
-      requestAnimationFrame(() => {
-        const firstFocusable = content.querySelector("button, a, input, [tabindex]:not([tabindex='-1'])");
-        if (firstFocusable) firstFocusable.focus();
-      });
+  popover.addEventListener("toggle", function (e) {
+    if (e.newState === "open") {
+      var rect = trigger.getBoundingClientRect();
+      popover.style.margin = "0";
+
+      var pw = popover.offsetWidth;
+      var ph = popover.offsetHeight;
+      var gap = 8;
+      var vw = document.documentElement.clientWidth;
+      var vh = window.innerHeight;
+
+      // Horizontal: default left-aligned, flip if overflows or popover-end
+      var left;
+      if (wrapper.classList.contains("popover-end")) {
+        left = rect.right - pw;
+      } else {
+        left = rect.left;
+        if (left + pw > vw) left = rect.right - pw;
+      }
+      if (left < 0) left = 0;
+
+      // Vertical: default below trigger, flip above if overflows or popover-top
+      var top;
+      if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
+        top = rect.top - ph - gap;
+      } else {
+        top = rect.bottom + gap;
+      }
+
+      popover.style.top = (top + window.scrollY) + "px";
+      popover.style.left = (left + window.scrollX) + "px";
+
+      var first = popover.querySelector("button:not([disabled]), a:not([disabled]), input, [tabindex]:not([tabindex='-1'])");
+      if (first) first.focus();
+    } else {
+      trigger.focus();
     }
-    return;
-  }
+  });
 
-  // Close all popovers on outside click
-  if (!e.target.closest(".popover-content")) {
-    document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      closePopover(el);
+  if (isMenu) {
+    popover.addEventListener("click", function (e) {
+      var item = e.target.closest("button, a");
+      if (!item || !popover.contains(item)) return;
+      popover.hidePopover();
     });
-  }
-});
 
-// Close on Escape
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".popover-content[data-open]").forEach((el) => {
-      closePopover(el);
+    popover.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      e.preventDefault();
+      var items = Array.from(popover.querySelectorAll("button:not([disabled]), a:not([disabled])"));
+      if (!items.length) return;
+      var idx = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown") {
+        items[idx < items.length - 1 ? idx + 1 : 0].focus();
+      } else {
+        items[idx > 0 ? idx - 1 : items.length - 1].focus();
+      }
     });
   }
 });

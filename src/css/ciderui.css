@@ -271,6 +271,6 @@
   @import "./components/sheet.css";
   @import "./components/popover.css";
   @import "./components/verification-code.css";
-  @import "./components/menu.css";
+
   @import "./components/container.css";
 }

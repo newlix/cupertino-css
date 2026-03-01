@@ -1,40 +1,89 @@
 /* ========== POPOVER ========== */
 .popover {
   @apply relative inline-block;
-}
-.popover-content {
-  @apply absolute z-50 mt-2 min-w-[180px] max-w-[320px] rounded-[10px] p-4;
-  max-height: calc(100vh - 2rem);
-  overflow-y: auto;
-  corner-shape: squircle;
-  display: none;
-  background: var(--glass-bg-opaque);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-lg), var(--float-ring);
-  animation: slideUp 0.2s var(--apple-spring);
-  &[data-open] { display: block; }
-  &[data-closing] { animation: slideDown 0.2s var(--apple-ease) forwards; }
-  /* Arrow */
-  &::before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 12px;
-    height: 12px;
+
+  & [popover] {
+    @apply absolute z-50 mt-2 min-w-[180px] max-w-[320px] rounded-[10px] p-4;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    corner-shape: squircle;
+    inset: unset;
+    margin: 0;
+    margin-top: 0.5rem;
+    border: none;
     background: var(--glass-bg-opaque);
-    box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-lg), var(--float-ring);
+
+    /* Open/close animation */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.15s var(--apple-ease), transform 0.15s var(--apple-spring), display 0.15s allow-discrete, overlay 0.15s allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @starting-style {
+      &:popover-open {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+    }
   }
 }
-.popover-top {
-  & .popover-content {
-    @apply bottom-full top-auto mb-2 mt-0;
-    &::before {
-      top: auto;
-      bottom: -6px;
-      transform: translateX(-50%) rotate(225deg);
+
+/* Menu variant — action list with item styling + arrow key nav */
+.popover-menu {
+  & [popover] {
+    @apply min-w-[160px] max-w-none p-1;
+    max-height: 400px;
+    background: var(--glass-bg);
+
+    & button, & a {
+      @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
+      transition: background-color 0.15s var(--apple-ease);
+      &:hover { background: var(--surface-2); }
+      &:focus-visible { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: -3px; }
+      & svg { @apply size-4 text-muted-foreground; }
+      &[disabled], &[aria-disabled="true"] {
+        @apply text-[11px] font-medium text-muted-foreground;
+        pointer-events: none;
+        &:hover { background: transparent; }
+      }
     }
+  }
+  & [popover] hr {
+    @apply my-1 h-px mx-1.5;
+    background: var(--panel-border);
+  }
+}
+
+/* Arrow indicator */
+.popover-arrow [popover]::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: var(--glass-bg-opaque);
+  box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
+}
+
+/* Top positioning variant */
+.popover-top {
+  & [popover] {
+    @apply bottom-full top-auto;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  &.popover-arrow [popover]::before {
+    top: auto;
+    bottom: -6px;
+    transform: translateX(-50%) rotate(225deg);
   }
 }

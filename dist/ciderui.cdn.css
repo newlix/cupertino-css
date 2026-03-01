@@ -775,7 +775,7 @@
       display: none;
     }
   }
-  .segmented-control-list {
+  .segmented-control [data-tab-list] {
     position: relative;
     display: inline-flex;
     border-radius: 10px;
@@ -783,7 +783,7 @@
     corner-shape: squircle;
     background: var(--color-secondary);
   }
-  .segmented-control-trigger {
+  .segmented-control [data-tab] {
     display: inline-flex;
     align-items: center;
     gap: calc(var(--spacing) * 1.5);
@@ -815,7 +815,7 @@
       box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.06);
     }
   }
-  .segmented-control-content {
+  .segmented-control [data-tab-panel] {
     padding-block: calc(var(--spacing) * 4);
     &:not([data-active]) {
       display: none;
@@ -1399,101 +1399,25 @@
   .popover {
     position: relative;
     display: inline-block;
-  }
-  .popover-content {
-    position: absolute;
-    z-index: 50;
-    margin-top: calc(var(--spacing) * 2);
-    max-width: 320px;
-    min-width: 180px;
-    border-radius: 10px;
-    padding: calc(var(--spacing) * 4);
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
-    corner-shape: squircle;
-    display: none;
-    background: var(--glass-bg-opaque);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--shadow-lg), var(--float-ring);
-    animation: slideUp 0.2s var(--apple-spring);
-    &[data-open] {
-      display: block;
-    }
-    &[data-closing] {
-      animation: slideDown 0.2s var(--apple-ease) forwards;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: -6px;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 12px;
-      height: 12px;
-      background: var(--glass-bg-opaque);
-      box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
-    }
-  }
-  .popover-top {
-    & .popover-content {
-      top: auto;
-      bottom: 100%;
-      margin-top: calc(var(--spacing) * 0);
-      margin-bottom: calc(var(--spacing) * 2);
-      &::before {
-        top: auto;
-        bottom: -6px;
-        transform: translateX(-50%) rotate(225deg);
-      }
-    }
-  }
-  .verification-code {
-    display: flex;
-    align-items: center;
-    gap: calc(var(--spacing) * 2);
-  }
-  .verification-code input:not([type="hidden"]) {
-    width: calc(var(--spacing) * 12);
-    height: calc(var(--spacing) * 12);
-    padding: calc(var(--spacing) * 0);
-    text-align: center;
-    font-size: 17px;
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
-    caret-color: transparent;
-  }
-  .verification-code > span {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-    color: var(--color-muted-foreground);
-  }
-  .verification-code[data-error] input:not([type="hidden"]) {
-    border-color: var(--color-destructive);
-  }
-  .verification-code[data-error] + small {
-    color: var(--color-destructive);
-  }
-  .menu {
-    position: relative;
-    display: inline-block;
     & [popover] {
       position: absolute;
       z-index: 50;
-      margin-top: calc(var(--spacing) * 1);
-      min-width: 160px;
+      margin-top: calc(var(--spacing) * 2);
+      max-width: 320px;
+      min-width: 180px;
       border-radius: 10px;
-      padding: calc(var(--spacing) * 1);
+      padding: calc(var(--spacing) * 4);
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
       corner-shape: squircle;
       inset: unset;
       margin: 0;
+      margin-top: 0.5rem;
       border: none;
-      background: var(--glass-bg);
+      background: var(--glass-bg-opaque);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       box-shadow: var(--shadow-lg), var(--float-ring);
-      max-height: 400px;
-      overflow: hidden auto;
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.15s var(--apple-ease), transform 0.15s var(--apple-spring), display 0.15s allow-discrete, overlay 0.15s allow-discrete;
@@ -1507,6 +1431,15 @@
           transform: translateY(8px);
         }
       }
+    }
+  }
+  .popover-menu {
+    & [popover] {
+      max-width: none;
+      min-width: 160px;
+      padding: calc(var(--spacing) * 1);
+      max-height: 400px;
+      background: var(--glass-bg);
       & button, & a {
         display: flex;
         width: 100%;
@@ -1543,12 +1476,62 @@
         }
       }
     }
-    & .menu-divider, & [popover] hr {
+    & [popover] hr {
       margin-inline: calc(var(--spacing) * 1.5);
       margin-block: calc(var(--spacing) * 1);
       height: 1px;
       background: var(--panel-border);
     }
+  }
+  .popover-arrow [popover]::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--glass-bg-opaque);
+    box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
+  }
+  .popover-top {
+    & [popover] {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    &.popover-arrow [popover]::before {
+      top: auto;
+      bottom: -6px;
+      transform: translateX(-50%) rotate(225deg);
+    }
+  }
+  .verification-code {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+  }
+  .verification-code input:not([type="hidden"]) {
+    width: calc(var(--spacing) * 12);
+    height: calc(var(--spacing) * 12);
+    padding: calc(var(--spacing) * 0);
+    text-align: center;
+    font-size: 17px;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+    caret-color: transparent;
+  }
+  .verification-code > span {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    color: var(--color-muted-foreground);
+  }
+  .verification-code[data-error] input:not([type="hidden"]) {
+    border-color: var(--color-destructive);
+  }
+  .verification-code[data-error] + small {
+    color: var(--color-destructive);
   }
   .cider-fixed {
     margin-inline: auto;

@@ -23,7 +23,6 @@
     "./cdn": "./src/css/ciderui.cdn.css",
 
     "./dialog.js": "./js/dialog.js",
-    "./menu.js": "./js/menu.js",
     "./verification-code.js": "./js/verification-code.js",
     "./popover.js": "./js/popover.js",
     "./sheet.js": "./js/sheet.js",
@@ -38,7 +37,7 @@
   "scripts": {
     "build": "tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
     "build:docs": "node scripts/build-docs.js",
-    "dev": "concurrently \"node scripts/build-docs.js --watch\" \"npx serve site -l tcp://0.0.0.0:3000\"",
+    "dev": "concurrently \"node scripts/build-docs.js --watch\" \"npx serve site -l tcp://0.0.0.0:8000\"",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui"
   },
