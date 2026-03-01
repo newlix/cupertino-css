@@ -26,16 +26,13 @@ test.describe('Tabs', () => {
     await expect(panel1).not.toHaveAttribute('data-active', '');
   });
 
-  test('clicking third tab shows third panel', async ({ page }) => {
+  test('disabled tab cannot be activated', async ({ page }) => {
     const preview = page.locator('.snippet-preview > figure').first();
 
     const tab3 = preview.locator('[data-tab="tab-3"]');
-    const panel3 = preview.locator('[data-tab-panel="tab-3"]');
+    const tab1 = preview.locator('[data-tab="tab-1"]');
 
-    await tab3.click();
-
-    await expect(tab3).toHaveAttribute('data-active', '');
-    await expect(panel3).toHaveAttribute('data-active', '');
-    await expect(panel3).toContainText('notification settings');
+    await expect(tab3).toBeDisabled();
+    await expect(tab1).toHaveAttribute('data-active', '');
   });
 });

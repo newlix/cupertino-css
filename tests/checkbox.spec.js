@@ -18,7 +18,7 @@ test.describe('Checkbox', () => {
   });
 
   test('clicking label toggles checkbox', async ({ page }) => {
-    const label = preview(page).locator('label').first();
+    const label = preview(page, 2).locator('label').first();
     const cb = label.locator('input[type="checkbox"]');
     await expect(cb).not.toBeChecked();
 
