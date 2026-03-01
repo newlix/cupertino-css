@@ -22,7 +22,6 @@
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
 
-    "./picker.js": "./js/picker.js",
     "./dialog.js": "./js/dialog.js",
     "./menu.js": "./js/menu.js",
     "./verification-code.js": "./js/verification-code.js",

@@ -27,7 +27,6 @@
       { "label": "Menu", "href": "components/menu.html" },
       { "label": "Page Control", "href": "components/page-control.html" },
       { "label": "Pagination", "href": "components/pagination.html" },
-      { "label": "Picker", "href": "components/picker.html" },
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },

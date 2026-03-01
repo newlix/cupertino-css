@@ -13,8 +13,6 @@
 
 - [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`. Help tag: add `data-help="Label"` for hover tooltip.
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
-- [Picker](https://ciderui.com/components/picker.html): Custom picker with search filtering. Requires `js/picker.js`.
-
 
 - [Input](https://ciderui.com/components/input.html): `input` — styled text input.
 
