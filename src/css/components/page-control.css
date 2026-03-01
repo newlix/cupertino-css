@@ -32,4 +32,13 @@
     pointer-events: none;
     opacity: 0.15;
   }
+  /* Enlarge touch target on touch devices without changing visual size */
+  @media (pointer: coarse) {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -18px -10px;
+    }
+  }
 }
