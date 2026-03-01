@@ -3,6 +3,7 @@
 var activeSheets = new Set();
 
 function closeSheet(sheet) {
+  if (sheet.hasAttribute("data-closing")) return;
   sheet.setAttribute("data-closing", "");
   var closed = false;
   var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 350;

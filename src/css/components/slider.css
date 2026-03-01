@@ -56,9 +56,21 @@
       background: oklch(0.95 0 0);
       box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
     }
+    &::-webkit-slider-thumb:hover {
+      box-shadow: 0 2px 8px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+    &::-webkit-slider-thumb:active {
+      box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
     &::-moz-range-thumb {
       background: oklch(0.95 0 0);
       box-shadow: 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+    &::-moz-range-thumb:hover {
+      box-shadow: 0 2px 8px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+    }
+    &::-moz-range-thumb:active {
+      box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
     }
   }
   @media (pointer: coarse) {

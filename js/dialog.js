@@ -4,6 +4,7 @@
 var activeDialogs = new Set();
 
 function closeDialog(dialog) {
+  if (dialog.hasAttribute("data-closing")) return;
   dialog.setAttribute("data-closing", "");
   var closed = false;
   var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
