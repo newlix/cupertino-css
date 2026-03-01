@@ -223,6 +223,11 @@
     100% { background-position: 200% 0; }
   }
 
+  @keyframes activity-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
   @keyframes indeterminate {
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(300%); }
@@ -251,30 +256,32 @@
 
 /* ─── Components ─── */
 @layer components {
-  @import "./components/button.css";
-  @import "./components/badge.css";
-  @import "./components/card.css";
-  @import "./components/banner.css";
+  @scope (.cider) to (.cider-reset) {
+    @import "./components/button.css";
+    @import "./components/badge.css";
+    @import "./components/card.css";
+    @import "./components/banner.css";
 
-  @import "./components/dialog.css";
-  @import "./components/tabs.css";
-  @import "./components/segmented-control.css";
-  @import "./components/avatar.css";
-  @import "./components/page-control.css";
-  @import "./components/pagination.css";
-  @import "./components/breadcrumb.css";
-  @import "./components/progress.css";
-  @import "./components/slider.css";
-  @import "./components/activity-indicator.css";
-  @import "./components/hud.css";
+    @import "./components/dialog.css";
+    @import "./components/tabs.css";
+    @import "./components/segmented-control.css";
+    @import "./components/avatar.css";
+    @import "./components/page-control.css";
+    @import "./components/pagination.css";
+    @import "./components/breadcrumb.css";
+    @import "./components/progress.css";
+    @import "./components/slider.css";
+    @import "./components/activity-indicator.css";
+    @import "./components/hud.css";
 
-  @import "./components/separator.css";
+    @import "./components/separator.css";
 
-  @import "./components/list.css";
+    @import "./components/list.css";
 
-  @import "./components/sheet.css";
-  @import "./components/popover.css";
-  @import "./components/verification-code.css";
+    @import "./components/sheet.css";
+    @import "./components/popover.css";
+    @import "./components/verification-code.css";
 
-  @import "./components/container.css";
+    @import "./components/container.css";
+  }
 }

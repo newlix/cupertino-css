@@ -3,4 +3,5 @@
   @apply rounded-xl bg-card text-card-foreground p-6 overflow-hidden;
   corner-shape: squircle;
   box-shadow: var(--shadow), var(--panel-ring);
+  & > :not(:first-child) { margin-top: 0.75rem; }
 }

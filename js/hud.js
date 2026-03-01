@@ -45,7 +45,7 @@ var showToast = showHUD;
 function createHUDContainer() {
   var container = document.createElement("div");
   container.id = "hud-container";
-  container.className = "hud-container";
+  container.className = "cider hud-container";
   document.body.appendChild(container);
   return container;
 }

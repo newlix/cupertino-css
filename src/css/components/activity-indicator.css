@@ -1,9 +1,5 @@
 /* ========== ACTIVITY INDICATOR ========== */
 /* Apple-style UIActivityIndicatorView — 8 radial spokes with trailing-fade */
-@keyframes activity-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 .activity-indicator {
   @apply inline-block size-5;
   background-color: var(--color-foreground);

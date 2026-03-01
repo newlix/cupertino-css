@@ -29,6 +29,7 @@ dialog.dialog,
   }
   & > section {
     @apply px-6 pt-4;
+    & > :not(:first-child) { margin-top: 0.75rem; }
   }
   & > footer {
     @apply flex justify-end gap-2 px-6 pb-6 pt-6;
