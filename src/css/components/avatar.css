@@ -8,7 +8,7 @@
   &:is(button, a) {
     @apply cursor-pointer;
     transition: all 0.15s var(--apple-ease);
-    &:hover { filter: brightness(var(--hover-brightness)); }
+    &:hover { opacity: 0.8; }
     &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   }

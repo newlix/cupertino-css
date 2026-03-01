@@ -3,8 +3,6 @@
   @apply rounded-[10px] px-4 py-3 text-[13px] leading-snug text-foreground;
   corner-shape: squircle;
   background: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  .dark & { border-color: var(--color-border-solid); }
   & :is(h1, h2, h3, h4, h5, h6) { @apply font-semibold text-foreground mb-1; }
   & p { @apply text-muted-foreground; }
 }

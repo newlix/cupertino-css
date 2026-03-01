@@ -7,24 +7,14 @@
   border-bottom: 1px solid var(--panel-border);
 }
 .tabs [data-tab] {
-  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer;
-  transition: color 0.2s var(--apple-ease);
-  &:hover { @apply text-foreground; }
+  @apply relative px-4 py-2.5 text-[13px] font-medium text-muted-foreground cursor-pointer rounded-lg;
+  transition: color 0.2s var(--apple-ease), background-color 0.2s var(--apple-ease);
+  &:hover { @apply text-foreground; background: var(--surface-2); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
   &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
-  &::after {
-    content: "";
-    @apply absolute bottom-0 left-0 h-0.5 w-full;
-    border-radius: 1px 1px 0 0;
-    background: var(--color-primary);
-    opacity: 0;
-    transition: opacity 0.2s var(--apple-ease);
-  }
-  &[data-active]::after {
-    opacity: 1;
-  }
   &[data-active] {
     color: var(--color-foreground);
+    background: var(--surface-3);
   }
 }
 .tabs [data-tab-panel] {

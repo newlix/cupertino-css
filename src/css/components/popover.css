@@ -71,7 +71,7 @@
   width: 12px;
   height: 12px;
   background: var(--glass-bg-opaque);
-  box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
+  box-shadow: -1px -1px 0 0 var(--panel-border);
 }
 
 /* Top positioning variant */

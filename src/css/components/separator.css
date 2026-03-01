@@ -6,7 +6,8 @@
   margin: 0;
 }
 .separator-vertical {
-  @apply w-px shrink-0 self-stretch;
+  @apply shrink-0 self-stretch;
+  width: 0.5px;
   background: var(--color-border);
 }
 .separator-inset {

@@ -41,7 +41,7 @@ h2 {
   @apply font-semibold text-foreground mb-3;
   font-size: 22px;
   line-height: 1.18;
-  letter-spacing: 0.016em;
+  letter-spacing: -0.016em;
   &:not(:first-child) { @apply mt-8; }
 }
 h3 {

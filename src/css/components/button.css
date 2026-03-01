@@ -6,7 +6,7 @@
   @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   text-decoration: none;
   corner-shape: squircle;
-  transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
+  transition: background-color 0.15s var(--apple-ease), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-ease);
   letter-spacing: -0.016em;
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
@@ -70,8 +70,8 @@
     @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
     letter-spacing: -0.01em;
     background: oklch(0.15 0 0 / 0.9);
-    backdrop-filter: blur(20px) saturate(1.5);
-    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     color: oklch(0.95 0 0);
     .dark & {
       background: oklch(0.85 0 0 / 0.9);

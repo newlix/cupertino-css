@@ -351,7 +351,7 @@
   @keyframes dialogShow {
     from {
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.92);
     }
     to {
       opacity: 1;
@@ -365,7 +365,7 @@
     }
     to {
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.92);
     }
   }
   @keyframes backdropFadeIn {
@@ -454,7 +454,7 @@
       }
       text-decoration: none;
       corner-shape: squircle;
-      transition: background-color 0.2s var(--apple-spring), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring);
+      transition: background-color 0.15s var(--apple-ease), transform 0.15s var(--apple-spring), opacity 0.2s var(--apple-ease);
       letter-spacing: -0.016em;
       &:active {
         transform: scale(var(--apple-press-scale));
@@ -569,8 +569,8 @@
         white-space: nowrap;
         letter-spacing: -0.01em;
         background: oklch(0.15 0 0 / 0.9);
-        backdrop-filter: blur(20px) saturate(1.5);
-        -webkit-backdrop-filter: blur(20px) saturate(1.5);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
         color: oklch(0.95 0 0);
         .dark & {
           background: oklch(0.85 0 0 / 0.9);
@@ -625,7 +625,6 @@
       max-width: 5rem;
       overflow: hidden;
       text-overflow: ellipsis;
-      box-shadow: var(--shadow-sm);
     }
     .badge-dot {
       display: block;
@@ -656,10 +655,6 @@
       color: var(--color-foreground);
       corner-shape: squircle;
       background: var(--color-secondary);
-      border: 1px solid var(--color-border);
-      .dark & {
-        border-color: var(--color-border-solid);
-      }
       & :is(h1, h2, h3, h4, h5, h6) {
         margin-bottom: calc(var(--spacing) * 1);
         --tw-font-weight: var(--font-weight-semibold);
@@ -770,15 +765,17 @@
     .tabs [data-tab] {
       position: relative;
       cursor: pointer;
+      border-radius: var(--radius-lg);
       padding-inline: calc(var(--spacing) * 4);
       padding-block: calc(var(--spacing) * 2.5);
       font-size: 13px;
       --tw-font-weight: var(--font-weight-medium);
       font-weight: var(--font-weight-medium);
       color: var(--color-muted-foreground);
-      transition: color 0.2s var(--apple-ease);
+      transition: color 0.2s var(--apple-ease), background-color 0.2s var(--apple-ease);
       &:hover {
         color: var(--color-foreground);
+        background: var(--surface-2);
       }
       &:focus-visible {
         outline: 2px solid var(--color-primary);
@@ -788,23 +785,9 @@
         pointer-events: none;
         opacity: 50%;
       }
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: calc(var(--spacing) * 0);
-        left: calc(var(--spacing) * 0);
-        height: calc(var(--spacing) * 0.5);
-        width: 100%;
-        border-radius: 1px 1px 0 0;
-        background: var(--color-primary);
-        opacity: 0;
-        transition: opacity 0.2s var(--apple-ease);
-      }
-      &[data-active]::after {
-        opacity: 1;
-      }
       &[data-active] {
         color: var(--color-foreground);
+        background: var(--surface-3);
       }
     }
     .tabs [data-tab-panel] {
@@ -856,9 +839,6 @@
         color: var(--color-foreground);
         background: var(--color-card);
         box-shadow: var(--shadow-sm), var(--float-ring);
-        .dark & {
-          background: var(--color-secondary);
-        }
       }
     }
     .segmented-control [data-tab-panel] {
@@ -893,7 +873,7 @@
         cursor: pointer;
         transition: all 0.15s var(--apple-ease);
         &:hover {
-          filter: brightness(var(--hover-brightness));
+          opacity: 0.8;
         }
         &:active {
           transform: scale(var(--apple-press-scale));
@@ -1055,7 +1035,7 @@
       width: 100%;
       overflow: hidden;
       border-radius: calc(infinity * 1px);
-      background: var(--surface-4);
+      background: var(--surface-5);
       & .progress-bar {
         height: 100%;
         border-radius: calc(infinity * 1px);
@@ -1072,7 +1052,7 @@
     .progress-indeterminate {
       & .progress-bar {
         width: calc(2 / 5 * 100%);
-        background: linear-gradient(90deg, var(--color-primary) 0%, oklch(from var(--color-primary) calc(l + 0.1) c h) 50%, var(--color-primary) 100%);
+        background: var(--color-primary);
         animation: indeterminate 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
       }
     }
@@ -1121,7 +1101,9 @@
       }
       &::-webkit-slider-thumb:active {
         box-shadow: 0 1px 3px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
-        transform: scale(1.05);
+        width: 24px;
+        height: 24px;
+        margin-top: -10px;
       }
       &::-moz-range-thumb {
         border-radius: calc(infinity * 1px);
@@ -1137,7 +1119,8 @@
       }
       &::-moz-range-thumb:active {
         box-shadow: 0 1px 3px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(0 0 0 / 0.04);
-        transform: scale(1.05);
+        width: 24px;
+        height: 24px;
       }
       &:focus-visible::-webkit-slider-thumb {
         box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15);
@@ -1160,6 +1143,9 @@
         }
         &::-webkit-slider-thumb:active {
           box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+          width: 24px;
+          height: 24px;
+          margin-top: -10px;
         }
         &::-moz-range-thumb {
           background: var(--slider-thumb);
@@ -1170,6 +1156,8 @@
         }
         &::-moz-range-thumb:active {
           box-shadow: 0 1px 3px oklch(0 0 0 / 0.4), 0 0 0 1px oklch(1 0 0 / 0.08);
+          width: 24px;
+          height: 24px;
         }
         &:focus-visible::-webkit-slider-thumb {
           box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
@@ -1236,9 +1224,9 @@
       padding-inline: calc(var(--spacing) * 5);
       padding-block: calc(var(--spacing) * 3);
       border-radius: 9999px;
-      background: oklch(0.15 0 0 / 0.75);
-      backdrop-filter: blur(30px) saturate(1.8);
-      -webkit-backdrop-filter: blur(30px) saturate(1.8);
+      background: oklch(0.15 0 0 / 0.8);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       box-shadow: var(--shadow-lg), var(--float-ring);
       pointer-events: auto;
       animation: slideUp 0.25s var(--apple-spring);
@@ -1256,8 +1244,7 @@
         color: oklch(0.95 0 0);
       }
       .dark & {
-        background: oklch(0.30 0 0 / 0.75);
-        box-shadow: var(--shadow-lg), var(--float-ring);
+        background: oklch(0.25 0 0 / 0.8);
       }
     }
     .hud[data-closing] {
@@ -1272,9 +1259,9 @@
       margin: 0;
     }
     .separator-vertical {
-      width: 1px;
       flex-shrink: 0;
       align-self: stretch;
+      width: 0.5px;
       background: var(--color-border);
     }
     .separator-inset {
@@ -1585,7 +1572,7 @@
       width: 12px;
       height: 12px;
       background: var(--glass-bg-opaque);
-      box-shadow: -0.5px -0.5px 0 0 var(--panel-border);
+      box-shadow: -1px -1px 0 0 var(--panel-border);
     }
     .popover-top {
       & [popover] {
@@ -1686,7 +1673,7 @@
       color: var(--color-foreground);
       font-size: 22px;
       line-height: 1.18;
-      letter-spacing: 0.016em;
+      letter-spacing: -0.016em;
       &:not(:first-child) {
         margin-top: calc(var(--spacing) * 8);
       }
