@@ -62,6 +62,7 @@
 
 
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
+- [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 
 - [Typography](https://ciderui.com/components/typography.html): Prose typography styles. Includes `tag` (capsule label).
 - [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.

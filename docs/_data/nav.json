@@ -36,6 +36,7 @@
       { "label": "Sheet", "href": "components/sheet.html" },
       { "label": "Slider", "href": "components/slider.html" },
       { "label": "Switch", "href": "components/switch.html" },
+      { "label": "Table", "href": "components/table.html" },
       { "label": "Tabs", "href": "components/tabs.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
       { "label": "Verification Code", "href": "components/verification-code.html" }

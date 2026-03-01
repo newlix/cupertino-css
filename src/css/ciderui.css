@@ -255,6 +255,7 @@
   @import "./components/dialog.css";
   @import "./components/tabs.css";
   @import "./components/segmented-control.css";
+  @import "./components/table.css";
   @import "./components/avatar.css";
   @import "./components/page-control.css";
   @import "./components/pagination.css";
