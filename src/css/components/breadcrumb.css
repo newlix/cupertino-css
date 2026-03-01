@@ -8,6 +8,7 @@
       @apply text-foreground underline underline-offset-2;
       text-decoration-color: var(--color-muted-foreground);
     }
+    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   }
   & [aria-current="page"] {
     @apply font-medium text-foreground;

@@ -36,6 +36,7 @@
   & > a, & > button {
     @apply no-underline text-foreground;
     &:hover { background: var(--surface-3); text-decoration: none; }
+    &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     &[data-selected]:hover, &[aria-selected="true"]:hover {
       background: oklch(from var(--color-primary) l c h / 0.15);

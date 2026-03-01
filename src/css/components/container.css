@@ -176,6 +176,7 @@ input[type="checkbox"]:not([role="switch"]) {
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
+  &:active:not(:disabled) { transform: scale(0.9); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
 }
 
@@ -192,6 +193,7 @@ input[type="radio"] {
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
+  &:active:not(:disabled) { transform: scale(0.9); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
 }
 
