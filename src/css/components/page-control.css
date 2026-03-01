@@ -24,10 +24,6 @@
   &:active:not(:disabled) {
     opacity: 0.6;
   }
-  &:focus-visible {
-    outline: 3px solid oklch(from var(--color-primary) l c h / 0.3);
-    outline-offset: 2px;
-  }
   &:disabled {
     pointer-events: none;
     opacity: 0.1;

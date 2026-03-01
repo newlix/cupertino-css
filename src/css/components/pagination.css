@@ -7,7 +7,6 @@
     transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
     &:hover:not([data-active]) { background: var(--surface-3); }
     &:active:not([data-active]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible:not(:disabled) { outline: 3px solid oklch(from var(--color-primary) l c h / 0.3); outline-offset: 2px; }
     &[data-active], &[aria-current="page"] {
       @apply text-foreground font-medium;
       background: var(--surface-4);
