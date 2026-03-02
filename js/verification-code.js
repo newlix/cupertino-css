@@ -29,7 +29,12 @@
       }
 
       function sync() {
-        hidden.value = Array.from(inputs).map((i) => i.value).join("");
+        var newVal = Array.from(inputs).map((i) => i.value).join("");
+        if (hidden.value !== newVal) {
+          hidden.value = newVal;
+          hidden.dispatchEvent(new Event("input", { bubbles: true }));
+          hidden.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       }
 
       let pasting = false;

@@ -65,6 +65,12 @@
 }
 .btn-plain.btn-destructive {
   color: var(--color-destructive);
+  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); }
+  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  .dark & {
+    &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
+    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
+  }
 }
 .btn-capsule {
   border-radius: 9999px;

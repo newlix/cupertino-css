@@ -26,12 +26,13 @@
         var listRect = list.getBoundingClientRect();
         var btnRect = btn.getBoundingClientRect();
         indicator.style.width = btnRect.width + "px";
-        indicator.style.transform = "translateX(" + (btnRect.left - listRect.left - parseFloat(getComputedStyle(list).paddingLeft)) + "px)";
+        indicator.style.transform = "translateX(" + (btnRect.left - listRect.left) + "px)";
       }
 
       // Reposition indicator on resize
       if (indicator && list) {
         var ro = new ResizeObserver(function () {
+          if (!list.isConnected) { ro.disconnect(); return; }
           var activeBtn = tabGroup.querySelector("[data-tab][data-active]");
           if (activeBtn) positionIndicator(activeBtn);
         });

@@ -3,7 +3,7 @@
 // focus trapping, scroll lock, and focus restoration.
 (function () {
   var activeDialogs = new Set();
-  var FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"])';
+  var FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function closeDialog(dialog) {
     if (dialog.hasAttribute("data-closing")) return;
@@ -88,12 +88,16 @@
             dialog._previousFocus = document.activeElement;
           }
           activeDialogs.add(dialog);
+          if (activeDialogs.size === 1) {
+            document.body._savedOverflow = document.body.style.overflow;
+          }
           document.body.style.overflow = "hidden";
           trapFocus(dialog);
         } else {
           activeDialogs.delete(dialog);
           if (activeDialogs.size === 0) {
-            document.body.style.overflow = "";
+            document.body.style.overflow = document.body._savedOverflow || "";
+            delete document.body._savedOverflow;
           }
           if (dialog._focusTrapHandler) {
             dialog.removeEventListener("keydown", dialog._focusTrapHandler);
@@ -111,7 +115,7 @@
   }
 
   function openDialog(dialog) {
-    if (dialog.open) return;
+    if (dialog.open || dialog.hasAttribute("data-closing")) return;
     dialog._previousFocus = document.activeElement;
     dialog.showModal();
   }

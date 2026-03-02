@@ -97,7 +97,7 @@
         popover.removeEventListener("keydown", popover._escHandler);
       }
       popover._escHandler = function (e) {
-        if (e.key === "Escape") {
+        if (e.key === "Escape" && popover.matches(":popover-open")) {
           e.preventDefault();
           popover.hidePopover();
         }

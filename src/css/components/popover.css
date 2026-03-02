@@ -81,6 +81,17 @@
   & [popover] {
     margin-top: 0;
     margin-bottom: 0.5rem;
+    transform: translateY(-8px);
+
+    &:popover-open {
+      transform: translateY(0);
+    }
+
+    @starting-style {
+      &:popover-open {
+        transform: translateY(-8px);
+      }
+    }
   }
   &.popover-arrow [popover]::before {
     top: auto;
