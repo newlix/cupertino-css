@@ -205,4 +205,15 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">API</h2>
+    <dl>
+      <dt><code>openDialog(dialogElement)</code></dt>
+      <dd>Opens the dialog as a modal. Guards against re-opening an already-open or closing dialog.</dd>
+      <dt><code>closeDialog(dialogElement)</code></dt>
+      <dd>Closes the dialog with an exit animation, restoring focus and scroll position.</dd>
+    </dl>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Both functions are available as globals and via <code>CiderUI.dialog.open()</code> / <code>CiderUI.dialog.close()</code>.</p>
+  </section>
+
 {% endblock %}
