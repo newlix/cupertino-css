@@ -12,7 +12,7 @@
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
 }
 .verification-code > span {
-  @apply text-[17px] text-muted-foreground;
+  @apply text-[17px] text-tertiary-foreground;
 }
 @media (max-width: 374px) {
   .verification-code { @apply gap-1.5; }
@@ -23,6 +23,9 @@
   box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
   outline: none;
   .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
+}
+.verification-code[data-error] {
+  animation: shake 0.3s var(--apple-ease);
 }
 .verification-code[data-error] input:not([type="hidden"]) {
   border-color: var(--color-destructive);

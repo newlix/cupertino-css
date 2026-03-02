@@ -1,7 +1,7 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Pagination" %}
-{% set description = "Numbered page navigation with previous and next controls." %}
+{% set description = "Numbered page navigation with previous and next controls. Web convention — not part of Apple HIG. For Apple-style paged indicators, see Page Control." %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
   <button aria-label="Previous page" disabled>
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
   </button>
-  <button data-active>1</button>
+  <button aria-current="page">1</button>
   <button>2</button>
   <button>3</button>
   <span>...</span>
@@ -29,7 +29,7 @@
 
   {% call example("Simple (Numbers Only)") %}
 <nav class="pagination" aria-label="Pagination">
-  <button data-active>1</button>
+  <button aria-current="page">1</button>
   <button>2</button>
   <button>3</button>
   <button>4</button>
@@ -54,7 +54,7 @@
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     Previous
   </button>
-  <button data-active>1</button>
+  <button aria-current="page">1</button>
   <button>2</button>
   <button>3</button>
   <button class="px-3 gap-1">

@@ -4,5 +4,5 @@
   corner-shape: squircle;
   overflow: clip;
   box-shadow: var(--shadow), var(--panel-ring);
-  & > :not(:first-child) { margin-top: 0.75rem; }
+  & > :not(:first-child) { margin-top: 1rem; }
 }

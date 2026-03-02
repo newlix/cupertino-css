@@ -73,7 +73,7 @@
   }
 }
 .btn-capsule {
-  border-radius: 9999px;
+  border-radius: var(--radius-pill);
   corner-shape: round;
 }
 .btn-sm {

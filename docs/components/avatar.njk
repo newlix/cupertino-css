@@ -8,7 +8,13 @@
   <h3>Selectors</h3>
   <dl>
     <dt><code>.avatar</code></dt>
-    <dd>Circular container for initials or image.</dd>
+    <dd>Circular container for initials or image (40px default).</dd>
+    <dt><code>.avatar-sm</code></dt>
+    <dd>Small avatar (28px).</dd>
+    <dt><code>.avatar-lg</code></dt>
+    <dd>Large avatar (64px).</dd>
+    <dt><code>.avatar-xl</code></dt>
+    <dd>Extra-large avatar (80px).</dd>
     <dt><code>.avatar-group</code></dt>
     <dd>Overlapping stack of avatars with ring spacing.</dd>
   </dl>
@@ -25,12 +31,14 @@
 
   {% call example("Sizes") %}
 <div class="flex items-center gap-4">
-  <img class="avatar size-8" src="https://i.pravatar.cc/32" alt="Avatar" />
+  <img class="avatar avatar-sm" src="https://i.pravatar.cc/28" alt="Avatar" />
   <img class="avatar" src="https://i.pravatar.cc/40" alt="Avatar" />
-  <img class="avatar size-14" src="https://i.pravatar.cc/56" alt="Avatar" />
-  <div class="avatar size-8 text-xs">SM</div>
+  <img class="avatar avatar-lg" src="https://i.pravatar.cc/64" alt="Avatar" />
+  <img class="avatar avatar-xl" src="https://i.pravatar.cc/80" alt="Avatar" />
+  <div class="avatar avatar-sm">SM</div>
   <div class="avatar">MD</div>
-  <div class="avatar size-14 text-lg">LG</div>
+  <div class="avatar avatar-lg">LG</div>
+  <div class="avatar avatar-xl">XL</div>
 </div>
 {% endcall %}
 
@@ -46,17 +54,26 @@
   </div>
   <div class="relative inline-block">
     <div class="avatar">GH</div>
-    <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-muted-foreground"></span>
+    <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-tertiary-foreground"></span>
   </div>
+</div>
+{% endcall %}
+
+  {% call example("Interactive") %}
+<div class="flex items-center gap-4">
+  <button class="avatar">JD</button>
+  <a href="#" class="avatar">
+    <img src="https://i.pravatar.cc/40?img=3" alt="User profile" />
+  </a>
 </div>
 {% endcall %}
 
   {% call example("Group") %}
 <div class="avatar-group">
-  <div class="avatar size-8 text-xs">A</div>
-  <div class="avatar size-8 text-xs">B</div>
-  <div class="avatar size-8 text-xs">C</div>
-  <div class="avatar size-8 text-xs text-muted-foreground">+3</div>
+  <div class="avatar avatar-sm">A</div>
+  <div class="avatar avatar-sm">B</div>
+  <div class="avatar avatar-sm">C</div>
+  <div class="avatar avatar-sm text-tertiary-foreground">+3</div>
 </div>
 {% endcall %}
 

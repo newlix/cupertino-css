@@ -25,17 +25,23 @@
 {% endcall %}
 
   {% call example("Disabled") %}
-<label>
-  <input type="checkbox" disabled />
-  Accept terms and conditions
-</label>
+<div class="space-y-2.5">
+  <label>
+    <input type="checkbox" disabled />
+    Unchecked disabled
+  </label>
+  <label>
+    <input type="checkbox" checked disabled />
+    Checked disabled
+  </label>
+</div>
 {% endcall %}
 
   {% call example("With Text") %}
 <label>
   <input type="checkbox" />
-  <span>Accept terms and conditions</span>
-  <small>By clicking this checkbox, you agree to the terms and conditions.</small>
+  <span>Subscribe to newsletter</span>
+  <small>Receive weekly updates on new features and tips.</small>
 </label>
 {% endcall %}
 

@@ -1,7 +1,7 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Breadcrumb" %}
-{% set description = "Navigation trail showing the current page hierarchy." %}
+{% set description = "Navigation trail showing the current page hierarchy. Web convention — not part of Apple HIG." %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
   </dl>
 
   {% call example("Default") %}
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="#">Home</a>
   <a href="#">Components</a>
   <span aria-current="page">Breadcrumb</span>
@@ -20,7 +20,7 @@
 {% endcall %}
 
   {% call example("Collapsed") %}
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="#">Home</a>
   <span>...</span>
   <a href="#">Components</a>

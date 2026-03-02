@@ -2,7 +2,7 @@
 .tag {
   @apply inline-flex items-center gap-1 px-2 py-[2px] text-[11px] font-medium;
   @apply bg-secondary text-secondary-foreground;
-  border-radius: 9999px;
+  border-radius: var(--radius-pill);
   user-select: none;
   letter-spacing: 0;
   &:is(button, a) {

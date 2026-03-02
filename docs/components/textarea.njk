@@ -15,8 +15,15 @@
 <textarea rows="3" placeholder="Type your message..."></textarea>
 {% endcall %}
 
+  {% call example("Required") %}
+<label for="bio-req">Bio</label>
+<textarea id="bio-req" rows="3" placeholder="Tell us about yourself" required></textarea>
+{% endcall %}
+
   {% call example("Invalid") %}
-<textarea rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
+<label for="msg-err">Message</label>
+<textarea id="msg-err" rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
+<small>Message is required.</small>
 {% endcall %}
 
   {% call example("Disabled") %}

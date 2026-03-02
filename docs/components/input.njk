@@ -16,42 +16,38 @@
 {% endcall %}
 
   {% call example("With Label") %}
-<label>Email
-  <input type="email" placeholder="you@example.com" />
-</label>
+<label for="email-input">Email</label>
+<input id="email-input" type="email" placeholder="you@example.com" />
 <small>We'll never share your email.</small>
 {% endcall %}
 
   {% call example("Required") %}
-<label>Email
-  <input type="email" placeholder="you@example.com" required />
-</label>
+<label for="email-req">Email</label>
+<input id="email-req" type="email" placeholder="you@example.com" required />
 {% endcall %}
 
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     A red <code>*</code> is added automatically when the input has <code>required</code>.
   </p>
 
   {% call example("Optional Hint") %}
-<label>Company name <small>(optional)</small>
-  <input type="text" placeholder="Acme Inc." />
-</label>
+<label for="company-input">Company name <small>(optional)</small></label>
+<input id="company-input" type="text" placeholder="Acme Inc." />
 {% endcall %}
 
   {% call example("Error State") %}
-<label>Username
-  <input type="text" value="ab" aria-invalid="true" />
-</label>
+<label for="username-err">Username</label>
+<input id="username-err" type="text" value="ab" aria-invalid="true" />
 <small>Username must be at least 3 characters.</small>
 {% endcall %}
 
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     Add <code>aria-invalid="true"</code> to turn the helper text red automatically.
   </p>
 
   {% call example("With Icon") %}
 <div class="relative">
-  <svg class="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <svg class="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-tertiary-foreground pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
   <input type="text" class="pl-9" placeholder="Search..." />
 </div>
 {% endcall %}

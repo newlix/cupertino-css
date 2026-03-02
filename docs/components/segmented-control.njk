@@ -13,6 +13,8 @@
     <dd>Container for segment buttons.</dd>
     <dt><code>[data-tab]</code></dt>
     <dd>Individual segment button.</dd>
+    <dt><code>[data-tab-indicator]</code></dt>
+    <dd>Sliding pill indicator positioned by JS.</dd>
     <dt><code>[data-tab-panel]</code></dt>
     <dd>Content panel toggled by the active segment.</dd>
   </dl>
@@ -20,18 +22,19 @@
   {% call example("Default") %}
 <div class="segmented-control" data-tabs>
   <div data-tab-list>
+    <div data-tab-indicator></div>
     <button data-tab="seg-1" data-active>Overview</button>
     <button data-tab="seg-2">Analytics</button>
     <button data-tab="seg-3">Reports</button>
   </div>
   <div data-tab-panel="seg-1" data-active>
-    <p class="text-sm text-muted-foreground">Overview content here.</p>
+    <p class="text-sm text-tertiary-foreground">Overview content here.</p>
   </div>
   <div data-tab-panel="seg-2">
-    <p class="text-sm text-muted-foreground">Analytics content here.</p>
+    <p class="text-sm text-tertiary-foreground">Analytics content here.</p>
   </div>
   <div data-tab-panel="seg-3">
-    <p class="text-sm text-muted-foreground">Reports content here.</p>
+    <p class="text-sm text-tertiary-foreground">Reports content here.</p>
   </div>
 </div>
 {% endcall %}
@@ -39,6 +42,7 @@
   {% call example("With Icons") %}
 <div class="segmented-control" data-tabs>
   <div data-tab-list>
+    <div data-tab-indicator></div>
     <button data-tab="icon-1" data-active>
       <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       Preview
@@ -50,12 +54,12 @@
   </div>
   <div data-tab-panel="icon-1" data-active>
     <div class="rounded-xl border p-6">
-      <p class="text-sm text-muted-foreground">This is the preview of the component.</p>
+      <p class="text-sm text-tertiary-foreground">This is the preview of the component.</p>
     </div>
   </div>
   <div data-tab-panel="icon-2">
     <div class="rounded-xl border bg-secondary/30 p-4">
-      <code class="text-sm text-muted-foreground">&lt;Button variant="outline"&gt;Click me&lt;/Button&gt;</code>
+      <code class="text-sm text-tertiary-foreground">&lt;Button variant="outline"&gt;Click me&lt;/Button&gt;</code>
     </div>
   </div>
 </div>
@@ -63,7 +67,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Apple HIG segmented control. Uses the same <code>[data-tabs]</code> JS as Tabs.</p>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Apple HIG segmented control. Uses the same <code>[data-tabs]</code> JS as Tabs.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/tabs.js"&gt;&lt;/script&gt;

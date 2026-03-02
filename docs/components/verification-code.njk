@@ -9,6 +9,8 @@
   <dl>
     <dt><code>.verification-code</code></dt>
     <dd>Flex container for individual code input cells.</dd>
+    <dt><code>[data-name]</code></dt>
+    <dd>Sets the hidden input's <code>name</code> attribute for form submission.</dd>
     <dt><code>[data-error]</code></dt>
     <dd>Error state modifier — turns borders red.</dd>
   </dl>
@@ -36,7 +38,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-muted-foreground">Use inside a <code>.cider</code> container. Handles auto-advance, backspace, paste, and arrow key navigation. Syncs values to a hidden input and auto-sets <code>maxlength</code> and <code>inputmode</code>.</p>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Use inside a <code>.cider</code> container. Handles auto-advance, backspace, paste, and arrow key navigation. Syncs values to a hidden input and auto-sets <code>maxlength</code> and <code>inputmode</code>.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/verification-code.js"&gt;&lt;/script&gt;

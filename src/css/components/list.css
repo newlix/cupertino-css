@@ -6,7 +6,7 @@
     min-height: 44px;
     transition: background-color 0.15s var(--apple-ease);
     & > svg:first-child {
-      @apply shrink-0 size-8 p-2 rounded-[8px] text-muted-foreground;
+      @apply shrink-0 size-8 p-2 rounded-[8px] text-tertiary-foreground;
       background: var(--surface-3);
     }
     & > img {
@@ -16,11 +16,11 @@
       @apply flex flex-1 flex-col gap-0.5;
       min-width: 0;
       & h3 { @apply text-sm font-medium leading-snug truncate mb-0; letter-spacing: normal; }
-      & p { @apply text-[13px] text-muted-foreground; overflow-wrap: anywhere; }
+      & p { @apply text-[13px] text-tertiary-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
       @apply size-3.5 shrink-0;
-      color: var(--color-muted-foreground);
+      color: var(--color-tertiary-foreground);
     }
     & + * {
       position: relative;
@@ -30,7 +30,7 @@
         top: 0;
         right: 0;
         left: 3.75rem;
-        height: 1px;
+        height: 0.5px;
         background: var(--panel-border);
       }
     }
@@ -40,7 +40,7 @@
     &:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); text-decoration: none; }
     &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }
-    &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+    &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &[data-selected]:hover, &[aria-selected="true"]:hover {
       background: oklch(from var(--color-primary) l c h / 0.20);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.34); }

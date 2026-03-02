@@ -47,9 +47,9 @@
       transition: background-color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
       &:focus-visible { background: var(--surface-2); outline: none; }
-      & svg { @apply size-4 text-muted-foreground; }
+      & svg { @apply size-4 text-tertiary-foreground; }
       &[disabled], &[aria-disabled="true"] {
-        @apply opacity-50 text-muted-foreground;
+        @apply opacity-50 text-tertiary-foreground;
         pointer-events: none;
         cursor: default;
         &:hover { background: transparent; }
@@ -62,8 +62,10 @@
   }
 }
 
-/* Arrow indicator */
-.popover-arrow [popover]::before {
+/* Arrow indicator — on by default (Apple convention).
+   Use .popover-no-arrow to opt out. */
+.popover [popover]::before,
+.popover-menu [popover]::before {
   content: "";
   position: absolute;
   top: -6px;
@@ -74,6 +76,15 @@
   background: var(--glass-bg-opaque);
   box-shadow: -0.5px -0.5px 0 0.5px oklch(0 0 0 / 0.06);
   .dark & { box-shadow: -0.5px -0.5px 0 0.5px oklch(1 0 0 / 0.08); }
+}
+.popover-no-arrow [popover]::before {
+  display: none;
+}
+
+/* Popover menu backdrop — subtle scrim for modal-like context */
+.popover-menu [popover]::backdrop {
+  background: oklch(0 0 0 / 0.08);
+  .dark & { background: oklch(0 0 0 / 0.2); }
 }
 
 /* Top positioning variant */
@@ -93,7 +104,7 @@
       }
     }
   }
-  &.popover-arrow [popover]::before {
+  &:not(.popover-no-arrow) [popover]::before {
     top: auto;
     bottom: -6px;
     transform: translateX(-50%) rotate(225deg);

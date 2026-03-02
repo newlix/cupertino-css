@@ -2,7 +2,7 @@
 .pagination {
   @apply flex flex-wrap items-center gap-0.5;
   & > button, & > a {
-    @apply inline-flex h-[36px] min-w-[36px] items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-muted-foreground cursor-pointer no-underline;
+    @apply inline-flex h-[36px] min-w-[36px] items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
     corner-shape: squircle;
     @media (pointer: coarse) { min-height: 44px; min-width: 44px; }
     transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
@@ -21,6 +21,6 @@
     .dark &:disabled, .dark &[aria-disabled="true"] { opacity: 0.35; }
   }
   & > span {
-    @apply inline-flex size-[36px] items-center justify-center text-sm text-muted-foreground;
+    @apply inline-flex size-[36px] items-center justify-center text-sm text-tertiary-foreground;
   }
 }

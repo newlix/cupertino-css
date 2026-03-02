@@ -8,7 +8,11 @@
   <h3>Selectors</h3>
   <dl>
     <dt><code>.callout</code></dt>
-    <dd>Rounded notice container with border.</dd>
+    <dd>Base callout container with left accent border.</dd>
+    <dt><code>.callout-info</code></dt>
+    <dd>Blue variant for informational notes.</dd>
+    <dt><code>.callout-destructive</code></dt>
+    <dd>Red variant for critical or error messages.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -18,9 +22,16 @@
 </div>
 {% endcall %}
 
+  {% call example("Info") %}
+<div class="callout callout-info">
+  <h4>Note</h4>
+  <p>iCloud automatically keeps your documents up to date across all your devices.</p>
+</div>
+{% endcall %}
+
   {% call example("Destructive") %}
-<div class="callout">
-  <h4 class="text-destructive">Threat Notification</h4>
+<div class="callout callout-destructive">
+  <h4>Threat Notification</h4>
   <p>Apple sent you a threat notification via email and iMessage on July 9, 2024.</p>
 </div>
 {% endcall %}

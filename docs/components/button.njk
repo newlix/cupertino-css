@@ -41,22 +41,27 @@
 {% endcall %}
 
 {% call example("Sizes") %}
-<button class="btn-filled btn-sm">Small</button>
-<button class="btn-filled">Default</button>
-<button class="btn-filled btn-lg">Large</button>
+<div class="flex items-center gap-3">
+  <button class="btn-filled btn-sm">Small</button>
+  <button class="btn-filled">Default</button>
+  <button class="btn-filled btn-lg">Large</button>
+</div>
 {% endcall %}
 
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     Use <code>btn-capsule</code> for CTA and marketing contexts.
   </p>
 
 {% call example("Capsule") %}
-<button class="btn-filled btn-capsule">Get Started</button>
-<button class="btn-gray btn-capsule">Learn More</button>
-<button class="btn-tinted btn-capsule">Watch Video</button>
+<div class="flex flex-wrap gap-3">
+  <button class="btn-filled btn-capsule">Get Started</button>
+  <button class="btn-gray btn-capsule">Learn More</button>
+  <button class="btn-tinted btn-capsule">Watch Video</button>
+  <button class="btn-plain btn-capsule">Cancel</button>
+</div>
 {% endcall %}
 
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     Use <code>btn-destructive</code> as a modifier with any variant.
   </p>
 
@@ -79,15 +84,7 @@
 </div>
 {% endcall %}
 
-{% call example("Action Buttons") %}
-<div class="flex gap-3">
-  <button class="btn-filled btn-sm">Save</button>
-  <button class="btn-plain btn-sm">Discard</button>
-  <button class="btn-filled btn-destructive btn-sm">Delete</button>
-</div>
-{% endcall %}
-
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     Use <code>btn-plain</code> with <code>size-9</code> and <code>p-0</code> for icon-only buttons.
   </p>
 
@@ -103,7 +100,7 @@
   </button>
 {% endcall %}
 
-  <p class="text-muted-foreground">
+  <p class="text-tertiary-foreground">
     Add <code>data-help</code> for a hover help tag (pure CSS, no wrapper needed).
   </p>
 

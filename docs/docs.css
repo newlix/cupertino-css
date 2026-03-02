@@ -18,7 +18,7 @@
   }
   .docs-icon-btn {
     @apply inline-flex items-center justify-center size-8 p-0 rounded-md cursor-pointer;
-    color: var(--color-muted-foreground) !important;
+    color: var(--color-tertiary-foreground) !important;
     transition: color 0.15s, background 0.15s;
     &:hover {
       color: var(--color-foreground) !important;
@@ -32,12 +32,12 @@
     &:hover { scrollbar-color: var(--surface-5) transparent; }
     & h2 {
       @apply px-2 pb-1 pt-0 text-[11px] font-semibold uppercase tracking-widest;
-      color: var(--color-muted-foreground);
+      color: var(--color-tertiary-foreground);
       opacity: 0.5;
     }
     & a[href] {
       @apply flex items-center rounded-lg px-2.5 py-1.5 text-[13px];
-      color: var(--color-muted-foreground);
+      color: var(--color-tertiary-foreground);
       text-decoration: none;
       transition: color 0.15s, background 0.15s;
       &:hover {
@@ -67,7 +67,7 @@
       margin: 0;
     }
     & p {
-      @apply mt-2 text-lg text-muted-foreground leading-relaxed;
+      @apply mt-2 text-lg text-tertiary-foreground leading-relaxed;
       max-width: 36rem;
     }
   }
@@ -95,7 +95,7 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--color-muted-foreground);
+      color: var(--color-tertiary-foreground);
       opacity: 0.5;
     }
   }
@@ -139,13 +139,13 @@
       border-bottom: 1px solid var(--panel-border);
       background: var(--surface-1);
       & > span {
-        @apply text-[12px] font-medium text-muted-foreground;
+        @apply text-[12px] font-medium text-tertiary-foreground;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
       & > nav {
         @apply flex gap-0.5;
         & > button {
-          @apply rounded-md px-2 py-1 text-[12px] font-medium text-muted-foreground;
+          @apply rounded-md px-2 py-1 text-[12px] font-medium text-tertiary-foreground;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
           transition: all 0.15s var(--apple-ease);
           &:hover {
@@ -163,7 +163,7 @@
         @apply rounded-md border px-2 py-1 text-[12px] font-medium;
         background: var(--surface-2);
         border-color: var(--color-border);
-        color: var(--color-muted-foreground);
+        color: var(--color-tertiary-foreground);
         transition: all 0.15s var(--apple-ease);
         opacity: 0;
         &:hover {
@@ -196,7 +196,7 @@
       &::before {
         counter-increment: line;
         content: counter(line);
-        @apply inline-block shrink-0 text-right pr-4 text-muted-foreground/40 select-none;
+        @apply inline-block shrink-0 text-right pr-4 text-tertiary-foreground/40 select-none;
         min-width: 2rem;
         font-variant-numeric: tabular-nums;
       }
@@ -247,7 +247,7 @@
       }
       & > .home-stat-label {
         @apply mt-1 text-xs font-medium uppercase tracking-wide;
-        color: var(--color-muted-foreground);
+        color: var(--color-tertiary-foreground);
       }
     }
     & > .home-stat + .home-stat {
@@ -261,7 +261,7 @@
       @apply text-3xl font-bold tracking-tight text-foreground;
     }
     & > p {
-      @apply mt-3 text-muted-foreground max-w-xl mx-auto;
+      @apply mt-3 text-tertiary-foreground max-w-xl mx-auto;
     }
   }
 
@@ -271,10 +271,10 @@
     @apply py-10 text-center;
     & > .home-footer-brand {
       @apply flex items-center justify-center gap-2 mb-3;
-      color: var(--color-muted-foreground);
+      color: var(--color-tertiary-foreground);
     }
     & > p {
-      @apply text-sm text-muted-foreground;
+      @apply text-sm text-tertiary-foreground;
     }
   }
 

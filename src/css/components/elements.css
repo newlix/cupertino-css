@@ -75,11 +75,12 @@ ol {
   @apply list-decimal pl-5 space-y-1.5;
 }
 blockquote {
-  @apply border-l-4 pl-5 italic text-muted-foreground;
+  @apply border-l-4 pl-5 italic text-tertiary-foreground;
   border-color: var(--color-border-solid);
 }
 code {
   @apply rounded-lg bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-medium;
+  line-height: 1.5;
 }
 
 /* ─── Figure ─── */
@@ -89,7 +90,7 @@ figure {
     corner-shape: squircle;
   }
   & figcaption {
-    @apply mt-2 text-center text-sm text-muted-foreground;
+    @apply mt-2 text-center text-sm text-tertiary-foreground;
   }
 }
 
@@ -100,7 +101,7 @@ details {
   border-color: var(--color-border);
   & summary {
     @apply cursor-pointer font-semibold text-foreground;
-    &::marker { color: var(--color-muted-foreground); }
+    &::marker { color: var(--color-tertiary-foreground); }
   }
   & > :not(summary) { @apply mt-3; }
 }
@@ -108,6 +109,7 @@ details {
 /* ─── Pre / Code block ─── */
 pre {
   @apply rounded-xl p-4 text-[13px] overflow-x-auto;
+  line-height: 1.6;
   corner-shape: squircle;
   background: var(--surface-2);
   & > code {
@@ -124,7 +126,7 @@ input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
   background-color: var(--color-card);
   border-color: var(--input-border);
   transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
-  &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
+  &::placeholder { @apply text-tertiary-foreground; opacity: 0.45; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
@@ -143,7 +145,7 @@ textarea {
   background-color: var(--color-card);
   border-color: var(--input-border);
   transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
-  &::placeholder { @apply text-muted-foreground; opacity: 0.45; }
+  &::placeholder { @apply text-tertiary-foreground; opacity: 0.45; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
@@ -162,7 +164,7 @@ select {
   background-color: var(--color-card);
   border-color: var(--input-border);
   transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
-  /* Chevron SVG — light: #6E6E73 (--color-muted-foreground), dark: #98989D */
+  /* Chevron SVG — light: #6E6E73 (--color-tertiary-foreground), dark: #98989D */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -211,7 +213,10 @@ input[type="radio"] {
   transition: border-color 0.2s var(--apple-ease), background-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
   &:checked {
     border-color: var(--color-primary);
-    border-width: 5px;
+    background: var(--color-primary);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='3' fill='white'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
@@ -235,7 +240,10 @@ input[type="checkbox"][role="switch"] {
     width: 27px;
     height: 27px;
     box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
-    transition: transform 0.25s var(--apple-spring);
+    transition: transform 0.25s var(--apple-ease);
+    @media not (prefers-reduced-motion) {
+      transition-timing-function: var(--apple-spring);
+    }
   }
   &:checked {
     background: var(--color-primary);
@@ -307,7 +315,7 @@ table {
     corner-shape: squircle;
   }
   & th {
-    @apply px-4 py-3 text-xs font-semibold text-muted-foreground;
+    @apply px-4 py-3 text-xs font-semibold text-tertiary-foreground;
   }
   & tbody tr + tr td,
   & tbody tr + tr th {
@@ -367,13 +375,14 @@ table {
  * class — see separator.css for vertical and label variants only.
  */
 hr {
-  @apply shrink-0 h-px w-full border-none my-4;
+  @apply shrink-0 w-full border-none my-4;
+  height: 0.5px;
   background: var(--color-border);
 }
 
 /* ─── Kbd ─── */
 kbd {
-  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[5px] px-1.5 text-[11px] font-medium text-muted-foreground;
+  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[5px] px-1.5 text-[11px] font-medium text-tertiary-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
   box-shadow: 0 1px 0 var(--panel-border), var(--float-ring), inset 0 1px 0 oklch(1 0 0 / 0.15);
@@ -398,6 +407,12 @@ progress {
   }
 }
 
+/* ─── Table responsive wrapper ─── */
+.table-responsive {
+  @apply w-full overflow-x-auto -mx-px px-px;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* ─── Fieldset ─── */
 fieldset {
   @apply rounded-xl border p-5;
@@ -414,7 +429,7 @@ fieldset {
 
 /* ─── Small (helper text) ─── */
 small {
-  @apply text-xs text-muted-foreground;
+  @apply text-xs text-tertiary-foreground;
 }
 
 /* ─── Description list ─── */
@@ -426,7 +441,7 @@ dt {
   @apply font-semibold text-foreground;
 }
 dd {
-  @apply text-muted-foreground;
+  @apply text-tertiary-foreground;
 }
 
 /* ─── Mark (highlight) ─── */
@@ -440,6 +455,6 @@ mark {
 abbr[title] {
   @apply cursor-help;
   text-decoration: underline dotted;
-  text-decoration-color: var(--color-muted-foreground);
+  text-decoration-color: var(--color-tertiary-foreground);
   text-underline-offset: 3px;
 }

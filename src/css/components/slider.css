@@ -35,9 +35,9 @@
   &::-webkit-slider-thumb {
     @apply appearance-none rounded-full;
     background: var(--slider-thumb, white);
-    width: 28px;
-    height: 28px;
-    margin-top: -12px;
+    width: 24px;
+    height: 24px;
+    margin-top: -10px;
     border: none;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
     transition: box-shadow 0.2s var(--apple-ease);
@@ -51,8 +51,8 @@
   &::-moz-range-thumb {
     @apply rounded-full;
     background: var(--slider-thumb, white);
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     border: none;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
     transition: box-shadow 0.2s var(--apple-ease);
