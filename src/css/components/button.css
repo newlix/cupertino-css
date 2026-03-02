@@ -22,7 +22,7 @@
   &:active { background: var(--color-primary-active); }
 }
 .btn-tinted {
-  @apply bg-transparent text-primary;
+  @apply text-primary;
   background: oklch(from var(--color-primary) l c h / 0.12);
   &:hover { background: oklch(from var(--color-primary) l c h / 0.18); }
   &:active { background: oklch(from var(--color-primary) l c h / 0.22); }

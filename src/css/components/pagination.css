@@ -14,7 +14,7 @@
     }
     /* Prefer aria-current="page" over data-active for accessibility */
     &:disabled, &[aria-disabled="true"] {
-      @apply pointer-events-none cursor-not-allowed;
+      @apply pointer-events-none;
       opacity: 0.5;
       .dark & { opacity: 0.35; }
     }

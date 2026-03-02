@@ -20,9 +20,6 @@
   animation: hudAppear 0.25s var(--apple-spring);
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-medium whitespace-nowrap; color: oklch(0.95 0 0); }
-  .dark & {
-    background: oklch(0.15 0 0 / 0.85);
-  }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */

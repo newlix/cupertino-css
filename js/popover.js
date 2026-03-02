@@ -55,6 +55,12 @@ function init() {
     popover._toggleHandler = function (e) {
       if (e.newState === "open") {
         trigger.setAttribute("aria-expanded", "true");
+        if (isMenu) {
+          popover.setAttribute("role", "menu");
+          popover.querySelectorAll("button:not([disabled]), a:not([disabled])").forEach(function (item) {
+            item.setAttribute("role", "menuitem");
+          });
+        }
         positionPopover();
         window.addEventListener("scroll", positionPopover, true);
         window.addEventListener("resize", positionPopover);
@@ -111,6 +117,7 @@ function init() {
           }
         } else if (e.key === "Tab") {
           // Close popover on Tab to prevent focus escaping
+          e.preventDefault();
           popover.hidePopover();
         }
       };

@@ -20,10 +20,15 @@ function init() {
     });
 
     panels.forEach((panel) => {
+      if (!panel.id) panel.id = "tabpanel-" + Math.random().toString(36).substr(2, 9);
       panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("tabindex", "0");
       const panelTarget = panel.getAttribute("data-tab-panel");
       const matchingBtn = Array.from(buttons).find((b) => b.getAttribute("data-tab") === panelTarget);
-      if (matchingBtn) panel.setAttribute("aria-labelledby", matchingBtn.id);
+      if (matchingBtn) {
+        panel.setAttribute("aria-labelledby", matchingBtn.id);
+        matchingBtn.setAttribute("aria-controls", panel.id);
+      }
     });
 
     function activate(btn) {

@@ -89,7 +89,7 @@ function init() {
         trapFocus(sheet);
       } else {
         activeSheets.delete(sheet);
-        if (activeSheets.size === 0) {
+        if (activeSheets.size === 0 && !document.querySelector("dialog[open]")) {
           document.body.style.overflow = "";
         }
         if (sheet._focusTrapHandler) {

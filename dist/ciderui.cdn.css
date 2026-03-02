@@ -506,7 +506,6 @@
       }
     }
     .btn-tinted {
-      background-color: transparent;
       color: var(--color-primary);
       background: oklch(from var(--color-primary) l c h / 0.12);
       &:hover {
@@ -827,10 +826,10 @@
         outline: 2px solid var(--color-primary);
         outline-offset: -2px;
       }
-      &:active {
+      &:active:not([disabled]):not([aria-disabled="true"]) {
         transform: scale(var(--apple-press-scale));
       }
-      &:disabled, &[disabled] {
+      &:disabled, &[disabled], &[aria-disabled="true"] {
         pointer-events: none;
         opacity: 50%;
       }
@@ -890,7 +889,7 @@
       & .avatar {
         --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-        ring-color: var(--color-background);
+        --tw-ring-color: var(--color-background);
       }
     }
     .page-control {
@@ -934,6 +933,9 @@
         }
         &:hover:not([aria-current="page"]) {
           opacity: 0.65;
+        }
+        &:active:not(:disabled) {
+          opacity: 0.8;
         }
         &:disabled {
           opacity: 0.2;
@@ -986,7 +988,6 @@
         }
         &:disabled, &[aria-disabled="true"] {
           pointer-events: none;
-          cursor: not-allowed;
           opacity: 0.5;
           .dark & {
             opacity: 0.35;
@@ -1018,7 +1019,7 @@
           color: var(--color-foreground);
           text-decoration-line: underline;
           text-underline-offset: 4px;
-          text-decoration-color: var(--color-foreground);
+          text-decoration-color: var(--color-muted-foreground);
         }
         &:focus-visible {
           outline: 2px solid var(--color-primary);
@@ -1045,11 +1046,11 @@
       }
     }
     .progress {
-      height: calc(var(--spacing) * 1);
+      height: calc(var(--spacing) * 1.5);
       width: 100%;
       overflow: hidden;
       border-radius: calc(infinity * 1px);
-      background: var(--surface-6);
+      background: var(--surface-4);
       & .progress-bar {
         height: 100%;
         border-radius: calc(infinity * 1px);
@@ -1107,6 +1108,7 @@
         width: 22px;
         height: 22px;
         margin-top: -9px;
+        border: none;
         box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
         transition: box-shadow 0.2s var(--apple-ease), transform 0.15s var(--apple-ease), width 0.15s var(--apple-ease), height 0.15s var(--apple-ease), margin-top 0.15s var(--apple-ease);
       }
@@ -1137,10 +1139,10 @@
         height: 24px;
       }
       &:focus-visible::-webkit-slider-thumb {
-        box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15);
+        box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
       }
       &:focus-visible::-moz-range-thumb {
-        box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15);
+        box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
       }
       &:disabled {
         cursor: not-allowed;
@@ -1174,10 +1176,10 @@
           height: 24px;
         }
         &:focus-visible::-webkit-slider-thumb {
-          box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
+          box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
         }
         &:focus-visible::-moz-range-thumb {
-          box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
+          box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
         }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -1263,9 +1265,6 @@
         font-weight: var(--font-weight-medium);
         white-space: nowrap;
         color: oklch(0.95 0 0);
-      }
-      .dark & {
-        background: oklch(0.15 0 0 / 0.85);
       }
     }
     .hud[data-closing] {
@@ -1383,7 +1382,8 @@
         }
         &:focus-visible {
           background: var(--surface-3);
-          outline: none;
+          outline: 2px solid var(--color-primary);
+          outline-offset: -2px;
         }
         &[data-selected]:hover, &[aria-selected="true"]:hover {
           background: oklch(from var(--color-primary) l c h / 0.15);
@@ -1490,7 +1490,7 @@
         border-radius: calc(infinity * 1px);
         padding: calc(var(--spacing) * 1.5);
         color: var(--color-muted-foreground);
-        transition: all 0.2s var(--apple-ease);
+        transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease);
         &:hover {
           background-color: var(--color-accent);
           color: var(--color-foreground);
@@ -1668,6 +1668,9 @@
         border-color: var(--color-destructive);
         box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15);
         outline: none;
+        .dark & {
+          box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.25);
+        }
       }
     }
     .verification-code[data-error] + small {
@@ -2129,8 +2132,10 @@
       corner-shape: squircle;
       box-shadow: var(--shadow-sm), var(--panel-ring);
       & thead tr {
-        border-bottom: 1px solid var(--panel-border);
         background: var(--surface-1);
+      }
+      & thead th {
+        border-bottom: 1px solid var(--panel-border);
       }
       & thead tr:first-child th:first-child {
         border-top-left-radius: 1rem;
@@ -2149,7 +2154,7 @@
         font-weight: var(--font-weight-semibold);
         color: var(--color-muted-foreground);
       }
-      & tbody tr + tr {
+      & tbody tr + tr td, & tbody tr + tr th {
         border-top: 1px solid var(--surface-3);
       }
       & td {
@@ -2169,8 +2174,10 @@
         }
       }
       & tfoot tr {
-        border-top: 1px solid var(--panel-border);
         background: var(--surface-1);
+      }
+      & tfoot td {
+        border-top: 1px solid var(--panel-border);
       }
       & tfoot tr:last-child td:first-child {
         border-bottom-left-radius: 1rem;

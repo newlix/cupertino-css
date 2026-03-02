@@ -11,8 +11,8 @@
   transition: background-color 0.2s var(--apple-spring), color 0.2s var(--apple-spring), box-shadow 0.2s var(--apple-spring), transform 0.15s var(--apple-spring);
   &:hover:not([disabled]):not([aria-disabled="true"]) { @apply text-foreground; }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
-  &:active { transform: scale(var(--apple-press-scale)); }
-  &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
+  &:active:not([disabled]):not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
+  &:disabled, &[disabled], &[aria-disabled="true"] { @apply pointer-events-none opacity-50; }
   &[data-active] {
     @apply text-foreground;
     background: var(--segmented-active);

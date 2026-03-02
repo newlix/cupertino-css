@@ -1,6 +1,6 @@
 /* ========== CALLOUT ==========
    Inline informational box — Apple calls these "callouts" in developer documentation.
-   Variants: Note, Important, Tip, Warning.
+   Single-style informational container. Use heading color classes for semantic emphasis.
    Refs:
      - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html
      - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html

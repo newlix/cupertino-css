@@ -6,7 +6,7 @@
     transition: color 0.15s var(--apple-ease);
     &:hover {
       @apply text-foreground underline underline-offset-4;
-      text-decoration-color: var(--color-foreground);
+      text-decoration-color: var(--color-muted-foreground);
     }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   }

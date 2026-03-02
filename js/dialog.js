@@ -94,7 +94,7 @@ function init() {
         trapFocus(dialog);
       } else {
         activeDialogs.delete(dialog);
-        if (activeDialogs.size === 0) {
+        if (activeDialogs.size === 0 && !document.querySelector("dialog[open]")) {
           document.body.style.overflow = "";
         }
         if (dialog._focusTrapHandler) {
