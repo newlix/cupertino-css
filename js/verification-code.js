@@ -10,6 +10,7 @@
       inputs.forEach((input, idx) => {
         input.maxLength = 1;
         input.setAttribute("inputmode", "numeric");
+        input.setAttribute("pattern", "[0-9]*");
         if (!input.getAttribute("autocomplete")) {
           input.setAttribute("autocomplete", idx === 0 ? "one-time-code" : "off");
         }
@@ -41,6 +42,9 @@
 
       inputs.forEach((input, i) => {
         input.addEventListener("input", (e) => {
+          if (otp.hasAttribute("data-error")) {
+            otp.removeAttribute("data-error");
+          }
           const v = input.value.replace(/\D/g, "");
           input.value = v.slice(-1);
           if (!pasting) {
@@ -63,9 +67,12 @@
         input.addEventListener("paste", (e) => {
           e.preventDefault();
           const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
+          if (!text) return;
           pasting = true;
-          for (let j = 0; j < text.length && i + j < inputs.length; j++) {
-            inputs[i + j].value = text[j];
+          // Always fill from the first input when a full code is pasted
+          const startIdx = text.length >= inputs.length ? 0 : i;
+          for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
+            inputs[startIdx + j].value = text[j];
           }
           pasting = false;
           sync();

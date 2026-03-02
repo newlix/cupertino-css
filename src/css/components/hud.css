@@ -6,22 +6,24 @@
 
 /* Container: centered on screen like macOS HUD */
 .hud-container {
-  @apply fixed top-1/2 left-1/2 z-[100] flex flex-col items-center gap-2.5;
+  @apply fixed top-1/2 left-1/2 z-[100] flex flex-col items-center;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
-/* HUD window — transient operation confirmation (always dark, like macOS HUD) */
+/* HUD window — transient operation confirmation (always dark, like macOS HUD).
+   pointer-events: none — HUDs are passive overlays, they must not block clicks
+   on underlying content (matches macOS volume/brightness HUD behaviour). */
 .hud {
   @apply inline-flex items-center gap-2.5 px-5 py-3;
   border-radius: var(--radius-lg); /* 16px — Apple HUD window radius */
   corner-shape: squircle;
-  background: oklch(0.15 0 0 / 0.85);
+  background: oklch(0.15 0 0 / 0.72);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-md), var(--float-ring);
-  pointer-events: auto;
   animation: hudAppear 0.25s var(--apple-spring);
+  will-change: opacity, transform;
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-medium whitespace-nowrap; color: oklch(0.95 0 0); }
 }

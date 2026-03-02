@@ -40,7 +40,7 @@
       }
 
       buttons.forEach((btn) => {
-        if (!btn.id) btn.id = "tab-" + Math.random().toString(36).substr(2, 9);
+        if (!btn.id) btn.id = "tab-" + Math.random().toString(36).substring(2, 11);
         btn.setAttribute("role", "tab");
         const isActive = btn.hasAttribute("data-active");
         btn.setAttribute("aria-selected", isActive ? "true" : "false");
@@ -51,7 +51,7 @@
       });
 
       panels.forEach((panel) => {
-        if (!panel.id) panel.id = "tabpanel-" + Math.random().toString(36).substr(2, 9);
+        if (!panel.id) panel.id = "tabpanel-" + Math.random().toString(36).substring(2, 11);
         panel.setAttribute("role", "tabpanel");
         panel.setAttribute("tabindex", "0");
         const panelTarget = panel.getAttribute("data-tab-panel");
@@ -102,12 +102,12 @@
           const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
           if (e.key === nextKey) {
             e.preventDefault();
-            var idx = (i + 1) % buttons.length;
+            let idx = (i + 1) % buttons.length;
             while (idx !== i && isDisabled(buttons[idx])) idx = (idx + 1) % buttons.length;
             if (idx !== i) targetBtn = buttons[idx];
           } else if (e.key === prevKey) {
             e.preventDefault();
-            var idx = (i - 1 + buttons.length) % buttons.length;
+            let idx = (i - 1 + buttons.length) % buttons.length;
             while (idx !== i && isDisabled(buttons[idx])) idx = (idx - 1 + buttons.length) % buttons.length;
             if (idx !== i) targetBtn = buttons[idx];
           } else if (e.key === "Home") {

@@ -23,7 +23,7 @@ test.describe('CSS Rendering', () => {
   test('dark mode toggle works', async ({ page }) => {
     await goto(page, 'button');
     const html = page.locator('html');
-    const themeToggle = page.locator('#docs-theme-toggle');
+    const themeToggle = page.locator('.docs-sidebar .docs-theme-toggle');
     const hadDark = await html.evaluate(el => el.classList.contains('dark'));
 
     await themeToggle.click();

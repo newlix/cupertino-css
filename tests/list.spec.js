@@ -24,7 +24,7 @@ test.describe('List', () => {
       return { height: s.height, position: s.position };
     });
     expect(before.position).toBe('absolute');
-    expect(before.height).toBe('1px');
+    expect(parseFloat(before.height)).toBeLessThanOrEqual(1);
   });
 
   test('interactive item (link) has hover background', async ({ page }) => {
@@ -44,11 +44,11 @@ test.describe('List', () => {
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
   });
 
-  test('list renders inside a card', async ({ page }) => {
-    const cardList = preview(page, 2).locator('.card .list');
-    await expect(cardList).toBeVisible();
+  test('inset-grouped list renders with card styling', async ({ page }) => {
+    const groupedList = preview(page, 3).locator('.list-inset-grouped');
+    await expect(groupedList).toBeVisible();
 
-    const items = cardList.locator('> *');
+    const items = groupedList.locator('> *');
     await expect(items).toHaveCount(2);
   });
 

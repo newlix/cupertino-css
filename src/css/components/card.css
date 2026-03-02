@@ -1,8 +1,9 @@
 /* ========== CARD ========== */
 .card {
-  @apply rounded-xl bg-card text-card-foreground p-5;
+  @apply rounded-xl bg-card text-card-foreground p-4 flex flex-col gap-4;
   corner-shape: squircle;
-  overflow: clip;
+  overflow: hidden;
   box-shadow: var(--shadow), var(--panel-ring);
-  & > :not(:first-child) { margin-top: 1rem; }
+  transition: box-shadow var(--transition-normal) var(--apple-ease),
+              background-color var(--transition-fast) var(--apple-ease);
 }

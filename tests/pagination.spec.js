@@ -7,7 +7,7 @@ test.describe('Pagination', () => {
   });
 
   test('active button has distinct background', async ({ page }) => {
-    const active = preview(page).locator('.pagination button[data-active]');
+    const active = preview(page).locator('.pagination button[aria-current="page"]');
     await expect(active).toBeVisible();
 
     const bg = await css(active, 'backgroundColor');
@@ -48,7 +48,7 @@ test.describe('Pagination', () => {
   });
 
   test('dark mode: active button retains visible background', async ({ page }) => {
-    const active = preview(page).locator('.pagination button[data-active]');
+    const active = preview(page).locator('.pagination button[aria-current="page"]');
     const lightBg = await css(active, 'backgroundColor');
 
     await setDark(page);

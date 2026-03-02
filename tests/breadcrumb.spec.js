@@ -2,31 +2,27 @@ import { test, expect } from '@playwright/test';
 import { goto, preview, css } from './helpers.js';
 
 test.describe('Breadcrumb', () => {
-  test('link shows underline on hover', async ({ page }) => {
+  test('link changes color on hover', async ({ page }) => {
     await goto(page, 'breadcrumb');
     const link = preview(page).locator('.breadcrumb a').first();
 
-    // Before hover: no underline
-    const before = await css(link, 'textDecorationLine');
-    expect(before).toBe('none');
+    const before = await css(link, 'color');
 
-    // Hover: underline appears
     await link.hover();
     await page.waitForTimeout(200);
-    const after = await css(link, 'textDecorationLine');
-    expect(after).toBe('underline');
+    const after = await css(link, 'color');
+
+    // Hover changes text color (tertiary → foreground)
+    expect(after).not.toBe(before);
   });
 
-  test('hover underline uses muted foreground color', async ({ page }) => {
+  test('link has no underline on hover (Apple style)', async ({ page }) => {
     await goto(page, 'breadcrumb');
     const link = preview(page).locator('.breadcrumb a').first();
 
     await link.hover();
     await page.waitForTimeout(200);
-    const decoColor = await css(link, 'textDecorationColor');
-    const textColor = await css(link, 'color');
-
-    // Underline color should differ from the hovered text color (muted, not foreground)
-    expect(decoColor).not.toBe(textColor);
+    const deco = await css(link, 'textDecorationLine');
+    expect(deco).toBe('none');
   });
 });

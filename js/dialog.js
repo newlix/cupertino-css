@@ -7,35 +7,41 @@
 
   function closeDialog(dialog) {
     if (dialog.hasAttribute("data-closing")) return;
-    dialog.setAttribute("data-closing", "");
-    var closed = false;
-    var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
-    var timer = setTimeout(function () {
-      if (!closed) {
-        closed = true;
-        dialog.removeAttribute("data-closing");
-        dialog.close();
-      }
-    }, duration);
     if (dialog._closeAnimHandler) {
       dialog.removeEventListener("animationend", dialog._closeAnimHandler);
     }
+    var closed = false;
     dialog._closeAnimHandler = function (e) {
       if (e.target !== dialog) return;
       if (!closed) {
         closed = true;
         clearTimeout(timer);
         dialog.removeAttribute("data-closing");
+        dialog.removeEventListener("animationend", dialog._closeAnimHandler);
+        dialog._closeAnimHandler = null;
         dialog.close();
       }
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);
+    dialog.setAttribute("data-closing", "");
+    var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
+    var timer = setTimeout(function () {
+      if (!closed) {
+        closed = true;
+        dialog.removeAttribute("data-closing");
+        dialog.removeEventListener("animationend", dialog._closeAnimHandler);
+        dialog._closeAnimHandler = null;
+        dialog.close();
+      }
+    }, duration);
   }
 
   function trapFocus(dialog) {
     var focusable = dialog.querySelectorAll(FOCUSABLE);
     var autofocus = dialog.querySelector("[autofocus]");
+    var defaultBtn = dialog.querySelector("footer .btn-filled, footer button[type='submit']");
     if (autofocus) { autofocus.focus(); }
+    else if (defaultBtn) { defaultBtn.focus(); }
     else if (focusable.length) { focusable[0].focus(); }
 
     function handler(e) {
@@ -73,8 +79,14 @@
         dialog.removeEventListener("click", dialog._clickHandler);
       }
       dialog._clickHandler = function (e) {
-        if (e.target === dialog) {
-          closeDialog(dialog);
+        if (e.target === dialog && !dialog.hasAttribute("data-modal")) {
+          var rect = dialog.getBoundingClientRect();
+          if (
+            e.clientX < rect.left || e.clientX > rect.right ||
+            e.clientY < rect.top || e.clientY > rect.bottom
+          ) {
+            closeDialog(dialog);
+          }
         }
       };
       dialog.addEventListener("click", dialog._clickHandler);
@@ -129,12 +141,13 @@
   }
 
   function openDialog(dialog) {
-    if (dialog.open || dialog.hasAttribute("data-closing")) return;
+    if (!dialog || !dialog.isConnected || dialog.open || dialog.hasAttribute("data-closing")) return;
     dialog._previousFocus = document.activeElement;
     dialog.showModal();
   }
 
   window.closeDialog = closeDialog;
+  window.openDialog = openDialog;
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.dialog = { init: init, close: closeDialog, open: openDialog };
 

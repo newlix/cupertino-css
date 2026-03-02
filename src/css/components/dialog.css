@@ -20,7 +20,7 @@ dialog {
   &[data-closing]::backdrop { animation: backdropFadeIn 0.2s var(--apple-ease) reverse forwards; }
   & .dialog-close {
     @apply absolute right-4 top-4 rounded-full p-1.5 text-tertiary-foreground cursor-pointer;
-    transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease);
+    transition: background-color var(--transition-normal) var(--apple-ease), color var(--transition-normal) var(--apple-ease);
     &:hover { @apply text-foreground bg-accent; }
     &:focus-visible { @apply text-foreground bg-accent; outline: 2px solid var(--color-primary); outline-offset: -2px; }
     & svg { @apply size-4; }
@@ -28,7 +28,7 @@ dialog {
   & > header {
     @apply px-6 pt-6;
     & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
-    & p { @apply mt-2 text-[13px] text-tertiary-foreground; }
+    & p { @apply mt-3 text-[13px] text-tertiary-foreground; }
   }
   & > section {
     @apply px-6 pt-4 overflow-y-auto flex-1 min-h-0;
@@ -36,6 +36,7 @@ dialog {
     &:last-child { @apply pb-6; }
   }
   & > footer {
-    @apply flex justify-end gap-2 px-6 pb-6 pt-6;
+    @apply flex justify-end gap-2 px-6 pb-6 pt-4;
+    border-top: 0.5px solid var(--color-border);
   }
 }

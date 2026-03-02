@@ -29,7 +29,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        left: 3.75rem;
+        left: var(--list-separator-inset, 3.75rem);
         height: 0.5px;
         background: var(--panel-border);
       }
@@ -59,7 +59,7 @@
 .list-inset-grouped {
   background: var(--color-card);
   border-radius: var(--radius);
-  corner-shape: squircle;
-  overflow: clip;
   box-shadow: var(--panel-ring);
+  & > *:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  & > *:last-child { border-radius: 0 0 var(--radius) var(--radius); }
 }

@@ -21,6 +21,31 @@
 </nav>
 {% endcall %}
 
+  {% call example("Middle Active") %}
+<nav class="page-control" aria-label="Page control">
+  <button aria-label="Page 1"></button>
+  <button aria-label="Page 2"></button>
+  <button aria-label="Page 3" aria-current="page"></button>
+  <button aria-label="Page 4"></button>
+  <button aria-label="Page 5"></button>
+</nav>
+{% endcall %}
+
+  {% call example("Many Pages") %}
+<nav class="page-control" aria-label="Page control">
+  <button aria-label="Page 1"></button>
+  <button aria-label="Page 2"></button>
+  <button aria-label="Page 3"></button>
+  <button aria-label="Page 4"></button>
+  <button aria-label="Page 5" aria-current="page"></button>
+  <button aria-label="Page 6"></button>
+  <button aria-label="Page 7"></button>
+  <button aria-label="Page 8"></button>
+  <button aria-label="Page 9"></button>
+  <button aria-label="Page 10"></button>
+</nav>
+{% endcall %}
+
   {% call example("Disabled") %}
 <nav class="page-control" aria-label="Page control">
   <button aria-label="Page 1" aria-current="page"></button>

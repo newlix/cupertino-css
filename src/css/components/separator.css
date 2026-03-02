@@ -8,10 +8,11 @@
 .separator-vertical {
   @apply shrink-0 self-stretch;
   width: 0.5px;
+  min-height: 1rem;
   background: var(--color-border);
 }
 .separator-label {
-  @apply flex items-center gap-2 text-[13px] text-tertiary-foreground;
+  @apply flex items-center gap-4 my-4 text-[13px] text-tertiary-foreground;
   &::before, &::after {
     content: "";
     @apply flex-1;

@@ -121,7 +121,7 @@ test.describe('Popover Auto-flip', () => {
     await page.setViewportSize({ width: 600, height: 720 });
     await goto(page, 'popover');
 
-    const p = preview(page, 2); // Positioning example
+    const p = preview(page, 3); // Positioning example (index 3: Default, Menu, Arrow, Positioning)
     // "Default" popover-menu (index 0), no popover-end class
     const wrapper = p.locator('.popover-menu').nth(0);
     const trigger = wrapper.locator('button').first();

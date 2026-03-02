@@ -3,19 +3,21 @@
    Always destructive (red) by design. This is NOT a label or tag.
    See: Apple HIG > App Icon > Badges */
 .badge {
-  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
-  font-size: 11px;
+  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-bold whitespace-nowrap;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
   min-width: 20px;
-  height: 20px;
-  padding: 0 6px;
-  letter-spacing: 0;
+  min-height: 20px;
+  padding: 2px 6px;
+  letter-spacing: 0.02em;
   max-width: 5rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  box-shadow: 0 0 0 2px var(--color-background);
 }
 .badge-dot {
   @apply block rounded-full bg-destructive;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 0 2px var(--color-background);
 }

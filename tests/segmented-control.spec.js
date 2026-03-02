@@ -25,10 +25,10 @@ test.describe('Segmented Control', () => {
     await expect(panel1).not.toHaveAttribute('data-active', '');
   });
 
-  test('active segment has background and box-shadow', async ({ page }) => {
-    const active = preview(page).locator('[data-tab="seg-1"]');
-    const bg = await css(active, 'backgroundColor');
-    const shadow = await css(active, 'boxShadow');
+  test('active segment has indicator with background and box-shadow', async ({ page }) => {
+    const indicator = preview(page).locator('[data-tab-indicator]');
+    const bg = await css(indicator, 'backgroundColor');
+    const shadow = await css(indicator, 'boxShadow');
 
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
     expect(shadow).not.toBe('none');
@@ -64,10 +64,10 @@ test.describe('Segmented Control', () => {
     await expect(panel1).toHaveAttribute('role', 'tabpanel');
   });
 
-  test('dark mode: active segment still has background', async ({ page }) => {
+  test('dark mode: indicator still has background', async ({ page }) => {
     await setDark(page);
-    const active = preview(page).locator('[data-tab="seg-1"]');
-    const bg = await css(active, 'backgroundColor');
+    const indicator = preview(page).locator('[data-tab-indicator]');
+    const bg = await css(indicator, 'backgroundColor');
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
     await setLight(page);
   });

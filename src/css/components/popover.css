@@ -5,7 +5,7 @@
   & [popover] {
     @apply fixed z-50 min-w-[180px] max-w-[360px] rounded-[13px] p-4;
     max-height: calc(100vh - 2rem);
-    overflow: hidden auto;
+    overflow: visible auto;
     corner-shape: squircle;
     inset: unset;
     margin: 0;
@@ -38,12 +38,13 @@
 /* Menu variant — action list with item styling + arrow key nav */
 .popover-menu {
   & [popover] {
-    @apply min-w-[160px] max-w-none p-1;
+    @apply min-w-[160px] max-w-none rounded-[10px] p-1;
     max-height: 400px;
     background: var(--glass-bg-opaque);
+    transform-origin: top left;
 
     & button, & a {
-      @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground no-underline;
+      @apply flex w-full items-center gap-2 rounded-[5px] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
       transition: background-color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
       &:focus-visible { background: var(--surface-2); outline: none; }
@@ -62,10 +63,9 @@
   }
 }
 
-/* Arrow indicator — on by default (Apple convention).
-   Use .popover-no-arrow to opt out. */
-.popover [popover]::before,
-.popover-menu [popover]::before {
+/* Arrow indicator — opt-in via .popover-arrow (tooltip/popover convention).
+   Menus should not show arrows (matches macOS HIG). */
+.popover-arrow [popover]::before {
   content: "";
   position: absolute;
   top: -6px;
@@ -81,10 +81,9 @@
   display: none;
 }
 
-/* Popover menu backdrop — subtle scrim for modal-like context */
+/* No backdrop scrim for menus — macOS menus float without dimming. */
 .popover-menu [popover]::backdrop {
-  background: oklch(0 0 0 / 0.08);
-  .dark & { background: oklch(0 0 0 / 0.2); }
+  background: transparent;
 }
 
 /* Top positioning variant */
@@ -104,7 +103,7 @@
       }
     }
   }
-  &:not(.popover-no-arrow) [popover]::before {
+  &.popover-arrow [popover]::before {
     top: auto;
     bottom: -6px;
     transform: translateX(-50%) rotate(225deg);

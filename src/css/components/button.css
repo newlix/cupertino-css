@@ -3,12 +3,13 @@
 .btn-filled,
 .btn-tinted,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
+  min-height: 44px;
   transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
   letter-spacing: -0.016em;
-  &:active { transform: scale(var(--apple-press-scale)); }
+  &:active:not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 }
 .btn-gray {
@@ -82,7 +83,8 @@
 }
 .btn-lg {
   @apply px-[21px] py-[14px] text-[17px] leading-[1.29];
-  letter-spacing: -0.022em;
+  letter-spacing: -0.024em;
+  min-height: 50px;
 }
 /* ── Help Tag ── */
 /* Usage: <button data-help="Label">…</button> */
@@ -96,7 +98,7 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     color: var(--color-foreground);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--float-ring), var(--shadow-sm);
     .dark & {
       background: oklch(0.85 0 0 / 0.9);
       color: oklch(0.1 0 0);
@@ -109,6 +111,6 @@
   &:focus-visible::after {
     opacity: 1;
     translate: -50% 0;
-    transition-delay: 0.5s;
+    transition-delay: 1.2s;
   }
 }

@@ -13,10 +13,14 @@
 
   function showHUD(label, options) {
     var opts = options || {};
-    var duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 3000;
+    var duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 2000;
 
     var container =
       document.getElementById("hud-container") || createHUDContainer();
+
+    // macOS shows one HUD at a time — dismiss any existing HUD immediately
+    var existing = container.querySelector(".hud");
+    if (existing) existing.remove();
 
     var hud = document.createElement("div");
     hud.className = "hud";
@@ -54,7 +58,7 @@
       if (!hud.parentElement) return;
       hud.setAttribute("data-closing", "");
       function removeHud(e) {
-        if (e && e.target !== hud) return;
+        if (e && e.animationName !== "hudDismiss") return;
         if (hud.parentElement) hud.remove();
         if (animTimer) clearTimeout(animTimer);
         hud.removeEventListener("animationend", removeHud);

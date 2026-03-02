@@ -15,7 +15,7 @@
       trigger.popoverTargetAction = "toggle";
 
       var isMenu = wrapper.classList.contains("popover-menu");
-      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
+      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "true");
       trigger.setAttribute("aria-expanded", "false");
 
       // Store and clean up toggle handler to prevent listener leaks on re-init
@@ -87,7 +87,10 @@
         } else {
           trigger.setAttribute("aria-expanded", "false");
           popover._cleanupPositioning();
-          trigger.focus();
+          if (popover._escapeDismiss) {
+            trigger.focus();
+            popover._escapeDismiss = false;
+          }
         }
       };
       popover.addEventListener("toggle", popover._toggleHandler);
@@ -99,6 +102,7 @@
       popover._escHandler = function (e) {
         if (e.key === "Escape" && popover.matches(":popover-open")) {
           e.preventDefault();
+          popover._escapeDismiss = true;
           popover.hidePopover();
         }
       };
@@ -111,6 +115,8 @@
         popover._menuClickHandler = function (e) {
           var item = e.target.closest("button, a");
           if (!item || !popover.contains(item)) return;
+          if (item.disabled || item.getAttribute("aria-disabled") === "true") return;
+          if (item.hasAttribute("data-no-dismiss")) return;
           if (popover.matches(":popover-open")) popover.hidePopover();
         };
         popover.addEventListener("click", popover._menuClickHandler);
@@ -131,10 +137,25 @@
             } else {
               items[idx > 0 ? idx - 1 : items.length - 1].focus();
             }
-          } else if (e.key === "Tab") {
-            // Close popover on Tab to prevent focus escaping
+          } else if (e.key === "Home") {
             e.preventDefault();
+            items[0].focus();
+          } else if (e.key === "End") {
+            e.preventDefault();
+            items[items.length - 1].focus();
+          } else if (e.key === "Tab") {
+            e.preventDefault();
+            popover._escapeDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
+          } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+            // Type-ahead: focus first item starting with typed character
+            var ch = e.key.toLowerCase();
+            var match = items.find(function (item, j) {
+              return j > idx && item.textContent.trim().toLowerCase().startsWith(ch);
+            }) || items.find(function (item) {
+              return item.textContent.trim().toLowerCase().startsWith(ch);
+            });
+            if (match) match.focus();
           }
         };
         popover.addEventListener("keydown", popover._menuKeyHandler);
