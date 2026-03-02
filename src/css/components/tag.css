@@ -6,12 +6,14 @@
   border-radius: 50%;
   background: var(--tag-color);
   &:is(button, a) {
+    position: relative;
     cursor: pointer;
-    transition: filter 0.15s var(--apple-ease);
+    transition: filter var(--transition-fast) var(--apple-ease), transform var(--transition-fast) var(--apple-ease);
+    &::before { content: ""; position: absolute; inset: -16px; }
     &:hover { filter: brightness(0.8); }
-    &:active { filter: brightness(0.6); }
+    &:active { filter: brightness(0.6); transform: scale(0.85); }
     .dark &:hover { filter: brightness(1.2); }
-    .dark &:active { filter: brightness(1.4); }
+    .dark &:active { filter: brightness(1.25); transform: scale(0.85); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
     &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   }

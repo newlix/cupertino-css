@@ -21,9 +21,9 @@ dialog {
   & .dialog-close {
     @apply absolute right-4 top-4 rounded-full p-1.5 text-tertiary-foreground cursor-pointer;
     transition: background-color var(--transition-normal) var(--apple-ease), color var(--transition-normal) var(--apple-ease);
-    &:hover { @apply text-foreground bg-accent; }
+    &:hover { @apply text-foreground; background: var(--surface-3); }
     &:active { @apply text-foreground; background: var(--color-secondary-hover); }
-    &:focus-visible { @apply text-foreground bg-accent; outline: 2px solid var(--color-primary); outline-offset: -2px; }
+    &:focus-visible { @apply text-foreground; background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     & svg { @apply size-4; }
   }
   & > header {

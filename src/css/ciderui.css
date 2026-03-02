@@ -27,22 +27,19 @@
   --color-secondary-hover: oklch(0.930 0.005 286.02);
   --color-secondary-foreground: oklch(0.232 0.004 285.99);
 
-  --color-tertiary: var(--color-secondary);
   --color-tertiary-foreground: oklch(0.540 0.008 286.01); /* #6E6E73 Apple secondary label */
-
-  --color-accent: var(--color-secondary);
-  --color-accent-foreground: var(--color-secondary-foreground);
 
   --color-border: oklch(0.862 0.007 286.02 / 0.8);   /* #D1D1D6 Apple border */
   --color-border-solid: oklch(0.862 0.007 286.02);
   --color-ring: oklch(0.563 0.193 256.16 / 0.1);
 
-  --color-switch: oklch(0.723 0.191 145.09);             /* Apple Green #34C759 */
+  --color-green: oklch(0.723 0.191 145.09);              /* Apple Green #34C759 */
+  --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.673 0.178 145.09);      /* #2DB84F darker hover */
 
-  --color-destructive: oklch(0.654 0.232 28.66);       /* Apple System Red #FF3B30 */
-  --color-destructive-hover: oklch(0.605 0.215 28.47);  /* #E6342B */
-  --color-destructive-active: oklch(0.554 0.195 28.41); /* #CC2E26 */
+  --color-destructive: oklch(0.634 0.258 29.2);         /* Apple System Red #FF3B30 */
+  --color-destructive-hover: oklch(0.585 0.241 29.0);   /* #E6342B */
+  --color-destructive-active: oklch(0.534 0.221 28.8);  /* #CC2E26 */
   --color-destructive-foreground: #fff;
 
   --input-border: oklch(0.800 0.007 286.02);       /* Apple input border */
@@ -68,15 +65,13 @@
    *   surface-4  →  active/pressed state, segmented control bg
    * Above 4 cover most component needs. 5–7 are for specialised chrome:
    *   surface-5  →  slider track, progress track bg
-   *   surface-6  →  scrollbar track
-   *   surface-7  →  scrollbar thumb, tooltip bg
+   *   surface-7  →  tooltip bg
    */
   --surface-1: oklch(0 0 0 / 0.02);
   --surface-2: oklch(0 0 0 / 0.03);
   --surface-3: oklch(0 0 0 / 0.04);
   --surface-4: oklch(0 0 0 / 0.06);
   --surface-5: oklch(0 0 0 / 0.1);
-  --surface-6: oklch(0 0 0 / 0.12);
   --surface-7: oklch(0 0 0 / 0.2);
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
@@ -84,7 +79,6 @@
   --glass-blur: blur(20px) saturate(1.5);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.35);
-  --segmented-active: oklch(1 0 0);
   --hover-brightness: 0.92;
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
@@ -121,11 +115,7 @@
   --color-secondary-hover: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 */
   --color-secondary-foreground: oklch(0.971 0.003 286.35);
 
-  --color-tertiary: var(--color-secondary);
   --color-tertiary-foreground: oklch(0.681 0.007 286.21); /* #98989D Apple dark secondary label */
-
-  --color-accent: var(--color-secondary);
-  --color-accent-foreground: var(--color-secondary-foreground);
 
   --color-border: oklch(0.349 0.003 286.22);           /* #3A3A3C systemGray4 */
   --color-border-solid: oklch(0.402 0.003 286.25);     /* #48484A systemGray3 */
@@ -134,12 +124,13 @@
 
   --color-ring: oklch(0.669 0.181 251.84 / 0.2);
 
-  --color-switch: oklch(0.734 0.195 148.92);             /* Apple Green #30D158 (dark) */
+  --color-green: oklch(0.734 0.195 148.92);              /* Apple Green #30D158 (dark) */
+  --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.684 0.182 148.92);      /* #2BBF4F */
 
-  --color-destructive: oklch(0.663 0.224 28.29);       /* Apple Dark Red #FF453A */
-  --color-destructive-hover: oklch(0.614 0.206 28.02); /* #E63E35 */
-  --color-destructive-active: oklch(0.563 0.187 27.66);/* #CC3730 */
+  --color-destructive: oklch(0.641 0.253 29.0);        /* Apple Dark Red #FF453A */
+  --color-destructive-hover: oklch(0.592 0.235 28.8);  /* #E63E35 */
+  --color-destructive-active: oklch(0.541 0.216 28.5); /* #CC3730 */
   --color-destructive-foreground: #fff;
 
   --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08), 0 1px 2px oklch(0 0 0 / 0.04);
@@ -153,7 +144,6 @@
   --surface-3: oklch(1 0 0 / 0.06);
   --surface-4: oklch(1 0 0 / 0.08);
   --surface-5: oklch(1 0 0 / 0.12);
-  --surface-6: oklch(1 0 0 / 0.14);
   --surface-7: oklch(1 0 0 / 0.2);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
@@ -161,10 +151,9 @@
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
-  --segmented-active: oklch(0.50 0.004 286.1);     /* elevated gray for sufficient contrast on dark secondary bg */
   --hover-brightness: 1.12;
 
-  --color-separator: oklch(0.294 0.003 286.18);  /* #2C2C2E systemGray5 */
+  --color-separator: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 — visible on dark card surfaces */
   --hud-background: oklch(0.15 0 0 / 0.6);
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
@@ -183,14 +172,12 @@
   --color-secondary: var(--color-secondary);
   --color-secondary-hover: var(--color-secondary-hover);
   --color-secondary-foreground: var(--color-secondary-foreground);
-  --color-tertiary: var(--color-tertiary);
   --color-tertiary-foreground: var(--color-tertiary-foreground);
-  --color-accent: var(--color-accent);
-  --color-accent-foreground: var(--color-accent-foreground);
   --color-border: var(--color-border);
   --color-border-solid: var(--color-border-solid);
   --color-separator: var(--color-separator);
   --color-ring: var(--color-ring);
+  --color-green: var(--color-green);
   --color-destructive: var(--color-destructive);
   --color-destructive-hover: var(--color-destructive-hover);
   --color-destructive-active: var(--color-destructive-active);

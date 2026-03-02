@@ -18,7 +18,7 @@
   }
 }
 .avatar-sm { @apply size-7 text-[11px]; }
-.avatar-lg { @apply size-14 text-[18px]; }   /* 56px — Apple medium profile size */
+.avatar-lg { @apply size-12 text-[18px]; }   /* 48px — Apple medium profile size */
 .avatar-xl { @apply size-20 text-[24px]; }   /* 80px — Apple large profile size */
 .avatar-group {
   @apply flex -space-x-2;

@@ -38,23 +38,37 @@ h1 {
 }
 h2 {
   @apply font-semibold text-foreground mb-3;
-  font-size: 22px;
-  line-height: 1.18;
+  font-size: 28px;
+  line-height: 1.14;
   letter-spacing: -0.016em;
   &:not(:first-child) { @apply mt-8; }
 }
 h3 {
   @apply font-semibold text-foreground mb-2;
-  font-size: 20px;
-  line-height: 1.25;
+  font-size: 22px;
+  line-height: 1.27;
   letter-spacing: -0.007em;
   &:not(:first-child) { @apply mt-6; }
 }
 h4 {
   @apply font-semibold text-foreground mb-1;
-  font-size: 19px;
-  line-height: 1.29;
+  font-size: 20px;
+  line-height: 1.25;
   letter-spacing: -0.022em;
+  &:not(:first-child) { @apply mt-4; }
+}
+h5 {
+  @apply font-semibold text-foreground mb-1;
+  font-size: 17px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  &:not(:first-child) { @apply mt-4; }
+}
+h6 {
+  @apply font-semibold text-tertiary-foreground mb-1;
+  font-size: 15px;
+  line-height: 1.33;
+  letter-spacing: -0.01em;
   &:not(:first-child) { @apply mt-4; }
 }
 a:not([class*="btn-"]) {
@@ -75,7 +89,7 @@ ol {
   @apply list-decimal pl-5 space-y-1.5;
 }
 blockquote {
-  @apply border-l-4 pl-5 italic text-tertiary-foreground;
+  @apply border-l-4 pl-5 text-tertiary-foreground;
   border-color: var(--color-border-solid);
 }
 code {
@@ -92,7 +106,7 @@ details {
     @apply cursor-pointer font-semibold text-foreground;
     &::marker { color: var(--color-tertiary-foreground); }
   }
-  & > :not(summary) { @apply mt-3; }
+  & > :not(summary) { @apply mt-2; }
 }
 
 /* ─── Pre / Code block ─── */
@@ -134,7 +148,7 @@ input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
 
 /* ─── Textarea ─── */
 textarea {
-  @apply w-full rounded-[12px] border px-3.5 py-3 text-[15px] text-foreground outline-none;
+  @apply w-full rounded-[12px] border px-4 py-3 text-[15px] text-foreground outline-none;
   resize: vertical;
   corner-shape: squircle;
   background-color: var(--color-card);
@@ -181,9 +195,10 @@ select {
 
 /* ─── Checkbox ─── */
 input[type="checkbox"]:not([role="switch"]) {
-  @apply appearance-none shrink-0 rounded-[4px] border bg-card cursor-pointer;
+  @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
   width: 18px;
   height: 18px;
+  corner-shape: squircle;
   border-color: var(--input-border);
   transition: border-color 0.2s var(--apple-ease), background-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
   &:checked {
@@ -206,6 +221,12 @@ input[type="checkbox"]:not([role="switch"]) {
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:active:not(:disabled) { transform: scale(0.95); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:checked { @apply bg-destructive border-destructive; }
+    &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20); }
+    .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30); }
+  }
 }
 
 /* ─── Radio ─── */
@@ -217,7 +238,7 @@ input[type="radio"] {
   transition: border-color 0.2s var(--apple-ease), background-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
   &:checked {
     border-color: var(--color-primary);
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='4' fill='white'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
@@ -228,6 +249,12 @@ input[type="radio"] {
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:active:not(:disabled) { transform: scale(0.95); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:checked { border-color: var(--color-destructive); background-color: var(--color-destructive); }
+    &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20); }
+    .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30); }
+  }
 }
 
 /* ─── Switch ─── */
@@ -331,7 +358,7 @@ table {
   }
   & tbody tr + tr td,
   & tbody tr + tr th {
-    border-top: 1px solid var(--surface-3);
+    border-top: 1px solid var(--color-separator);
   }
   & td {
     @apply px-4 py-3;

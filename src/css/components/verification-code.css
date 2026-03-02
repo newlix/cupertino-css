@@ -3,7 +3,7 @@
    56px height is intentional — taller than standard 44px inputs for visual prominence
    and larger touch target on single-digit entry fields. */
 .verification-code {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2.5;
 }
 .verification-code input:not([type="hidden"]) {
   @apply text-center p-0 font-semibold rounded-[8px];

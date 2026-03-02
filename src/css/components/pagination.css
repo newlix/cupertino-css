@@ -9,8 +9,7 @@
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
     &[data-active], &[aria-current="page"] {
-      @apply text-primary-foreground font-medium;
-      background: var(--color-primary);
+      @apply text-foreground font-semibold;
     }
     /* Prefer aria-current="page" over data-active for accessibility */
     &:disabled, &[aria-disabled="true"] {
@@ -19,6 +18,6 @@
     }
   }
   & > span {
-    @apply inline-flex size-[44px] items-center justify-center text-sm text-tertiary-foreground;
+    @apply inline-flex size-[44px] items-center justify-center text-[13px] text-tertiary-foreground;
   }
 }

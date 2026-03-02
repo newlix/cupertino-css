@@ -10,8 +10,8 @@
   all: unset;
   display: inline-block;
   box-sizing: border-box;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--color-foreground);
   opacity: 0.25;
@@ -19,7 +19,6 @@
   transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
   &[aria-current="page"] {
     opacity: 1;
-    transform: scale(1.1);
   }
   &:focus-visible {
     outline: 2px solid var(--color-primary);

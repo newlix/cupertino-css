@@ -1,4 +1,8 @@
 /* ========== SEGMENTED CONTROL ========== */
+.segmented-control {
+  --segmented-active: oklch(1 0 0);
+  .dark & { --segmented-active: oklch(0.50 0.004 286.1); }
+}
 .segmented-control [data-tab-list] {
   @apply relative inline-flex rounded-full p-1;
   background: var(--surface-4);
@@ -18,7 +22,6 @@
   transition: color 0.2s var(--apple-ease);
   &:hover:not([disabled]):not([aria-disabled="true"]) { @apply text-foreground; }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-  &:active:not([disabled]):not([aria-disabled="true"]) { transform: scale(0.98); }
   &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.4; }
   &[data-active],
   &[aria-selected="true"] {

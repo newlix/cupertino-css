@@ -3,8 +3,8 @@
    Always destructive (red) by design. This is NOT a label or tag.
    See: Apple HIG > App Icon > Badges */
 .badge {
-  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
-  font-size: 13px;
+  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-bold whitespace-nowrap;
+  font-size: 12px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   min-width: 20px;

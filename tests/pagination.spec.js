@@ -6,12 +6,12 @@ test.describe('Pagination', () => {
     await goto(page, 'pagination');
   });
 
-  test('active button has distinct background', async ({ page }) => {
+  test('active button has distinct font weight', async ({ page }) => {
     const active = preview(page).locator('.pagination button[aria-current="page"]');
     await expect(active).toBeVisible();
 
-    const bg = await css(active, 'backgroundColor');
-    expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+    const fw = await css(active, 'fontWeight');
+    expect(Number(fw)).toBeGreaterThanOrEqual(600);
   });
 
   test('disabled button has reduced opacity and pointer-events none', async ({ page }) => {
@@ -47,13 +47,12 @@ test.describe('Pagination', () => {
     await expect(buttons).toHaveCount(5);
   });
 
-  test('dark mode: active button retains visible background', async ({ page }) => {
+  test('dark mode: active button has distinct font weight', async ({ page }) => {
     const active = preview(page).locator('.pagination button[aria-current="page"]');
-    const lightBg = await css(active, 'backgroundColor');
 
     await setDark(page);
-    const darkBg = await css(active, 'backgroundColor');
-    expect(darkBg).not.toBe('rgba(0, 0, 0, 0)');
+    const fw = await css(active, 'fontWeight');
+    expect(Number(fw)).toBeGreaterThanOrEqual(600);
 
     await setLight(page);
   });
