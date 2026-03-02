@@ -23,6 +23,10 @@
         popover.removeEventListener("toggle", popover._toggleHandler);
       }
       function positionPopover() {
+        if (!document.contains(popover)) {
+          popover._cleanupPositioning();
+          return;
+        }
         var rect = trigger.getBoundingClientRect();
         popover.style.margin = "0";
 

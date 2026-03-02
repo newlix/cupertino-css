@@ -84,7 +84,9 @@
 
       var observer = new MutationObserver(function () {
         if (dialog.open) {
-          dialog._previousFocus = document.activeElement;
+          if (!dialog._previousFocus) {
+            dialog._previousFocus = document.activeElement;
+          }
           activeDialogs.add(dialog);
           document.body.style.overflow = "hidden";
           trapFocus(dialog);
@@ -108,9 +110,15 @@
     });
   }
 
+  function openDialog(dialog) {
+    if (dialog.open) return;
+    dialog._previousFocus = document.activeElement;
+    dialog.showModal();
+  }
+
   window.closeDialog = closeDialog;
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.dialog = { init: init, close: closeDialog };
+  window.CiderUI.dialog = { init: init, close: closeDialog, open: openDialog };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
