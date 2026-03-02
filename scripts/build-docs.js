@@ -107,6 +107,7 @@ function build() {
   copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
   if (fs.existsSync(path.join(DOCS, "snippet.js")))
     copyFile(path.join(DOCS, "snippet.js"), path.join(SITE, "snippet.js"));
+  fs.writeFileSync(path.join(SITE, "CNAME"), "ciderui.com\n");
 
   const ms = Math.round(performance.now() - start);
   console.log(`Built ${pages.length} pages → ${SITE} (${ms}ms)`);

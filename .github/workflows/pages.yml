@@ -27,17 +27,12 @@ jobs:
 
       - run: npm ci
 
-      - name: Build docs CSS
-        run: npx @tailwindcss/cli -i docs/docs.css -o docs/docs.built.css
-
-      - name: Assemble site
-        run: |
-          mkdir -p _site/js
-          cp -r docs/* _site/
-          cp -r js/* _site/js/
-          echo "ciderui.com" > _site/CNAME
+      - name: Build docs site
+        run: npm run build:docs
 
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
 
   deploy:
     needs: build
