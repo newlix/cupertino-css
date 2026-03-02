@@ -143,4 +143,6 @@
   } else {
     init();
   }
+
+  document.addEventListener("htmx:afterSettle", init);
 })();

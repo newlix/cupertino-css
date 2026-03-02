@@ -78,7 +78,7 @@
               item.setAttribute("role", "menuitem");
             });
           }
-          positionPopover();
+          requestAnimationFrame(positionPopover);
           window.addEventListener("scroll", positionPopover, true);
           window.addEventListener("resize", positionPopover);
 
