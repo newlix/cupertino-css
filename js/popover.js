@@ -15,7 +15,7 @@
       trigger.popoverTargetAction = "toggle";
 
       var isMenu = wrapper.classList.contains("popover-menu");
-      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "true");
+      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
       trigger.setAttribute("aria-expanded", "false");
 
       // Store and clean up toggle handler to prevent listener leaks on re-init

@@ -20,6 +20,11 @@
 
     var container =
       document.getElementById("hud-container") || createHUDContainer();
+    if (!container.getAttribute("role")) {
+      container.setAttribute("role", "status");
+      container.setAttribute("aria-live", "polite");
+      container.setAttribute("aria-atomic", "true");
+    }
 
     // macOS shows one HUD at a time — dismiss any existing HUD immediately
     var existing = container.querySelector(".hud");
@@ -27,9 +32,6 @@
 
     var hud = document.createElement("div");
     hud.className = "hud";
-    hud.setAttribute("role", "status");
-    hud.setAttribute("aria-live", "polite");
-    hud.setAttribute("aria-atomic", "true");
 
     // Icon — sanitise via DOMParser to prevent XSS from untrusted input
     var defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';

@@ -28,7 +28,7 @@ test.describe('Page Control', () => {
     expect(outline).toBe('solid');
   });
 
-  test('default example renders 10 dots with middle one active', async ({ page }) => {
+  test('default example renders 10 dots with 5th one active', async ({ page }) => {
     const dots = preview(page).locator('.page-control button');
     await expect(dots).toHaveCount(10);
 

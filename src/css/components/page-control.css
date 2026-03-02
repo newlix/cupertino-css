@@ -33,7 +33,7 @@
   }
   &:disabled, &[aria-disabled="true"] {
     pointer-events: none;
-    opacity: 0.15;
+    opacity: 0.4;
   }
   /* Enlarge touch target on touch devices without changing visual size */
   @media (pointer: coarse) {
@@ -41,7 +41,7 @@
     &::after {
       content: "";
       position: absolute;
-      inset: -19px -8px;
+      inset: -18px;
     }
   }
 }

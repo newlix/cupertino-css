@@ -84,7 +84,7 @@
   --glass-blur: blur(20px) saturate(1.5);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.4);
-  --segmented-active: #fff;
+  --segmented-active: oklch(1 0 0);
   --hover-brightness: 0.92;
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
@@ -167,7 +167,6 @@
 
   --color-separator: oklch(0.294 0.003 286.18);  /* #2C2C2E systemGray5 */
   --hud-background: oklch(0.15 0 0 / 0.6);
-  --hud-text: oklch(0.95 0 0);
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
 }

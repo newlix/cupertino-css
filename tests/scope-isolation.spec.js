@@ -104,7 +104,7 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
     const inside = page.locator('#inside select');
     const outside = page.locator('#outside select');
 
-    // CiderUI sets height to 44px (h-11) and border-radius 12px
+    // CiderUI sets border-radius 12px on select
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
     expect(insideRadius).toBe(12);

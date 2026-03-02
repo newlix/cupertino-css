@@ -22,15 +22,17 @@ test.describe('HUD', () => {
     expect(classes).toBe('hud');
   });
 
-  test('showHUD creates HUD with aria-live attribute', async ({ page }) => {
+  test('showHUD creates HUD inside aria-live container', async ({ page }) => {
     await page.waitForFunction(() => typeof window.showHUD === 'function');
 
     await page.evaluate(() => window.showHUD('Test notification'));
 
-    const hud = page.locator('#hud-container .hud').last();
+    const container = page.locator('#hud-container');
+    await expect(container).toHaveAttribute('role', 'status');
+    await expect(container).toHaveAttribute('aria-live', 'polite');
+
+    const hud = container.locator('.hud').last();
     await expect(hud).toBeVisible();
-    await expect(hud).toHaveAttribute('role', 'status');
-    await expect(hud).toHaveAttribute('aria-live', 'polite');
     await expect(hud.locator('.hud-label')).toHaveText('Test notification');
   });
 
