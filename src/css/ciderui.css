@@ -37,6 +37,9 @@
   --color-border-solid: oklch(0.862 0.007 286.02 / 0.8);
   --color-ring: oklch(0.563 0.193 256.16 / 0.1);
 
+  --color-switch: oklch(0.723 0.191 145.09);             /* Apple Green #34C759 */
+  --color-switch-hover: oklch(0.673 0.178 145.09);      /* #2DB84F darker hover */
+
   --color-destructive: oklch(0.654 0.232 28.66);       /* Apple System Red #FF3B30 */
   --color-destructive-hover: oklch(0.605 0.215 28.47);  /* #E6342B */
   --color-destructive-active: oklch(0.554 0.195 28.41); /* #CC2E26 */
@@ -126,6 +129,9 @@
   --input-border-hover: oklch(0.460 0.003 286.25); /* #58585A lighter on hover */
 
   --color-ring: oklch(0.669 0.181 251.84 / 0.2);
+
+  --color-switch: oklch(0.734 0.195 148.92);             /* Apple Green #30D158 (dark) */
+  --color-switch-hover: oklch(0.684 0.182 148.92);      /* #2BBF4F */
 
   --color-destructive: oklch(0.663 0.224 28.29);       /* Apple Dark Red #FF453A */
   --color-destructive-hover: oklch(0.614 0.206 28.02); /* #E63E35 */
