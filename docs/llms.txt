@@ -84,4 +84,6 @@ import "ciderui/dialog.js";
 import "ciderui/tabs.js";
 import "ciderui/hud.js";
 import "ciderui/popover.js";
+import "ciderui/slider.js";
+import "ciderui/verification-code.js";
 ```

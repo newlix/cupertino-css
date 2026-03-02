@@ -1587,9 +1587,6 @@
         box-shadow: -0.5px -0.5px 0 0.5px oklch(1 0 0 / 0.08);
       }
     }
-    .popover-no-arrow [popover]::before {
-      display: none;
-    }
     .popover-menu [popover]::backdrop {
       background: transparent;
     }
