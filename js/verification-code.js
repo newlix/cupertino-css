@@ -35,12 +35,20 @@
           hidden.value = newVal;
           hidden.dispatchEvent(new Event("input", { bubbles: true }));
           hidden.dispatchEvent(new Event("change", { bubbles: true }));
+          if (newVal.length === inputs.length) {
+            otp.dispatchEvent(new CustomEvent("complete", { detail: { code: newVal }, bubbles: true }));
+          }
         }
       }
 
       let pasting = false;
 
       inputs.forEach((input, i) => {
+        input.addEventListener("beforeinput", (e) => {
+          if (e.inputType === "insertText" && e.data && /\D/.test(e.data)) {
+            e.preventDefault();
+          }
+        });
         input.addEventListener("input", (e) => {
           if (otp.hasAttribute("data-error")) {
             otp.removeAttribute("data-error");

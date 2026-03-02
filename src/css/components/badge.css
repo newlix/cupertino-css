@@ -3,15 +3,17 @@
    Always destructive (red) by design. This is NOT a label or tag.
    See: Apple HIG > App Icon > Badges */
 .badge {
-  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-bold whitespace-nowrap;
+  @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
   font-size: 13px;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
   min-width: 20px;
   min-height: 20px;
   padding: 2px 6px;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   max-width: 5rem;
   overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow: 0 0 0 2px var(--color-background);
 }
 .badge-dot {

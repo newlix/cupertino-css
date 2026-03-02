@@ -43,11 +43,9 @@
   }
   &::-webkit-slider-thumb:hover {
     box-shadow: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-    transform: scale(1.05);
   }
   &::-webkit-slider-thumb:active {
     box-shadow: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
-    transform: scale(0.98);
   }
   &::-moz-range-thumb {
     @apply rounded-full;
@@ -60,11 +58,9 @@
   }
   &::-moz-range-thumb:hover {
     box-shadow: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-    transform: scale(1.05);
   }
   &::-moz-range-thumb:active {
     box-shadow: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
-    transform: scale(0.98);
   }
   &:focus-visible::-webkit-slider-thumb {
     box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
@@ -83,7 +79,7 @@
       box-shadow: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &::-webkit-slider-thumb:active {
-      box-shadow: 0 1px 2px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+      box-shadow: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &::-moz-range-thumb {
       background: var(--slider-thumb);
@@ -93,7 +89,7 @@
       box-shadow: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &::-moz-range-thumb:active {
-      box-shadow: 0 1px 2px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+      box-shadow: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &:focus-visible::-webkit-slider-thumb {
       box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);

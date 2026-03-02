@@ -15,7 +15,7 @@
       trigger.popoverTargetAction = "toggle";
 
       var isMenu = wrapper.classList.contains("popover-menu");
-      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
+      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "true");
       trigger.setAttribute("aria-expanded", "false");
 
       // Store and clean up toggle handler to prevent listener leaks on re-init
@@ -48,12 +48,14 @@
 
         // Vertical: default below trigger, flip above if overflows or popover-top
         var top;
-        if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
+        var isFlippedTop = wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh;
+        if (isFlippedTop) {
           top = rect.top - ph - gap;
           if (top < gap) top = gap;
         } else {
           top = rect.bottom + gap;
         }
+        popover.classList.toggle("popover-flipped-top", isFlippedTop && !wrapper.classList.contains("popover-top"));
 
         popover.style.top = top + "px";
         popover.style.left = left + "px";
@@ -65,8 +67,8 @@
       }
 
       popover._cleanupPositioning = function () {
-        window.removeEventListener("scroll", positionPopover, true);
-        window.removeEventListener("resize", positionPopover);
+        window.removeEventListener("scroll", popover._rafPositioner || positionPopover, true);
+        window.removeEventListener("resize", popover._rafPositioner || positionPopover);
       };
 
       popover._toggleHandler = function (e) {
@@ -79,8 +81,18 @@
             });
           }
           requestAnimationFrame(positionPopover);
-          window.addEventListener("scroll", positionPopover, true);
-          window.addEventListener("resize", positionPopover);
+          var rafPending = false;
+          popover._rafPositioner = function () {
+            if (!rafPending) {
+              rafPending = true;
+              requestAnimationFrame(function () {
+                rafPending = false;
+                positionPopover();
+              });
+            }
+          };
+          window.addEventListener("scroll", popover._rafPositioner, true);
+          window.addEventListener("resize", popover._rafPositioner);
 
           var first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input, select, textarea, [tabindex]:not([tabindex="-1"])');
           if (first) first.focus();

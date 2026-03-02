@@ -116,14 +116,14 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
     const inside = page.locator('#inside .btn-filled');
     const outside = page.locator('#outside .btn-filled');
 
-    // CiderUI sets display: inline-flex and border-radius: 12px
+    // CiderUI sets display: inline-flex and border-radius: 10px
     expect(await css(inside, 'display')).toBe('inline-flex');
     expect(await css(outside, 'display')).not.toBe('inline-flex');
 
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
-    expect(insideRadius).toBe(12);
-    expect(outsideRadius).toBeLessThan(12);
+    expect(insideRadius).toBe(10);
+    expect(outsideRadius).toBeLessThan(10);
   });
 
   test('.card only styled inside .cider', async ({ page }) => {

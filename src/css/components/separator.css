@@ -7,16 +7,18 @@
  */
 .separator-vertical {
   @apply shrink-0 self-stretch;
-  width: 0.5px;
+  width: 1px;
   min-height: 1rem;
   background: var(--color-border);
+  @media (min-resolution: 2dppx) { width: 0.5px; }
 }
 .separator-label {
   @apply flex items-center gap-4 my-4 text-[13px] text-tertiary-foreground;
   &::before, &::after {
     content: "";
     @apply flex-1;
-    height: 0.5px;
+    height: 1px;
     background: var(--color-border);
+    @media (min-resolution: 2dppx) { height: 0.5px; }
   }
 }

@@ -4,7 +4,7 @@
   @apply flex items-center gap-2;
 }
 .verification-code input:not([type="hidden"]) {
-  @apply text-center p-0 font-semibold rounded-[10px];
+  @apply text-center p-0 font-semibold rounded-[8px];
   width: 48px;
   height: 56px;
   font-size: 24px;

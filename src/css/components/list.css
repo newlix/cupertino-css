@@ -3,10 +3,13 @@
   @apply flex flex-col;
   & > * {
     @apply flex items-center gap-3 p-4 text-[15px] rounded-none;
+    letter-spacing: -0.016em;
     min-height: 44px;
-    transition: background-color 0.15s var(--apple-ease);
+    transition: background-color var(--transition-fast) var(--apple-ease);
     & > svg:first-child {
-      @apply shrink-0 size-8 p-2 rounded-[8px] text-tertiary-foreground;
+      @apply shrink-0 size-8 p-2 text-tertiary-foreground;
+      border-radius: var(--radius-sm);
+      corner-shape: squircle;
       background: var(--surface-3);
     }
     & > img {
@@ -19,7 +22,7 @@
       & p { @apply text-[13px] text-tertiary-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
-      @apply size-3.5 shrink-0;
+      @apply size-4 shrink-0;
       color: var(--color-tertiary-foreground);
     }
     & + * {
@@ -61,7 +64,7 @@
   border-radius: var(--radius);
   corner-shape: squircle;
   box-shadow: var(--panel-ring);
-  & > *:first-child { border-radius: var(--radius) var(--radius) 0 0; }
-  & > *:last-child { border-radius: 0 0 var(--radius) var(--radius); }
-  & > *:only-child { border-radius: var(--radius); }
+  & > *:first-child { border-radius: var(--radius) var(--radius) 0 0; corner-shape: squircle; }
+  & > *:last-child { border-radius: 0 0 var(--radius) var(--radius); corner-shape: squircle; }
+  & > *:only-child { border-radius: var(--radius); corner-shape: squircle; }
 }

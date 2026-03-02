@@ -3,11 +3,11 @@
 .btn-filled,
 .btn-tinted,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
-  transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
+  transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
   letter-spacing: -0.016em;
   &:active:not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
@@ -19,8 +19,9 @@
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;
+  box-shadow: 0 1px 3px oklch(from var(--color-primary) l c h / 0.2), 0 0.5px 1px oklch(from var(--color-primary) l c h / 0.12);
   &:hover { background: var(--color-primary-hover); }
-  &:active { background: var(--color-primary-active); }
+  &:active { background: var(--color-primary-active); box-shadow: none; }
 }
 .btn-tinted {
   @apply text-primary;
@@ -41,8 +42,9 @@
 /* ── Destructive modifier ── */
 .btn-filled.btn-destructive {
   @apply bg-destructive text-destructive-foreground;
+  box-shadow: 0 1px 3px oklch(from var(--color-destructive) l c h / 0.2), 0 0.5px 1px oklch(from var(--color-destructive) l c h / 0.12);
   &:hover { background: var(--color-destructive-hover); }
-  &:active { background: var(--color-destructive-active); }
+  &:active { background: var(--color-destructive-active); box-shadow: none; }
 }
 .btn-gray.btn-destructive {
   color: var(--color-destructive);
@@ -78,11 +80,11 @@
   corner-shape: round;
 }
 .btn-sm {
-  @apply px-3 py-[5px] text-[13px] gap-1.5;
-  min-height: 34px;
+  @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[8px];
+  min-height: 32px;
 }
 .btn-lg {
-  @apply px-[21px] py-[14px] text-[17px] leading-[1.29];
+  @apply px-[21px] py-[14px] text-[17px] leading-[1.29] rounded-[12px];
   letter-spacing: -0.024em;
   min-height: 50px;
 }

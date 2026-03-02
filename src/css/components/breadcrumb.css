@@ -2,11 +2,12 @@
 .breadcrumb {
   @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
-    @apply text-tertiary-foreground;
-    text-decoration: none !important;
+    @apply text-tertiary-foreground no-underline;
+    text-decoration: none;
     transition: color 0.15s var(--apple-ease);
-    &:hover { @apply text-foreground; }
-    &:active, &:visited, &:focus { @apply text-tertiary-foreground; }
+    &:hover { @apply text-foreground; text-decoration-line: none; }
+    &:visited { @apply text-tertiary-foreground; }
+    &:active { color: var(--color-foreground); opacity: 0.7; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
   }
   & [aria-current="page"] {
@@ -19,9 +20,9 @@
     margin-inline-end: 0.375rem;
     font-weight: 400;
     color: var(--color-tertiary-foreground);
-    opacity: 0.5;
-    font-size: 0.85em;
-    .dark & { opacity: 0.6; }
-    vertical-align: middle;
+    opacity: 0.65;
+    font-size: 1em;
+    .dark & { opacity: 0.5; }
+    vertical-align: baseline;
   }
 }

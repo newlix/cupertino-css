@@ -110,15 +110,18 @@
           return;
         }
         if (dialog.open) {
+          var isModal = dialog.matches(":modal");
           if (!dialog._previousFocus) {
             dialog._previousFocus = document.activeElement;
           }
-          activeDialogs.add(dialog);
-          if (activeDialogs.size === 1) {
-            document.body._savedOverflow = document.body.style.overflow;
+          if (isModal) {
+            activeDialogs.add(dialog);
+            if (activeDialogs.size === 1) {
+              document.body._savedOverflow = document.body.style.overflow;
+            }
+            document.body.style.overflow = "hidden";
+            trapFocus(dialog);
           }
-          document.body.style.overflow = "hidden";
-          trapFocus(dialog);
         } else {
           activeDialogs.delete(dialog);
           if (activeDialogs.size === 0) {

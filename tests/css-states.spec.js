@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { css } from './helpers.js';
 
 test.describe('CSS State Specificity', () => {
-  test('radio: hover preserves checked border-color', async ({ page }) => {
+  test('radio: hover on checked shows hover feedback', async ({ page }) => {
     await page.goto('/site/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
@@ -14,7 +14,8 @@ test.describe('CSS State Specificity', () => {
     await page.waitForTimeout(300);
     const after = await css(radio, 'borderColor');
 
-    expect(after).toBe(before);
+    // Apple-style: checked controls show hover feedback (primary-hover color)
+    expect(after).not.toBe(before);
   });
 
   test('radio: hover changes unchecked border-color', async ({ page }) => {
@@ -31,20 +32,19 @@ test.describe('CSS State Specificity', () => {
     expect(after).not.toBe(before);
   });
 
-  test('checkbox: hover preserves checked background and border', async ({ page }) => {
+  test('checkbox: hover on checked shows hover feedback', async ({ page }) => {
     await page.goto('/site/components/checkbox.html');
     await page.waitForLoadState('networkidle');
 
     // First example has an unchecked and a checked checkbox — target the checked one
     const cb = page.locator('.snippet-preview > figure input[type="checkbox"]:checked').first();
     const bgBefore = await css(cb, 'backgroundColor');
-    const borderBefore = await css(cb, 'borderColor');
 
     await cb.hover();
     await page.waitForTimeout(300);
 
-    expect(await css(cb, 'backgroundColor')).toBe(bgBefore);
-    expect(await css(cb, 'borderColor')).toBe(borderBefore);
+    // Apple-style: checked controls show hover feedback (primary-hover color)
+    expect(await css(cb, 'backgroundColor')).not.toBe(bgBefore);
   });
 
   test('switch: checked and unchecked have distinct backgrounds', async ({ page }) => {

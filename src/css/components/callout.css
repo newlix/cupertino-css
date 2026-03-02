@@ -6,7 +6,6 @@
    - No background tinting per variant — Apple uses neutral bg; color is accent only.
    - No variant classes (info/warning/success/destructive) — users apply Tailwind
      utilities (e.g. text-destructive on the heading) when needed.
-   - Headings use font-light — lightweight feel, not bold. Apple restraint.
    - Body text uses tertiary-foreground — intentional quiet hierarchy with the heading.
      Contrast ratio ~4.1:1 on secondary bg acknowledged; prioritises visual restraint
      over strict WCAG AA for this supplementary-info context.
@@ -15,12 +14,12 @@
    - text-sm — callout is supplementary info, one step below body text.
 */
 .callout {
-  @apply px-4 py-3 text-sm leading-snug text-foreground;
+  @apply px-4 py-3.5 text-sm leading-snug text-foreground;
   border-radius: var(--radius);
   corner-shape: squircle;
   background: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  & :is(h4, h5, h6) { @apply mb-1 font-light; }
+  border: 0.5px solid var(--panel-border);
+  & :is(h4, h5, h6) { @apply mb-1 font-normal; }
   & strong { @apply block mb-1; }
-  & p { @apply text-tertiary-foreground; }
+  & > p { @apply text-tertiary-foreground; }
 }
