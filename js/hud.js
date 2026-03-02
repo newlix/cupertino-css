@@ -1,4 +1,7 @@
 // HUD — ciderui
+// Named "HUD" intentionally — this is the macOS HUD overlay pattern (centered, dark,
+// transient, auto-dismiss), not a toast. Toasts are edge-positioned; HUDs are centered.
+// macOS equivalent: NSPanel with styleMask:.hudWindow (volume/brightness/screenshot overlays).
 (function () {
   function createHUDContainer() {
     var container = document.createElement("div");

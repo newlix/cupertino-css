@@ -1,4 +1,8 @@
 /* ========== HUD ========== */
+/* Named "HUD" intentionally — matches macOS HUD overlay pattern (NSPanel HUD style).
+   Centered, dark, transient, auto-dismiss. This is NOT a toast (toasts are edge-positioned).
+   macOS uses this for volume/brightness/screenshot confirmations.
+   See: NSPanel styleMask:.hudWindow, NSVisualEffectView.material:.hudWindow */
 
 /* Container: centered on screen like macOS HUD */
 .hud-container {
