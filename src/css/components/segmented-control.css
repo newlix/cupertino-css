@@ -23,7 +23,7 @@
   &:active:not([disabled]):not([aria-disabled="true"]) { transform: scale(0.98); }
   &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.38; }
   &[data-active] {
-    @apply text-foreground font-semibold;
+    @apply text-foreground;
   }
 }
 .segmented-control [data-tab-panel] {

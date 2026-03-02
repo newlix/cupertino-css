@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('HUD', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/site/components/hud.html');
+    await page.goto('/components/hud.html');
   });
 
   test('static HUD renders with hud-label', async ({ page }) => {

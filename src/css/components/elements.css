@@ -131,6 +131,11 @@ input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
   &:focus-visible { border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:read-only { background-color: var(--surface-1); cursor: default; }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+    -webkit-text-fill-color: var(--color-foreground);
+  }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:focus-visible { border-color: var(--color-destructive); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); }
@@ -141,6 +146,7 @@ input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
 /* ─── Textarea ─── */
 textarea {
   @apply w-full rounded-[12px] border px-3.5 py-3 text-[15px] text-foreground outline-none;
+  resize: vertical;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -185,7 +191,7 @@ select {
 
 /* ─── Checkbox ─── */
 input[type="checkbox"]:not([role="switch"]) {
-  @apply appearance-none shrink-0 rounded-[4px] border bg-card cursor-pointer;
+  @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
   width: 18px;
   height: 18px;
   border-color: var(--input-border);
@@ -197,11 +203,18 @@ input[type="checkbox"]:not([role="switch"]) {
     background-position: center;
     background-repeat: no-repeat;
   }
+  &:indeterminate {
+    @apply bg-primary border-primary;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' d='M6 12h12'/%3E%3C/svg%3E");
+    background-size: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:active:not(:disabled) { transform: scale(0.9); }
+  &:active:not(:disabled) { transform: scale(0.95); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
 }
 
@@ -223,7 +236,7 @@ input[type="radio"] {
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:active:not(:disabled) { transform: scale(0.9); }
+  &:active:not(:disabled) { transform: scale(0.95); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
 }
 

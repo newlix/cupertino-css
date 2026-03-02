@@ -19,3 +19,8 @@ a.card:focus-visible, button.card:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+a.card[aria-disabled="true"], button.card:disabled, button.card[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}

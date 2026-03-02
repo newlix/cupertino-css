@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Select', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/site/components/select.html');
+    await page.goto('/components/select.html');
     await page.waitForLoadState('networkidle');
   });
 

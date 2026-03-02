@@ -13,9 +13,26 @@
     min-height: 28px;
     transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring);
     &:hover { background: var(--color-secondary-hover); }
-    &:active { background: var(--surface-4); transform: scale(var(--apple-press-scale)); }
+    &:active { background: var(--surface-4); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   }
   & svg { @apply size-3 shrink-0; }
 }
+/* ── Tag color variants ── */
+.tag-blue, .tag-red, .tag-green, .tag-orange, .tag-purple {
+  background: oklch(from var(--tag-color) l c h / 0.1);
+  color: var(--tag-color);
+  .dark & { background: oklch(from var(--tag-color) l c h / 0.15); }
+  &:is(button, a) {
+    &:hover { background: oklch(from var(--tag-color) l c h / 0.16); }
+    &:active { background: oklch(from var(--tag-color) l c h / 0.22); }
+    .dark &:hover { background: oklch(from var(--tag-color) l c h / 0.22); }
+    .dark &:active { background: oklch(from var(--tag-color) l c h / 0.28); }
+  }
+}
+.tag-blue   { --tag-color: var(--color-primary); }
+.tag-red    { --tag-color: var(--color-destructive); }
+.tag-green  { --tag-color: var(--color-switch); }
+.tag-orange { --tag-color: oklch(0.769 0.188 70.08); }
+.tag-purple { --tag-color: oklch(0.636 0.188 303.47); }

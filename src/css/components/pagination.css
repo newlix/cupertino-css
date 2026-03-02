@@ -10,8 +10,8 @@
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &:active:not([data-active]):not(:disabled):not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
     &[data-active], &[aria-current="page"] {
-      @apply text-foreground font-medium;
-      background: var(--surface-4);
+      @apply text-primary-foreground font-medium;
+      background: var(--color-primary);
     }
     /* Prefer aria-current="page" over data-active for accessibility */
     &:disabled, &[aria-disabled="true"] {

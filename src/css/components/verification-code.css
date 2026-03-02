@@ -25,6 +25,9 @@
     font-size: 20px;
   }
 }
+.verification-code input:not([type="hidden"]):not(:placeholder-shown):not(:focus-visible) {
+  border-color: var(--input-border-hover);
+}
 .verification-code input:not([type="hidden"]):focus-visible {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);

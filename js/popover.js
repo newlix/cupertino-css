@@ -120,6 +120,26 @@
       };
       popover.addEventListener("keydown", popover._escHandler);
 
+      // Focus trap for content (non-menu) popovers
+      if (!isMenu) {
+        if (popover._focusTrapHandler) {
+          popover.removeEventListener("keydown", popover._focusTrapHandler);
+        }
+        popover._focusTrapHandler = function (e) {
+          if (e.key !== "Tab" || !popover.matches(":popover-open")) return;
+          var focusable = Array.from(popover.querySelectorAll(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])'));
+          if (!focusable.length) return;
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+          } else {
+            if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        };
+        popover.addEventListener("keydown", popover._focusTrapHandler);
+      }
+
       if (isMenu) {
         if (popover._menuClickHandler) {
           popover.removeEventListener("click", popover._menuClickHandler);

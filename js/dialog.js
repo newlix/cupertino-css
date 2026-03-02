@@ -64,10 +64,24 @@
     dialog.addEventListener("keydown", handler);
   }
 
+  function wireAria(dialog) {
+    var heading = dialog.querySelector("header h2, header h3");
+    var desc = dialog.querySelector("header p");
+    if (heading && !dialog.getAttribute("aria-labelledby")) {
+      if (!heading.id) heading.id = "dlg-title-" + Math.random().toString(36).slice(2, 8);
+      dialog.setAttribute("aria-labelledby", heading.id);
+    }
+    if (desc && !dialog.getAttribute("aria-describedby")) {
+      if (!desc.id) desc.id = "dlg-desc-" + Math.random().toString(36).slice(2, 8);
+      dialog.setAttribute("aria-describedby", desc.id);
+    }
+  }
+
   function init() {
     document.querySelectorAll("dialog").forEach(function (dialog) {
       if (dialog._dialogInit) return;
       dialog._dialogInit = true;
+      wireAria(dialog);
       if (dialog._cancelHandler) {
         dialog.removeEventListener("cancel", dialog._cancelHandler);
       }

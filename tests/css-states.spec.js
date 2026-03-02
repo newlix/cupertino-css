@@ -3,7 +3,7 @@ import { css } from './helpers.js';
 
 test.describe('CSS State Specificity', () => {
   test('radio: hover on checked shows hover feedback', async ({ page }) => {
-    await page.goto('/site/components/radio-group.html');
+    await page.goto('/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
     // First radio in the Default example is pre-checked
@@ -19,7 +19,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('radio: hover changes unchecked border-color', async ({ page }) => {
-    await page.goto('/site/components/radio-group.html');
+    await page.goto('/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
     const radio = page.locator('.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)').first();
@@ -33,7 +33,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('checkbox: hover on checked shows hover feedback', async ({ page }) => {
-    await page.goto('/site/components/checkbox.html');
+    await page.goto('/components/checkbox.html');
     await page.waitForLoadState('networkidle');
 
     // First example has an unchecked and a checked checkbox — target the checked one
@@ -48,7 +48,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('switch: checked and unchecked have distinct backgrounds', async ({ page }) => {
-    await page.goto('/site/components/switch.html');
+    await page.goto('/components/switch.html');
     await page.waitForLoadState('networkidle');
 
     const checked = page.locator('.snippet-preview > figure input[role="switch"]:checked').first();
@@ -61,7 +61,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('disabled radio has opacity <= 0.5', async ({ page }) => {
-    await page.goto('/site/components/radio-group.html');
+    await page.goto('/components/radio-group.html');
     await page.waitForLoadState('networkidle');
 
     const disabled = page.locator('.snippet-preview > figure input[type="radio"][disabled]').first();
@@ -69,7 +69,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('disabled checkbox has cursor not-allowed', async ({ page }) => {
-    await page.goto('/site/components/checkbox.html');
+    await page.goto('/components/checkbox.html');
     await page.waitForLoadState('networkidle');
 
     const disabled = page.locator('.snippet-preview > figure input[type="checkbox"][disabled]').first();
@@ -77,7 +77,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('disabled button has reduced opacity and no pointer-events', async ({ page }) => {
-    await page.goto('/site/components/button.html');
+    await page.goto('/components/button.html');
     await page.waitForLoadState('networkidle');
 
     const disabled = page.locator('.snippet-preview > figure button[disabled]').first();
@@ -86,7 +86,7 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('input focus changes border-color to primary', async ({ page }) => {
-    await page.goto('/site/components/input.html');
+    await page.goto('/components/input.html');
     await page.waitForLoadState('networkidle');
 
     const input = page.locator('.snippet-preview > figure input[type="text"]').first();

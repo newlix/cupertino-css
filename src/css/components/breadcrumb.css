@@ -4,7 +4,7 @@
   & a {
     @apply text-tertiary-foreground no-underline;
     transition: color 0.15s var(--apple-ease);
-    &:hover { @apply text-foreground; }
+    &:hover { @apply text-foreground; text-decoration: underline; text-underline-offset: 2px; }
     &:visited { @apply text-tertiary-foreground; }
     &:active { color: var(--color-foreground); opacity: 0.7; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
@@ -12,16 +12,17 @@
   & [aria-current="page"] {
     @apply font-medium text-foreground pointer-events-none;
   }
-  /* Auto chevron separator */
+  /* Auto chevron separator — SVG mask for proper chevron glyph with color reactivity */
   & > :not(:first-child)::before {
-    content: "\203A";
+    content: "";
     display: inline-block;
+    width: 0.4em;
+    height: 0.65em;
     margin-inline-end: 0.375rem;
-    font-weight: 400;
-    color: var(--color-tertiary-foreground);
-    opacity: 0.65;
-    font-size: 1em;
-    .dark & { opacity: 0.5; }
     vertical-align: baseline;
+    background: var(--color-tertiary-foreground);
+    opacity: 0.5;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
   }
 }
