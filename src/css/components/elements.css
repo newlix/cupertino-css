@@ -156,6 +156,7 @@ textarea {
   &:focus-visible { border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:read-only { background-color: var(--surface-1); cursor: default; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:focus-visible { border-color: var(--color-destructive); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); }
@@ -210,7 +211,7 @@ input[type="checkbox"]:not([role="switch"]) {
     background-position: center;
     background-repeat: no-repeat;
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
+  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
@@ -232,7 +233,7 @@ input[type="radio"] {
     background-size: contain;
     background-repeat: no-repeat;
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
+  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
@@ -269,7 +270,7 @@ input[type="checkbox"][role="switch"] {
     background: var(--color-switch);
     &::after { transform: translateX(20px); }
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.15); }
+  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.15); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.25); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
   .dark & {
