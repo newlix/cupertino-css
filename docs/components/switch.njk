@@ -8,7 +8,9 @@
   <h3>Selectors</h3>
   <dl>
     <dt><code>input[role="switch"]</code></dt>
-    <dd>Auto-styled toggle switch within .cider scope.</dd>
+    <dd>Auto-styled toggle switch within .cider scope. Default checked color is Apple Green.</dd>
+    <dt><code>.switch-blue</code> <code>.switch-orange</code> <code>.switch-red</code> <code>.switch-pink</code></dt>
+    <dd>Color variants. Or override <code>--color-switch</code> / <code>--color-switch-hover</code> for custom colors.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -33,6 +35,27 @@
   <label>
     <input type="checkbox" role="switch" checked disabled />
     Disabled (on)
+  </label>
+</div>
+{% endcall %}
+
+  {% call example("Color Variants") %}
+<div class="space-y-3">
+  <label>
+    <input type="checkbox" role="switch" class="switch-blue" checked />
+    Blue
+  </label>
+  <label>
+    <input type="checkbox" role="switch" class="switch-orange" checked />
+    Orange
+  </label>
+  <label>
+    <input type="checkbox" role="switch" class="switch-red" checked />
+    Red
+  </label>
+  <label>
+    <input type="checkbox" role="switch" class="switch-pink" checked />
+    Pink
   </label>
 </div>
 {% endcall %}

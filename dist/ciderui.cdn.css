@@ -2157,6 +2157,22 @@
           box-shadow: 0 2px 4px oklch(0 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3);
         }
       }
+      &.switch-blue {
+        --color-switch: var(--color-primary);
+        --color-switch-hover: var(--color-primary-hover);
+      }
+      &.switch-red {
+        --color-switch: var(--color-destructive);
+        --color-switch-hover: var(--color-destructive-hover);
+      }
+      &.switch-orange {
+        --color-switch: oklch(0.769 0.188 70.08);
+        --color-switch-hover: oklch(0.719 0.175 70.08);
+      }
+      &.switch-pink {
+        --color-switch: oklch(0.714 0.169 331.59);
+        --color-switch-hover: oklch(0.664 0.156 331.59);
+      }
     }
     label {
       display: block;
