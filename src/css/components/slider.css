@@ -67,7 +67,6 @@
   .dark & {
     --slider-thumb: oklch(0.90 0.003 286);
     &::-webkit-slider-thumb {
-      background: var(--slider-thumb);
       box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &::-webkit-slider-thumb:hover {
@@ -77,7 +76,6 @@
       box-shadow: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &::-moz-range-thumb {
-      background: var(--slider-thumb);
       box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     }
     &:focus-visible::-webkit-slider-thumb {

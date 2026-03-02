@@ -3,8 +3,8 @@
 (function () {
   function init() {
     document.querySelectorAll(".verification-code").forEach((otp) => {
-      if (otp.dataset.initialized) return;
-      otp.dataset.initialized = "true";
+      if (otp._vcInit) return;
+      otp._vcInit = true;
       const inputs = otp.querySelectorAll('input:not([type="hidden"])');
       if (!inputs.length) return;
       inputs.forEach((input, idx) => {

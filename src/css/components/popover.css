@@ -43,7 +43,6 @@
   & [popover] {
     @apply min-w-[160px] max-w-none rounded-[10px] p-1;
     max-height: 400px;
-    transform-origin: var(--popover-origin, top left);
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[5px] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
