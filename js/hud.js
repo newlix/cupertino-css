@@ -67,7 +67,6 @@
 
   if (typeof window !== "undefined") {
     window.showHUD = showHUD;
-    window.showToast = showHUD;
     window.CiderUI = window.CiderUI || {};
     window.CiderUI.hud = { show: showHUD };
   }
