@@ -1055,7 +1055,6 @@
       .dark & {
         box-shadow: 0 0 0 0.5px oklch(1 0 0 / 0.10);
       }
-      corner-shape: round;
       &:is(img) {
         display: inline-block;
         object-fit: cover;
@@ -1065,7 +1064,6 @@
         height: 100%;
         border-radius: calc(infinity * 1px);
         object-fit: cover;
-        corner-shape: round;
         pointer-events: none;
         -webkit-user-drag: none;
         user-select: none;
@@ -1958,11 +1956,6 @@
       line-height: 1.5;
     }
     figure {
-      & img {
-        width: 100%;
-        border-radius: var(--radius-xl);
-        corner-shape: squircle;
-      }
       & figcaption {
         margin-top: calc(var(--spacing) * 2);
         text-align: center;

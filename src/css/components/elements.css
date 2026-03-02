@@ -85,10 +85,6 @@ code {
 
 /* ─── Figure ─── */
 figure {
-  & img {
-    @apply rounded-xl w-full;
-    corner-shape: squircle;
-  }
   & figcaption {
     @apply mt-2 text-center text-sm text-tertiary-foreground;
   }
