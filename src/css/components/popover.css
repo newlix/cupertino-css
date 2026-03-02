@@ -5,7 +5,7 @@
   & [popover] {
     @apply fixed z-50 min-w-[180px] max-w-[360px] rounded-[13px] p-4;
     max-height: calc(100vh - 2rem);
-    overflow-y: auto;
+    overflow: hidden auto;
     corner-shape: squircle;
     inset: unset;
     margin: 0;
