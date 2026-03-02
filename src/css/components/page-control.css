@@ -47,7 +47,7 @@
     &::after {
       content: "";
       position: absolute;
-      inset: -19px -19px;
+      inset: -19px;
     }
   }
 }

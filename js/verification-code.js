@@ -8,9 +8,9 @@ function init() {
     if (!inputs.length) return;
     inputs.forEach((input, idx) => {
       input.maxLength = 1;
-      input.inputMode = "numeric";
+      input.setAttribute("inputmode", "numeric");
       if (!input.getAttribute("autocomplete")) {
-        input.setAttribute("autocomplete", "one-time-code");
+        input.setAttribute("autocomplete", idx === 0 ? "one-time-code" : "off");
       }
       if (!input.getAttribute("aria-label")) {
         input.setAttribute("aria-label", "Digit " + (idx + 1) + " of " + inputs.length);
@@ -31,12 +31,16 @@ function init() {
       hidden.value = Array.from(inputs).map((i) => i.value).join("");
     }
 
+    let pasting = false;
+
     inputs.forEach((input, i) => {
       input.addEventListener("input", (e) => {
         const v = input.value.replace(/\D/g, "");
         input.value = v.slice(-1);
-        sync();
-        if (v && i < inputs.length - 1) inputs[i + 1].focus();
+        if (!pasting) {
+          sync();
+          if (v && i < inputs.length - 1) inputs[i + 1].focus();
+        }
       });
 
       input.addEventListener("keydown", (e) => {
@@ -53,10 +57,11 @@ function init() {
       input.addEventListener("paste", (e) => {
         e.preventDefault();
         const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
+        pasting = true;
         for (let j = 0; j < text.length && i + j < inputs.length; j++) {
           inputs[i + j].value = text[j];
-          inputs[i + j].dispatchEvent(new Event("input", { bubbles: true }));
         }
+        pasting = false;
         sync();
         const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
         inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
@@ -67,6 +72,7 @@ function init() {
 
     otp.addEventListener("click", (e) => {
       if (e.target.closest('input:not([type="hidden"])')) return;
+      if (inputs[0].disabled) return;
       const firstEmpty = Array.from(inputs).findIndex((i) => !i.value);
       inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
     });

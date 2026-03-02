@@ -1,138 +1,151 @@
 // Popover — ciderui
-function init() {
-  document.querySelectorAll(".popover [popover]").forEach(function (popover) {
-    if (popover._popoverInit) return;
-    popover._popoverInit = true;
+(function () {
+  var FOCUSABLE_NOT_DISABLED = 'button:not([disabled]):not([aria-disabled="true"]), a:not([disabled]):not([aria-disabled="true"])';
 
-    var wrapper = popover.closest(".popover");
-    var trigger = wrapper.querySelector("button:not([popover] button), a:not([popover] a)");
-    if (!trigger) return;
+  function init() {
+    document.querySelectorAll(".popover [popover]").forEach(function (popover) {
+      if (popover._popoverInit) return;
+      popover._popoverInit = true;
 
-    trigger.popoverTargetElement = popover;
-    trigger.popoverTargetAction = "toggle";
+      var wrapper = popover.closest(".popover");
+      var trigger = wrapper.querySelector("button:not([popover] button), a:not([popover] a)");
+      if (!trigger) return;
 
-    var isMenu = wrapper.classList.contains("popover-menu");
-    trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
-    trigger.setAttribute("aria-expanded", "false");
+      trigger.popoverTargetElement = popover;
+      trigger.popoverTargetAction = "toggle";
 
-    // Store and clean up toggle handler to prevent listener leaks on re-init
-    if (popover._toggleHandler) {
-      popover.removeEventListener("toggle", popover._toggleHandler);
-    }
-    function positionPopover() {
-      var rect = trigger.getBoundingClientRect();
-      popover.style.margin = "0";
+      var isMenu = wrapper.classList.contains("popover-menu");
+      trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
+      trigger.setAttribute("aria-expanded", "false");
 
-      var pw = popover.offsetWidth;
-      var ph = popover.offsetHeight;
-      var gap = 8;
-      var vw = document.documentElement.clientWidth;
-      var vh = window.innerHeight;
-
-      // Horizontal: default left-aligned, flip if overflows or popover-end
-      var left;
-      if (wrapper.classList.contains("popover-end")) {
-        left = rect.right - pw;
-      } else {
-        left = rect.left;
-        if (left + pw > vw) left = rect.right - pw;
+      // Store and clean up toggle handler to prevent listener leaks on re-init
+      if (popover._toggleHandler) {
+        popover.removeEventListener("toggle", popover._toggleHandler);
       }
-      if (left < gap) left = gap;
+      function positionPopover() {
+        var rect = trigger.getBoundingClientRect();
+        popover.style.margin = "0";
 
-      // Vertical: default below trigger, flip above if overflows or popover-top
-      var top;
-      if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
-        top = rect.top - ph - gap;
-        if (top < gap) top = gap;
-      } else {
-        top = rect.bottom + gap;
-      }
+        var pw = popover.offsetWidth;
+        var ph = popover.offsetHeight;
+        var gap = 8;
+        var vw = document.documentElement.clientWidth;
+        var vh = window.innerHeight;
 
-      popover.style.top = top + "px";
-      popover.style.left = left + "px";
-
-      // Reposition arrow to point at trigger center
-      var triggerCenter = rect.left + rect.width / 2;
-      var arrowOffset = Math.max(16, Math.min(pw - 16, triggerCenter - left));
-      popover.style.setProperty("--arrow-left", arrowOffset + "px");
-    }
-
-    popover._toggleHandler = function (e) {
-      if (e.newState === "open") {
-        trigger.setAttribute("aria-expanded", "true");
-        if (isMenu) {
-          popover.setAttribute("role", "menu");
-          popover.querySelectorAll("button:not([disabled]), a:not([disabled])").forEach(function (item) {
-            item.setAttribute("role", "menuitem");
-          });
+        // Horizontal: default left-aligned, flip if overflows or popover-end
+        var left;
+        if (wrapper.classList.contains("popover-end")) {
+          left = rect.right - pw;
+        } else {
+          left = rect.left;
+          if (left + pw > vw) left = rect.right - pw;
         }
-        positionPopover();
-        window.addEventListener("scroll", positionPopover, true);
-        window.addEventListener("resize", positionPopover);
+        if (left < gap) left = gap;
 
-        var first = popover.querySelector("button:not([disabled]), a:not([disabled]), input, select, textarea, [tabindex]:not([tabindex='-1'])");
-        if (first) first.focus();
-      } else {
-        trigger.setAttribute("aria-expanded", "false");
+        // Vertical: default below trigger, flip above if overflows or popover-top
+        var top;
+        if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
+          top = rect.top - ph - gap;
+          if (top < gap) top = gap;
+        } else {
+          top = rect.bottom + gap;
+        }
+
+        popover.style.top = top + "px";
+        popover.style.left = left + "px";
+
+        // Reposition arrow to point at trigger center
+        var triggerCenter = rect.left + rect.width / 2;
+        var arrowOffset = Math.max(16, Math.min(pw - 16, triggerCenter - left));
+        popover.style.setProperty("--arrow-left", arrowOffset + "px");
+      }
+
+      popover._cleanupPositioning = function () {
         window.removeEventListener("scroll", positionPopover, true);
         window.removeEventListener("resize", positionPopover);
-        trigger.focus();
-      }
-    };
-    popover.addEventListener("toggle", popover._toggleHandler);
-
-    // Escape key to close popover
-    if (popover._escHandler) {
-      popover.removeEventListener("keydown", popover._escHandler);
-    }
-    popover._escHandler = function (e) {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        popover.hidePopover();
-      }
-    };
-    popover.addEventListener("keydown", popover._escHandler);
-
-    if (isMenu) {
-      if (popover._menuClickHandler) {
-        popover.removeEventListener("click", popover._menuClickHandler);
-      }
-      popover._menuClickHandler = function (e) {
-        var item = e.target.closest("button, a");
-        if (!item || !popover.contains(item)) return;
-        popover.hidePopover();
       };
-      popover.addEventListener("click", popover._menuClickHandler);
 
-      if (popover._menuKeyHandler) {
-        popover.removeEventListener("keydown", popover._menuKeyHandler);
-      }
-      popover._menuKeyHandler = function (e) {
-        var items = Array.from(popover.querySelectorAll("button:not([disabled]), a:not([disabled])"));
-        if (!items.length) return;
-        var idx = items.indexOf(document.activeElement);
-
-        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-          e.preventDefault();
-          if (idx < 0) idx = -1;
-          if (e.key === "ArrowDown") {
-            items[idx < items.length - 1 ? idx + 1 : 0].focus();
-          } else {
-            items[idx > 0 ? idx - 1 : items.length - 1].focus();
+      popover._toggleHandler = function (e) {
+        if (e.newState === "open") {
+          trigger.setAttribute("aria-expanded", "true");
+          if (isMenu) {
+            popover.setAttribute("role", "menu");
+            popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach(function (item) {
+              item.setAttribute("role", "menuitem");
+            });
           }
-        } else if (e.key === "Tab") {
-          // Close popover on Tab to prevent focus escaping
+          positionPopover();
+          window.addEventListener("scroll", positionPopover, true);
+          window.addEventListener("resize", positionPopover);
+
+          var first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (first) first.focus();
+        } else {
+          trigger.setAttribute("aria-expanded", "false");
+          popover._cleanupPositioning();
+          trigger.focus();
+        }
+      };
+      popover.addEventListener("toggle", popover._toggleHandler);
+
+      // Escape key to close popover
+      if (popover._escHandler) {
+        popover.removeEventListener("keydown", popover._escHandler);
+      }
+      popover._escHandler = function (e) {
+        if (e.key === "Escape") {
           e.preventDefault();
           popover.hidePopover();
         }
       };
-      popover.addEventListener("keydown", popover._menuKeyHandler);
-    }
-  });
-}
+      popover.addEventListener("keydown", popover._escHandler);
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
-}
+      if (isMenu) {
+        if (popover._menuClickHandler) {
+          popover.removeEventListener("click", popover._menuClickHandler);
+        }
+        popover._menuClickHandler = function (e) {
+          var item = e.target.closest("button, a");
+          if (!item || !popover.contains(item)) return;
+          popover.hidePopover();
+        };
+        popover.addEventListener("click", popover._menuClickHandler);
+
+        if (popover._menuKeyHandler) {
+          popover.removeEventListener("keydown", popover._menuKeyHandler);
+        }
+        popover._menuKeyHandler = function (e) {
+          var items = Array.from(popover.querySelectorAll(FOCUSABLE_NOT_DISABLED));
+          if (!items.length) return;
+          var idx = items.indexOf(document.activeElement);
+
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            e.preventDefault();
+            if (idx < 0) idx = -1;
+            if (e.key === "ArrowDown") {
+              items[idx < items.length - 1 ? idx + 1 : 0].focus();
+            } else {
+              items[idx > 0 ? idx - 1 : items.length - 1].focus();
+            }
+          } else if (e.key === "Tab") {
+            // Close popover on Tab to prevent focus escaping
+            e.preventDefault();
+            popover.hidePopover();
+          }
+        };
+        popover.addEventListener("keydown", popover._menuKeyHandler);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  if (typeof window !== "undefined") {
+    window.CiderUI = window.CiderUI || {};
+    window.CiderUI.popover = { init: init };
+  }
+})();

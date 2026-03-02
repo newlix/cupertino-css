@@ -8,10 +8,10 @@
       @apply text-foreground underline underline-offset-4;
       text-decoration-color: var(--color-muted-foreground);
     }
-    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
   }
   & [aria-current="page"] {
-    @apply font-medium text-foreground;
+    @apply font-medium text-foreground pointer-events-none;
   }
   /* Auto chevron separator */
   & > :not(:first-child)::before {

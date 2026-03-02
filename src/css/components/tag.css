@@ -7,10 +7,12 @@
   letter-spacing: 0;
   &:is(button, a) {
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.15s var(--apple-ease);
     &:hover { background: var(--color-secondary-hover); }
     &:active { background: var(--surface-4); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.5; }
   }
   & svg { @apply size-3 shrink-0; }
 }

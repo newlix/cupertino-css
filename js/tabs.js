@@ -4,8 +4,12 @@ function init() {
     if (tabGroup._tabsInit) return;
     tabGroup._tabsInit = true;
 
-    const buttons = tabGroup.querySelectorAll("[data-tab]");
-    const panels = tabGroup.querySelectorAll("[data-tab-panel]");
+    const buttons = tabGroup.querySelectorAll(":scope > [data-tab], :scope > * > [data-tab]");
+    const panels = tabGroup.querySelectorAll(":scope > [data-tab-panel]");
+
+    function isDisabled(btn) {
+      return btn.disabled || btn.getAttribute("aria-disabled") === "true";
+    }
 
     // Set ARIA attributes
     const list = buttons[0] && buttons[0].parentElement;
@@ -22,6 +26,15 @@ function init() {
       var btnRect = btn.getBoundingClientRect();
       indicator.style.width = btnRect.width + "px";
       indicator.style.transform = "translateX(" + (btnRect.left - listRect.left - parseFloat(getComputedStyle(list).paddingLeft)) + "px)";
+    }
+
+    // Reposition indicator on resize
+    if (indicator && list) {
+      var ro = new ResizeObserver(function () {
+        var activeBtn = tabGroup.querySelector("[data-tab][data-active]");
+        if (activeBtn) positionIndicator(activeBtn);
+      });
+      ro.observe(list);
     }
 
     buttons.forEach((btn) => {
@@ -48,7 +61,7 @@ function init() {
     });
 
     function activate(btn) {
-      if (btn.disabled) return;
+      if (isDisabled(btn)) return;
       const target = btn.getAttribute("data-tab");
 
       // Deactivate all
@@ -88,22 +101,22 @@ function init() {
         if (e.key === nextKey) {
           e.preventDefault();
           var idx = (i + 1) % buttons.length;
-          while (idx !== i && buttons[idx].disabled) idx = (idx + 1) % buttons.length;
+          while (idx !== i && isDisabled(buttons[idx])) idx = (idx + 1) % buttons.length;
           if (idx !== i) targetBtn = buttons[idx];
         } else if (e.key === prevKey) {
           e.preventDefault();
           var idx = (i - 1 + buttons.length) % buttons.length;
-          while (idx !== i && buttons[idx].disabled) idx = (idx - 1 + buttons.length) % buttons.length;
+          while (idx !== i && isDisabled(buttons[idx])) idx = (idx - 1 + buttons.length) % buttons.length;
           if (idx !== i) targetBtn = buttons[idx];
         } else if (e.key === "Home") {
           e.preventDefault();
-          targetBtn = Array.from(buttons).find((b) => !b.disabled);
+          targetBtn = Array.from(buttons).find((b) => !isDisabled(b));
         } else if (e.key === "End") {
           e.preventDefault();
-          targetBtn = Array.from(buttons).reverse().find((b) => !b.disabled);
+          targetBtn = Array.from(buttons).reverse().find((b) => !isDisabled(b));
         }
 
-        if (targetBtn && !targetBtn.disabled) {
+        if (targetBtn && !isDisabled(targetBtn)) {
           targetBtn.focus();
           activate(targetBtn);
         }

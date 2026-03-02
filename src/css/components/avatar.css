@@ -8,7 +8,7 @@
   .dark & { box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08); }
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {
-    @apply cursor-pointer;
+    @apply cursor-pointer no-underline;
     transition: transform 0.15s var(--apple-ease), opacity 0.15s var(--apple-ease);
     &:hover { opacity: 0.8; }
     &:active { transform: scale(var(--apple-press-scale)); }

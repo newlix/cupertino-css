@@ -43,6 +43,8 @@ function showHUD(label, options) {
     hud.setAttribute("data-closing", "");
     function removeHud() {
       if (hud.parentElement) hud.remove();
+      if (animTimer) clearTimeout(animTimer);
+      hud.removeEventListener("animationend", removeHud);
     }
     hud.addEventListener("animationend", removeHud, { once: true });
     animTimer = setTimeout(removeHud, 250);

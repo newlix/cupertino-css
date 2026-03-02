@@ -9,6 +9,7 @@
   font-variant-numeric: tabular-nums;
   caret-color: transparent;
   transition: border-color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease);
+  &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
 }
 .verification-code > span {
   @apply text-[17px] text-muted-foreground;
