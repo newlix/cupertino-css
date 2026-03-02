@@ -1,38 +1,23 @@
-/* ========== TAG ========== */
-.tag {
-  @apply inline-flex items-center gap-1 px-2.5 py-1 text-[12px] leading-tight font-medium;
-  @apply bg-secondary text-secondary-foreground;
-  border-radius: var(--radius-pill);
-  user-select: none;
-  letter-spacing: -0.01em;
-  min-height: 24px;
+/* ========== TAG (Finder-style color dots) ========== */
+.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray {
+  @apply inline-block p-0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--tag-color);
   &:is(button, a) {
     cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    min-height: 28px;
-    transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring);
-    &:hover { background: var(--color-secondary-hover); }
-    &:active { background: var(--surface-4); }
+    transition: opacity 0.15s var(--apple-ease);
+    &:hover { opacity: 0.7; }
+    &:active { opacity: 0.5; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   }
-  & svg { @apply size-3 shrink-0; }
 }
-/* ── Tag color variants ── */
-.tag-blue, .tag-red, .tag-green, .tag-orange, .tag-purple {
-  background: oklch(from var(--tag-color) l c h / 0.1);
-  color: var(--tag-color);
-  .dark & { background: oklch(from var(--tag-color) l c h / 0.15); }
-  &:is(button, a) {
-    &:hover { background: oklch(from var(--tag-color) l c h / 0.16); }
-    &:active { background: oklch(from var(--tag-color) l c h / 0.22); }
-    .dark &:hover { background: oklch(from var(--tag-color) l c h / 0.22); }
-    .dark &:active { background: oklch(from var(--tag-color) l c h / 0.28); }
-  }
-}
-.tag-blue   { --tag-color: var(--color-primary); }
 .tag-red    { --tag-color: var(--color-destructive); }
-.tag-green  { --tag-color: var(--color-switch); }
 .tag-orange { --tag-color: oklch(0.769 0.188 70.08); }
+.tag-yellow { --tag-color: oklch(0.811 0.165 88.26); }
+.tag-green  { --tag-color: var(--color-switch); }
+.tag-blue   { --tag-color: var(--color-primary); }
 .tag-purple { --tag-color: oklch(0.636 0.188 303.47); }
+.tag-gray   { --tag-color: oklch(0.585 0.009 286.02); }

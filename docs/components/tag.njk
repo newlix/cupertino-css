@@ -1,54 +1,43 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Tag" %}
-{% set description = "Inline label for categorisation, filtering, or metadata." %}
+{% set description = "Finder-style color dots for categorisation and labelling." %}
 
 {% block content %}
 
-  <h3>Selectors</h3>
-  <dl>
-    <dt><code>.tag</code></dt>
-    <dd>Pill-shaped inline label with secondary background. Interactive when used as <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>.</dd>
-  </dl>
-
   {% call example("Default") %}
-<div class="flex flex-wrap items-center gap-2">
-  <span class="tag">Swift</span>
-  <span class="tag">UIKit</span>
-  <span class="tag">macOS</span>
+<div class="flex items-center gap-1.5">
+  <span class="tag-red"></span>
+  <span class="tag-orange"></span>
+  <span class="tag-yellow"></span>
+  <span class="tag-green"></span>
+  <span class="tag-blue"></span>
+  <span class="tag-purple"></span>
+  <span class="tag-gray"></span>
 </div>
 {% endcall %}
 
-  {% call example("With Icon") %}
-<div class="flex flex-wrap items-center gap-2">
-  <span class="tag">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg>
-    New
-  </span>
-  <span class="tag">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
-    Label
-  </span>
+  {% call example("With Label") %}
+<div class="flex flex-col gap-2">
+  <label class="flex items-center gap-2 text-sm"><span class="tag-red"></span> Red</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-orange"></span> Orange</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-yellow"></span> Yellow</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-green"></span> Green</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-blue"></span> Blue</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-purple"></span> Purple</label>
+  <label class="flex items-center gap-2 text-sm"><span class="tag-gray"></span> Gray</label>
 </div>
 {% endcall %}
 
   {% call example("Interactive") %}
-<div class="flex flex-wrap items-center gap-2">
-  <button class="tag">
-    Design
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
-  </button>
-  <a href="#" class="tag">
-    Documentation
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
-  </a>
-</div>
-{% endcall %}
-
-  {% call example("Disabled") %}
-<div class="flex flex-wrap items-center gap-2">
-  <button class="tag" disabled>Archived</button>
-  <a href="#" class="tag" aria-disabled="true" tabindex="-1">Read-only</a>
+<div class="flex items-center gap-1.5">
+  <button class="tag-red" aria-label="Red"></button>
+  <button class="tag-orange" aria-label="Orange"></button>
+  <button class="tag-yellow" aria-label="Yellow"></button>
+  <button class="tag-green" aria-label="Green"></button>
+  <button class="tag-blue" aria-label="Blue"></button>
+  <button class="tag-purple" aria-label="Purple"></button>
+  <button class="tag-gray" aria-label="Gray"></button>
 </div>
 {% endcall %}
 

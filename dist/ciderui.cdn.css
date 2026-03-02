@@ -24,7 +24,6 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-tight: -0.025em;
-    --leading-tight: 1.25;
     --leading-snug: 1.375;
     --radius-sm: var(--radius-sm);
     --radius-md: 0.375rem;
@@ -718,34 +717,21 @@
       height: 10px;
       box-shadow: 0 0 0 2px var(--color-background);
     }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: calc(var(--spacing) * 1);
-      padding-inline: calc(var(--spacing) * 2.5);
-      padding-block: calc(var(--spacing) * 1);
-      font-size: 12px;
-      --tw-leading: var(--leading-tight);
-      line-height: var(--leading-tight);
-      --tw-font-weight: var(--font-weight-medium);
-      font-weight: var(--font-weight-medium);
-      background-color: var(--color-secondary);
-      color: var(--color-secondary-foreground);
-      border-radius: var(--radius-pill);
-      user-select: none;
-      letter-spacing: -0.01em;
-      min-height: 24px;
+    .tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray {
+      display: inline-block;
+      padding: calc(var(--spacing) * 0);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--tag-color);
       &:is(button, a) {
         cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-        min-height: 28px;
-        transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring);
+        transition: opacity 0.15s var(--apple-ease);
         &:hover {
-          background: var(--color-secondary-hover);
+          opacity: 0.7;
         }
         &:active {
-          background: var(--surface-4);
+          opacity: 0.5;
         }
         &:focus-visible {
           outline: 2px solid var(--color-primary);
@@ -756,47 +742,27 @@
           opacity: 0.4;
         }
       }
-      & svg {
-        width: calc(var(--spacing) * 3);
-        height: calc(var(--spacing) * 3);
-        flex-shrink: 0;
-      }
-    }
-    .tag-blue, .tag-red, .tag-green, .tag-orange, .tag-purple {
-      background: oklch(from var(--tag-color) l c h / 0.1);
-      color: var(--tag-color);
-      .dark & {
-        background: oklch(from var(--tag-color) l c h / 0.15);
-      }
-      &:is(button, a) {
-        &:hover {
-          background: oklch(from var(--tag-color) l c h / 0.16);
-        }
-        &:active {
-          background: oklch(from var(--tag-color) l c h / 0.22);
-        }
-        .dark &:hover {
-          background: oklch(from var(--tag-color) l c h / 0.22);
-        }
-        .dark &:active {
-          background: oklch(from var(--tag-color) l c h / 0.28);
-        }
-      }
-    }
-    .tag-blue {
-      --tag-color: var(--color-primary);
     }
     .tag-red {
       --tag-color: var(--color-destructive);
     }
-    .tag-green {
-      --tag-color: var(--color-switch);
-    }
     .tag-orange {
       --tag-color: oklch(0.769 0.188 70.08);
     }
+    .tag-yellow {
+      --tag-color: oklch(0.811 0.165 88.26);
+    }
+    .tag-green {
+      --tag-color: var(--color-switch);
+    }
+    .tag-blue {
+      --tag-color: var(--color-primary);
+    }
     .tag-purple {
       --tag-color: oklch(0.636 0.188 303.47);
+    }
+    .tag-gray {
+      --tag-color: oklch(0.585 0.009 286.02);
     }
     .card {
       display: flex;
