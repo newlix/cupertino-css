@@ -28,19 +28,14 @@ test.describe('Page Control', () => {
     expect(outline).toBe('solid');
   });
 
-  test('middle active example shows third dot as current', async ({ page }) => {
-    const dots = preview(page, 1).locator('.page-control button');
-    await expect(dots).toHaveCount(5);
+  test('default example renders 10 dots with middle one active', async ({ page }) => {
+    const dots = preview(page).locator('.page-control button');
+    await expect(dots).toHaveCount(10);
 
-    const third = dots.nth(2);
-    await expect(third).toHaveAttribute('aria-current', 'page');
+    const fifth = dots.nth(4);
+    await expect(fifth).toHaveAttribute('aria-current', 'page');
 
     const first = dots.nth(0);
     await expect(first).not.toHaveAttribute('aria-current', 'page');
-  });
-
-  test('many pages example renders all 10 dots', async ({ page }) => {
-    const dots = preview(page, 2).locator('.page-control button');
-    await expect(dots).toHaveCount(10);
   });
 });
