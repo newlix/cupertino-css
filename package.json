@@ -26,7 +26,8 @@
     "./verification-code.js": "./js/verification-code.js",
     "./popover.js": "./js/popover.js",
     "./tabs.js": "./js/tabs.js",
-    "./hud.js": "./js/hud.js"
+    "./hud.js": "./js/hud.js",
+    "./slider.js": "./js/slider.js"
   },
   "files": [
     "src/css/",
