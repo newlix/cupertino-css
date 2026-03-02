@@ -66,6 +66,8 @@
 
   function init() {
     document.querySelectorAll("dialog").forEach(function (dialog) {
+      if (dialog._dialogInit) return;
+      dialog._dialogInit = true;
       if (dialog._cancelHandler) {
         dialog.removeEventListener("cancel", dialog._cancelHandler);
       }

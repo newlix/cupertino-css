@@ -34,7 +34,7 @@
   --color-accent-foreground: var(--color-secondary-foreground);
 
   --color-border: oklch(0.862 0.007 286.02 / 0.8);   /* #D1D1D6 Apple border */
-  --color-border-solid: oklch(0.862 0.007 286.02 / 0.8);
+  --color-border-solid: oklch(0.862 0.007 286.02);
   --color-ring: oklch(0.563 0.193 256.16 / 0.1);
 
   --color-switch: oklch(0.723 0.191 145.09);             /* Apple Green #34C759 */

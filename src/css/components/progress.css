@@ -8,4 +8,12 @@
     background: var(--color-primary);
     animation: indeterminate 1.2s var(--apple-ease) infinite;
   }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+      width: 100%;
+      transform: none;
+      opacity: 0.7;
+    }
+  }
 }

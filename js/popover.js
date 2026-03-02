@@ -156,8 +156,6 @@
             e.preventDefault();
             items[items.length - 1].focus();
           } else if (e.key === "Tab") {
-            e.preventDefault();
-            popover._escapeDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
           } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
             // Type-ahead: focus first item starting with typed character

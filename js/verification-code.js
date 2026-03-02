@@ -62,6 +62,9 @@
         });
 
         input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && otp.hasAttribute("data-error")) {
+            otp.removeAttribute("data-error");
+          }
           if (e.key === "Backspace" && !input.value && i > 0) {
             e.preventDefault();
             inputs[i - 1].value = "";
@@ -77,12 +80,15 @@
           const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
           if (!text) return;
           pasting = true;
-          // Always fill from the first input when a full code is pasted
-          const startIdx = text.length >= inputs.length ? 0 : i;
-          for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
-            inputs[startIdx + j].value = text[j];
+          try {
+            // Always fill from the first input when a full code is pasted
+            const startIdx = text.length >= inputs.length ? 0 : i;
+            for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
+              inputs[startIdx + j].value = text[j];
+            }
+          } finally {
+            pasting = false;
           }
-          pasting = false;
           sync();
           const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
           inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();

@@ -33,7 +33,8 @@
         top: 0;
         right: 0;
         left: var(--list-separator-inset, 3.75rem);
-        height: 0.5px;
+        height: 1px;
+        @media (min-resolution: 2dppx) { height: 0.5px; }
         background: var(--panel-border);
       }
     }

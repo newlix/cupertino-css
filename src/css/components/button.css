@@ -9,7 +9,8 @@
   min-height: 44px;
   transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
   letter-spacing: -0.016em;
-  &:active:not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
+  &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
+  &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 }
 .btn-gray {

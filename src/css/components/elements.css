@@ -228,9 +228,8 @@ input[type="radio"] {
 }
 
 /* ─── Switch ─── */
-/* Design decision: checked state uses --color-primary (blue) instead of Apple's default
-   green (#34C759). Blue is the brand accent colour and maintains consistency with other
-   primary-action elements (buttons, links, focus rings). Do NOT change to green. */
+/* Design decision: checked state uses --color-switch (Apple Green #34C759) to match
+   Apple's native UISwitch behaviour. Use .switch-blue variant for primary/brand colour. */
 input[type="checkbox"][role="switch"] {
   @apply appearance-none relative shrink-0 rounded-full cursor-pointer;
   width: 51px;
@@ -412,6 +411,7 @@ progress {
   &::-moz-progress-bar {
     background: var(--color-primary);
     border-radius: 9999px;
+    transition: width 0.5s var(--apple-spring);
   }
 }
 
