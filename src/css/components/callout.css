@@ -1,41 +1,21 @@
 /* ========== CALLOUT ==========
-   Inline informational box — Apple calls these "callouts" in developer documentation.
-   Refs:
-     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html
-     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html
-     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Warning.html
+   Inline informational box — quiet rounded rectangle, Apple Settings style.
+
+   Design decisions (do NOT revert):
+   - No border-left accent — that's a dev-docs convention (GitHub/MDN), not Apple UI.
+   - No background tinting per variant — Apple uses neutral bg; color is accent only.
+   - No variant classes (info/warning/success/destructive) — users apply Tailwind
+     utilities (e.g. text-destructive on the heading) when needed.
+   - Headings use font-light — lightweight feel, not bold. Apple restraint.
+   - Body text uses tertiary-foreground — creates quiet hierarchy with the heading.
+   - text-sm — callout is supplementary info, one step below body text.
 */
 .callout {
-  @apply rounded-xl px-4 py-3 text-[13px] leading-snug text-foreground;
+  @apply rounded-xl px-4 py-3 text-sm leading-snug text-foreground;
   corner-shape: squircle;
-  background: var(--callout-bg, var(--color-secondary));
-  border: 1px solid var(--callout-border, var(--color-border));
-  border-left: 3px solid var(--callout-accent, var(--color-border));
-  & :is(h4, h5, h6, strong) {
-    @apply font-semibold mb-1;
-    color: var(--callout-title, var(--color-foreground));
-  }
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  & :is(h4, h5, h6) { @apply mb-1 font-light; }
+  & strong { @apply mb-1; }
   & p { @apply text-tertiary-foreground; }
-}
-.callout-info {
-  --callout-bg: oklch(0.563 0.193 256.16 / 0.06);
-  --callout-border: oklch(0.563 0.193 256.16 / 0.2);
-  --callout-accent: oklch(0.563 0.193 256.16);
-  --callout-title: oklch(0.563 0.193 256.16);
-  .dark & {
-    --callout-bg: oklch(0.669 0.181 251.84 / 0.1);
-    --callout-border: oklch(0.669 0.181 251.84 / 0.2);
-    --callout-accent: oklch(0.669 0.181 251.84);
-    --callout-title: oklch(0.669 0.181 251.84);
-  }
-}
-.callout-destructive {
-  --callout-bg: oklch(from var(--color-destructive) l c h / 0.06);
-  --callout-border: oklch(from var(--color-destructive) l c h / 0.2);
-  --callout-accent: var(--color-destructive);
-  --callout-title: var(--color-destructive);
-  .dark & {
-    --callout-bg: oklch(from var(--color-destructive) l c h / 0.1);
-    --callout-border: oklch(from var(--color-destructive) l c h / 0.2);
-  }
 }

@@ -1,37 +1,26 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "Callout" %}
-{% set description = "Inline informational box for notes, warnings, and important messages." %}
+{% set description = "Inline informational container." %}
 
 {% block content %}
 
   <h3>Selectors</h3>
   <dl>
     <dt><code>.callout</code></dt>
-    <dd>Base callout container with left accent border.</dd>
-    <dt><code>.callout-info</code></dt>
-    <dd>Blue variant for informational notes.</dd>
-    <dt><code>.callout-destructive</code></dt>
-    <dd>Red variant for critical or error messages.</dd>
+    <dd>Neutral informational container.</dd>
   </dl>
 
   {% call example("Default") %}
 <div class="callout">
-  <h4>Software Update</h4>
+  <h5>Software Update</h5>
   <p>A new version of macOS is available. Update now to get the latest features and security improvements.</p>
 </div>
 {% endcall %}
 
-  {% call example("Info") %}
-<div class="callout callout-info">
-  <h4>Note</h4>
-  <p>iCloud automatically keeps your documents up to date across all your devices.</p>
-</div>
-{% endcall %}
-
-  {% call example("Destructive") %}
-<div class="callout callout-destructive">
-  <h4>Threat Notification</h4>
+  {% call example("With Tailwind utilities") %}
+<div class="callout">
+  <h5 class="text-destructive">Threat Notification</h5>
   <p>Apple sent you a threat notification via email and iMessage on July 9, 2024.</p>
 </div>
 {% endcall %}
