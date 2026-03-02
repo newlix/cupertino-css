@@ -528,6 +528,12 @@
     }
     .btn-gray.btn-destructive {
       color: var(--color-destructive);
+      &:hover {
+        background: oklch(from var(--color-destructive) l c h / 0.08);
+      }
+      &:active {
+        background: oklch(from var(--color-destructive) l c h / 0.12);
+      }
     }
     .btn-tinted.btn-destructive {
       color: var(--color-destructive);
@@ -593,11 +599,11 @@
         backdrop-filter: var(--glass-blur);
         -webkit-backdrop-filter: var(--glass-blur);
         color: var(--color-foreground);
+        box-shadow: var(--shadow-sm);
         .dark & {
           background: oklch(0.85 0 0 / 0.9);
           color: oklch(0.1 0 0);
         }
-        box-shadow: var(--shadow-sm);
         opacity: 0;
         translate: -50% 2px;
         transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
@@ -606,11 +612,6 @@
         opacity: 1;
         translate: -50% 0;
         transition-delay: 0.5s;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      [data-help]::after {
-        transition: none;
       }
     }
     .badge {
@@ -684,7 +685,7 @@
       padding: calc(var(--spacing) * 5);
       color: var(--color-card-foreground);
       corner-shape: squircle;
-      overflow: hidden;
+      overflow: clip;
       box-shadow: var(--shadow), var(--panel-ring);
       & > :not(:first-child) {
         margin-top: 0.75rem;
@@ -879,7 +880,7 @@
       font-weight: var(--font-weight-medium);
       color: var(--color-muted-foreground);
       min-width: 56px;
-      transition: color 0.2s var(--apple-spring);
+      transition: color 0.2s var(--apple-ease);
       &:hover:not([disabled]):not([aria-disabled="true"]) {
         color: var(--color-foreground);
       }
@@ -1004,10 +1005,10 @@
       &:hover:not([aria-current="page"]) {
         opacity: 0.5;
       }
-      &:active:not(:disabled) {
+      &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
         opacity: 0.7;
       }
-      &:disabled {
+      &:disabled, &[aria-disabled="true"] {
         pointer-events: none;
         opacity: 0.15;
       }
@@ -1019,10 +1020,10 @@
         &:hover:not([aria-current="page"]) {
           opacity: 0.5;
         }
-        &:active:not(:disabled) {
+        &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
           opacity: 0.7;
         }
-        &:disabled {
+        &:disabled, &[aria-disabled="true"] {
           opacity: 0.15;
         }
       }
@@ -1078,9 +1079,9 @@
         &:disabled, &[aria-disabled="true"] {
           pointer-events: none;
           opacity: 0.5;
-          .dark & {
-            opacity: 0.35;
-          }
+        }
+        .dark &:disabled, .dark &[aria-disabled="true"] {
+          opacity: 0.35;
         }
       }
       & > span {
