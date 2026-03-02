@@ -58,4 +58,18 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Always pair a slider with a <code>&lt;label&gt;</code> or use <code>aria-label</code> so screen readers can identify its purpose. The JS automatically sets <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>.</p>
+    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- With label element --&gt;
+&lt;label for="vol"&gt;Volume&lt;/label&gt;
+&lt;input id="vol" type="range" class="slider" /&gt;
+
+&lt;!-- With aria-label --&gt;
+&lt;input type="range" aria-label="Volume" class="slider" /&gt;</code></pre>
+    </div>
+    <p class="mt-3 text-[15px] text-tertiary-foreground">Keyboard: use arrow keys to adjust value by step, Home/End to jump to min/max.</p>
+  </section>
+
 {% endblock %}

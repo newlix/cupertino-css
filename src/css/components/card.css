@@ -5,7 +5,7 @@
   corner-shape: squircle;
   overflow: hidden;
   box-shadow: var(--shadow), var(--panel-ring);
-  .dark & { box-shadow: var(--shadow-md), var(--panel-ring); }
+  .dark & { box-shadow: var(--shadow), var(--panel-ring); }
   transition: box-shadow var(--transition-normal) var(--apple-ease),
               background-color var(--transition-fast) var(--apple-ease),
               transform var(--transition-normal) var(--apple-spring);

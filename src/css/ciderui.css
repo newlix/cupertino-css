@@ -83,7 +83,7 @@
   --float-ring: 0 0 0 1px oklch(0 0 0 / 0.06); /* dropdown/popover/hud outline */
   --glass-blur: blur(20px) saturate(1.5);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
-  --backdrop-bg: oklch(0 0 0 / 0.4);
+  --backdrop-bg: oklch(0 0 0 / 0.35);
   --segmented-active: oklch(1 0 0);
   --hover-brightness: 0.92;
 

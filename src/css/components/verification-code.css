@@ -13,7 +13,7 @@
   font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-variant-numeric: tabular-nums;
   caret-color: transparent;
-  transition: border-color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease);
+  transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
 }
 .verification-code > span {
@@ -27,14 +27,11 @@
     font-size: 20px;
   }
 }
-.verification-code input:not([type="hidden"]):not(:placeholder-shown):not(:focus-visible) {
-  border-color: var(--input-border-hover);
-}
 .verification-code input:not([type="hidden"]):focus-visible {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
+  box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.20);
   outline: none;
-  .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
+  .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.30); }
 }
 .verification-code[data-error] {
   animation: shake 0.3s var(--apple-ease);
@@ -45,9 +42,9 @@
   &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
   &:focus-visible {
     border-color: var(--color-destructive);
-    box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15);
+    box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20);
     outline: none;
-    .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.25); }
+    .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30); }
   }
 }
 .verification-code[data-error] + small {

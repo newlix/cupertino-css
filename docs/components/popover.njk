@@ -176,7 +176,12 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Uses the native Popover API for open/close, click outside to dismiss, and Escape key. JS adds positioning, focus management, and arrow key navigation for <code>.popover-menu</code>.</p>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Uses the native Popover API for open/close, click outside to dismiss, and Escape key. JS adds positioning, focus management, and keyboard navigation for <code>.popover-menu</code>.</p>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Arrow keys navigate menu items. Home/End jump to first/last.</li>
+      <li>Type-ahead: press a letter to jump to the first item starting with that character.</li>
+      <li>Add <code>data-no-dismiss</code> to a menu item to prevent auto-closing on click.</li>
+    </ul>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/popover.js"&gt;&lt;/script&gt;

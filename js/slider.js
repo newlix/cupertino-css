@@ -10,6 +10,9 @@
     var range = max - min;
     var pct = range > 0 ? ((val - min) / range) * 100 : 0;
     el.style.setProperty("--slider-value", pct + "%");
+    el.setAttribute("aria-valuenow", val);
+    el.setAttribute("aria-valuemin", min);
+    el.setAttribute("aria-valuemax", max);
   }
 
   function init() {

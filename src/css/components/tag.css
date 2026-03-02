@@ -7,10 +7,12 @@
   background: var(--tag-color);
   &:is(button, a) {
     cursor: pointer;
-    transition: opacity 0.15s var(--apple-ease);
-    &:hover { opacity: 0.7; }
-    &:active { opacity: 0.5; }
-    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    transition: filter 0.15s var(--apple-ease);
+    &:hover { filter: brightness(0.8); }
+    &:active { filter: brightness(0.6); }
+    .dark &:hover { filter: brightness(1.2); }
+    .dark &:active { filter: brightness(1.4); }
+    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
     &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   }
 }
@@ -21,3 +23,13 @@
 .tag-blue   { --tag-color: var(--color-primary); }
 .tag-purple { --tag-color: oklch(0.636 0.188 303.47); }
 .tag-gray   { --tag-color: oklch(0.585 0.009 286.02); }
+/* Dark mode — brighter dots for visibility on dark backgrounds */
+.dark {
+  .tag-red    { --tag-color: oklch(0.663 0.224 28.29); }
+  .tag-orange { --tag-color: oklch(0.78 0.17 70); }
+  .tag-yellow { --tag-color: oklch(0.82 0.15 88); }
+  .tag-green  { --tag-color: var(--color-switch); }
+  .tag-blue   { --tag-color: var(--color-primary); }
+  .tag-purple { --tag-color: oklch(0.70 0.18 310); }
+  .tag-gray   { --tag-color: oklch(0.65 0.008 286); }
+}

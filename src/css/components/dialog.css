@@ -37,7 +37,12 @@ dialog {
     &:last-child { @apply pb-6; }
   }
   & > footer {
-    @apply flex justify-end gap-2 px-6 pb-6 pt-4;
+    @apply flex flex-wrap justify-end gap-2 px-6 pb-6 pt-4;
+    /* 3+ buttons stack full-width on compact screens (Apple HIG alert button layout) */
+    &:has(> :nth-child(3)) {
+      @apply flex-col;
+      & > * { @apply w-full; }
+    }
   }
   & > section + footer {
     border-top: 0.5px solid var(--color-border);

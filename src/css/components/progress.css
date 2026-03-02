@@ -12,7 +12,7 @@
       var(--color-primary) 50%,
       transparent
     );
-    animation: indeterminate 1.5s var(--apple-ease) infinite;
+    animation: indeterminate 1.0s var(--apple-ease) infinite;
   }
   @media (prefers-reduced-motion: reduce) {
     &::after {

@@ -1,7 +1,9 @@
 /* ========== AVATAR ========== */
 .avatar {
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
-  @apply bg-secondary text-secondary-foreground;
+  background-color: oklch(0.85 0.006 286);      /* Apple Contacts placeholder — visible on light bg */
+  color: oklch(0.45 0.006 286);
+  .dark & { background-color: oklch(0.35 0.006 286); color: oklch(0.80 0.006 286); }
   overflow: hidden;
   user-select: none;
   box-shadow: 0 0 0 0.5px oklch(0 0 0 / 0.08);

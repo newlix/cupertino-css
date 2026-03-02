@@ -7,7 +7,7 @@
     max-width: min(360px, calc(100vw - 16px));
     border-radius: var(--radius);
     max-height: calc(100vh - 2rem);
-    overflow: clip auto;
+    overflow: auto;
     corner-shape: squircle;
     inset: unset;
     margin: 0;
@@ -44,7 +44,7 @@
     @apply min-w-[160px] max-w-none rounded-[10px] p-1;
     max-height: 400px;
     background: var(--glass-bg-opaque);
-    transform-origin: top left;
+    transform-origin: var(--popover-origin, top left);
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[5px] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;

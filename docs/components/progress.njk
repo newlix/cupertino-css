@@ -44,4 +44,13 @@
 </div>
 {% endcall %}
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage Notes</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Use <code>&lt;progress&gt;</code> when you know the completion percentage.</li>
+      <li>Use <code>.progress-indeterminate</code> when duration is unknown (e.g., file processing).</li>
+      <li>Hide indeterminate bars with <code>display: none</code> when not active to reduce battery usage on mobile.</li>
+    </ul>
+  </section>
+
 {% endblock %}

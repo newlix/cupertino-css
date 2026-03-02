@@ -10,8 +10,6 @@
       @apply shrink-0 size-8 p-2 text-tertiary-foreground;
       border-radius: var(--radius-sm);
       corner-shape: squircle;
-      background: var(--surface-3);
-      .dark & { background: var(--surface-4); }
     }
     & > img {
       @apply shrink-0;
@@ -33,7 +31,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        left: var(--list-separator-inset, 3.75rem);
+        left: var(--list-separator-inset, 1rem);
         height: 1px;
         @media (min-resolution: 2dppx) { height: 0.5px; }
         background: var(--panel-border);
@@ -52,8 +50,8 @@
     }
   }
   & > [data-selected], & > [aria-selected="true"] {
-    background: oklch(from var(--color-primary) l c h / 0.14);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.26); }
+    background: oklch(from var(--color-primary) l c h / 0.18);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
   }
 }
 /* Separator at padding edge for lists without icons */

@@ -52,14 +52,9 @@ test.describe('List', () => {
     await expect(items).toHaveCount(2);
   });
 
-  test('dark mode changes icon background', async ({ page }) => {
+  test('icon has no background (Apple HIG: plain inline icons)', async ({ page }) => {
     const icon = preview(page).locator('.list > * > svg').first();
-    const lightBg = await css(icon, 'backgroundColor');
-
-    await setDark(page);
-    const darkBg = await css(icon, 'backgroundColor');
-    expect(darkBg).not.toBe(lightBg);
-
-    await setLight(page);
+    const bg = await css(icon, 'backgroundColor');
+    expect(bg).toBe('rgba(0, 0, 0, 0)');
   });
 });

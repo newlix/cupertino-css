@@ -9,7 +9,7 @@
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  animation: activity-spin 1.0s steps(12, end) infinite;
+  animation: activity-spin 1.0s steps(12, start) infinite;
   @media (prefers-reduced-motion: reduce) {
     animation: none;
     opacity: 0.7;
