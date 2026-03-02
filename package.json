@@ -31,7 +31,8 @@
   },
   "files": [
     "src/css/",
-    "js/"
+    "js/",
+    "dist/"
   ],
   "scripts": {
     "build": "tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
