@@ -9,14 +9,8 @@
   <dl>
     <dt><code>&lt;progress&gt;</code></dt>
     <dd>Native HTML progress element — auto-styled inside <code>.cider</code> scope.</dd>
-    <dt><code>.progress</code></dt>
-    <dd>Div-based track container for the progress bar.</dd>
-    <dt><code>.progress-bar</code></dt>
-    <dd>Filled bar inside the track (set width via style).</dd>
-    <dt><code>.progress-sm</code></dt>
-    <dd>Thinner track height.</dd>
     <dt><code>.progress-indeterminate</code></dt>
-    <dd>Sliding bar animation for indeterminate progress.</dd>
+    <dd>Single-div sliding bar animation for unknown-duration progress.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -33,24 +27,8 @@
 </div>
 {% endcall %}
 
-  {% call example("Small") %}
-<progress class="progress-sm" value="45" max="100"></progress>
-{% endcall %}
-
-  {% call example("Div-based") %}
-<div class="progress">
-  <div class="progress-bar" style="width: 60%"></div>
-</div>
-{% endcall %}
-
-  <p class="text-tertiary-foreground">
-    For determinate progress, use the native <code>&lt;progress&gt;</code> element. For indeterminate or when you need more control, use the div-based <code>.progress</code> / <code>.progress-bar</code> pattern.
-  </p>
-
   {% call example("Indeterminate") %}
-<div class="progress progress-indeterminate">
-  <div class="progress-bar"></div>
-</div>
+<div class="progress-indeterminate"></div>
 {% endcall %}
 
   {% call example("In Card") %}
