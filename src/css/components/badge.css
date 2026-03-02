@@ -1,7 +1,7 @@
 /* ========== TAG ========== */
 .tag {
   @apply inline-flex items-center gap-1 px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   letter-spacing: 0;
 }
 

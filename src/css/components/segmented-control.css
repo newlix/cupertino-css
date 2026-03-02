@@ -16,7 +16,7 @@
   &:disabled, &[disabled] { @apply pointer-events-none opacity-50; }
   &[data-active] {
     @apply text-foreground;
-    background: var(--color-card);
+    background: var(--segmented-active);
     box-shadow: var(--shadow-sm), var(--float-ring);
   }
 }

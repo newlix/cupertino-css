@@ -34,8 +34,6 @@
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
 - [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
-- [Tabs](https://ciderui.com/components/tabs.html): `tabs` with `[data-tab-list]` `[data-tab]` `[data-tab-panel]`. Requires `js/tabs.js`.
-
 ### Overlays & Dialogs
 
 - [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Alerts and form dialogs. Optional `js/dialog.js`.

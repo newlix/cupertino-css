@@ -9,7 +9,7 @@ dialog.sheet,
   corner-shape: squircle;
   max-height: min(85vh, 600px);
   border-radius: var(--radius) var(--radius) 0 0;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-xl), var(--float-ring);
   &::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
@@ -20,7 +20,7 @@ dialog.sheet,
   &[data-closing]::backdrop { animation: backdropFadeIn 0.3s var(--apple-ease) reverse forwards; }
   & > header {
     @apply px-6 py-5;
-    & h2 { @apply text-[15px] font-semibold tracking-tight text-foreground; }
+    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground; }
     & p { @apply mt-1 text-[13px] text-muted-foreground; }
   }
   & > section {
@@ -28,7 +28,7 @@ dialog.sheet,
     & > :not(:first-child) { margin-top: 0.75rem; }
   }
   & > footer {
-    @apply px-6 py-4;
+    @apply flex justify-end gap-2 px-6 py-4;
     border-top: 1px solid var(--panel-border);
   }
   & .sheet-close {

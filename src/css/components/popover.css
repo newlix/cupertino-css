@@ -49,8 +49,9 @@
       &:focus-visible { background: var(--surface-2); outline: none; }
       & svg { @apply size-4 text-muted-foreground; }
       &[disabled], &[aria-disabled="true"] {
-        @apply text-[11px] font-medium text-muted-foreground;
+        @apply opacity-50 text-muted-foreground;
         pointer-events: none;
+        cursor: default;
         &:hover { background: transparent; }
       }
     }

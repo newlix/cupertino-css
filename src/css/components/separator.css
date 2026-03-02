@@ -17,7 +17,8 @@
   @apply flex items-center gap-2 text-xs text-muted-foreground;
   &::before, &::after {
     content: "";
-    @apply h-px flex-1;
+    @apply flex-1;
+    height: 0.5px;
     background: var(--color-border);
   }
 }

@@ -2,13 +2,12 @@
 .avatar {
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   /* Default fallback styling */
-  @apply bg-secondary text-muted-foreground;
+  @apply bg-secondary text-secondary-foreground;
   overflow: hidden;
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {
     @apply cursor-pointer;
-    transition: all 0.15s var(--apple-ease);
-    &:hover { opacity: 0.8; }
+    transition: transform 0.15s var(--apple-ease);
     &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   }

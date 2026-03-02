@@ -48,7 +48,7 @@ h3 {
   @apply font-semibold text-foreground mb-2;
   font-size: 20px;
   line-height: 1.25;
-  letter-spacing: 0.019em;
+  letter-spacing: 0.007em;
   &:not(:first-child) { @apply mt-6; }
 }
 h4 {
@@ -113,7 +113,7 @@ pre {
 /* ─── Text inputs ─── */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
 input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"])) {
-  @apply w-full h-11 rounded-[12px] border px-4 text-[13px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[12px] border px-4 text-[15px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -127,7 +127,7 @@ input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
 
 /* ─── Textarea ─── */
 textarea {
-  @apply w-full rounded-[12px] border px-3.5 py-3 text-[13px] text-foreground outline-none;
+  @apply w-full rounded-[12px] border px-3.5 py-3 text-[15px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -141,7 +141,7 @@ textarea {
 
 /* ─── Select ─── */
 select {
-  @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[13px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[15px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -292,7 +292,10 @@ table {
   & tbody tr {
     transition: background-color 0.2s var(--apple-ease);
     &:hover { background: var(--surface-1); }
-    &[data-selected], &[aria-selected="true"] { background: oklch(from var(--color-primary) l c h / 0.1); }
+    &[data-selected], &[aria-selected="true"] {
+      background: oklch(from var(--color-primary) l c h / 0.12);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.24); }
+    }
   }
   & tfoot tr {
     border-top: 1px solid var(--panel-border);

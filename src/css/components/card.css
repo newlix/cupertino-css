@@ -1,6 +1,6 @@
 /* ========== CARD ========== */
 .card {
-  @apply rounded-xl bg-card text-card-foreground p-6;
+  @apply rounded-xl bg-card text-card-foreground p-5;
   corner-shape: squircle;
   overflow: hidden;
   box-shadow: var(--shadow), var(--panel-ring);

@@ -8,19 +8,20 @@
   caret-color: transparent;
 }
 .verification-code > span {
-  @apply text-xl text-muted-foreground;
+  @apply text-[17px] text-muted-foreground;
 }
 @media (max-width: 374px) {
   .verification-code { @apply gap-1.5; }
   .verification-code input:not([type="hidden"]) { @apply size-10 text-[15px]; }
 }
 .verification-code input:not([type="hidden"]):focus-visible {
-  outline: 2px solid var(--color-ring);
-  outline-offset: -2px;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15);
+  outline: none;
 }
 .verification-code[data-error] input:not([type="hidden"]) {
   border-color: var(--color-destructive);
-  &:focus { border-color: var(--color-destructive); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); }
+  &:focus-visible { border-color: var(--color-destructive); box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15); outline: none; }
 }
 .verification-code[data-error] + small {
   @apply text-destructive;

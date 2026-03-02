@@ -46,7 +46,7 @@
     }
   }
   & > [data-selected], & > [aria-selected="true"] {
-    background: oklch(from var(--color-primary) l c h / 0.1);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
+    background: oklch(from var(--color-primary) l c h / 0.14);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.26); }
   }
 }

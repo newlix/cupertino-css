@@ -13,12 +13,12 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--color-muted-foreground);
-  opacity: 0.3;
+  background: var(--color-foreground);
+  opacity: 0.25;
   cursor: pointer;
-  transition: opacity 0.3s var(--apple-ease);
+  transition: opacity 0.2s var(--apple-ease);
   &[aria-current="page"] {
-    opacity: 1;
+    opacity: 0.9;
   }
   &:focus-visible {
     outline: 2px solid var(--color-primary);

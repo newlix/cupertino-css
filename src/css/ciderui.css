@@ -66,6 +66,7 @@
   --glass-bg: oklch(from var(--color-card) l c h / 0.85);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.35);
+  --segmented-active: #fff;
   --hover-brightness: 0.92;
 
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
@@ -133,9 +134,10 @@
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
   --glass-bg: oklch(from var(--color-card) l c h / 0.8);
-  --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.85);
+  --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
+  --segmented-active: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 */
   --hover-brightness: 1.12;
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
@@ -247,6 +249,16 @@
     to   { opacity: 0; transform: translateY(100%); }
   }
 
+  @keyframes hudAppear {
+    from { opacity: 0; transform: translateY(-4px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes hudDismiss {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-8px); }
+  }
+
   /* Reduced motion — disable animations/transitions for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -267,7 +279,6 @@
     @import "./components/banner.css";
 
     @import "./components/dialog.css";
-    @import "./components/tabs.css";
     @import "./components/segmented-control.css";
     @import "./components/avatar.css";
     @import "./components/page-control.css";

@@ -1,7 +1,7 @@
 /* ========== PROGRESS ========== */
 .progress {
   @apply h-1 w-full overflow-hidden rounded-full;
-  background: var(--surface-5);
+  background: var(--surface-6);
   & .progress-bar {
     @apply h-full rounded-full bg-primary;
     transition: width 0.5s var(--apple-spring);
@@ -9,7 +9,6 @@
 }
 .progress-sm {
   @apply h-0.5;
-  &::-webkit-progress-bar { height: 2px; }
 }
 .progress-indeterminate {
   & .progress-bar {
@@ -21,6 +20,6 @@
 @media (prefers-reduced-motion: reduce) {
   .progress-indeterminate .progress-bar {
     animation: none;
-    transform: translateX(-25%);
+    transform: translateX(0);
   }
 }
