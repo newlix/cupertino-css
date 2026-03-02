@@ -43,7 +43,7 @@
     background: var(--glass-bg-opaque);
 
     & button, & a {
-      @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;
+      @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground no-underline;
       transition: background-color 0.15s var(--apple-ease);
       &:hover { background: var(--surface-2); }
       &:focus-visible { background: var(--surface-2); outline: none; }

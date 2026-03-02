@@ -1054,6 +1054,7 @@
         --tw-font-weight: var(--font-weight-medium);
         font-weight: var(--font-weight-medium);
         color: var(--color-muted-foreground);
+        text-decoration-line: none;
         corner-shape: squircle;
         @media (pointer: coarse) {
           min-height: 44px;
@@ -1426,10 +1427,7 @@
           width: calc(var(--spacing) * 3.5);
           height: calc(var(--spacing) * 3.5);
           flex-shrink: 0;
-          color: oklch(0.681 0.007 286.21);
-          .dark & {
-            color: oklch(0.540 0.008 286.01);
-          }
+          color: var(--color-muted-foreground);
         }
         & + * {
           position: relative;
@@ -1541,6 +1539,7 @@
           text-align: left;
           font-size: 13px;
           color: var(--color-foreground);
+          text-decoration-line: none;
           transition: background-color 0.15s var(--apple-ease);
           &:hover {
             background: var(--surface-2);

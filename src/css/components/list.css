@@ -20,8 +20,7 @@
     }
     & > svg:last-child:not(:first-child) {
       @apply size-3.5 shrink-0;
-      color: oklch(0.681 0.007 286.21);
-      .dark & { color: oklch(0.540 0.008 286.01); }
+      color: var(--color-muted-foreground);
     }
     & + * {
       position: relative;
