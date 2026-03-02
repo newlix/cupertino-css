@@ -1,11 +1,14 @@
 /* ========== TAG ========== */
 .tag {
   @apply inline-flex items-center gap-1 px-2 py-[2px] text-[11px] font-medium bg-secondary text-secondary-foreground;
-  border-radius: 4px;
+  border-radius: var(--radius-sm); /* 8px — Apple minimum radius */
   letter-spacing: 0;
 }
 
-/* ========== BADGE ========== */
+/* ========== BADGE ==========
+   Apple notification badge — the red dot/count on app icons (e.g. Mail unread count).
+   Always destructive (red) by design. This is NOT a label or tag.
+   See: Apple HIG > App Icon > Badges */
 .badge {
   @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
   font-size: 11px;

@@ -14,7 +14,7 @@
   margin-left: 1rem;
 }
 .separator-label {
-  @apply flex items-center gap-2 text-xs text-muted-foreground;
+  @apply flex items-center gap-2 text-[13px] text-muted-foreground;
   &::before, &::after {
     content: "";
     @apply flex-1;

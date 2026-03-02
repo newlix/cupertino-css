@@ -1,13 +1,13 @@
 /* ========== SHEET ========== */
 dialog.sheet,
 .sheet {
-  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full text-card-foreground;
+  @apply fixed bottom-0 left-0 right-0 top-auto m-0 w-full max-w-full md:max-w-2xl md:left-1/2 md:right-auto md:-translate-x-1/2 text-card-foreground;
   &[open] { display: flex; flex-direction: column; }
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   corner-shape: squircle;
-  max-height: min(85vh, 600px);
+  max-height: min(75vh, 600px);
   border-radius: var(--radius) var(--radius) 0 0;
   box-shadow: var(--shadow-xl), var(--float-ring);
   &::backdrop {
@@ -15,7 +15,7 @@ dialog.sheet,
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { animation: sheetSlideInBottom 0.35s var(--apple-spring); }
+  &[open] { animation: sheetSlideInBottom 0.3s var(--apple-spring); }
   &[data-closing] { animation: sheetSlideOutBottom 0.3s var(--apple-ease) forwards; }
   &[data-closing]::backdrop { animation: backdropFadeIn 0.3s var(--apple-ease) reverse forwards; }
   & > header {

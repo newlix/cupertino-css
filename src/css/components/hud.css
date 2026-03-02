@@ -7,20 +7,21 @@
   pointer-events: none;
 }
 
-/* HUD pill capsule — transient operation confirmation */
+/* HUD window — transient operation confirmation (always dark, like macOS HUD) */
 .hud {
   @apply inline-flex items-center gap-2.5 px-5 py-3;
-  border-radius: 9999px;
-  background: oklch(0.15 0 0 / 0.8);
+  border-radius: var(--radius-lg); /* 16px — Apple HUD window radius */
+  corner-shape: squircle;
+  background: oklch(0.15 0 0 / 0.85);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-lg), var(--float-ring);
+  box-shadow: var(--shadow-md), var(--float-ring);
   pointer-events: auto;
   animation: hudAppear 0.25s var(--apple-spring);
   & svg:first-child { @apply size-6 shrink-0; color: oklch(0.95 0 0); }
   & .hud-label { @apply text-[14px] font-medium whitespace-nowrap; color: oklch(0.95 0 0); }
   .dark & {
-    background: oklch(0.30 0 0 / 0.85);
+    background: oklch(0.15 0 0 / 0.85);
   }
 }
 

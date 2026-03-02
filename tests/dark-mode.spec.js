@@ -62,11 +62,11 @@ test.describe('Dark Mode', () => {
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
 
-  test('banner is visible in dark mode', async ({ page }) => {
-    await goto(page, 'banner');
+  test('callout is visible in dark mode', async ({ page }) => {
+    await goto(page, 'callout');
     await setDark(page);
 
-    const alert = page.locator('.snippet-preview > figure .banner').first();
+    const alert = page.locator('.snippet-preview > figure .callout').first();
     await expect(alert).toBeVisible();
   });
 

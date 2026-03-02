@@ -13,7 +13,7 @@
       { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
 { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
-      { "label": "Banner", "href": "components/banner.html" },
+      { "label": "Callout", "href": "components/callout.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
       { "label": "Card", "href": "components/card.html" },

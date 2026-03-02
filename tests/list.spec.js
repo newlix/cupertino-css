@@ -36,12 +36,12 @@ test.describe('List', () => {
     expect(bgAfter).not.toBe(bgBefore);
   });
 
-  test('interactive item has focus-visible outline', async ({ page }) => {
+  test('interactive item has focus-visible background highlight', async ({ page }) => {
     const link = preview(page).locator('.list > a').first();
     await focusViaKeyboard(page, link);
 
-    const outline = await css(link, 'outlineStyle');
-    expect(outline).toBe('solid');
+    const bg = await css(link, 'backgroundColor');
+    expect(bg).not.toBe('rgba(0, 0, 0, 0)');
   });
 
   test('list renders inside a card', async ({ page }) => {

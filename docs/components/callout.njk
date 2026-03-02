@@ -1,25 +1,25 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
-{% set title = "Banner" %}
-{% set description = "Prominent notice for important messages." %}
+{% set title = "Callout" %}
+{% set description = "Inline informational box for notes, warnings, and important messages." %}
 
 {% block content %}
 
   <h3>Classes</h3>
   <dl>
-    <dt><code>.banner</code></dt>
+    <dt><code>.callout</code></dt>
     <dd>Rounded notice container with border.</dd>
   </dl>
 
   {% call example("Default") %}
-<div class="banner">
+<div class="callout">
   <h4>Software Update</h4>
   <p>A new version of macOS is available. Update now to get the latest features and security improvements.</p>
 </div>
 {% endcall %}
 
   {% call example("Destructive") %}
-<div class="banner">
+<div class="callout">
   <h4 class="text-destructive">Threat Notification</h4>
   <p>Apple sent you a threat notification via email and iMessage on July 9, 2024.</p>
 </div>

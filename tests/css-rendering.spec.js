@@ -61,9 +61,9 @@ test.describe('CSS Rendering', () => {
     expect(radius).toBeGreaterThan(100);
   });
 
-  test('banner is visible', async ({ page }) => {
-    await goto(page, 'banner');
-    const alert = page.locator('.snippet-preview > figure .banner').first();
+  test('callout is visible', async ({ page }) => {
+    await goto(page, 'callout');
+    const alert = page.locator('.snippet-preview > figure .callout').first();
     await expect(alert).toBeVisible();
     const box = await alert.boundingBox();
     expect(box.height).toBeGreaterThan(30);

@@ -2,7 +2,7 @@
 .list {
   @apply flex flex-col;
   & > * {
-    @apply flex items-center gap-4 p-4 text-[13px] rounded-none;
+    @apply flex items-center gap-3 p-4 text-[15px] rounded-none;
     min-height: 44px;
     transition: background-color 0.15s var(--apple-ease);
     & > svg:first-child {
@@ -39,7 +39,7 @@
     &:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); text-decoration: none; }
     &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }
-    &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+    &:focus-visible { background: var(--surface-3); outline: none; }
     &[data-selected]:hover, &[aria-selected="true"]:hover {
       background: oklch(from var(--color-primary) l c h / 0.15);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.28); }

@@ -50,7 +50,7 @@
 
   .snippet-preview > figure {
     position: relative;
-    & > .card, & > table, & > .banner, & > details, & > input, & > textarea, & > select, & > dialog, & > .list,& > form, & > fieldset, & > .command, & > .cider {
+    & > .card, & > table, & > .callout, & > details, & > input, & > textarea, & > select, & > dialog, & > .list,& > form, & > fieldset, & > .command, & > .cider {
       @apply w-full;
     }
     & > .cider {

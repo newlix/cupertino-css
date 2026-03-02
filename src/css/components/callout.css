@@ -1,0 +1,17 @@
+/* ========== CALLOUT ==========
+   Inline informational box — Apple calls these "callouts" in developer documentation.
+   Variants: Note, Important, Tip, Warning.
+   Refs:
+     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html
+     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html
+     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Warning.html
+     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/CustomCallouts.html
+*/
+.callout {
+  @apply rounded-[10px] px-4 py-3 text-[13px] leading-snug text-foreground;
+  corner-shape: squircle;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  & :is(h1, h2, h3, h4, h5, h6) { @apply font-semibold text-foreground mb-1; }
+  & p { @apply text-muted-foreground; }
+}
