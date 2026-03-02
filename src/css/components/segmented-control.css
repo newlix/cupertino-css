@@ -5,8 +5,7 @@
 }
 .segmented-control [data-tab-indicator] {
   @apply absolute rounded-full pointer-events-none;
-  top: 4px;
-  bottom: 4px;
+  inset: 3px 0;
   left: 0;
   width: 0;
   background: var(--segmented-active);
@@ -14,7 +13,7 @@
   transition: transform 0.25s var(--apple-spring), width 0.25s var(--apple-spring);
 }
 .segmented-control [data-tab] {
-  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
+  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[6px] px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
   min-width: 56px;
   min-height: 28px;
   transition: color 0.2s var(--apple-ease);

@@ -87,6 +87,10 @@
   --segmented-active: #fff;
   --hover-brightness: 0.92;
 
+  --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
+  --hud-background: oklch(0.12 0 0 / 0.55);
+  --hud-text: oklch(0.95 0 0);
+
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
 
   --radius: 0.75rem;                             /* 12px */
@@ -125,8 +129,8 @@
 
   --color-border: oklch(0.349 0.003 286.22);           /* #3A3A3C systemGray4 */
   --color-border-solid: oklch(0.402 0.003 286.25);     /* #48484A systemGray3 */
-  --input-border: oklch(0.402 0.003 286.25);       /* #48484A systemGray3 */
-  --input-border-hover: oklch(0.460 0.003 286.25); /* #58585A lighter on hover */
+  --input-border: oklch(0.440 0.003 286.25);       /* #52525A — increased contrast for dark mode affordance */
+  --input-border-hover: oklch(0.500 0.003 286.25); /* #62626A lighter on hover */
 
   --color-ring: oklch(0.669 0.181 251.84 / 0.2);
 
@@ -161,6 +165,10 @@
   --segmented-active: oklch(0.50 0.004 286.1);     /* elevated gray for sufficient contrast on dark secondary bg */
   --hover-brightness: 1.12;
 
+  --color-separator: oklch(0.294 0.003 286.18);  /* #2C2C2E systemGray5 */
+  --hud-background: oklch(0.15 0 0 / 0.6);
+  --hud-text: oklch(0.95 0 0);
+
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
 }
 
@@ -183,6 +191,7 @@
   --color-accent-foreground: var(--color-accent-foreground);
   --color-border: var(--color-border);
   --color-border-solid: var(--color-border-solid);
+  --color-separator: var(--color-separator);
   --color-ring: var(--color-ring);
   --color-destructive: var(--color-destructive);
   --color-destructive-hover: var(--color-destructive-hover);

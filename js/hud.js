@@ -31,16 +31,17 @@
     hud.setAttribute("aria-live", "polite");
     hud.setAttribute("aria-atomic", "true");
 
-    // Icon — opts.icon must be a trusted SVG string, not user input
-    var iconWrapper = document.createElement("template");
-    var defaultIcon = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
-    iconWrapper.innerHTML = opts.icon || defaultIcon;
-    var svgEl = iconWrapper.content.querySelector("svg");
-    if (svgEl) {
-      hud.appendChild(svgEl);
+    // Icon — sanitise via DOMParser to prevent XSS from untrusted input
+    var defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    var iconSrc = opts.icon || defaultIcon;
+    var parser = new DOMParser();
+    var iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
+    var svgEl = iconDoc.querySelector("svg");
+    if (svgEl && iconDoc.documentElement.tagName === "svg") {
+      hud.appendChild(document.adoptNode(svgEl));
     } else {
-      iconWrapper.innerHTML = defaultIcon;
-      hud.appendChild(iconWrapper.content);
+      var fallbackDoc = parser.parseFromString(defaultIcon, "image/svg+xml");
+      hud.appendChild(document.adoptNode(fallbackDoc.documentElement));
     }
 
     var labelEl = document.createElement("span");

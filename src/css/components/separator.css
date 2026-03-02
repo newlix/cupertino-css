@@ -9,7 +9,7 @@
   @apply shrink-0 self-stretch;
   width: 1px;
   min-height: 1rem;
-  background: var(--color-border);
+  background: var(--color-separator);
   @media (min-resolution: 2dppx) { width: 0.5px; }
 }
 .separator-label {
@@ -18,7 +18,7 @@
     content: "";
     @apply flex-1;
     height: 1px;
-    background: var(--color-border);
+    background: var(--color-separator);
     @media (min-resolution: 2dppx) { height: 0.5px; }
   }
 }

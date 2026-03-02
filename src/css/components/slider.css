@@ -102,14 +102,15 @@
   }
   @media (pointer: coarse) {
     min-height: 44px;
+    /* Apple HIG: 44pt minimum touch target */
     &::-webkit-slider-thumb {
-      width: 28px;
-      height: 28px;
-      margin-top: -12px;
+      width: 34px;
+      height: 34px;
+      margin-top: -15px;
     }
     &::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
     }
   }
 }

@@ -192,7 +192,7 @@ select {
 
 /* ─── Checkbox ─── */
 input[type="checkbox"]:not([role="switch"]) {
-  @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
+  @apply appearance-none shrink-0 rounded-[4px] border bg-card cursor-pointer;
   width: 18px;
   height: 18px;
   border-color: var(--input-border);
@@ -397,7 +397,7 @@ table {
 hr {
   @apply shrink-0 w-full border-none my-4;
   height: 1px;
-  background: var(--color-border);
+  background: var(--color-separator);
   @media (min-resolution: 2dppx) { height: 0.5px; }
 }
 

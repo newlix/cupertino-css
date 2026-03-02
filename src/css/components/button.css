@@ -4,16 +4,18 @@
 .btn-tinted,
 .btn-bordered,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
-  transition: background-color 0.15s var(--apple-ease), color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
+  transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
   letter-spacing: -0.016em;
   &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 }
+/* btn-gray = Apple's secondary button style (neutral gray background).
+   Apple HIG calls this the "gray" button role alongside filled/tinted/bordered/plain. */
 .btn-gray {
   @apply bg-secondary text-secondary-foreground;
   &:hover { background: var(--color-secondary-hover); }

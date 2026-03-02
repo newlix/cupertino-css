@@ -122,8 +122,8 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
 
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
-    expect(insideRadius).toBe(10);
-    expect(outsideRadius).toBeLessThan(10);
+    expect(insideRadius).toBe(12);
+    expect(outsideRadius).toBeLessThan(12);
   });
 
   test('.card only styled inside .cider', async ({ page }) => {

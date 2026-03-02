@@ -8,7 +8,8 @@ dialog {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-xl), var(--float-ring);
-  &::backdrop {
+  /* Only modal dialogs (showModal()) get dimmed backdrop — modeless (.show()) stays clear */
+  &:modal::backdrop {
     background: var(--backdrop-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);

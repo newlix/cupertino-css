@@ -9,31 +9,33 @@
     if (dialog.hasAttribute("data-closing")) return;
     if (dialog._closeAnimHandler) {
       dialog.removeEventListener("animationend", dialog._closeAnimHandler);
+      dialog._closeAnimHandler = null;
+    }
+    if (dialog._closeTimer) {
+      clearTimeout(dialog._closeTimer);
+      dialog._closeTimer = null;
     }
     var closed = false;
-    dialog._closeAnimHandler = function (e) {
-      if (e.target !== dialog) return;
-      if (!closed) {
-        closed = true;
-        clearTimeout(timer);
-        dialog.removeAttribute("data-closing");
+    function finish() {
+      if (closed) return;
+      closed = true;
+      if (dialog._closeTimer) clearTimeout(dialog._closeTimer);
+      dialog._closeTimer = null;
+      dialog.removeAttribute("data-closing");
+      if (dialog._closeAnimHandler) {
         dialog.removeEventListener("animationend", dialog._closeAnimHandler);
         dialog._closeAnimHandler = null;
-        dialog.close();
       }
+      dialog.close();
+    }
+    dialog._closeAnimHandler = function (e) {
+      if (e.target !== dialog) return;
+      finish();
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);
     dialog.setAttribute("data-closing", "");
     var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
-    var timer = setTimeout(function () {
-      if (!closed) {
-        closed = true;
-        dialog.removeAttribute("data-closing");
-        dialog.removeEventListener("animationend", dialog._closeAnimHandler);
-        dialog._closeAnimHandler = null;
-        dialog.close();
-      }
-    }, duration);
+    dialog._closeTimer = setTimeout(finish, duration);
   }
 
   function trapFocus(dialog) {

@@ -1,5 +1,7 @@
 /* ========== VERIFICATION CODE ========== */
-/* Use inside .cider — inherits input border, bg, focus ring from container scope. */
+/* Use inside .cider — inherits input border, bg, focus ring from container scope.
+   56px height is intentional — taller than standard 44px inputs for visual prominence
+   and larger touch target on single-digit entry fields. */
 .verification-code {
   @apply flex items-center gap-2;
 }

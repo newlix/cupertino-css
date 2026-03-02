@@ -103,13 +103,15 @@
           if (e.key === nextKey) {
             e.preventDefault();
             let idx = (i + 1) % buttons.length;
-            while (idx !== i && isDisabled(buttons[idx])) idx = (idx + 1) % buttons.length;
-            if (idx !== i) targetBtn = buttons[idx];
+            let guard = buttons.length;
+            while (idx !== i && isDisabled(buttons[idx]) && --guard > 0) idx = (idx + 1) % buttons.length;
+            if (idx !== i && !isDisabled(buttons[idx])) targetBtn = buttons[idx];
           } else if (e.key === prevKey) {
             e.preventDefault();
             let idx = (i - 1 + buttons.length) % buttons.length;
-            while (idx !== i && isDisabled(buttons[idx])) idx = (idx - 1 + buttons.length) % buttons.length;
-            if (idx !== i) targetBtn = buttons[idx];
+            let guard = buttons.length;
+            while (idx !== i && isDisabled(buttons[idx]) && --guard > 0) idx = (idx - 1 + buttons.length) % buttons.length;
+            if (idx !== i && !isDisabled(buttons[idx])) targetBtn = buttons[idx];
           } else if (e.key === "Home") {
             e.preventDefault();
             targetBtn = Array.from(buttons).find((b) => !isDisabled(b));
