@@ -1,10 +1,11 @@
 // Slider — ciderui
 (function () {
   function update(el) {
-    var min = Number(el.min) || 0;
-    var max = Number(el.max) || 100;
+    var min = el.min !== "" ? Number(el.min) : 0;
+    var max = el.max !== "" ? Number(el.max) : 100;
     var val = Number(el.value);
-    var pct = ((val - min) / (max - min)) * 100;
+    var range = max - min;
+    var pct = range > 0 ? ((val - min) / range) * 100 : 0;
     el.style.setProperty("--slider-value", pct + "%");
   }
 
@@ -25,5 +26,5 @@
 
   document.addEventListener("htmx:afterSettle", init);
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.slider = { init: init };
+  window.CiderUI.slider = { init: init, update: update };
 })();

@@ -529,10 +529,18 @@
     .btn-gray.btn-destructive {
       color: var(--color-destructive);
       &:hover {
-        background: oklch(from var(--color-destructive) l c h / 0.08);
+        background: oklch(from var(--color-destructive) l c h / 0.12);
       }
       &:active {
-        background: oklch(from var(--color-destructive) l c h / 0.12);
+        background: oklch(from var(--color-destructive) l c h / 0.18);
+      }
+      .dark & {
+        &:hover {
+          background: oklch(from var(--color-destructive) l c h / 0.16);
+        }
+        &:active {
+          background: oklch(from var(--color-destructive) l c h / 0.22);
+        }
       }
     }
     .btn-tinted.btn-destructive {
@@ -632,6 +640,7 @@
       letter-spacing: 0;
       max-width: 5rem;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
     .badge-dot {
       display: block;
@@ -729,7 +738,7 @@
       --callout-bg: oklch(0.750 0.183 70.00 / 0.06);
       --callout-border: oklch(0.750 0.183 70.00 / 0.2);
       --callout-accent: oklch(0.750 0.183 70.00);
-      --callout-title: oklch(0.580 0.160 70.00);
+      --callout-title: oklch(0.480 0.140 70.00);
       .dark & {
         --callout-bg: oklch(0.750 0.183 70.00 / 0.1);
         --callout-border: oklch(0.750 0.183 70.00 / 0.2);
@@ -748,6 +757,7 @@
       }
     }
     dialog.dialog, .dialog {
+      position: relative;
       margin: auto;
       width: 100%;
       max-width: var(--container-sm);
@@ -861,6 +871,7 @@
       border-radius: calc(infinity * 1px);
       top: 4px;
       bottom: 4px;
+      left: 0;
       background: var(--segmented-active);
       box-shadow: var(--shadow-sm), var(--float-ring);
       transition: transform 0.25s var(--apple-spring), width 0.25s var(--apple-spring);
@@ -918,10 +929,15 @@
       background-color: var(--color-secondary);
       color: var(--color-secondary-foreground);
       overflow: hidden;
+      corner-shape: round;
       user-select: none;
       box-shadow: 0 0 0 1px oklch(0 0 0 / 0.06);
       .dark & {
         box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
+      }
+      &:is(img) {
+        display: inline-block;
+        object-fit: cover;
       }
       & img {
         width: 100%;
@@ -1177,7 +1193,7 @@
       cursor: pointer;
       appearance: none;
       border-radius: calc(infinity * 1px);
-      --slider-value: 50%;
+      --slider-value: 0%;
       height: 4px;
       background: linear-gradient( to right, var(--color-primary) 0%, var(--color-primary) var(--slider-value), var(--surface-5) var(--slider-value), var(--surface-5) 100% );
       accent-color: var(--color-primary);
@@ -1350,14 +1366,14 @@
       width: 100%;
       --tw-border-style: none;
       border-style: none;
-      height: 0.5px;
+      height: 1px;
       background: var(--color-border);
       margin: 0;
     }
     .separator-vertical {
       flex-shrink: 0;
       align-self: stretch;
-      width: 0.5px;
+      width: 1px;
       background: var(--color-border);
     }
     .separator-inset {
@@ -1372,7 +1388,7 @@
       &::before, &::after {
         content: "";
         flex: 1;
-        height: 0.5px;
+        height: 1px;
         background: var(--color-border);
       }
     }
@@ -1407,6 +1423,7 @@
           gap: calc(var(--spacing) * 0.5);
           min-width: 0;
           & h3 {
+            margin-bottom: calc(var(--spacing) * 0);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1416,6 +1433,7 @@
             line-height: var(--leading-snug);
             --tw-font-weight: var(--font-weight-medium);
             font-weight: var(--font-weight-medium);
+            letter-spacing: normal;
           }
           & p {
             font-size: 13px;
@@ -1482,7 +1500,7 @@
       background: var(--color-card);
       border-radius: var(--radius);
       corner-shape: squircle;
-      overflow: hidden;
+      overflow: clip;
       box-shadow: var(--panel-ring);
     }
     .popover {
@@ -1644,6 +1662,9 @@
     }
     .verification-code[data-error] input:not([type="hidden"]) {
       border-color: var(--color-destructive);
+      &:hover:not(:focus-visible) {
+        border-color: var(--color-destructive);
+      }
       &:focus-visible {
         border-color: var(--color-destructive);
         box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.15);
@@ -2188,6 +2209,12 @@
       }
       &.table-striped tbody tr:hover {
         background: var(--surface-2);
+      }
+      &.table-striped tbody tr[data-selected]:hover, &.table-striped tbody tr[aria-selected="true"]:hover {
+        background: oklch(from var(--color-primary) l c h / 0.18);
+        .dark & {
+          background: oklch(from var(--color-primary) l c h / 0.30);
+        }
       }
     }
     hr {

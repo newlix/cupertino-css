@@ -12,6 +12,7 @@
   letter-spacing: 0;
   max-width: 5rem;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .badge-dot {
   @apply block rounded-full bg-destructive;

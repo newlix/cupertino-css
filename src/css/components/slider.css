@@ -1,7 +1,7 @@
 /* ========== SLIDER ========== */
 .slider {
   @apply block w-full cursor-pointer appearance-none rounded-full;
-  --slider-value: 50%;
+  --slider-value: 0%;
   height: 4px;
   background: linear-gradient(
     to right,

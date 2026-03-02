@@ -335,6 +335,11 @@ table {
   &.table-striped tbody tr:hover {
     background: var(--surface-2);
   }
+  &.table-striped tbody tr[data-selected]:hover,
+  &.table-striped tbody tr[aria-selected="true"]:hover {
+    background: oklch(from var(--color-primary) l c h / 0.18);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+  }
 }
 
 /* ─── Separator (hr) ─── */

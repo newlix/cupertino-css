@@ -15,7 +15,7 @@
     & > div:has(> h3) {
       @apply flex flex-1 flex-col gap-0.5;
       min-width: 0;
-      & h3 { @apply text-sm font-medium leading-snug truncate; }
+      & h3 { @apply text-sm font-medium leading-snug truncate mb-0; letter-spacing: normal; }
       & p { @apply text-[13px] text-muted-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
@@ -60,6 +60,6 @@
   background: var(--color-card);
   border-radius: var(--radius);
   corner-shape: squircle;
-  overflow: hidden;
+  overflow: clip;
   box-shadow: var(--panel-ring);
 }

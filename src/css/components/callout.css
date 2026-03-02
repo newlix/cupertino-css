@@ -33,7 +33,7 @@
   --callout-bg: oklch(0.750 0.183 70.00 / 0.06);
   --callout-border: oklch(0.750 0.183 70.00 / 0.2);
   --callout-accent: oklch(0.750 0.183 70.00);
-  --callout-title: oklch(0.580 0.160 70.00);
+  --callout-title: oklch(0.480 0.140 70.00);
   .dark & {
     --callout-bg: oklch(0.750 0.183 70.00 / 0.1);
     --callout-border: oklch(0.750 0.183 70.00 / 0.2);

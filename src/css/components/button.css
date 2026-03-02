@@ -45,8 +45,12 @@
 }
 .btn-gray.btn-destructive {
   color: var(--color-destructive);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  &:active { background: oklch(from var(--color-destructive) l c h / 0.18); }
+  .dark & {
+    &:hover { background: oklch(from var(--color-destructive) l c h / 0.16); }
+    &:active { background: oklch(from var(--color-destructive) l c h / 0.22); }
+  }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);

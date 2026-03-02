@@ -109,6 +109,8 @@
   }
 
   window.closeDialog = closeDialog;
+  window.CiderUI = window.CiderUI || {};
+  window.CiderUI.dialog = { init: init, close: closeDialog };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
