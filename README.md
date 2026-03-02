@@ -18,13 +18,25 @@ npm install ciderui@github:newlix/ciderui
 @import "ciderui";
 ```
 
+All Cider UI styles — both classless elements and component classes — are scoped with CSS `@scope`. Add `.cider` to an ancestor element to activate them:
+
 ```html
-<button class="btn-filled">Click me</button>
-<button class="btn-filled btn-destructive">Delete</button>
-<div class="card">
-  <h2>Title</h2>
-  <p>Content goes here.</p>
-</div>
+<!-- Add .cider to <body> for full-page styling -->
+<body class="cider">
+  <button class="btn-filled">Click me</button>
+  <button class="btn-filled btn-destructive">Delete</button>
+  <div class="card">
+    <h2>Title</h2>
+    <p>Content goes here.</p>
+  </div>
+</body>
+
+<!-- Or scope to a specific section -->
+<main class="cider">
+  <h1>Auto-styled heading</h1>
+  <p>Native elements are styled automatically inside .cider.</p>
+  <button class="btn-filled">Click me</button>
+</main>
 ```
 
 ### CDN
@@ -33,6 +45,11 @@ For quick prototyping without a build step:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/dist/ciderui.cdn.min.css" />
+
+<body class="cider">
+  <h1>Hello</h1>
+  <button class="btn-filled">Click me</button>
+</body>
 ```
 
 ## Components (27)

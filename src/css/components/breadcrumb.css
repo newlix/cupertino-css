@@ -2,12 +2,11 @@
 .breadcrumb {
   @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
-    @apply text-muted-foreground no-underline;
+    @apply text-muted-foreground;
+    text-decoration: none !important;
     transition: color 0.15s var(--apple-ease);
-    &:hover {
-      @apply text-foreground underline underline-offset-4;
-      text-decoration-color: var(--color-muted-foreground);
-    }
+    &:hover { @apply text-foreground; }
+    &:active, &:visited, &:focus { @apply text-muted-foreground; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
   }
   & [aria-current="page"] {

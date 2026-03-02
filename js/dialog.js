@@ -58,7 +58,7 @@
   }
 
   function init() {
-    document.querySelectorAll("dialog.dialog").forEach(function (dialog) {
+    document.querySelectorAll("dialog").forEach(function (dialog) {
       if (dialog._cancelHandler) {
         dialog.removeEventListener("cancel", dialog._cancelHandler);
       }

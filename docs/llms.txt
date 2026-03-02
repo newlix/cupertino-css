@@ -71,8 +71,13 @@
 @import "ciderui";
 ```
 
+All styles require a `.cider` ancestor — both classless elements and component classes are inside `@scope(.cider)`.
+
 ```html
-<button class="btn-filled">Click me</button>
+<body class="cider">
+  <h1>Auto-styled heading</h1>
+  <button class="btn-filled">Click me</button>
+</body>
 ```
 
 ## Dark Mode

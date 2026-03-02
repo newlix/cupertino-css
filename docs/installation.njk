@@ -72,6 +72,34 @@ import "ciderui/verification-code.js";</code></pre>
     </section>
 
     <section>
+      <h2 class="text-xl font-bold tracking-tight">Activate Styles</h2>
+      <p class="mt-2 text-muted-foreground">
+        All Cider UI styles — classless elements and component classes — are scoped. Add <code>.cider</code> to an ancestor element to activate them.
+      </p>
+      <div class="snippet mt-4">
+        <header>
+          <span>HTML</span>
+          <button>Copy</button>
+        </header>
+        <pre><code class="language-html">&lt;!-- Full page --&gt;
+&lt;body class="cider"&gt;
+  &lt;h1&gt;Auto-styled heading&lt;/h1&gt;
+  &lt;button class="btn-filled"&gt;Click me&lt;/button&gt;
+&lt;/body&gt;
+
+&lt;!-- Or scope to a section --&gt;
+&lt;main class="cider"&gt;
+  &lt;h1&gt;Styled here&lt;/h1&gt;
+  &lt;p&gt;Native elements are styled automatically.&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+      </div>
+      <p class="mt-3 text-muted-foreground">
+        Use <code>.cider-reset</code> to stop styles from leaking into nested third-party components.
+        See <a href="components/essentials.html" class="text-primary underline underline-offset-4 hover:text-primary/80">Essentials</a> for details.
+      </p>
+    </section>
+
+    <section>
       <h2 class="text-xl font-bold tracking-tight">Dark Mode</h2>
       <p class="mt-2 text-muted-foreground">
         Cider UI uses a class-based dark mode. Add the <code>dark</code> class to your <code>&lt;html&gt;</code> element:

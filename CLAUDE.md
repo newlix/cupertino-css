@@ -37,7 +37,8 @@ npm run test:ui          # Playwright UI mode
 - **No framework** — plain HTML, CSS, JS. No build step for components.
 - **Tailwind CSS v4 plugin** — users `@import "ciderui"` alongside `@import "tailwindcss"`.
 - **CDN variant** — `ciderui.cdn.css` bundles Tailwind + all components via `source(none)`.
-- **Component CSS** — each component in `src/css/components/*.css`, imported by `ciderui.css` inside `@layer components`.
+- **`.cider` scope** — all component CSS (classless elements AND class-based components) lives inside `@scope(.cider) to (.cider-reset)`. Users must add `.cider` to an ancestor element for any styles to take effect. `.cider-reset` creates escape boundaries.
+- **Component CSS** — each component in `src/css/components/*.css`, imported by `ciderui.css` inside `@layer components` within the `@scope(.cider)` block.
 - **Component JS** — vanilla JS, no dependencies. Each file is self-contained (IIFE or top-level).
 - **Dark mode** — class-based (`.dark` on `<html>`). All CSS variables swap in `.dark {}` block.
 - **Docs site** — Nunjucks SSG. Pages are `.njk` source files compiled to static HTML in `site/` via `scripts/build-docs.js`. Syntax highlighting baked in at build time (highlight.js).
