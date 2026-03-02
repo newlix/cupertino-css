@@ -7,12 +7,10 @@
 
   <h3>Selectors</h3>
   <dl>
-    <dt><code>.separator</code></dt>
-    <dd>Horizontal thin divider line.</dd>
+    <dt><code>&lt;hr&gt;</code></dt>
+    <dd>Classless horizontal divider — no extra class needed.</dd>
     <dt><code>.separator-vertical</code></dt>
     <dd>Vertical divider for inline layouts.</dd>
-    <dt><code>.separator-inset</code></dt>
-    <dd>Left-indented horizontal separator.</dd>
     <dt><code>.separator-label</code></dt>
     <dd>Centered text label with lines on both sides.</dd>
   </dl>
@@ -21,6 +19,26 @@
 <p class="text-sm">Content above</p>
 <hr class="my-4">
 <p class="text-sm">Content below</p>
+{% endcall %}
+
+  {% call example("Inset") %}
+<div class="space-y-2">
+  <p class="text-sm">First item</p>
+  <hr class="ms-4">
+  <p class="text-sm">Second item</p>
+  <hr class="ms-4">
+  <p class="text-sm">Third item</p>
+</div>
+{% endcall %}
+
+  {% call example("Vertical") %}
+<div class="flex items-center gap-4 h-8">
+  <span class="text-sm">Section A</span>
+  <div class="separator-vertical"></div>
+  <span class="text-sm">Section B</span>
+  <div class="separator-vertical"></div>
+  <span class="text-sm">Section C</span>
+</div>
 {% endcall %}
 
   {% call example("With Label") %}

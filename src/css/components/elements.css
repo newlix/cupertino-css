@@ -1,10 +1,9 @@
-/* ========== CONTAINER ========== */
-/* Wrap semantic HTML in .cider to auto-style native elements.
-   .cider = pure element styling, no layout opinion.
+/* ========== ELEMENTS ========== */
+/* Classless styles for native HTML elements inside .cider scope.
+   Typography, forms, tables, hr, kbd, progress, fieldset, etc.
    .cider-fixed = layout modifier — add alongside .cider for centered fixed-width breakpoints.
    .cider-reset = scope boundary — stops .cider styles from leaking into nested components.
-   Parent @scope in ciderui.css ensures .cider styles stop at .cider-reset.
-   Nested .cider inside a reset re-opens a new scope. */
+   Parent @scope in ciderui.css ensures .cider styles stop at .cider-reset. */
 
 /* ─── Layout ─── */
 :scope.cider-fixed {
@@ -360,10 +359,17 @@ table {
   }
 }
 
-/* ─── Separator (hr) ─── */
+/*
+ * ─── Separator (hr) ───
+ * Classless <hr> is the canonical horizontal divider in .cider scope.
+ * Do NOT re-add a .separator class — it was intentionally removed because
+ * the classless hr already covers horizontal dividers. Use Tailwind utilities
+ * (e.g. my-4, ms-4) for spacing/inset. See separator.css for vertical and
+ * label variants only.
+ */
 hr {
   @apply shrink-0 h-px w-full border-none;
-  background: var(--panel-border);
+  background: var(--color-border);
 }
 
 /* ─── Kbd ─── */

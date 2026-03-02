@@ -287,6 +287,6 @@
     @import "./components/popover.css";
     @import "./components/verification-code.css";
 
-    @import "./components/container.css";
+    @import "./components/elements.css";
   }
 }

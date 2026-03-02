@@ -32,7 +32,7 @@
 
 - [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
-- [Separator](https://ciderui.com/components/separator.html): Horizontal/vertical divider.
+- [Separator](https://ciderui.com/components/separator.html): Classless `<hr>` for horizontal dividers; `.separator-vertical`, `.separator-label` for variants.
 - [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
 ### Overlays & Dialogs
 

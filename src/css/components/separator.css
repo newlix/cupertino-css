@@ -1,17 +1,13 @@
-/* ========== SEPARATOR ========== */
-.separator {
-  @apply w-full border-none;
-  height: 1px;
-  background: var(--color-border);
-  margin: 0;
-}
+/*
+ * ========== SEPARATOR ==========
+ * Horizontal <hr> is styled classless in elements.css — do NOT add a
+ * .separator class here. For horizontal inset, use <hr class="ms-4">.
+ * This file only contains variants that plain <hr> cannot express.
+ */
 .separator-vertical {
   @apply shrink-0 self-stretch;
   width: 1px;
   background: var(--color-border);
-}
-.separator-inset {
-  margin-inline-start: 1rem;
 }
 .separator-label {
   @apply flex items-center gap-2 text-[13px] text-muted-foreground;
