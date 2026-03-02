@@ -19,7 +19,9 @@
       & p { @apply text-[13px] text-muted-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
-      @apply size-4 shrink-0 text-muted-foreground;
+      @apply size-3.5 shrink-0;
+      color: oklch(0.681 0.007 286.21);
+      .dark & { color: oklch(0.540 0.008 286.01); }
     }
     & + * {
       position: relative;
@@ -28,7 +30,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        left: 1rem;
+        left: 3.75rem;
         height: 1px;
         background: var(--panel-border);
       }
@@ -41,12 +43,24 @@
     &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }
     &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     &[data-selected]:hover, &[aria-selected="true"]:hover {
-      background: oklch(from var(--color-primary) l c h / 0.15);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.28); }
+      background: oklch(from var(--color-primary) l c h / 0.20);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.34); }
     }
   }
   & > [data-selected], & > [aria-selected="true"] {
     background: oklch(from var(--color-primary) l c h / 0.14);
     .dark & { background: oklch(from var(--color-primary) l c h / 0.26); }
   }
+}
+/* Separator at padding edge for lists without icons */
+.list-plain > * + *::before {
+  left: 1rem;
+}
+/* Apple inset-grouped style */
+.list-inset-grouped {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  corner-shape: squircle;
+  overflow: hidden;
+  box-shadow: var(--panel-ring);
 }

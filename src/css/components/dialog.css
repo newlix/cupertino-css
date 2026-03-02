@@ -3,7 +3,9 @@ dialog.dialog,
 .dialog {
   @apply m-auto w-full max-w-sm md:max-w-md rounded-[14px] text-card-foreground p-0;
   max-height: min(85vh, 600px);
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   corner-shape: squircle;
   background: var(--glass-bg-opaque);
   backdrop-filter: var(--glass-blur);
@@ -31,7 +33,7 @@ dialog.dialog,
     & p { @apply mt-2 text-[13px] text-muted-foreground; }
   }
   & > section {
-    @apply px-6 pt-4;
+    @apply px-6 pt-4 overflow-y-auto flex-1 min-h-0;
     & > :not(:first-child) { margin-top: 0.75rem; }
   }
   & > footer {

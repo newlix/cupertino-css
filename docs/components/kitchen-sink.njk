@@ -402,36 +402,6 @@
 
   <hr class="my-12">
 
-  <!-- Sheet -->
-  <section>
-    <h2 class="text-xl font-bold tracking-tight">Sheet</h2>
-    <div class="mt-4">
-      <button class="btn-gray" onclick="this.nextElementSibling.showModal()">Open Sheet</button>
-      <dialog class="sheet">
-        <div class="sheet-grabber"></div>
-        <button onclick="this.closest('dialog').close()" class="sheet-close" aria-label="Close">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <header>
-          <h2>Move Goal</h2>
-          <p>Set your daily move goal.</p>
-        </header>
-        <section>
-          <div class="flex flex-col items-center gap-4 py-4">
-            <div class="text-6xl font-bold text-primary">350</div>
-            <p class="text-sm text-muted-foreground">calories per day</p>
-            <input type="range" class="slider w-full max-w-xs" min="100" max="800" value="350" />
-          </div>
-        </section>
-        <footer>
-          <button onclick="this.closest('dialog').close()" class="btn-filled w-full">Submit</button>
-        </footer>
-      </dialog>
-    </div>
-  </section>
-
-  <hr class="my-12">
-
   <!-- HUD -->
   <section>
     <h2 class="text-xl font-bold tracking-tight">HUD</h2>

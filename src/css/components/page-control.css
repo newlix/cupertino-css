@@ -14,7 +14,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--color-foreground);
-  opacity: 0.35;
+  opacity: 0.22;
   cursor: pointer;
   transition: opacity 0.2s var(--apple-ease);
   &[aria-current="page"] {
@@ -35,11 +35,11 @@
     opacity: 0.15;
   }
   .dark & {
-    opacity: 0.4;
-    &[aria-current="page"] { opacity: 0.95; }
-    &:hover:not([aria-current="page"]) { opacity: 0.65; }
-    &:active:not(:disabled) { opacity: 0.8; }
-    &:disabled { opacity: 0.2; }
+    opacity: 0.3;
+    &[aria-current="page"] { opacity: 1; }
+    &:hover:not([aria-current="page"]) { opacity: 0.5; }
+    &:active:not(:disabled) { opacity: 0.7; }
+    &:disabled { opacity: 0.15; }
   }
   /* Enlarge touch target on touch devices without changing visual size */
   @media (pointer: coarse) {
@@ -47,7 +47,7 @@
     &::after {
       content: "";
       position: absolute;
-      inset: -18px -10px;
+      inset: -19px -19px;
     }
   }
 }

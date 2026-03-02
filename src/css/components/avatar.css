@@ -1,21 +1,29 @@
 /* ========== AVATAR ========== */
 .avatar {
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
-  /* Default fallback styling */
   @apply bg-secondary text-secondary-foreground;
   overflow: hidden;
+  user-select: none;
+  box-shadow: 0 0 0 1px oklch(0 0 0 / 0.06);
+  .dark & { box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08); }
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {
     @apply cursor-pointer;
-    transition: transform 0.15s var(--apple-ease);
+    transition: transform 0.15s var(--apple-ease), opacity 0.15s var(--apple-ease);
+    &:hover { opacity: 0.8; }
     &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   }
 }
+.avatar-sm { @apply size-7 text-[11px]; }
+.avatar-lg { @apply size-16 text-[22px]; }
+.avatar-xl { @apply size-20 text-[28px]; }
 .avatar-group {
   @apply flex -space-x-2;
+  --avatar-group-ring: var(--color-background);
   & .avatar {
     @apply ring-2;
-    --tw-ring-color: var(--color-background);
+    --tw-ring-color: var(--avatar-group-ring);
+    box-shadow: none;
   }
 }

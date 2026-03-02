@@ -1,17 +1,53 @@
 /* ========== CALLOUT ==========
    Inline informational box — Apple calls these "callouts" in developer documentation.
-   Single-style informational container. Use heading color classes for semantic emphasis.
    Refs:
      - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html
      - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html
      - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Warning.html
-     - https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/CustomCallouts.html
 */
 .callout {
-  @apply rounded-[10px] px-4 py-3 text-[13px] leading-snug text-foreground;
+  @apply rounded-xl px-4 py-3 text-[13px] leading-snug text-foreground;
   corner-shape: squircle;
-  background: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  & :is(h1, h2, h3, h4, h5, h6) { @apply font-semibold text-foreground mb-1; }
+  background: var(--callout-bg, var(--color-secondary));
+  border: 1px solid var(--callout-border, var(--color-border));
+  border-left: 3px solid var(--callout-accent, var(--color-border));
+  & :is(h4, h5, h6, strong) {
+    @apply font-semibold mb-1;
+    color: var(--callout-title, var(--color-foreground));
+  }
   & p { @apply text-muted-foreground; }
+}
+.callout-info {
+  --callout-bg: oklch(0.563 0.193 256.16 / 0.06);
+  --callout-border: oklch(0.563 0.193 256.16 / 0.2);
+  --callout-accent: oklch(0.563 0.193 256.16);
+  --callout-title: oklch(0.563 0.193 256.16);
+  .dark & {
+    --callout-bg: oklch(0.669 0.181 251.84 / 0.1);
+    --callout-border: oklch(0.669 0.181 251.84 / 0.2);
+    --callout-accent: oklch(0.669 0.181 251.84);
+    --callout-title: oklch(0.669 0.181 251.84);
+  }
+}
+.callout-warning {
+  --callout-bg: oklch(0.750 0.183 70.00 / 0.06);
+  --callout-border: oklch(0.750 0.183 70.00 / 0.2);
+  --callout-accent: oklch(0.750 0.183 70.00);
+  --callout-title: oklch(0.750 0.183 70.00);
+  .dark & {
+    --callout-bg: oklch(0.750 0.183 70.00 / 0.1);
+    --callout-border: oklch(0.750 0.183 70.00 / 0.2);
+    --callout-accent: oklch(0.750 0.183 70.00);
+    --callout-title: oklch(0.750 0.183 70.00);
+  }
+}
+.callout-destructive {
+  --callout-bg: oklch(from var(--color-destructive) l c h / 0.06);
+  --callout-border: oklch(from var(--color-destructive) l c h / 0.2);
+  --callout-accent: var(--color-destructive);
+  --callout-title: var(--color-destructive);
+  .dark & {
+    --callout-bg: oklch(from var(--color-destructive) l c h / 0.1);
+    --callout-border: oklch(from var(--color-destructive) l c h / 0.2);
+  }
 }

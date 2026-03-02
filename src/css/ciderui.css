@@ -27,11 +27,11 @@
   --color-secondary-hover: oklch(0.930 0.005 286.02);
   --color-secondary-foreground: oklch(0.232 0.004 285.99);
 
-  --color-muted: oklch(0.971 0.003 285.66);
+  --color-muted: var(--color-secondary);
   --color-muted-foreground: oklch(0.540 0.008 286.01); /* #6E6E73 Apple muted text */
 
-  --color-accent: oklch(0.971 0.003 285.66);
-  --color-accent-foreground: oklch(0.232 0.004 285.99);
+  --color-accent: var(--color-secondary);
+  --color-accent-foreground: var(--color-secondary-foreground);
 
   --color-border: oklch(0.862 0.007 286.02 / 0.6);   /* #D1D1D6 Apple border */
   --color-border-solid: oklch(0.862 0.007 286.02 / 0.8);
@@ -98,11 +98,11 @@
   --color-secondary-hover: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 */
   --color-secondary-foreground: oklch(0.971 0.003 286.35);
 
-  --color-muted: oklch(0.294 0.004 286.18);            /* #2C2C2E systemGray5 */
+  --color-muted: var(--color-secondary);
   --color-muted-foreground: oklch(0.681 0.007 286.21); /* #98989D Apple dark muted */
 
-  --color-accent: oklch(0.294 0.004 286.18);           /* #2C2C2E systemGray5 */
-  --color-accent-foreground: oklch(0.971 0.003 286.35);
+  --color-accent: var(--color-secondary);
+  --color-accent-foreground: var(--color-secondary-foreground);
 
   --color-border: oklch(0.349 0.003 286.22);           /* #3A3A3C systemGray4 */
   --color-border-solid: oklch(0.402 0.003 286.25);     /* #48484A systemGray3 */
@@ -127,7 +127,7 @@
   --surface-2: oklch(1 0 0 / 0.05);
   --surface-3: oklch(1 0 0 / 0.06);
   --surface-4: oklch(1 0 0 / 0.08);
-  --surface-5: oklch(1 0 0 / 0.12);
+  --surface-5: oklch(1 0 0 / 0.14);
   --surface-6: oklch(1 0 0 / 0.12);
   --surface-7: oklch(1 0 0 / 0.2);
   --panel-border: oklch(1 0 0 / 0.08);
@@ -239,16 +239,6 @@
     100% { transform: translateX(300%); }
   }
 
-  @keyframes sheetSlideInBottom {
-    from { opacity: 0; transform: translateY(100%); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes sheetSlideOutBottom {
-    from { opacity: 1; transform: translateY(0); }
-    to   { opacity: 0; transform: translateY(100%); }
-  }
-
   @keyframes hudAppear {
     from { opacity: 0; transform: translateY(-4px) scale(0.96); }
     to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -275,6 +265,7 @@
   @scope (.cider) to (.cider-reset) {
     @import "./components/button.css";
     @import "./components/badge.css";
+    @import "./components/tag.css";
     @import "./components/card.css";
     @import "./components/callout.css";
 
@@ -293,7 +284,6 @@
 
     @import "./components/list.css";
 
-    @import "./components/sheet.css";
     @import "./components/popover.css";
     @import "./components/verification-code.css";
 

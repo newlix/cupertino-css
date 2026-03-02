@@ -9,6 +9,9 @@ function init() {
     inputs.forEach((input, idx) => {
       input.maxLength = 1;
       input.inputMode = "numeric";
+      if (!input.getAttribute("autocomplete")) {
+        input.setAttribute("autocomplete", "one-time-code");
+      }
       if (!input.getAttribute("aria-label")) {
         input.setAttribute("aria-label", "Digit " + (idx + 1) + " of " + inputs.length);
       }
@@ -52,6 +55,7 @@ function init() {
         const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
         for (let j = 0; j < text.length && i + j < inputs.length; j++) {
           inputs[i + j].value = text[j];
+          inputs[i + j].dispatchEvent(new Event("input", { bubbles: true }));
         }
         sync();
         const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);

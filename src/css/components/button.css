@@ -6,7 +6,7 @@
   @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-4 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
   text-decoration: none;
   corner-shape: squircle;
-  transition: background-color 0.2s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.2s var(--apple-ease);
+  transition: background-color 0.15s var(--apple-ease), transform 0.2s var(--apple-spring), opacity 0.15s var(--apple-ease);
   letter-spacing: -0.016em;
   &:active { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
@@ -66,6 +66,7 @@
 }
 .btn-sm {
   @apply px-3 py-[5px] text-[13px] gap-1.5;
+  min-height: 34px;
 }
 .btn-lg {
   @apply px-[21px] py-[14px] text-[17px] leading-[1.29];

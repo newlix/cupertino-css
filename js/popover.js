@@ -43,13 +43,18 @@ function init() {
       var top;
       if (wrapper.classList.contains("popover-top") || rect.bottom + gap + ph > vh) {
         top = rect.top - ph - gap;
-        if (top < 0) top = 0;
+        if (top < gap) top = gap;
       } else {
         top = rect.bottom + gap;
       }
 
       popover.style.top = top + "px";
       popover.style.left = left + "px";
+
+      // Reposition arrow to point at trigger center
+      var triggerCenter = rect.left + rect.width / 2;
+      var arrowOffset = Math.max(16, Math.min(pw - 16, triggerCenter - left));
+      popover.style.setProperty("--arrow-left", arrowOffset + "px");
     }
 
     popover._toggleHandler = function (e) {

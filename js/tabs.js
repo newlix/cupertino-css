@@ -9,7 +9,20 @@ function init() {
 
     // Set ARIA attributes
     const list = buttons[0] && buttons[0].parentElement;
-    if (list) list.setAttribute("role", "tablist");
+    if (list) {
+      list.setAttribute("role", "tablist");
+      list.setAttribute("aria-orientation", "horizontal");
+    }
+
+    // Create sliding indicator for segmented controls
+    var indicator = list ? list.querySelector("[data-tab-indicator]") : null;
+    function positionIndicator(btn) {
+      if (!indicator || !btn) return;
+      var listRect = list.getBoundingClientRect();
+      var btnRect = btn.getBoundingClientRect();
+      indicator.style.width = btnRect.width + "px";
+      indicator.style.transform = "translateX(" + (btnRect.left - listRect.left - parseFloat(getComputedStyle(list).paddingLeft)) + "px)";
+    }
 
     buttons.forEach((btn) => {
       if (!btn.id) btn.id = "tab-" + Math.random().toString(36).substr(2, 9);
@@ -17,6 +30,9 @@ function init() {
       const isActive = btn.hasAttribute("data-active");
       btn.setAttribute("aria-selected", isActive ? "true" : "false");
       btn.setAttribute("tabindex", isActive ? "0" : "-1");
+      if (isActive && indicator) {
+        requestAnimationFrame(() => positionIndicator(btn));
+      }
     });
 
     panels.forEach((panel) => {
@@ -47,6 +63,9 @@ function init() {
       btn.setAttribute("aria-selected", "true");
       btn.setAttribute("tabindex", "0");
 
+      // Slide indicator
+      positionIndicator(btn);
+
       // Show/hide panels
       panels.forEach((p) => {
         if (p.getAttribute("data-tab-panel") === target) {
@@ -66,22 +85,22 @@ function init() {
         const isRTL = document.documentElement.dir === "rtl";
         const nextKey = isRTL ? "ArrowLeft" : "ArrowRight";
         const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
-        if (e.key === nextKey || e.key === "ArrowDown") {
+        if (e.key === nextKey) {
           e.preventDefault();
           var idx = (i + 1) % buttons.length;
           while (idx !== i && buttons[idx].disabled) idx = (idx + 1) % buttons.length;
           if (idx !== i) targetBtn = buttons[idx];
-        } else if (e.key === prevKey || e.key === "ArrowUp") {
+        } else if (e.key === prevKey) {
           e.preventDefault();
           var idx = (i - 1 + buttons.length) % buttons.length;
           while (idx !== i && buttons[idx].disabled) idx = (idx - 1 + buttons.length) % buttons.length;
           if (idx !== i) targetBtn = buttons[idx];
         } else if (e.key === "Home") {
           e.preventDefault();
-          targetBtn = Array.from(buttons).find(function(b) { return !b.disabled; });
+          targetBtn = Array.from(buttons).find((b) => !b.disabled);
         } else if (e.key === "End") {
           e.preventDefault();
-          targetBtn = Array.from(buttons).reverse().find(function(b) { return !b.disabled; });
+          targetBtn = Array.from(buttons).reverse().find((b) => !b.disabled);
         }
 
         if (targetBtn && !targetBtn.disabled) {
@@ -98,3 +117,7 @@ if (document.readyState === "loading") {
 } else {
   init();
 }
+
+document.addEventListener("htmx:afterSettle", init);
+window.CiderUI = window.CiderUI || {};
+window.CiderUI.tabs = { init: init };

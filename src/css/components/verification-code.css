@@ -4,8 +4,11 @@
   @apply flex items-center gap-2;
 }
 .verification-code input:not([type="hidden"]) {
-  @apply size-11 text-center p-0 text-[17px] font-medium;
+  @apply size-11 text-center p-0 text-[17px] font-medium rounded-[10px];
+  font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
   caret-color: transparent;
+  transition: border-color 0.15s var(--apple-ease), box-shadow 0.15s var(--apple-ease);
 }
 .verification-code > span {
   @apply text-[17px] text-muted-foreground;

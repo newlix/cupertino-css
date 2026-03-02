@@ -25,8 +25,6 @@
     "./dialog.js": "./js/dialog.js",
     "./verification-code.js": "./js/verification-code.js",
     "./popover.js": "./js/popover.js",
-    "./sheet.js": "./js/sheet.js",
-
     "./tabs.js": "./js/tabs.js",
     "./hud.js": "./js/hud.js"
   },

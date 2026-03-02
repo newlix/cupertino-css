@@ -1,11 +1,11 @@
 /* ========== PROGRESS ========== */
 .progress {
-  @apply h-1.5 w-full overflow-hidden rounded-full;
+  @apply h-1 w-full overflow-hidden rounded-full;
   background: var(--surface-4);
   & .progress-bar {
     @apply h-full rounded-full;
     background: var(--color-primary);
-    transition: width 0.5s var(--apple-spring);
+    transition: width 0.5s var(--apple-ease);
   }
 }
 .progress-sm {
@@ -13,9 +13,16 @@
 }
 .progress-indeterminate {
   & .progress-bar {
-    @apply w-2/5;
-    background: var(--color-primary);
-    animation: indeterminate 1.5s var(--apple-ease) infinite;
+    @apply w-full;
+    background: linear-gradient(
+      90deg,
+      var(--surface-4) 0%,
+      var(--color-primary) 40%,
+      var(--color-primary) 60%,
+      var(--surface-4) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s var(--apple-ease) infinite;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -24,6 +31,6 @@
   }
   .progress-indeterminate .progress-bar {
     animation: none;
-    transform: translateX(0);
+    background: var(--color-primary);
   }
 }

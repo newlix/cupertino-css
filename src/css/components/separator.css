@@ -11,7 +11,7 @@
   background: var(--color-border);
 }
 .separator-inset {
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
 }
 .separator-label {
   @apply flex items-center gap-2 text-[13px] text-muted-foreground;

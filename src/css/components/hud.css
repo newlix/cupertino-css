@@ -1,9 +1,9 @@
 /* ========== HUD ========== */
 
-/* Container: centered horizontally */
+/* Container: centered on screen like macOS HUD */
 .hud-container {
-  @apply fixed top-6 left-1/2 z-[100] flex flex-col items-center gap-2.5;
-  transform: translateX(-50%);
+  @apply fixed top-1/2 left-1/2 z-[100] flex flex-col items-center gap-2.5;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
