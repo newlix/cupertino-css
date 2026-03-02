@@ -393,9 +393,9 @@
           <p>Your changes will be lost if you don't save them.</p>
         </header>
         <footer>
-          <button onclick="this.closest('dialog').close()" class="btn-tinted">Don't Save</button>
-          <button onclick="this.closest('dialog').close()" class="btn-gray">Cancel</button>
-          <button onclick="this.closest('dialog').close()" class="btn-filled">Save</button>
+          <button onclick="closeDialog(this.closest('dialog'))" class="btn-tinted">Don't Save</button>
+          <button onclick="closeDialog(this.closest('dialog'))" class="btn-gray">Cancel</button>
+          <button onclick="closeDialog(this.closest('dialog'))" class="btn-filled">Save</button>
         </footer>
       </dialog>
     </div>

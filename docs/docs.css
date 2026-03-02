@@ -178,20 +178,6 @@
       @apply hidden;
     }
   }
-  .snippet-lines {
-    counter-reset: line;
-    & .snippet-line {
-      display: flex;
-      &::before {
-        counter-increment: line;
-        content: counter(line);
-        @apply inline-block shrink-0 text-right pr-4 text-tertiary-foreground/40 select-none;
-        min-width: 2rem;
-        font-variant-numeric: tabular-nums;
-      }
-    }
-  }
-
   /* ========== Homepage sections ========== */
   .home-section-alt {
     background: var(--color-secondary);

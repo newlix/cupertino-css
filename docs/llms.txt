@@ -49,7 +49,7 @@
 
 ### Display & Media
 
-- [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
+- [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-sm` `avatar-lg` `avatar-xl` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
 - [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
