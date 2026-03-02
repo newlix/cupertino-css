@@ -7,6 +7,9 @@
     var container = document.createElement("div");
     container.id = "hud-container";
     container.className = "cider hud-container";
+    container.setAttribute("role", "status");
+    container.setAttribute("aria-live", "polite");
+    container.setAttribute("aria-atomic", "true");
     document.body.appendChild(container);
     return container;
   }
@@ -64,7 +67,8 @@
         hud.removeEventListener("animationend", removeHud);
       }
       hud.addEventListener("animationend", removeHud);
-      animTimer = setTimeout(removeHud, 250);
+      var animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
+      animTimer = setTimeout(removeHud, animDuration);
     }
 
     dismissTimeout = setTimeout(dismiss, duration);

@@ -99,6 +99,12 @@
         } else {
           trigger.setAttribute("aria-expanded", "false");
           popover._cleanupPositioning();
+          if (isMenu) {
+            popover.removeAttribute("role");
+            popover.querySelectorAll('[role="menuitem"]').forEach(function (item) {
+              item.removeAttribute("role");
+            });
+          }
           if (popover._escapeDismiss) {
             trigger.focus();
             popover._escapeDismiss = false;

@@ -94,10 +94,6 @@
     &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
   }
 }
-.btn-capsule {
-  border-radius: var(--radius-pill);
-  corner-shape: round;
-}
 .btn-sm {
   @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[8px];
   min-height: 32px;
@@ -106,6 +102,10 @@
   @apply px-[21px] py-[14px] text-[17px] leading-[1.29] rounded-[12px];
   letter-spacing: -0.024em;
   min-height: 50px;
+}
+.btn-capsule {
+  border-radius: var(--radius-pill);
+  corner-shape: round;
 }
 /* ── Help Tag ── */
 /* Usage: <button data-help="Label">…</button> */

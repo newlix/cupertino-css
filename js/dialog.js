@@ -96,13 +96,7 @@
       }
       dialog._clickHandler = function (e) {
         if (e.target === dialog && !dialog.hasAttribute("data-modal")) {
-          var rect = dialog.getBoundingClientRect();
-          if (
-            e.clientX < rect.left || e.clientX > rect.right ||
-            e.clientY < rect.top || e.clientY > rect.bottom
-          ) {
-            closeDialog(dialog);
-          }
+          closeDialog(dialog);
         }
       };
       dialog.addEventListener("click", dialog._clickHandler);

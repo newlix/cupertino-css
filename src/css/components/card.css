@@ -22,5 +22,4 @@ a.card:focus-visible, button.card:focus-visible {
 a.card[aria-disabled="true"], button.card:disabled, button.card[aria-disabled="true"] {
   opacity: 0.4;
   pointer-events: none;
-  cursor: not-allowed;
 }
