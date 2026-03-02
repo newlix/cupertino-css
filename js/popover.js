@@ -85,7 +85,7 @@
           }
           // Cleanup any stale positioning listeners before adding new ones
           popover._cleanupPositioning();
-          requestAnimationFrame(positionPopover);
+          requestAnimationFrame(function () { requestAnimationFrame(positionPopover); });
           var rafPending = false;
           popover._rafPositioner = function () {
             if (!rafPending) {
