@@ -44,7 +44,7 @@
     height: 22px;
     border: none;
     box-shadow: 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-    transition: box-shadow 0.2s var(--apple-ease), transform 0.15s var(--apple-ease), width 0.15s var(--apple-ease), height 0.15s var(--apple-ease);
+    transition: box-shadow 0.2s var(--apple-ease), transform 0.15s var(--apple-ease), width 0.15s var(--apple-ease), height 0.15s var(--apple-ease), margin-top 0.15s var(--apple-ease);
   }
   &::-moz-range-thumb:hover {
     box-shadow: 0 2px 8px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.08);
@@ -93,6 +93,12 @@
     }
     &:focus-visible::-moz-range-thumb {
       box-shadow: 0 0 0 4px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb {
+      transition: none;
     }
   }
   @media (pointer: coarse) {

@@ -40,7 +40,7 @@
   & [popover] {
     @apply min-w-[160px] max-w-none p-1;
     max-height: 400px;
-    background: var(--glass-bg);
+    background: var(--glass-bg-opaque);
 
     & button, & a {
       @apply flex w-full items-center gap-2.5 rounded-[6px] px-2.5 py-[7px] text-left text-[13px] text-foreground;

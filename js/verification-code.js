@@ -6,7 +6,15 @@ function init() {
     otp.dataset.initialized = "true";
     const inputs = otp.querySelectorAll('input:not([type="hidden"])');
     if (!inputs.length) return;
-    inputs.forEach((input) => { input.maxLength = 1; input.inputMode = "numeric"; });
+    inputs.forEach((input, idx) => {
+      input.maxLength = 1;
+      input.inputMode = "numeric";
+      if (!input.getAttribute("aria-label")) {
+        input.setAttribute("aria-label", "Digit " + (idx + 1) + " of " + inputs.length);
+      }
+    });
+    if (!otp.getAttribute("role")) otp.setAttribute("role", "group");
+    if (!otp.getAttribute("aria-label")) otp.setAttribute("aria-label", "Verification code");
 
     let hidden = otp.querySelector("input[type=hidden]");
     if (!hidden) {
@@ -46,7 +54,8 @@ function init() {
           inputs[i + j].value = text[j];
         }
         sync();
-        inputs[Math.min(i + text.length, inputs.length - 1)].focus();
+        const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
+        inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
       });
 
       input.addEventListener("focus", () => input.select());

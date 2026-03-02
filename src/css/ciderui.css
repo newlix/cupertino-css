@@ -137,7 +137,7 @@
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
-  --segmented-active: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 */
+  --segmented-active: oklch(0.44 0.004 286.1);     /* lighter gray for contrast on dark secondary bg */
   --hover-brightness: 1.12;
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */

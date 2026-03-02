@@ -3,7 +3,8 @@
   @apply h-1 w-full overflow-hidden rounded-full;
   background: var(--surface-6);
   & .progress-bar {
-    @apply h-full rounded-full bg-primary;
+    @apply h-full rounded-full;
+    background: var(--color-primary);
     transition: width 0.5s var(--apple-spring);
   }
 }
@@ -18,6 +19,9 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .progress .progress-bar {
+    transition: none;
+  }
   .progress-indeterminate .progress-bar {
     animation: none;
     transform: translateX(0);

@@ -6,7 +6,7 @@ function closeSheet(sheet) {
   if (sheet.hasAttribute("data-closing")) return;
   sheet.setAttribute("data-closing", "");
   var closed = false;
-  var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 350;
+  var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 300;
   var timer = setTimeout(function () {
     if (!closed) {
       closed = true;

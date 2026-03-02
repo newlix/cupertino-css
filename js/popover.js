@@ -12,6 +12,8 @@ function init() {
     trigger.popoverTargetAction = "toggle";
 
     var isMenu = wrapper.classList.contains("popover-menu");
+    trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
+    trigger.setAttribute("aria-expanded", "false");
 
     // Store and clean up toggle handler to prevent listener leaks on re-init
     if (popover._toggleHandler) {
@@ -35,7 +37,7 @@ function init() {
         left = rect.left;
         if (left + pw > vw) left = rect.right - pw;
       }
-      if (left < 0) left = 0;
+      if (left < gap) left = gap;
 
       // Vertical: default below trigger, flip above if overflows or popover-top
       var top;
@@ -52,6 +54,7 @@ function init() {
 
     popover._toggleHandler = function (e) {
       if (e.newState === "open") {
+        trigger.setAttribute("aria-expanded", "true");
         positionPopover();
         window.addEventListener("scroll", positionPopover, true);
         window.addEventListener("resize", positionPopover);
@@ -59,6 +62,7 @@ function init() {
         var first = popover.querySelector("button:not([disabled]), a:not([disabled]), input, select, textarea, [tabindex]:not([tabindex='-1'])");
         if (first) first.focus();
       } else {
+        trigger.setAttribute("aria-expanded", "false");
         window.removeEventListener("scroll", positionPopover, true);
         window.removeEventListener("resize", positionPopover);
         trigger.focus();

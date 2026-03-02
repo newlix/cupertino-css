@@ -1,7 +1,7 @@
 // HUD — ciderui
 function showHUD(label, options) {
   var opts = options || {};
-  var duration = opts.duration || 3000;
+  var duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 3000;
 
   var container =
     document.getElementById("hud-container") || createHUDContainer();
@@ -10,7 +10,7 @@ function showHUD(label, options) {
   hud.className = "hud";
   hud.setAttribute("role", "status");
   hud.setAttribute("aria-live", "polite");
-  hud.setAttribute("aria-atomic", "true");
+  hud.setAttribute("aria-atomic", "false");
 
   // Icon
   var iconWrapper = document.createElement("template");
@@ -27,7 +27,10 @@ function showHUD(label, options) {
 
   var dismissTimeout;
   var animTimer;
+  var dismissed = false;
   function dismiss() {
+    if (dismissed) return;
+    dismissed = true;
     if (dismissTimeout) clearTimeout(dismissTimeout);
     if (animTimer) clearTimeout(animTimer);
     if (!hud.parentElement) return;

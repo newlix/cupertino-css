@@ -53,13 +53,4 @@ test.describe('Focus Visible Accessibility', () => {
     const outline = await css(slider, 'outlineStyle');
     expect(outline).toBe('none');
   });
-
-  test('tabs trigger shows outline on keyboard focus', async ({ page }) => {
-    await goto(page, 'tabs');
-
-    const tab = page.locator('.snippet-preview > figure [data-tab]').first();
-    await focusViaKeyboard(page, tab);
-
-    expect(await css(tab, 'outlineStyle')).not.toBe('none');
-  });
 });

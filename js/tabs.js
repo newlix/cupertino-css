@@ -53,7 +53,7 @@ function init() {
     }
 
     buttons.forEach((btn, i) => {
-      btn.addEventListener("click", () => activate(btn));
+      btn.addEventListener("click", () => { activate(btn); btn.focus(); });
 
       // Keyboard navigation
       btn.addEventListener("keydown", (e) => {
@@ -65,12 +65,12 @@ function init() {
           e.preventDefault();
           var idx = (i + 1) % buttons.length;
           while (idx !== i && buttons[idx].disabled) idx = (idx + 1) % buttons.length;
-          targetBtn = buttons[idx];
+          if (idx !== i) targetBtn = buttons[idx];
         } else if (e.key === prevKey || e.key === "ArrowUp") {
           e.preventDefault();
           var idx = (i - 1 + buttons.length) % buttons.length;
           while (idx !== i && buttons[idx].disabled) idx = (idx - 1 + buttons.length) % buttons.length;
-          targetBtn = buttons[idx];
+          if (idx !== i) targetBtn = buttons[idx];
         } else if (e.key === "Home") {
           e.preventDefault();
           targetBtn = Array.from(buttons).find(function(b) { return !b.disabled; });

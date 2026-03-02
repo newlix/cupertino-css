@@ -15,6 +15,7 @@
 .avatar-group {
   @apply flex -space-x-2;
   & .avatar {
-    @apply ring-2 ring-background;
+    @apply ring-2;
+    ring-color: var(--color-background);
   }
 }

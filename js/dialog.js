@@ -7,7 +7,7 @@ function closeDialog(dialog) {
   if (dialog.hasAttribute("data-closing")) return;
   dialog.setAttribute("data-closing", "");
   var closed = false;
-  var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
+  var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
   var timer = setTimeout(function () {
     if (!closed) {
       closed = true;
