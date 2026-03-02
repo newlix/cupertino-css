@@ -1,6 +1,6 @@
 /* ========== AVATAR ========== */
 .avatar {
-  @apply inline-flex shrink-0 size-10 items-center justify-center rounded-full text-[15px] font-medium;
+  @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   background-color: oklch(0.85 0.006 286);      /* Apple Contacts placeholder — visible on light bg */
   color: oklch(0.45 0.006 286);
   .dark & { background-color: oklch(0.35 0.006 286); color: oklch(0.80 0.006 286); }

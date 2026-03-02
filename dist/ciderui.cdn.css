@@ -1036,7 +1036,6 @@
       display: inline-flex;
       width: calc(var(--spacing) * 10);
       height: calc(var(--spacing) * 10);
-      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       border-radius: calc(infinity * 1px);
