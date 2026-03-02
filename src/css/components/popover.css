@@ -43,7 +43,6 @@
   & [popover] {
     @apply min-w-[160px] max-w-none rounded-[10px] p-1;
     max-height: 400px;
-    background: var(--glass-bg-opaque);
     transform-origin: var(--popover-origin, top left);
 
     & button, & a {
@@ -57,8 +56,6 @@
       &[disabled], &[aria-disabled="true"] {
         @apply opacity-50 text-tertiary-foreground;
         pointer-events: none;
-        cursor: default;
-        &:hover { background: transparent; }
       }
     }
   }

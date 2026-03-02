@@ -6,7 +6,7 @@
  * that plain <hr> cannot express.
  */
 .separator-vertical {
-  @apply shrink-0 self-stretch;
+  @apply block shrink-0 self-stretch;
   width: 1px;
   min-height: 1rem;
   background: var(--color-separator);

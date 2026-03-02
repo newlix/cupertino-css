@@ -19,7 +19,7 @@
   background: var(--color-secondary);
   border: 0.5px solid var(--panel-border);
   box-shadow: var(--panel-ring);
-  & :is(h4, h5, h6) { @apply mb-1 font-semibold; }
-  & strong { @apply block mb-1; }
+  & :is(h1, h2, h3, h4, h5, h6) { @apply mb-1 font-semibold; }
+  & > strong { @apply block mb-1; }
   & > p { @apply text-foreground; opacity: 0.7; }
 }

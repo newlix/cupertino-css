@@ -38,7 +38,6 @@
 }
 .verification-code[data-error] input:not([type="hidden"]) {
   border-color: var(--color-destructive);
-  transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
   &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
   &:focus-visible {
     border-color: var(--color-destructive);

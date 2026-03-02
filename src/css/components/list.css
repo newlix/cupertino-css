@@ -21,8 +21,7 @@
       & p { @apply text-[13px] text-tertiary-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
-      @apply size-4 shrink-0;
-      color: var(--color-tertiary-foreground);
+      @apply size-4 shrink-0 text-tertiary-foreground;
     }
     & + * {
       position: relative;
@@ -55,8 +54,8 @@
   }
 }
 /* Separator at padding edge for lists without icons */
-.list-plain > * + *::before {
-  left: 1rem;
+.list-plain {
+  --list-separator-inset: 1rem;
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {

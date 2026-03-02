@@ -108,10 +108,14 @@
               item.removeAttribute("role");
             });
           }
-          if (popover._escapeDismiss) {
+          if (
+            popover._escapeDismiss ||
+            document.activeElement === document.body ||
+            popover.contains(document.activeElement)
+          ) {
             trigger.focus();
-            popover._escapeDismiss = false;
           }
+          popover._escapeDismiss = false;
         }
       };
       popover.addEventListener("toggle", popover._toggleHandler);

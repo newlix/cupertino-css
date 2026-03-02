@@ -11,8 +11,8 @@
 }
 
 /* ─── Flow content rhythm ─── */
-:is(p, ul, ol, blockquote, figure, table, dl, pre, details, fieldset, hr)
-  + :is(p, ul, ol, blockquote, figure, table, dl, pre, details, fieldset, hr) {
+:is(p, ul, ol, blockquote, table, dl, pre, details, fieldset, hr)
+  + :is(p, ul, ol, blockquote, table, dl, pre, details, fieldset, hr) {
   margin-top: 1rem;
 }
 
@@ -238,7 +238,7 @@ input[type="checkbox"][role="switch"] {
   width: 51px;
   height: 31px;
   background: var(--surface-5);
-  transition: background-color 0.25s var(--apple-ease);
+  transition: background-color var(--transition-slow) var(--apple-ease);
   &:hover:not(:disabled):not(:checked) { background: oklch(0 0 0 / 0.14); }
   .dark &:hover:not(:disabled):not(:checked) { background: oklch(1 0 0 / 0.16); }
   &:hover:not(:disabled):checked { background: var(--color-switch-hover); }
@@ -421,7 +421,6 @@ progress {
 /* ─── Table responsive wrapper ─── */
 .table-responsive {
   @apply w-full overflow-x-auto -mx-px px-px;
-
 }
 
 /* ─── Fieldset ─── */

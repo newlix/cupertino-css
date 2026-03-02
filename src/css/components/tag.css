@@ -28,8 +28,6 @@
   .tag-red    { --tag-color: oklch(0.663 0.224 28.29); }
   .tag-orange { --tag-color: oklch(0.78 0.17 70); }
   .tag-yellow { --tag-color: oklch(0.82 0.15 88); }
-  .tag-green  { --tag-color: var(--color-switch); }
-  .tag-blue   { --tag-color: var(--color-primary); }
   .tag-purple { --tag-color: oklch(0.70 0.18 310); }
   .tag-gray   { --tag-color: oklch(0.65 0.008 286); }
 }
