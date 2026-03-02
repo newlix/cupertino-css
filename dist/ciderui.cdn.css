@@ -1955,15 +1955,6 @@
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
     }
-    figure {
-      & figcaption {
-        margin-top: calc(var(--spacing) * 2);
-        text-align: center;
-        font-size: var(--text-sm);
-        line-height: var(--tw-leading, var(--text-sm--line-height));
-        color: var(--color-tertiary-foreground);
-      }
-    }
     details {
       border-radius: var(--radius-xl);
       border-style: var(--tw-border-style);

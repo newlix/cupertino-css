@@ -83,13 +83,6 @@ code {
   line-height: 1.5;
 }
 
-/* ─── Figure ─── */
-figure {
-  & figcaption {
-    @apply mt-2 text-center text-sm text-tertiary-foreground;
-  }
-}
-
 /* ─── Details / Summary ─── */
 details {
   @apply rounded-xl border p-5;
