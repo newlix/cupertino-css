@@ -3,9 +3,11 @@
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   @apply bg-secondary text-secondary-foreground;
   overflow: hidden;
+  corner-shape: round;
   user-select: none;
   box-shadow: 0 0 0 1px oklch(0 0 0 / 0.06);
   .dark & { box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08); }
+  &:is(img) { display: inline-block; object-fit: cover; }
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {
     @apply cursor-pointer no-underline;
