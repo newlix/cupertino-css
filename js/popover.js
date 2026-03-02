@@ -148,6 +148,8 @@
     init();
   }
 
+  document.addEventListener("htmx:afterSettle", init);
+
   if (typeof window !== "undefined") {
     window.CiderUI = window.CiderUI || {};
     window.CiderUI.popover = { init: init };
