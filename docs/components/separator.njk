@@ -8,7 +8,7 @@
   <h3>Selectors</h3>
   <dl>
     <dt><code>&lt;hr&gt;</code></dt>
-    <dd>Classless horizontal divider — no extra class needed.</dd>
+    <dd>Classless horizontal divider with default <code>my-4</code> spacing. Use <code>my-0</code> in cards/panels where sections manage their own padding. Use <code>invisible</code> for spacing without a visible line.</dd>
     <dt><code>.separator-vertical</code></dt>
     <dd>Vertical divider for inline layouts.</dd>
     <dt><code>.separator-label</code></dt>
@@ -17,7 +17,7 @@
 
   {% call example("Horizontal") %}
 <p class="text-sm">Content above</p>
-<hr class="my-4">
+<hr>
 <p class="text-sm">Content below</p>
 {% endcall %}
 
@@ -51,7 +51,7 @@
     <h3 class="text-base font-semibold">Cider UI</h3>
     <small>Apple-aesthetic component library.</small>
   </div>
-  <hr class="my-4">
+  <hr>
   <div class="flex items-center gap-4 text-sm">
     <div>
       <p class="font-medium">Framework</p>

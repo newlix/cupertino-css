@@ -1,8 +1,9 @@
 /*
  * ========== SEPARATOR ==========
- * Horizontal <hr> is styled classless in elements.css — do NOT add a
- * .separator class here. For horizontal inset, use <hr class="ms-4">.
- * This file only contains variants that plain <hr> cannot express.
+ * Horizontal <hr> is styled classless in elements.css (with default my-4)
+ * — do NOT add a .separator class here. Use my-0 in cards/panels where
+ * sections manage their own padding. This file only contains variants
+ * that plain <hr> cannot express.
  */
 .separator-vertical {
   @apply shrink-0 self-stretch;
