@@ -87,17 +87,6 @@
       background: transparent;
       border-radius: 0;
     }
-    &::after {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-tertiary-foreground);
-      opacity: 0.5;
-    }
   }
   /* Mobile header bar */
   .docs-mobile-bar {

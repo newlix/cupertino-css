@@ -79,7 +79,6 @@
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
   --float-ring: 0 0 0 1px oklch(0 0 0 / 0.06); /* dropdown/popover/hud outline */
   --glass-blur: blur(20px) saturate(1.5);
-  --glass-bg: oklch(from var(--color-card) l c h / 0.85);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.4);
   --segmented-active: #fff;
@@ -150,7 +149,6 @@
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
-  --glass-bg: oklch(from var(--color-card) l c h / 0.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);

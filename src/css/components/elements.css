@@ -311,11 +311,9 @@ table {
   }
   & thead tr:first-child th:first-child {
     border-top-left-radius: 1rem;
-    corner-shape: squircle;
   }
   & thead tr:first-child th:last-child {
     border-top-right-radius: 1rem;
-    corner-shape: squircle;
   }
   & th {
     @apply px-4 py-3 text-xs font-semibold text-tertiary-foreground;
@@ -343,19 +341,15 @@ table {
   }
   & tfoot tr:last-child td:first-child {
     border-bottom-left-radius: 1rem;
-    corner-shape: squircle;
   }
   & tfoot tr:last-child td:last-child {
     border-bottom-right-radius: 1rem;
-    corner-shape: squircle;
   }
   & tbody:last-child tr:last-child td:first-child {
     border-bottom-left-radius: 1rem;
-    corner-shape: squircle;
   }
   & tbody:last-child tr:last-child td:last-child {
     border-bottom-right-radius: 1rem;
-    corner-shape: squircle;
   }
   &.table-striped tbody tr:nth-child(even) {
     background: var(--surface-1);

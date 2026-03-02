@@ -255,7 +255,6 @@
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04);
   --float-ring: 0 0 0 1px oklch(0 0 0 / 0.06);
   --glass-blur: blur(20px) saturate(1.5);
-  --glass-bg: oklch(from var(--color-card) l c h / 0.85);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.4);
   --segmented-active: #fff;
@@ -312,7 +311,6 @@
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
-  --glass-bg: oklch(from var(--color-card) l c h / 0.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
   --backdrop-bg: oklch(0 0 0 / 0.55);
   --segmented-active: oklch(0.50 0.004 286.1);
@@ -772,7 +770,6 @@
       }
       max-height: min(85vh, 600px);
       overflow: hidden;
-      flex-direction: column;
       corner-shape: squircle;
       background: var(--glass-bg-opaque);
       backdrop-filter: var(--glass-blur);
@@ -785,6 +782,7 @@
       }
       &[open] {
         display: flex;
+        flex-direction: column;
         position: fixed;
         animation: dialogShow 0.24s var(--apple-spring);
       }
@@ -2186,11 +2184,9 @@
       }
       & thead tr:first-child th:first-child {
         border-top-left-radius: 1rem;
-        corner-shape: squircle;
       }
       & thead tr:first-child th:last-child {
         border-top-right-radius: 1rem;
-        corner-shape: squircle;
       }
       & th {
         padding-inline: calc(var(--spacing) * 4);
@@ -2228,19 +2224,15 @@
       }
       & tfoot tr:last-child td:first-child {
         border-bottom-left-radius: 1rem;
-        corner-shape: squircle;
       }
       & tfoot tr:last-child td:last-child {
         border-bottom-right-radius: 1rem;
-        corner-shape: squircle;
       }
       & tbody:last-child tr:last-child td:first-child {
         border-bottom-left-radius: 1rem;
-        corner-shape: squircle;
       }
       & tbody:last-child tr:last-child td:last-child {
         border-bottom-right-radius: 1rem;
-        corner-shape: squircle;
       }
       &.table-striped tbody tr:nth-child(even) {
         background: var(--surface-1);
