@@ -27,7 +27,6 @@
 
 ### Navigation
 
-- [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — breadcrumb navigation with separator arrows.
 - [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
 - [Pagination](https://ciderui.com/components/pagination.html): `pagination` — page navigation buttons.
