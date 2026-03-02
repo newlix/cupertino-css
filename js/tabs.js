@@ -31,12 +31,14 @@
 
       // Reposition indicator on resize
       if (indicator && list) {
+        if (tabGroup._tabsResizeObserver) tabGroup._tabsResizeObserver.disconnect();
         var ro = new ResizeObserver(function () {
           if (!list.isConnected) { ro.disconnect(); return; }
           var activeBtn = tabGroup.querySelector("[data-tab][data-active]");
           if (activeBtn) positionIndicator(activeBtn);
         });
         ro.observe(list);
+        tabGroup._tabsResizeObserver = ro;
       }
 
       buttons.forEach((btn) => {

@@ -25,7 +25,6 @@
 .tag-gray   { --tag-color: oklch(0.585 0.009 286.02); }
 /* Dark mode — brighter dots for visibility on dark backgrounds */
 .dark {
-  .tag-red    { --tag-color: oklch(0.663 0.224 28.29); }
   .tag-orange { --tag-color: oklch(0.78 0.17 70); }
   .tag-yellow { --tag-color: oklch(0.82 0.15 88); }
   .tag-purple { --tag-color: oklch(0.70 0.18 310); }

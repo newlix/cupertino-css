@@ -124,6 +124,9 @@
         if (dialog.open) {
           var isModal = dialog.matches(":modal");
           if (isModal) {
+            if (!dialog._previousFocus) {
+              dialog._previousFocus = document.activeElement;
+            }
             activeDialogs.add(dialog);
             if (activeDialogs.size === 1) {
               document.body._savedOverflow = document.body.style.overflow;
@@ -132,6 +135,12 @@
             trapFocus(dialog);
           }
         } else {
+          if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
+          if (dialog._closeAnimHandler) {
+            dialog.removeEventListener("animationend", dialog._closeAnimHandler);
+            dialog._closeAnimHandler = null;
+          }
+          dialog.removeAttribute("data-closing");
           activeDialogs.delete(dialog);
           if (activeDialogs.size === 0) {
             document.body.style.overflow = document.body._savedOverflow || "";

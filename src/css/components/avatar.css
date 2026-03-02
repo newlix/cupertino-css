@@ -3,11 +3,10 @@
   @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
   background-color: oklch(0.85 0.006 286);      /* Apple Contacts placeholder — visible on light bg */
   color: oklch(0.45 0.006 286);
-  .dark & { background-color: oklch(0.35 0.006 286); color: oklch(0.80 0.006 286); }
   overflow: hidden;
   user-select: none;
   box-shadow: 0 0 0 0.5px oklch(0 0 0 / 0.08);
-  .dark & { box-shadow: 0 0 0 0.5px oklch(1 0 0 / 0.10); }
+  .dark & { background-color: oklch(0.35 0.006 286); color: oklch(0.80 0.006 286); box-shadow: 0 0 0 0.5px oklch(1 0 0 / 0.10); }
   &:is(img) { display: inline-block; object-fit: cover; }
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
   &:is(button, a) {

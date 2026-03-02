@@ -67,9 +67,11 @@
       }
 
       popover._cleanupPositioning = function () {
-        window.removeEventListener("scroll", popover._rafPositioner || positionPopover, true);
-        window.removeEventListener("resize", popover._rafPositioner || positionPopover);
-        popover._rafPositioner = null;
+        if (popover._rafPositioner) {
+          window.removeEventListener("scroll", popover._rafPositioner, true);
+          window.removeEventListener("resize", popover._rafPositioner);
+          popover._rafPositioner = null;
+        }
       };
 
       popover._toggleHandler = function (e) {
