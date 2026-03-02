@@ -20,7 +20,8 @@
     if (dialog._closeAnimHandler) {
       dialog.removeEventListener("animationend", dialog._closeAnimHandler);
     }
-    dialog._closeAnimHandler = function () {
+    dialog._closeAnimHandler = function (e) {
+      if (e.target !== dialog) return;
       if (!closed) {
         closed = true;
         clearTimeout(timer);
@@ -28,7 +29,7 @@
         dialog.close();
       }
     };
-    dialog.addEventListener("animationend", dialog._closeAnimHandler, { once: true });
+    dialog.addEventListener("animationend", dialog._closeAnimHandler);
   }
 
   function trapFocus(dialog) {
@@ -83,6 +84,19 @@
       }
 
       var observer = new MutationObserver(function () {
+        if (!dialog.isConnected) {
+          activeDialogs.delete(dialog);
+          if (activeDialogs.size === 0) {
+            document.body.style.overflow = document.body._savedOverflow || "";
+            delete document.body._savedOverflow;
+          }
+          if (dialog._focusTrapHandler) {
+            dialog.removeEventListener("keydown", dialog._focusTrapHandler);
+            dialog._focusTrapHandler = null;
+          }
+          observer.disconnect();
+          return;
+        }
         if (dialog.open) {
           if (!dialog._previousFocus) {
             dialog._previousFocus = document.activeElement;

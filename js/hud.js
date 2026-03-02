@@ -50,12 +50,13 @@
       if (animTimer) clearTimeout(animTimer);
       if (!hud.parentElement) return;
       hud.setAttribute("data-closing", "");
-      function removeHud() {
+      function removeHud(e) {
+        if (e && e.target !== hud) return;
         if (hud.parentElement) hud.remove();
         if (animTimer) clearTimeout(animTimer);
         hud.removeEventListener("animationend", removeHud);
       }
-      hud.addEventListener("animationend", removeHud, { once: true });
+      hud.addEventListener("animationend", removeHud);
       animTimer = setTimeout(removeHud, 250);
     }
 

@@ -111,7 +111,7 @@
         popover._menuClickHandler = function (e) {
           var item = e.target.closest("button, a");
           if (!item || !popover.contains(item)) return;
-          popover.hidePopover();
+          if (popover.matches(":popover-open")) popover.hidePopover();
         };
         popover.addEventListener("click", popover._menuClickHandler);
 
@@ -134,7 +134,7 @@
           } else if (e.key === "Tab") {
             // Close popover on Tab to prevent focus escaping
             e.preventDefault();
-            popover.hidePopover();
+            if (popover.matches(":popover-open")) popover.hidePopover();
           }
         };
         popover.addEventListener("keydown", popover._menuKeyHandler);
