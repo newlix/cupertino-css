@@ -14,7 +14,7 @@ dialog {
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { display: flex; position: relative; animation: dialogShow 0.24s var(--apple-spring); }
+  &[open] { display: flex; position: fixed; animation: dialogShow 0.24s var(--apple-spring); }
   &[open]::backdrop { animation: backdropFadeIn 0.24s var(--apple-ease); }
   &[data-closing] { animation: dialogHide 0.2s var(--apple-ease) forwards; }
   &[data-closing]::backdrop { animation: backdropFadeIn 0.2s var(--apple-ease) reverse forwards; }
