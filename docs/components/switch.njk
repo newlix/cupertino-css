@@ -60,6 +60,19 @@
 </div>
 {% endcall %}
 
+  {% call example("Custom Color") %}
+<div class="space-y-3">
+  <label>
+    <input type="checkbox" role="switch" checked style="--color-switch: purple; --color-switch-hover: rebeccapurple;" />
+    Purple
+  </label>
+  <label>
+    <input type="checkbox" role="switch" checked style="--color-switch: oklch(0.65 0.15 200); --color-switch-hover: oklch(0.60 0.15 200);" />
+    Teal
+  </label>
+</div>
+{% endcall %}
+
   {% call example("Form") %}
 <form class="grid gap-4" onsubmit="return false">
   <h3 class="text-lg font-medium">Email Notifications</h3>
