@@ -23,7 +23,7 @@
         popover.removeEventListener("toggle", popover._toggleHandler);
       }
       function positionPopover() {
-        if (!document.contains(popover)) {
+        if (!document.contains(popover) || !document.contains(trigger)) {
           popover._cleanupPositioning();
           return;
         }
@@ -69,6 +69,7 @@
       popover._cleanupPositioning = function () {
         window.removeEventListener("scroll", popover._rafPositioner || positionPopover, true);
         window.removeEventListener("resize", popover._rafPositioner || positionPopover);
+        popover._rafPositioner = null;
       };
 
       popover._toggleHandler = function (e) {

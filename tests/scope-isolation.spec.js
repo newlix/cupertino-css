@@ -116,7 +116,7 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
     const inside = page.locator('#inside .btn-filled');
     const outside = page.locator('#outside .btn-filled');
 
-    // CiderUI sets display: inline-flex and border-radius: 10px
+    // CiderUI sets display: inline-flex and border-radius: 12px
     expect(await css(inside, 'display')).toBe('inline-flex');
     expect(await css(outside, 'display')).not.toBe('inline-flex');
 

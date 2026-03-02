@@ -16,13 +16,13 @@ test.describe('Breadcrumb', () => {
     expect(after).not.toBe(before);
   });
 
-  test('link has underline on hover', async ({ page }) => {
+  test('link has no underline on hover', async ({ page }) => {
     await goto(page, 'breadcrumb');
     const link = preview(page).locator('.breadcrumb a').first();
 
     await link.hover();
     await page.waitForTimeout(200);
     const deco = await css(link, 'textDecorationLine');
-    expect(deco).toBe('underline');
+    expect(deco).toBe('none');
   });
 });
