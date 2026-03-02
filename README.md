@@ -2,6 +2,8 @@
 
 Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names like `btn`, `card`, `input` — no utility soup in your markup.
 
+**Docs & demos:** [ciderui.com](https://ciderui.com)
+
 ## Install
 
 ```bash
@@ -18,13 +20,12 @@ npm install ciderui@github:newlix/ciderui
 @import "ciderui";
 ```
 
-All Cider UI styles — both classless elements and component classes — are scoped with CSS `@scope`. Add `.cider` to an ancestor element to activate them:
+All Cider UI styles are scoped with CSS `@scope`. Add `.cider` to an ancestor element to activate them:
 
 ```html
 <!-- Add .cider to <body> for full-page styling -->
 <body class="cider">
   <button class="btn-filled">Click me</button>
-  <button class="btn-filled btn-destructive">Delete</button>
   <div class="card">
     <h2>Title</h2>
     <p>Content goes here.</p>
@@ -35,7 +36,6 @@ All Cider UI styles — both classless elements and component classes — are sc
 <main class="cider">
   <h1>Auto-styled heading</h1>
   <p>Native elements are styled automatically inside .cider.</p>
-  <button class="btn-filled">Click me</button>
 </main>
 ```
 
@@ -55,41 +55,52 @@ For quick prototyping without a build step:
 ## Components (27)
 
 | Component | Class | JS |
-|-----------|-------|----|
-| Button | `btn-filled` `btn-gray` `btn-tinted` `btn-plain` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg` | — |
-| Tag | `tag` | — |
-| Badge | `badge` (notification count) | — |
-| Card | `card` `card-interactive` | — |
-| Alert | `alert-info` `alert-success` `alert-warning` `alert-destructive` | — |
-| Input | `input` | — |
-| Textarea | `textarea` | — |
-| Select | `select` (native) | `js/select.js` (custom) |
-| Checkbox | `checkbox` | — |
-| Radio | `radio` | — |
-| Switch | `switch` | — |
-| Label | `label` | — |
-
-| Dialog | `dialog` (children: `header` `section` `footer`) | `js/dialog.js` (optional) |
-| Menu | `menu` | `js/menu.js` |
-| Tabs | `tabs` + `[data-tab-list]` `[data-tab]` `[data-tab-panel]` | `js/tabs.js` |
-| Table | `table` `table-striped` | — |
-| Avatar | `avatar` `avatar-group` | — |
-| Button Group | `btn-group` | — |
-| Kbd | `kbd` | — |
-| Pagination | `pagination` | — |
-| Progress | `progress` > `.progress-bar` `progress-sm` `progress-indeterminate` | — |
-| Slider | `slider` | — |
+|---|---|---|
 | Activity Indicator | `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` | — |
-| HUD | `hud` `hud-container` | `js/hud.js` |
-### ES Module / Bundler (Vite, Webpack, etc.)
+| Avatar | `avatar` `avatar-group` | — |
+| Badge | `badge` | — |
+| Breadcrumb | `breadcrumb` | — |
+| Button | `btn-filled` `btn-gray` `btn-tinted` `btn-plain` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg` | — |
+| Button Group | `btn-group` | — |
+| Callout | `callout` | — |
+| Card | `card` `card-interactive` | — |
+| Checkbox | `checkbox` | — |
+| Dialog | `dialog` | `dialog.js` |
+| HUD | `hud` `hud-container` | `hud.js` |
+| Input | `input` | — |
+| Kbd | `kbd` | — |
+| List | `list` `list-inset` `list-inset-grouped` | — |
+| Page Control | `page-control` | — |
+| Pagination | `pagination` | — |
+| Popover | `popover` | `popover.js` |
+| Progress | `progress` `progress-sm` `progress-indeterminate` | — |
+| Radio | `radio` | — |
+| Segmented Control | `segmented-control` | — |
+| Select | `select` | — |
+| Separator | `separator` | — |
+| Slider | `slider` | `slider.js` |
+| Switch | `switch` | — |
+| Table | `table` `table-striped` | — |
+| Tag | `tag` | — |
+| Textarea | `textarea` | — |
+| Verification Code | `verification-code` | `verification-code.js` |
 
-JS files work with bundlers. Import them as side effects in your entry file:
+### Interactive JS
+
+JS files are optional and self-contained. Load via CDN or import as ES modules:
+
+```html
+<!-- CDN -->
+<script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/dialog.js"></script>
+```
 
 ```js
+// ES module / bundler
 import "ciderui/dialog.js";
-import "ciderui/menu.js";
-import "ciderui/tabs.js";
 import "ciderui/hud.js";
+import "ciderui/popover.js";
+import "ciderui/slider.js";
+import "ciderui/verification-code.js";
 ```
 
 ## Dark Mode
@@ -102,7 +113,7 @@ document.documentElement.classList.toggle('dark');
 ```
 
 ```html
-<!-- Scoped theme: light section inside dark page -->
+<!-- Light section inside dark page -->
 <div class="light" style="background: var(--background); color: var(--foreground);">
   <button class="btn-filled">Always light</button>
 </div>
@@ -113,7 +124,7 @@ document.documentElement.classList.toggle('dark');
 CSS variables that you can override:
 
 | Variable | Light | Dark |
-|----------|-------|------|
+|---|---|---|
 | `--primary` | Apple Blue | Apple Blue |
 | `--background` | white | gray-950 |
 | `--foreground` | gray-900 | gray-100 |
@@ -123,4 +134,4 @@ CSS variables that you can override:
 
 ## License
 
-MIT
+[MIT](LICENSE)
