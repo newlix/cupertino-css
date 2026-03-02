@@ -13,7 +13,7 @@
       }
 
       // Set ARIA attributes
-      const list = buttons[0] && buttons[0].parentElement;
+      const list = tabGroup.querySelector("[data-tab-list]") || (buttons[0] && buttons[0].parentElement);
       if (list) {
         list.setAttribute("role", "tablist");
         list.setAttribute("aria-orientation", "horizontal");

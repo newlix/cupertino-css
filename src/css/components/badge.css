@@ -12,7 +12,6 @@
   letter-spacing: 0.02em;
   max-width: 5rem;
   overflow: hidden;
-  text-overflow: ellipsis;
   box-shadow: 0 0 0 2px var(--color-background);
 }
 .badge-dot {

@@ -56,7 +56,6 @@
     --color-accent-foreground: var(--color-accent-foreground);
     --color-border: var(--color-border);
     --color-border-solid: var(--color-border-solid);
-    --color-input: var(--color-input);
     --color-ring: var(--color-ring);
     --color-destructive: var(--color-destructive);
     --color-destructive-hover: var(--color-destructive-hover);
@@ -232,7 +231,6 @@
   --color-accent-foreground: var(--color-secondary-foreground);
   --color-border: oklch(0.862 0.007 286.02 / 0.8);
   --color-border-solid: oklch(0.862 0.007 286.02 / 0.8);
-  --color-input: oklch(0.862 0.007 286.02 / 0.8);
   --color-ring: oklch(0.563 0.193 256.16 / 0.1);
   --color-destructive: oklch(0.654 0.232 28.66);
   --color-destructive-hover: oklch(0.605 0.215 28.47);
@@ -291,7 +289,6 @@
   --color-accent-foreground: var(--color-secondary-foreground);
   --color-border: oklch(0.349 0.003 286.22);
   --color-border-solid: oklch(0.402 0.003 286.25);
-  --color-input: oklch(0.402 0.003 286.25);
   --input-border: oklch(0.402 0.003 286.25);
   --input-border-hover: oklch(0.460 0.003 286.25);
   --color-ring: oklch(0.669 0.181 251.84 / 0.2);
@@ -336,26 +333,6 @@
   }
   :focus-visible {
     outline: none;
-  }
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes slideDown {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(8px);
-    }
   }
   @keyframes dialogShow {
     from {
@@ -692,7 +669,6 @@
       letter-spacing: 0.02em;
       max-width: 5rem;
       overflow: hidden;
-      text-overflow: ellipsis;
       box-shadow: 0 0 0 2px var(--color-background);
     }
     .badge-dot {
@@ -931,7 +907,7 @@
       &:active:not([disabled]):not([aria-disabled="true"]) {
         opacity: 0.85;
       }
-      &:disabled, &[disabled], &[aria-disabled="true"] {
+      &:disabled, &[aria-disabled="true"] {
         pointer-events: none;
         opacity: 0.38;
       }
@@ -1060,21 +1036,6 @@
       &:disabled, &[aria-disabled="true"] {
         pointer-events: none;
         opacity: 0.3;
-      }
-      &:is(.dark *) {
-        opacity: 0.3;
-        &[aria-current="page"] {
-          opacity: 1;
-        }
-        &:hover:not([aria-current="page"]) {
-          opacity: 0.5;
-        }
-        &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
-          opacity: 0.7;
-        }
-        &:disabled, &[aria-disabled="true"] {
-          opacity: 0.3;
-        }
       }
       @media (pointer: coarse) {
         position: relative;
@@ -1205,11 +1166,6 @@
         animation: indeterminate 1.2s var(--apple-ease) infinite;
       }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .progress-indeterminate::after {
-        animation: none;
-      }
-    }
     .slider {
       display: block;
       width: 100%;
@@ -1219,7 +1175,6 @@
       --slider-value: 0%;
       height: 4px;
       background: linear-gradient( to right, var(--color-primary) 0%, var(--color-primary) var(--slider-value), var(--surface-5) var(--slider-value), var(--surface-5) 100% );
-      accent-color: var(--color-primary);
       &::-webkit-slider-runnable-track {
         height: 4px;
         background: linear-gradient( to right, var(--color-primary) 0%, var(--color-primary) var(--slider-value), var(--surface-5) var(--slider-value), var(--surface-5) 100% );
@@ -1340,11 +1295,6 @@
       -webkit-mask-repeat: no-repeat;
       mask-repeat: no-repeat;
       animation: activity-spin 1.0s steps(8, end) infinite;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .activity-indicator {
-        animation: none;
-      }
     }
     .activity-indicator-sm {
       width: calc(var(--spacing) * 4);
@@ -1531,6 +1481,9 @@
       & > *:last-child {
         border-radius: 0 0 var(--radius) var(--radius);
       }
+      & > *:only-child {
+        border-radius: var(--radius);
+      }
     }
     .popover {
       position: relative;
@@ -1618,7 +1571,7 @@
       & [popover] hr {
         margin-inline: calc(var(--spacing) * 1.5);
         margin-block: calc(var(--spacing) * 1);
-        height: 1px;
+        height: 0.5px;
         background: var(--panel-border);
       }
     }
@@ -2354,7 +2307,6 @@
       width: 100%;
       overflow-x: auto;
       padding-inline: 1px;
-      -webkit-overflow-scrolling: touch;
     }
     fieldset {
       border-radius: var(--radius-xl);

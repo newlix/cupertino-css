@@ -9,8 +9,3 @@
     animation: indeterminate 1.2s var(--apple-ease) infinite;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .progress-indeterminate::after {
-    animation: none;
-  }
-}

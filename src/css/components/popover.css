@@ -58,7 +58,8 @@
     }
   }
   & [popover] hr {
-    @apply my-1 h-px mx-1.5;
+    @apply my-1 mx-1.5;
+    height: 0.5px;
     background: var(--panel-border);
   }
 }

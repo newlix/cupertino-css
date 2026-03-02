@@ -13,11 +13,8 @@
 
 - [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`. Help tag: add `data-help="Label"` for hover tooltip.
 - [Checkbox](https://ciderui.com/components/checkbox.html): `checkbox` — pure CSS checkbox styling.
-
 - [Input](https://ciderui.com/components/input.html): `input` — styled text input.
-
 - [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
-- [Label](https://ciderui.com/components/label.html): `label` — styled form label.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `radio` — pure CSS radio styling.
 - [Select](https://ciderui.com/components/select.html): Native `<select>` styling.
 - [Slider](https://ciderui.com/components/slider.html): `slider` — styled range input.
@@ -30,39 +27,33 @@
 
 ### Navigation
 
+- [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — breadcrumb navigation with separator arrows.
 - [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
+- [Pagination](https://ciderui.com/components/pagination.html): `pagination` — page navigation buttons.
 - [Separator](https://ciderui.com/components/separator.html): Classless `<hr>` for horizontal dividers; `.separator-vertical`, `.separator-label` for variants.
-- [Sidebar](https://ciderui.com/components/sidebar.html): App sidebar layout component.
+- [Segmented Control](https://ciderui.com/components/segmented-control.html): `segmented-control` — tabbed segment selector. Requires `js/tabs.js`.
+
 ### Overlays & Dialogs
 
 - [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Alerts and form dialogs. Optional `js/dialog.js`.
-- [Menu](https://ciderui.com/components/menu.html): `menu` — dropdown menu using native Popover API. Requires `js/menu.js`.
-
-
 - [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
-- [Sheet](https://ciderui.com/components/sheet.html): Full-height slide-out panel. Requires `js/sheet.js`.
-
 
 ### Feedback & Status
 
-- [Callout](https://ciderui.com/components/callout.html): `callout`
-- [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
-
-- [Progress](https://ciderui.com/components/progress.html): `progress` > `.progress-bar` `progress-sm` `progress-indeterminate`
 - [Activity Indicator](https://ciderui.com/components/activity-indicator.html): `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` — Apple-style loading indicator.
+- [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
+- [Callout](https://ciderui.com/components/callout.html): `callout` — informational callout box.
 - [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
+- [Progress](https://ciderui.com/components/progress.html): `<progress>` `.progress-indeterminate`
 
 ### Display & Media
 
-
 - [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
-
-
+- [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
-
-- [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
+- [Tag](https://ciderui.com/components/tag.html): `tag` — small label for categorisation.
 
 ## Quick Start
 
@@ -90,7 +81,7 @@ Most components are pure CSS. Import JS only for interactive behavior:
 
 ```js
 import "ciderui/dialog.js";
-import "ciderui/menu.js";
 import "ciderui/tabs.js";
 import "ciderui/hud.js";
+import "ciderui/popover.js";
 ```

@@ -11,11 +11,11 @@
     "title": "Components",
     "items": [
       { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
-{ "label": "Avatar", "href": "components/avatar.html" },
+      { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
-      { "label": "Callout", "href": "components/callout.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
       { "label": "Button", "href": "components/button.html" },
+      { "label": "Callout", "href": "components/callout.html" },
       { "label": "Card", "href": "components/card.html" },
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
@@ -31,10 +31,10 @@
       { "label": "Segmented Control", "href": "components/segmented-control.html" },
       { "label": "Select", "href": "components/select.html" },
       { "label": "Separator", "href": "components/separator.html" },
-      { "label": "Tag", "href": "components/tag.html" },
       { "label": "Slider", "href": "components/slider.html" },
       { "label": "Switch", "href": "components/switch.html" },
       { "label": "Table", "href": "components/table.html" },
+      { "label": "Tag", "href": "components/tag.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
       { "label": "Verification Code", "href": "components/verification-code.html" }
     ]

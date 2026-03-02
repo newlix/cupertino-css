@@ -413,7 +413,7 @@ progress {
 /* ─── Table responsive wrapper ─── */
 .table-responsive {
   @apply w-full overflow-x-auto -mx-px px-px;
-  -webkit-overflow-scrolling: touch;
+
 }
 
 /* ─── Fieldset ─── */

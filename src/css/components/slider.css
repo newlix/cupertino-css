@@ -10,7 +10,6 @@
     var(--surface-5) var(--slider-value),
     var(--surface-5) 100%
   );
-  accent-color: var(--color-primary);
   &::-webkit-slider-runnable-track {
     height: 4px;
     background: linear-gradient(
