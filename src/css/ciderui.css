@@ -293,6 +293,7 @@
     @import "./components/avatar.css";
     @import "./components/page-control.css";
     @import "./components/pagination.css";
+    @import "./components/breadcrumb.css";
     @import "./components/progress.css";
     @import "./components/slider.css";
     @import "./components/activity-indicator.css";
