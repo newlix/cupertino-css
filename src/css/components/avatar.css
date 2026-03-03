@@ -10,7 +10,7 @@
   &:is(img) { display: inline-block; object-fit: cover; }
   & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; }
   &:is(button, a) {
-    @apply cursor-pointer no-underline;
+    @apply cursor-pointer no-underline border-none;
     transition: transform var(--transition-fast) var(--apple-ease), filter var(--transition-fast) var(--apple-ease);
     &:hover { filter: brightness(var(--hover-brightness)); }
     &:active { transform: scale(var(--apple-press-scale)); }

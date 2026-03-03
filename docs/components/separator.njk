@@ -34,15 +34,15 @@
   {% call example("Vertical") %}
 <div class="flex items-center gap-4 h-8">
   <span class="text-sm">Section A</span>
-  <div class="separator-vertical"></div>
+  <div class="separator-vertical" role="separator" aria-orientation="vertical"></div>
   <span class="text-sm">Section B</span>
-  <div class="separator-vertical"></div>
+  <div class="separator-vertical" role="separator" aria-orientation="vertical"></div>
   <span class="text-sm">Section C</span>
 </div>
 {% endcall %}
 
   {% call example("With Label") %}
-<div class="separator-label">or continue with</div>
+<div class="separator-label" role="separator">or continue with</div>
 {% endcall %}
 
   {% call example("In Profile Card") %}
@@ -57,12 +57,12 @@
       <p class="font-medium">Framework</p>
       <small>Tailwind CSS</small>
     </div>
-    <div class="separator-vertical h-8"></div>
+    <div class="separator-vertical h-8" role="separator" aria-orientation="vertical"></div>
     <div>
       <p class="font-medium">Version</p>
       <small>v2.4.0</small>
     </div>
-    <div class="separator-vertical h-8"></div>
+    <div class="separator-vertical h-8" role="separator" aria-orientation="vertical"></div>
     <div>
       <p class="font-medium">Components</p>
       <small>40+</small>

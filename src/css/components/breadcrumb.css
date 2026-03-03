@@ -5,7 +5,7 @@
     @apply text-tertiary-foreground no-underline;
     transition: color var(--transition-fast) var(--apple-ease);
     &:hover { @apply text-foreground no-underline; }
-    &:active { color: var(--color-foreground); opacity: 0.7; }
+    &:active { color: var(--color-tertiary-foreground); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
   }
   & [aria-current="page"] {
@@ -20,9 +20,20 @@
     margin-inline-end: 0.375rem;
     vertical-align: middle;
     background: var(--color-tertiary-foreground);
-    opacity: 0.7;
-    .dark & { opacity: 0.85; }
+    opacity: 0.8;
+    .dark & { opacity: 0.9; }
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+  @media (forced-colors: active) {
+    & a {
+      color: LinkText;
+      &:hover { color: LinkText; text-decoration: underline; }
+      &:focus-visible { outline: 2px solid Highlight; }
+    }
+    & [aria-current="page"] { color: CanvasText; }
+    & > :not(:first-child):not([aria-hidden="true"])::before {
+      background: ButtonText;
+    }
   }
 }

@@ -12,7 +12,7 @@
   </dl>
 
   {% call example("Default") %}
-<input type="range" min="0" max="100" value="33" class="slider w-full max-w-sm" />
+<input type="range" min="0" max="100" value="33" class="slider w-full max-w-sm" aria-label="Value" />
 {% endcall %}
 
   {% call example("With Label") %}
@@ -43,7 +43,7 @@
 {% endcall %}
 
   {% call example("Disabled") %}
-<input type="range" min="0" max="100" value="50" class="slider w-full max-w-sm" disabled />
+<input type="range" min="0" max="100" value="50" class="slider w-full max-w-sm" disabled aria-label="Disabled slider" />
 {% endcall %}
 
   <section class="mt-12">

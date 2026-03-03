@@ -20,4 +20,8 @@
   &.activity-indicator-sm { @apply size-4; }
   &.activity-indicator-md { width: 37px; height: 37px; }
   &.activity-indicator-lg { width: 100px; height: 100px; }
+  @media (forced-colors: active) {
+    forced-color-adjust: none;
+    background-color: ButtonText;
+  }
 }

@@ -11,8 +11,8 @@
 .segmented-control [data-tab-indicator] {
   @apply absolute rounded-[6px] pointer-events-none;
   corner-shape: squircle;
-  top: 3px;
-  bottom: 3px;
+  top: 4px;
+  bottom: 4px;
   left: 0;
   width: 0;
   opacity: 0;
@@ -28,6 +28,7 @@
   min-height: 32px;
   transition: color var(--transition-normal) var(--apple-ease);
   &:hover:not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
+  &:active:not(:disabled):not([aria-disabled="true"]) { opacity: 0.7; }
   &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.4; }
   &[data-active],
@@ -39,4 +40,18 @@
   @apply py-4;
   &:not([data-active]) { @apply hidden; }
   &[data-active] { animation: segFadeIn 0.2s var(--apple-ease); }
+}
+@media (forced-colors: active) {
+  .segmented-control [data-tab-list] {
+    border: 1px solid ButtonText;
+  }
+  .segmented-control [data-tab-indicator] {
+    background: Highlight;
+    box-shadow: none;
+  }
+  .segmented-control [data-tab] {
+    &:focus-visible { outline: 2px solid Highlight; }
+    &[data-active],
+    &[aria-selected="true"] { color: HighlightText; }
+  }
 }

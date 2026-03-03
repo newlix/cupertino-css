@@ -20,6 +20,13 @@
       });
       if (!otp.getAttribute("role")) otp.setAttribute("role", "group");
       if (!otp.getAttribute("aria-label")) otp.setAttribute("aria-label", "Verification code");
+      const describedBy = otp.getAttribute("aria-describedby");
+      if (describedBy) {
+        const errorEl = document.getElementById(describedBy);
+        if (errorEl && !errorEl.getAttribute("aria-live")) {
+          errorEl.setAttribute("aria-live", "polite");
+        }
+      }
 
       let hidden = otp.querySelector("input[type=hidden]");
       if (!hidden) {
@@ -95,7 +102,7 @@
 
         input.addEventListener("paste", (e) => {
           e.preventDefault();
-          const text = (e.clipboardData).getData("text").replace(/\D/g, "");
+          const text = (e.clipboardData?.getData("text") || "").replace(/\D/g, "");
           if (!text) return;
           pasting = true;
           // Always fill from the first input when a full code is pasted

@@ -8,13 +8,16 @@
      utilities (e.g. text-destructive on the heading) when needed.
    - Body text uses foreground at 70% opacity — preserves quiet hierarchy while
      meeting WCAG AA contrast (>4.5:1).
-   - Heading font-size is intentionally unset — inherits from browser/reset defaults,
-     allowing natural hierarchy without over-specifying.
+   - Heading font-size matches body (text-sm) for uniform callout density — hierarchy
+     comes from font-semibold weight alone, consistent with Apple's quiet info style.
    - text-sm — callout is supplementary info, one step below body text.
 */
 .callout {
   @apply px-4 py-3.5 text-sm leading-snug text-foreground;
   border-radius: var(--radius);
+  transition: background-color var(--transition-fast) var(--apple-ease),
+              border-color var(--transition-fast) var(--apple-ease),
+              color var(--transition-fast) var(--apple-ease);
   corner-shape: squircle;
   background: var(--color-secondary);
   border: 1px solid var(--panel-border);

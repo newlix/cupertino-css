@@ -16,6 +16,7 @@
   border-radius: 50%;
   background: var(--color-foreground);
   opacity: 0.3;
+  .dark & { opacity: 0.38; }
   cursor: pointer;
   transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {

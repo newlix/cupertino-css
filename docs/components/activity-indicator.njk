@@ -19,9 +19,10 @@
 
   {% call example("Sizes") %}
 <div class="flex flex-wrap items-center gap-4">
-  <span class="activity-indicator activity-indicator-sm"></span>
-  <span class="activity-indicator"></span>
-  <span class="activity-indicator activity-indicator-lg"></span>
+  <span class="activity-indicator activity-indicator-sm" role="status" aria-label="Loading"></span>
+  <span class="activity-indicator" role="status" aria-label="Loading"></span>
+  <span class="activity-indicator activity-indicator-md" role="status" aria-label="Loading"></span>
+  <span class="activity-indicator activity-indicator-lg" role="status" aria-label="Loading"></span>
 </div>
 {% endcall %}
 

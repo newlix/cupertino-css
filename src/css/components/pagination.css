@@ -6,6 +6,7 @@
     corner-shape: squircle;
     min-height: 32px;
     min-width: 32px;
+    @media (pointer: coarse) { min-height: 44px; min-width: 44px; }
     transition: color var(--transition-normal) var(--apple-ease), background-color var(--transition-normal) var(--apple-ease);
     &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
@@ -23,5 +24,13 @@
     @apply inline-flex items-center justify-center text-[13px] text-tertiary-foreground;
     min-height: 32px;
     min-width: 32px;
+  }
+  @media (forced-colors: active) {
+    & > button, & > a {
+      border: 1px solid ButtonText;
+      &[data-active], &[aria-current="page"] { background: Highlight; color: HighlightText; border-color: Highlight; }
+      &:focus-visible { outline: 2px solid Highlight; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+    }
   }
 }

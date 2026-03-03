@@ -157,7 +157,7 @@ textarea {
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
-  &:read-only { background-color: var(--surface-1); cursor: default; }
+  &:read-only { background-color: var(--surface-1); cursor: default; resize: none; }
   &:autofill,
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
@@ -170,7 +170,7 @@ textarea {
 }
 
 /* ─── Select ─── */
-select {
+select:not([multiple]) {
   @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
@@ -196,7 +196,8 @@ select {
 
 /* ─── Checkbox ─── */
 input[type="checkbox"]:not([role="switch"]) {
-  @apply appearance-none shrink-0 rounded-[4px] border bg-card cursor-pointer;
+  @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
+  corner-shape: squircle;
   width: 18px;
   height: 18px;
   border-color: var(--input-border);
@@ -220,6 +221,7 @@ input[type="checkbox"]:not([role="switch"]) {
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:hover:indeterminate:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { @apply bg-destructive border-destructive; }
@@ -245,6 +247,7 @@ input[type="radio"] {
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { border-color: var(--color-destructive); background-color: var(--color-destructive); }
@@ -261,7 +264,7 @@ input[type="checkbox"][role="switch"] {
   height: 31px;
   background: var(--surface-5);
   transition: background-color var(--transition-slow) var(--apple-ease);
-  &:hover:not(:disabled):not(:checked) { background: oklch(0 0 0 / 0.14); }
+  &:hover:not(:disabled):not(:checked) { background: oklch(0 0 0 / 0.22); }
   .dark &:hover:not(:disabled):not(:checked) { background: oklch(1 0 0 / 0.22); }
   &:hover:not(:disabled):checked { background: var(--color-switch-hover); }
   &::after {
@@ -272,7 +275,7 @@ input[type="checkbox"][role="switch"] {
     width: 27px;
     height: 27px;
     box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
-    transition: transform var(--transition-slow) var(--apple-ease);
+    transition: transform var(--transition-slow) var(--apple-ease), width var(--transition-slow) var(--apple-ease);
     @media (prefers-reduced-motion: no-preference) {
       transition-timing-function: var(--apple-spring);
     }
@@ -281,9 +284,13 @@ input[type="checkbox"][role="switch"] {
     background: var(--color-switch);
     &::after { transform: translateX(20px); }
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.40); outline: 2px solid transparent; outline-offset: 2px; }
-  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.45); }
+  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.50); outline: 2px solid transparent; outline-offset: 2px; }
+  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.60); }
   &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled) {
+    &::after { width: 31px; }
+    &:checked::after { transform: translateX(16px); }
+  }
   .dark & {
     &::after {
       box-shadow: 0 2px 4px oklch(0 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3);
@@ -353,7 +360,7 @@ table {
   }
   & th {
     @apply px-4 py-3 font-semibold text-tertiary-foreground;
-    font-size: 11px;
+    font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
@@ -367,7 +374,7 @@ table {
   }
   & tbody tr {
     transition: background-color var(--transition-normal) var(--apple-ease);
-    &:hover { background: var(--surface-1); }
+    &:hover, &:focus-within { background: var(--surface-1); }
     &[data-selected], &[aria-selected="true"] {
       background: oklch(from var(--color-primary) l c h / 0.10);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.18); }
@@ -482,4 +489,18 @@ abbr[title] {
   text-decoration: underline dotted;
   text-decoration-color: var(--color-tertiary-foreground);
   text-underline-offset: 3px;
+}
+
+/* ─── Forced colors (Windows High Contrast Mode) ─── */
+@media (forced-colors: active) {
+  input[type="checkbox"]:not([role="switch"]),
+  input[type="radio"] {
+    appearance: auto;
+  }
+  input[type="checkbox"][role="switch"] {
+    border: 2px solid ButtonText;
+    &:checked { background: Highlight; border-color: Highlight; }
+    &::after { background: ButtonText; }
+    &:checked::after { background: HighlightText; }
+  }
 }

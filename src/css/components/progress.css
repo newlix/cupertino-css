@@ -42,4 +42,8 @@ progress {
       background: var(--color-primary);
     }
   }
+  @media (forced-colors: active) {
+    border: 1px solid ButtonText;
+    &::after { background: Highlight; }
+  }
 }

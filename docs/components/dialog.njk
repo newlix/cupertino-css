@@ -16,7 +16,7 @@
   </dl>
 
   {% call example("Default") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Close Document</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Close Document</button>
 
 <dialog>
   <header>
@@ -32,7 +32,7 @@
 {% endcall %}
 
   {% call example("Destructive") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-filled btn-destructive">Delete Project</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-filled btn-destructive">Delete Project</button>
 
 <dialog>
   <header>
@@ -47,7 +47,7 @@
 {% endcall %}
 
   {% call example("With Icon") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Sign Out</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Sign Out</button>
 
 <dialog>
   <header>
@@ -65,7 +65,7 @@
 {% endcall %}
 
   {% call example("Form Dialog") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Edit Profile</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Edit Profile</button>
 
 <dialog>
   <header>
@@ -90,7 +90,7 @@
 {% endcall %}
 
   {% call example("Scrollable Content") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Scrollable Dialog</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Scrollable Dialog</button>
 
 <dialog>
   <header>
@@ -115,7 +115,7 @@
 {% endcall %}
 
   {% call example("With Close Button") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Share Link</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Share Link</button>
 
 <dialog>
   <button aria-label="Close" onclick="closeDialog(this.closest('dialog'))" class="dialog-close">
@@ -135,7 +135,7 @@
 {% endcall %}
 
   {% call example("Custom Content") %}
-<button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Invite Members</button>
+<button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Invite Members</button>
 
 <dialog style="max-width: 480px;">
   <header>

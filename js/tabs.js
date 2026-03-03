@@ -36,7 +36,7 @@
       if (indicator && list) {
         if (tabGroup._tabsResizeObserver) tabGroup._tabsResizeObserver.disconnect();
         const ro = new ResizeObserver(() => {
-          if (!list.isConnected) { ro.disconnect(); return; }
+          if (!list.isConnected) { ro.disconnect(); tabGroup._tabsResizeObserver = null; return; }
           const activeBtn = tabGroup.querySelector("[data-tab][data-active]");
           if (activeBtn) positionIndicator(activeBtn);
         });

@@ -67,7 +67,7 @@
 
     const labelEl = document.createElement("span");
     labelEl.className = "hud-label";
-    labelEl.textContent = label;
+    labelEl.textContent = (label != null) ? String(label) : "";
     hud.appendChild(labelEl);
 
     container.appendChild(hud);

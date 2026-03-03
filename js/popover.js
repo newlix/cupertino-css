@@ -58,6 +58,10 @@
         }
         popover.classList.toggle("popover-flipped-top", isFlippedTop && !wrapper.classList.contains("popover-top"));
 
+        const vOrigin = isFlippedTop ? "bottom" : "top";
+        const hOrigin = wrapper.classList.contains("popover-end") ? "right" : "left";
+        popover.style.setProperty("--popover-origin", `${vOrigin} ${hOrigin}`);
+
         popover.style.top = `${top}px`;
         popover.style.left = `${left}px`;
 
@@ -103,12 +107,10 @@
           }
           // Cleanup any stale positioning listeners before adding new ones
           popover._cleanupPositioning();
-          // Set transform-origin based on alignment
-          if (wrapper.classList.contains("popover-end")) {
-            popover.style.setProperty("--popover-origin", "top right");
-          } else {
-            popover.style.setProperty("--popover-origin", "top left");
-          }
+          // Set initial transform-origin (updated by positionPopover on flip)
+          const isEnd = wrapper.classList.contains("popover-end");
+          const isTop = wrapper.classList.contains("popover-top");
+          popover.style.setProperty("--popover-origin", `${isTop ? "bottom" : "top"} ${isEnd ? "right" : "left"}`);
           requestAnimationFrame(positionPopover);
           let rafPending = false;
           popover._rafPositioner = () => {
@@ -173,6 +175,7 @@
           if (popover._focusTrapHandler) popover.removeEventListener("keydown", popover._focusTrapHandler);
           if (popover._menuClickHandler) popover.removeEventListener("click", popover._menuClickHandler);
           if (popover._menuKeyHandler) popover.removeEventListener("keydown", popover._menuKeyHandler);
+          popover._escapeDismiss = false;
           popover._popoverInit = false;
         }
       });

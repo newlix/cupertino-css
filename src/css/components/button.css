@@ -43,7 +43,7 @@
   border: 1px solid var(--color-border-solid);
   @media (min-resolution: 2dppx) { border-width: 0.5px; }
   &:hover { background: var(--surface-3); border-color: var(--input-border-hover); }
-  &:active { background: var(--surface-4); }
+  &:active { background: var(--surface-4); border-color: var(--input-border-hover); }
 }
 .btn-plain {
   @apply bg-transparent text-primary;
@@ -80,7 +80,7 @@
   .dark & {
     border-color: oklch(from var(--color-destructive) l c h / 0.35);
     &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); border-color: oklch(from var(--color-destructive) l c h / 0.40); }
+    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); border-color: oklch(from var(--color-destructive) l c h / 0.50); }
   }
 }
 .btn-plain.btn-destructive {

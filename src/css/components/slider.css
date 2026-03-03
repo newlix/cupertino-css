@@ -1,6 +1,7 @@
 /* ========== SLIDER ========== */
 .slider {
   @apply block w-full cursor-pointer appearance-none rounded-full;
+  outline: none;
   --slider-value: 0%;
   /* Thumb shadow tokens — define once, override in dark mode */
   --slider-thumb-shadow: 0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
@@ -48,7 +49,7 @@
     transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   }
   &:hover:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
-  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); transform: scale(var(--apple-press-scale)); }
+  &:active:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-active); transform: scale(var(--apple-press-scale)); }
   &::-moz-range-thumb {
     @apply rounded-full;
     background: var(--slider-thumb);
@@ -88,5 +89,9 @@
       width: 34px;
       height: 34px;
     }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::-webkit-slider-thumb { transition: none; }
+    &::-moz-range-thumb { transition: none; }
   }
 }

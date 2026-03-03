@@ -1,7 +1,7 @@
 {% extends "_includes/layout.njk" %}
 {% from "_includes/macros.njk" import example %}
 {% set title = "HUD" %}
-{% set description = "Transient pill-shaped notification that auto-dismisses." %}
+{% set description = "Transient centered notification that auto-dismisses." %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
     <dt><code>.hud-container</code></dt>
     <dd>Fixed center-screen container for HUD notifications.</dd>
     <dt><code>.hud</code></dt>
-    <dd>Pill-shaped transient notification with blur backdrop.</dd>
+    <dd>Rounded transient notification with blur backdrop.</dd>
     <dt><code>.hud-label</code></dt>
     <dd>Text label inside the HUD pill.</dd>
     <dt><code>showHUD(label, options?)</code></dt>
@@ -41,7 +41,7 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Transient confirmation overlay. Call <code>showHUD(label, options)</code> to display a pill-shaped notification that auto-dismisses after 2 seconds.</p>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Transient confirmation overlay. Call <code>showHUD(label, options)</code> to display a centered notification that auto-dismisses after 1.5 seconds.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/hud.js"&gt;&lt;/script&gt;
