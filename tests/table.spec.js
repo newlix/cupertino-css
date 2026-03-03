@@ -24,7 +24,7 @@ test.describe('Table', () => {
   test('th has uppercase styling', async ({ page }) => {
     const th = preview(page).locator('th').first();
     expect(await css(th, 'textTransform')).toBe('uppercase');
-    expect(parseFloat(await css(th, 'fontSize'))).toBe(11);
+    expect(parseFloat(await css(th, 'fontSize'))).toBe(13);
   });
 
   test('table-striped has alternating row backgrounds', async ({ page }) => {

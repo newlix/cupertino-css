@@ -111,7 +111,7 @@ details {
 
 /* ─── Pre / Code block ─── */
 pre {
-  @apply rounded-xl p-4 text-[13px] overflow-x-auto;
+  @apply rounded-lg p-4 text-[13px] overflow-x-auto;
   line-height: 1.6;
   corner-shape: squircle;
   background: var(--surface-2);
@@ -192,7 +192,6 @@ input[type="checkbox"]:not([role="switch"]) {
   @apply appearance-none shrink-0 rounded-[4px] border bg-card cursor-pointer;
   width: 18px;
   height: 18px;
-  corner-shape: squircle;
   border-color: var(--input-border);
   transition: border-color var(--transition-normal) var(--apple-ease), background-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
   &:checked {
@@ -347,7 +346,7 @@ table {
   }
   & th {
     @apply px-4 py-3 font-medium text-tertiary-foreground uppercase tracking-wide;
-    font-size: 11px;
+    font-size: 13px;
   }
   & tbody tr + tr td,
   & tbody tr + tr th {
@@ -360,8 +359,8 @@ table {
     transition: background-color var(--transition-normal) var(--apple-ease);
     &:hover { background: var(--surface-1); }
     &[data-selected], &[aria-selected="true"] {
-      background: oklch(from var(--color-primary) l c h / 0.12);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.24); }
+      background: oklch(from var(--color-primary) l c h / 0.10);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.18); }
     }
   }
   & tfoot tr {

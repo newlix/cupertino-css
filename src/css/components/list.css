@@ -18,7 +18,7 @@
       @apply flex flex-1 flex-col gap-0.5;
       min-width: 0;
       & h3 { @apply text-[17px] font-normal leading-snug truncate mb-0; letter-spacing: -0.01em; }
-      & p { @apply text-[13px] text-tertiary-foreground; overflow-wrap: anywhere; }
+      & p { @apply text-[13px] text-tertiary-foreground truncate; }
     }
     & > svg:last-child:not(:first-child) {
       @apply size-4 shrink-0 text-tertiary-foreground;
@@ -33,7 +33,7 @@
         left: var(--list-separator-inset, 3.75rem);
         height: 1px;
         @media (min-resolution: 2dppx) { height: 0.5px; }
-        background: var(--panel-border);
+        background: var(--color-separator);
       }
     }
   }
@@ -55,7 +55,7 @@
 }
 /* Separator flush with content edge for lists without icons */
 .list-plain {
-  --list-separator-inset: 1rem;
+  --list-separator-inset: 0;
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {

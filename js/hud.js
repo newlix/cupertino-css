@@ -43,7 +43,7 @@
       svgEl.querySelectorAll("script").forEach((s) => s.remove());
       svgEl.querySelectorAll("*").forEach((el) => {
         for (const attr of Array.from(el.attributes)) {
-          if (attr.name.startsWith("on")) el.removeAttribute(attr.name);
+          if (attr.name.startsWith("on") || attr.name === "style") el.removeAttribute(attr.name);
         }
       });
       hud.appendChild(document.adoptNode(svgEl));
@@ -79,7 +79,7 @@
         if (hud.parentElement) hud.remove();
       }
       hud.addEventListener("animationend", removeHud);
-      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
+      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
       animTimer = setTimeout(removeHud, animDuration);
     }
 

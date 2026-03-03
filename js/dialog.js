@@ -35,7 +35,7 @@
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);
     dialog.setAttribute("data-closing", "");
-    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
     dialog._closeTimer = setTimeout(finish, duration);
   }
 
@@ -144,6 +144,7 @@
               savedOverflow = document.body.style.overflow;
             }
             document.body.style.overflow = "hidden";
+            dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
           }
         } else {
@@ -153,6 +154,7 @@
             dialog._closeAnimHandler = null;
           }
           dialog.removeAttribute("data-closing");
+          dialog.removeAttribute("aria-modal");
           teardown();
           if (dialog._previousFocus && document.contains(dialog._previousFocus)) {
             dialog._previousFocus.focus();

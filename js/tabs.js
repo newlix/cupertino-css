@@ -55,7 +55,7 @@
       panels.forEach((panel) => {
         if (!panel.id) panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
         panel.setAttribute("role", "tabpanel");
-        panel.setAttribute("tabindex", "0");
+        panel.setAttribute("tabindex", "-1");
         const panelTarget = panel.getAttribute("data-tab-panel");
         const matchingBtn = Array.from(buttons).find((b) => b.getAttribute("data-tab") === panelTarget);
         if (matchingBtn) {
