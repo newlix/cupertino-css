@@ -107,9 +107,10 @@
       }
 
       buttons.forEach((btn) => {
-        btn.addEventListener("click", () => { activate(btn); });
+        btn._tabClickHandler = () => { activate(btn); };
+        btn.addEventListener("click", btn._tabClickHandler);
 
-        btn.addEventListener("keydown", (e) => {
+        btn._tabKeyHandler = (e) => {
           let targetBtn = null;
           const currentButtons = getButtons();
           const currentIdx = Array.from(currentButtons).indexOf(btn);
@@ -138,9 +139,21 @@
             targetBtn.focus();
             activate(targetBtn);
           }
-        });
+        };
+        btn.addEventListener("keydown", btn._tabKeyHandler);
       });
     });
+  }
+
+  function destroy(tabGroup) {
+    if (!tabGroup._tabsInit) return;
+    if (tabGroup._tabsResizeObserver) { tabGroup._tabsResizeObserver.disconnect(); tabGroup._tabsResizeObserver = null; }
+    const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
+    tabGroup.querySelectorAll(TAB_SEL).forEach((btn) => {
+      if (btn._tabClickHandler) { btn.removeEventListener("click", btn._tabClickHandler); btn._tabClickHandler = null; }
+      if (btn._tabKeyHandler) { btn.removeEventListener("keydown", btn._tabKeyHandler); btn._tabKeyHandler = null; }
+    });
+    tabGroup._tabsInit = false;
   }
 
   if (document.readyState === "loading") {
@@ -150,6 +163,10 @@
   }
 
   document.addEventListener("htmx:afterSettle", init);
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail && evt.detail.elt;
+    if (el && el.hasAttribute && el.hasAttribute("data-tabs")) destroy(el);
+  });
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.tabs = { init };
+  window.CiderUI.tabs = { init, destroy };
 })();

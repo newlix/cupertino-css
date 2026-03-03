@@ -17,7 +17,8 @@
       if (el._sliderInit) return;
       el._sliderInit = true;
       update(el);
-      el.addEventListener("input", () => { update(el); });
+      el._sliderInputHandler = () => { update(el); };
+      el.addEventListener("input", el._sliderInputHandler);
       // Intercept .value property setter so programmatic el.value = x updates the fill
       const desc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
       if (desc && desc.get && desc.set) {
@@ -52,6 +53,7 @@
   function destroy(el) {
     if (!el._sliderInit) return;
     if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
+    if (el._sliderInputHandler) { el.removeEventListener("input", el._sliderInputHandler); el._sliderInputHandler = null; }
     delete el.value;
     el._sliderInit = false;
   }

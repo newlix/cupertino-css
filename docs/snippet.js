@@ -62,9 +62,11 @@ document.addEventListener("click", function (e) {
     snippet.querySelectorAll("header > nav > button[data-tab]").forEach(function (t) {
       t.removeAttribute("data-active");
       t.setAttribute("aria-selected", "false");
+      t.setAttribute("tabindex", "-1");
     });
     tab.setAttribute("data-active", "");
     tab.setAttribute("aria-selected", "true");
+    tab.setAttribute("tabindex", "0");
 
     snippet.querySelectorAll("pre[data-panel]").forEach(function (p) {
       if (p.getAttribute("data-panel") === target) {

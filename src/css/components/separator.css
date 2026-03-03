@@ -22,3 +22,7 @@
     @media (min-resolution: 2dppx) { height: 0.5px; }
   }
 }
+@media (forced-colors: active) {
+  .separator-vertical { background: ButtonText; }
+  .separator-label::before, .separator-label::after { background: ButtonText; }
+}
