@@ -6,7 +6,7 @@
       tabGroup._tabsInit = true;
 
       const buttons = tabGroup.querySelectorAll(":scope > [data-tab], :scope > * > [data-tab]");
-      const panels = tabGroup.querySelectorAll(":scope > [data-tab-panel]");
+      const panels = tabGroup.querySelectorAll(":scope > [data-tab-panel], :scope > * > [data-tab-panel]");
 
       function isDisabled(btn) {
         return btn.disabled || btn.getAttribute("aria-disabled") === "true";

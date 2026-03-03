@@ -1,6 +1,6 @@
 // Popover — ciderui
 (function () {
-  const FOCUSABLE_NOT_DISABLED = 'button:not([disabled]):not([aria-disabled="true"]), a:not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE_NOT_DISABLED = 'button:not([disabled]):not([aria-disabled="true"]), a[href]:not([disabled]):not([aria-disabled="true"])';
 
   function init() {
     document.querySelectorAll(".popover [popover]").forEach((popover) => {
@@ -85,6 +85,7 @@
             }
             popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
               item.setAttribute("role", "menuitem");
+              item.setAttribute("data-ciderui-menuitem", "");
             });
           } else {
             popover.setAttribute("role", "dialog");
@@ -113,8 +114,9 @@
           if (isMenu) {
             popover.removeAttribute("role");
             popover.removeAttribute("aria-labelledby");
-            popover.querySelectorAll('[role="menuitem"]').forEach((item) => {
+            popover.querySelectorAll("[data-ciderui-menuitem]").forEach((item) => {
               item.removeAttribute("role");
+              item.removeAttribute("data-ciderui-menuitem");
             });
           } else {
             popover.removeAttribute("role");
