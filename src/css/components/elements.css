@@ -132,7 +132,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
   &:read-only { background-color: var(--surface-1); cursor: default; }
   &:autofill,
   &:-webkit-autofill {
@@ -156,7 +156,7 @@ textarea {
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
   &:read-only { background-color: var(--surface-1); cursor: default; resize: none; }
   &:autofill,
   &:-webkit-autofill {
@@ -187,7 +187,7 @@ select:not([multiple]) {
   }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
@@ -218,10 +218,10 @@ input[type="checkbox"]:not([role="switch"]) {
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
-  &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:hover:indeterminate:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
-  &:active:not(:disabled) { transform: scale(0.92); }
+  &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+  &:hover:indeterminate:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { @apply bg-destructive border-destructive; }
@@ -245,9 +245,9 @@ input[type="radio"] {
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
-  &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
-  &:active:not(:disabled) { transform: scale(0.92); }
+  &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { border-color: var(--color-destructive); background-color: var(--color-destructive); }
@@ -264,9 +264,9 @@ input[type="checkbox"][role="switch"] {
   height: 31px;
   background: var(--surface-5);
   transition: background-color var(--transition-slow) var(--apple-ease);
-  &:hover:not(:disabled):not(:checked) { background: oklch(0 0 0 / 0.22); }
-  .dark &:hover:not(:disabled):not(:checked) { background: oklch(1 0 0 / 0.22); }
-  &:hover:not(:disabled):checked { background: var(--color-switch-hover); }
+  &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: oklch(0 0 0 / 0.22); }
+  .dark &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: oklch(1 0 0 / 0.22); }
+  &:hover:not(:disabled):not([aria-disabled="true"]):checked { background: var(--color-switch-hover); }
   &::after {
     content: "";
     @apply absolute rounded-full bg-white;
@@ -286,8 +286,8 @@ input[type="checkbox"][role="switch"] {
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.50); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.60); }
-  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
-  &:active:not(:disabled) {
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:active:not(:disabled):not([aria-disabled="true"]) {
     &::after { width: 31px; }
     &:checked::after { transform: translateX(16px); }
   }

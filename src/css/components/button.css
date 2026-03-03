@@ -4,7 +4,7 @@
 .btn-tinted,
 .btn-bezelled,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-5 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none cursor-pointer select-none;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-5 py-3 text-[15px] leading-[1.33] font-medium cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;

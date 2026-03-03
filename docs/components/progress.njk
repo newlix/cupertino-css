@@ -14,7 +14,7 @@
   </dl>
 
   {% call example("Default") %}
-<progress value="60" max="100"></progress>
+<progress value="60" max="100" aria-label="Progress"></progress>
 {% endcall %}
 
   {% call example("With Label") %}
@@ -23,7 +23,7 @@
     <span class="font-medium">Uploading...</span>
     <span class="text-tertiary-foreground">73%</span>
   </div>
-  <progress value="73" max="100"></progress>
+  <progress value="73" max="100" aria-label="Uploading"></progress>
 </div>
 {% endcall %}
 
@@ -38,7 +38,7 @@
     <span class="text-xs text-tertiary-foreground">7.2 GB / 15 GB</span>
   </div>
   <div class="mt-3">
-    <progress value="48" max="100"></progress>
+    <progress value="48" max="100" aria-label="Storage usage"></progress>
   </div>
   <p class="mt-2 text-xs text-tertiary-foreground">48% of storage used. Upgrade for more space.</p>
 </div>

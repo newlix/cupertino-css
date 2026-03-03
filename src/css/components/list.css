@@ -38,7 +38,7 @@
     }
   }
   & > a, & > button {
-    @apply no-underline text-foreground;
+    @apply no-underline text-foreground cursor-pointer;
     &:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); text-decoration: none; }
     &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }

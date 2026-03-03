@@ -109,8 +109,8 @@
     background: Highlight;
     color: HighlightText;
   }
-  .popover-menu [popover] button:disabled,
-  .popover-menu [popover] a[aria-disabled="true"] {
+  .popover-menu [popover] :is(button, a):disabled,
+  .popover-menu [popover] :is(button, a)[aria-disabled="true"] {
     color: GrayText;
   }
 }
