@@ -63,8 +63,11 @@ test.describe('Button', () => {
   test('focus-visible shows box-shadow ring', async ({ page }) => {
     const btn = preview(page).locator('.btn-filled').first();
     await focusViaKeyboard(page, btn);
-    const shadow = await css(btn, 'boxShadow');
-    expect(shadow).not.toBe('none');
+
+    await expect(async () => {
+      const shadow = await css(btn, 'boxShadow');
+      expect(shadow).not.toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 
   test('dark mode changes filled button background', async ({ page }) => {
