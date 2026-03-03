@@ -48,7 +48,7 @@
         btn.setAttribute("aria-selected", isActive ? "true" : "false");
         btn.setAttribute("tabindex", isActive ? "0" : "-1");
         if (isActive && indicator) {
-          requestAnimationFrame(() => positionIndicator(btn));
+          requestAnimationFrame(() => requestAnimationFrame(() => positionIndicator(btn)));
         }
       });
 

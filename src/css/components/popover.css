@@ -41,7 +41,7 @@
 /* Menu variant — action list with item styling + arrow key nav */
 .popover-menu {
   & [popover] {
-    @apply min-w-[160px] max-w-none rounded-[10px] p-1;
+    @apply min-w-[200px] max-w-none rounded-[6px] p-1;
     max-height: 400px;
 
     & button, & a {
@@ -53,7 +53,7 @@
       &:focus-visible svg { color: var(--color-primary-foreground); }
       & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
       &[disabled], &[aria-disabled="true"] {
-        @apply opacity-50 text-tertiary-foreground;
+        @apply opacity-30 text-tertiary-foreground;
         pointer-events: none;
       }
     }

@@ -39,7 +39,7 @@ test.describe('Focus Visible Accessibility', () => {
     const btn = page.locator('.snippet-preview > figure button').first();
     await focusViaKeyboard(page, btn);
 
-    expect(await css(btn, 'outlineStyle')).not.toBe('none');
+    expect(await css(btn, 'boxShadow')).not.toBe('none');
   });
 
   test('slider removes default outline on keyboard focus', async ({ page }) => {

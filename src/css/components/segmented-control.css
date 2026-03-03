@@ -4,15 +4,15 @@
   .dark & { --segmented-active: oklch(0.50 0.004 286.1); }
 }
 .segmented-control [data-tab-list] {
-  @apply relative inline-flex rounded-full p-1;
-  background: var(--surface-4);
+  @apply relative inline-flex rounded-[8px] p-1;
+  background: var(--surface-5);
 }
 .segmented-control [data-tab-indicator] {
-  @apply absolute rounded-full pointer-events-none;
+  @apply absolute rounded-[6px] pointer-events-none;
   inset: 3px 0;
   width: 0;
   background: var(--segmented-active);
-  box-shadow: var(--shadow-sm), var(--float-ring);
+  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-slow) var(--apple-spring), width var(--transition-slow) var(--apple-spring);
 }
 .segmented-control [data-tab] {

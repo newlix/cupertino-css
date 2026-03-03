@@ -5,13 +5,8 @@
   &::after {
     content: "";
     @apply absolute inset-y-0 left-0 rounded-full;
-    width: 40%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-primary) 50%,
-      transparent
-    );
+    width: 30%;
+    background: var(--color-primary);
     animation: indeterminate 1.0s var(--apple-ease) infinite;
   }
   @media (prefers-reduced-motion: reduce) {

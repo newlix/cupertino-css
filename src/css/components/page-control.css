@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
 }
 .page-control > button {
   all: unset;
@@ -14,7 +14,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--color-foreground);
-  opacity: 0.25;
+  opacity: 0.3;
   cursor: pointer;
   transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
   &[aria-current="page"] {

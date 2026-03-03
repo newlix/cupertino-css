@@ -2,22 +2,24 @@
 .pagination {
   @apply flex flex-wrap items-center gap-0.5;
   & > button, & > a {
-    @apply inline-flex h-[44px] min-w-[44px] items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-foreground cursor-pointer no-underline;
+    @apply inline-flex items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
+    min-height: 32px;
+    min-width: 32px;
     corner-shape: squircle;
-    transition: background-color 0.2s var(--apple-ease), color 0.2s var(--apple-ease), transform 0.15s var(--apple-ease);
-    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); }
+    transition: color 0.2s var(--apple-ease);
+    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { transform: scale(var(--apple-press-scale)); }
     &[data-active], &[aria-current="page"] {
-      @apply text-foreground font-semibold;
+      @apply text-primary font-semibold pointer-events-none;
     }
-    /* Prefer aria-current="page" over data-active for accessibility */
     &:disabled, &[aria-disabled="true"] {
       @apply pointer-events-none;
       opacity: 0.4;
     }
   }
   & > span {
-    @apply inline-flex size-[44px] items-center justify-center text-[13px] text-tertiary-foreground;
+    @apply inline-flex items-center justify-center text-[13px] text-tertiary-foreground;
+    min-height: 32px;
+    min-width: 32px;
   }
 }

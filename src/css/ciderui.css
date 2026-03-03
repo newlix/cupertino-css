@@ -78,12 +78,13 @@
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
   --float-ring: 0 0 0 1px oklch(0 0 0 / 0.06); /* dropdown/popover/hud outline */
   --glass-blur: blur(20px) saturate(1.5);
+  --glass-blur-heavy: blur(40px) saturate(1.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --backdrop-bg: oklch(0 0 0 / 0.35);
   --hover-brightness: 0.92;
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
-  --hud-background: oklch(0.12 0 0 / 0.55);
+  --hud-background: oklch(0.12 0 0 / 0.60);
   --hud-text: oklch(0.95 0 0);
 
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
@@ -151,6 +152,7 @@
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
+  --glass-blur-heavy: blur(40px) saturate(1.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
@@ -262,7 +264,7 @@
   }
 
   @keyframes hudAppear {
-    from { opacity: 0; transform: scale(0.92); }
+    from { opacity: 0; transform: scale(0.95); }
     to   { opacity: 1; transform: scale(1); }
   }
 

@@ -22,6 +22,9 @@
       update(el);
       el.addEventListener("input", function () { update(el); });
       el.addEventListener("change", function () { update(el); });
+      // Sync when value/min/max attributes change programmatically
+      var mo = new MutationObserver(function () { update(el); });
+      mo.observe(el, { attributes: true, attributeFilter: ["value", "min", "max"] });
     });
   }
 

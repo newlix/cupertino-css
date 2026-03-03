@@ -2,7 +2,7 @@
 .list {
   @apply flex flex-col;
   & > * {
-    @apply flex items-center gap-3 p-4 text-[15px] rounded-none;
+    @apply flex items-center gap-3 p-4 text-[17px] rounded-none;
     letter-spacing: -0.016em;
     min-height: 44px;
     transition: background-color var(--transition-fast) var(--apple-ease);
@@ -17,7 +17,7 @@
     & > div:has(> h3) {
       @apply flex flex-1 flex-col gap-0.5;
       min-width: 0;
-      & h3 { @apply text-[15px] font-medium leading-snug truncate mb-0; letter-spacing: -0.01em; }
+      & h3 { @apply text-[17px] font-normal leading-snug truncate mb-0; letter-spacing: -0.01em; }
       & p { @apply text-[13px] text-tertiary-foreground; overflow-wrap: anywhere; }
     }
     & > svg:last-child:not(:first-child) {
@@ -30,7 +30,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        left: var(--list-separator-inset, 1rem);
+        left: var(--list-separator-inset, 3.75rem);
         height: 1px;
         @media (min-resolution: 2dppx) { height: 0.5px; }
         background: var(--panel-border);
@@ -55,16 +55,16 @@
 }
 /* Separator flush with content edge for lists without icons */
 .list-plain {
-  --list-separator-inset: 0px;
+  --list-separator-inset: 1rem;
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {
   background: var(--color-card);
-  border-radius: var(--radius);
+  border-radius: 10px;
   corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   .dark & { box-shadow: var(--shadow), var(--panel-ring); }
-  & > *:first-child { border-radius: var(--radius) var(--radius) 0 0; corner-shape: squircle; }
-  & > *:last-child { border-radius: 0 0 var(--radius) var(--radius); corner-shape: squircle; }
-  & > *:only-child { border-radius: var(--radius); corner-shape: squircle; }
+  & > *:first-child { border-radius: 10px 10px 0 0; corner-shape: squircle; }
+  & > *:last-child { border-radius: 0 0 10px 10px; corner-shape: squircle; }
+  & > *:only-child { border-radius: 10px; corner-shape: squircle; }
 }
