@@ -16,6 +16,7 @@
 .hud {
   @apply inline-flex flex-col items-center gap-2 px-5 py-4;
   min-width: 120px;
+  max-width: min(280px, calc(100vw - 2rem));
   border-radius: var(--radius-lg); /* 16px — Apple HUD window radius */
   color: var(--hud-text);
   background: var(--hud-background);

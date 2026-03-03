@@ -27,10 +27,9 @@
       const indicator = list?.querySelector("[data-tab-indicator]");
       function positionIndicator(btn) {
         if (!indicator || !btn) return;
-        const listRect = list.getBoundingClientRect();
-        const btnRect = btn.getBoundingClientRect();
-        indicator.style.width = `${btnRect.width}px`;
-        indicator.style.transform = `translateX(${btnRect.left - listRect.left + list.scrollLeft}px)`;
+        indicator.style.width = `${btn.offsetWidth}px`;
+        indicator.style.transform = `translateX(${btn.offsetLeft}px)`;
+        indicator.style.opacity = "1";
       }
 
       // Reposition indicator on resize
@@ -116,7 +115,11 @@
           const currentIdx = Array.from(currentButtons).indexOf(btn);
           if (currentIdx < 0) return;
 
-          if (e.key === "ArrowRight") {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            activate(btn);
+            return;
+          } else if (e.key === "ArrowRight") {
             e.preventDefault();
             targetBtn = findTab(currentIdx, 1);
           } else if (e.key === "ArrowLeft") {

@@ -49,6 +49,8 @@
       transition: background-color 0.1s var(--apple-ease), color 0.1s var(--apple-ease);
       &:is(:hover, :focus-visible) { background: var(--color-primary); color: var(--color-primary-foreground); }
       &:is(:hover, :focus-visible) svg { color: var(--color-primary-foreground); }
+      &:active { background: var(--color-primary-active); color: var(--color-primary-foreground); }
+      &:active svg { color: var(--color-primary-foreground); }
       &:focus-visible { outline: none; }
       & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
       &:disabled, &[aria-disabled="true"] {
@@ -62,7 +64,7 @@
     height: 1px;
     border: none;
     @media (min-resolution: 2dppx) { height: 0.5px; }
-    background: var(--panel-border);
+    background: var(--color-border);
   }
 }
 
@@ -77,6 +79,8 @@
   width: 14px;
   height: 14px;
   background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
 }
 /* No backdrop scrim for menus — macOS menus float without dimming. */

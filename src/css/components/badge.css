@@ -14,12 +14,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 0;
-  box-shadow: 0 0 0 2px var(--color-background);
+  box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
+  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 .badge-dot {
   @apply inline-block rounded-full bg-destructive;
   width: 10px;
   height: 10px;
   flex-shrink: 0;
-  box-shadow: 0 0 0 2px var(--color-background);
+  box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
 }

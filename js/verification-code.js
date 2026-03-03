@@ -56,6 +56,22 @@
             otp.removeAttribute("data-error");
           }
           const v = input.value.replace(/\D/g, "");
+          // Handle browser autofill distributing multiple characters into a single input
+          if (v.length > 1 && !pasting) {
+            pasting = true;
+            try {
+              const startIdx = i;
+              for (let j = 0; j < v.length && startIdx + j < inputs.length; j++) {
+                inputs[startIdx + j].value = v[j];
+              }
+            } finally {
+              pasting = false;
+            }
+            sync();
+            const nextIdx = Math.min(i + v.length, inputs.length - 1);
+            inputs[nextIdx].focus();
+            return;
+          }
           input.value = v.slice(-1);
           if (!pasting) {
             sync();
@@ -79,7 +95,7 @@
 
         input.addEventListener("paste", (e) => {
           e.preventDefault();
-          const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
+          const text = (e.clipboardData).getData("text").replace(/\D/g, "");
           if (!text) return;
           pasting = true;
           // Always fill from the first input when a full code is pasted

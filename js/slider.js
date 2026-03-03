@@ -45,6 +45,12 @@
   }
 
   document.addEventListener("htmx:afterSettle", init);
+  function destroy(el) {
+    if (!el._sliderInit) return;
+    if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
+    el._sliderInit = false;
+  }
+
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.slider = { init, update };
+  window.CiderUI.slider = { init, update, destroy };
 })();

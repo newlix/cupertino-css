@@ -33,13 +33,13 @@ h1 {
   @apply font-bold text-foreground mb-4;
   font-size: 34px;
   line-height: 1.21;
-  letter-spacing: -0.003em;
+  letter-spacing: -0.012em;
   &:not(:first-child) { @apply mt-8; }
 }
 h2 {
   @apply font-bold text-foreground mb-3;
   font-size: 28px;
-  line-height: 1.14;
+  line-height: 1.21;
   letter-spacing: -0.016em;
   &:not(:first-child) { @apply mt-8; }
 }
@@ -93,7 +93,7 @@ blockquote {
   border-color: var(--color-border-solid);
 }
 code {
-  @apply rounded-lg bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-medium;
+  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-medium;
   line-height: 1.5;
 }
 
@@ -281,8 +281,8 @@ input[type="checkbox"][role="switch"] {
     background: var(--color-switch);
     &::after { transform: translateX(20px); }
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.20); outline: 2px solid transparent; outline-offset: 2px; }
-  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.30); }
+  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.40); outline: 2px solid transparent; outline-offset: 2px; }
+  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.45); }
   &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   .dark & {
     &::after {
@@ -465,6 +465,8 @@ dt {
 }
 dd {
   @apply text-tertiary-foreground;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 /* ─── Mark (highlight) ─── */

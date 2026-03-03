@@ -51,8 +51,8 @@
 
   /* Transition timing tokens */
   --transition-fast: 0.15s;     /* Micro-interactions: hover, color shifts */
-  --transition-normal: 0.2s;    /* Standard transitions: opacity, transform */
-  --transition-slow: 0.25s;     /* Complex animations: layout, entry/exit */
+  --transition-normal: 0.25s;   /* Standard transitions: opacity, transform */
+  --transition-slow: 0.35s;     /* Complex animations: layout, entry/exit */
 
   /*
    * Surface overlays — neutral opacity layers for depth hierarchy.
@@ -72,6 +72,7 @@
   --surface-3: oklch(0 0 0 / 0.08);   /* Apple: quaternarySystemFill */
   --surface-4: oklch(0 0 0 / 0.12);   /* Apple: tertiarySystemFill */
   --surface-5: oklch(0 0 0 / 0.16);   /* Apple: secondarySystemFill */
+  --surface-6: oklch(0 0 0 / 0.18);
   --surface-7: oklch(0 0 0 / 0.20);   /* Apple: systemFill */
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
@@ -79,13 +80,18 @@
   --float-ring: 0 0 0 1px var(--float-ring-color); /* dropdown/popover/hud outline */
   --glass-blur: blur(20px) saturate(1.5);
   --glass-blur-heavy: blur(40px) saturate(1.8);
+
+  --color-orange: oklch(0.769 0.164 68.76);    /* Apple Orange #FF9500 */
+  --color-yellow: oklch(0.871 0.176 93.73);    /* Apple Yellow #FFCC00 */
+  --color-blue: oklch(0.563 0.241 256.1);      /* Apple Blue #007AFF */
+  --color-purple: oklch(0.586 0.249 303.11);   /* Apple Purple #AF52DE */
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.92);
   --backdrop-bg: oklch(0 0 0 / 0.35);
   --hover-brightness: 0.92;
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
-  --hud-background: oklch(0.12 0 0 / 0.72);
+  --hud-background: oklch(0.10 0 0 / 0.75);
   --hud-text: oklch(0.95 0 0);
   --tooltip-bg: var(--surface-7);
   --tooltip-text: var(--color-foreground);
@@ -98,6 +104,7 @@
 
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
 
+  --radius-xs: 0.3125rem;                       /* 5px */
   --radius: 0.75rem;                             /* 12px */
   --radius-sm: 0.5rem;                           /* 8px */
   --radius-lg: 1rem;                             /* 16px */
@@ -156,19 +163,27 @@
   --surface-3: oklch(1 0 0 / 0.08);
   --surface-4: oklch(1 0 0 / 0.12);
   --surface-5: oklch(1 0 0 / 0.16);
+  --surface-6: oklch(1 0 0 / 0.18);
   --surface-7: oklch(1 0 0 / 0.20);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring-color: oklch(1 0 0 / 0.08);
   --float-ring: 0 0 0 1px var(--float-ring-color);
+  --glass-blur: blur(20px) saturate(1.7);
+  --glass-blur-heavy: blur(40px) saturate(2.0);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
   --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.94);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
   --hover-brightness: 1.12;
 
+  --color-orange: oklch(0.783 0.165 69.0);     /* Apple Orange #FF9F0A (dark) */
+  --color-yellow: oklch(0.886 0.174 94.0);     /* Apple Yellow #FFD60A (dark) */
+  --color-blue: oklch(0.617 0.246 256.5);      /* Apple Blue #0A84FF (dark) */
+  --color-purple: oklch(0.630 0.250 303.5);    /* Apple Purple #BF5AF2 (dark) */
+
   --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
-  --hud-background: oklch(0.15 0 0 / 0.72);
+  --hud-background: oklch(0.18 0 0 / 0.68);
   --hud-text: oklch(0.95 0 0);
   --tooltip-bg: oklch(0.20 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
@@ -176,10 +191,10 @@
   --avatar-bg: oklch(0.35 0.006 286);
   --avatar-fg: oklch(0.80 0.006 286);
 
-  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.50);
-  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.50);
+  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.60);
+  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.60);
 
-  --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
+  --mark-bg: oklch(0.50 0.14 90);       /* dark warm highlight — brighter for readability */
 }
 
 /* ─── Theme tokens (register names for Tailwind utilities) ─── */
@@ -209,6 +224,11 @@
   --color-destructive-foreground: var(--color-destructive-foreground);
   --input-border: var(--input-border);
   --input-border-hover: var(--input-border-hover);
+  --color-orange: var(--color-orange);
+  --color-yellow: var(--color-yellow);
+  --color-blue: var(--color-blue);
+  --color-purple: var(--color-purple);
+  --radius-xs: var(--radius-xs);
   --radius: var(--radius);
   --radius-sm: var(--radius-sm);
   --radius-lg: var(--radius-lg);
@@ -225,7 +245,7 @@
 @layer base {
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
     letter-spacing: -0.01em;
   }
 
@@ -248,13 +268,13 @@
   }
 
   @keyframes dialogShow {
-    from { opacity: 0; transform: translateY(-8px) scale(0.98); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
   }
 
   @keyframes dialogHide {
-    from { opacity: 1; transform: translateY(0) scale(1); }
-    to   { opacity: 0; transform: translateY(-8px) scale(0.98); }
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.96); }
   }
 
   @keyframes backdropFadeIn {
@@ -292,8 +312,8 @@
   }
 
   @keyframes hudDismiss {
-    from { opacity: 1; transform: scale(1); }
-    to   { opacity: 0; transform: scale(0.96); }
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to   { opacity: 0; transform: scale(0.96) translateY(-4px); }
   }
 
   /* Reduced motion — disable animations/transitions for users who prefer it */

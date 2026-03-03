@@ -8,7 +8,7 @@
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
-  transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+  transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), border-color var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
   letter-spacing: -0.016em;
   &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
@@ -58,12 +58,8 @@
 }
 .btn-gray.btn-destructive {
   color: var(--color-destructive);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.18); }
-  .dark & {
-    &:hover { background: oklch(from var(--color-destructive) l c h / 0.16); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.22); }
-  }
+  &:hover { background: var(--color-secondary-hover); }
+  &:active { background: oklch(from var(--color-secondary-hover) calc(l * 0.96) c h); }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);
@@ -80,7 +76,7 @@
   color: var(--color-destructive);
   border-color: oklch(from var(--color-destructive) l c h / 0.3);
   &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); border-color: oklch(from var(--color-destructive) l c h / 0.4); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
   .dark & {
     border-color: oklch(from var(--color-destructive) l c h / 0.35);
     &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
@@ -102,7 +98,7 @@
   @media (pointer: coarse) { min-height: 44px; }
 }
 .btn-large {
-  @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold;
+  @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[14px];
   letter-spacing: -0.024em;
   min-height: 50px;
 }

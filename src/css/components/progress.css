@@ -5,14 +5,22 @@ progress {
   &::-webkit-progress-bar {
     background: var(--surface-5);
     border-radius: 9999px;
+    overflow: hidden;
   }
   &::-webkit-progress-value {
     background: var(--color-primary);
     border-radius: 9999px;
+    transition: width var(--transition-slow) var(--apple-ease);
   }
   &::-moz-progress-bar {
     background: var(--color-primary);
     border-radius: 9999px;
+  }
+  @media (forced-colors: active) {
+    border: 1px solid ButtonText;
+    &::-webkit-progress-bar { background: Canvas; }
+    &::-webkit-progress-value { background: Highlight; }
+    &::-moz-progress-bar { background: Highlight; }
   }
 }
 .progress-indeterminate {
@@ -29,7 +37,9 @@ progress {
     &::after {
       animation: none;
       transform: none;
-      opacity: 0.7;
+      opacity: 0.5;
+      width: 100%;
+      background: var(--color-primary);
     }
   }
 }

@@ -95,9 +95,20 @@
             });
           } else {
             popover.setAttribute("role", "dialog");
+            if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
+              if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
+              popover.setAttribute("aria-labelledby", trigger.id);
+              popover._ciderAriaLabelledBy = true;
+            }
           }
           // Cleanup any stale positioning listeners before adding new ones
           popover._cleanupPositioning();
+          // Set transform-origin based on alignment
+          if (wrapper.classList.contains("popover-end")) {
+            popover.style.setProperty("--popover-origin", "top right");
+          } else {
+            popover.style.setProperty("--popover-origin", "top left");
+          }
           requestAnimationFrame(positionPopover);
           let rafPending = false;
           popover._rafPositioner = () => {
@@ -149,13 +160,20 @@
       };
       popover.addEventListener("toggle", popover._toggleHandler);
 
-      // Detect DOM removal while open to clean up scroll/resize listeners
+      // Detect DOM removal while open to clean up scroll/resize listeners and event handlers
       if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
       popover._disconnectObserver = new MutationObserver(() => {
         if (!popover.isConnected) {
           popover._cleanupPositioning();
           trigger.setAttribute("aria-expanded", "false");
           popover._disconnectObserver.disconnect();
+          // Clean up event listeners on DOM removal
+          if (popover._toggleHandler) popover.removeEventListener("toggle", popover._toggleHandler);
+          if (popover._escHandler) popover.removeEventListener("keydown", popover._escHandler);
+          if (popover._focusTrapHandler) popover.removeEventListener("keydown", popover._focusTrapHandler);
+          if (popover._menuClickHandler) popover.removeEventListener("click", popover._menuClickHandler);
+          if (popover._menuKeyHandler) popover.removeEventListener("keydown", popover._menuKeyHandler);
+          popover._popoverInit = false;
         }
       });
 
@@ -234,10 +252,14 @@
             popover._escapeDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
           } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
-            // Type-ahead: focus first item starting with typed character
-            const ch = e.key.toLowerCase();
-            const match = items.find((item, j) => j > idx && item.textContent.trim().toLowerCase().startsWith(ch))
-              || items.find((item) => item.textContent.trim().toLowerCase().startsWith(ch));
+            // Type-ahead: accumulate characters within 500ms window
+            if (!popover._typeAheadTimer) popover._typeAheadBuffer = "";
+            clearTimeout(popover._typeAheadTimer);
+            popover._typeAheadBuffer += e.key.toLowerCase();
+            popover._typeAheadTimer = setTimeout(() => { popover._typeAheadBuffer = ""; popover._typeAheadTimer = null; }, 500);
+            const buf = popover._typeAheadBuffer;
+            const match = items.find((item, j) => j > idx && item.textContent.trim().toLowerCase().startsWith(buf))
+              || items.find((item) => item.textContent.trim().toLowerCase().startsWith(buf));
             if (match) match.focus();
           }
         };

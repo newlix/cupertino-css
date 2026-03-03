@@ -21,9 +21,14 @@
     const container =
       document.getElementById("hud-container") || createHUDContainer();
 
-    // macOS shows one HUD at a time — dismiss any existing HUD immediately
+    // macOS shows one HUD at a time — crossfade any existing HUD
     const existing = container.querySelector(".hud");
-    if (existing) existing.remove();
+    if (existing) {
+      existing.setAttribute("data-closing", "");
+      const old = existing;
+      const removeDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
+      setTimeout(() => { if (old.parentElement) old.remove(); }, removeDuration);
+    }
 
     const hud = document.createElement("div");
     hud.className = "hud";
@@ -52,9 +57,11 @@
           }
         }
       });
+      svgEl.setAttribute("aria-hidden", "true");
       hud.appendChild(document.adoptNode(svgEl));
     } else {
       const fallbackDoc = parser.parseFromString(defaultIcon, "image/svg+xml");
+      fallbackDoc.documentElement.setAttribute("aria-hidden", "true");
       hud.appendChild(document.adoptNode(fallbackDoc.documentElement));
     }
 

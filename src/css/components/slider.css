@@ -45,10 +45,10 @@
     margin-top: -12px;
     border: none;
     box-shadow: var(--slider-thumb-shadow);
-    transition: box-shadow var(--transition-normal) var(--apple-ease);
+    transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   }
-  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:hover { box-shadow: var(--slider-thumb-shadow-hover); }
-  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); }
+  &:hover:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
+  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); transform: scale(var(--apple-press-scale)); }
   &::-moz-range-thumb {
     @apply rounded-full;
     background: var(--slider-thumb);
@@ -56,13 +56,26 @@
     height: 28px;
     border: none;
     box-shadow: var(--slider-thumb-shadow);
-    transition: box-shadow var(--transition-normal) var(--apple-ease);
+    transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   }
   &:hover:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
-  &:active:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); }
+  &:active:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); transform: scale(var(--apple-press-scale)); }
   &:focus-visible::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:focus-visible::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }
+  @media (forced-colors: active) {
+    &::-webkit-slider-runnable-track { border: 1px solid ButtonText; }
+    &::-webkit-slider-thumb { background: ButtonText; border: 2px solid ButtonText; }
+    &::-moz-range-track { border: 1px solid ButtonText; }
+    &::-moz-range-thumb { background: ButtonText; border: 2px solid ButtonText; }
+    &::-moz-range-progress { background: Highlight; }
+    &:focus-visible::-webkit-slider-thumb { outline: 2px solid Highlight; }
+    &:focus-visible::-moz-range-thumb { outline: 2px solid Highlight; }
+    &:disabled, &[aria-disabled="true"] {
+      &::-webkit-slider-thumb { background: GrayText; border-color: GrayText; }
+      &::-moz-range-thumb { background: GrayText; border-color: GrayText; }
+    }
+  }
   @media (pointer: coarse) {
     min-height: 44px;
     /* Apple HIG: 44pt minimum touch target */

@@ -6,7 +6,7 @@
     transition: color var(--transition-fast) var(--apple-ease);
     &:hover { @apply text-foreground no-underline; }
     &:active { color: var(--color-foreground); opacity: 0.7; }
-    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
   }
   & [aria-current="page"] {
     @apply font-medium text-foreground pointer-events-none;
@@ -21,6 +21,7 @@
     vertical-align: middle;
     background: var(--color-tertiary-foreground);
     opacity: 0.7;
+    .dark & { opacity: 0.85; }
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
   }

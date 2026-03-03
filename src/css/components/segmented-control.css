@@ -1,7 +1,7 @@
 /* ========== SEGMENTED CONTROL ========== */
 .segmented-control {
   --segmented-active: oklch(1 0 0);
-  .dark & { --segmented-active: oklch(0.50 0.004 286.1); }
+  .dark & { --segmented-active: oklch(0.35 0.004 286.1); }
 }
 .segmented-control [data-tab-list] {
   @apply relative inline-flex rounded-[8px] p-1;
@@ -15,8 +15,10 @@
   bottom: 3px;
   left: 0;
   width: 0;
+  opacity: 0;
   background: var(--segmented-active);
   box-shadow: var(--shadow-sm);
+  .dark & { box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.08); }
   transition: transform 0.3s var(--apple-spring), width 0.3s var(--apple-spring);
 }
 .segmented-control [data-tab] {

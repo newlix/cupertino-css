@@ -144,6 +144,7 @@
             }
             activeDialogs.add(dialog);
             document.body.style.overflow = "hidden";
+            wireAria(dialog);
             dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
           }

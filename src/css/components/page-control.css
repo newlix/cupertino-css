@@ -4,11 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 7px;
 }
 .page-control > button {
   all: unset;
   display: inline-block;
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   width: 7px;
   height: 7px;
@@ -19,6 +20,7 @@
   transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {
     opacity: 1;
+    transform: scale(1.15);
   }
   &:focus-visible {
     outline: 2px solid var(--color-primary);
@@ -33,6 +35,13 @@
   &:disabled, &[aria-disabled="true"] {
     pointer-events: none;
     opacity: 0.15;
+  }
+  @media (forced-colors: active) {
+    border: 2px solid ButtonText;
+    opacity: 1;
+    &[aria-current="page"] { background: Highlight; border-color: Highlight; }
+    &:focus-visible { outline: 2px solid Highlight; }
+    &:disabled, &[aria-disabled="true"] { border-color: GrayText; }
   }
   /* Enlarge touch target on touch devices without changing visual size */
   @media (pointer: coarse) {

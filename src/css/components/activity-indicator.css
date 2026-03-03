@@ -15,7 +15,7 @@
   animation: activity-spin 1.0s steps(12, start) infinite;
   @media (prefers-reduced-motion: reduce) {
     animation: none;
-    opacity: 0.5;
+    opacity: 0.65;
   }
   &.activity-indicator-sm { @apply size-4; }
   &.activity-indicator-md { width: 37px; height: 37px; }
