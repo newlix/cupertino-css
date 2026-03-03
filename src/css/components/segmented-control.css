@@ -26,7 +26,7 @@
   min-height: 32px;
   transition: color var(--transition-normal) var(--apple-ease);
   &:hover:not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
-  &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary); }
+  &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.4; }
   &[data-active],
   &[aria-selected="true"] {
