@@ -13,28 +13,28 @@
       }
 
       // Set ARIA attributes
-      const list = tabGroup.querySelector("[data-tab-list]") || (buttons[0] && buttons[0].parentElement);
+      const list = tabGroup.querySelector("[data-tab-list]") || buttons[0]?.parentElement;
       if (list) {
         list.setAttribute("role", "tablist");
         list.setAttribute("aria-orientation", "horizontal");
       }
 
       // Create sliding indicator for segmented controls
-      var indicator = list ? list.querySelector("[data-tab-indicator]") : null;
+      const indicator = list?.querySelector("[data-tab-indicator]");
       function positionIndicator(btn) {
         if (!indicator || !btn) return;
-        var listRect = list.getBoundingClientRect();
-        var btnRect = btn.getBoundingClientRect();
-        indicator.style.width = btnRect.width + "px";
-        indicator.style.transform = "translateX(" + (btnRect.left - listRect.left) + "px)";
+        const listRect = list.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        indicator.style.width = `${btnRect.width}px`;
+        indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
       }
 
       // Reposition indicator on resize
       if (indicator && list) {
         if (tabGroup._tabsResizeObserver) tabGroup._tabsResizeObserver.disconnect();
-        var ro = new ResizeObserver(function () {
+        const ro = new ResizeObserver(() => {
           if (!list.isConnected) { ro.disconnect(); return; }
-          var activeBtn = tabGroup.querySelector("[data-tab][data-active]");
+          const activeBtn = tabGroup.querySelector("[data-tab][data-active]");
           if (activeBtn) positionIndicator(activeBtn);
         });
         ro.observe(list);
@@ -42,7 +42,7 @@
       }
 
       buttons.forEach((btn) => {
-        if (!btn.id) btn.id = "tab-" + Math.random().toString(36).substring(2, 11);
+        if (!btn.id) btn.id = `tab-${Math.random().toString(36).substring(2, 11)}`;
         btn.setAttribute("role", "tab");
         const isActive = btn.hasAttribute("data-active");
         btn.setAttribute("aria-selected", isActive ? "true" : "false");
@@ -53,7 +53,7 @@
       });
 
       panels.forEach((panel) => {
-        if (!panel.id) panel.id = "tabpanel-" + Math.random().toString(36).substring(2, 11);
+        if (!panel.id) panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
         panel.setAttribute("role", "tabpanel");
         panel.setAttribute("tabindex", "0");
         const panelTarget = panel.getAttribute("data-tab-panel");
@@ -68,22 +68,18 @@
         if (isDisabled(btn)) return;
         const target = btn.getAttribute("data-tab");
 
-        // Deactivate all
         buttons.forEach((b) => {
           b.removeAttribute("data-active");
           b.setAttribute("aria-selected", "false");
           b.setAttribute("tabindex", "-1");
         });
 
-        // Activate clicked
         btn.setAttribute("data-active", "");
         btn.setAttribute("aria-selected", "true");
         btn.setAttribute("tabindex", "0");
 
-        // Slide indicator
         positionIndicator(btn);
 
-        // Show/hide panels
         panels.forEach((p) => {
           if (p.getAttribute("data-tab-panel") === target) {
             p.setAttribute("data-active", "");
@@ -93,10 +89,18 @@
         });
       }
 
+      function findTab(from, step) {
+        let idx = (from + step + buttons.length) % buttons.length;
+        let guard = buttons.length;
+        while (idx !== from && isDisabled(buttons[idx]) && --guard > 0) {
+          idx = (idx + step + buttons.length) % buttons.length;
+        }
+        return idx !== from && !isDisabled(buttons[idx]) ? buttons[idx] : null;
+      }
+
       buttons.forEach((btn, i) => {
         btn.addEventListener("click", () => { activate(btn); btn.focus(); });
 
-        // Keyboard navigation
         btn.addEventListener("keydown", (e) => {
           let targetBtn = null;
           const isRTL = document.documentElement.dir === "rtl";
@@ -104,25 +108,19 @@
           const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
           if (e.key === nextKey) {
             e.preventDefault();
-            let idx = (i + 1) % buttons.length;
-            let guard = buttons.length;
-            while (idx !== i && isDisabled(buttons[idx]) && --guard > 0) idx = (idx + 1) % buttons.length;
-            if (idx !== i && !isDisabled(buttons[idx])) targetBtn = buttons[idx];
+            targetBtn = findTab(i, 1);
           } else if (e.key === prevKey) {
             e.preventDefault();
-            let idx = (i - 1 + buttons.length) % buttons.length;
-            let guard = buttons.length;
-            while (idx !== i && isDisabled(buttons[idx]) && --guard > 0) idx = (idx - 1 + buttons.length) % buttons.length;
-            if (idx !== i && !isDisabled(buttons[idx])) targetBtn = buttons[idx];
+            targetBtn = findTab(i, -1);
           } else if (e.key === "Home") {
             e.preventDefault();
             targetBtn = Array.from(buttons).find((b) => !isDisabled(b));
           } else if (e.key === "End") {
             e.preventDefault();
-            targetBtn = Array.from(buttons).reverse().find((b) => !isDisabled(b));
+            targetBtn = Array.from(buttons).findLast((b) => !isDisabled(b));
           }
 
-          if (targetBtn && !isDisabled(targetBtn)) {
+          if (targetBtn) {
             targetBtn.focus();
             activate(targetBtn);
           }
@@ -139,5 +137,5 @@
 
   document.addEventListener("htmx:afterSettle", init);
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.tabs = { init: init };
+  window.CiderUI.tabs = { init };
 })();

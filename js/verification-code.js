@@ -15,7 +15,7 @@
           input.setAttribute("autocomplete", idx === 0 ? "one-time-code" : "off");
         }
         if (!input.getAttribute("aria-label")) {
-          input.setAttribute("aria-label", "Digit " + (idx + 1) + " of " + inputs.length);
+          input.setAttribute("aria-label", `Digit ${idx + 1} of ${inputs.length}`);
         }
       });
       if (!otp.getAttribute("role")) otp.setAttribute("role", "group");
@@ -30,7 +30,7 @@
       }
 
       function sync() {
-        var newVal = Array.from(inputs).map((i) => i.value).join("");
+        const newVal = Array.from(inputs).map((inp) => inp.value).join("");
         if (hidden.value !== newVal) {
           hidden.value = newVal;
           hidden.dispatchEvent(new Event("input", { bubbles: true }));
@@ -49,7 +49,7 @@
             e.preventDefault();
           }
         });
-        input.addEventListener("input", (e) => {
+        input.addEventListener("input", () => {
           if (otp.hasAttribute("data-error")) {
             otp.removeAttribute("data-error");
           }
@@ -103,7 +103,7 @@
       otp.addEventListener("click", (e) => {
         if (e.target.closest('input:not([type="hidden"])')) return;
         if (inputs[0].disabled) return;
-        const firstEmpty = Array.from(inputs).findIndex((i) => !i.value);
+        const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
         inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
       });
     });
@@ -117,5 +117,5 @@
 
   document.addEventListener("htmx:afterSettle", init);
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.verificationCode = { init: init };
+  window.CiderUI.verificationCode = { init };
 })();

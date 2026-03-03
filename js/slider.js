@@ -1,29 +1,29 @@
 // Slider — ciderui
 (function () {
   function update(el) {
-    var min = el.min !== "" ? Number(el.min) : 0;
-    var max = el.max !== "" ? Number(el.max) : 100;
-    var val = Number(el.value);
+    let min = el.min !== "" ? Number(el.min) : 0;
+    let max = el.max !== "" ? Number(el.max) : 100;
+    let val = Number(el.value);
     if (Number.isNaN(min)) min = 0;
     if (Number.isNaN(max)) max = 100;
     if (Number.isNaN(val)) val = min;
-    var range = max - min;
-    var pct = range > 0 ? ((val - min) / range) * 100 : 0;
-    el.style.setProperty("--slider-value", pct + "%");
+    const range = max - min;
+    const pct = range > 0 ? ((val - min) / range) * 100 : 0;
+    el.style.setProperty("--slider-value", `${pct}%`);
     el.setAttribute("aria-valuenow", val);
     el.setAttribute("aria-valuemin", min);
     el.setAttribute("aria-valuemax", max);
   }
 
   function init() {
-    document.querySelectorAll(".slider").forEach(function (el) {
+    document.querySelectorAll(".slider").forEach((el) => {
       if (el._sliderInit) return;
       el._sliderInit = true;
       update(el);
-      el.addEventListener("input", function () { update(el); });
-      el.addEventListener("change", function () { update(el); });
+      el.addEventListener("input", () => { update(el); });
+      el.addEventListener("change", () => { update(el); });
       // Sync when value/min/max attributes change programmatically
-      var mo = new MutationObserver(function () {
+      const mo = new MutationObserver(() => {
         if (!el.isConnected) { mo.disconnect(); return; }
         update(el);
       });
@@ -39,5 +39,5 @@
 
   document.addEventListener("htmx:afterSettle", init);
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.slider = { init: init, update: update };
+  window.CiderUI.slider = { init, update };
 })();

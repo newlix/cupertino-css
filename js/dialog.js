@@ -2,8 +2,8 @@
 // Uses native <dialog> element. Adds backdrop-click-to-close with exit animation,
 // focus trapping, scroll lock, and focus restoration.
 (function () {
-  var activeDialogs = new Set();
-  var FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+  const activeDialogs = new Set();
+  const FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function closeDialog(dialog) {
     if (dialog.hasAttribute("data-closing")) return;
@@ -15,7 +15,7 @@
       clearTimeout(dialog._closeTimer);
       dialog._closeTimer = null;
     }
-    var closed = false;
+    let closed = false;
     function finish() {
       if (closed) return;
       closed = true;
@@ -28,30 +28,30 @@
       }
       dialog.close();
     }
-    dialog._closeAnimHandler = function (e) {
+    dialog._closeAnimHandler = (e) => {
       if (e.target !== dialog) return;
       finish();
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);
     dialog.setAttribute("data-closing", "");
-    var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 200;
     dialog._closeTimer = setTimeout(finish, duration);
   }
 
   function trapFocus(dialog) {
-    var focusable = dialog.querySelectorAll(FOCUSABLE);
-    var autofocus = dialog.querySelector("[autofocus]");
-    var defaultBtn = dialog.querySelector("footer .btn-filled, footer button[type='submit']");
+    const focusable = dialog.querySelectorAll(FOCUSABLE);
+    const autofocus = dialog.querySelector("[autofocus]");
+    const defaultBtn = dialog.querySelector("footer .btn-filled, footer button[type='submit']");
     if (autofocus) { autofocus.focus(); }
     else if (defaultBtn) { defaultBtn.focus(); }
     else if (focusable.length) { focusable[0].focus(); }
 
     function handler(e) {
       if (e.key !== "Tab") return;
-      var current = dialog.querySelectorAll(FOCUSABLE);
+      const current = dialog.querySelectorAll(FOCUSABLE);
       if (!current.length) return;
-      var first = current[0];
-      var last = current[current.length - 1];
+      const first = current[0];
+      const last = current[current.length - 1];
       if (e.shiftKey) {
         if (document.activeElement === first) { e.preventDefault(); last.focus(); }
       } else {
@@ -67,27 +67,27 @@
   }
 
   function wireAria(dialog) {
-    var heading = dialog.querySelector("header h2, header h3");
-    var desc = dialog.querySelector("header p");
+    const heading = dialog.querySelector("header h2, header h3");
+    const desc = dialog.querySelector("header p");
     if (heading && !dialog.getAttribute("aria-labelledby")) {
-      if (!heading.id) heading.id = "dlg-title-" + Math.random().toString(36).slice(2, 8);
+      if (!heading.id) heading.id = `dlg-title-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-labelledby", heading.id);
     }
     if (desc && !dialog.getAttribute("aria-describedby")) {
-      if (!desc.id) desc.id = "dlg-desc-" + Math.random().toString(36).slice(2, 8);
+      if (!desc.id) desc.id = `dlg-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", desc.id);
     }
   }
 
   function init() {
-    document.querySelectorAll("dialog").forEach(function (dialog) {
+    document.querySelectorAll("dialog").forEach((dialog) => {
       if (dialog._dialogInit) return;
       dialog._dialogInit = true;
       wireAria(dialog);
       if (dialog._cancelHandler) {
         dialog.removeEventListener("cancel", dialog._cancelHandler);
       }
-      dialog._cancelHandler = function (e) {
+      dialog._cancelHandler = (e) => {
         e.preventDefault();
         closeDialog(dialog);
       };
@@ -96,7 +96,7 @@
       if (dialog._clickHandler) {
         dialog.removeEventListener("click", dialog._clickHandler);
       }
-      dialog._clickHandler = function (e) {
+      dialog._clickHandler = (e) => {
         if (e.target === dialog && !dialog.hasAttribute("data-modal")) {
           closeDialog(dialog);
         }
@@ -107,7 +107,7 @@
         dialog._focusObserver.disconnect();
       }
 
-      var observer = new MutationObserver(function () {
+      const observer = new MutationObserver(() => {
         if (!dialog.isConnected) {
           activeDialogs.delete(dialog);
           if (activeDialogs.size === 0) {
@@ -122,7 +122,7 @@
           return;
         }
         if (dialog.open) {
-          var isModal = dialog.matches(":modal");
+          const isModal = dialog.matches(":modal");
           if (isModal) {
             if (!dialog._previousFocus) {
               dialog._previousFocus = document.activeElement;
@@ -170,7 +170,7 @@
   window.closeDialog = closeDialog;
   window.openDialog = openDialog;
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.dialog = { init: init, close: closeDialog, open: openDialog };
+  window.CiderUI.dialog = { init, close: closeDialog, open: openDialog };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

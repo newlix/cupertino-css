@@ -4,7 +4,7 @@
 // macOS equivalent: NSPanel with styleMask:.hudWindow (volume/brightness/screenshot overlays).
 (function () {
   function createHUDContainer() {
-    var container = document.createElement("div");
+    const container = document.createElement("div");
     container.id = "hud-container";
     container.className = "cider hud-container";
     container.setAttribute("role", "status");
@@ -15,10 +15,10 @@
   }
 
   function showHUD(label, options) {
-    var opts = options || {};
-    var duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 2000;
+    const opts = options || {};
+    const duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 2000;
 
-    var container =
+    const container =
       document.getElementById("hud-container") || createHUDContainer();
     if (!container.getAttribute("role")) {
       container.setAttribute("role", "status");
@@ -27,35 +27,35 @@
     }
 
     // macOS shows one HUD at a time — dismiss any existing HUD immediately
-    var existing = container.querySelector(".hud");
+    const existing = container.querySelector(".hud");
     if (existing) existing.remove();
 
-    var hud = document.createElement("div");
+    const hud = document.createElement("div");
     hud.className = "hud";
 
     // Icon — sanitise via DOMParser to prevent XSS from untrusted input
-    var defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
-    var iconSrc = opts.icon || defaultIcon;
-    var parser = new DOMParser();
-    var iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
-    var svgEl = iconDoc.querySelector("svg");
+    const defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    const iconSrc = opts.icon || defaultIcon;
+    const parser = new DOMParser();
+    const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
+    const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
       hud.appendChild(document.adoptNode(svgEl));
     } else {
-      var fallbackDoc = parser.parseFromString(defaultIcon, "image/svg+xml");
+      const fallbackDoc = parser.parseFromString(defaultIcon, "image/svg+xml");
       hud.appendChild(document.adoptNode(fallbackDoc.documentElement));
     }
 
-    var labelEl = document.createElement("span");
+    const labelEl = document.createElement("span");
     labelEl.className = "hud-label";
     labelEl.textContent = label;
     hud.appendChild(labelEl);
 
     container.appendChild(hud);
 
-    var dismissTimeout;
-    var animTimer;
-    var dismissed = false;
+    let dismissTimeout;
+    let animTimer;
+    let dismissed = false;
     function dismiss() {
       if (dismissed) return;
       dismissed = true;
@@ -70,13 +70,13 @@
         hud.removeEventListener("animationend", removeHud);
       }
       hud.addEventListener("animationend", removeHud);
-      var animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
+      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;
       animTimer = setTimeout(removeHud, animDuration);
     }
 
     dismissTimeout = setTimeout(dismiss, duration);
 
-    return { dismiss: dismiss, element: hud };
+    return { dismiss, element: hud };
   }
 
   if (typeof window !== "undefined") {
