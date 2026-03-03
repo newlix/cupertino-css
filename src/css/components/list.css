@@ -59,7 +59,7 @@
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {
-  --list-radius: 10px;
+  --list-radius: var(--radius);
   background: var(--color-card);
   border-radius: var(--list-radius);
   corner-shape: squircle;

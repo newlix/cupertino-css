@@ -9,7 +9,7 @@
     &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &[data-active], &[aria-current="page"] {
-      @apply text-primary font-semibold pointer-events-none;
+      @apply text-foreground font-semibold pointer-events-none;
     }
     &:disabled, &[aria-disabled="true"] {
       @apply pointer-events-none;

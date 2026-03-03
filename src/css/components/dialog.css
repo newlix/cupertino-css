@@ -3,13 +3,13 @@ dialog {
   @apply m-auto w-full rounded-[14px] text-card-foreground p-0;
   max-width: min(400px, calc(100vw - 2rem));
   max-height: min(85vh, 600px);
+  border: none;
   overflow: clip;
   corner-shape: squircle;
-  background: oklch(from var(--color-card) l c h / 0.78);
+  background: var(--glass-bg-dialog);
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   box-shadow: var(--shadow-xl), var(--float-ring);
-  .dark & { background: oklch(from var(--color-card) l c h / 0.82); }
   /* Only modal dialogs (showModal()) get dimmed backdrop — modeless (.show()) stays clear */
   &:modal::backdrop {
     background: var(--backdrop-bg);

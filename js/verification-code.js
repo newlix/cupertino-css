@@ -82,9 +82,9 @@
           const text = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
           if (!text) return;
           pasting = true;
+          // Always fill from the first input when a full code is pasted
+          const startIdx = text.length >= inputs.length ? 0 : i;
           try {
-            // Always fill from the first input when a full code is pasted
-            const startIdx = text.length >= inputs.length ? 0 : i;
             if (startIdx === 0) {
               inputs.forEach((inp) => { inp.value = ""; });
             } else {

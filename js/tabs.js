@@ -5,8 +5,12 @@
       if (tabGroup._tabsInit) return;
       tabGroup._tabsInit = true;
 
-      const buttons = tabGroup.querySelectorAll(":scope > [data-tab], :scope > * > [data-tab]");
-      const panels = tabGroup.querySelectorAll(":scope > [data-tab-panel], :scope > * > [data-tab-panel]");
+      const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
+      const PANEL_SEL = ":scope > [data-tab-panel], :scope > * > [data-tab-panel]";
+      function getButtons() { return tabGroup.querySelectorAll(TAB_SEL); }
+      function getPanels() { return tabGroup.querySelectorAll(PANEL_SEL); }
+      const buttons = getButtons();
+      const panels = getPanels();
 
       function isDisabled(btn) {
         return btn.disabled || btn.getAttribute("aria-disabled") === "true";
@@ -67,8 +71,10 @@
       function activate(btn) {
         if (isDisabled(btn)) return;
         const target = btn.getAttribute("data-tab");
+        const currentButtons = getButtons();
+        const currentPanels = getPanels();
 
-        buttons.forEach((b) => {
+        currentButtons.forEach((b) => {
           b.removeAttribute("data-active");
           b.setAttribute("aria-selected", "false");
           b.setAttribute("tabindex", "-1");
@@ -80,7 +86,7 @@
 
         positionIndicator(btn);
 
-        panels.forEach((p) => {
+        currentPanels.forEach((p) => {
           if (p.getAttribute("data-tab-panel") === target) {
             p.setAttribute("data-active", "");
           } else {
@@ -90,12 +96,13 @@
       }
 
       function findTab(from, step) {
-        let idx = (from + step + buttons.length) % buttons.length;
-        let guard = buttons.length;
-        while (idx !== from && isDisabled(buttons[idx]) && --guard > 0) {
-          idx = (idx + step + buttons.length) % buttons.length;
+        const currentButtons = getButtons();
+        let idx = (from + step + currentButtons.length) % currentButtons.length;
+        let guard = currentButtons.length;
+        while (idx !== from && isDisabled(currentButtons[idx]) && --guard > 0) {
+          idx = (idx + step + currentButtons.length) % currentButtons.length;
         }
-        return idx !== from && !isDisabled(buttons[idx]) ? buttons[idx] : null;
+        return idx !== from && !isDisabled(currentButtons[idx]) ? currentButtons[idx] : null;
       }
 
       buttons.forEach((btn, i) => {

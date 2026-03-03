@@ -21,10 +21,10 @@ test.describe('Table', () => {
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
   });
 
-  test('th has uppercase styling', async ({ page }) => {
+  test('th has correct font size and style', async ({ page }) => {
     const th = preview(page).locator('th').first();
-    expect(await css(th, 'textTransform')).toBe('uppercase');
     expect(parseFloat(await css(th, 'fontSize'))).toBe(13);
+    expect(await css(th, 'textTransform')).toBe('none');
   });
 
   test('table-striped has alternating row backgrounds', async ({ page }) => {

@@ -22,7 +22,7 @@
 .tag-red    { --tag-color: var(--color-destructive); }
 .tag-orange { --tag-color: oklch(0.769 0.164 68.76); .dark & { --tag-color: oklch(0.783 0.165 69.0); } }   /* #FF9500 / #FF9F0A */
 .tag-yellow { --tag-color: oklch(0.871 0.176 93.73); .dark & { --tag-color: oklch(0.886 0.174 94.0); } }   /* #FFCC00 / #FFD60A */
-.tag-green  { --tag-color: var(--color-switch); }
+.tag-green  { --tag-color: var(--color-green); }
 .tag-blue   { --tag-color: oklch(0.563 0.241 256.1); .dark & { --tag-color: oklch(0.617 0.246 256.5); } }  /* #007AFF / #0A84FF */
 .tag-purple { --tag-color: oklch(0.586 0.249 303.11); .dark & { --tag-color: oklch(0.630 0.250 303.5); } } /* #AF52DE / #BF5AF2 */
 .tag-gray   { --tag-color: oklch(0.633 0.013 286.02); .dark & { --tag-color: oklch(0.681 0.007 286.21); } } /* #8E8E93 / #98989D */

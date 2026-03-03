@@ -1,4 +1,20 @@
 /* ========== PROGRESS ========== */
+progress {
+  @apply block h-1 w-full overflow-hidden rounded-full appearance-none;
+  background: var(--surface-5);
+  &::-webkit-progress-bar {
+    background: var(--surface-5);
+    border-radius: 9999px;
+  }
+  &::-webkit-progress-value {
+    background: var(--color-primary);
+    border-radius: 9999px;
+  }
+  &::-moz-progress-bar {
+    background: var(--color-primary);
+    border-radius: 9999px;
+  }
+}
 .progress-indeterminate {
   @apply relative h-1 w-full overflow-hidden rounded-full;
   background: var(--surface-5);

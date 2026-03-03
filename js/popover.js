@@ -82,6 +82,7 @@
             if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
               if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
               popover.setAttribute("aria-labelledby", trigger.id);
+              popover._ciderAriaLabelledBy = true;
             }
             popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
               item.setAttribute("role", "menuitem");
@@ -105,15 +106,21 @@
           };
           window.addEventListener("scroll", popover._rafPositioner, true);
           window.addEventListener("resize", popover._rafPositioner);
+          // Observe DOM removal only while open
+          popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true, subtree: true });
 
           const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])');
           if (first) first.focus();
         } else {
           trigger.setAttribute("aria-expanded", "false");
           popover._cleanupPositioning();
+          if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
           if (isMenu) {
             popover.removeAttribute("role");
-            popover.removeAttribute("aria-labelledby");
+            if (popover._ciderAriaLabelledBy) {
+              popover.removeAttribute("aria-labelledby");
+              popover._ciderAriaLabelledBy = false;
+            }
             popover.querySelectorAll("[data-ciderui-menuitem]").forEach((item) => {
               item.removeAttribute("role");
               item.removeAttribute("data-ciderui-menuitem");
@@ -142,7 +149,6 @@
           popover._disconnectObserver.disconnect();
         }
       });
-      popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true, subtree: true });
 
       // Escape key to close popover
       if (popover._escHandler) {

@@ -62,9 +62,9 @@
    *   surface-1  →  table header, zebra stripe (barely visible tint)
    *   surface-2  →  hover backgrounds (subtle interactive feedback)
    *   surface-3  →  icon bg, kbd bg, toggle group (visible but quiet)
-   *   surface-4  →  active/pressed state, segmented control bg
+   *   surface-4  →  active/pressed state
    * Above 4 cover most component needs. 5–7 are for specialised chrome:
-   *   surface-5  →  slider track, progress track bg
+   *   surface-5  →  slider track, progress track bg, segmented control bg
    *   surface-7  →  tooltip bg
    */
   --surface-1: oklch(0 0 0 / 0.02);
@@ -79,12 +79,19 @@
   --glass-blur: blur(20px) saturate(1.5);
   --glass-blur-heavy: blur(40px) saturate(1.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
+  --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.78);
   --backdrop-bg: oklch(0 0 0 / 0.35);
   --hover-brightness: 0.92;
+  --float-ring-color: oklch(0 0 0 / 0.06);
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
   --hud-background: oklch(0.12 0 0 / 0.60);
   --hud-text: oklch(0.95 0 0);
+  --tooltip-bg: var(--surface-7);
+  --tooltip-text: var(--color-foreground);
+
+  --avatar-bg: oklch(0.85 0.006 286);
+  --avatar-fg: oklch(0.45 0.006 286);
 
   --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.20);
   --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20);
@@ -110,7 +117,7 @@
   --color-primary-active: oklch(0.570 0.188 254.00);
   --color-primary-foreground: #fff;
 
-  --color-background: oklch(0.061 0.004 286);           /* #1D1D1F Apple dark bg */
+  --color-background: oklch(0.061 0.004 286);           /* near-black dark bg */
   --color-foreground: oklch(0.971 0.003 286.35);       /* #F5F5F7 Apple dark text */
 
   --color-card: oklch(0.227 0.004 286.09);             /* #1C1C1E systemGray6 */
@@ -154,12 +161,19 @@
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
+  --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.82);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
   --hover-brightness: 1.12;
+  --float-ring-color: oklch(1 0 0 / 0.08);
 
   --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
   --hud-background: oklch(0.15 0 0 / 0.6);
+  --tooltip-bg: oklch(0.20 0 0 / 0.95);
+  --tooltip-text: var(--hud-text);
+
+  --avatar-bg: oklch(0.35 0.006 286);
+  --avatar-fg: oklch(0.80 0.006 286);
 
   --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.30);
   --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30);
@@ -186,10 +200,14 @@
   --color-separator: var(--color-separator);
   --color-ring: var(--color-ring);
   --color-green: var(--color-green);
+  --color-switch: var(--color-switch);
+  --color-switch-hover: var(--color-switch-hover);
   --color-destructive: var(--color-destructive);
   --color-destructive-hover: var(--color-destructive-hover);
   --color-destructive-active: var(--color-destructive-active);
   --color-destructive-foreground: var(--color-destructive-foreground);
+  --input-border: var(--input-border);
+  --input-border-hover: var(--input-border-hover);
   --radius: var(--radius);
   --radius-sm: var(--radius-sm);
   --radius-lg: var(--radius-lg);
