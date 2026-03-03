@@ -15,7 +15,7 @@
     .dark &:hover { opacity: 0.85; }
     .dark &:active { opacity: 0.7; transform: scale(0.90); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
-    &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
+    &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.38; }
   }
 }
 /* Apple System Colors — light / dark */

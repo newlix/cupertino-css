@@ -4,13 +4,13 @@
 .btn-tinted,
 .btn-bezelled,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-5 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-5 py-3 text-[15px] leading-[1.33] font-medium disabled:pointer-events-none cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
   transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), border-color var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
   letter-spacing: -0.016em;
-  &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
+  &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.38; }
   &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
 }
@@ -129,5 +129,8 @@
     opacity: 1;
     translate: -50% 0;
     transition-delay: 0.6s;
+  }
+  @media (forced-colors: active) {
+    &::after { border: 1px solid ButtonText; background: Canvas; color: CanvasText; box-shadow: none; }
   }
 }

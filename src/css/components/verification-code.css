@@ -56,3 +56,11 @@
 .verification-code[data-error] + small {
   @apply text-destructive;
 }
+@media (forced-colors: active) {
+  .verification-code input:not([type="hidden"]) {
+    border: 2px solid ButtonText;
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    &:disabled { border-color: GrayText; }
+  }
+  .verification-code[data-error] input:not([type="hidden"]) { border-color: LinkText; }
+}

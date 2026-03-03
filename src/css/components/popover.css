@@ -53,9 +53,10 @@
       &:active svg { color: var(--color-primary-foreground); }
       &:focus-visible { outline: none; }
       & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
+      @media (pointer: coarse) { min-height: 44px; }
       &:disabled, &[aria-disabled="true"] {
         @apply text-tertiary-foreground;
-        opacity: 0.40;
+        opacity: 0.38;
         pointer-events: none;
       }
     }
@@ -101,6 +102,18 @@
   box-shadow: 0.5px 0.5px 0 0.5px var(--float-ring-color);
 }
 
+@media (forced-colors: active) {
+  .popover [popover] { border: 1px solid ButtonText; }
+  .popover-menu [popover] button:is(:hover, :focus-visible),
+  .popover-menu [popover] a:is(:hover, :focus-visible) {
+    background: Highlight;
+    color: HighlightText;
+  }
+  .popover-menu [popover] button:disabled,
+  .popover-menu [popover] a[aria-disabled="true"] {
+    color: GrayText;
+  }
+}
 /* Top positioning variant */
 .popover-top {
   & [popover] {

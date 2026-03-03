@@ -32,3 +32,6 @@
 .hud[data-closing] {
   animation: hudDismiss 0.18s var(--apple-ease) forwards;
 }
+@media (forced-colors: active) {
+  .hud { border: 1px solid ButtonText; }
+}

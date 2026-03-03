@@ -30,7 +30,8 @@
   &:hover:not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
   &:active:not(:disabled):not([aria-disabled="true"]) { opacity: 0.7; }
   &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.4; }
+  &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.38; }
+  @media (pointer: coarse) { min-height: 44px; }
   &[data-active],
   &[aria-selected="true"] {
     @apply text-foreground;

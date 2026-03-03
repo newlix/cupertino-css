@@ -51,4 +51,8 @@ dialog {
     border-top: 1px solid var(--color-border);
     @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
   }
+  @media (forced-colors: active) {
+    border: 1px solid ButtonText;
+    & .dialog-close:focus-visible { outline: 2px solid Highlight; }
+  }
 }

@@ -24,3 +24,7 @@
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
 }
+@media (forced-colors: active) {
+  .badge { forced-color-adjust: none; border: 1px solid ButtonText; }
+  .badge-dot { forced-color-adjust: none; }
+}
