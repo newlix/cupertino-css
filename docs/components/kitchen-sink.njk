@@ -338,11 +338,11 @@
     <div class="mt-4 space-y-4">
       <progress value="60" max="100"></progress>
       <progress value="35" max="100"></progress>
-      <div class="progress-indeterminate"></div>
+      <div class="progress-indeterminate" role="progressbar" aria-label="Loading"></div>
       <div class="flex items-center gap-4 mt-2">
-        <span class="activity-indicator activity-indicator-sm"></span>
-        <span class="activity-indicator"></span>
-        <span class="activity-indicator activity-indicator-lg"></span>
+        <span class="activity-indicator activity-indicator-sm" role="status" aria-label="Loading"></span>
+        <span class="activity-indicator" role="status" aria-label="Loading"></span>
+        <span class="activity-indicator activity-indicator-lg" role="status" aria-label="Loading"></span>
       </div>
     </div>
   </section>
@@ -386,7 +386,7 @@
   <section>
     <h2 class="text-xl font-bold tracking-tight">Dialog</h2>
     <div class="mt-4">
-      <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Open Dialog</button>
+      <button onclick="openDialog(this.nextElementSibling)" class="btn-tinted">Open Dialog</button>
       <dialog>
         <header>
           <h2>Save changes to "Untitled"?</h2>

@@ -68,7 +68,7 @@
       });
 
       function activate(btn) {
-        if (isDisabled(btn)) return;
+        if (!btn.isConnected || isDisabled(btn)) return;
         const target = btn.getAttribute("data-tab");
         const currentButtons = getButtons();
         const currentPanels = getPanels();

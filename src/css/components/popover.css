@@ -54,7 +54,8 @@
       &:focus-visible { outline: none; }
       & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
       &:disabled, &[aria-disabled="true"] {
-        @apply opacity-30 text-tertiary-foreground;
+        @apply text-tertiary-foreground;
+        opacity: 0.40;
         pointer-events: none;
       }
     }

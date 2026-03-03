@@ -149,6 +149,10 @@
             });
           } else {
             popover.removeAttribute("role");
+            if (popover._ciderAriaLabelledBy) {
+              popover.removeAttribute("aria-labelledby");
+              popover._ciderAriaLabelledBy = false;
+            }
           }
           if (
             popover._escapeDismiss ||
@@ -175,6 +179,9 @@
           if (popover._focusTrapHandler) popover.removeEventListener("keydown", popover._focusTrapHandler);
           if (popover._menuClickHandler) popover.removeEventListener("click", popover._menuClickHandler);
           if (popover._menuKeyHandler) popover.removeEventListener("keydown", popover._menuKeyHandler);
+          clearTimeout(popover._typeAheadTimer);
+          popover._typeAheadTimer = null;
+          popover._typeAheadBuffer = "";
           popover._escapeDismiss = false;
           popover._popoverInit = false;
         }
