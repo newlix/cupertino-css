@@ -436,7 +436,6 @@ progress {
   &::-webkit-progress-value {
     background: var(--color-primary);
     border-radius: 9999px;
-    transition: width 0.5s var(--apple-spring);
   }
   &::-moz-progress-bar {
     background: var(--color-primary);

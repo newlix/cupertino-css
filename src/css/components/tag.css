@@ -27,10 +27,8 @@
 .tag-purple { --tag-color: oklch(0.586 0.249 303.11); } /* #AF52DE */
 .tag-gray   { --tag-color: oklch(0.633 0.013 286.02); } /* #8E8E93 */
 /* Apple System Colors — dark */
-.dark {
-  .tag-orange { --tag-color: oklch(0.783 0.165 69.0); }  /* #FF9F0A */
-  .tag-yellow { --tag-color: oklch(0.886 0.174 94.0); }  /* #FFD60A */
-  .tag-blue   { --tag-color: oklch(0.617 0.246 256.5); } /* #0A84FF */
-  .tag-purple { --tag-color: oklch(0.630 0.250 303.5); } /* #BF5AF2 */
-  .tag-gray   { --tag-color: oklch(0.681 0.007 286.21); } /* #98989D */
-}
+.tag-orange { .dark & { --tag-color: oklch(0.783 0.165 69.0); } }  /* #FF9F0A */
+.tag-yellow { .dark & { --tag-color: oklch(0.886 0.174 94.0); } }  /* #FFD60A */
+.tag-blue   { .dark & { --tag-color: oklch(0.617 0.246 256.5); } } /* #0A84FF */
+.tag-purple { .dark & { --tag-color: oklch(0.630 0.250 303.5); } } /* #BF5AF2 */
+.tag-gray   { .dark & { --tag-color: oklch(0.681 0.007 286.21); } } /* #98989D */

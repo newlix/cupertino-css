@@ -83,6 +83,9 @@
           try {
             // Always fill from the first input when a full code is pasted
             const startIdx = text.length >= inputs.length ? 0 : i;
+            if (startIdx === 0) {
+              inputs.forEach((inp) => { inp.value = ""; });
+            }
             for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
               inputs[startIdx + j].value = text[j];
             }

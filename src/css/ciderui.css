@@ -72,7 +72,6 @@
   --surface-3: oklch(0 0 0 / 0.04);
   --surface-4: oklch(0 0 0 / 0.06);
   --surface-5: oklch(0 0 0 / 0.1);
-  --surface-6: oklch(0 0 0 / 0.15);
   --surface-7: oklch(0 0 0 / 0.2);
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
@@ -147,12 +146,10 @@
   --surface-3: oklch(1 0 0 / 0.06);
   --surface-4: oklch(1 0 0 / 0.08);
   --surface-5: oklch(1 0 0 / 0.12);
-  --surface-6: oklch(1 0 0 / 0.16);
   --surface-7: oklch(1 0 0 / 0.2);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
-  --glass-blur-heavy: blur(40px) saturate(1.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
 
   --backdrop-bg: oklch(0 0 0 / 0.55);
@@ -220,7 +217,8 @@
    * This avoids double-ring artefacts and keeps focus styling
    * consistent with Apple's per-control approach.
    */
-  :focus-visible {
+  .cider :focus-visible,
+  .cider:focus-visible {
     outline: none;
   }
 

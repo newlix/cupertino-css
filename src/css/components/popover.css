@@ -42,7 +42,7 @@
 .popover-menu {
   & [popover] {
     @apply min-w-[200px] max-w-none rounded-[6px] p-1;
-    max-height: 400px;
+    max-height: min(400px, calc(100vh - 2rem));
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[5px] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;

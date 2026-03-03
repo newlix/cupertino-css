@@ -246,7 +246,6 @@
   --surface-3: oklch(0 0 0 / 0.04);
   --surface-4: oklch(0 0 0 / 0.06);
   --surface-5: oklch(0 0 0 / 0.1);
-  --surface-6: oklch(0 0 0 / 0.15);
   --surface-7: oklch(0 0 0 / 0.2);
   --panel-border: oklch(0 0 0 / 0.06);
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04);
@@ -306,12 +305,10 @@
   --surface-3: oklch(1 0 0 / 0.06);
   --surface-4: oklch(1 0 0 / 0.08);
   --surface-5: oklch(1 0 0 / 0.12);
-  --surface-6: oklch(1 0 0 / 0.16);
   --surface-7: oklch(1 0 0 / 0.2);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring: 0 0 0 1px oklch(1 0 0 / 0.08);
-  --glass-blur-heavy: blur(40px) saturate(1.8);
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
   --backdrop-bg: oklch(0 0 0 / 0.55);
   --hover-brightness: 1.12;
@@ -331,7 +328,7 @@
   *, *::before, *::after {
     border-color: var(--color-border);
   }
-  :focus-visible {
+  .cider :focus-visible, .cider:focus-visible {
     outline: none;
   }
   @keyframes dialogShow {
@@ -704,7 +701,6 @@
       padding: 2px 6px;
       max-width: 5rem;
       overflow: hidden;
-      text-overflow: ellipsis;
       flex-shrink: 0;
       box-shadow: 0 0 0 2px var(--color-background);
     }
@@ -778,20 +774,28 @@
     .tag-gray {
       --tag-color: oklch(0.633 0.013 286.02);
     }
-    .dark {
-      .tag-orange {
+    .tag-orange {
+      .dark & {
         --tag-color: oklch(0.783 0.165 69.0);
       }
-      .tag-yellow {
+    }
+    .tag-yellow {
+      .dark & {
         --tag-color: oklch(0.886 0.174 94.0);
       }
-      .tag-blue {
+    }
+    .tag-blue {
+      .dark & {
         --tag-color: oklch(0.617 0.246 256.5);
       }
-      .tag-purple {
+    }
+    .tag-purple {
+      .dark & {
         --tag-color: oklch(0.630 0.250 303.5);
       }
-      .tag-gray {
+    }
+    .tag-gray {
+      .dark & {
         --tag-color: oklch(0.681 0.007 286.21);
       }
     }
@@ -833,7 +837,10 @@
       border-radius: var(--radius);
       corner-shape: squircle;
       background: var(--color-secondary);
-      border: 0.5px solid var(--panel-border);
+      border: 1px solid var(--panel-border);
+      @media (min-resolution: 2dppx) {
+        border-width: 0.5px;
+      }
       & > :is(h1, h2, h3, h4, h5, h6) {
         margin-bottom: calc(var(--spacing) * 1);
         --tw-font-weight: var(--font-weight-semibold);
@@ -1006,7 +1013,7 @@
       min-width: 56px;
       min-height: 28px;
       transition: color 0.2s var(--apple-ease);
-      &:hover:not([disabled]):not([aria-disabled="true"]) {
+      &:hover:not(:disabled):not([aria-disabled="true"]) {
         color: var(--color-foreground);
       }
       &:focus-visible {
@@ -1140,7 +1147,7 @@
       }
       &:disabled, &[aria-disabled="true"] {
         pointer-events: none;
-        opacity: 0.4;
+        opacity: 0.15;
       }
       @media (pointer: coarse) {
         position: relative;
@@ -1390,7 +1397,6 @@
       mask-position: center;
       animation: activity-spin 1.0s steps(12, start) infinite;
       @media (prefers-reduced-motion: reduce) {
-        animation: none;
         opacity: 0.7;
       }
     }
@@ -1559,7 +1565,7 @@
         &:focus-visible {
           background: var(--surface-3);
           outline: 2px solid var(--color-primary);
-          outline-offset: 2px;
+          outline-offset: -2px;
         }
         &[data-selected]:hover, &[aria-selected="true"]:hover {
           background: oklch(from var(--color-primary) l c h / 0.20);
@@ -1642,7 +1648,7 @@
         min-width: 200px;
         border-radius: 6px;
         padding: calc(var(--spacing) * 1);
-        max-height: 400px;
+        max-height: min(400px, calc(100vh - 2rem));
         & button, & a {
           display: flex;
           width: 100%;
@@ -2496,7 +2502,6 @@
       &::-webkit-progress-value {
         background: var(--color-primary);
         border-radius: 9999px;
-        transition: width 0.5s var(--apple-spring);
       }
       &::-moz-progress-bar {
         background: var(--color-primary);
