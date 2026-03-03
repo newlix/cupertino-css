@@ -23,16 +23,18 @@
       el.addEventListener("input", () => { update(el); });
       el.addEventListener("change", () => { update(el); });
       // Sync when value/min/max attributes change programmatically
+      if (el._sliderObserver) el._sliderObserver.disconnect();
       const mo = new MutationObserver(() => {
-        if (!el.isConnected) { mo.disconnect(); return; }
+        if (!el.isConnected) { mo.disconnect(); el._sliderInit = false; return; }
         update(el);
       });
+      el._sliderObserver = mo;
       mo.observe(el, { attributes: true, attributeFilter: ["value", "min", "max"] });
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init, { once: true });
   } else {
     init();
   }

@@ -1,6 +1,6 @@
 /* ========== TAG (Finder-style color dots) ========== */
 .tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray {
-  @apply inline-block p-0;
+  @apply inline-block;
   width: 12px;
   height: 12px;
   border-radius: 50%;

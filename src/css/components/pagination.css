@@ -6,8 +6,8 @@
     min-height: 32px;
     min-width: 32px;
     corner-shape: squircle;
-    transition: color 0.2s var(--apple-ease);
-    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
+    transition: color var(--transition-normal) var(--apple-ease), background-color var(--transition-normal) var(--apple-ease);
+    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &[data-active], &[aria-current="page"] {
       @apply text-primary font-semibold pointer-events-none;

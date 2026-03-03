@@ -14,7 +14,8 @@
   mask-position: center;
   animation: activity-spin 1.0s steps(12, start) infinite;
   @media (prefers-reduced-motion: reduce) {
-    opacity: 0.7;
+    animation: none;
+    opacity: 0.5;
   }
 }
 .activity-indicator-sm {

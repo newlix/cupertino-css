@@ -40,6 +40,12 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
+      svgEl.querySelectorAll("script").forEach((s) => s.remove());
+      svgEl.querySelectorAll("*").forEach((el) => {
+        for (const attr of Array.from(el.attributes)) {
+          if (attr.name.startsWith("on")) el.removeAttribute(attr.name);
+        }
+      });
       hud.appendChild(document.adoptNode(svgEl));
     } else {
       const fallbackDoc = parser.parseFromString(defaultIcon, "image/svg+xml");
@@ -63,11 +69,14 @@
       if (animTimer) clearTimeout(animTimer);
       if (!hud.parentElement) return;
       hud.setAttribute("data-closing", "");
+      let removed = false;
       function removeHud(e) {
+        if (removed) return;
         if (e && e.animationName !== "hudDismiss") return;
-        if (hud.parentElement) hud.remove();
-        if (animTimer) clearTimeout(animTimer);
+        removed = true;
+        clearTimeout(animTimer);
         hud.removeEventListener("animationend", removeHud);
+        if (hud.parentElement) hud.remove();
       }
       hud.addEventListener("animationend", removeHud);
       const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 250;

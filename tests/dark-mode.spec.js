@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { goto, darkPreview, css, setDark, parseRgb, contrast } from './helpers.js';
+import { goto, preview, css, setDark, contrastBetween } from './helpers.js';
 
 test.describe('Dark Mode', () => {
   test('verification code slots have visible background against card', async ({ page }) => {
     await goto(page, 'verification-code');
     await setDark(page);
 
-    const slot = darkPreview(page).locator('.verification-code input:not([type="hidden"])').first();
-    const container = darkPreview(page);
+    const slot = preview(page).locator('.verification-code input:not([type="hidden"])').first();
+    const container = preview(page);
 
     expect(await css(slot, 'backgroundColor')).not.toBe(await css(container, 'backgroundColor'));
   });
@@ -26,30 +26,18 @@ test.describe('Dark Mode', () => {
     await goto(page, 'badge');
     await setDark(page);
 
-    for (const sel of ['.badge']) {
-      const badge = page.locator(`.snippet-preview > figure ${sel}`).first();
-      if ((await badge.count()) === 0) continue;
-
-      const color = parseRgb(await css(badge, 'color'));
-      const bg = parseRgb(await css(badge, 'backgroundColor'));
-
-      if (color && bg) {
-        expect(contrast(color, bg), `${sel} contrast`).toBeGreaterThan(3);
-      }
-    }
+    const badge = page.locator('.snippet-preview > figure .badge').first();
+    const ratio = await contrastBetween(badge, 'color', badge, 'backgroundColor');
+    expect(ratio, 'badge contrast').toBeGreaterThan(3);
   });
 
   test('card border is visible against card background', async ({ page }) => {
     await goto(page, 'card');
     await setDark(page);
 
-    const card = darkPreview(page, 0).locator('.card').first();
-    const borderRgb = parseRgb(await css(card, 'borderColor'));
-    const bgRgb = parseRgb(await css(card, 'backgroundColor'));
-
-    if (borderRgb && bgRgb) {
-      expect(contrast(borderRgb, bgRgb)).toBeGreaterThan(1.05);
-    }
+    const card = preview(page, 0).locator('.card').first();
+    const ratio = await contrastBetween(card, 'borderColor', card, 'backgroundColor');
+    expect(ratio).toBeGreaterThan(1.05);
   });
 
   test('radio checked state is visible', async ({ page }) => {
@@ -74,20 +62,16 @@ test.describe('Dark Mode', () => {
     await goto(page, 'input');
     await setDark(page);
 
-    const input = darkPreview(page).locator('input[type="text"]').first();
-    const borderRgb = parseRgb(await css(input, 'borderColor'));
-    const bgRgb = parseRgb(await css(input, 'backgroundColor'));
-
-    if (borderRgb && bgRgb) {
-      expect(contrast(borderRgb, bgRgb)).toBeGreaterThan(1.05);
-    }
+    const input = preview(page).locator('input[type="text"]').first();
+    const ratio = await contrastBetween(input, 'borderColor', input, 'backgroundColor');
+    expect(ratio).toBeGreaterThan(1.05);
   });
 
   test('progress bar is visible', async ({ page }) => {
     await goto(page, 'progress');
     await setDark(page);
 
-    const bar = darkPreview(page).locator('progress').first();
+    const bar = preview(page).locator('progress').first();
     await expect(bar).toBeVisible();
     // Progress track should have a background
     const bg = await css(bar, 'backgroundColor');

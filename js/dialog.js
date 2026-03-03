@@ -3,6 +3,7 @@
 // focus trapping, scroll lock, and focus restoration.
 (function () {
   const activeDialogs = new Set();
+  let savedOverflow = null;
   const FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function closeDialog(dialog) {
@@ -89,17 +90,24 @@
       }
       dialog._cancelHandler = (e) => {
         e.preventDefault();
-        closeDialog(dialog);
+        if (!dialog.hasAttribute("data-modal")) closeDialog(dialog);
       };
       dialog.addEventListener("cancel", dialog._cancelHandler);
+
+      if (dialog._mousedownHandler) {
+        dialog.removeEventListener("mousedown", dialog._mousedownHandler);
+      }
+      dialog._mousedownHandler = (e) => { dialog._mousedownTarget = e.target; };
+      dialog.addEventListener("mousedown", dialog._mousedownHandler);
 
       if (dialog._clickHandler) {
         dialog.removeEventListener("click", dialog._clickHandler);
       }
       dialog._clickHandler = (e) => {
-        if (e.target === dialog && !dialog.hasAttribute("data-modal")) {
+        if (e.target === dialog && dialog._mousedownTarget === dialog && !dialog.hasAttribute("data-modal")) {
           closeDialog(dialog);
         }
+        dialog._mousedownTarget = null;
       };
       dialog.addEventListener("click", dialog._clickHandler);
 
@@ -108,10 +116,10 @@
       }
 
       function teardown() {
-        activeDialogs.delete(dialog);
-        if (activeDialogs.size === 0) {
-          document.body.style.overflow = document.body._savedOverflow || "";
-          delete document.body._savedOverflow;
+        const wasActive = activeDialogs.delete(dialog);
+        if (wasActive && activeDialogs.size === 0) {
+          document.body.style.overflow = savedOverflow ?? "";
+          savedOverflow = null;
         }
         if (dialog._focusTrapHandler) {
           dialog.removeEventListener("keydown", dialog._focusTrapHandler);
@@ -133,7 +141,7 @@
             }
             activeDialogs.add(dialog);
             if (activeDialogs.size === 1) {
-              document.body._savedOverflow = document.body.style.overflow;
+              savedOverflow = document.body.style.overflow;
             }
             document.body.style.overflow = "hidden";
             trapFocus(dialog);
@@ -158,7 +166,18 @@
   }
 
   function openDialog(dialog) {
-    if (!dialog || !dialog.isConnected || dialog.open || dialog.hasAttribute("data-closing")) return;
+    if (!dialog || !dialog.isConnected) return;
+    if (dialog.hasAttribute("data-closing")) {
+      const obs = new MutationObserver(() => {
+        if (!dialog.hasAttribute("data-closing") && !dialog.open) {
+          obs.disconnect();
+          openDialog(dialog);
+        }
+      });
+      obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing"] });
+      return;
+    }
+    if (dialog.open) return;
     dialog._previousFocus = document.activeElement;
     dialog.showModal();
   }
@@ -169,7 +188,7 @@
   window.CiderUI.dialog = { init, close: closeDialog, open: openDialog };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init, { once: true });
   } else {
     init();
   }

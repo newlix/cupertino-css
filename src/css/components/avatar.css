@@ -8,10 +8,10 @@
   box-shadow: 0 0 0 0.5px oklch(0 0 0 / 0.08);
   .dark & { background-color: oklch(0.35 0.006 286); color: oklch(0.80 0.006 286); box-shadow: 0 0 0 0.5px oklch(1 0 0 / 0.10); }
   &:is(img) { display: inline-block; object-fit: cover; }
-  & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+  & img { @apply size-full rounded-full object-cover; pointer-events: none; -webkit-user-drag: none; }
   &:is(button, a) {
     @apply cursor-pointer no-underline;
-    transition: transform 0.15s var(--apple-ease), filter 0.15s var(--apple-ease);
+    transition: transform var(--transition-fast) var(--apple-ease), filter var(--transition-fast) var(--apple-ease);
     &:hover { filter: brightness(var(--hover-brightness)); }
     &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }

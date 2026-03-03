@@ -47,7 +47,10 @@ test.describe('Dialog', () => {
     await preview(page).locator('button:has-text("Close Document")').click();
     await expect(dialog).toBeVisible();
 
-    await dialog.evaluate(d => d.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await dialog.evaluate(d => {
+      d.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      d.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
     await expect(dialog).not.toBeVisible();
   });
 

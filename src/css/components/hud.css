@@ -20,9 +20,9 @@
   corner-shape: squircle;
   color: var(--hud-text);
   background: var(--hud-background);
-  backdrop-filter: blur(30px) saturate(1.8);
-  -webkit-backdrop-filter: blur(30px) saturate(1.8);
-  box-shadow: 0 4px 24px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(1 0 0 / 0.06);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
+  box-shadow: var(--shadow-md), var(--float-ring);
   animation: hudAppear 0.24s var(--apple-spring);
   & svg:first-child { @apply size-10 shrink-0; }
   & .hud-label { @apply text-[13px] font-medium whitespace-nowrap; }

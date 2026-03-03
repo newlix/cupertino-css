@@ -13,7 +13,7 @@
   font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-variant-numeric: tabular-nums;
   caret-color: transparent;
-  transition: border-color 0.2s var(--apple-ease), box-shadow 0.2s var(--apple-ease);
+  transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
 }
 .verification-code > span {
@@ -29,8 +29,7 @@
 }
 .verification-code input:not([type="hidden"]):focus-visible {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.20);
-  .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.30); }
+  box-shadow: var(--focus-ring);
 }
 .verification-code[data-error] {
   animation: shake 0.3s var(--apple-ease);
@@ -40,13 +39,12 @@
   &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
   &:focus-visible {
     border-color: var(--color-destructive);
-    box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20);
-    .dark & { box-shadow: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30); }
+    box-shadow: var(--focus-ring-error);
   }
 }
 .verification-code[data-error] + small {
   @apply text-destructive;
 }
-.verification-code input:disabled {
+.verification-code input:not([type="hidden"]):disabled {
   @apply cursor-not-allowed opacity-50;
 }

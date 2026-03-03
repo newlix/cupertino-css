@@ -12,8 +12,7 @@
   letter-spacing: -0.016em;
   &[aria-disabled="true"] { pointer-events: none; opacity: 0.4; }
   &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.25); }
-  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.35); }
+  &:focus-visible { box-shadow: var(--focus-ring); }
 }
 /* btn-gray = Apple's secondary button style (neutral gray background).
    Apple HIG calls this the "gray" button role alongside filled/tinted/bordered/plain. */
@@ -84,7 +83,7 @@
   .dark & {
     border-color: oklch(from var(--color-destructive) l c h / 0.35);
     &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
+    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); border-color: oklch(from var(--color-destructive) l c h / 0.40); }
   }
 }
 .btn-plain.btn-destructive {
@@ -101,7 +100,7 @@
   min-height: 32px;
 }
 .btn-lg {
-  @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[12px];
+  @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold;
   letter-spacing: -0.024em;
   min-height: 50px;
 }
@@ -128,7 +127,8 @@
     }
     opacity: 0;
     translate: -50% 2px;
-    transition: opacity 0.15s var(--apple-ease), translate 0.15s var(--apple-ease);
+    transition: opacity var(--transition-fast) var(--apple-ease), translate var(--transition-fast) var(--apple-ease);
+    transition-delay: 0s;
   }
   &:hover::after,
   &:focus-visible::after {

@@ -16,7 +16,7 @@
   background: var(--color-foreground);
   opacity: 0.3;
   cursor: pointer;
-  transition: opacity 0.2s var(--apple-ease), transform 0.2s var(--apple-ease);
+  transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {
     opacity: 1;
   }

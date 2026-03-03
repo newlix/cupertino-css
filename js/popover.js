@@ -122,6 +122,16 @@
       };
       popover.addEventListener("toggle", popover._toggleHandler);
 
+      // Detect DOM removal while open to clean up scroll/resize listeners
+      if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
+      popover._disconnectObserver = new MutationObserver(() => {
+        if (!popover.isConnected) {
+          popover._cleanupPositioning();
+          popover._disconnectObserver.disconnect();
+        }
+      });
+      popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true, subtree: true });
+
       // Escape key to close popover
       if (popover._escHandler) {
         popover.removeEventListener("keydown", popover._escHandler);
@@ -191,6 +201,8 @@
             e.preventDefault();
             items.at(-1).focus();
           } else if (e.key === "Tab") {
+            e.preventDefault();
+            popover._escapeDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
           } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
             // Type-ahead: focus first item starting with typed character
@@ -206,7 +218,7 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init, { once: true });
   } else {
     init();
   }

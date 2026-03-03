@@ -86,6 +86,9 @@
   --hud-background: oklch(0.12 0 0 / 0.60);
   --hud-text: oklch(0.95 0 0);
 
+  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.20);
+  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.20);
+
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
 
   --radius: 0.75rem;                             /* 12px */
@@ -157,6 +160,9 @@
 
   --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
   --hud-background: oklch(0.15 0 0 / 0.6);
+
+  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.30);
+  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.30);
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
 }

@@ -17,7 +17,6 @@ dialog {
     -webkit-backdrop-filter: var(--glass-blur);
   }
   &[open] { display: flex; flex-direction: column; animation: dialogShow 0.24s var(--apple-spring); }
-  &[open]:modal { position: fixed; }
   &[open]::backdrop { animation: backdropFadeIn 0.24s var(--apple-ease); }
   &[data-closing] { animation: dialogHide 0.18s cubic-bezier(0.4, 0, 1, 1) forwards; }
   &[data-closing]::backdrop { animation: backdropFadeIn 0.18s cubic-bezier(0.4, 0, 1, 1) reverse forwards; }
@@ -35,7 +34,7 @@ dialog {
     & p { @apply mt-1 text-[13px] text-tertiary-foreground; }
   }
   & > section {
-    @apply px-6 pt-4 overflow-y-auto flex-1 min-h-0;
+    @apply px-6 pt-4 pb-4 overflow-y-auto flex-1 min-h-0;
     overscroll-behavior: contain;
     & > :not(:first-child) { margin-top: 0.75rem; }
     &:last-child { @apply pb-6; }
