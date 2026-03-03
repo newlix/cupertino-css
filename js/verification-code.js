@@ -85,6 +85,8 @@
             const startIdx = text.length >= inputs.length ? 0 : i;
             if (startIdx === 0) {
               inputs.forEach((inp) => { inp.value = ""; });
+            } else {
+              for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
             }
             for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
               inputs[startIdx + j].value = text[j];

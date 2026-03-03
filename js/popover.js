@@ -82,6 +82,8 @@
             popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
               item.setAttribute("role", "menuitem");
             });
+          } else {
+            popover.setAttribute("role", "dialog");
           }
           // Cleanup any stale positioning listeners before adding new ones
           popover._cleanupPositioning();
@@ -99,7 +101,7 @@
           window.addEventListener("scroll", popover._rafPositioner, true);
           window.addEventListener("resize", popover._rafPositioner);
 
-          const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])');
           if (first) first.focus();
         } else {
           trigger.setAttribute("aria-expanded", "false");
@@ -109,6 +111,8 @@
             popover.querySelectorAll('[role="menuitem"]').forEach((item) => {
               item.removeAttribute("role");
             });
+          } else {
+            popover.removeAttribute("role");
           }
           if (
             popover._escapeDismiss ||

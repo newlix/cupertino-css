@@ -59,12 +59,13 @@
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {
+  --list-radius: 10px;
   background: var(--color-card);
-  border-radius: 10px;
+  border-radius: var(--list-radius);
   corner-shape: squircle;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   .dark & { box-shadow: var(--shadow), var(--panel-ring); }
-  & > *:first-child { border-radius: 10px 10px 0 0; corner-shape: squircle; }
-  & > *:last-child { border-radius: 0 0 10px 10px; corner-shape: squircle; }
-  & > *:only-child { border-radius: 10px; corner-shape: squircle; }
+  & > *:first-child { border-radius: var(--list-radius) var(--list-radius) 0 0; corner-shape: squircle; }
+  & > *:last-child { border-radius: 0 0 var(--list-radius) var(--list-radius); corner-shape: squircle; }
+  & > *:only-child { border-radius: var(--list-radius); corner-shape: squircle; }
 }

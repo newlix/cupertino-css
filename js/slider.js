@@ -21,7 +21,6 @@
       el._sliderInit = true;
       update(el);
       el.addEventListener("input", () => { update(el); });
-      el.addEventListener("change", () => { update(el); });
       // Sync when value/min/max attributes change programmatically
       if (el._sliderObserver) el._sliderObserver.disconnect();
       const mo = new MutationObserver(() => {

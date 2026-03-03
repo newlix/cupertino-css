@@ -12,7 +12,7 @@
     @apply font-medium text-foreground pointer-events-none;
   }
   /* Auto chevron separator — SVG mask for proper chevron glyph with color reactivity */
-  & > :not(:first-child)::before {
+  & > :not(:first-child):not([aria-hidden="true"])::before {
     content: "";
     display: inline-block;
     width: 0.45em;

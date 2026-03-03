@@ -7,6 +7,10 @@
 }
 .verification-code input:not([type="hidden"]) {
   @apply text-center p-0 font-semibold rounded-[8px];
+  background-color: var(--color-card);
+  color: var(--color-foreground);
+  border: 1px solid var(--input-border);
+  @media (min-resolution: 2dppx) { border-width: 0.5px; }
   width: 48px;
   height: 56px;
   font-size: 28px;

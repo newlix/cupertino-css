@@ -3,7 +3,7 @@ dialog {
   @apply m-auto w-full rounded-[14px] text-card-foreground p-0;
   max-width: min(400px, calc(100vw - 2rem));
   max-height: min(85vh, 600px);
-  overflow: hidden;
+  overflow: clip;
   corner-shape: squircle;
   background: oklch(from var(--color-card) l c h / 0.78);
   backdrop-filter: var(--glass-blur-heavy);

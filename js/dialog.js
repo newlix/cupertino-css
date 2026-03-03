@@ -171,6 +171,7 @@
     if (!dialog || !dialog.isConnected) return;
     if (dialog.hasAttribute("data-closing")) {
       const obs = new MutationObserver(() => {
+        if (!dialog.isConnected) { obs.disconnect(); return; }
         if (!dialog.hasAttribute("data-closing") && !dialog.open) {
           obs.disconnect();
           openDialog(dialog);

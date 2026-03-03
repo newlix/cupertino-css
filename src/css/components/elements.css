@@ -361,6 +361,10 @@ table {
     &[data-selected], &[aria-selected="true"] {
       background: oklch(from var(--color-primary) l c h / 0.10);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.18); }
+      &:hover {
+        background: oklch(from var(--color-primary) l c h / 0.18);
+        .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+      }
     }
   }
   & tfoot tr {

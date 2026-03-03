@@ -5,7 +5,6 @@
     @apply inline-flex items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
     min-height: 32px;
     min-width: 32px;
-    corner-shape: squircle;
     transition: color var(--transition-normal) var(--apple-ease), background-color var(--transition-normal) var(--apple-ease);
     &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }

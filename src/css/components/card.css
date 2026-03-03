@@ -10,8 +10,9 @@
               transform var(--transition-normal) var(--apple-spring);
 }
 :is(a, button).card {
+  cursor: pointer;
   &:hover { filter: brightness(var(--hover-brightness)); }
   &:active { transform: scale(var(--apple-press-scale)); }
-  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  &:focus-visible { box-shadow: var(--focus-ring); }
   &:disabled, &[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
 }

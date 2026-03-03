@@ -11,7 +11,6 @@
     corner-shape: squircle;
     inset: unset;
     margin: 0;
-    margin-top: 0.5rem;
     border: none;
     background: var(--glass-bg-opaque);
     backdrop-filter: var(--glass-blur);

@@ -20,11 +20,6 @@
 
     const container =
       document.getElementById("hud-container") || createHUDContainer();
-    if (!container.getAttribute("role")) {
-      container.setAttribute("role", "status");
-      container.setAttribute("aria-live", "polite");
-      container.setAttribute("aria-atomic", "true");
-    }
 
     // macOS shows one HUD at a time — dismiss any existing HUD immediately
     const existing = container.querySelector(".hud");
@@ -41,7 +36,7 @@
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
       svgEl.querySelectorAll("script").forEach((s) => s.remove());
-      svgEl.querySelectorAll("*").forEach((el) => {
+      [svgEl, ...svgEl.querySelectorAll("*")].forEach((el) => {
         for (const attr of Array.from(el.attributes)) {
           if (attr.name.startsWith("on") || attr.name === "style") el.removeAttribute(attr.name);
         }

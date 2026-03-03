@@ -99,7 +99,7 @@
       }
 
       buttons.forEach((btn, i) => {
-        btn.addEventListener("click", () => { activate(btn); btn.focus(); });
+        btn.addEventListener("click", () => { activate(btn); });
 
         btn.addEventListener("keydown", (e) => {
           let targetBtn = null;

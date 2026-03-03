@@ -17,7 +17,6 @@
   @apply inline-flex flex-col items-center gap-2 px-5 py-4;
   min-width: 120px;
   border-radius: var(--radius-xl); /* 22px — Apple HUD window radius */
-  corner-shape: squircle;
   color: var(--hud-text);
   background: var(--hud-background);
   backdrop-filter: var(--glass-blur-heavy);
