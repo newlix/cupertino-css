@@ -53,9 +53,9 @@
     .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
   }
 }
-/* Separator at padding edge for lists without icons */
+/* Separator flush with content edge for lists without icons */
 .list-plain {
-  --list-separator-inset: 1rem;
+  --list-separator-inset: 0px;
 }
 /* Apple inset-grouped style */
 .list-inset-grouped {

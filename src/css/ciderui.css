@@ -72,6 +72,7 @@
   --surface-3: oklch(0 0 0 / 0.04);
   --surface-4: oklch(0 0 0 / 0.06);
   --surface-5: oklch(0 0 0 / 0.1);
+  --surface-6: oklch(0 0 0 / 0.15);
   --surface-7: oklch(0 0 0 / 0.2);
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
@@ -104,6 +105,7 @@
   --color-primary: oklch(0.669 0.181 251.84);          /* #2997FF Apple blue on dark bg */
   --color-primary-hover: oklch(0.620 0.185 253.00);
   --color-primary-active: oklch(0.570 0.188 254.00);
+  --color-primary-foreground: #fff;
 
   --color-background: oklch(0.061 0.004 286);           /* #1D1D1F Apple dark bg */
   --color-foreground: oklch(0.971 0.003 286.35);       /* #F5F5F7 Apple dark text */
@@ -144,6 +146,7 @@
   --surface-3: oklch(1 0 0 / 0.06);
   --surface-4: oklch(1 0 0 / 0.08);
   --surface-5: oklch(1 0 0 / 0.12);
+  --surface-6: oklch(1 0 0 / 0.16);
   --surface-7: oklch(1 0 0 / 0.2);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
@@ -153,7 +156,7 @@
   --backdrop-bg: oklch(0 0 0 / 0.55);
   --hover-brightness: 1.12;
 
-  --color-separator: oklch(0.349 0.003 286.22);  /* #3A3A3C systemGray4 — visible on dark card surfaces */
+  --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
   --hud-background: oklch(0.15 0 0 / 0.6);
 
   --mark-bg: oklch(0.4 0.1 95);         /* dark warm highlight */
