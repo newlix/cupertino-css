@@ -117,7 +117,8 @@
             targetBtn = Array.from(buttons).find((b) => !isDisabled(b));
           } else if (e.key === "End") {
             e.preventDefault();
-            targetBtn = Array.from(buttons).findLast((b) => !isDisabled(b));
+            const enabled = Array.from(buttons).filter((b) => !isDisabled(b));
+            targetBtn = enabled.length ? enabled[enabled.length - 1] : null;
           }
 
           if (targetBtn) {
