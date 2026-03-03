@@ -20,7 +20,7 @@
 .btn-gray {
   @apply bg-secondary text-secondary-foreground;
   &:hover { background: var(--color-secondary-hover); }
-  &:active { background: var(--surface-4); }
+  &:active { background: oklch(from var(--color-secondary-hover) calc(l * 0.96) c h); }
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;

@@ -483,7 +483,7 @@
         background: var(--color-secondary-hover);
       }
       &:active {
-        background: var(--surface-4);
+        background: oklch(from var(--color-secondary-hover) calc(l * 0.96) c h);
       }
     }
     .btn-filled {
@@ -880,8 +880,10 @@
       &[open] {
         display: flex;
         flex-direction: column;
-        position: fixed;
         animation: dialogShow 0.24s var(--apple-spring);
+      }
+      &[open]:modal {
+        position: fixed;
       }
       &[open]::backdrop {
         animation: backdropFadeIn 0.24s var(--apple-ease);
@@ -969,7 +971,10 @@
         }
       }
       & > section + footer {
-        border-top: 0.5px solid var(--color-border);
+        border-top: 1px solid var(--color-border);
+        @media (min-resolution: 2dppx) {
+          border-top-width: 0.5px;
+        }
       }
     }
     .segmented-control {
@@ -1695,7 +1700,10 @@
       & [popover] hr {
         margin-inline: calc(var(--spacing) * 1.5);
         margin-block: calc(var(--spacing) * 1);
-        height: 0.5px;
+        height: 1px;
+        @media (min-resolution: 2dppx) {
+          height: 0.5px;
+        }
         background: var(--panel-border);
       }
     }

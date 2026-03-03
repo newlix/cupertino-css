@@ -60,7 +60,8 @@
   }
   & [popover] hr {
     @apply my-1 mx-1.5;
-    height: 0.5px;
+    height: 1px;
+    @media (min-resolution: 2dppx) { height: 0.5px; }
     background: var(--panel-border);
   }
 }
