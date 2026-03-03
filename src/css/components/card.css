@@ -9,17 +9,9 @@
               background-color var(--transition-fast) var(--apple-ease),
               transform var(--transition-normal) var(--apple-spring);
 }
-a.card:hover, button.card:hover {
-  filter: brightness(var(--hover-brightness));
-}
-a.card:active, button.card:active {
-  transform: scale(var(--apple-press-scale));
-}
-a.card:focus-visible, button.card:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-a.card[aria-disabled="true"], button.card:disabled, button.card[aria-disabled="true"] {
-  opacity: 0.4;
-  pointer-events: none;
+:is(a, button).card {
+  &:hover { filter: brightness(var(--hover-brightness)); }
+  &:active { transform: scale(var(--apple-press-scale)); }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  &:disabled, &[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
 }

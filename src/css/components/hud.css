@@ -18,13 +18,14 @@
   min-width: 120px;
   border-radius: var(--radius-xl); /* 22px — Apple HUD window radius */
   corner-shape: squircle;
+  color: var(--hud-text);
   background: var(--hud-background);
   backdrop-filter: blur(30px) saturate(1.8);
   -webkit-backdrop-filter: blur(30px) saturate(1.8);
   box-shadow: 0 4px 24px oklch(0 0 0 / 0.2), 0 0 0 1px oklch(1 0 0 / 0.06);
   animation: hudAppear 0.24s var(--apple-spring);
-  & svg:first-child { @apply size-10 shrink-0; color: var(--hud-text); }
-  & .hud-label { @apply text-[13px] font-medium whitespace-nowrap; color: var(--hud-text); }
+  & svg:first-child { @apply size-10 shrink-0; }
+  & .hud-label { @apply text-[13px] font-medium whitespace-nowrap; }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */

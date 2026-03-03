@@ -123,7 +123,7 @@ pre {
 
 /* ─── Text inputs ─── */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
-input:where(:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):not([role="switch"])) {
+input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
   @apply w-full h-11 rounded-[10px] border px-4 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);

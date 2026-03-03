@@ -107,17 +107,21 @@
         dialog._focusObserver.disconnect();
       }
 
+      function teardown() {
+        activeDialogs.delete(dialog);
+        if (activeDialogs.size === 0) {
+          document.body.style.overflow = document.body._savedOverflow || "";
+          delete document.body._savedOverflow;
+        }
+        if (dialog._focusTrapHandler) {
+          dialog.removeEventListener("keydown", dialog._focusTrapHandler);
+          dialog._focusTrapHandler = null;
+        }
+      }
+
       const observer = new MutationObserver(() => {
         if (!dialog.isConnected) {
-          activeDialogs.delete(dialog);
-          if (activeDialogs.size === 0) {
-            document.body.style.overflow = document.body._savedOverflow || "";
-            delete document.body._savedOverflow;
-          }
-          if (dialog._focusTrapHandler) {
-            dialog.removeEventListener("keydown", dialog._focusTrapHandler);
-            dialog._focusTrapHandler = null;
-          }
+          teardown();
           observer.disconnect();
           return;
         }
@@ -141,15 +145,7 @@
             dialog._closeAnimHandler = null;
           }
           dialog.removeAttribute("data-closing");
-          activeDialogs.delete(dialog);
-          if (activeDialogs.size === 0) {
-            document.body.style.overflow = document.body._savedOverflow || "";
-            delete document.body._savedOverflow;
-          }
-          if (dialog._focusTrapHandler) {
-            dialog.removeEventListener("keydown", dialog._focusTrapHandler);
-            dialog._focusTrapHandler = null;
-          }
+          teardown();
           if (dialog._previousFocus && document.contains(dialog._previousFocus)) {
             dialog._previousFocus.focus();
           }
