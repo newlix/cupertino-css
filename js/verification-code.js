@@ -97,8 +97,9 @@
             pasting = false;
           }
           sync();
-          const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
-          inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
+          const nextIdx = startIdx + text.length;
+          const firstEmpty = Array.from(inputs).findIndex((inp, idx) => idx >= startIdx && !inp.value);
+          inputs[firstEmpty >= 0 ? firstEmpty : Math.min(nextIdx, inputs.length - 1)].focus();
         });
 
         input.addEventListener("focus", () => input.select());

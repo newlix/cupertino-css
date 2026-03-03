@@ -138,6 +138,7 @@
       popover._disconnectObserver = new MutationObserver(() => {
         if (!popover.isConnected) {
           popover._cleanupPositioning();
+          trigger.setAttribute("aria-expanded", "false");
           popover._disconnectObserver.disconnect();
         }
       });
