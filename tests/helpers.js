@@ -5,7 +5,7 @@
 /** Navigate to a component doc page and wait for ready. */
 export async function goto(page, component, section = 'components') {
   await page.goto(`/${section}/${component}.html`);
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('load');
 }
 
 /** Get the nth example preview container. */

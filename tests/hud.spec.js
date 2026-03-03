@@ -1,21 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { goto, preview } from './helpers.js';
 
 test.describe('HUD', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/components/hud.html');
+    await goto(page, 'hud');
   });
 
   test('static HUD renders with hud-label', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').first();
-    const hud = preview.locator('.hud').first();
+    const hud = preview(page).locator('.hud').first();
 
     await expect(hud).toBeVisible();
     await expect(hud.locator('.hud-label')).toHaveText('Saved');
   });
 
   test('HUD has no close button and no type class', async ({ page }) => {
-    const preview = page.locator('.snippet-preview > figure').first();
-    const hud = preview.locator('.hud').first();
+    const hud = preview(page).locator('.hud').first();
 
     await expect(hud.locator('button')).toHaveCount(0);
     const classes = await hud.getAttribute('class');
@@ -45,9 +44,8 @@ test.describe('HUD', () => {
     const hud = page.locator('#hud-container .hud').last();
     await expect(hud).toBeVisible();
 
-    // Wait for dismiss + exit animation
-    await page.waitForTimeout(900);
-    await expect(hud).not.toBeAttached();
+    // Auto-retry assertion waits for dismiss + exit animation
+    await expect(hud).not.toBeAttached({ timeout: 2000 });
   });
 
   test('showHUD dismiss function removes HUD immediately', async ({ page }) => {
@@ -61,8 +59,6 @@ test.describe('HUD', () => {
     await expect(hud).toBeVisible();
 
     await page.evaluate(() => window._testHud.dismiss());
-    // Wait for exit animation (200ms)
-    await page.waitForTimeout(300);
-    await expect(hud).not.toBeAttached();
+    await expect(hud).not.toBeAttached({ timeout: 2000 });
   });
 });

@@ -35,10 +35,19 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
-      svgEl.querySelectorAll("script").forEach((s) => s.remove());
+      const DANGEROUS_ELEMENTS = new Set(["script", "foreignobject", "iframe", "object", "embed"]);
+      svgEl.querySelectorAll("*").forEach((el) => {
+        if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
+      });
       [svgEl, ...svgEl.querySelectorAll("*")].forEach((el) => {
         for (const attr of Array.from(el.attributes)) {
-          if (attr.name.startsWith("on") || attr.name === "style") el.removeAttribute(attr.name);
+          const name = attr.name.toLowerCase();
+          if (name.startsWith("on") || name === "style") {
+            el.removeAttribute(attr.name);
+          } else if ((name === "href" || name === "xlink:href") &&
+                     attr.value.replace(/\s/g, "").toLowerCase().startsWith("javascript:")) {
+            el.removeAttribute(attr.name);
+          }
         }
       });
       hud.appendChild(document.adoptNode(svgEl));

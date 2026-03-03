@@ -9,11 +9,9 @@ test.describe('Breadcrumb', () => {
     const before = await css(link, 'color');
 
     await link.hover();
-    await page.waitForTimeout(200);
-    const after = await css(link, 'color');
-
-    // Hover changes text color (tertiary → foreground)
-    expect(after).not.toBe(before);
+    await expect(async () => {
+      expect(await css(link, 'color')).not.toBe(before);
+    }).toPass({ timeout: 1000 });
   });
 
   test('link has no underline on hover', async ({ page }) => {
@@ -21,8 +19,8 @@ test.describe('Breadcrumb', () => {
     const link = preview(page).locator('.breadcrumb a').first();
 
     await link.hover();
-    await page.waitForTimeout(200);
-    const deco = await css(link, 'textDecorationLine');
-    expect(deco).toBe('none');
+    await expect(async () => {
+      expect(await css(link, 'textDecorationLine')).toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 });

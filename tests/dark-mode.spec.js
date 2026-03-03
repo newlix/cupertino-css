@@ -50,12 +50,13 @@ test.describe('Dark Mode', () => {
     expect(await css(checked, 'borderColor')).not.toBe(await css(unchecked, 'borderColor'));
   });
 
-  test('callout is visible in dark mode', async ({ page }) => {
+  test('callout has distinct styling in dark mode', async ({ page }) => {
     await goto(page, 'callout');
-    await setDark(page);
-
     const alert = page.locator('.snippet-preview > figure .callout').first();
-    await expect(alert).toBeVisible();
+    const lightBg = await css(alert, 'backgroundColor');
+    await setDark(page);
+    const darkBg = await css(alert, 'backgroundColor');
+    expect(darkBg).not.toBe(lightBg);
   });
 
   test('input border is visible against background', async ({ page }) => {

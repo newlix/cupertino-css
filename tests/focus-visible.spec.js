@@ -33,7 +33,7 @@ test.describe('Focus Visible Accessibility', () => {
     expect(await css(sw, 'boxShadow')).not.toBe('none');
   });
 
-  test('button shows outline on keyboard focus', async ({ page }) => {
+  test('button shows box-shadow on keyboard focus', async ({ page }) => {
     await goto(page, 'button');
 
     const btn = page.locator('.snippet-preview > figure button').first();

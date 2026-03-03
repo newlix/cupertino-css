@@ -42,7 +42,7 @@ test.describe('CSS Rendering', () => {
 
   test('badge variants are visible with distinct colors', async ({ page }) => {
     await goto(page, 'badge');
-    const badges = preview(page).locator('span');
+    const badges = preview(page).locator('.badge');
     const count = await badges.count();
     expect(count).toBeGreaterThanOrEqual(2);
 

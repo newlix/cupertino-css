@@ -107,7 +107,7 @@
           window.addEventListener("scroll", popover._rafPositioner, true);
           window.addEventListener("resize", popover._rafPositioner);
           // Observe DOM removal only while open
-          popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true, subtree: true });
+          popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true });
 
           const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])');
           if (first) first.focus();
@@ -155,10 +155,12 @@
         popover.removeEventListener("keydown", popover._escHandler);
       }
       popover._escHandler = (e) => {
-        if (e.key === "Escape" && popover.matches(":popover-open")) {
-          e.preventDefault();
+        if (e.key === "Escape") {
           popover._escapeDismiss = true;
-          popover.hidePopover();
+          if (popover.matches(":popover-open")) {
+            e.preventDefault();
+            popover.hidePopover();
+          }
         }
       };
       popover.addEventListener("keydown", popover._escHandler);

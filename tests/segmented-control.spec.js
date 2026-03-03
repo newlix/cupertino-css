@@ -4,7 +4,10 @@ import { goto, preview, css, setDark, setLight, focusViaKeyboard } from './helpe
 test.describe('Segmented Control', () => {
   test.beforeEach(async ({ page }) => {
     await goto(page, 'segmented-control');
-    await page.waitForFunction(() => typeof window.showHUD === 'function');
+    await page.waitForFunction(() => {
+      const tab = document.querySelector('[data-tab]');
+      return tab && tab.getAttribute('role') === 'tab';
+    });
   });
 
   test('clicking segment switches active panel', async ({ page }) => {

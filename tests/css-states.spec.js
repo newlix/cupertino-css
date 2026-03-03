@@ -1,55 +1,47 @@
 import { test, expect } from '@playwright/test';
-import { css } from './helpers.js';
+import { goto, css } from './helpers.js';
 
 test.describe('CSS State Specificity', () => {
   test('radio: hover on checked shows hover feedback', async ({ page }) => {
-    await page.goto('/components/radio-group.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'radio-group');
 
     // First radio in the Default example is pre-checked
     const radio = page.locator('.snippet-preview > figure input[type="radio"]:checked').first();
     const before = await css(radio, 'borderColor');
 
     await radio.hover();
-    await page.waitForTimeout(300);
-    const after = await css(radio, 'borderColor');
-
-    // Apple-style: checked controls show hover feedback (primary-hover color)
-    expect(after).not.toBe(before);
+    await expect(async () => {
+      expect(await css(radio, 'borderColor')).not.toBe(before);
+    }).toPass({ timeout: 1000 });
   });
 
   test('radio: hover changes unchecked border-color', async ({ page }) => {
-    await page.goto('/components/radio-group.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'radio-group');
 
     const radio = page.locator('.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)').first();
     const before = await css(radio, 'borderColor');
 
     await radio.hover();
-    await page.waitForTimeout(300);
-    const after = await css(radio, 'borderColor');
-
-    expect(after).not.toBe(before);
+    await expect(async () => {
+      expect(await css(radio, 'borderColor')).not.toBe(before);
+    }).toPass({ timeout: 1000 });
   });
 
   test('checkbox: hover on checked shows hover feedback', async ({ page }) => {
-    await page.goto('/components/checkbox.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'checkbox');
 
     // First example has an unchecked and a checked checkbox — target the checked one
     const cb = page.locator('.snippet-preview > figure input[type="checkbox"]:checked').first();
     const bgBefore = await css(cb, 'backgroundColor');
 
     await cb.hover();
-    await page.waitForTimeout(300);
-
-    // Apple-style: checked controls show hover feedback (primary-hover color)
-    expect(await css(cb, 'backgroundColor')).not.toBe(bgBefore);
+    await expect(async () => {
+      expect(await css(cb, 'backgroundColor')).not.toBe(bgBefore);
+    }).toPass({ timeout: 1000 });
   });
 
   test('switch: checked and unchecked have distinct backgrounds', async ({ page }) => {
-    await page.goto('/components/switch.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'switch');
 
     const checked = page.locator('.snippet-preview > figure input[role="switch"]:checked').first();
     const unchecked = page.locator('.snippet-preview > figure input[role="switch"]:not(:checked):not(:disabled)').first();
@@ -61,24 +53,21 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('disabled radio has opacity <= 0.5', async ({ page }) => {
-    await page.goto('/components/radio-group.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'radio-group');
 
     const disabled = page.locator('.snippet-preview > figure input[type="radio"][disabled]').first();
     expect(parseFloat(await css(disabled, 'opacity'))).toBeLessThanOrEqual(0.5);
   });
 
   test('disabled checkbox has cursor not-allowed', async ({ page }) => {
-    await page.goto('/components/checkbox.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'checkbox');
 
     const disabled = page.locator('.snippet-preview > figure input[type="checkbox"][disabled]').first();
     expect(await css(disabled, 'cursor')).toBe('not-allowed');
   });
 
   test('disabled button has reduced opacity and no pointer-events', async ({ page }) => {
-    await page.goto('/components/button.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'button');
 
     const disabled = page.locator('.snippet-preview > figure button[disabled]').first();
     expect(parseFloat(await css(disabled, 'opacity'))).toBeLessThan(1);
@@ -86,17 +75,14 @@ test.describe('CSS State Specificity', () => {
   });
 
   test('input focus changes border-color to primary', async ({ page }) => {
-    await page.goto('/components/input.html');
-    await page.waitForLoadState('networkidle');
+    await goto(page, 'input');
 
     const input = page.locator('.snippet-preview > figure input[type="text"]').first();
     const beforeColor = await css(input, 'borderColor');
 
     await input.focus();
-    await page.waitForTimeout(250);
-    const focusColor = await css(input, 'borderColor');
-
-    // Focus should change border color (from gray to primary blue)
-    expect(focusColor).not.toBe(beforeColor);
+    await expect(async () => {
+      expect(await css(input, 'borderColor')).not.toBe(beforeColor);
+    }).toPass({ timeout: 1000 });
   });
 });

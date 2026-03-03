@@ -59,7 +59,7 @@
       panels.forEach((panel) => {
         if (!panel.id) panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
         panel.setAttribute("role", "tabpanel");
-        panel.setAttribute("tabindex", "-1");
+        panel.setAttribute("tabindex", panel.hasAttribute("data-active") ? "0" : "-1");
         const panelTarget = panel.getAttribute("data-tab-panel");
         const matchingBtn = Array.from(buttons).find((b) => b.getAttribute("data-tab") === panelTarget);
         if (matchingBtn) {
@@ -89,8 +89,10 @@
         currentPanels.forEach((p) => {
           if (p.getAttribute("data-tab-panel") === target) {
             p.setAttribute("data-active", "");
+            p.setAttribute("tabindex", "0");
           } else {
             p.removeAttribute("data-active");
+            p.setAttribute("tabindex", "-1");
           }
         });
       }
@@ -105,26 +107,27 @@
         return idx !== from && !isDisabled(currentButtons[idx]) ? currentButtons[idx] : null;
       }
 
-      buttons.forEach((btn, i) => {
+      buttons.forEach((btn) => {
         btn.addEventListener("click", () => { activate(btn); });
 
         btn.addEventListener("keydown", (e) => {
           let targetBtn = null;
-          const isRTL = document.documentElement.dir === "rtl";
-          const nextKey = isRTL ? "ArrowLeft" : "ArrowRight";
-          const prevKey = isRTL ? "ArrowRight" : "ArrowLeft";
-          if (e.key === nextKey) {
+          const currentButtons = getButtons();
+          const currentIdx = Array.from(currentButtons).indexOf(btn);
+          if (currentIdx < 0) return;
+
+          if (e.key === "ArrowRight") {
             e.preventDefault();
-            targetBtn = findTab(i, 1);
-          } else if (e.key === prevKey) {
+            targetBtn = findTab(currentIdx, 1);
+          } else if (e.key === "ArrowLeft") {
             e.preventDefault();
-            targetBtn = findTab(i, -1);
+            targetBtn = findTab(currentIdx, -1);
           } else if (e.key === "Home") {
             e.preventDefault();
-            targetBtn = Array.from(buttons).find((b) => !isDisabled(b));
+            targetBtn = Array.from(currentButtons).find((b) => !isDisabled(b));
           } else if (e.key === "End") {
             e.preventDefault();
-            const enabled = Array.from(buttons).filter((b) => !isDisabled(b));
+            const enabled = Array.from(currentButtons).filter((b) => !isDisabled(b));
             targetBtn = enabled.length ? enabled[enabled.length - 1] : null;
           }
 

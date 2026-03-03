@@ -29,9 +29,11 @@ test.describe('Verification Code', () => {
 
     await page.keyboard.press('Backspace');
     await expect(inputs.nth(1)).toHaveValue('');
+    await expect(inputs.nth(1)).toBeFocused();
 
     await page.keyboard.press('Backspace');
     await expect(inputs.nth(0)).toHaveValue('');
+    await expect(inputs.nth(0)).toBeFocused();
   });
 
   test('paste fills multiple slots', async ({ page }) => {

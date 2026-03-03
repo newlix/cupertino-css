@@ -72,6 +72,12 @@ function globNjk(dir) {
 function build() {
   const start = performance.now();
 
+  // Clean stale output
+  if (fs.existsSync(SITE)) {
+    fs.rmSync(SITE, { recursive: true });
+  }
+  fs.mkdirSync(SITE, { recursive: true });
+
   // CSS
   execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/docs.built.css`, {
     cwd: ROOT,

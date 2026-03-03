@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { goto, preview, css, setDark, setLight, focusViaKeyboard } from './helpers.js';
+import { goto, preview, css, focusViaKeyboard } from './helpers.js';
 
 test.describe('List', () => {
   test.beforeEach(async ({ page }) => {
