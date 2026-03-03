@@ -2,6 +2,18 @@
 .slider {
   @apply block w-full cursor-pointer appearance-none rounded-full;
   --slider-value: 0%;
+  /* Thumb shadow tokens — define once, override in dark mode */
+  --slider-thumb-shadow: 0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
+  --slider-thumb-shadow-hover: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
+  --slider-thumb-shadow-active: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
+  --slider-thumb-shadow-focus: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
+  .dark & {
+    --slider-thumb: oklch(0.92 0.003 286);
+    --slider-thumb-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+    --slider-thumb-shadow-hover: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+    --slider-thumb-shadow-active: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+    --slider-thumb-shadow-focus: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+  }
   height: 4px;
   background: linear-gradient(
     to right,
@@ -38,64 +50,25 @@
     height: 20px;
     margin-top: -8px;
     border: none;
-    box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
+    box-shadow: var(--slider-thumb-shadow);
     transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-ease);
   }
-  &::-webkit-slider-thumb:hover {
-    box-shadow: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-  }
-  &::-webkit-slider-thumb:active {
-    box-shadow: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
-  }
+  &::-webkit-slider-thumb:hover { box-shadow: var(--slider-thumb-shadow-hover); }
+  &::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); }
   &::-moz-range-thumb {
     @apply rounded-full;
     background: var(--slider-thumb, white);
     width: 20px;
     height: 20px;
     border: none;
-    box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
+    box-shadow: var(--slider-thumb-shadow);
     transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-ease);
   }
-  &:hover::-moz-range-thumb {
-    box-shadow: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-  }
-  &:active::-moz-range-thumb {
-    box-shadow: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
-  }
-  &:focus-visible::-webkit-slider-thumb {
-    box-shadow: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-  }
-  &:focus-visible::-moz-range-thumb {
-    box-shadow: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
-  }
+  &:hover::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
+  &:active::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); }
+  &:focus-visible::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
+  &:focus-visible::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; pointer-events: none; }
-  .dark & {
-    --slider-thumb: oklch(0.92 0.003 286);
-    &::-webkit-slider-thumb {
-      box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &::-webkit-slider-thumb:hover {
-      box-shadow: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &::-webkit-slider-thumb:active {
-      box-shadow: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &::-moz-range-thumb {
-      box-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &:hover::-moz-range-thumb {
-      box-shadow: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &:active::-moz-range-thumb {
-      box-shadow: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &:focus-visible::-webkit-slider-thumb {
-      box-shadow: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-    &:focus-visible::-moz-range-thumb {
-      box-shadow: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-    }
-  }
   @media (pointer: coarse) {
     min-height: 44px;
     /* Apple HIG: 44pt minimum touch target */
