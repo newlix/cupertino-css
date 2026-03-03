@@ -17,9 +17,9 @@
     <dd>Outlined button with border.</dd>
     <dt><code>.btn-plain</code></dt>
     <dd>Text-only button with hover background.</dd>
-    <dt><code>.btn-sm</code></dt>
+    <dt><code>.btn-small</code></dt>
     <dd>Small button size.</dd>
-    <dt><code>.btn-lg</code></dt>
+    <dt><code>.btn-large</code></dt>
     <dd>Large button size.</dd>
     <dt><code>.btn-capsule</code></dt>
     <dd>Fully rounded pill shape.</dd>
@@ -46,9 +46,9 @@
 
 {% call example("Sizes") %}
 <div class="flex items-center gap-3">
-  <button class="btn-filled btn-sm">Small</button>
+  <button class="btn-filled btn-small">Small</button>
   <button class="btn-filled">Default</button>
-  <button class="btn-filled btn-lg">Large</button>
+  <button class="btn-filled btn-large">Large</button>
 </div>
 {% endcall %}
 
@@ -91,17 +91,17 @@
 {% endcall %}
 
   <p class="text-tertiary-foreground">
-    Use <code>btn-plain</code> with <code>size-9</code> and <code>p-0</code> for icon-only buttons.
+    Use <code>btn-plain</code> with <code>size-11</code> and <code>p-0</code> for icon-only buttons.
   </p>
 
 {% call example("Icon Only") %}
-<button class="btn-plain size-9 p-0" aria-label="Add">
+<button class="btn-plain size-11 p-0" aria-label="Add">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
   </button>
-  <button class="btn-plain size-9 p-0" aria-label="Mail">
+  <button class="btn-plain size-11 p-0" aria-label="Mail">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3m18 0-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 8m18 0v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8"/></svg>
   </button>
-  <button class="btn-plain size-9 p-0" aria-label="Close">
+  <button class="btn-plain size-11 p-0" aria-label="Close">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
   </button>
 {% endcall %}
@@ -112,13 +112,13 @@
 
 {% call example("Help Tag") %}
 <div class="flex items-center gap-4">
-  <button class="btn-gray size-9 p-0" data-help="Edit">
+  <button class="btn-gray size-11 p-0" data-help="Edit">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
   </button>
-  <button class="btn-gray size-9 p-0" data-help="Delete">
+  <button class="btn-gray size-11 p-0" data-help="Delete">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
   </button>
-  <button class="btn-gray size-9 p-0" data-help="Share">
+  <button class="btn-gray size-11 p-0" data-help="Share">
     <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
   </button>
 </div>

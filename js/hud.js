@@ -16,7 +16,7 @@
 
   function showHUD(label, options) {
     const opts = options || {};
-    const duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 2000;
+    const duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 1500;
 
     const container =
       document.getElementById("hud-container") || createHUDContainer();

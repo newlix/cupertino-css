@@ -17,5 +17,6 @@
     opacity: 0.5;
   }
   &.activity-indicator-sm { @apply size-4; }
-  &.activity-indicator-lg { @apply size-9; }
+  &.activity-indicator-md { width: 37px; height: 37px; }
+  &.activity-indicator-lg { width: 100px; height: 100px; }
 }

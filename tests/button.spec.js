@@ -29,17 +29,17 @@ test.describe('Button', () => {
     expect(await css(btn, 'pointerEvents')).toBe('none');
   });
 
-  test('btn-sm has smaller min-height than default', async ({ page }) => {
-    const sm = preview(page, 1).locator('.btn-sm').first();
-    const def = preview(page, 1).locator('.btn-filled:not(.btn-sm):not(.btn-lg)').first();
+  test('btn-small has smaller min-height than default', async ({ page }) => {
+    const sm = preview(page, 1).locator('.btn-small').first();
+    const def = preview(page, 1).locator('.btn-filled:not(.btn-small):not(.btn-large)').first();
     const smH = parseFloat(await css(sm, 'minHeight'));
     const defH = parseFloat(await css(def, 'minHeight'));
     expect(smH).toBeLessThan(defH);
   });
 
-  test('btn-lg has larger min-height than default', async ({ page }) => {
-    const lg = preview(page, 1).locator('.btn-lg').first();
-    const def = preview(page, 1).locator('.btn-filled:not(.btn-sm):not(.btn-lg)').first();
+  test('btn-large has larger min-height than default', async ({ page }) => {
+    const lg = preview(page, 1).locator('.btn-large').first();
+    const def = preview(page, 1).locator('.btn-filled:not(.btn-small):not(.btn-large)').first();
     const lgH = parseFloat(await css(lg, 'minHeight'));
     const defH = parseFloat(await css(def, 'minHeight'));
     expect(lgH).toBeGreaterThan(defH);

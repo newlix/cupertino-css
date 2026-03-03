@@ -11,7 +11,7 @@
 
 ### Form & Input
 
-- [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-sm` `btn-lg`. Help tag: add `data-help="Label"` for hover tooltip.
+- [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-small` `btn-large`. Help tag: add `data-help="Label"` for hover tooltip.
 - [Checkbox](https://ciderui.com/components/checkbox.html): `input[type="checkbox"]` — pure CSS checkbox styling.
 - [Input](https://ciderui.com/components/input.html): `input` — styled text input.
 - [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
@@ -41,7 +41,7 @@
 
 ### Feedback & Status
 
-- [Activity Indicator](https://ciderui.com/components/activity-indicator.html): `activity-indicator` `activity-indicator-sm` `activity-indicator-lg` — Apple-style loading indicator.
+- [Activity Indicator](https://ciderui.com/components/activity-indicator.html): `activity-indicator` `activity-indicator-sm` `activity-indicator-md` `activity-indicator-lg` — Apple-style loading indicator.
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 - [Callout](https://ciderui.com/components/callout.html): `callout` — informational callout box.
 - [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.

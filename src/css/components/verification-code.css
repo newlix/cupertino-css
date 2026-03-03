@@ -6,7 +6,7 @@
   @apply flex items-center gap-2.5;
 }
 .verification-code input:not([type="hidden"]) {
-  @apply text-center p-0 font-semibold rounded-[8px];
+  @apply text-center p-0 font-semibold rounded-[10px];
   background-color: var(--color-card);
   color: var(--color-foreground);
   border: 1px solid var(--input-border);

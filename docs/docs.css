@@ -30,9 +30,8 @@
     scrollbar-color: transparent transparent;
     &:hover { scrollbar-color: var(--surface-5) transparent; }
     & h2 {
-      @apply px-2 pb-1 pt-0 text-[11px] font-semibold uppercase tracking-widest;
+      @apply px-2 pb-1 pt-0 text-[12px] font-semibold uppercase tracking-widest;
       color: var(--color-tertiary-foreground);
-      opacity: 0.5;
     }
     & a[href] {
       @apply flex items-center rounded-lg px-2.5 py-1.5 text-[13px];
@@ -66,7 +65,7 @@
       margin: 0;
     }
     & p {
-      @apply mt-2 text-lg text-tertiary-foreground leading-relaxed;
+      @apply mt-2 text-[17px] text-tertiary-foreground leading-relaxed;
       max-width: 36rem;
     }
   }
@@ -191,12 +190,12 @@
       left: 50%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, oklch(0.7 0.15 250 / 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, oklch(from var(--color-primary) l c h / 0.08) 0%, transparent 70%);
       transform: translateX(-50%);
       pointer-events: none;
     }
     .dark &::before {
-      background: radial-gradient(circle, oklch(0.4 0.15 250 / 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, oklch(from var(--color-primary) l c h / 0.15) 0%, transparent 70%);
     }
   }
   .home-hero-title {
@@ -263,7 +262,7 @@
       top: 48px;
       height: calc(100vh - 48px);
       border-right: none;
-      background: var(--color-background);
+      background: var(--color-secondary);
     }
     .docs-sidebar.open {
       @apply translate-x-0;
@@ -272,7 +271,7 @@
       @apply hidden;
     }
     .docs-nav a[href] {
-      @apply text-[16px] py-2;
+      @apply text-[17px] py-2;
     }
     .docs-overlay {
       display: none !important;

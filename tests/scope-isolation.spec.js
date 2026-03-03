@@ -81,11 +81,11 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
     const inside = page.locator('#inside input[type="text"]');
     const outside = page.locator('#outside input[type="text"]');
 
-    // CiderUI sets border-radius to 10px
+    // CiderUI sets border-radius to 12px
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
-    expect(insideRadius).toBe(10);
-    expect(outsideRadius).toBeLessThan(10);
+    expect(insideRadius).toBe(12);
+    expect(outsideRadius).toBeLessThan(12);
   });
 
   test('textarea border-radius only applies inside .cider', async ({ page }) => {
@@ -95,8 +95,8 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
 
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
-    expect(insideRadius).toBe(10);
-    expect(outsideRadius).toBeLessThan(10);
+    expect(insideRadius).toBe(12);
+    expect(outsideRadius).toBeLessThan(12);
   });
 
   test('select appearance only overridden inside .cider', async ({ page }) => {
@@ -104,11 +104,11 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
     const inside = page.locator('#inside select');
     const outside = page.locator('#outside select');
 
-    // CiderUI sets border-radius 10px on select
+    // CiderUI sets border-radius 12px on select
     const insideRadius = parseFloat(await css(inside, 'borderRadius'));
     const outsideRadius = parseFloat(await css(outside, 'borderRadius'));
-    expect(insideRadius).toBe(10);
-    expect(outsideRadius).toBeLessThan(10);
+    expect(insideRadius).toBe(12);
+    expect(outsideRadius).toBeLessThan(12);
   });
 
   test('.btn-filled only styled inside .cider', async ({ page }) => {

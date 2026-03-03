@@ -124,7 +124,7 @@ pre {
 /* ─── Text inputs ─── */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
 input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
-  @apply w-full h-11 rounded-[10px] border px-4 text-[17px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[12px] border px-4 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -132,7 +132,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   &:read-only { background-color: var(--surface-1); cursor: default; }
   &:autofill,
   &:-webkit-autofill {
@@ -147,7 +147,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
 
 /* ─── Textarea ─── */
 textarea {
-  @apply w-full rounded-[10px] border px-4 py-3 text-[17px] text-foreground outline-none;
+  @apply w-full rounded-[12px] border px-4 py-3 text-[17px] text-foreground outline-none;
   resize: vertical;
   corner-shape: squircle;
   background-color: var(--color-card);
@@ -156,7 +156,7 @@ textarea {
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   &:read-only { background-color: var(--surface-1); cursor: default; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
@@ -166,23 +166,23 @@ textarea {
 
 /* ─── Select ─── */
 select {
-  @apply w-full h-11 rounded-[10px] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
   transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   /* Chevron SVG — light: #6E6E73 (--color-tertiary-foreground), dark: #98989D
      Two SVGs needed because <select> is a replaced element (no pseudo-elements). */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8 10l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1rem;
   .dark & {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2398989D' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2398989D' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8 10l4 4 4-4'/%3E%3C/svg%3E");
   }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
@@ -214,8 +214,7 @@ input[type="checkbox"]:not([role="switch"]) {
   &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:hover:indeterminate:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:active:not(:disabled) { transform: scale(0.95); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { @apply bg-destructive border-destructive; }
@@ -233,15 +232,14 @@ input[type="radio"] {
   &:checked {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='4' fill='white'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='5' fill='white'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:active:not(:disabled) { transform: scale(0.95); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { border-color: var(--color-destructive); background-color: var(--color-destructive); }
@@ -280,7 +278,7 @@ input[type="checkbox"][role="switch"] {
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.20); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.30); }
-  &:disabled { @apply cursor-not-allowed opacity-50; }
+  &:disabled { @apply cursor-not-allowed; opacity: 0.38; }
   .dark & {
     &::after {
       box-shadow: 0 2px 4px oklch(0 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3);
@@ -297,7 +295,7 @@ input[type="checkbox"][role="switch"] {
 
 /* ─── Label ─── */
 label {
-  @apply block text-[13px] font-medium text-foreground;
+  @apply block text-[15px] font-medium text-foreground;
   &:has(input[type="checkbox"], input[type="radio"]) {
     @apply flex items-center gap-2.5 cursor-pointer;
     &:has(> small) {
@@ -340,6 +338,7 @@ table {
   }
   & thead th {
     border-bottom: 1px solid var(--panel-border);
+    @media (min-resolution: 2dppx) { border-bottom-width: 0.5px; }
   }
   & thead tr:first-child th:first-child {
     border-top-left-radius: var(--radius-lg);
@@ -348,12 +347,15 @@ table {
     border-top-right-radius: var(--radius-lg);
   }
   & th {
-    @apply px-4 py-3 font-medium text-tertiary-foreground;
-    font-size: 13px;
+    @apply px-4 py-3 font-semibold text-tertiary-foreground;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
   & tbody tr + tr td,
   & tbody tr + tr th {
     border-top: 1px solid var(--color-separator);
+    @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
   }
   & td {
     @apply px-4 py-3;
@@ -375,6 +377,7 @@ table {
   }
   & tfoot td {
     border-top: 1px solid var(--panel-border);
+    @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
   }
   & tfoot tr:last-child td:first-child {
     border-bottom-left-radius: var(--radius-lg);

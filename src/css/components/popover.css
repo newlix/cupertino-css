@@ -5,7 +5,7 @@
   & [popover] {
     @apply fixed z-50 min-w-[180px] p-3;
     max-width: min(360px, calc(100vw - 16px));
-    border-radius: var(--radius);
+    border-radius: 10px;
     max-height: calc(100vh - 2rem);
     overflow: auto;
     overscroll-behavior: contain;
@@ -71,11 +71,11 @@
 .popover-arrow [popover]::before {
   content: "";
   position: absolute;
-  top: -6px;
+  top: -7px;
   left: var(--arrow-left, 50%);
   transform: translateX(-50%) rotate(45deg);
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: var(--glass-bg-opaque);
   box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
 }
@@ -91,7 +91,7 @@
 /* Arrow for top-positioned popovers (JS auto-flip or CSS .popover-top) */
 :is(.popover-arrow [popover].popover-flipped-top, .popover-top.popover-arrow [popover])::before {
   top: auto;
-  bottom: -6px;
+  bottom: -7px;
   transform: translateX(-50%) rotate(225deg);
   box-shadow: 0.5px 0.5px 0 0.5px var(--float-ring-color);
 }

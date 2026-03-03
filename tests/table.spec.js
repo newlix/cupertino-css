@@ -23,8 +23,8 @@ test.describe('Table', () => {
 
   test('th has correct font size and style', async ({ page }) => {
     const th = preview(page).locator('th').first();
-    expect(parseFloat(await css(th, 'fontSize'))).toBe(13);
-    expect(await css(th, 'textTransform')).toBe('none');
+    expect(parseFloat(await css(th, 'fontSize'))).toBe(11);
+    expect(await css(th, 'textTransform')).toBe('uppercase');
   });
 
   test('table-striped has alternating row backgrounds', async ({ page }) => {
