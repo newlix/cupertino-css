@@ -136,8 +136,8 @@ if (process.argv.includes("--watch")) {
     }, 200);
   };
 
-  fs.watch(DOCS, { recursive: true }, rebuild);
-  fs.watch(path.join(ROOT, "src", "css"), { recursive: true }, rebuild);
-  fs.watch(path.join(ROOT, "js"), { recursive: true }, rebuild);
+  fs.watch(DOCS, { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
+  fs.watch(path.join(ROOT, "src", "css"), { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
+  fs.watch(path.join(ROOT, "js"), { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
   console.log("Watching for changes...");
 }

@@ -152,7 +152,7 @@ test.describe('Popover Auto-flip', () => {
       const rect = el.getBoundingClientRect();
       window.scrollBy(0, rect.top - (window.innerHeight - rect.height - 10));
     });
-    await page.waitForTimeout(50);
+    await page.evaluate(() => getComputedStyle(document.documentElement).color);
 
     await trigger.click();
     await expect(popover).toBeVisible();
