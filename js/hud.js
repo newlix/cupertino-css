@@ -44,9 +44,11 @@
           const name = attr.name.toLowerCase();
           if (name.startsWith("on") || name === "style") {
             el.removeAttribute(attr.name);
-          } else if ((name === "href" || name === "xlink:href") &&
-                     attr.value.replace(/\s/g, "").toLowerCase().startsWith("javascript:")) {
-            el.removeAttribute(attr.name);
+          } else if (name === "href" || name === "xlink:href") {
+            const val = attr.value.replace(/\s/g, "").toLowerCase();
+            if (val.startsWith("javascript:") || val.startsWith("data:")) {
+              el.removeAttribute(attr.name);
+            }
           }
         }
       });

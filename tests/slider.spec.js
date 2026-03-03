@@ -18,10 +18,11 @@ test.describe('Slider', () => {
     const slider = preview(page).locator('.slider').first();
     const before = Number(await slider.inputValue());
 
-    await slider.fill('75');
+    const target = before === 75 ? 25 : 75;
+    await slider.fill(String(target));
     const after = Number(await slider.inputValue());
 
-    expect(after).toBe(75);
+    expect(after).toBe(target);
     expect(after).not.toBe(before);
   });
 

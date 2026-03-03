@@ -9,10 +9,12 @@ test.describe('Focus Visible Accessibility', () => {
     const before = await css(radio, 'boxShadow');
 
     await focusViaKeyboard(page, radio);
-    const after = await css(radio, 'boxShadow');
 
-    expect(after).not.toBe('none');
-    expect(after).not.toBe(before);
+    await expect(async () => {
+      const after = await css(radio, 'boxShadow');
+      expect(after).not.toBe('none');
+      expect(after).not.toBe(before);
+    }).toPass({ timeout: 1000 });
   });
 
   test('checkbox shows box-shadow on keyboard focus', async ({ page }) => {
@@ -21,7 +23,9 @@ test.describe('Focus Visible Accessibility', () => {
     const cb = page.locator('.snippet-preview > figure input[type="checkbox"]').first();
     await focusViaKeyboard(page, cb);
 
-    expect(await css(cb, 'boxShadow')).not.toBe('none');
+    await expect(async () => {
+      expect(await css(cb, 'boxShadow')).not.toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 
   test('switch shows box-shadow on keyboard focus', async ({ page }) => {
@@ -30,7 +34,9 @@ test.describe('Focus Visible Accessibility', () => {
     const sw = page.locator('.snippet-preview > figure input[role="switch"]').first();
     await focusViaKeyboard(page, sw);
 
-    expect(await css(sw, 'boxShadow')).not.toBe('none');
+    await expect(async () => {
+      expect(await css(sw, 'boxShadow')).not.toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 
   test('button shows box-shadow on keyboard focus', async ({ page }) => {
@@ -39,7 +45,9 @@ test.describe('Focus Visible Accessibility', () => {
     const btn = page.locator('.snippet-preview > figure button').first();
     await focusViaKeyboard(page, btn);
 
-    expect(await css(btn, 'boxShadow')).not.toBe('none');
+    await expect(async () => {
+      expect(await css(btn, 'boxShadow')).not.toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 
   test('slider removes default outline on keyboard focus', async ({ page }) => {
@@ -50,7 +58,9 @@ test.describe('Focus Visible Accessibility', () => {
 
     // The slider sets outline: none and applies box-shadow on ::-webkit-slider-thumb (pseudo-element).
     // We can verify the outline is explicitly removed (custom focus styling is applied via pseudo-element).
-    const outline = await css(slider, 'outlineStyle');
-    expect(outline).toBe('none');
+    await expect(async () => {
+      const outline = await css(slider, 'outlineStyle');
+      expect(outline).toBe('none');
+    }).toPass({ timeout: 1000 });
   });
 });

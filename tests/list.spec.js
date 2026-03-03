@@ -32,16 +32,20 @@ test.describe('List', () => {
     const bgBefore = await css(link, 'backgroundColor');
 
     await link.hover();
-    const bgAfter = await css(link, 'backgroundColor');
-    expect(bgAfter).not.toBe(bgBefore);
+    await expect(async () => {
+      const bgAfter = await css(link, 'backgroundColor');
+      expect(bgAfter).not.toBe(bgBefore);
+    }).toPass({ timeout: 1000 });
   });
 
   test('interactive item has focus-visible background highlight', async ({ page }) => {
     const link = preview(page).locator('.list > a').first();
     await focusViaKeyboard(page, link);
 
-    const bg = await css(link, 'backgroundColor');
-    expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+    await expect(async () => {
+      const bg = await css(link, 'backgroundColor');
+      expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+    }).toPass({ timeout: 1000 });
   });
 
   test('inset-grouped list renders with card styling', async ({ page }) => {

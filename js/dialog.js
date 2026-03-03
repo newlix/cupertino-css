@@ -171,13 +171,18 @@
     if (!dialog || !dialog.isConnected) return;
     if (dialog.hasAttribute("data-closing")) {
       const obs = new MutationObserver(() => {
-        if (!dialog.isConnected) { obs.disconnect(); return; }
+        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(safetyTimer); return; }
         if (!dialog.hasAttribute("data-closing") && !dialog.open) {
           obs.disconnect();
+          clearTimeout(safetyTimer);
           openDialog(dialog);
         }
       });
       obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing", "open"] });
+      const safetyTimer = setTimeout(() => {
+        obs.disconnect();
+        if (dialog.isConnected && !dialog.open) openDialog(dialog);
+      }, 300);
       return;
     }
     if (dialog.open) return;

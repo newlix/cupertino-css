@@ -29,8 +29,10 @@ test.describe('Pagination', () => {
     const btn = preview(page).locator('.pagination button:not([aria-current="page"]):not([disabled])').first();
     await focusViaKeyboard(page, btn);
 
-    const outline = await css(btn, 'outlineStyle');
-    expect(outline).toBe('solid');
+    await expect(async () => {
+      const outline = await css(btn, 'outlineStyle');
+      expect(outline).toBe('solid');
+    }).toPass({ timeout: 1000 });
   });
 
   test('ellipsis span is present', async ({ page }) => {

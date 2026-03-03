@@ -211,8 +211,9 @@ input[type="checkbox"]:not([role="switch"]) {
     background-repeat: no-repeat;
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:hover:not(:checked) { border-color: var(--input-border-hover); }
+  &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+  &:hover:indeterminate:not(:disabled) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:active:not(:disabled) { transform: scale(0.95); }
   &:disabled { @apply cursor-not-allowed opacity-50; }
   &[aria-invalid="true"] {

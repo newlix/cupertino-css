@@ -18,7 +18,7 @@
   {% call example("Default") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Close Document</button>
 
-<dialog >
+<dialog>
   <header>
     <h2>Save changes to "Untitled"?</h2>
     <p>Your changes will be lost if you don't save them.</p>
@@ -34,7 +34,7 @@
   {% call example("Destructive") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-filled btn-destructive">Delete Project</button>
 
-<dialog >
+<dialog>
   <header>
     <h2>Delete project?</h2>
     <p>This will permanently delete the project "My Portfolio" and all of its files. This action is irreversible.</p>
@@ -49,7 +49,7 @@
   {% call example("With Icon") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Sign Out</button>
 
-<dialog >
+<dialog>
   <header>
     <div class="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-secondary">
       <svg class="size-6 text-tertiary-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
@@ -67,7 +67,7 @@
   {% call example("Form Dialog") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Edit Profile</button>
 
-<dialog >
+<dialog>
   <header>
     <h2>Edit Profile</h2>
     <p>Make changes to your profile here.</p>
@@ -117,7 +117,7 @@
   {% call example("With Close Button") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Share Link</button>
 
-<dialog >
+<dialog>
   <button aria-label="Close" onclick="closeDialog(this.closest('dialog'))" class="dialog-close">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
@@ -137,7 +137,7 @@
   {% call example("Custom Content") %}
 <button onclick="this.nextElementSibling.showModal()" class="btn-tinted">Invite Members</button>
 
-<dialog  style="max-width: 480px;">
+<dialog style="max-width: 480px;">
   <header>
     <h2>Invite Team Members</h2>
     <p>Add colleagues to collaborate on this project.</p>
