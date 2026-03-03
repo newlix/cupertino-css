@@ -29,14 +29,16 @@
         otp.appendChild(hidden);
       }
 
-      function sync() {
+      function sync(silent) {
         const newVal = Array.from(inputs).map((inp) => inp.value).join("");
         if (hidden.value !== newVal) {
           hidden.value = newVal;
           hidden.dispatchEvent(new Event("input", { bubbles: true }));
-          hidden.dispatchEvent(new Event("change", { bubbles: true }));
-          if (newVal.length === inputs.length) {
-            otp.dispatchEvent(new CustomEvent("complete", { detail: { code: newVal }, bubbles: true }));
+          if (!silent) {
+            hidden.dispatchEvent(new Event("change", { bubbles: true }));
+            if (newVal.length === inputs.length) {
+              otp.dispatchEvent(new CustomEvent("complete", { detail: { code: newVal }, bubbles: true }));
+            }
           }
         }
       }
@@ -69,7 +71,7 @@
             e.preventDefault();
             inputs[i - 1].value = "";
             inputs[i - 1].focus();
-            sync();
+            sync(true);
           }
           if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); inputs[i - 1].focus(); }
           if (e.key === "ArrowRight" && i < inputs.length - 1) { e.preventDefault(); inputs[i + 1].focus(); }

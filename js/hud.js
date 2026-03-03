@@ -67,7 +67,7 @@
       let removed = false;
       function removeHud(e) {
         if (removed) return;
-        if (e && e.animationName !== "hudDismiss") return;
+        if (e && (e.target !== hud || e.animationName !== "hudDismiss")) return;
         removed = true;
         clearTimeout(animTimer);
         hud.removeEventListener("animationend", removeHud);

@@ -50,7 +50,7 @@
       &:is(:hover, :focus-visible) svg { color: var(--color-primary-foreground); }
       &:focus-visible { outline: none; }
       & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
-      &[disabled], &[aria-disabled="true"] {
+      &:disabled, &[aria-disabled="true"] {
         @apply opacity-30 text-tertiary-foreground;
         pointer-events: none;
       }
@@ -99,7 +99,6 @@
 /* Top positioning variant */
 .popover-top {
   & [popover] {
-    margin-top: 0;
     margin-bottom: 0.5rem;
     transform-origin: var(--popover-origin, bottom left);
   }

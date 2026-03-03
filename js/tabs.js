@@ -26,7 +26,7 @@
         const listRect = list.getBoundingClientRect();
         const btnRect = btn.getBoundingClientRect();
         indicator.style.width = `${btnRect.width}px`;
-        indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
+        indicator.style.transform = `translateX(${btnRect.left - listRect.left + list.scrollLeft}px)`;
       }
 
       // Reposition indicator on resize

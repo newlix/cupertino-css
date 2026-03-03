@@ -135,14 +135,14 @@
         }
         if (dialog.open) {
           const isModal = dialog.matches(":modal");
-          if (isModal) {
+          if (isModal && !activeDialogs.has(dialog)) {
             if (!dialog._previousFocus) {
               dialog._previousFocus = document.activeElement;
             }
-            activeDialogs.add(dialog);
-            if (activeDialogs.size === 1) {
+            if (activeDialogs.size === 0) {
               savedOverflow = document.body.style.overflow;
             }
+            activeDialogs.add(dialog);
             document.body.style.overflow = "hidden";
             dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
@@ -177,7 +177,7 @@
           openDialog(dialog);
         }
       });
-      obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing"] });
+      obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing", "open"] });
       return;
     }
     if (dialog.open) return;

@@ -339,10 +339,10 @@ table {
     border-bottom: 1px solid var(--panel-border);
   }
   & thead tr:first-child th:first-child {
-    border-top-left-radius: 1rem;
+    border-top-left-radius: var(--radius-lg);
   }
   & thead tr:first-child th:last-child {
-    border-top-right-radius: 1rem;
+    border-top-right-radius: var(--radius-lg);
   }
   & th {
     @apply px-4 py-3 font-medium text-tertiary-foreground uppercase tracking-wide;
@@ -374,16 +374,16 @@ table {
     border-top: 1px solid var(--panel-border);
   }
   & tfoot tr:last-child td:first-child {
-    border-bottom-left-radius: 1rem;
+    border-bottom-left-radius: var(--radius-lg);
   }
   & tfoot tr:last-child td:last-child {
-    border-bottom-right-radius: 1rem;
+    border-bottom-right-radius: var(--radius-lg);
   }
   & tbody:last-child tr:last-child td:first-child {
-    border-bottom-left-radius: 1rem;
+    border-bottom-left-radius: var(--radius-lg);
   }
   & tbody:last-child tr:last-child td:last-child {
-    border-bottom-right-radius: 1rem;
+    border-bottom-right-radius: var(--radius-lg);
   }
   &.table-striped tbody tr:nth-child(even) {
     background: var(--surface-1);

@@ -34,7 +34,7 @@
         const ph = popover.offsetHeight;
         const gap = 8;
         const vw = document.documentElement.clientWidth;
-        const vh = window.innerHeight;
+        const vh = document.documentElement.clientHeight;
 
         // Horizontal: default left-aligned, flip if overflows or popover-end
         let left;
@@ -79,6 +79,10 @@
           trigger.setAttribute("aria-expanded", "true");
           if (isMenu) {
             popover.setAttribute("role", "menu");
+            if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
+              if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
+              popover.setAttribute("aria-labelledby", trigger.id);
+            }
             popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
               item.setAttribute("role", "menuitem");
             });
@@ -108,6 +112,7 @@
           popover._cleanupPositioning();
           if (isMenu) {
             popover.removeAttribute("role");
+            popover.removeAttribute("aria-labelledby");
             popover.querySelectorAll('[role="menuitem"]').forEach((item) => {
               item.removeAttribute("role");
             });

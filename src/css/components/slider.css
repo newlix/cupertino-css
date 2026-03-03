@@ -62,8 +62,7 @@
   &:active::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); }
   &:focus-visible::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:focus-visible::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
-  &:disabled { @apply cursor-not-allowed opacity-50; pointer-events: none; }
-  &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; pointer-events: none; }
   @media (pointer: coarse) {
     min-height: 44px;
     /* Apple HIG: 44pt minimum touch target */
