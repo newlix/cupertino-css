@@ -29,7 +29,6 @@ progress {
     &::after {
       animation: none;
       transform: none;
-      width: 100%;
       opacity: 0.7;
     }
   }

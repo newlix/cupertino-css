@@ -20,11 +20,13 @@
       el.addEventListener("input", () => { update(el); });
       // Intercept .value property setter so programmatic el.value = x updates the fill
       const desc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
-      Object.defineProperty(el, "value", {
-        get() { return desc.get.call(this); },
-        set(v) { desc.set.call(this, v); update(this); },
-        configurable: true,
-      });
+      if (desc && desc.get && desc.set) {
+        Object.defineProperty(el, "value", {
+          get() { return desc.get.call(this); },
+          set(v) { desc.set.call(this, v); update(this); },
+          configurable: true,
+        });
+      }
       // Sync when value/min/max attributes change via setAttribute()
       if (el._sliderObserver) el._sliderObserver.disconnect();
       const mo = new MutationObserver(() => {

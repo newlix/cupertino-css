@@ -21,5 +21,8 @@
   @media (min-resolution: 2dppx) { border-width: 0.5px; }
   & > :is(h1, h2, h3, h4, h5, h6) { @apply mb-1 font-semibold; }
   & > strong { @apply block mb-1; }
-  & > p { color: oklch(from var(--color-foreground) l c h / 0.7); }
+  & > p {
+    color: oklch(from var(--color-foreground) l c h / 0.7);
+    .dark & { color: oklch(from var(--color-foreground) l c h / 0.8); }
+  }
 }

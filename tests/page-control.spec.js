@@ -24,8 +24,10 @@ test.describe('Page Control', () => {
     const dot = preview(page).locator('.page-control button').first();
     await focusViaKeyboard(page, dot);
 
-    const outline = await css(dot, 'outlineStyle');
-    expect(outline).toBe('solid');
+    await expect(async () => {
+      const outline = await css(dot, 'outlineStyle');
+      expect(outline).toBe('solid');
+    }).toPass({ timeout: 1000 });
   });
 
   test('default example renders 10 dots with 5th one active', async ({ page }) => {

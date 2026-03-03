@@ -47,8 +47,8 @@
     box-shadow: var(--slider-thumb-shadow);
     transition: box-shadow var(--transition-normal) var(--apple-ease);
   }
-  &::-webkit-slider-thumb:hover { box-shadow: var(--slider-thumb-shadow-hover); }
-  &::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); }
+  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:hover { box-shadow: var(--slider-thumb-shadow-hover); }
+  &:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb:active { box-shadow: var(--slider-thumb-shadow-active); }
   &::-moz-range-thumb {
     @apply rounded-full;
     background: var(--slider-thumb);
@@ -58,8 +58,8 @@
     box-shadow: var(--slider-thumb-shadow);
     transition: box-shadow var(--transition-normal) var(--apple-ease);
   }
-  &:hover::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
-  &:active::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); }
+  &:hover:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
+  &:active:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-active); }
   &:focus-visible::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:focus-visible::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-focus); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed opacity-50; }

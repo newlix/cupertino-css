@@ -8,13 +8,13 @@ test.describe('Switch', () => {
 
   test('clicking switch toggles on and off', async ({ page }) => {
     const sw = preview(page).locator('input[role="switch"]').first();
-    const wasChecked = await sw.isChecked();
+    await expect(sw).not.toBeChecked();
 
     await sw.click();
-    expect(await sw.isChecked()).toBe(!wasChecked);
+    await expect(sw).toBeChecked();
 
     await sw.click();
-    expect(await sw.isChecked()).toBe(wasChecked);
+    await expect(sw).not.toBeChecked();
   });
 
   test('checked switch is pre-toggled', async ({ page }) => {

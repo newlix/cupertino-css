@@ -8,6 +8,7 @@
       popover._popoverInit = true;
 
       const wrapper = popover.closest(".popover");
+      if (!wrapper) return;
       const trigger = wrapper.querySelector("button:not([popover] button), a:not([popover] a)");
       if (!trigger) return;
 
@@ -88,6 +89,10 @@
               item.setAttribute("role", "menuitem");
               item.setAttribute("data-ciderui-menuitem", "");
             });
+            popover.querySelectorAll("hr").forEach((hr) => {
+              hr.setAttribute("role", "separator");
+              hr.setAttribute("data-ciderui-separator", "");
+            });
           } else {
             popover.setAttribute("role", "dialog");
           }
@@ -124,6 +129,10 @@
             popover.querySelectorAll("[data-ciderui-menuitem]").forEach((item) => {
               item.removeAttribute("role");
               item.removeAttribute("data-ciderui-menuitem");
+            });
+            popover.querySelectorAll("[data-ciderui-separator]").forEach((hr) => {
+              hr.removeAttribute("role");
+              hr.removeAttribute("data-ciderui-separator");
             });
           } else {
             popover.removeAttribute("role");
