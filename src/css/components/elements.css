@@ -322,7 +322,6 @@ label {
   &:has(input:is(:disabled, [aria-disabled="true"])) {
     @apply cursor-not-allowed;
     opacity: 0.38;
-    & > input { opacity: 1; }
   }
 }
 label:has(+ :is(input, textarea, select):required)::after {

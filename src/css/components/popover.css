@@ -51,7 +51,6 @@
       &:is(:hover, :focus-visible) svg { color: var(--color-primary-foreground); }
       &:active { background: var(--color-primary-active); color: var(--color-primary-foreground); }
       &:active svg { color: var(--color-primary-foreground); }
-      &:focus-visible { outline: none; }
       & svg { @apply size-4 text-tertiary-foreground; transition: color var(--transition-fast) var(--apple-ease); }
       @media (pointer: coarse) { min-height: 44px; }
       &:disabled, &[aria-disabled="true"] {

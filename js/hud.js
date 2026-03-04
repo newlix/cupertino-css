@@ -22,12 +22,13 @@
       document.getElementById("hud-container") || createHUDContainer();
 
     // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
-    const existing = container.querySelector(".hud");
-    if (existing?._ciderDismiss) {
-      existing._ciderDismiss();
-    } else if (existing) {
-      existing.remove();
-    }
+    container.querySelectorAll(".hud").forEach((existing) => {
+      if (existing._ciderDismiss) {
+        existing._ciderDismiss();
+      } else {
+        existing.remove();
+      }
+    });
 
     const hud = document.createElement("div");
     hud.className = "hud";
