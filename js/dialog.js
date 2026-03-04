@@ -226,8 +226,8 @@
       if (dialog._closeAnimHandler) { dialog.removeEventListener("animationend", dialog._closeAnimHandler); dialog._closeAnimHandler = null; }
       if (dialog._openWaitObs) { dialog._openWaitObs.disconnect(); dialog._openWaitObs = null; }
       if (dialog._openWaitTimer) { clearTimeout(dialog._openWaitTimer); dialog._openWaitTimer = null; }
-      activeDialogs.delete(dialog);
-      if (activeDialogs.size === 0 && savedOverflow !== null) {
+      const wasActive = activeDialogs.delete(dialog);
+      if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
         document.body.style.overflow = savedOverflow ?? "";
         document.body.style.paddingRight = "";
         savedOverflow = null;
