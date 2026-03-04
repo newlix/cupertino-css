@@ -134,3 +134,10 @@
     &::after { border: 1px solid ButtonText; background: Canvas; color: CanvasText; box-shadow: none; }
   }
 }
+@media (forced-colors: active) {
+  .btn-gray, .btn-filled, .btn-tinted, .btn-bezelled, .btn-plain {
+    border: 1px solid ButtonText;
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+  }
+}

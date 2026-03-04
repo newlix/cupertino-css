@@ -717,6 +717,19 @@
         }
       }
     }
+    @media (forced-colors: active) {
+      .btn-gray, .btn-filled, .btn-tinted, .btn-bezelled, .btn-plain {
+        border: 1px solid ButtonText;
+        &:focus-visible {
+          outline: 2px solid Highlight;
+          box-shadow: none;
+        }
+        &:disabled, &[aria-disabled="true"] {
+          border-color: GrayText;
+          color: GrayText;
+        }
+      }
+    }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -747,6 +760,7 @@
       height: 10px;
       flex-shrink: 0;
       box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
+      transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
     }
     @media (forced-colors: active) {
       .badge {
@@ -969,8 +983,9 @@
         &:focus-visible {
           color: var(--color-foreground);
           background: var(--surface-3);
-          outline: 2px solid var(--color-primary);
-          outline-offset: -2px;
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
         }
         & svg {
           width: calc(var(--spacing) * 4);
@@ -1038,6 +1053,7 @@
         border: 1px solid ButtonText;
         & .dialog-close:focus-visible {
           outline: 2px solid Highlight;
+          box-shadow: none;
         }
       }
     }
@@ -1129,6 +1145,7 @@
       .segmented-control [data-tab-indicator] {
         background: Highlight;
         box-shadow: none;
+        opacity: 1;
       }
       .segmented-control [data-tab] {
         &:focus-visible {
@@ -1372,6 +1389,9 @@
             border-color: GrayText;
             color: GrayText;
           }
+        }
+        & > span {
+          color: CanvasText;
         }
       }
     }
@@ -1763,6 +1783,9 @@
       .separator-vertical {
         background: ButtonText;
       }
+      .separator-label {
+        color: CanvasText;
+      }
       .separator-label::before, .separator-label::after {
         background: ButtonText;
       }
@@ -1901,8 +1924,14 @@
       }
       .list > a:disabled, .list > button:disabled, .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] {
         color: GrayText;
+        opacity: 1;
+      }
+      .list > * + *::before {
+        background: ButtonText;
       }
       .list > [data-selected], .list > [aria-selected="true"] {
+        background: Highlight;
+        color: HighlightText;
         outline: 2px solid Highlight;
       }
     }
@@ -2035,6 +2064,12 @@
     @media (forced-colors: active) {
       .popover [popover] {
         border: 1px solid ButtonText;
+      }
+      .popover-arrow [popover]::before {
+        display: none;
+      }
+      .popover-menu [popover] hr {
+        background: CanvasText;
       }
       .popover-menu [popover] button:is(:hover, :focus-visible), .popover-menu [popover] a:is(:hover, :focus-visible) {
         background: Highlight;
@@ -2699,7 +2734,7 @@
           }
         }
       }
-      &:has(input:disabled) {
+      &:has(input:is(:disabled, [aria-disabled="true"])) {
         cursor: not-allowed;
         opacity: 0.38;
         & > input {
@@ -2926,6 +2961,10 @@
       }
       input[type="checkbox"]:not([role="switch"]), input[type="radio"] {
         appearance: auto;
+        &:focus-visible {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
       input[type="checkbox"][role="switch"] {
         border: 2px solid ButtonText;
@@ -2938,6 +2977,10 @@
         }
         &:checked::after {
           background: HighlightText;
+        }
+        &:focus-visible {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }

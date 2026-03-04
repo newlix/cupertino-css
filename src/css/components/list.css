@@ -71,6 +71,11 @@
 @media (forced-colors: active) {
   .list > a:focus-visible, .list > button:focus-visible { outline: 2px solid Highlight; }
   .list > a:disabled, .list > button:disabled,
-  .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] { color: GrayText; }
-  .list > [data-selected], .list > [aria-selected="true"] { outline: 2px solid Highlight; }
+  .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] { color: GrayText; opacity: 1; }
+  .list > * + *::before { background: ButtonText; }
+  .list > [data-selected], .list > [aria-selected="true"] {
+    background: Highlight;
+    color: HighlightText;
+    outline: 2px solid Highlight;
+  }
 }

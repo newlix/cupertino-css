@@ -132,7 +132,7 @@
           window.addEventListener("scroll", popover._rafPositioner, true);
           window.addEventListener("resize", popover._rafPositioner);
           // Observe DOM removal only while open
-          popover._disconnectObserver.observe(popover.parentNode || document.body, { childList: true });
+          popover._disconnectObserver.observe(wrapper.parentNode || document.body, { childList: true });
 
           const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])');
           if (first) first.focus();
@@ -259,7 +259,7 @@
             e.preventDefault();
             popover._escapeDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
-          } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+          } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
             // Type-ahead: accumulate characters within 500ms window
             if (!popover._typeAheadTimer) popover._typeAheadBuffer = "";
             clearTimeout(popover._typeAheadTimer);

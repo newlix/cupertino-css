@@ -24,5 +24,6 @@
 }
 @media (forced-colors: active) {
   .separator-vertical { background: ButtonText; }
+  .separator-label { color: CanvasText; }
   .separator-label::before, .separator-label::after { background: ButtonText; }
 }

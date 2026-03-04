@@ -43,7 +43,7 @@
           hidden.dispatchEvent(new Event("input", { bubbles: true }));
           if (!silent) {
             hidden.dispatchEvent(new Event("change", { bubbles: true }));
-            if (newVal.length === inputs.length) {
+            if (Array.from(inputs).every((inp) => inp.value.length === 1)) {
               otp.dispatchEvent(new CustomEvent("complete", { detail: { code: newVal }, bubbles: true }));
             }
           }

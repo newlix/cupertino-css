@@ -22,6 +22,7 @@
   height: 10px;
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
+  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 @media (forced-colors: active) {
   .badge { forced-color-adjust: none; border: 1px solid ButtonText; }

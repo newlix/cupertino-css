@@ -49,6 +49,7 @@
   .segmented-control [data-tab-indicator] {
     background: Highlight;
     box-shadow: none;
+    opacity: 1;
   }
   .segmented-control [data-tab] {
     &:focus-visible { outline: 2px solid Highlight; }

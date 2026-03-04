@@ -137,7 +137,8 @@
           const isModal = dialog.matches(":modal");
           if (isModal && !activeDialogs.has(dialog)) {
             if (!dialog._previousFocus) {
-              dialog._previousFocus = document.activeElement;
+              const candidate = document.activeElement;
+              dialog._previousFocus = dialog.contains(candidate) ? document.body : candidate;
             }
             if (activeDialogs.size === 0) {
               savedOverflow = document.body.style.overflow;
