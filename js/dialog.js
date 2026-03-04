@@ -46,7 +46,7 @@
   function trapFocus(dialog) {
     const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
     const autofocus = dialog.querySelector("[autofocus]");
-    const defaultBtn = dialog.querySelector("footer .btn-filled, footer button[type='submit']");
+    const defaultBtn = dialog.querySelector("footer .btn-filled:not(.btn-destructive), footer button[type='submit']:not(.btn-destructive)");
     if (autofocus && isVisible(autofocus)) { autofocus.focus(); }
     else if (defaultBtn && isVisible(defaultBtn)) { defaultBtn.focus(); }
     else if (focusable.length) { focusable[0].focus(); }

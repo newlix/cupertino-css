@@ -84,6 +84,7 @@
   --color-yellow: oklch(0.871 0.176 93.73);    /* Apple Yellow #FFCC00 */
   --color-blue: oklch(0.563 0.241 256.1);      /* Apple Blue #007AFF */
   --color-purple: oklch(0.586 0.249 303.11);   /* Apple Purple #AF52DE */
+  --color-gray: oklch(0.638 0.008 286);        /* Apple System Gray #8E8E93 */
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.92);
   --backdrop-bg: oklch(0 0 0 / 0.50);
@@ -175,6 +176,7 @@
   --color-yellow: oklch(0.886 0.174 94.0);     /* Apple Yellow #FFD60A (dark) */
   --color-blue: oklch(0.617 0.246 256.5);      /* Apple Blue #0A84FF (dark) */
   --color-purple: oklch(0.630 0.250 303.5);    /* Apple Purple #BF5AF2 (dark) */
+  --color-gray: oklch(0.681 0.007 286);        /* Apple System Gray #98989D (dark) */
 
   --color-separator: oklch(0.38 0.003 286 / 0.65);  /* semi-transparent — adapts to surface underneath */
   --hud-background: oklch(0.14 0 0 / 0.85);
@@ -221,6 +223,7 @@
   --color-yellow: var(--color-yellow);
   --color-blue: var(--color-blue);
   --color-purple: var(--color-purple);
+  --color-gray: var(--color-gray);
   --radius-xs: var(--radius-xs);
   --radius-sm: var(--radius-sm);
   --radius: var(--radius);

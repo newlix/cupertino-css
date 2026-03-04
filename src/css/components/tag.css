@@ -29,7 +29,7 @@
 .tag-green  { --tag-color: var(--color-green); }
 .tag-blue   { --tag-color: var(--color-blue); }
 .tag-purple { --tag-color: var(--color-purple); }
-.tag-gray   { --tag-color: var(--color-tertiary-foreground); }
+.tag-gray   { --tag-color: var(--color-gray); }
 @media (forced-colors: active) {
   :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray) {
     forced-color-adjust: none;
