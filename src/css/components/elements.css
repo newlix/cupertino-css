@@ -105,6 +105,7 @@ details {
   border-color: var(--color-border);
   & summary {
     @apply cursor-pointer font-semibold text-foreground;
+    @media (pointer: coarse) { min-height: 44px; display: flex; align-items: center; }
     &::marker { color: var(--color-tertiary-foreground); }
     &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-xs); }
   }
@@ -181,7 +182,8 @@ select:not([multiple]) {
   border-color: var(--input-border);
   transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   /* Chevron SVG — light: #6E6E73 (--color-tertiary-foreground), dark: #98989D
-     Two SVGs needed because <select> is a replaced element (no pseudo-elements). */
+     Two SVGs needed because <select> is a replaced element (no pseudo-elements).
+     Hex values hardcoded — update manually if --color-tertiary-foreground changes. */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8 10l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -538,6 +540,7 @@ abbr[title] {
     border: 1px solid ButtonText;
     &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
     &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+    &[aria-invalid="true"] { border: 2px dashed Highlight; }
   }
   details, fieldset, blockquote { border-color: ButtonText; }
   table { border: 1px solid ButtonText; }

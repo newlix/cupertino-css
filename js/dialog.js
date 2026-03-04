@@ -149,10 +149,11 @@
           dialog.removeAttribute("data-closing");
           dialog.removeAttribute("aria-modal");
           teardown();
-          if (dialog._previousFocus && document.contains(dialog._previousFocus)) {
-            dialog._previousFocus.focus();
-          }
+          const prev = dialog._previousFocus;
           dialog._previousFocus = null;
+          if (prev && document.contains(prev) && (prev === document.body || prev.offsetParent !== null || prev.getClientRects().length > 0)) {
+            prev.focus();
+          }
         }
       });
       dialog._focusObserver = observer;

@@ -84,8 +84,15 @@
 
       function setAriaLabelledBy() {
         if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
-          if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
-          popover.setAttribute("aria-labelledby", trigger.id);
+          // Prefer a heading inside the popover as the accessible name source
+          const heading = popover.querySelector("h1, h2, h3, h4, h5, h6");
+          if (heading) {
+            if (!heading.id) heading.id = `popover-title-${Math.random().toString(36).slice(2, 8)}`;
+            popover.setAttribute("aria-labelledby", heading.id);
+          } else {
+            if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
+            popover.setAttribute("aria-labelledby", trigger.id);
+          }
           popover._ciderAriaLabelledBy = true;
         }
       }
@@ -159,15 +166,18 @@
             });
           }
           if (
-            popover._escapeDismiss ||
-            document.activeElement === document.body ||
-            popover.contains(document.activeElement)
+            !popover._tabDismiss && (
+              popover._escapeDismiss ||
+              document.activeElement === document.body ||
+              popover.contains(document.activeElement)
+            )
           ) {
             if (!trigger.disabled && trigger.getAttribute("aria-disabled") !== "true") {
               trigger.focus();
             }
           }
           popover._escapeDismiss = false;
+          popover._tabDismiss = false;
         }
       };
       popover.addEventListener("toggle", popover._toggleHandler);
@@ -189,6 +199,7 @@
           popover._typeAheadTimer = null;
           popover._typeAheadBuffer = "";
           popover._escapeDismiss = false;
+          popover._tabDismiss = false;
           popover._popoverInit = false;
         }
       });
@@ -264,8 +275,8 @@
             e.preventDefault();
             items.at(-1).focus();
           } else if (e.key === "Tab") {
-            e.preventDefault();
-            popover._escapeDismiss = true;
+            // Let Tab propagate naturally so focus advances to next/previous element
+            popover._tabDismiss = true;
             if (popover.matches(":popover-open")) popover.hidePopover();
           } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
             // Type-ahead: accumulate characters within 500ms window
