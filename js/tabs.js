@@ -20,7 +20,8 @@
       const list = tabGroup.querySelector("[data-tab-list]") || buttons[0]?.parentElement;
       if (list) {
         list.setAttribute("role", "tablist");
-        list.setAttribute("aria-orientation", "horizontal");
+        const orientation = list.getAttribute("data-orientation") || "horizontal";
+        list.setAttribute("aria-orientation", orientation);
       }
 
       // Create sliding indicator for segmented controls
@@ -121,10 +122,10 @@
             e.preventDefault();
             activate(btn);
             return;
-          } else if (e.key === "ArrowRight") {
+          } else if (e.key === (list?.getAttribute("aria-orientation") === "vertical" ? "ArrowDown" : "ArrowRight")) {
             e.preventDefault();
             targetBtn = findTab(currentIdx, 1);
-          } else if (e.key === "ArrowLeft") {
+          } else if (e.key === (list?.getAttribute("aria-orientation") === "vertical" ? "ArrowUp" : "ArrowLeft")) {
             e.preventDefault();
             targetBtn = findTab(currentIdx, -1);
           } else if (e.key === "Home") {

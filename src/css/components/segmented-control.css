@@ -22,7 +22,8 @@
   transition: transform var(--transition-slow) var(--apple-spring), width var(--transition-slow) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 .segmented-control [data-tab] {
-  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[6px] px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
+  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[6px] border-none bg-transparent px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
+  user-select: none;
   flex: 1 1 0%;
   min-width: 56px;
   min-height: 32px;

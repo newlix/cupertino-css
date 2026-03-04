@@ -39,8 +39,12 @@
     dialog._closeTimer = setTimeout(finish, duration);
   }
 
+  function isVisible(el) {
+    return el.offsetParent !== null || el.getClientRects().length > 0;
+  }
+
   function trapFocus(dialog) {
-    const focusable = dialog.querySelectorAll(FOCUSABLE);
+    const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
     const autofocus = dialog.querySelector("[autofocus]");
     const defaultBtn = dialog.querySelector("footer .btn-filled, footer button[type='submit']");
     if (autofocus) { autofocus.focus(); }
@@ -49,7 +53,7 @@
 
     function handler(e) {
       if (e.key !== "Tab") return;
-      const current = dialog.querySelectorAll(FOCUSABLE);
+      const current = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
       if (!current.length) return;
       const first = current[0];
       const last = current[current.length - 1];

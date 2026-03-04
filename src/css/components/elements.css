@@ -142,6 +142,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
   }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
+    &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
   }
 }
@@ -166,6 +167,7 @@ textarea {
   }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
+    &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
   }
 }
@@ -191,6 +193,7 @@ select:not([multiple]) {
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
+    &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
   }
 }
@@ -263,8 +266,8 @@ input[type="checkbox"][role="switch"] {
   height: 31px;
   background: var(--surface-5);
   transition: background-color var(--transition-slow) var(--apple-ease);
-  &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: oklch(0 0 0 / 0.22); }
-  .dark &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: oklch(1 0 0 / 0.22); }
+  &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: var(--surface-7); }
+  .dark &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: var(--surface-7); }
   &:hover:not(:disabled):not([aria-disabled="true"]):checked { background: var(--color-switch-hover); }
   &::after {
     content: "";
@@ -397,10 +400,10 @@ table {
   & tfoot tr:last-child td:last-child {
     border-bottom-right-radius: var(--radius-lg);
   }
-  & tbody:last-child tr:last-child td:first-child {
+  & tbody:last-child tr:last-child :is(td, th):first-child {
     border-bottom-left-radius: var(--radius-lg);
   }
-  & tbody:last-child tr:last-child td:last-child {
+  & tbody:last-child tr:last-child :is(td, th):last-child {
     border-bottom-right-radius: var(--radius-lg);
   }
   &.table-striped tbody tr:nth-child(even) {
@@ -412,8 +415,8 @@ table {
   }
   &.table-striped tbody tr[data-selected],
   &.table-striped tbody tr[aria-selected="true"] {
-    background: oklch(from var(--color-primary) l c h / 0.10);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.18); }
+    background: oklch(from var(--color-primary) l c h / 0.14);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
   }
   &.table-striped tbody tr[data-selected]:hover,
   &.table-striped tbody tr[aria-selected="true"]:hover {

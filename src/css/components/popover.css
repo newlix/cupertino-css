@@ -65,7 +65,7 @@
     height: 1px;
     border: none;
     @media (min-resolution: 2dppx) { height: 0.5px; }
-    background: var(--color-border);
+    background: var(--color-separator);
   }
 }
 

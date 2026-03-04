@@ -9,11 +9,12 @@
   @apply block shrink-0 self-stretch;
   width: 1px;
   min-height: 1rem;
+  border-radius: 9999px;
   background: var(--color-separator);
   @media (min-resolution: 2dppx) { width: 0.5px; }
 }
 .separator-label {
-  @apply flex items-center gap-2 my-4 text-[13px] text-tertiary-foreground;
+  @apply flex items-center gap-3 my-4 text-[13px] text-tertiary-foreground;
   &::before, &::after {
     content: "";
     @apply flex-1;

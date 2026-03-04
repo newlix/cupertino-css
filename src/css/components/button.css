@@ -4,7 +4,7 @@
 .btn-tinted,
 .btn-bezelled,
 .btn-plain {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[12px] px-5 py-3 text-[15px] leading-[1.33] font-medium cursor-pointer select-none;
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] px-5 py-3 text-[15px] leading-[1.33] font-medium cursor-pointer select-none;
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
@@ -95,7 +95,7 @@
   }
 }
 .btn-small {
-  @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[8px];
+  @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[var(--radius-sm)];
   min-height: 32px;
   @media (pointer: coarse) { min-height: 44px; }
 }

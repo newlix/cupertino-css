@@ -82,6 +82,7 @@
       &::-webkit-slider-thumb { background: GrayText; border-color: GrayText; }
       &::-moz-range-track { border-color: GrayText; }
       &::-moz-range-thumb { background: GrayText; border-color: GrayText; }
+      &::-moz-range-progress { background: GrayText; }
     }
   }
   @media (prefers-reduced-motion: reduce) {

@@ -132,7 +132,11 @@
           inputs[firstEmpty >= 0 ? firstEmpty : Math.min(nextIdx, inputs.length - 1)].focus();
         }, sig);
 
-        input.addEventListener("focus", () => input.select(), sig);
+        input.addEventListener("focus", () => {
+          requestAnimationFrame(() => {
+            if (document.activeElement === input) input.select();
+          });
+        }, sig);
       });
 
       // Sync aria-invalid with data-error attribute

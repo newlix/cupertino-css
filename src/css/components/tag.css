@@ -3,6 +3,8 @@
   @apply inline-block;
   width: 12px;
   height: 12px;
+  flex-shrink: 0;
+  vertical-align: middle;
   border-radius: 50%;
   background: var(--tag-color);
   &:is(button, a) {
@@ -31,7 +33,7 @@
     forced-color-adjust: none;
     border: 1.5px solid ButtonText;
     &:is(button, a) {
-      &:focus-visible { outline: 2px solid Highlight; }
+      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
       &:disabled, &[aria-disabled="true"] { border-color: GrayText; opacity: 1; }
     }
   }
