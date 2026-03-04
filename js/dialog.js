@@ -171,6 +171,7 @@
 
   function openDialog(dialog) {
     if (!dialog || !dialog.isConnected) return;
+    if (!dialog._dialogInit) init();
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._openWaitObs) return;
       const obs = new MutationObserver(() => {
@@ -195,7 +196,7 @@
     }
     if (dialog.open) return;
     dialog._previousFocus = document.activeElement;
-    dialog.showModal();
+    try { dialog.showModal(); } catch { /* dialog may have been removed or is already modal */ }
   }
 
   window.closeDialog = closeDialog;
