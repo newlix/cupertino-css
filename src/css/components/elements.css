@@ -520,7 +520,13 @@ abbr[title] {
     &:checked { background: Highlight; border-color: Highlight; }
     &::after { background: ButtonText; }
     &:checked::after { background: HighlightText; }
-    &:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+    &:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none; }
+    &:disabled, &[aria-disabled="true"] {
+      border-color: GrayText;
+      &::after { background: GrayText; }
+      &:checked { background: GrayText; border-color: GrayText; }
+      &:checked::after { background: Canvas; }
+    }
   }
   /* Text inputs, textarea, select */
   input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])),
