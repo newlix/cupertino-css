@@ -180,7 +180,7 @@
     if (el.classList?.contains("verification-code")) {
       destroy(el);
     } else {
-      el.querySelectorAll?.(".verification-code").forEach(destroy);
+      (el.querySelectorAll?.(".verification-code") || []).forEach(destroy);
     }
   });
   window.CiderUI = window.CiderUI || {};

@@ -55,8 +55,9 @@
   document.addEventListener("htmx:afterSettle", init);
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
-    if (el?.classList?.contains("slider")) { destroy(el); return; }
-    if (el?.querySelectorAll) el.querySelectorAll(".slider").forEach(destroy);
+    if (!el) return;
+    if (el.classList?.contains("slider")) { destroy(el); return; }
+    (el.querySelectorAll?.(".slider") || []).forEach(destroy);
   });
 
   window.CiderUI = window.CiderUI || {};
