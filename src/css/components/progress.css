@@ -10,12 +10,10 @@ progress {
   &::-webkit-progress-value {
     background: var(--color-primary);
     border-radius: 9999px;
-    transition: width var(--transition-slow) var(--apple-ease);
   }
   &::-moz-progress-bar {
     background: var(--color-primary);
     border-radius: 9999px;
-    transition: width var(--transition-slow) var(--apple-ease);
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;

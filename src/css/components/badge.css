@@ -12,6 +12,7 @@
   padding: 2px 6px;
   max-width: 5rem;
   overflow: hidden;
+  text-overflow: ellipsis;
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
   transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);

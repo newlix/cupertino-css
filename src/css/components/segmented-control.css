@@ -55,5 +55,6 @@
     &:focus-visible { outline: 2px solid Highlight; }
     &[data-active],
     &[aria-selected="true"] { color: HighlightText; }
+    &:disabled, &[aria-disabled="true"] { color: GrayText; opacity: 1; }
   }
 }

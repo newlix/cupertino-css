@@ -46,13 +46,13 @@
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[5px] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
-      transition: background-color 0.1s var(--apple-ease), color 0.1s var(--apple-ease);
+      transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
       &:is(:hover, :focus-visible) { background: var(--color-primary); color: var(--color-primary-foreground); }
       &:is(:hover, :focus-visible) svg { color: var(--color-primary-foreground); }
       &:active { background: var(--color-primary-active); color: var(--color-primary-foreground); }
       &:active svg { color: var(--color-primary-foreground); }
       &:focus-visible { outline: none; }
-      & svg { @apply size-4 text-tertiary-foreground; transition: color 0.1s var(--apple-ease); }
+      & svg { @apply size-4 text-tertiary-foreground; transition: color var(--transition-fast) var(--apple-ease); }
       @media (pointer: coarse) { min-height: 44px; }
       &:disabled, &[aria-disabled="true"] {
         @apply text-tertiary-foreground;
@@ -104,8 +104,8 @@
   .popover [popover] { border: 1px solid ButtonText; }
   .popover-arrow [popover]::before { display: none; }
   .popover-menu [popover] hr { background: CanvasText; }
-  .popover-menu [popover] button:is(:hover, :focus-visible),
-  .popover-menu [popover] a:is(:hover, :focus-visible) {
+  .popover-menu [popover] button:is(:hover, :focus-visible, :active),
+  .popover-menu [popover] a:is(:hover, :focus-visible, :active) {
     background: Highlight;
     color: HighlightText;
   }

@@ -68,7 +68,7 @@
   }
 
   function wireAria(dialog) {
-    const heading = dialog.querySelector("header h2, header h3");
+    const heading = dialog.querySelector("header :is(h1, h2, h3, h4, h5, h6)");
     const desc = dialog.querySelector("header p");
     if (heading && !dialog.getAttribute("aria-labelledby")) {
       if (!heading.id) heading.id = `dlg-title-${Math.random().toString(36).slice(2, 8)}`;

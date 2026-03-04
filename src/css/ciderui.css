@@ -224,8 +224,8 @@
   --color-blue: var(--color-blue);
   --color-purple: var(--color-purple);
   --radius-xs: var(--radius-xs);
-  --radius: var(--radius);
   --radius-sm: var(--radius-sm);
+  --radius: var(--radius);
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
   --radius-pill: var(--radius-pill);

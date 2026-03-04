@@ -24,6 +24,7 @@
 @media (forced-colors: active) {
   .avatar { border: 1px solid ButtonText; }
   .avatar:is(button, a):focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+  .avatar:is(button, a):disabled, .avatar:is(button, a)[aria-disabled="true"] { border-color: GrayText; }
   .avatar-group .avatar { outline-color: ButtonText; }
 }
 .avatar-group {

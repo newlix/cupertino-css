@@ -61,6 +61,7 @@
         input.addEventListener("input", () => {
           if (otp.hasAttribute("data-error")) {
             otp.removeAttribute("data-error");
+            inputs.forEach((inp) => inp.removeAttribute("aria-invalid"));
           }
           const v = input.value.replace(/\D/g, "");
           // Handle browser autofill distributing multiple characters into a single input
@@ -89,6 +90,7 @@
         input.addEventListener("keydown", (e) => {
           if (e.key === "Backspace" && otp.hasAttribute("data-error")) {
             otp.removeAttribute("data-error");
+            inputs.forEach((inp) => inp.removeAttribute("aria-invalid"));
           }
           if (e.key === "Backspace" && !input.value && i > 0) {
             e.preventDefault();
@@ -128,6 +130,20 @@
         input.addEventListener("focus", () => input.select());
       });
 
+      // Sync aria-invalid with data-error attribute
+      if (otp.hasAttribute("data-error")) {
+        inputs.forEach((inp) => inp.setAttribute("aria-invalid", "true"));
+      }
+      const errorObserver = new MutationObserver(() => {
+        const hasError = otp.hasAttribute("data-error");
+        inputs.forEach((inp) => {
+          if (hasError) inp.setAttribute("aria-invalid", "true");
+          else inp.removeAttribute("aria-invalid");
+        });
+      });
+      errorObserver.observe(otp, { attributes: true, attributeFilter: ["data-error"] });
+      otp._errorObserver = errorObserver;
+
       otp.addEventListener("click", (e) => {
         if (e.target.closest('input:not([type="hidden"])')) return;
         if (inputs[0].disabled || inputs[0].getAttribute("aria-disabled") === "true") return;
@@ -143,7 +159,17 @@
     init();
   }
 
+  function destroy(otp) {
+    if (!otp._vcInit) return;
+    if (otp._errorObserver) { otp._errorObserver.disconnect(); otp._errorObserver = null; }
+    otp._vcInit = false;
+  }
+
   document.addEventListener("htmx:afterSettle", init);
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
+    if (el?.classList?.contains("verification-code")) destroy(el);
+  });
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.verificationCode = { init };
+  window.CiderUI.verificationCode = { init, destroy };
 })();

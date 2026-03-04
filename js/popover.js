@@ -19,6 +19,8 @@
       const isMenu = wrapper.classList.contains("popover-menu");
       trigger.setAttribute("aria-haspopup", isMenu ? "menu" : "dialog");
       trigger.setAttribute("aria-expanded", "false");
+      if (!popover.id) popover.id = `popover-panel-${Math.random().toString(36).slice(2, 8)}`;
+      trigger.setAttribute("aria-controls", popover.id);
 
       // Store and clean up toggle handler to prevent listener leaks on re-init
       if (popover._toggleHandler) {

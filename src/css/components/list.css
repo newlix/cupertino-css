@@ -47,6 +47,10 @@
       background: oklch(from var(--color-primary) l c h / 0.20);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.34); }
     }
+    &[data-selected]:active, &[aria-selected="true"]:active {
+      background: oklch(from var(--color-primary) l c h / 0.26);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.40); }
+    }
   }
   & > [data-selected], & > [aria-selected="true"] {
     background: oklch(from var(--color-primary) l c h / 0.18);

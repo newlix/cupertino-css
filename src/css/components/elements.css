@@ -77,7 +77,8 @@ a:not([class*="btn-"]) {
   &:focus-visible {
     @apply underline underline-offset-2;
     text-decoration-color: var(--color-primary);
-    outline: 2px solid var(--color-primary);
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -516,4 +517,14 @@ abbr[title] {
     &:checked::after { background: HighlightText; }
     &:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
   }
+  /* Text inputs, textarea, select */
+  input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])),
+  textarea,
+  select:not([multiple]) {
+    border: 1px solid ButtonText;
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+  }
+  details, fieldset { border-color: ButtonText; }
+  blockquote { border-color: ButtonText; }
 }
