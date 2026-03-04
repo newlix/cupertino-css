@@ -204,4 +204,22 @@
   }
 
   document.addEventListener("htmx:afterSettle", init);
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
+    if (!el) return;
+    const dialogs = el.tagName === "DIALOG" ? [el] : Array.from(el.querySelectorAll?.("dialog") || []);
+    dialogs.forEach((dialog) => {
+      if (!dialog._dialogInit) return;
+      if (dialog._focusObserver) { dialog._focusObserver.disconnect(); dialog._focusObserver = null; }
+      if (dialog._focusTrapHandler) { dialog.removeEventListener("keydown", dialog._focusTrapHandler); dialog._focusTrapHandler = null; }
+      if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
+      if (dialog._closeAnimHandler) { dialog.removeEventListener("animationend", dialog._closeAnimHandler); dialog._closeAnimHandler = null; }
+      activeDialogs.delete(dialog);
+      if (activeDialogs.size === 0 && savedOverflow !== null) {
+        document.body.style.overflow = savedOverflow ?? "";
+        savedOverflow = null;
+      }
+      dialog._dialogInit = false;
+    });
+  });
 })();
