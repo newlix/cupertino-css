@@ -178,6 +178,8 @@
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
     if (el?.hasAttribute("data-tabs")) destroy(el);
+    const parent = el?.closest?.("[data-tabs]");
+    if (parent?._tabsInit) destroy(parent);
   });
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.tabs = { init, destroy };

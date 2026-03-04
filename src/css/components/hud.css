@@ -27,7 +27,7 @@
   box-shadow: var(--shadow-md), var(--float-ring);
   animation: hudAppear 0.2s var(--apple-spring);
   & svg:first-child { @apply size-10 shrink-0; }
-  & .hud-label { @apply text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis; max-width: 100%; }
+  & .hud-label { @apply text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center; max-width: 100%; }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */

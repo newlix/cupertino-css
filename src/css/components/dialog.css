@@ -6,6 +6,7 @@ dialog {
   border: none;
   overflow: clip;
   corner-shape: squircle;
+  background-color: var(--color-card);
   background: var(--glass-bg-dialog);
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);

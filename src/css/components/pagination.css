@@ -21,7 +21,7 @@
     }
   }
   & > span {
-    @apply inline-flex items-center justify-center text-[13px] text-tertiary-foreground;
+    @apply inline-flex items-center justify-center text-[13px] text-tertiary-foreground pointer-events-none select-none;
     min-height: 32px;
     min-width: 32px;
     @media (pointer: coarse) { min-height: 44px; min-width: 44px; }
@@ -31,7 +31,7 @@
       border: 1px solid ButtonText;
       &[data-active], &[aria-current="page"] { background: Highlight; color: HighlightText; border-color: Highlight; }
       &:focus-visible { outline: 2px solid Highlight; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; opacity: 1; }
     }
     & > span { color: CanvasText; }
   }

@@ -177,7 +177,7 @@
   --color-purple: oklch(0.630 0.250 303.5);    /* Apple Purple #BF5AF2 (dark) */
 
   --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
-  --hud-background: oklch(0.18 0 0 / 0.68);
+  --hud-background: oklch(0.14 0 0 / 0.78);
   --tooltip-bg: oklch(0.20 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
 

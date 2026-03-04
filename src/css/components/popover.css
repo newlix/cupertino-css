@@ -118,7 +118,6 @@
 /* Top positioning variant */
 .popover-top {
   & [popover] {
-    margin-bottom: 0.5rem;
     transform-origin: var(--popover-origin, bottom left);
   }
 }

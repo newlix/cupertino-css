@@ -37,7 +37,7 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
-      const DANGEROUS_ELEMENTS = new Set(["script", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage"]);
+      const DANGEROUS_ELEMENTS = new Set(["script", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion"]);
       svgEl.querySelectorAll("*").forEach((el) => {
         if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
       });

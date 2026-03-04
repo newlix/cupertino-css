@@ -82,6 +82,10 @@
       &::-moz-range-thumb { background: GrayText; border-color: GrayText; }
     }
   }
+  @media (prefers-reduced-motion: reduce) {
+    &::-webkit-slider-thumb { transition: none; }
+    &::-moz-range-thumb { transition: none; }
+  }
   @media (pointer: coarse) {
     min-height: 44px;
     /* Apple HIG: 44pt minimum touch target */

@@ -132,6 +132,9 @@
     translate: -50% 0;
     transition-delay: 0.6s;
   }
+  @media (prefers-reduced-motion: reduce) {
+    &:hover::after, &:focus-visible::after { transition-delay: 0s; }
+  }
   @media (forced-colors: active) {
     &::after { border: 1px solid ButtonText; background: Canvas; color: CanvasText; box-shadow: none; }
   }

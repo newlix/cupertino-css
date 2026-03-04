@@ -1,7 +1,7 @@
 /* ========== SEGMENTED CONTROL ========== */
 .segmented-control {
   --segmented-active: oklch(1 0 0);
-  .dark & { --segmented-active: oklch(0.35 0.004 286.1); }
+  .dark & { --segmented-active: oklch(0.40 0.004 286.1); }
 }
 .segmented-control [data-tab-list] {
   @apply relative inline-flex rounded-[8px] p-1;

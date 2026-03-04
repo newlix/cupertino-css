@@ -34,18 +34,20 @@
         height: 1px;
         @media (min-resolution: 2dppx) { height: 0.5px; }
         background: var(--color-separator);
+        pointer-events: none;
       }
     }
   }
   & > a, & > button {
     @apply no-underline text-foreground cursor-pointer;
+    &:visited { color: var(--color-foreground); }
     &:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); text-decoration: none; }
     &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
     &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     &[data-selected]:hover:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled):not([aria-disabled="true"]) {
-      background: oklch(from var(--color-primary) l c h / 0.20);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.34); }
+      background: oklch(from var(--color-primary) l c h / 0.24);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.38); }
     }
     &[data-selected]:active:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled):not([aria-disabled="true"]) {
       background: oklch(from var(--color-primary) l c h / 0.26);

@@ -254,7 +254,6 @@
   --surface-3: oklch(0 0 0 / 0.08);
   --surface-4: oklch(0 0 0 / 0.12);
   --surface-5: oklch(0 0 0 / 0.16);
-  --surface-6: oklch(0 0 0 / 0.18);
   --surface-7: oklch(0 0 0 / 0.20);
   --panel-border: oklch(0 0 0 / 0.06);
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04);
@@ -325,7 +324,6 @@
   --surface-3: oklch(1 0 0 / 0.08);
   --surface-4: oklch(1 0 0 / 0.12);
   --surface-5: oklch(1 0 0 / 0.16);
-  --surface-6: oklch(1 0 0 / 0.18);
   --surface-7: oklch(1 0 0 / 0.20);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
@@ -342,7 +340,7 @@
   --color-blue: oklch(0.617 0.246 256.5);
   --color-purple: oklch(0.630 0.250 303.5);
   --color-separator: oklch(0.310 0.003 286.22);
-  --hud-background: oklch(0.18 0 0 / 0.68);
+  --hud-background: oklch(0.14 0 0 / 0.78);
   --tooltip-bg: oklch(0.20 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
   --avatar-bg: oklch(0.35 0.006 286);
@@ -511,7 +509,10 @@
         background: var(--color-secondary-hover);
       }
       &:active {
-        background: oklch(from var(--color-secondary-hover) calc(l * 0.96) c h);
+        background: oklch(from var(--color-secondary-hover) calc(l * 0.94) c h);
+      }
+      .dark &:active {
+        background: oklch(from var(--color-secondary-hover) calc(l * 1.06) c h);
       }
     }
     .btn-filled {
@@ -585,7 +586,10 @@
         background: var(--color-secondary-hover);
       }
       &:active {
-        background: oklch(from var(--color-secondary-hover) calc(l * 0.96) c h);
+        background: oklch(from var(--color-secondary-hover) calc(l * 0.94) c h);
+      }
+      .dark &:active {
+        background: oklch(from var(--color-secondary-hover) calc(l * 1.06) c h);
       }
     }
     .btn-tinted.btn-destructive {
@@ -708,6 +712,11 @@
         translate: -50% 0;
         transition-delay: 0.6s;
       }
+      @media (prefers-reduced-motion: reduce) {
+        &:hover::after, &:focus-visible::after {
+          transition-delay: 0s;
+        }
+      }
       @media (forced-colors: active) {
         &::after {
           border: 1px solid ButtonText;
@@ -748,7 +757,6 @@
       padding: 2px 6px;
       max-width: 5rem;
       overflow: hidden;
-      text-overflow: ellipsis;
       flex-shrink: 0;
       box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
       transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
@@ -803,8 +811,9 @@
           transform: scale(0.90);
         }
         &:focus-visible {
-          outline: 2px solid var(--color-primary);
-          outline-offset: 3px;
+          box-shadow: 0 0 0 2px var(--color-background), var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
         }
         &:disabled, &[aria-disabled="true"] {
           pointer-events: none;
@@ -947,6 +956,7 @@
       border: none;
       overflow: clip;
       corner-shape: squircle;
+      background-color: var(--color-card);
       background: var(--glass-bg-dialog);
       backdrop-filter: var(--glass-blur-heavy);
       -webkit-backdrop-filter: var(--glass-blur-heavy);
@@ -1068,7 +1078,7 @@
     .segmented-control {
       --segmented-active: oklch(1 0 0);
       .dark & {
-        --segmented-active: oklch(0.35 0.004 286.1);
+        --segmented-active: oklch(0.40 0.004 286.1);
       }
     }
     .segmented-control [data-tab-list] {
@@ -1092,7 +1102,7 @@
       background: var(--segmented-active);
       box-shadow: var(--shadow-sm);
       .dark & {
-        box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.08);
+        box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.12);
       }
       transition: transform var(--transition-slow) var(--apple-spring), width var(--transition-slow) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
     }
@@ -1143,7 +1153,7 @@
         display: none;
       }
       &[data-active] {
-        animation: segFadeIn 0.2s var(--apple-ease);
+        animation: segFadeIn var(--transition-fast) var(--apple-ease);
       }
     }
     @media (forced-colors: active) {
@@ -1182,9 +1192,10 @@
       color: var(--avatar-fg);
       overflow: hidden;
       user-select: none;
-      box-shadow: 0 0 0 0.5px oklch(0 0 0 / 0.08);
+      --avatar-ring: 0 0 0 0.5px oklch(0 0 0 / 0.08);
+      box-shadow: var(--avatar-ring);
       .dark & {
-        box-shadow: 0 0 0 0.5px oklch(1 0 0 / 0.10);
+        --avatar-ring: 0 0 0 0.5px oklch(1 0 0 / 0.10);
       }
       &:is(img) {
         display: inline-block;
@@ -1211,7 +1222,7 @@
           transform: scale(var(--apple-press-scale));
         }
         &:focus-visible {
-          box-shadow: var(--focus-ring);
+          box-shadow: var(--avatar-ring), var(--focus-ring);
           outline: 2px solid transparent;
           outline-offset: 2px;
         }
@@ -1296,13 +1307,22 @@
       }
       &:hover:not([aria-current="page"]) {
         opacity: 0.5;
+        .dark & {
+          opacity: 0.55;
+        }
       }
       &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
         opacity: 0.7;
+        .dark & {
+          opacity: 0.75;
+        }
       }
       &:disabled, &[aria-disabled="true"] {
         pointer-events: none;
         opacity: 0.15;
+        .dark & {
+          opacity: 0.18;
+        }
       }
       @media (forced-colors: active) {
         border: 2px solid ButtonText;
@@ -1377,11 +1397,14 @@
         }
       }
       & > span {
+        pointer-events: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         font-size: 13px;
         color: var(--color-tertiary-foreground);
+        -webkit-user-select: none;
+        user-select: none;
         min-height: 32px;
         min-width: 32px;
         @media (pointer: coarse) {
@@ -1403,6 +1426,7 @@
           &:disabled, &[aria-disabled="true"] {
             border-color: GrayText;
             color: GrayText;
+            opacity: 1;
           }
         }
         & > span {
@@ -1448,9 +1472,6 @@
         vertical-align: middle;
         background: var(--color-tertiary-foreground);
         opacity: 0.8;
-        .dark & {
-          opacity: 0.9;
-        }
         -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
       }
@@ -1528,7 +1549,6 @@
       @media (prefers-reduced-motion: reduce) {
         &::after {
           animation: none;
-          transform: none;
           opacity: 0.5;
           width: 100%;
           background: var(--color-primary);
@@ -1664,6 +1684,14 @@
           }
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        &::-webkit-slider-thumb {
+          transition: none;
+        }
+        &::-moz-range-thumb {
+          transition: none;
+        }
+      }
       @media (pointer: coarse) {
         min-height: 44px;
         &::-webkit-slider-thumb {
@@ -1674,14 +1702,6 @@
         &::-moz-range-thumb {
           width: 34px;
           height: 34px;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        &::-webkit-slider-thumb {
-          transition: none;
-        }
-        &::-moz-range-thumb {
-          transition: none;
         }
       }
     }
@@ -1754,6 +1774,7 @@
       }
       & .hud-label {
         overflow: hidden;
+        text-align: center;
         font-size: 13px;
         --tw-font-weight: var(--font-weight-medium);
         font-weight: var(--font-weight-medium);
@@ -1878,6 +1899,7 @@
               height: 0.5px;
             }
             background: var(--color-separator);
+            pointer-events: none;
           }
         }
       }
@@ -1885,6 +1907,9 @@
         cursor: pointer;
         color: var(--color-foreground);
         text-decoration-line: none;
+        &:visited {
+          color: var(--color-foreground);
+        }
         &:hover:not(:disabled):not([aria-disabled="true"]) {
           background: var(--surface-3);
           text-decoration: none;
@@ -1901,13 +1926,13 @@
           outline: 2px solid var(--color-primary);
           outline-offset: -2px;
         }
-        &[data-selected]:hover, &[aria-selected="true"]:hover {
-          background: oklch(from var(--color-primary) l c h / 0.20);
+        &[data-selected]:hover:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled):not([aria-disabled="true"]) {
+          background: oklch(from var(--color-primary) l c h / 0.24);
           .dark & {
-            background: oklch(from var(--color-primary) l c h / 0.34);
+            background: oklch(from var(--color-primary) l c h / 0.38);
           }
         }
-        &[data-selected]:active, &[aria-selected="true"]:active {
+        &[data-selected]:active:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled):not([aria-disabled="true"]) {
           background: oklch(from var(--color-primary) l c h / 0.26);
           .dark & {
             background: oklch(from var(--color-primary) l c h / 0.40);
@@ -1950,7 +1975,7 @@
       .list > a:focus-visible, .list > button:focus-visible {
         outline: 2px solid Highlight;
       }
-      .list > a:disabled, .list > button:disabled, .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] {
+      .list > button:disabled, .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] {
         color: GrayText;
         opacity: 1;
       }
@@ -2110,7 +2135,6 @@
     }
     .popover-top {
       & [popover] {
-        margin-bottom: 0.5rem;
         transform-origin: var(--popover-origin, bottom left);
       }
     }
@@ -2156,6 +2180,16 @@
           -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
           -webkit-text-fill-color: var(--color-foreground);
         }
+        &[aria-invalid="true"] {
+          border-color: var(--color-destructive);
+          &:hover:not(:focus-visible) {
+            border-color: var(--color-destructive);
+          }
+          &:focus-visible {
+            border-color: var(--color-destructive);
+            box-shadow: var(--focus-ring-error);
+          }
+        }
       }
       & > span {
         font-size: 17px;
@@ -2197,6 +2231,7 @@
           }
           &:disabled, &[aria-disabled="true"] {
             border-color: GrayText;
+            color: GrayText;
           }
         }
         &[data-error] input:not([type="hidden"]) {
@@ -2875,6 +2910,12 @@
       &.table-striped tbody tr:hover {
         background: var(--surface-3);
       }
+      &.table-striped tbody tr[data-selected], &.table-striped tbody tr[aria-selected="true"] {
+        background: oklch(from var(--color-primary) l c h / 0.10);
+        .dark & {
+          background: oklch(from var(--color-primary) l c h / 0.18);
+        }
+      }
       &.table-striped tbody tr[data-selected]:hover, &.table-striped tbody tr[aria-selected="true"]:hover {
         background: oklch(from var(--color-primary) l c h / 0.18);
         .dark & {
@@ -3011,6 +3052,20 @@
         &:focus-visible {
           outline: 2px solid Highlight;
           outline-offset: 2px;
+          box-shadow: none;
+        }
+        &:disabled, &[aria-disabled="true"] {
+          border-color: GrayText;
+          &::after {
+            background: GrayText;
+          }
+          &:checked {
+            background: GrayText;
+            border-color: GrayText;
+          }
+          &:checked::after {
+            background: Canvas;
+          }
         }
       }
       input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])), textarea, select:not([multiple]) {
@@ -3026,6 +3081,16 @@
       }
       details, fieldset, blockquote {
         border-color: ButtonText;
+      }
+      table {
+        border: 1px solid ButtonText;
+      }
+      pre {
+        border: 1px solid ButtonText;
+      }
+      kbd {
+        border: 1px solid ButtonText;
+        box-shadow: none;
       }
     }
   }
