@@ -214,6 +214,7 @@ input[type="checkbox"]:not([role="switch"]) {
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { @apply bg-destructive border-destructive; }
+    &:hover:is(:checked, :indeterminate):not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-destructive-hover); border-color: var(--color-destructive-hover); }
     &:focus-visible { box-shadow: var(--focus-ring-error); }
   }
 }
@@ -240,6 +241,7 @@ input[type="radio"] {
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:checked { border-color: var(--color-destructive); background-color: var(--color-destructive); }
+    &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-destructive-hover); border-color: var(--color-destructive-hover); }
     &:focus-visible { box-shadow: var(--focus-ring-error); }
   }
 }
