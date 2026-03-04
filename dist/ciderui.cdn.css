@@ -2134,6 +2134,7 @@
       & [popover] hr {
         margin-inline: calc(var(--spacing) * 1.5);
         margin-block: calc(var(--spacing) * 1);
+        width: auto;
         height: 1px;
         border: none;
         @media (min-resolution: 2dppx) {
