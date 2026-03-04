@@ -4,7 +4,7 @@
   .dark & { --segmented-active: oklch(0.40 0.004 286.1); }
 }
 .segmented-control [data-tab-list] {
-  @apply relative inline-flex rounded-[8px] p-1;
+  @apply relative inline-flex rounded-[var(--radius-sm)] p-1;
   corner-shape: squircle;
   background: var(--surface-5);
 }

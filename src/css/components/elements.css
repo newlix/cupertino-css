@@ -126,7 +126,7 @@ pre {
 /* ─── Text inputs ─── */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
 input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
-  @apply w-full h-11 rounded-[12px] border px-4 text-[17px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[var(--radius)] border px-4 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -150,7 +150,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
 
 /* ─── Textarea ─── */
 textarea {
-  @apply w-full rounded-[12px] border px-4 py-3 text-[17px] text-foreground outline-none;
+  @apply w-full rounded-[var(--radius)] border px-4 py-3 text-[17px] text-foreground outline-none;
   resize: vertical;
   corner-shape: squircle;
   background-color: var(--color-card);
@@ -175,7 +175,7 @@ textarea {
 
 /* ─── Select ─── */
 select:not([multiple]) {
-  @apply w-full h-11 rounded-[12px] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
+  @apply w-full h-11 rounded-[var(--radius)] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -201,7 +201,7 @@ select:not([multiple]) {
 
 /* ─── Checkbox ─── */
 input[type="checkbox"]:not([role="switch"]) {
-  @apply appearance-none shrink-0 rounded-[5px] border bg-card cursor-pointer;
+  @apply appearance-none shrink-0 rounded-[var(--radius-xs)] border bg-card cursor-pointer;
   corner-shape: squircle;
   width: 18px;
   height: 18px;
@@ -441,7 +441,7 @@ hr {
 
 /* ─── Kbd ─── */
 kbd {
-  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[5px] px-1.5 text-[11px] font-medium text-tertiary-foreground;
+  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[var(--radius-xs)] px-1.5 text-[11px] font-medium text-tertiary-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
   box-shadow: 0 1px 0 var(--panel-border), var(--float-ring), inset 0 1px 0 oklch(1 0 0 / 0.15);

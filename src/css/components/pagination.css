@@ -2,7 +2,7 @@
 .pagination {
   @apply flex flex-wrap items-center gap-1;
   & > button, & > a {
-    @apply inline-flex items-center justify-center rounded-[8px] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
+    @apply inline-flex items-center justify-center rounded-[var(--radius-sm)] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
     corner-shape: squircle;
     min-height: 32px;
     min-width: 32px;
