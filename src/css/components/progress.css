@@ -4,17 +4,20 @@ progress {
   background: var(--surface-5);
   &::-webkit-progress-bar {
     background: var(--surface-5);
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     overflow: hidden;
   }
   &::-webkit-progress-value {
     background: var(--color-primary);
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     transition: width var(--transition-normal) var(--apple-ease);
   }
   &::-moz-progress-bar {
     background: var(--color-primary);
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::-webkit-progress-value { transition: none; }
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;
@@ -31,7 +34,7 @@ progress {
     @apply absolute inset-y-0 left-0 rounded-full;
     width: 100%;
     background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 50%, transparent 80%);
-    animation: indeterminate 1.5s linear infinite;
+    animation: indeterminate 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
   @media (prefers-reduced-motion: reduce) {
     &::after {

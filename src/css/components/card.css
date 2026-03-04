@@ -13,6 +13,7 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  @media (pointer: coarse) { min-height: 44px; }
   &:hover { background-color: oklch(from var(--color-card) calc(l - 0.03) c h); }
   .dark &:hover { background-color: oklch(from var(--color-card) calc(l + 0.04) c h); }
   &:active { transform: scale(var(--apple-press-scale)); background-color: oklch(from var(--color-card) calc(l - 0.05) c h); }

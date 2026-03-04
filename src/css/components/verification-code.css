@@ -42,6 +42,9 @@
       height: 48px;
       font-size: 24px;
     }
+    @media (pointer: coarse) {
+      & input:not([type="hidden"]) { min-width: 44px; }
+    }
   }
   &[data-error] {
     animation: shake 0.3s var(--apple-ease);

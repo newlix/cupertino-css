@@ -27,6 +27,7 @@ dialog {
     &:active { @apply text-foreground; background: var(--color-secondary-hover); }
     &:focus-visible { @apply text-foreground; background: var(--surface-3); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
     & svg { @apply size-4; }
+    @media (pointer: coarse) { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
   }
   & > header {
     @apply px-6 pt-6 text-center;

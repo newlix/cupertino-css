@@ -10,7 +10,7 @@
     transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
     &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-3); }
+    &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &[data-active], &[aria-current="page"] {
       @apply text-foreground font-semibold pointer-events-none;
       background: var(--surface-3);
