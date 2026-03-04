@@ -82,6 +82,11 @@
       if (!desc.id) desc.id = `dlg-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", desc.id);
     }
+    dialog.querySelectorAll(".dialog-close").forEach((btn) => {
+      if (!btn.getAttribute("aria-label") && !btn.getAttribute("aria-labelledby")) {
+        btn.setAttribute("aria-label", "Close");
+      }
+    });
   }
 
   function init() {
@@ -110,6 +115,7 @@
         const wasActive = activeDialogs.delete(dialog);
         if (wasActive && activeDialogs.size === 0) {
           document.body.style.overflow = savedOverflow ?? "";
+          document.body.style.paddingRight = "";
           savedOverflow = null;
         }
         if (dialog._focusTrapHandler) {
@@ -133,6 +139,8 @@
             }
             if (activeDialogs.size === 0) {
               savedOverflow = document.body.style.overflow;
+              const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+              if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
             }
             activeDialogs.add(dialog);
             document.body.style.overflow = "hidden";
@@ -220,6 +228,7 @@
       activeDialogs.delete(dialog);
       if (activeDialogs.size === 0 && savedOverflow !== null) {
         document.body.style.overflow = savedOverflow ?? "";
+        document.body.style.paddingRight = "";
         savedOverflow = null;
       }
       dialog._dialogInit = false;

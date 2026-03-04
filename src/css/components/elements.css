@@ -288,8 +288,7 @@ input[type="checkbox"][role="switch"] {
     background: var(--color-switch);
     &::after { transform: translateX(20px); }
   }
-  &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.50); outline: 2px solid transparent; outline-offset: 2px; }
-  .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.60); }
+  &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) {
     &::after { width: 31px; }

@@ -98,6 +98,7 @@
 }
 .btn-large {
   @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[var(--radius-lg)];
+  corner-shape: squircle;
   letter-spacing: -0.024em;
   min-height: 50px;
 }
