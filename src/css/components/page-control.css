@@ -28,13 +28,16 @@
   }
   &:hover:not([aria-current="page"]) {
     opacity: 0.5;
+    .dark & { opacity: 0.55; }
   }
   &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
     opacity: 0.7;
+    .dark & { opacity: 0.75; }
   }
   &:disabled, &[aria-disabled="true"] {
     pointer-events: none;
     opacity: 0.15;
+    .dark & { opacity: 0.18; }
   }
   @media (forced-colors: active) {
     border: 2px solid ButtonText;

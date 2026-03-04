@@ -72,7 +72,6 @@
   --surface-3: oklch(0 0 0 / 0.08);   /* Apple: quaternarySystemFill */
   --surface-4: oklch(0 0 0 / 0.12);   /* Apple: tertiarySystemFill */
   --surface-5: oklch(0 0 0 / 0.16);   /* Apple: secondarySystemFill */
-  --surface-6: oklch(0 0 0 / 0.18);
   --surface-7: oklch(0 0 0 / 0.20);   /* Apple: systemFill */
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
@@ -159,7 +158,6 @@
   --surface-3: oklch(1 0 0 / 0.08);
   --surface-4: oklch(1 0 0 / 0.12);
   --surface-5: oklch(1 0 0 / 0.16);
-  --surface-6: oklch(1 0 0 / 0.18);
   --surface-7: oklch(1 0 0 / 0.20);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);

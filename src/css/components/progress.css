@@ -35,7 +35,6 @@ progress {
   @media (prefers-reduced-motion: reduce) {
     &::after {
       animation: none;
-      transform: none;
       opacity: 0.5;
       width: 100%;
       background: var(--color-primary);

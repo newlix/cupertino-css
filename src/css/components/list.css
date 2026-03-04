@@ -43,11 +43,11 @@
     &:active:not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
     &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
-    &[data-selected]:hover, &[aria-selected="true"]:hover {
+    &[data-selected]:hover:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled):not([aria-disabled="true"]) {
       background: oklch(from var(--color-primary) l c h / 0.20);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.34); }
     }
-    &[data-selected]:active, &[aria-selected="true"]:active {
+    &[data-selected]:active:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled):not([aria-disabled="true"]) {
       background: oklch(from var(--color-primary) l c h / 0.26);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.40); }
     }
@@ -75,7 +75,7 @@
 @media (forced-colors: active) {
   .list-inset-grouped { border: 1px solid ButtonText; }
   .list > a:focus-visible, .list > button:focus-visible { outline: 2px solid Highlight; }
-  .list > a:disabled, .list > button:disabled,
+  .list > button:disabled,
   .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] { color: GrayText; opacity: 1; }
   .list > * + *::before { background: ButtonText; }
   .list > [data-selected], .list > [aria-selected="true"] {

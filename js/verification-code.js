@@ -103,6 +103,8 @@
           }
           if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); inputs[i - 1].focus(); }
           if (e.key === "ArrowRight" && i < inputs.length - 1) { e.preventDefault(); inputs[i + 1].focus(); }
+          if (e.key === "Home") { e.preventDefault(); inputs[0].focus(); }
+          if (e.key === "End") { e.preventDefault(); inputs[inputs.length - 1].focus(); }
         }, sig);
 
         input.addEventListener("paste", (e) => {

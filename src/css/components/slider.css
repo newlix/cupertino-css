@@ -95,8 +95,4 @@
       height: 34px;
     }
   }
-  @media (prefers-reduced-motion: reduce) {
-    &::-webkit-slider-thumb { transition: none; }
-    &::-moz-range-thumb { transition: none; }
-  }
 }

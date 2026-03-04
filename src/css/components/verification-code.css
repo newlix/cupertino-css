@@ -26,6 +26,11 @@
       -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
       -webkit-text-fill-color: var(--color-foreground);
     }
+    &[aria-invalid="true"] {
+      border-color: var(--color-destructive);
+      &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
+      &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
+    }
   }
   & > span {
     @apply text-[17px] text-tertiary-foreground;
@@ -57,7 +62,7 @@
     & input:not([type="hidden"]) {
       border: 2px solid ButtonText;
       &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
     }
     &[data-error] input:not([type="hidden"]) { border-color: Highlight; border-style: dashed; }
   }

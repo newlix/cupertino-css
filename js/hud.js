@@ -24,14 +24,7 @@
     // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
     const existing = container.querySelector(".hud");
     if (existing) {
-      if (existing._ciderDismiss) {
-        existing._ciderDismiss();
-      } else {
-        existing.setAttribute("data-closing", "");
-        const old = existing;
-        const removeDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
-        setTimeout(() => { if (old.parentElement) old.remove(); }, removeDuration);
-      }
+      existing.remove();
     }
 
     const hud = document.createElement("div");

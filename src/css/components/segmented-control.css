@@ -18,7 +18,7 @@
   opacity: 0;
   background: var(--segmented-active);
   box-shadow: var(--shadow-sm);
-  .dark & { box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.08); }
+  .dark & { box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.12); }
   transition: transform var(--transition-slow) var(--apple-spring), width var(--transition-slow) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 .segmented-control [data-tab] {
@@ -40,7 +40,7 @@
 .segmented-control [data-tab-panel] {
   @apply py-4;
   &:not([data-active]) { @apply hidden; }
-  &[data-active] { animation: segFadeIn 0.2s var(--apple-ease); }
+  &[data-active] { animation: segFadeIn var(--transition-fast) var(--apple-ease); }
 }
 @media (forced-colors: active) {
   .segmented-control [data-tab-list] {

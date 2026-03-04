@@ -148,10 +148,22 @@
   function destroy(tabGroup) {
     if (!tabGroup._tabsInit) return;
     if (tabGroup._tabsResizeObserver) { tabGroup._tabsResizeObserver.disconnect(); tabGroup._tabsResizeObserver = null; }
+    const list = tabGroup.querySelector("[data-tab-list]");
+    if (list) { list.removeAttribute("role"); list.removeAttribute("aria-orientation"); }
     const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
+    const PANEL_SEL = ":scope > [data-tab-panel], :scope > * > [data-tab-panel]";
     tabGroup.querySelectorAll(TAB_SEL).forEach((btn) => {
       if (btn._tabClickHandler) { btn.removeEventListener("click", btn._tabClickHandler); btn._tabClickHandler = null; }
       if (btn._tabKeyHandler) { btn.removeEventListener("keydown", btn._tabKeyHandler); btn._tabKeyHandler = null; }
+      btn.removeAttribute("role");
+      btn.removeAttribute("aria-selected");
+      btn.removeAttribute("tabindex");
+      btn.removeAttribute("aria-controls");
+    });
+    tabGroup.querySelectorAll(PANEL_SEL).forEach((panel) => {
+      panel.removeAttribute("role");
+      panel.removeAttribute("tabindex");
+      panel.removeAttribute("aria-labelledby");
     });
     tabGroup._tabsInit = false;
   }
