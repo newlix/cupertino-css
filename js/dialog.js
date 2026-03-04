@@ -132,6 +132,7 @@
       const observer = new MutationObserver(() => {
         if (!dialog.isConnected) {
           teardown();
+          dialog._previousFocus = null;
           observer.disconnect();
           return;
         }
@@ -237,6 +238,7 @@
         document.body.style.paddingRight = "";
         savedOverflow = null;
       }
+      dialog._previousFocus = null;
       dialog._dialogInit = false;
     });
   });

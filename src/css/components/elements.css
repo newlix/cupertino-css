@@ -1,6 +1,6 @@
 /* ========== ELEMENTS ========== */
 /* Classless styles for native HTML elements inside .cider scope.
-   Typography, forms, tables, hr, kbd, progress, fieldset, etc.
+   Typography, forms, tables, hr, kbd, fieldset, etc.
    .cider-fixed = layout modifier — add alongside .cider for centered fixed-width breakpoints.
    .cider-reset = scope boundary — stops .cider styles from leaking into nested components.
    Parent @scope in ciderui.css ensures .cider styles stop at .cider-reset. */
@@ -282,11 +282,6 @@ input[type="checkbox"][role="switch"] {
     &::after { width: 31px; }
     &:checked::after { transform: translateX(16px); }
   }
-  .dark & {
-    &::after {
-      box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
-    }
-  }
   /* Color variants — Apple System Colors */
   &.switch-blue   { --color-switch: var(--color-primary);     --color-switch-hover: var(--color-primary-hover); }
   &.switch-red    { --color-switch: var(--color-destructive);  --color-switch-hover: var(--color-destructive-hover); }
@@ -314,6 +309,7 @@ label {
   &:has(input:is(:disabled, [aria-disabled="true"])) {
     @apply cursor-not-allowed;
     opacity: 0.38;
+    & > input { opacity: 1; }
   }
 }
 label:has(+ :is(input, textarea, select):required)::after {
@@ -384,13 +380,11 @@ table {
   &.table-striped tbody tr:focus-within {
     background: var(--surface-3);
   }
-  &.table-striped tbody tr[data-selected],
-  &.table-striped tbody tr[aria-selected="true"] {
+  &.table-striped tbody tr:is([data-selected], [aria-selected="true"]) {
     background: oklch(from var(--color-primary) l c h / 0.14);
     .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
   }
-  &.table-striped tbody tr[data-selected]:hover,
-  &.table-striped tbody tr[aria-selected="true"]:hover {
+  &.table-striped tbody tr:is([data-selected], [aria-selected="true"]):hover {
     background: oklch(from var(--color-primary) l c h / 0.18);
     .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
   }
@@ -474,8 +468,7 @@ abbr[title] {
 /* ─── Forced colors (Windows High Contrast Mode) ─── */
 @media (forced-colors: active) {
   hr { background: ButtonText; }
-  table tbody tr[data-selected],
-  table tbody tr[aria-selected="true"] {
+  table tbody tr:is([data-selected], [aria-selected="true"]) {
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }

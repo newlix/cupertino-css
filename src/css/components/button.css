@@ -92,13 +92,11 @@
 }
 .btn-small {
   @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[var(--radius-sm)];
-  corner-shape: squircle;
   min-height: 32px;
   @media (pointer: coarse) { min-height: 44px; }
 }
 .btn-large {
   @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[var(--radius-lg)];
-  corner-shape: squircle;
   letter-spacing: -0.024em;
   min-height: 50px;
 }
