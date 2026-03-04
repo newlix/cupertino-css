@@ -27,15 +27,12 @@
 .tag-purple { --tag-color: var(--color-purple); }
 .tag-gray   { --tag-color: var(--color-tertiary-foreground); }
 @media (forced-colors: active) {
-  .tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray {
+  :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray) {
     forced-color-adjust: none;
     border: 1.5px solid ButtonText;
-  }
-  :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray):is(button, a):focus-visible {
-    outline: 2px solid Highlight;
-  }
-  :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray):is(button, a):disabled,
-  :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray):is(button, a)[aria-disabled="true"] {
-    border-color: GrayText;
+    &:is(button, a) {
+      &:focus-visible { outline: 2px solid Highlight; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; }
+    }
   }
 }

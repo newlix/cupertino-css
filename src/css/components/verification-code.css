@@ -4,34 +4,32 @@
    and larger touch target on single-digit entry fields. */
 .verification-code {
   @apply flex items-center gap-2.5;
-}
-.verification-code input:not([type="hidden"]) {
-  @apply text-center p-0 font-semibold rounded-[10px];
-  corner-shape: squircle;
-  background-color: var(--color-card);
-  color: var(--color-foreground);
-  border: 1px solid var(--input-border);
-  @media (min-resolution: 2dppx) { border-width: 0.5px; }
-  width: 48px;
-  height: 56px;
-  font-size: 28px;
-  font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-variant-numeric: tabular-nums;
-  caret-color: var(--color-primary);
-  transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
-  &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
-  &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
-  &:autofill,
-  &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
-    -webkit-text-fill-color: var(--color-foreground);
+  & input:not([type="hidden"]) {
+    @apply text-center p-0 font-semibold rounded-[10px];
+    corner-shape: squircle;
+    background-color: var(--color-card);
+    color: var(--color-foreground);
+    border: 1px solid var(--input-border);
+    @media (min-resolution: 2dppx) { border-width: 0.5px; }
+    width: 48px;
+    height: 56px;
+    font-size: 28px;
+    font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    caret-color: var(--color-primary);
+    transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
+    &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
+    &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+    &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
+    &:autofill,
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+      -webkit-text-fill-color: var(--color-foreground);
+    }
   }
-}
-.verification-code > span {
-  @apply text-[17px] text-tertiary-foreground;
-}
-.verification-code {
+  & > span {
+    @apply text-[17px] text-tertiary-foreground;
+  }
   @media (max-width: 374px) {
     @apply gap-1.5;
     & input:not([type="hidden"]) {
@@ -40,25 +38,21 @@
       font-size: 24px;
     }
   }
-}
-.verification-code[data-error] {
-  animation: shake 0.3s var(--apple-ease);
-}
-.verification-code[data-error] input:not([type="hidden"]) {
-  border-color: var(--color-destructive);
-  &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
-  &:focus-visible {
-    border-color: var(--color-destructive);
-    box-shadow: var(--focus-ring-error);
+  &[data-error] {
+    animation: shake 0.3s var(--apple-ease);
+    & input:not([type="hidden"]) {
+      border-color: var(--color-destructive);
+      &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
+      &:focus-visible {
+        border-color: var(--color-destructive);
+        box-shadow: var(--focus-ring-error);
+      }
+    }
+    & > span { color: var(--color-destructive); }
   }
-}
-.verification-code[data-error] > span {
-  color: var(--color-destructive);
-}
-.verification-code[data-error] + small {
-  color: var(--color-destructive);
-}
-.verification-code {
+  &[data-error] + small {
+    color: var(--color-destructive);
+  }
   @media (forced-colors: active) {
     & input:not([type="hidden"]) {
       border: 2px solid ButtonText;
