@@ -15,9 +15,6 @@
 .callout {
   @apply px-4 py-3.5 text-sm leading-snug text-foreground;
   border-radius: var(--radius);
-  transition: background-color var(--transition-fast) var(--apple-ease),
-              border-color var(--transition-fast) var(--apple-ease),
-              color var(--transition-fast) var(--apple-ease);
   corner-shape: squircle;
   background: var(--color-secondary);
   border: 1px solid var(--panel-border);

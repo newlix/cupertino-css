@@ -14,7 +14,8 @@
     transition: transform var(--transition-fast) var(--apple-ease), filter var(--transition-fast) var(--apple-ease);
     &:hover { filter: brightness(var(--hover-brightness)); }
     &:active { transform: scale(var(--apple-press-scale)); }
-    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+    &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; cursor: default; }
   }
 }
 .avatar-sm { @apply size-7 text-[11px]; }
@@ -22,12 +23,13 @@
 .avatar-xl { @apply size-20 text-[24px]; }   /* 80px — Apple large profile size */
 @media (forced-colors: active) {
   .avatar { border: 1px solid ButtonText; }
-  .avatar:is(button, a):focus-visible { outline: 2px solid Highlight; }
+  .avatar:is(button, a):focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+  .avatar-group .avatar { outline-color: ButtonText; }
 }
 .avatar-group {
   @apply flex -space-x-2;
   --avatar-group-ring: var(--color-background);
-  & .avatar {
+  & .avatar:not(:focus-visible) {
     box-shadow: none;
     outline: 2px solid var(--avatar-group-ring);
     outline-offset: -1px;

@@ -81,8 +81,6 @@
   width: 14px;
   height: 14px;
   background: var(--glass-bg-opaque);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
 }
 /* No backdrop scrim for menus — macOS menus float without dimming. */
@@ -91,7 +89,7 @@
 }
 
 /* Auto-flipped top (JS adds this when viewport forces upward) */
-[popover].popover-flipped-top {
+.popover [popover].popover-flipped-top {
   transform-origin: var(--popover-origin, bottom left);
 }
 /* Arrow for top-positioned popovers (JS auto-flip or CSS .popover-top) */
@@ -112,6 +110,7 @@
   .popover-menu [popover] :is(button, a):disabled,
   .popover-menu [popover] :is(button, a)[aria-disabled="true"] {
     color: GrayText;
+    opacity: 1;
   }
 }
 /* Top positioning variant */

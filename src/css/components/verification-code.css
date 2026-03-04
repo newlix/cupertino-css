@@ -31,12 +31,14 @@
 .verification-code > span {
   @apply text-[17px] text-tertiary-foreground;
 }
-@media (max-width: 374px) {
-  .verification-code { @apply gap-1.5; }
-  .verification-code input:not([type="hidden"]) {
-    width: 40px;
-    height: 48px;
-    font-size: 24px;
+.verification-code {
+  @media (max-width: 374px) {
+    @apply gap-1.5;
+    & input:not([type="hidden"]) {
+      width: 40px;
+      height: 48px;
+      font-size: 24px;
+    }
   }
 }
 .verification-code[data-error] {
@@ -54,13 +56,15 @@
   color: var(--color-destructive);
 }
 .verification-code[data-error] + small {
-  @apply text-destructive;
+  color: var(--color-destructive);
 }
-@media (forced-colors: active) {
-  .verification-code input:not([type="hidden"]) {
-    border: 2px solid ButtonText;
-    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-    &:disabled { border-color: GrayText; }
+.verification-code {
+  @media (forced-colors: active) {
+    & input:not([type="hidden"]) {
+      border: 2px solid ButtonText;
+      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; }
+    }
+    &[data-error] input:not([type="hidden"]) { border-color: LinkText; }
   }
-  .verification-code[data-error] input:not([type="hidden"]) { border-color: LinkText; }
 }

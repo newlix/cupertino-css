@@ -17,9 +17,9 @@ dialog {
     -webkit-backdrop-filter: var(--glass-blur);
   }
   &[open] { display: flex; flex-direction: column; animation: dialogShow 0.24s var(--apple-spring); }
-  &[open]::backdrop { animation: backdropFadeIn 0.24s var(--apple-ease); }
+  &:modal[open]::backdrop { animation: backdropFadeIn 0.24s var(--apple-ease); }
   &[data-closing] { animation: dialogHide 0.18s var(--apple-ease) forwards; }
-  &[data-closing]::backdrop { animation: backdropFadeIn 0.18s var(--apple-ease) reverse forwards; }
+  &:modal[data-closing]::backdrop { animation: backdropFadeIn 0.18s var(--apple-ease) reverse forwards; }
   & .dialog-close {
     @apply absolute right-4 top-4 rounded-full p-1.5 text-tertiary-foreground cursor-pointer;
     transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);

@@ -73,7 +73,9 @@
     &:focus-visible::-webkit-slider-thumb { outline: 2px solid Highlight; }
     &:focus-visible::-moz-range-thumb { outline: 2px solid Highlight; }
     &:disabled, &[aria-disabled="true"] {
+      &::-webkit-slider-runnable-track { border-color: GrayText; }
       &::-webkit-slider-thumb { background: GrayText; border-color: GrayText; }
+      &::-moz-range-track { border-color: GrayText; }
       &::-moz-range-thumb { background: GrayText; border-color: GrayText; }
     }
   }

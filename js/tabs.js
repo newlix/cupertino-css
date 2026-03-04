@@ -98,6 +98,7 @@
 
       function findTab(from, step) {
         const currentButtons = getButtons();
+        if (!currentButtons.length) return null;
         let idx = (from + step + currentButtons.length) % currentButtons.length;
         let guard = currentButtons.length;
         while (idx !== from && isDisabled(currentButtons[idx]) && --guard > 0) {

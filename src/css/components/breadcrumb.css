@@ -34,6 +34,7 @@
     & [aria-current="page"] { color: CanvasText; }
     & > :not(:first-child):not([aria-hidden="true"])::before {
       background: ButtonText;
+      opacity: 1;
     }
   }
 }

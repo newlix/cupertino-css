@@ -132,7 +132,7 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:read-only { background-color: var(--surface-1); cursor: default; }
   &:autofill,
   &:-webkit-autofill {
@@ -156,7 +156,7 @@ textarea {
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:read-only { background-color: var(--surface-1); cursor: default; resize: none; }
   &:autofill,
   &:-webkit-autofill {
@@ -187,7 +187,7 @@ select:not([multiple]) {
   }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
@@ -494,6 +494,16 @@ abbr[title] {
 /* ─── Forced colors (Windows High Contrast Mode) ─── */
 @media (forced-colors: active) {
   hr { background: ButtonText; }
+  table tbody tr[data-selected],
+  table tbody tr[aria-selected="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  table tbody tr:hover,
+  table tbody tr:focus-within {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
   input[type="checkbox"]:not([role="switch"]),
   input[type="radio"] {
     appearance: auto;

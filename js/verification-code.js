@@ -130,7 +130,7 @@
 
       otp.addEventListener("click", (e) => {
         if (e.target.closest('input:not([type="hidden"])')) return;
-        if (inputs[0].disabled) return;
+        if (inputs[0].disabled || inputs[0].getAttribute("aria-disabled") === "true") return;
         const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
         inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
       });

@@ -12,6 +12,14 @@
     el.style.setProperty("--slider-value", `${pct}%`);
   }
 
+  function destroy(el) {
+    if (!el._sliderInit) return;
+    if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
+    if (el._sliderInputHandler) { el.removeEventListener("input", el._sliderInputHandler); el._sliderInputHandler = null; }
+    delete el.value;
+    el._sliderInit = false;
+  }
+
   function init() {
     document.querySelectorAll(".slider").forEach((el) => {
       if (el._sliderInit) return;
@@ -31,7 +39,7 @@
       // Sync when value/min/max attributes change via setAttribute()
       if (el._sliderObserver) el._sliderObserver.disconnect();
       const mo = new MutationObserver(() => {
-        if (!el.isConnected) { mo.disconnect(); el._sliderInit = false; return; }
+        if (!el.isConnected) { destroy(el); return; }
         update(el);
       });
       el._sliderObserver = mo;
@@ -50,13 +58,6 @@
     const el = evt.detail?.elt;
     if (el?.classList?.contains("slider")) destroy(el);
   });
-  function destroy(el) {
-    if (!el._sliderInit) return;
-    if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
-    if (el._sliderInputHandler) { el.removeEventListener("input", el._sliderInputHandler); el._sliderInputHandler = null; }
-    delete el.value;
-    el._sliderInit = false;
-  }
 
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.slider = { init, update, destroy };

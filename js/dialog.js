@@ -4,7 +4,7 @@
 (function () {
   const activeDialogs = new Set();
   let savedOverflow = null;
-  const FOCUSABLE = 'a[href], button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE = 'a[href]:not([aria-disabled="true"]), button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function closeDialog(dialog) {
     if (dialog.hasAttribute("data-closing")) return;
