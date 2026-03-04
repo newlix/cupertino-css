@@ -89,24 +89,15 @@
       if (dialog._dialogInit) return;
       dialog._dialogInit = true;
       wireAria(dialog);
-      if (dialog._cancelHandler) {
-        dialog.removeEventListener("cancel", dialog._cancelHandler);
-      }
       dialog._cancelHandler = (e) => {
         e.preventDefault();
         if (!dialog.hasAttribute("data-modal")) closeDialog(dialog);
       };
       dialog.addEventListener("cancel", dialog._cancelHandler);
 
-      if (dialog._mousedownHandler) {
-        dialog.removeEventListener("mousedown", dialog._mousedownHandler);
-      }
       dialog._mousedownHandler = (e) => { dialog._mousedownTarget = e.target; };
       dialog.addEventListener("mousedown", dialog._mousedownHandler);
 
-      if (dialog._clickHandler) {
-        dialog.removeEventListener("click", dialog._clickHandler);
-      }
       dialog._clickHandler = (e) => {
         if (e.target === dialog && dialog._mousedownTarget === dialog && !dialog.hasAttribute("data-modal")) {
           closeDialog(dialog);
@@ -114,10 +105,6 @@
         dialog._mousedownTarget = null;
       };
       dialog.addEventListener("click", dialog._clickHandler);
-
-      if (dialog._focusObserver) {
-        dialog._focusObserver.disconnect();
-      }
 
       function teardown() {
         const wasActive = activeDialogs.delete(dialog);
