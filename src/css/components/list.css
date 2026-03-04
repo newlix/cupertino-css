@@ -76,8 +76,7 @@
 }
 @media (forced-colors: active) {
   .list-inset-grouped { border: 1px solid ButtonText; }
-  .list > a:hover:not([aria-disabled="true"]),
-  .list > button:hover:not(:disabled):not([aria-disabled="true"]) {
+  .list > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
     outline: 1px solid ButtonText;
     outline-offset: -1px;
   }

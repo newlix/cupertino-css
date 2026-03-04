@@ -56,7 +56,7 @@
       const current = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
       if (!current.length) return;
       const first = current[0];
-      const last = current[current.length - 1];
+      const last = current.at(-1);
       if (e.shiftKey) {
         if (document.activeElement === first) { e.preventDefault(); last.focus(); }
       } else {
@@ -159,7 +159,7 @@
           teardown();
           const prev = dialog._previousFocus;
           dialog._previousFocus = null;
-          if (prev && document.contains(prev) && (prev === document.body || prev.offsetParent !== null || prev.getClientRects().length > 0)) {
+          if (prev && document.contains(prev) && (prev === document.body || isVisible(prev))) {
             prev.focus();
           }
         }
