@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
 }
 .page-control > button {
   all: unset;
@@ -21,7 +21,6 @@
   transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {
     opacity: 1;
-    transform: scale(1.15);
   }
   &:focus-visible {
     outline: 2px solid var(--color-primary);

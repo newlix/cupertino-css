@@ -43,7 +43,7 @@ dialog {
     @apply flex flex-wrap justify-end gap-2 px-6 pb-6 pt-4;
     /* 3+ buttons stack full-width on compact screens (Apple HIG alert button layout) */
     &:has(> :nth-child(3)) {
-      @apply flex-col;
+      @apply flex-col gap-1;
       & > * { @apply w-full; }
     }
   }

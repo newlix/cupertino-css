@@ -1,6 +1,7 @@
 // Popover — ciderui
 (function () {
   const FOCUSABLE_NOT_DISABLED = 'button:not([disabled]):not([aria-disabled="true"]), a[href]:not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE_ALL = FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])';
 
   function init() {
     document.querySelectorAll(".popover [popover]").forEach((popover) => {
@@ -134,11 +135,14 @@
           // Observe DOM removal only while open
           popover._disconnectObserver.observe(wrapper.parentNode || document.body, { childList: true });
 
-          const first = popover.querySelector(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])');
+          const first = popover.querySelector(FOCUSABLE_ALL);
           if (first) first.focus();
         } else {
           trigger.setAttribute("aria-expanded", "false");
           popover._cleanupPositioning();
+          clearTimeout(popover._typeAheadTimer);
+          popover._typeAheadTimer = null;
+          popover._typeAheadBuffer = "";
           if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
           popover.removeAttribute("role");
           clearAriaLabelledBy();
@@ -207,7 +211,7 @@
         }
         popover._focusTrapHandler = (e) => {
           if (e.key !== "Tab" || !popover.matches(":popover-open")) return;
-          const focusable = Array.from(popover.querySelectorAll(FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])'));
+          const focusable = Array.from(popover.querySelectorAll(FOCUSABLE_ALL));
           if (!focusable.length) return;
           const first = focusable[0];
           const last = focusable.at(-1);

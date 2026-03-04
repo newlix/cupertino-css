@@ -69,6 +69,7 @@
   & > *:only-child { border-radius: var(--list-radius); corner-shape: squircle; }
 }
 @media (forced-colors: active) {
+  .list-inset-grouped { border: 1px solid ButtonText; }
   .list > a:focus-visible, .list > button:focus-visible { outline: 2px solid Highlight; }
   .list > a:disabled, .list > button:disabled,
   .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] { color: GrayText; opacity: 1; }

@@ -21,13 +21,17 @@
     const container =
       document.getElementById("hud-container") || createHUDContainer();
 
-    // macOS shows one HUD at a time — crossfade any existing HUD
+    // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
     const existing = container.querySelector(".hud");
     if (existing) {
-      existing.setAttribute("data-closing", "");
-      const old = existing;
-      const removeDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
-      setTimeout(() => { if (old.parentElement) old.remove(); }, removeDuration);
+      if (existing._ciderDismiss) {
+        existing._ciderDismiss();
+      } else {
+        existing.setAttribute("data-closing", "");
+        const old = existing;
+        const removeDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
+        setTimeout(() => { if (old.parentElement) old.remove(); }, removeDuration);
+      }
     }
 
     const hud = document.createElement("div");
@@ -70,6 +74,7 @@
     labelEl.textContent = (label != null) ? String(label) : "";
     hud.appendChild(labelEl);
 
+    hud._ciderDismiss = null;
     container.appendChild(hud);
 
     let dismissTimeout;
@@ -96,14 +101,13 @@
       animTimer = setTimeout(removeHud, animDuration);
     }
 
+    hud._ciderDismiss = dismiss;
     dismissTimeout = setTimeout(dismiss, duration);
 
     return { dismiss, element: hud };
   }
 
-  if (typeof window !== "undefined") {
-    window.showHUD = showHUD;
-    window.CiderUI = window.CiderUI || {};
-    window.CiderUI.hud = { show: showHUD };
-  }
+  window.showHUD = showHUD;
+  window.CiderUI = window.CiderUI || {};
+  window.CiderUI.hud = { show: showHUD };
 })();

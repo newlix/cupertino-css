@@ -218,7 +218,7 @@ input[type="checkbox"]:not([role="switch"]) {
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
   &:hover:is(:checked, :indeterminate):not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
@@ -244,7 +244,7 @@ input[type="radio"] {
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.92); }
   &[aria-invalid="true"] {
     border-color: var(--color-destructive);
@@ -284,7 +284,7 @@ input[type="checkbox"][role="switch"] {
   }
   &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.50); outline: 2px solid transparent; outline-offset: 2px; }
   .dark &:focus-visible { box-shadow: 0 0 0 3px oklch(from var(--color-switch) l c h / 0.60); }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
+  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) {
     &::after { width: 31px; }
     &:checked::after { transform: translateX(16px); }

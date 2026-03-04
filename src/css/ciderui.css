@@ -67,7 +67,7 @@
    *   surface-5  →  slider track, progress track bg, segmented control bg
    *   surface-7  →  tooltip bg
    */
-  --surface-1: oklch(0 0 0 / 0.04);   /* Apple: quaternarySystemFill */
+  --surface-1: oklch(0 0 0 / 0.04);
   --surface-2: oklch(0 0 0 / 0.06);
   --surface-3: oklch(0 0 0 / 0.08);   /* Apple: quaternarySystemFill */
   --surface-4: oklch(0 0 0 / 0.12);   /* Apple: tertiarySystemFill */
@@ -105,8 +105,8 @@
   --mark-bg: oklch(0.92 0.1 95);        /* warm yellow highlight */
 
   --radius-xs: 0.3125rem;                       /* 5px */
-  --radius: 0.75rem;                             /* 12px */
   --radius-sm: 0.5rem;                           /* 8px */
+  --radius: 0.75rem;                             /* 12px */
   --radius-lg: 1rem;                             /* 16px */
   --radius-xl: 1.375rem;                         /* 22px */
   --radius-pill: 9999px;                         /* fully rounded pill */
