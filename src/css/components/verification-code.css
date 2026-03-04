@@ -3,7 +3,7 @@
    56px height is intentional — taller than standard 44px inputs for visual prominence
    and larger touch target on single-digit entry fields. */
 .verification-code {
-  @apply flex items-center gap-2.5;
+  @apply flex items-center gap-2;
   & input:not([type="hidden"]) {
     @apply text-center p-0 font-semibold rounded-[10px];
     corner-shape: squircle;
@@ -11,8 +11,8 @@
     color: var(--color-foreground);
     border: 1px solid var(--input-border);
     @media (min-resolution: 2dppx) { border-width: 0.5px; }
-    width: 48px;
-    height: 56px;
+    width: 46px;
+    height: 52px;
     font-size: 28px;
     font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-variant-numeric: tabular-nums;
@@ -47,7 +47,7 @@
     }
   }
   &[data-error] {
-    animation: shake 0.3s var(--apple-ease);
+    animation: shake 0.4s var(--apple-ease);
     & > span { color: var(--color-destructive); }
   }
   &[data-error] + small {

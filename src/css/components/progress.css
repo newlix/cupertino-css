@@ -1,6 +1,7 @@
 /* ========== PROGRESS ========== */
 progress {
-  @apply block h-1 w-full overflow-hidden rounded-full appearance-none;
+  @apply block w-full overflow-hidden rounded-full appearance-none;
+  height: 5px;
   background: var(--surface-5);
   &::-webkit-progress-bar {
     background: var(--surface-5);
@@ -29,7 +30,8 @@ progress {
 /* Usage: <div class="progress-indeterminate" role="progressbar" aria-label="Loading"></div>
    The div requires role="progressbar" and aria-label for screen reader accessibility. */
 .progress-indeterminate {
-  @apply relative h-1 w-full overflow-hidden rounded-full;
+  @apply relative w-full overflow-hidden rounded-full;
+  height: 5px;
   background: var(--surface-5);
   &::after {
     content: "";

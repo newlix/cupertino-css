@@ -14,9 +14,9 @@
    pointer-events: none — HUDs are passive overlays, they must not block clicks
    on underlying content (matches macOS volume/brightness HUD behaviour). */
 .hud {
-  @apply inline-flex flex-col items-center gap-2 px-5 py-4;
+  @apply inline-flex flex-col items-center gap-3 px-6 py-6;
   pointer-events: none;
-  min-width: 120px;
+  min-width: 180px;
   max-width: min(280px, calc(100vw - 2rem));
   border-radius: var(--radius-xl);
   corner-shape: squircle;
@@ -26,7 +26,7 @@
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   box-shadow: var(--shadow-xl), var(--float-ring);
   animation: hudAppear var(--transition-normal) var(--apple-ease);
-  & svg:first-child { @apply size-10 shrink-0; }
+  & svg:first-child { @apply size-12 shrink-0; }
   & .hud-label { @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center; max-width: 100%; }
 }
 

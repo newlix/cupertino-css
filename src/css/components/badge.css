@@ -4,7 +4,7 @@
    See: Apple HIG > App Icon > Badges */
 .badge {
   @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   min-width: 20px;
@@ -19,8 +19,8 @@
 }
 .badge-dot {
   @apply inline-block rounded-full bg-destructive;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
   transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
