@@ -53,6 +53,7 @@ dialog {
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;
+    & .dialog-close { border: 1px solid ButtonText; }
     & .dialog-close:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   }
 }

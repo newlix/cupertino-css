@@ -176,17 +176,21 @@
   function openDialog(dialog) {
     if (!dialog || !dialog.isConnected) return;
     if (dialog.hasAttribute("data-closing")) {
+      if (dialog._openWaitObs) return;
       const obs = new MutationObserver(() => {
-        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(safetyTimer); return; }
+        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(safetyTimer); dialog._openWaitObs = null; return; }
         if (!dialog.hasAttribute("data-closing") && !dialog.open) {
           obs.disconnect();
           clearTimeout(safetyTimer);
+          dialog._openWaitObs = null;
           openDialog(dialog);
         }
       });
+      dialog._openWaitObs = obs;
       obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing", "open"] });
       const safetyTimer = setTimeout(() => {
         obs.disconnect();
+        dialog._openWaitObs = null;
         if (dialog.isConnected && !dialog.open) openDialog(dialog);
       }, 300);
       return;
@@ -221,6 +225,7 @@
       if (dialog._focusTrapHandler) { dialog.removeEventListener("keydown", dialog._focusTrapHandler); dialog._focusTrapHandler = null; }
       if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
       if (dialog._closeAnimHandler) { dialog.removeEventListener("animationend", dialog._closeAnimHandler); dialog._closeAnimHandler = null; }
+      if (dialog._openWaitObs) { dialog._openWaitObs.disconnect(); dialog._openWaitObs = null; }
       activeDialogs.delete(dialog);
       if (activeDialogs.size === 0 && savedOverflow !== null) {
         document.body.style.overflow = savedOverflow ?? "";

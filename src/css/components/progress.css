@@ -10,6 +10,7 @@ progress {
   &::-webkit-progress-value {
     background: var(--color-primary);
     border-radius: 9999px;
+    transition: width var(--transition-normal) var(--apple-ease);
   }
   &::-moz-progress-bar {
     background: var(--color-primary);

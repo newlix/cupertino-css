@@ -72,6 +72,7 @@
             pasting = true;
             try {
               const startIdx = i;
+              for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
               for (let j = 0; j < v.length && startIdx + j < inputs.length; j++) {
                 inputs[startIdx + j].value = v[j];
               }

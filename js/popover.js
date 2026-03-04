@@ -163,7 +163,9 @@
             document.activeElement === document.body ||
             popover.contains(document.activeElement)
           ) {
-            trigger.focus();
+            if (!trigger.disabled && trigger.getAttribute("aria-disabled") !== "true") {
+              trigger.focus();
+            }
           }
           popover._escapeDismiss = false;
         }
