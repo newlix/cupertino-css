@@ -5,7 +5,7 @@
   & [popover] {
     @apply fixed z-50 min-w-[180px] p-3;
     max-width: min(360px, calc(100vw - 16px));
-    border-radius: 10px;
+    border-radius: var(--radius);
     max-height: calc(100vh - 2rem);
     overflow: auto;
     overscroll-behavior: contain;

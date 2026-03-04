@@ -25,14 +25,14 @@
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   box-shadow: var(--shadow-md), var(--float-ring);
-  animation: hudAppear 0.2s var(--apple-ease);
+  animation: hudAppear var(--transition-normal) var(--apple-ease);
   & svg:first-child { @apply size-10 shrink-0; }
   & .hud-label { @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center; max-width: 100%; }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */
 .hud[data-closing] {
-  animation: hudDismiss 0.18s var(--apple-ease) forwards;
+  animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
 }
 @media (forced-colors: active) {
   .hud { border: 1px solid ButtonText; box-shadow: none; }

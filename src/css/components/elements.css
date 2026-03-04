@@ -80,7 +80,7 @@ a:not([class*="btn-"]) {
     box-shadow: var(--focus-ring);
     outline: 2px solid transparent;
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
   }
 }
 ul:not([class]) {
