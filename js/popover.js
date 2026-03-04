@@ -168,7 +168,6 @@
           if (
             !popover._tabDismiss && (
               popover._escapeDismiss ||
-              document.activeElement === document.body ||
               popover.contains(document.activeElement)
             )
           ) {

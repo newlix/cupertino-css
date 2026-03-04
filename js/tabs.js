@@ -155,7 +155,7 @@
   function destroy(tabGroup) {
     if (!tabGroup._tabsInit) return;
     if (tabGroup._tabsResizeObserver) { tabGroup._tabsResizeObserver.disconnect(); tabGroup._tabsResizeObserver = null; }
-    const list = tabGroup.querySelector("[data-tab-list]") || tabGroup.querySelector("[role='tablist']");
+    const list = tabGroup.querySelector("[data-tab-list]") || (tabGroup.getAttribute("role") === "tablist" ? tabGroup : tabGroup.querySelector("[role='tablist']"));
     if (list) { list.removeAttribute("role"); list.removeAttribute("aria-orientation"); }
     tabGroup.querySelectorAll(TAB_SEL).forEach((btn) => {
       if (btn._tabClickHandler) { btn.removeEventListener("click", btn._tabClickHandler); btn._tabClickHandler = null; }

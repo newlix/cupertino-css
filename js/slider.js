@@ -17,6 +17,8 @@
     if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
     if (el._sliderInputHandler) { el.removeEventListener("input", el._sliderInputHandler); el._sliderInputHandler = null; }
     delete el.value;
+    delete el.min;
+    delete el.max;
     el._sliderInit = false;
   }
 
@@ -27,14 +29,16 @@
       update(el);
       el._sliderInputHandler = () => { update(el); };
       el.addEventListener("input", el._sliderInputHandler);
-      // Intercept .value property setter so programmatic el.value = x updates the fill
-      const desc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
-      if (desc && desc.get && desc.set) {
-        Object.defineProperty(el, "value", {
-          get() { return desc.get.call(this); },
-          set(v) { desc.set.call(this, v); update(this); },
-          configurable: true,
-        });
+      // Intercept .value/.min/.max property setters so programmatic changes update the fill
+      for (const prop of ["value", "min", "max"]) {
+        const desc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, prop);
+        if (desc && desc.get && desc.set) {
+          Object.defineProperty(el, prop, {
+            get() { return desc.get.call(this); },
+            set(v) { desc.set.call(this, v); update(this); },
+            configurable: true,
+          });
+        }
       }
       // Sync when value/min/max attributes change via setAttribute()
       const mo = new MutationObserver(() => {

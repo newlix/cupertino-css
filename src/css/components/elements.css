@@ -344,7 +344,7 @@ input + small, textarea + small, select + small {
 
 /* ─── Table ─── */
 table {
-  @apply w-full text-left text-[15px] rounded-2xl bg-card;
+  @apply w-full text-left text-[15px] rounded-[var(--radius-lg)] bg-card;
   border-collapse: separate;
   border-spacing: 0;
   corner-shape: squircle;

@@ -25,7 +25,9 @@
     container.querySelectorAll(".hud").forEach((existing) => {
       if (existing._ciderDismiss) {
         existing._ciderDismiss();
-      } else {
+      }
+      // Force-remove already-closing HUDs to prevent jitter from stale elements
+      if (existing.hasAttribute("data-closing") && existing.parentElement) {
         existing.remove();
       }
     });
