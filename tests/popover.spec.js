@@ -115,6 +115,29 @@ test.describe('Popover Menu', () => {
   });
 });
 
+test.describe('Popover Overflow', () => {
+  test('popover never shows horizontal scrollbar', async ({ page }) => {
+    await goto(page, 'popover');
+
+    // Content popover
+    const p0 = preview(page, 0);
+    const trigger0 = p0.locator('.popover > button').first();
+    const popover0 = p0.locator('[popover]');
+    await trigger0.click();
+    await expect(popover0).toBeVisible();
+    expect(await popover0.evaluate(el => getComputedStyle(el).overflowX)).toBe('hidden');
+    await page.keyboard.press('Escape');
+
+    // Menu popover
+    const p1 = preview(page, 1);
+    const trigger1 = p1.locator('.popover-menu > button').first();
+    const popover1 = p1.locator('[popover]');
+    await trigger1.click();
+    await expect(popover1).toBeVisible();
+    expect(await popover1.evaluate(el => getComputedStyle(el).overflowX)).toBe('hidden');
+  });
+});
+
 test.describe('Popover Auto-flip', () => {
   test('auto-flips horizontally when popover would overflow right edge', async ({ page }) => {
     // Narrow viewport so the "Default" popover (left-aligned) overflows right

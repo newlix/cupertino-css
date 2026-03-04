@@ -7,7 +7,8 @@
     max-width: min(360px, calc(100vw - 16px));
     border-radius: var(--radius-sm);
     max-height: calc(100vh - 2rem);
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     overscroll-behavior: contain;
     corner-shape: squircle;
     inset: unset;

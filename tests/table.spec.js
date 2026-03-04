@@ -42,6 +42,20 @@ test.describe('Table', () => {
     expect(parseFloat(border)).toBeGreaterThan(0);
   });
 
+  test('table clips thead/tfoot backgrounds to border-radius', async ({ page }) => {
+    const table = preview(page).locator('table').first();
+    // overflow:hidden + border-radius is the mechanism that prevents
+    // thead/tfoot backgrounds from bleeding past the rounded corners.
+    const radius = parseFloat(await css(table, 'borderRadius'));
+    expect(radius).toBeGreaterThanOrEqual(12);
+    expect(await css(table, 'overflow')).toBe('hidden');
+    // Confirm the bleed condition exists: thead and tfoot have backgrounds
+    const theadBg = await css(preview(page).locator('thead tr').first(), 'backgroundColor');
+    expect(theadBg).not.toBe('rgba(0, 0, 0, 0)');
+    const tfootBg = await css(preview(page).locator('tfoot tr').first(), 'backgroundColor');
+    expect(tfootBg).not.toBe('rgba(0, 0, 0, 0)');
+  });
+
   test('dark mode table is visible', async ({ page }) => {
     const table = preview(page).locator('table').first();
     await setDark(page);
