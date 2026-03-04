@@ -57,6 +57,11 @@
       if (!current.length) return;
       const first = current[0];
       const last = current.at(-1);
+      if (!current.includes(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+        return;
+      }
       if (e.shiftKey) {
         if (document.activeElement === first) { e.preventDefault(); last.focus(); }
       } else {

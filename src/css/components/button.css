@@ -19,8 +19,7 @@
 .btn-gray {
   @apply bg-secondary text-secondary-foreground;
   &:hover { background: var(--color-secondary-hover); }
-  &:active { background: oklch(from var(--color-secondary-hover) calc(l * 0.94) c h); }
-  .dark &:active { background: oklch(from var(--color-secondary-hover) calc(l * 1.06) c h); }
+  &:active { background: var(--color-secondary-active); }
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;

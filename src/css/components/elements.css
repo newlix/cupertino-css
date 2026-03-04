@@ -284,7 +284,7 @@ input[type="checkbox"][role="switch"] {
   }
   .dark & {
     &::after {
-      box-shadow: 0 2px 4px oklch(0 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3);
+      box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
     }
   }
   /* Color variants — Apple System Colors */
@@ -367,11 +367,11 @@ table {
     transition: background-color var(--transition-normal) var(--apple-ease);
     &:hover, &:focus-within { background: var(--surface-1); }
     &[data-selected], &[aria-selected="true"] {
-      background: oklch(from var(--color-primary) l c h / 0.10);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.18); }
+      background: oklch(from var(--color-primary) l c h / 0.18);
+      .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
       &:hover {
-        background: oklch(from var(--color-primary) l c h / 0.18);
-        .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+        background: oklch(from var(--color-primary) l c h / 0.24);
+        .dark & { background: oklch(from var(--color-primary) l c h / 0.38); }
       }
     }
   }

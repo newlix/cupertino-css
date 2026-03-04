@@ -46,11 +46,11 @@
     &:is(:disabled, [aria-disabled="true"]) { opacity: 0.38; pointer-events: none; }
     &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     &[data-selected]:hover:not(:disabled, [aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled, [aria-disabled="true"]) {
-      background: oklch(from var(--color-primary) l c h / 0.24);
+      background: oklch(from var(--color-primary) l c h / 0.32);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.38); }
     }
     &[data-selected]:active:not(:disabled, [aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled, [aria-disabled="true"]) {
-      background: oklch(from var(--color-primary) l c h / 0.26);
+      background: oklch(from var(--color-primary) l c h / 0.35);
       .dark & { background: oklch(from var(--color-primary) l c h / 0.40); }
     }
   }

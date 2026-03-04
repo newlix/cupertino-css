@@ -13,7 +13,7 @@
     &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &[data-active], &[aria-current="page"] {
       @apply text-foreground pointer-events-none;
-      background: var(--surface-3);
+      background: var(--surface-4);
     }
     &:disabled, &[aria-disabled="true"] {
       @apply pointer-events-none;

@@ -44,9 +44,10 @@
       }
 
       function fillFrom(startIdx, chars) {
+        const clean = String(chars).replace(/\D/g, "");
         for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
-        for (let j = 0; j < chars.length && startIdx + j < inputs.length; j++) {
-          inputs[startIdx + j].value = chars[j];
+        for (let j = 0; j < clean.length && startIdx + j < inputs.length; j++) {
+          inputs[startIdx + j].value = clean[j];
         }
       }
 
