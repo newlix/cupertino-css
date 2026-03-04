@@ -51,13 +51,16 @@
       }
 
       let pasting = false;
+      const ac = new AbortController();
+      otp._vcAbort = ac;
 
+      const sig = { signal: ac.signal };
       inputs.forEach((input, i) => {
         input.addEventListener("beforeinput", (e) => {
           if (e.inputType === "insertText" && e.data && /\D/.test(e.data)) {
             e.preventDefault();
           }
-        });
+        }, sig);
         input.addEventListener("input", () => {
           if (otp.hasAttribute("data-error")) {
             otp.removeAttribute("data-error");
@@ -85,7 +88,7 @@
             sync();
             if (v && i < inputs.length - 1) inputs[i + 1].focus();
           }
-        });
+        }, sig);
 
         input.addEventListener("keydown", (e) => {
           if (e.key === "Backspace" && otp.hasAttribute("data-error")) {
@@ -100,7 +103,7 @@
           }
           if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); inputs[i - 1].focus(); }
           if (e.key === "ArrowRight" && i < inputs.length - 1) { e.preventDefault(); inputs[i + 1].focus(); }
-        });
+        }, sig);
 
         input.addEventListener("paste", (e) => {
           e.preventDefault();
@@ -125,9 +128,9 @@
           const nextIdx = startIdx + text.length;
           const firstEmpty = Array.from(inputs).findIndex((inp, idx) => idx >= startIdx && !inp.value);
           inputs[firstEmpty >= 0 ? firstEmpty : Math.min(nextIdx, inputs.length - 1)].focus();
-        });
+        }, sig);
 
-        input.addEventListener("focus", () => input.select());
+        input.addEventListener("focus", () => input.select(), sig);
       });
 
       // Sync aria-invalid with data-error attribute
@@ -149,7 +152,7 @@
         if (inputs[0].disabled || inputs[0].getAttribute("aria-disabled") === "true") return;
         const firstEmpty = Array.from(inputs).findIndex((inp) => !inp.value);
         inputs[firstEmpty >= 0 ? firstEmpty : inputs.length - 1].focus();
-      });
+      }, sig);
     });
   }
 
@@ -161,6 +164,7 @@
 
   function destroy(otp) {
     if (!otp._vcInit) return;
+    if (otp._vcAbort) { otp._vcAbort.abort(); otp._vcAbort = null; }
     if (otp._errorObserver) { otp._errorObserver.disconnect(); otp._errorObserver = null; }
     otp._vcInit = false;
   }
