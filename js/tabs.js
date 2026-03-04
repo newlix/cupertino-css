@@ -56,6 +56,12 @@
         }
       });
 
+      // Ensure at least one tab is keyboard-reachable when none is active
+      if (!Array.from(buttons).some((b) => b.getAttribute("tabindex") === "0")) {
+        const first = Array.from(buttons).find((b) => !isDisabled(b));
+        if (first) first.setAttribute("tabindex", "0");
+      }
+
       panels.forEach((panel) => {
         if (!panel.id) panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
         panel.setAttribute("role", "tabpanel");

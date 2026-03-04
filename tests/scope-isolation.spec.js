@@ -51,7 +51,7 @@ async function setupIsolationPage(page) {
     document.body.className = '';
     document.body.innerHTML = html;
   }, TEST_HTML);
-  await page.waitForTimeout(100);
+  await page.evaluate(() => getComputedStyle(document.documentElement).color);
 }
 
 test.describe('Scope Isolation — styles stay inside .cider', () => {

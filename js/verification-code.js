@@ -4,9 +4,9 @@
   function init() {
     document.querySelectorAll(".verification-code").forEach((otp) => {
       if (otp._vcInit) return;
-      otp._vcInit = true;
       const inputs = otp.querySelectorAll('input:not([type="hidden"])');
       if (!inputs.length) return;
+      otp._vcInit = true;
       inputs.forEach((input, idx) => {
         input.maxLength = 1;
         input.setAttribute("inputmode", "numeric");
@@ -36,6 +36,20 @@
         otp.appendChild(hidden);
       }
 
+      function clearError() {
+        if (otp.hasAttribute("data-error")) {
+          otp.removeAttribute("data-error");
+          inputs.forEach((inp) => inp.removeAttribute("aria-invalid"));
+        }
+      }
+
+      function fillFrom(startIdx, chars) {
+        for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
+        for (let j = 0; j < chars.length && startIdx + j < inputs.length; j++) {
+          inputs[startIdx + j].value = chars[j];
+        }
+      }
+
       function sync(silent) {
         const newVal = Array.from(inputs).map((inp) => inp.value).join("");
         if (hidden.value !== newVal) {
@@ -43,7 +57,7 @@
           hidden.dispatchEvent(new Event("input", { bubbles: true }));
           if (!silent) {
             hidden.dispatchEvent(new Event("change", { bubbles: true }));
-            if (Array.from(inputs).every((inp) => inp.value.length === 1)) {
+            if (newVal.length === inputs.length) {
               otp.dispatchEvent(new CustomEvent("complete", { detail: { code: newVal }, bubbles: true }));
             }
           }
@@ -62,20 +76,13 @@
           }
         }, sig);
         input.addEventListener("input", () => {
-          if (otp.hasAttribute("data-error")) {
-            otp.removeAttribute("data-error");
-            inputs.forEach((inp) => inp.removeAttribute("aria-invalid"));
-          }
+          clearError();
           const v = input.value.replace(/\D/g, "");
           // Handle browser autofill distributing multiple characters into a single input
           if (v.length > 1 && !pasting) {
             pasting = true;
             try {
-              const startIdx = i;
-              for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
-              for (let j = 0; j < v.length && startIdx + j < inputs.length; j++) {
-                inputs[startIdx + j].value = v[j];
-              }
+              fillFrom(i, v);
             } finally {
               pasting = false;
             }
@@ -92,10 +99,7 @@
         }, sig);
 
         input.addEventListener("keydown", (e) => {
-          if (e.key === "Backspace" && otp.hasAttribute("data-error")) {
-            otp.removeAttribute("data-error");
-            inputs.forEach((inp) => inp.removeAttribute("aria-invalid"));
-          }
+          if (e.key === "Backspace") clearError();
           if (e.key === "Backspace" && !input.value && i > 0) {
             e.preventDefault();
             inputs[i - 1].value = "";
@@ -113,17 +117,9 @@
           const text = (e.clipboardData?.getData("text") || "").replace(/\D/g, "");
           if (!text) return;
           pasting = true;
-          // Always fill from the first input when a full code is pasted
           const startIdx = text.length >= inputs.length ? 0 : i;
           try {
-            if (startIdx === 0) {
-              inputs.forEach((inp) => { inp.value = ""; });
-            } else {
-              for (let k = startIdx; k < inputs.length; k++) inputs[k].value = "";
-            }
-            for (let j = 0; j < text.length && startIdx + j < inputs.length; j++) {
-              inputs[startIdx + j].value = text[j];
-            }
+            fillFrom(startIdx, text);
           } finally {
             pasting = false;
           }
@@ -145,6 +141,7 @@
         inputs.forEach((inp) => inp.setAttribute("aria-invalid", "true"));
       }
       const errorObserver = new MutationObserver(() => {
+        if (!otp.isConnected) { errorObserver.disconnect(); return; }
         const hasError = otp.hasAttribute("data-error");
         inputs.forEach((inp) => {
           if (hasError) inp.setAttribute("aria-invalid", "true");

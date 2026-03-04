@@ -473,7 +473,7 @@
       align-items: center;
       justify-content: center;
       gap: calc(var(--spacing) * 2);
-      border-radius: 12px;
+      border-radius: var(--radius);
       padding-inline: calc(var(--spacing) * 5);
       padding-block: calc(var(--spacing) * 3);
       font-size: 15px;
@@ -582,15 +582,6 @@
     }
     .btn-gray.btn-destructive {
       color: var(--color-destructive);
-      &:hover {
-        background: var(--color-secondary-hover);
-      }
-      &:active {
-        background: oklch(from var(--color-secondary-hover) calc(l * 0.94) c h);
-      }
-      .dark &:active {
-        background: oklch(from var(--color-secondary-hover) calc(l * 1.06) c h);
-      }
     }
     .btn-tinted.btn-destructive {
       color: var(--color-destructive);
@@ -653,7 +644,7 @@
     }
     .btn-small {
       gap: calc(var(--spacing) * 1.5);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding-inline: calc(var(--spacing) * 3);
       padding-block: 6px;
       font-size: 13px;
@@ -663,7 +654,7 @@
       }
     }
     .btn-large {
-      border-radius: 14px;
+      border-radius: var(--radius-lg);
       padding-inline: calc(var(--spacing) * 7);
       padding-block: 14px;
       font-size: 17px;
@@ -705,7 +696,6 @@
         opacity: 0;
         translate: -50% 2px;
         transition: opacity var(--transition-fast) var(--apple-ease), translate var(--transition-fast) var(--apple-ease);
-        transition-delay: 0s;
       }
       &:hover::after, &:focus-visible::after {
         opacity: 1;
@@ -757,6 +747,7 @@
       padding: 2px 6px;
       max-width: 5rem;
       overflow: hidden;
+      text-overflow: ellipsis;
       flex-shrink: 0;
       box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
       transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
@@ -785,6 +776,8 @@
       display: inline-block;
       width: 12px;
       height: 12px;
+      flex-shrink: 0;
+      vertical-align: middle;
       border-radius: 50%;
       background: var(--tag-color);
       &:is(button, a) {
@@ -808,7 +801,6 @@
         }
         .dark &:active {
           opacity: 0.7;
-          transform: scale(0.90);
         }
         &:focus-visible {
           box-shadow: 0 0 0 2px var(--color-background), var(--focus-ring);
@@ -849,9 +841,11 @@
         &:is(button, a) {
           &:focus-visible {
             outline: 2px solid Highlight;
+            box-shadow: none;
           }
           &:disabled, &[aria-disabled="true"] {
             border-color: GrayText;
+            opacity: 1;
           }
         }
       }
@@ -892,7 +886,6 @@
         outline-offset: 2px;
       }
       &:disabled, &[aria-disabled="true"] {
-        cursor: not-allowed;
         opacity: 0.38;
         pointer-events: none;
       }
@@ -900,9 +893,11 @@
     @media (forced-colors: active) {
       .card {
         border: 1px solid ButtonText;
+        box-shadow: none;
       }
       :is(a, button).card:focus-visible {
         outline: 2px solid Highlight;
+        box-shadow: none;
       }
       :is(a, button).card:disabled, :is(a, button).card[aria-disabled="true"] {
         border-color: GrayText;
@@ -956,7 +951,6 @@
       border: none;
       overflow: clip;
       corner-shape: squircle;
-      background-color: var(--color-card);
       background: var(--glass-bg-dialog);
       backdrop-filter: var(--glass-blur-heavy);
       -webkit-backdrop-filter: var(--glass-blur-heavy);
@@ -969,16 +963,16 @@
       &[open] {
         display: flex;
         flex-direction: column;
-        animation: dialogShow 0.24s var(--apple-spring);
+        animation: dialogShow var(--transition-normal) var(--apple-spring);
       }
       &:modal[open]::backdrop {
-        animation: backdropFadeIn 0.24s var(--apple-ease);
+        animation: backdropFadeIn var(--transition-normal) var(--apple-ease);
       }
       &[data-closing] {
-        animation: dialogHide 0.18s var(--apple-ease) forwards;
+        animation: dialogHide var(--transition-fast) var(--apple-ease) forwards;
       }
       &:modal[data-closing]::backdrop {
-        animation: backdropFadeIn 0.18s var(--apple-ease) reverse forwards;
+        animation: backdropFadeIn var(--transition-fast) var(--apple-ease) reverse forwards;
       }
       & .dialog-close {
         position: absolute;
@@ -1069,6 +1063,9 @@
       }
       @media (forced-colors: active) {
         border: 1px solid ButtonText;
+        & .dialog-close {
+          border: 1px solid ButtonText;
+        }
         & .dialog-close:focus-visible {
           outline: 2px solid Highlight;
           box-shadow: none;
@@ -1084,7 +1081,7 @@
     .segmented-control [data-tab-list] {
       position: relative;
       display: inline-flex;
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: calc(var(--spacing) * 1);
       corner-shape: squircle;
       background: var(--surface-5);
@@ -1115,12 +1112,16 @@
       justify-content: center;
       gap: calc(var(--spacing) * 1.5);
       border-radius: 6px;
+      --tw-border-style: none;
+      border-style: none;
+      background-color: transparent;
       padding-inline: calc(var(--spacing) * 3.5);
       padding-block: calc(var(--spacing) * 1.5);
       font-size: 13px;
       --tw-font-weight: var(--font-weight-medium);
       font-weight: var(--font-weight-medium);
       color: var(--color-tertiary-foreground);
+      user-select: none;
       flex: 1 1 0%;
       min-width: 56px;
       min-height: 32px;
@@ -1163,7 +1164,6 @@
       .segmented-control [data-tab-indicator] {
         background: Highlight;
         box-shadow: none;
-        opacity: 1;
       }
       .segmented-control [data-tab] {
         &:focus-visible {
@@ -1214,7 +1214,7 @@
         --tw-border-style: none;
         border-style: none;
         text-decoration-line: none;
-        transition: transform var(--transition-fast) var(--apple-ease), filter var(--transition-fast) var(--apple-ease);
+        transition: transform var(--transition-fast) var(--apple-ease), filter var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease);
         &:hover {
           filter: brightness(var(--hover-brightness));
         }
@@ -1229,7 +1229,6 @@
         &:disabled, &[aria-disabled="true"] {
           opacity: 0.38;
           pointer-events: none;
-          cursor: default;
         }
       }
     }
@@ -1259,9 +1258,6 @@
       .avatar:is(button, a):disabled, .avatar:is(button, a)[aria-disabled="true"] {
         border-color: GrayText;
       }
-      .avatar-group .avatar {
-        outline-color: ButtonText;
-      }
     }
     .avatar-group {
       display: flex;
@@ -1276,6 +1272,10 @@
         outline: 2px solid var(--avatar-group-ring);
         outline-offset: -1px;
       }
+      & .avatar:is(:hover, :focus-visible) {
+        position: relative;
+        z-index: 1;
+      }
     }
     .page-control {
       display: flex;
@@ -1287,6 +1287,7 @@
       all: unset;
       display: inline-block;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
       box-sizing: border-box;
       width: 7px;
       height: 7px;
@@ -1297,7 +1298,7 @@
         opacity: 0.38;
       }
       cursor: pointer;
-      transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
+      transition: opacity var(--transition-normal) var(--apple-ease);
       &[aria-current="page"] {
         opacity: 1;
       }
@@ -1326,6 +1327,7 @@
       }
       @media (forced-colors: active) {
         border: 2px solid ButtonText;
+        background: Canvas;
         opacity: 1;
         &[aria-current="page"] {
           background: Highlight;
@@ -1358,7 +1360,7 @@
         cursor: pointer;
         align-items: center;
         justify-content: center;
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
         padding-inline: calc(var(--spacing) * 2);
         font-size: 13px;
         --tw-font-weight: var(--font-weight-medium);
@@ -1444,6 +1446,11 @@
         color: var(--color-tertiary-foreground);
         text-decoration-line: none;
         transition: color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
+        @media (pointer: coarse) {
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
+        }
         &:hover {
           color: var(--color-foreground);
           text-decoration-line: none;
@@ -1454,7 +1461,7 @@
         &:focus-visible {
           outline: 2px solid var(--color-primary);
           outline-offset: 2px;
-          border-radius: 4px;
+          border-radius: var(--radius-xs);
         }
       }
       & [aria-current="page"] {
@@ -1511,6 +1518,7 @@
       &::-webkit-progress-value {
         background: var(--color-primary);
         border-radius: 9999px;
+        transition: width var(--transition-normal) var(--apple-ease);
       }
       &::-moz-progress-bar {
         background: var(--color-primary);
@@ -1544,18 +1552,20 @@
         border-radius: calc(infinity * 1px);
         width: 100%;
         background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 50%, transparent 80%);
-        animation: indeterminate 1.5s var(--apple-ease) infinite;
+        animation: indeterminate 1.5s linear infinite;
       }
       @media (prefers-reduced-motion: reduce) {
         &::after {
           animation: none;
-          opacity: 0.5;
-          width: 100%;
+          opacity: 0.65;
+          width: 40%;
+          left: 30%;
           background: var(--color-primary);
         }
       }
       @media (forced-colors: active) {
         border: 1px solid ButtonText;
+        background: Canvas;
         &::after {
           background: Highlight;
         }
@@ -1572,14 +1582,14 @@
       --slider-thumb-shadow: 0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
       --slider-thumb-shadow-hover: 0 2px 6px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.08);
       --slider-thumb-shadow-active: 0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
-      --slider-thumb-shadow-focus: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
+      --slider-thumb-shadow-focus: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.50), 0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
       --slider-thumb: white;
       .dark & {
         --slider-thumb: oklch(0.92 0.003 286);
         --slider-thumb-shadow: 0 0.5px 2px oklch(0 0 0 / 0.4), 0 0 0 0.5px oklch(0 0 0 / 0.15);
         --slider-thumb-shadow-hover: 0 2px 6px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
         --slider-thumb-shadow-active: 0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
-        --slider-thumb-shadow-focus: 0 0 0 3px var(--color-ring), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
+        --slider-thumb-shadow-focus: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.60), 0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
       }
       height: 4px;
       &::-webkit-slider-runnable-track {
@@ -1606,6 +1616,7 @@
         margin-top: -12px;
         border: none;
         box-shadow: var(--slider-thumb-shadow);
+        transform: scale(1);
         transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
       }
       &:hover:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb {
@@ -1622,6 +1633,7 @@
         height: 28px;
         border: none;
         box-shadow: var(--slider-thumb-shadow);
+        transform: scale(1);
         transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
       }
       &:hover:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb {
@@ -1638,7 +1650,6 @@
         box-shadow: var(--slider-thumb-shadow-focus);
       }
       &:disabled, &[aria-disabled="true"] {
-        cursor: not-allowed;
         opacity: 0.38;
         pointer-events: none;
       }
@@ -1681,6 +1692,9 @@
           &::-moz-range-thumb {
             background: GrayText;
             border-color: GrayText;
+          }
+          &::-moz-range-progress {
+            background: GrayText;
           }
         }
       }
@@ -1766,13 +1780,14 @@
       backdrop-filter: var(--glass-blur-heavy);
       -webkit-backdrop-filter: var(--glass-blur-heavy);
       box-shadow: var(--shadow-md), var(--float-ring);
-      animation: hudAppear 0.2s var(--apple-spring);
+      animation: hudAppear var(--transition-normal) var(--apple-ease);
       & svg:first-child {
         width: calc(var(--spacing) * 10);
         height: calc(var(--spacing) * 10);
         flex-shrink: 0;
       }
       & .hud-label {
+        display: block;
         overflow: hidden;
         text-align: center;
         font-size: 13px;
@@ -1784,11 +1799,12 @@
       }
     }
     .hud[data-closing] {
-      animation: hudDismiss 0.18s var(--apple-ease) forwards;
+      animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
     }
     @media (forced-colors: active) {
       .hud {
         border: 1px solid ButtonText;
+        box-shadow: none;
       }
     }
     .separator-vertical {
@@ -1806,7 +1822,7 @@
       margin-block: calc(var(--spacing) * 4);
       display: flex;
       align-items: center;
-      gap: calc(var(--spacing) * 2);
+      gap: calc(var(--spacing) * 3);
       font-size: 13px;
       color: var(--color-tertiary-foreground);
       &::before, &::after {
@@ -1910,14 +1926,14 @@
         &:visited {
           color: var(--color-foreground);
         }
-        &:hover:not(:disabled):not([aria-disabled="true"]) {
+        &:hover:not(:disabled, [aria-disabled="true"]) {
           background: var(--surface-3);
           text-decoration: none;
         }
-        &:active:not(:disabled):not([aria-disabled="true"]) {
+        &:active:not(:disabled, [aria-disabled="true"]) {
           background: var(--surface-4);
         }
-        &:disabled, &[aria-disabled="true"] {
+        &:is(:disabled, [aria-disabled="true"]) {
           opacity: 0.38;
           pointer-events: none;
         }
@@ -1926,13 +1942,13 @@
           outline: 2px solid var(--color-primary);
           outline-offset: -2px;
         }
-        &[data-selected]:hover:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled):not([aria-disabled="true"]) {
+        &[data-selected]:hover:not(:disabled, [aria-disabled="true"]), &[aria-selected="true"]:hover:not(:disabled, [aria-disabled="true"]) {
           background: oklch(from var(--color-primary) l c h / 0.24);
           .dark & {
             background: oklch(from var(--color-primary) l c h / 0.38);
           }
         }
-        &[data-selected]:active:not(:disabled):not([aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled):not([aria-disabled="true"]) {
+        &[data-selected]:active:not(:disabled, [aria-disabled="true"]), &[aria-selected="true"]:active:not(:disabled, [aria-disabled="true"]) {
           background: oklch(from var(--color-primary) l c h / 0.26);
           .dark & {
             background: oklch(from var(--color-primary) l c h / 0.40);
@@ -1997,7 +2013,7 @@
         min-width: 180px;
         padding: calc(var(--spacing) * 3);
         max-width: min(360px, calc(100vw - 16px));
-        border-radius: 10px;
+        border-radius: var(--radius);
         max-height: calc(100vh - 2rem);
         overflow: auto;
         overscroll-behavior: contain;
@@ -2029,7 +2045,7 @@
       & [popover] {
         max-width: none;
         min-width: 200px;
-        border-radius: 6px;
+        border-radius: 9px;
         padding: calc(var(--spacing) * 1);
         max-height: min(400px, calc(100vh - 2rem));
         & button, & a {
@@ -2037,7 +2053,7 @@
           width: 100%;
           align-items: center;
           gap: calc(var(--spacing) * 2);
-          border-radius: 5px;
+          border-radius: var(--radius-xs);
           padding-inline: calc(var(--spacing) * 2.5);
           padding-block: 3px;
           text-align: left;
@@ -2060,9 +2076,6 @@
           }
           &:active svg {
             color: var(--color-primary-foreground);
-          }
-          &:focus-visible {
-            outline: none;
           }
           & svg {
             width: calc(var(--spacing) * 4);
@@ -2088,7 +2101,7 @@
         @media (min-resolution: 2dppx) {
           height: 0.5px;
         }
-        background: var(--color-border);
+        background: var(--color-separator);
       }
     }
     .popover-arrow [popover]::before {
@@ -2100,6 +2113,8 @@
       width: 14px;
       height: 14px;
       background: var(--glass-bg-opaque);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
     }
     .popover-menu [popover]::backdrop {
@@ -2205,16 +2220,6 @@
       }
       &[data-error] {
         animation: shake 0.3s var(--apple-ease);
-        & input:not([type="hidden"]) {
-          border-color: var(--color-destructive);
-          &:hover:not(:focus-visible) {
-            border-color: var(--color-destructive);
-          }
-          &:focus-visible {
-            border-color: var(--color-destructive);
-            box-shadow: var(--focus-ring-error);
-          }
-        }
         & > span {
           color: var(--color-destructive);
         }
@@ -2356,7 +2361,7 @@
         box-shadow: var(--focus-ring);
         outline: 2px solid transparent;
         outline-offset: 2px;
-        border-radius: 4px;
+        border-radius: var(--radius-xs);
       }
     }
     ul:not([class]) {
@@ -2410,6 +2415,12 @@
         &::marker {
           color: var(--color-tertiary-foreground);
         }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+          border-radius: var(--radius-xs);
+        }
       }
       & > :not(summary) {
         margin-top: calc(var(--spacing) * 2);
@@ -2434,7 +2445,7 @@
     input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
       height: calc(var(--spacing) * 11);
       width: 100%;
-      border-radius: 12px;
+      border-radius: var(--radius);
       border-style: var(--tw-border-style);
       border-width: 1px;
       padding-inline: calc(var(--spacing) * 4);
@@ -2473,6 +2484,9 @@
       }
       &[aria-invalid="true"] {
         border-color: var(--color-destructive);
+        &:hover:not(:focus-visible) {
+          border-color: var(--color-destructive);
+        }
         &:focus-visible {
           border-color: var(--color-destructive);
           box-shadow: var(--focus-ring-error);
@@ -2481,7 +2495,7 @@
     }
     textarea {
       width: 100%;
-      border-radius: 12px;
+      border-radius: var(--radius);
       border-style: var(--tw-border-style);
       border-width: 1px;
       padding-inline: calc(var(--spacing) * 4);
@@ -2523,6 +2537,9 @@
       }
       &[aria-invalid="true"] {
         border-color: var(--color-destructive);
+        &:hover:not(:focus-visible) {
+          border-color: var(--color-destructive);
+        }
         &:focus-visible {
           border-color: var(--color-destructive);
           box-shadow: var(--focus-ring-error);
@@ -2533,7 +2550,7 @@
       height: calc(var(--spacing) * 11);
       width: 100%;
       appearance: none;
-      border-radius: 12px;
+      border-radius: var(--radius);
       border-style: var(--tw-border-style);
       border-width: 1px;
       padding-right: calc(var(--spacing) * 10);
@@ -2569,6 +2586,9 @@
       }
       &[aria-invalid="true"] {
         border-color: var(--color-destructive);
+        &:hover:not(:focus-visible) {
+          border-color: var(--color-destructive);
+        }
         &:focus-visible {
           border-color: var(--color-destructive);
           box-shadow: var(--focus-ring-error);
@@ -2579,7 +2599,7 @@
       flex-shrink: 0;
       cursor: pointer;
       appearance: none;
-      border-radius: 5px;
+      border-radius: var(--radius-xs);
       border-style: var(--tw-border-style);
       border-width: 1px;
       background-color: var(--color-card);
@@ -2694,10 +2714,7 @@
       background: var(--surface-5);
       transition: background-color var(--transition-slow) var(--apple-ease);
       &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
-        background: oklch(0 0 0 / 0.22);
-      }
-      .dark &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
-        background: oklch(1 0 0 / 0.22);
+        background: var(--surface-7);
       }
       &:hover:not(:disabled):not([aria-disabled="true"]):checked {
         background: var(--color-switch-hover);
@@ -2802,9 +2819,6 @@
       &:has(input:is(:disabled, [aria-disabled="true"])) {
         cursor: not-allowed;
         opacity: 0.38;
-        & > input {
-          opacity: 1;
-        }
       }
     }
     label:has(+ :is(input, textarea, select):required)::after {
@@ -2898,22 +2912,22 @@
       & tfoot tr:last-child td:last-child {
         border-bottom-right-radius: var(--radius-lg);
       }
-      & tbody:last-child tr:last-child td:first-child {
+      & tbody:last-child tr:last-child :is(td, th):first-child {
         border-bottom-left-radius: var(--radius-lg);
       }
-      & tbody:last-child tr:last-child td:last-child {
+      & tbody:last-child tr:last-child :is(td, th):last-child {
         border-bottom-right-radius: var(--radius-lg);
       }
       &.table-striped tbody tr:nth-child(even) {
         background: var(--surface-1);
       }
-      &.table-striped tbody tr:hover {
+      &.table-striped tbody tr:hover, &.table-striped tbody tr:focus-within {
         background: var(--surface-3);
       }
       &.table-striped tbody tr[data-selected], &.table-striped tbody tr[aria-selected="true"] {
-        background: oklch(from var(--color-primary) l c h / 0.10);
+        background: oklch(from var(--color-primary) l c h / 0.14);
         .dark & {
-          background: oklch(from var(--color-primary) l c h / 0.18);
+          background: oklch(from var(--color-primary) l c h / 0.22);
         }
       }
       &.table-striped tbody tr[data-selected]:hover, &.table-striped tbody tr[aria-selected="true"]:hover {
@@ -2941,7 +2955,7 @@
       min-width: calc(var(--spacing) * 5);
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: var(--radius-xs);
       padding-inline: calc(var(--spacing) * 1.5);
       font-size: 11px;
       --tw-font-weight: var(--font-weight-medium);

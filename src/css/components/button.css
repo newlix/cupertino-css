@@ -59,9 +59,6 @@
 }
 .btn-gray.btn-destructive {
   color: var(--color-destructive);
-  &:hover { background: var(--color-secondary-hover); }
-  &:active { background: oklch(from var(--color-secondary-hover) calc(l * 0.94) c h); }
-  .dark &:active { background: oklch(from var(--color-secondary-hover) calc(l * 1.06) c h); }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);

@@ -178,19 +178,21 @@
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._openWaitObs) return;
       const obs = new MutationObserver(() => {
-        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(safetyTimer); dialog._openWaitObs = null; return; }
+        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(dialog._openWaitTimer); dialog._openWaitObs = null; dialog._openWaitTimer = null; return; }
         if (!dialog.hasAttribute("data-closing") && !dialog.open) {
           obs.disconnect();
-          clearTimeout(safetyTimer);
+          clearTimeout(dialog._openWaitTimer);
           dialog._openWaitObs = null;
+          dialog._openWaitTimer = null;
           openDialog(dialog);
         }
       });
       dialog._openWaitObs = obs;
       obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing", "open"] });
-      const safetyTimer = setTimeout(() => {
+      dialog._openWaitTimer = setTimeout(() => {
         obs.disconnect();
         dialog._openWaitObs = null;
+        dialog._openWaitTimer = null;
         if (dialog.isConnected && !dialog.open) openDialog(dialog);
       }, 300);
       return;
@@ -226,6 +228,7 @@
       if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
       if (dialog._closeAnimHandler) { dialog.removeEventListener("animationend", dialog._closeAnimHandler); dialog._closeAnimHandler = null; }
       if (dialog._openWaitObs) { dialog._openWaitObs.disconnect(); dialog._openWaitObs = null; }
+      if (dialog._openWaitTimer) { clearTimeout(dialog._openWaitTimer); dialog._openWaitTimer = null; }
       activeDialogs.delete(dialog);
       if (activeDialogs.size === 0 && savedOverflow !== null) {
         document.body.style.overflow = savedOverflow ?? "";

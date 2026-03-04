@@ -135,7 +135,7 @@
           window.addEventListener("scroll", popover._rafPositioner, true);
           window.addEventListener("resize", popover._rafPositioner);
           // Observe DOM removal only while open
-          popover._disconnectObserver.observe(wrapper.parentNode || document.body, { childList: true });
+          if (wrapper.parentNode) popover._disconnectObserver.observe(wrapper.parentNode, { childList: true });
 
           const first = popover.querySelector(FOCUSABLE_ALL);
           if (first) first.focus();

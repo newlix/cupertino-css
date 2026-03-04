@@ -45,14 +45,6 @@
   }
   &[data-error] {
     animation: shake 0.3s var(--apple-ease);
-    & input:not([type="hidden"]) {
-      border-color: var(--color-destructive);
-      &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
-      &:focus-visible {
-        border-color: var(--color-destructive);
-        box-shadow: var(--focus-ring-error);
-      }
-    }
     & > span { color: var(--color-destructive); }
   }
   &[data-error] + small {

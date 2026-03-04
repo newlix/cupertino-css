@@ -9,7 +9,6 @@
   @apply block shrink-0 self-stretch;
   width: 1px;
   min-height: 1rem;
-  border-radius: 9999px;
   background: var(--color-separator);
   @media (min-resolution: 2dppx) { width: 0.5px; }
 }

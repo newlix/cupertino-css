@@ -48,9 +48,9 @@ export async function focusViaKeyboard(page, locator) {
  */
 export async function contrastBetween(locator1, prop1, locator2, prop2) {
   const page = locator1.page();
-  const el1 = await locator1.elementHandle();
-  const el2 = await locator2.elementHandle();
-  return page.evaluate(([e1, p1, e2, p2]) => {
+  const color1 = await locator1.evaluate((el, p) => getComputedStyle(el)[p], prop1);
+  const color2 = await locator2.evaluate((el, p) => getComputedStyle(el)[p], prop2);
+  return page.evaluate(([c1, c2]) => {
     function cssToRgb(color) {
       const ctx = document.createElement('canvas').getContext('2d');
       ctx.fillStyle = color;
@@ -62,9 +62,7 @@ export async function contrastBetween(locator1, prop1, locator2, prop2) {
       const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
       return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
     }
-    const c1 = cssToRgb(getComputedStyle(e1)[p1]);
-    const c2 = cssToRgb(getComputedStyle(e2)[p2]);
-    const l1 = luminance(c1), l2 = luminance(c2);
+    const l1 = luminance(cssToRgb(c1)), l2 = luminance(cssToRgb(c2));
     return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-  }, [el1, prop1, el2, prop2]);
+  }, [color1, color2]);
 }
