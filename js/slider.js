@@ -47,8 +47,8 @@
 
   document.addEventListener("htmx:afterSettle", init);
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
-    const el = evt.detail && evt.detail.elt;
-    if (el && el.classList && el.classList.contains("slider")) destroy(el);
+    const el = evt.detail?.elt;
+    if (el?.classList?.contains("slider")) destroy(el);
   });
   function destroy(el) {
     if (!el._sliderInit) return;

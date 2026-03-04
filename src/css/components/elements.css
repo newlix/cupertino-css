@@ -202,24 +202,22 @@ input[type="checkbox"]:not([role="switch"]) {
   height: 18px;
   border-color: var(--input-border);
   transition: border-color var(--transition-normal) var(--apple-ease), background-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
-  &:checked {
+  &:is(:checked, :indeterminate) {
     @apply bg-primary border-primary;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-    background-size: 12px;
     background-position: center;
     background-repeat: no-repeat;
   }
+  &:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 12px;
+  }
   &:indeterminate {
-    @apply bg-primary border-primary;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' d='M6 12h12'/%3E%3C/svg%3E");
     background-size: 10px;
-    background-position: center;
-    background-repeat: no-repeat;
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
-  &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-  &:hover:indeterminate:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+  &:hover:is(:checked, :indeterminate):not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; }
   &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.92); }
   &[aria-invalid="true"] {

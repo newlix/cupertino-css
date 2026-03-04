@@ -131,8 +131,7 @@
             targetBtn = Array.from(currentButtons).find((b) => !isDisabled(b));
           } else if (e.key === "End") {
             e.preventDefault();
-            const enabled = Array.from(currentButtons).filter((b) => !isDisabled(b));
-            targetBtn = enabled.length ? enabled[enabled.length - 1] : null;
+            targetBtn = Array.from(currentButtons).filter((b) => !isDisabled(b)).at(-1) ?? null;
           }
 
           if (targetBtn) {
@@ -164,8 +163,8 @@
 
   document.addEventListener("htmx:afterSettle", init);
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
-    const el = evt.detail && evt.detail.elt;
-    if (el && el.hasAttribute && el.hasAttribute("data-tabs")) destroy(el);
+    const el = evt.detail?.elt;
+    if (el?.hasAttribute("data-tabs")) destroy(el);
   });
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.tabs = { init, destroy };

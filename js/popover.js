@@ -79,16 +79,27 @@
         }
       };
 
+      function setAriaLabelledBy() {
+        if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
+          if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
+          popover.setAttribute("aria-labelledby", trigger.id);
+          popover._ciderAriaLabelledBy = true;
+        }
+      }
+
+      function clearAriaLabelledBy() {
+        if (popover._ciderAriaLabelledBy) {
+          popover.removeAttribute("aria-labelledby");
+          popover._ciderAriaLabelledBy = false;
+        }
+      }
+
       popover._toggleHandler = (e) => {
         if (e.newState === "open") {
           trigger.setAttribute("aria-expanded", "true");
           if (isMenu) {
             popover.setAttribute("role", "menu");
-            if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
-              if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
-              popover.setAttribute("aria-labelledby", trigger.id);
-              popover._ciderAriaLabelledBy = true;
-            }
+            setAriaLabelledBy();
             popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
               item.setAttribute("role", "menuitem");
               item.setAttribute("data-ciderui-menuitem", "");
@@ -99,11 +110,7 @@
             });
           } else {
             popover.setAttribute("role", "dialog");
-            if (!popover.getAttribute("aria-label") && !popover.getAttribute("aria-labelledby")) {
-              if (!trigger.id) trigger.id = `popover-trigger-${Math.random().toString(36).slice(2, 8)}`;
-              popover.setAttribute("aria-labelledby", trigger.id);
-              popover._ciderAriaLabelledBy = true;
-            }
+            setAriaLabelledBy();
           }
           // Cleanup any stale positioning listeners before adding new ones
           popover._cleanupPositioning();
@@ -133,12 +140,9 @@
           trigger.setAttribute("aria-expanded", "false");
           popover._cleanupPositioning();
           if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
+          popover.removeAttribute("role");
+          clearAriaLabelledBy();
           if (isMenu) {
-            popover.removeAttribute("role");
-            if (popover._ciderAriaLabelledBy) {
-              popover.removeAttribute("aria-labelledby");
-              popover._ciderAriaLabelledBy = false;
-            }
             popover.querySelectorAll("[data-ciderui-menuitem]").forEach((item) => {
               item.removeAttribute("role");
               item.removeAttribute("data-ciderui-menuitem");
@@ -147,12 +151,6 @@
               hr.removeAttribute("role");
               hr.removeAttribute("data-ciderui-separator");
             });
-          } else {
-            popover.removeAttribute("role");
-            if (popover._ciderAriaLabelledBy) {
-              popover.removeAttribute("aria-labelledby");
-              popover._ciderAriaLabelledBy = false;
-            }
           }
           if (
             popover._escapeDismiss ||
@@ -286,8 +284,6 @@
 
   document.addEventListener("htmx:afterSettle", init);
 
-  if (typeof window !== "undefined") {
-    window.CiderUI = window.CiderUI || {};
-    window.CiderUI.popover = { init };
-  }
+  window.CiderUI = window.CiderUI || {};
+  window.CiderUI.popover = { init };
 })();
