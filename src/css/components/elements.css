@@ -132,6 +132,7 @@ textarea {
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
+  @media (min-resolution: 2dppx) { border-width: 0.5px; }
   transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   &::placeholder { @apply text-tertiary-foreground; }
   &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
@@ -164,6 +165,7 @@ select:not([multiple]) {
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
+  @media (min-resolution: 2dppx) { border-width: 0.5px; }
   transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   /* Chevron SVG — light: #6E6E73 (--color-tertiary-foreground), dark: #98989D
      Two SVGs needed because <select> is a replaced element (no pseudo-elements).
