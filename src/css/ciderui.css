@@ -52,7 +52,6 @@
   /* Transition timing tokens */
   --transition-fast: 0.15s;     /* Micro-interactions: hover, color shifts */
   --transition-normal: 0.25s;   /* Standard transitions: opacity, transform */
-  --transition-slow: 0.35s;     /* Complex animations: layout, entry/exit */
 
   /*
    * Surface overlays — neutral opacity layers for depth hierarchy.
