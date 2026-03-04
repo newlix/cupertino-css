@@ -124,10 +124,11 @@ pre {
   }
 }
 
-/* ─── Text inputs ─── */
+/* ─── Text inputs & Textarea ─── */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
-input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
-  @apply w-full h-11 rounded-[var(--radius)] border px-4 text-[17px] text-foreground outline-none;
+input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])),
+textarea {
+  @apply w-full rounded-[var(--radius)] border px-4 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
   background-color: var(--color-card);
   border-color: var(--input-border);
@@ -148,30 +149,13 @@ input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
   }
 }
-
-/* ─── Textarea ─── */
+input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
+  @apply h-11;
+}
 textarea {
-  @apply w-full rounded-[var(--radius)] border px-4 py-3 text-[17px] text-foreground outline-none;
+  @apply py-3;
   resize: vertical;
-  corner-shape: squircle;
-  background-color: var(--color-card);
-  border-color: var(--input-border);
-  transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
-  &::placeholder { @apply text-tertiary-foreground; }
-  &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
-  &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
-  &:read-only { background-color: var(--surface-1); cursor: default; resize: none; }
-  &:autofill,
-  &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
-    -webkit-text-fill-color: var(--color-foreground);
-  }
-  &[aria-invalid="true"] {
-    border-color: var(--color-destructive);
-    &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
-    &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
-  }
+  &:read-only { resize: none; }
 }
 
 /* ─── Select ─── */
