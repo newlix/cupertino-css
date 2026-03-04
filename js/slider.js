@@ -37,7 +37,6 @@
         });
       }
       // Sync when value/min/max attributes change via setAttribute()
-      if (el._sliderObserver) el._sliderObserver.disconnect();
       const mo = new MutationObserver(() => {
         if (!el.isConnected) { destroy(el); return; }
         update(el);

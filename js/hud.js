@@ -70,9 +70,6 @@
     labelEl.textContent = (label != null) ? String(label) : "";
     hud.appendChild(labelEl);
 
-    hud._ciderDismiss = null;
-    container.appendChild(hud);
-
     let dismissTimeout;
     let animTimer;
     let dismissed = false;
@@ -98,6 +95,7 @@
     }
 
     hud._ciderDismiss = dismiss;
+    container.appendChild(hud);
     dismissTimeout = setTimeout(dismiss, duration);
 
     return { dismiss, element: hud };
