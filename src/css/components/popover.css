@@ -49,7 +49,7 @@
       transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
       &:is(:hover, :focus-visible) { background: var(--color-primary); color: var(--color-primary-foreground); }
       &:is(:hover, :focus-visible) svg { color: var(--color-primary-foreground); }
-      &:active { background: var(--color-primary-active); color: var(--color-primary-foreground); }
+      &:active { background: var(--color-primary); color: var(--color-primary-foreground); }
       &:active svg { color: var(--color-primary-foreground); }
       & svg { @apply size-4 text-tertiary-foreground; transition: color var(--transition-fast) var(--apple-ease); }
       @media (pointer: coarse) { min-height: 44px; }
