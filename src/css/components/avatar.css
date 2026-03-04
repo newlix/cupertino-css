@@ -26,7 +26,6 @@
   .avatar { border: 1px solid ButtonText; }
   .avatar:is(button, a):focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   .avatar:is(button, a):disabled, .avatar:is(button, a)[aria-disabled="true"] { border-color: GrayText; }
-  .avatar-group .avatar { outline-color: ButtonText; }
 }
 .avatar-group {
   @apply flex -space-x-2;
@@ -35,5 +34,9 @@
     box-shadow: none;
     outline: 2px solid var(--avatar-group-ring);
     outline-offset: -1px;
+  }
+  & .avatar:is(:hover, :focus-visible) {
+    position: relative;
+    z-index: 1;
   }
 }

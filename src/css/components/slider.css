@@ -46,6 +46,7 @@
     margin-top: -12px;
     border: none;
     box-shadow: var(--slider-thumb-shadow);
+    transform: scale(1);
     transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   }
   &:hover:not(:disabled):not([aria-disabled="true"])::-webkit-slider-thumb { box-shadow: var(--slider-thumb-shadow-hover); }
@@ -57,6 +58,7 @@
     height: 28px;
     border: none;
     box-shadow: var(--slider-thumb-shadow);
+    transform: scale(1);
     transition: box-shadow var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   }
   &:hover:not(:disabled):not([aria-disabled="true"])::-moz-range-thumb { box-shadow: var(--slider-thumb-shadow-hover); }

@@ -23,7 +23,9 @@
 
     // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
     const existing = container.querySelector(".hud");
-    if (existing) {
+    if (existing?._ciderDismiss) {
+      existing._ciderDismiss();
+    } else if (existing) {
       existing.remove();
     }
 
@@ -37,7 +39,7 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
-      const DANGEROUS_ELEMENTS = new Set(["script", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion"]);
+      const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion"]);
       svgEl.querySelectorAll("*").forEach((el) => {
         if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
       });

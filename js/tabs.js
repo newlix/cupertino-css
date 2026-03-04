@@ -1,12 +1,12 @@
 // Tabs — ciderui
 (function () {
+  const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
+  const PANEL_SEL = ":scope > [data-tab-panel], :scope > * > [data-tab-panel]";
+
   function init() {
     document.querySelectorAll("[data-tabs]").forEach((tabGroup) => {
       if (tabGroup._tabsInit) return;
       tabGroup._tabsInit = true;
-
-      const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
-      const PANEL_SEL = ":scope > [data-tab-panel], :scope > * > [data-tab-panel]";
       function getButtons() { return tabGroup.querySelectorAll(TAB_SEL); }
       function getPanels() { return tabGroup.querySelectorAll(PANEL_SEL); }
       const buttons = getButtons();
@@ -150,8 +150,6 @@
     if (tabGroup._tabsResizeObserver) { tabGroup._tabsResizeObserver.disconnect(); tabGroup._tabsResizeObserver = null; }
     const list = tabGroup.querySelector("[data-tab-list]");
     if (list) { list.removeAttribute("role"); list.removeAttribute("aria-orientation"); }
-    const TAB_SEL = ":scope > [data-tab], :scope > * > [data-tab]";
-    const PANEL_SEL = ":scope > [data-tab-panel], :scope > * > [data-tab-panel]";
     tabGroup.querySelectorAll(TAB_SEL).forEach((btn) => {
       if (btn._tabClickHandler) { btn.removeEventListener("click", btn._tabClickHandler); btn._tabClickHandler = null; }
       if (btn._tabKeyHandler) { btn.removeEventListener("keydown", btn._tabKeyHandler); btn._tabKeyHandler = null; }
@@ -177,9 +175,13 @@
   document.addEventListener("htmx:afterSettle", init);
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
-    if (el?.hasAttribute("data-tabs")) destroy(el);
-    const parent = el?.closest?.("[data-tabs]");
-    if (parent?._tabsInit) destroy(parent);
+    if (!el) return;
+    if (el.hasAttribute?.("data-tabs")) { destroy(el); return; }
+    // Only destroy if the element being cleaned up contains tab buttons (not panel content swaps)
+    const parent = el.closest?.("[data-tabs]");
+    if (parent?._tabsInit && (el.hasAttribute?.("data-tab-list") || el.querySelector?.("[data-tab]"))) {
+      destroy(parent);
+    }
   });
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.tabs = { init, destroy };

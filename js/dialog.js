@@ -210,6 +210,9 @@
     const dialogs = el.tagName === "DIALOG" ? [el] : Array.from(el.querySelectorAll?.("dialog") || []);
     dialogs.forEach((dialog) => {
       if (!dialog._dialogInit) return;
+      if (dialog._cancelHandler) { dialog.removeEventListener("cancel", dialog._cancelHandler); dialog._cancelHandler = null; }
+      if (dialog._mousedownHandler) { dialog.removeEventListener("mousedown", dialog._mousedownHandler); dialog._mousedownHandler = null; }
+      if (dialog._clickHandler) { dialog.removeEventListener("click", dialog._clickHandler); dialog._clickHandler = null; }
       if (dialog._focusObserver) { dialog._focusObserver.disconnect(); dialog._focusObserver = null; }
       if (dialog._focusTrapHandler) { dialog.removeEventListener("keydown", dialog._focusTrapHandler); dialog._focusTrapHandler = null; }
       if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }

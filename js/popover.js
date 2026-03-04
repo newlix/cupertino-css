@@ -290,6 +290,30 @@
 
   document.addEventListener("htmx:afterSettle", init);
 
+  function destroyPopover(popover) {
+    if (!popover._popoverInit) return;
+    if (popover._disconnectObserver) { popover._disconnectObserver.disconnect(); popover._disconnectObserver = null; }
+    popover._cleanupPositioning?.();
+    clearTimeout(popover._typeAheadTimer);
+    popover._typeAheadTimer = null;
+    popover._typeAheadBuffer = "";
+    if (popover._toggleHandler) { popover.removeEventListener("toggle", popover._toggleHandler); popover._toggleHandler = null; }
+    if (popover._escHandler) { popover.removeEventListener("keydown", popover._escHandler); popover._escHandler = null; }
+    if (popover._focusTrapHandler) { popover.removeEventListener("keydown", popover._focusTrapHandler); popover._focusTrapHandler = null; }
+    if (popover._menuClickHandler) { popover.removeEventListener("click", popover._menuClickHandler); popover._menuClickHandler = null; }
+    if (popover._menuKeyHandler) { popover.removeEventListener("keydown", popover._menuKeyHandler); popover._menuKeyHandler = null; }
+    popover._popoverInit = false;
+  }
+
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
+    if (!el) return;
+    const popovers = el.hasAttribute?.("popover")
+      ? [el]
+      : Array.from(el.querySelectorAll?.("[popover]") || []);
+    popovers.forEach(destroyPopover);
+  });
+
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.popover = { init };
 })();

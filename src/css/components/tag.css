@@ -13,7 +13,7 @@
     &:hover { opacity: 0.8; }
     &:active { opacity: 0.65; transform: scale(0.90); }
     .dark &:hover { opacity: 0.85; }
-    .dark &:active { opacity: 0.7; transform: scale(0.90); }
+    .dark &:active { opacity: 0.7; }
     &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
     &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.38; }
   }
@@ -32,7 +32,7 @@
     border: 1.5px solid ButtonText;
     &:is(button, a) {
       &:focus-visible { outline: 2px solid Highlight; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; }
+      &:disabled, &[aria-disabled="true"] { border-color: GrayText; opacity: 1; }
     }
   }
 }

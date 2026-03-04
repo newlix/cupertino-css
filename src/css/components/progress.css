@@ -30,7 +30,7 @@ progress {
     @apply absolute inset-y-0 left-0 rounded-full;
     width: 100%;
     background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 50%, transparent 80%);
-    animation: indeterminate 1.5s var(--apple-ease) infinite;
+    animation: indeterminate 1.5s linear infinite;
   }
   @media (prefers-reduced-motion: reduce) {
     &::after {
@@ -42,6 +42,7 @@ progress {
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;
+    background: Canvas;
     &::after { background: Highlight; }
   }
 }

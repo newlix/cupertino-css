@@ -407,7 +407,8 @@ table {
   &.table-striped tbody tr:nth-child(even) {
     background: var(--surface-1);
   }
-  &.table-striped tbody tr:hover {
+  &.table-striped tbody tr:hover,
+  &.table-striped tbody tr:focus-within {
     background: var(--surface-3);
   }
   &.table-striped tbody tr[data-selected],

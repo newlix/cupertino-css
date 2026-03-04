@@ -21,7 +21,7 @@
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
 }
 @media (forced-colors: active) {
-  .card { border: 1px solid ButtonText; }
-  :is(a, button).card:focus-visible { outline: 2px solid Highlight; }
+  .card { border: 1px solid ButtonText; box-shadow: none; }
+  :is(a, button).card:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   :is(a, button).card:disabled, :is(a, button).card[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
 }

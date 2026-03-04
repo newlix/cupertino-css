@@ -10,6 +10,7 @@
   all: unset;
   display: inline-block;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   box-sizing: border-box;
   width: 7px;
   height: 7px;
@@ -18,7 +19,7 @@
   opacity: 0.3;
   .dark & { opacity: 0.38; }
   cursor: pointer;
-  transition: opacity var(--transition-normal) var(--apple-ease), transform var(--transition-normal) var(--apple-ease);
+  transition: opacity var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {
     opacity: 1;
   }
