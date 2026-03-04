@@ -9,7 +9,7 @@
   background: var(--surface-5);
 }
 .segmented-control [data-tab-indicator] {
-  @apply absolute rounded-[6px] pointer-events-none;
+  @apply absolute rounded-[4px] pointer-events-none;
   corner-shape: squircle;
   top: 4px;
   bottom: 4px;
@@ -17,12 +17,12 @@
   width: 0;
   opacity: 0;
   background: var(--segmented-active);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.04);
   .dark & { box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.06); }
-  transition: transform var(--transition-slow) var(--apple-spring), width var(--transition-slow) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+  transition: transform var(--transition-normal) var(--apple-spring), width var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 .segmented-control [data-tab] {
-  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[6px] border-none bg-transparent px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
+  @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[4px] border-none bg-transparent px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
   user-select: none;
   flex: 1 1 0%;
   min-width: 56px;

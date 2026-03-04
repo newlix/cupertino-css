@@ -12,7 +12,7 @@
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  animation: activity-spin 1.0s steps(12, start) infinite;
+  animation: activity-spin 0.8s steps(12, start) infinite;
   @media (prefers-reduced-motion: reduce) {
     animation: none;
     opacity: 0.65;

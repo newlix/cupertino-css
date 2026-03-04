@@ -6,7 +6,7 @@
    - No background tinting per variant — Apple uses neutral bg; color is accent only.
    - No variant classes (info/warning/success/destructive) — users apply Tailwind
      utilities (e.g. text-destructive on the heading) when needed.
-   - Body text uses foreground at 70% opacity — preserves quiet hierarchy while
+   - Body text uses foreground at 82% opacity — preserves quiet hierarchy while
      meeting WCAG AA contrast (>4.5:1).
    - Heading font-size matches body (text-sm) for uniform callout density — hierarchy
      comes from font-semibold weight alone, consistent with Apple's quiet info style.
@@ -22,8 +22,8 @@
   & > :is(h1, h2, h3, h4, h5, h6) { @apply mb-1 font-semibold text-sm; }
   & > strong { @apply block mb-1; }
   & > p {
-    color: oklch(from var(--color-foreground) l c h / 0.7);
-    .dark & { color: oklch(from var(--color-foreground) l c h / 0.8); }
+    color: oklch(from var(--color-foreground) l c h / 0.82);
+    .dark & { color: oklch(from var(--color-foreground) l c h / 0.85); }
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;

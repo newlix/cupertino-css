@@ -24,7 +24,7 @@
   background: var(--hud-background);
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
-  box-shadow: var(--shadow-md), var(--float-ring);
+  box-shadow: var(--shadow-xl), var(--float-ring);
   animation: hudAppear var(--transition-normal) var(--apple-ease);
   & svg:first-child { @apply size-10 shrink-0; }
   & .hud-label { @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center; max-width: 100%; }

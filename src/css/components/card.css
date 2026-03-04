@@ -6,11 +6,13 @@
   overflow: hidden;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   transition: background-color var(--transition-fast) var(--apple-ease),
-              box-shadow var(--transition-fast) var(--apple-ease),
-              transform var(--transition-normal) var(--apple-spring);
+              box-shadow var(--transition-fast) var(--apple-ease);
 }
 :is(a, button).card {
   cursor: pointer;
+  transition: background-color var(--transition-fast) var(--apple-ease),
+              box-shadow var(--transition-fast) var(--apple-ease),
+              transform var(--transition-normal) var(--apple-spring);
   text-decoration: none;
   color: inherit;
   @media (pointer: coarse) { min-height: 44px; }

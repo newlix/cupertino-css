@@ -44,7 +44,7 @@ h2 {
   &:not(:first-child) { @apply mt-8; }
 }
 h3 {
-  @apply font-bold text-foreground mb-2;
+  @apply font-semibold text-foreground mb-2;
   font-size: 22px;
   line-height: 1.27;
   letter-spacing: -0.007em;
@@ -268,7 +268,7 @@ input[type="checkbox"][role="switch"] {
   width: 51px;
   height: 31px;
   background: var(--surface-5);
-  transition: background-color var(--transition-slow) var(--apple-ease);
+  transition: background-color var(--transition-normal) var(--apple-ease);
   &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: var(--surface-7); }
   &:hover:not(:disabled):not([aria-disabled="true"]):checked { background: var(--color-switch-hover); }
   &::after {
@@ -279,7 +279,7 @@ input[type="checkbox"][role="switch"] {
     width: 27px;
     height: 27px;
     box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
-    transition: transform var(--transition-slow) var(--apple-ease), width var(--transition-slow) var(--apple-ease);
+    transition: transform var(--transition-normal) var(--apple-ease), width var(--transition-normal) var(--apple-ease);
     @media (prefers-reduced-motion: no-preference) {
       transition-timing-function: var(--apple-spring);
     }

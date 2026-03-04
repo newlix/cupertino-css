@@ -12,9 +12,9 @@
 
 /* ─── CSS Variables ─── */
 :root {
-  --color-primary: oklch(0.563 0.193 256.16);        /* Apple Blue #0071E3 rgb(0,113,227) */
-  --color-primary-hover: oklch(0.522 0.177 255.84);   /* #0066CC rgb(0,102,204) */
-  --color-primary-active: oklch(0.480 0.165 256.16);  /* darker press state */
+  --color-primary: oklch(0.563 0.241 256.1);          /* Apple System Blue #007AFF */
+  --color-primary-hover: oklch(0.520 0.224 256.1);    /* darker hover */
+  --color-primary-active: oklch(0.478 0.208 256.1);   /* darker press state */
   --color-primary-foreground: #fff;
 
   --color-background: #fff;
@@ -86,14 +86,14 @@
   --color-purple: oklch(0.586 0.249 303.11);   /* Apple Purple #AF52DE */
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
   --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.92);
-  --backdrop-bg: oklch(0 0 0 / 0.35);
+  --backdrop-bg: oklch(0 0 0 / 0.50);
   --hover-brightness: 0.92;
 
   --color-separator: oklch(0.894 0.005 286.02);  /* #E5E5EA — lighter than border, for visual dividers */
-  --hud-background: oklch(0.10 0 0 / 0.75);
+  --hud-background: oklch(0.10 0 0 / 0.82);
   --hud-text: oklch(0.95 0 0);
-  --tooltip-bg: var(--surface-7);
-  --tooltip-text: var(--color-foreground);
+  --tooltip-bg: oklch(0.15 0 0 / 0.82);
+  --tooltip-text: oklch(0.97 0 0);
 
   --avatar-bg: oklch(0.85 0.006 286);
   --avatar-fg: oklch(0.45 0.006 286);
@@ -118,9 +118,9 @@
 }
 
 .dark {
-  --color-primary: oklch(0.669 0.181 251.84);          /* #2997FF Apple blue on dark bg */
-  --color-primary-hover: oklch(0.620 0.185 253.00);
-  --color-primary-active: oklch(0.570 0.188 254.00);
+  --color-primary: oklch(0.617 0.246 256.5);            /* Apple System Blue #0A84FF (dark) */
+  --color-primary-hover: oklch(0.577 0.232 256.5);
+  --color-primary-active: oklch(0.537 0.218 256.5);
   --color-background: oklch(0.061 0.004 286);           /* near-black dark bg */
   --color-foreground: oklch(0.971 0.003 286.35);       /* #F5F5F7 Apple dark text */
 
@@ -168,7 +168,7 @@
   --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
   --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.94);
 
-  --backdrop-bg: oklch(0 0 0 / 0.55);
+  --backdrop-bg: oklch(0 0 0 / 0.65);
   --hover-brightness: 1.12;
 
   --color-orange: oklch(0.783 0.165 69.0);     /* Apple Orange #FF9F0A (dark) */
@@ -176,8 +176,8 @@
   --color-blue: oklch(0.617 0.246 256.5);      /* Apple Blue #0A84FF (dark) */
   --color-purple: oklch(0.630 0.250 303.5);    /* Apple Purple #BF5AF2 (dark) */
 
-  --color-separator: oklch(0.310 0.003 286.22);  /* slightly dimmer than border for visual dividers */
-  --hud-background: oklch(0.14 0 0 / 0.78);
+  --color-separator: oklch(0.38 0.003 286 / 0.65);  /* semi-transparent — adapts to surface underneath */
+  --hud-background: oklch(0.14 0 0 / 0.85);
   --tooltip-bg: oklch(0.20 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
 
@@ -267,7 +267,7 @@
 
   @keyframes dialogHide {
     from { opacity: 1; transform: scale(1); }
-    to   { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 0; transform: scale(0.94); }
   }
 
   @keyframes backdropFadeIn {
@@ -306,7 +306,7 @@
 
   @keyframes hudDismiss {
     from { opacity: 1; transform: scale(1) translateY(0); }
-    to   { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to   { opacity: 0; transform: scale(0.94) translateY(-4px); }
   }
 
   /* Reduced motion — disable animations/transitions for users who prefer it */

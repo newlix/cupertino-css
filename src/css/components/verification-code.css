@@ -14,7 +14,7 @@
     width: 48px;
     height: 56px;
     font-size: 28px;
-    font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-variant-numeric: tabular-nums;
     caret-color: var(--color-primary);
     transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
@@ -33,7 +33,7 @@
     }
   }
   & > span {
-    @apply text-[17px] text-tertiary-foreground;
+    @apply text-[15px] text-tertiary-foreground;
   }
   @media (max-width: 374px) {
     @apply gap-1.5;

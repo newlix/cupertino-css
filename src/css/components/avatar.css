@@ -23,8 +23,8 @@
   }
 }
 .avatar-sm { @apply size-7 text-[11px]; }
-.avatar-lg { @apply size-16 text-[22px]; }   /* 64px — Apple profile size */
-.avatar-xl { @apply size-20 text-[24px]; }   /* 80px — Apple large profile size */
+.avatar-lg { @apply size-16 text-[25px]; }   /* 64px — Apple profile size */
+.avatar-xl { @apply size-20 text-[31px]; }   /* 80px — Apple large profile size */
 @media (forced-colors: active) {
   .avatar { border: 1px solid ButtonText; }
   .avatar:is(button, a):focus-visible { outline: 2px solid Highlight; box-shadow: none; }

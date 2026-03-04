@@ -12,7 +12,7 @@
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &[data-active], &[aria-current="page"] {
-      @apply text-foreground font-semibold pointer-events-none;
+      @apply text-foreground font-medium pointer-events-none;
       background: var(--surface-3);
     }
     &:disabled, &[aria-disabled="true"] {
