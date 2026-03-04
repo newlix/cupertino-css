@@ -93,6 +93,7 @@
 }
 .btn-small {
   @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[var(--radius-sm)];
+  corner-shape: squircle;
   min-height: 32px;
   @media (pointer: coarse) { min-height: 44px; }
 }
