@@ -30,7 +30,7 @@
     scrollbar-color: transparent transparent;
     &:hover { scrollbar-color: var(--surface-5) transparent; }
     & h2 {
-      @apply px-2 pb-1 pt-0 text-[12px] font-semibold uppercase tracking-widest;
+      @apply px-2 pb-1 pt-0 text-[13px] font-semibold uppercase tracking-widest;
       color: var(--color-tertiary-foreground);
     }
     & a[href] {
@@ -126,13 +126,13 @@
       border-bottom: 1px solid var(--panel-border);
       background: var(--surface-1);
       & > span {
-        @apply text-[12px] font-medium text-tertiary-foreground;
+        @apply text-[13px] font-medium text-tertiary-foreground;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
       & > nav {
         @apply flex gap-0.5;
         & > button {
-          @apply rounded-md px-2 py-1 text-[12px] font-medium text-tertiary-foreground;
+          @apply rounded-md px-2 py-1 text-[13px] font-medium text-tertiary-foreground;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
           transition: all 0.15s var(--apple-ease);
           &:hover {
@@ -147,7 +147,7 @@
         }
       }
       & > button {
-        @apply rounded-md border px-2 py-1 text-[12px] font-medium;
+        @apply rounded-md border px-2 py-1 text-[13px] font-medium;
         background: var(--surface-2);
         border-color: var(--color-border);
         color: var(--color-tertiary-foreground);
@@ -219,7 +219,7 @@
         color: var(--color-foreground);
       }
       & > .home-stat-label {
-        @apply mt-1 text-xs font-medium uppercase tracking-wide;
+        @apply mt-1 text-[13px] font-medium uppercase tracking-wide;
         color: var(--color-tertiary-foreground);
       }
     }
