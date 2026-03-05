@@ -34,7 +34,7 @@ h1 {
   font-size: 34px;
   line-height: 1.21;
   letter-spacing: 0.011em;
-  &:not(:first-child) { @apply mt-8; }
+  &:not(:first-child) { @apply mt-12; }
 }
 h2 {
   @apply font-bold text-foreground mb-3;
@@ -58,7 +58,7 @@ h4 {
   &:not(:first-child) { @apply mt-4; }
 }
 h5 {
-  @apply font-semibold text-foreground mb-1;
+  @apply font-bold text-foreground mb-1;
   font-size: 17px;
   line-height: 1.29;
   letter-spacing: -0.024em;
@@ -90,7 +90,7 @@ ol:not([class]) {
   @apply list-decimal pl-5 space-y-1.5;
 }
 blockquote {
-  @apply border-l-4 pl-5 text-tertiary-foreground;
+  @apply border-l-4 pl-5 py-2 text-tertiary-foreground;
   border-color: var(--color-border-solid);
 }
 code {
@@ -116,7 +116,7 @@ details {
     &::marker { color: var(--color-tertiary-foreground); }
     &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-xs); }
   }
-  & > :not(summary) { @apply mt-2; }
+  & > :not(summary) { @apply mt-3; }
 }
 
 /* ─── Pre / Code block ─── */

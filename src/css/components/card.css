@@ -12,7 +12,7 @@
   cursor: pointer;
   transition: background-color var(--transition-fast) var(--apple-ease),
               box-shadow var(--transition-fast) var(--apple-ease),
-              transform var(--transition-fast) var(--apple-spring);
+              transform var(--transition-normal) var(--apple-spring);
   text-decoration: none;
   color: inherit;
   @media (pointer: coarse), (hover: none) { min-height: 44px; }
