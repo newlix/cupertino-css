@@ -24,7 +24,9 @@
     &:autofill,
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+      box-shadow: 0 0 0 100px var(--color-card) inset;
       -webkit-text-fill-color: var(--color-foreground);
+      color: var(--color-foreground);
     }
     &[aria-invalid="true"] {
       border-color: var(--color-destructive);

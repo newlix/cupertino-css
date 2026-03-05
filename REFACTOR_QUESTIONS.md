@@ -22,6 +22,21 @@ Items deferred for user decision — these are structural improvements, not bugs
 - **Possible approach**: Extract into `clearCloseState(dialog)` helper.
 - **Status**: Not processed (skip)
 
+## js/popover.js — content popover focus trap
+- **Problem**: Non-menu content popovers wrap Tab focus at first/last element (lines 222-238), creating a keyboard trap. Menu popovers correctly dismiss on Tab, but content popovers do not.
+- **Possible approach**: A) Tab-out dismisses the popover (consistent with non-modal nature) / B) Keep trap (modal-like behavior is intentional)
+- **Status**: Not processed (skip)
+
+## js/dialog.js — duplicated cleanup logic
+- **Problem**: Dialog cleanup is implemented in 3 separate places: `teardown()`, MutationObserver close branch, and `htmx:beforeCleanupElement` handler. The overflow-restore logic diverges between them, risking loss of custom `body { overflow }` styles.
+- **Possible approach**: Extract a single `destroy(dialog)` function for all cleanup paths.
+- **Status**: Not processed (skip)
+
+## js/dialog.js — openDialog on uninitialized dialog
+- **Problem**: `openDialog(dialog)` calls `init()` if `dialog._dialogInit` is falsy, but doesn't re-check after `init()`. If the dialog wasn't found by `querySelectorAll`, it proceeds to `showModal()` without handlers.
+- **Possible approach**: Add guard `if (!dialog._dialogInit) return;` after `init()`.
+- **Status**: Not processed (skip)
+
 ## src/css/components/popover.css
 - **Problem**: `allow-discrete` keyword in `transition` shorthand (lines 26, 50) can cause the entire transition to fail in browsers that don't support it (pre-Chrome 117, pre-Firefox 129).
 - **Possible approach**: A) Add fallback `transition` declaration / B) Keep as progressive enhancement

@@ -55,8 +55,11 @@ async function setupIsolationPage(page) {
 }
 
 test.describe('Scope Isolation — styles stay inside .cider', () => {
-  test('h1 typography only applies inside .cider', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await setupIsolationPage(page);
+  });
+
+  test('h1 typography only applies inside .cider', async ({ page }) => {
     const inside = page.locator('#inside h1');
     const outside = page.locator('#outside h1');
 
@@ -66,7 +69,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('anchor color only set to primary inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside a');
     const outside = page.locator('#outside a');
 
@@ -77,7 +79,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('text input border-radius only applies inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside input[type="text"]');
     const outside = page.locator('#outside input[type="text"]');
 
@@ -89,7 +90,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('textarea border-radius only applies inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside textarea');
     const outside = page.locator('#outside textarea');
 
@@ -100,7 +100,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('select appearance only overridden inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside select');
     const outside = page.locator('#outside select');
 
@@ -112,7 +111,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('.btn-filled only styled inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside .btn-filled');
     const outside = page.locator('#outside .btn-filled');
 
@@ -127,7 +125,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('.card only styled inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside .card');
     const outside = page.locator('#outside .card');
 
@@ -137,7 +134,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('label display only overridden inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside label');
     const outside = page.locator('#outside label');
 
@@ -147,7 +143,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('code background only styled inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside code');
     const outside = page.locator('#outside code');
 
@@ -159,7 +154,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('table border-collapse only overridden inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside table');
     const outside = page.locator('#outside table');
 
@@ -169,7 +163,6 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
   });
 
   test('checkbox appearance only overridden inside .cider', async ({ page }) => {
-    await setupIsolationPage(page);
     const inside = page.locator('#inside input[type="checkbox"]');
     const outside = page.locator('#outside input[type="checkbox"]');
 
@@ -182,8 +175,11 @@ test.describe('Scope Isolation — styles stay inside .cider', () => {
 });
 
 test.describe('Scope Isolation — .cider-reset stops styles', () => {
-  test('h1 inside .cider-reset does not get CiderUI h1 styles', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await setupIsolationPage(page);
+  });
+
+  test('h1 inside .cider-reset does not get CiderUI h1 styles', async ({ page }) => {
     const reset = page.locator('#reset h1');
 
     // CiderUI h1 is 34px; inside .cider-reset it should NOT be 34px
@@ -191,7 +187,6 @@ test.describe('Scope Isolation — .cider-reset stops styles', () => {
   });
 
   test('anchor inside .cider-reset does not get primary color', async ({ page }) => {
-    await setupIsolationPage(page);
     const reset = page.locator('#reset a');
     const inside = page.locator('#inside a');
 
@@ -202,7 +197,6 @@ test.describe('Scope Isolation — .cider-reset stops styles', () => {
   });
 
   test('input inside .cider-reset has no CiderUI border-radius', async ({ page }) => {
-    await setupIsolationPage(page);
     const reset = page.locator('#reset input[type="text"]');
     const outside = page.locator('#outside input[type="text"]');
 
@@ -213,21 +207,18 @@ test.describe('Scope Isolation — .cider-reset stops styles', () => {
   });
 
   test('.btn-filled inside .cider-reset is unstyled', async ({ page }) => {
-    await setupIsolationPage(page);
     const reset = page.locator('#reset .btn-filled');
 
     expect(await css(reset, 'display')).not.toBe('inline-flex');
   });
 
   test('.card inside .cider-reset has no box-shadow', async ({ page }) => {
-    await setupIsolationPage(page);
     const reset = page.locator('#reset .card');
 
     expect(await css(reset, 'boxShadow')).toBe('none');
   });
 
   test('checkbox inside .cider-reset has browser default size', async ({ page }) => {
-    await setupIsolationPage(page);
     const reset = page.locator('#reset input[type="checkbox"]');
     const outside = page.locator('#outside input[type="checkbox"]');
 

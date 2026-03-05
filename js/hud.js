@@ -3,6 +3,8 @@
 // transient, auto-dismiss), not a toast. Toasts are edge-positioned; HUDs are centered.
 // macOS equivalent: NSPanel with styleMask:.hudWindow (volume/brightness/screenshot overlays).
 (function () {
+  var DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta", "a"]);
+
   function createHUDContainer() {
     const container = document.createElement("div");
     container.id = "hud-container";
@@ -37,7 +39,6 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
-      const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta"]);
       svgEl.querySelectorAll("*").forEach((el) => {
         if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
       });

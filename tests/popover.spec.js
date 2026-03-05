@@ -157,6 +157,7 @@ test.describe('Popover Auto-flip', () => {
     // Popover should not overflow the viewport right edge
     const vw = await page.evaluate(() => document.documentElement.clientWidth);
     const popoverBox = await popover.boundingBox();
+    expect(popoverBox).not.toBeNull();
     expect(popoverBox.x + popoverBox.width).toBeLessThanOrEqual(vw);
   });
 
@@ -183,6 +184,8 @@ test.describe('Popover Auto-flip', () => {
     // Popover should appear above the trigger
     const triggerBox = await trigger.boundingBox();
     const popoverBox = await popover.boundingBox();
+    expect(triggerBox).not.toBeNull();
+    expect(popoverBox).not.toBeNull();
     expect(popoverBox.y + popoverBox.height).toBeLessThanOrEqual(triggerBox.y);
   });
 });

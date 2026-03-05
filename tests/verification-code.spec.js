@@ -41,11 +41,10 @@ test.describe('Verification Code', () => {
 
     await inputs.nth(0).click();
 
-    await page.evaluate(() => {
-      const input = document.querySelector('.snippet-preview > figure .verification-code input:not([type="hidden"])');
+    await inputs.nth(0).evaluate(el => {
       const dt = new DataTransfer();
       dt.setData('text/plain', '123456');
-      input.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true }));
+      el.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true }));
     });
 
     await expect(inputs.nth(0)).toHaveValue('1');
