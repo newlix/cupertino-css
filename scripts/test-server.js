@@ -17,7 +17,8 @@ const server = createServer(async (req, res) => {
     const data = await readFile(filePath);
     res.writeHead(200, { 'content-type': types[extname(filePath)] || 'application/octet-stream' });
     res.end(data);
-  } catch {
+  } catch (err) {
+    if (err.code !== 'ENOENT' && err.code !== 'ENOTDIR') console.error('Server error:', err);
     res.writeHead(404);
     res.end('Not Found');
   }
