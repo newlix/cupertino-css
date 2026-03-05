@@ -56,8 +56,14 @@
   &:hover { background: var(--color-destructive-hover); }
   &:active { background: var(--color-destructive-active); }
 }
-.btn-gray.btn-destructive {
+:is(.btn-gray, .btn-plain).btn-destructive {
   color: var(--color-destructive);
+  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); }
+  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  .dark & {
+    &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
+    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
+  }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);
@@ -81,17 +87,8 @@
     &:active { background: oklch(from var(--color-destructive) l c h / 0.16); border-color: oklch(from var(--color-destructive) l c h / 0.50); }
   }
 }
-.btn-plain.btn-destructive {
-  color: var(--color-destructive);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
-  .dark & {
-    &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
-  }
-}
 .btn-small {
-  @apply px-3 py-[6px] text-[13px] gap-1.5 rounded-[var(--radius-sm)];
+  @apply px-3 py-2 text-[13px] gap-1.5 rounded-[var(--radius-sm)];
   min-height: 32px;
   @media (pointer: coarse) { min-height: 44px; }
 }

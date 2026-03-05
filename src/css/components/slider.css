@@ -90,15 +90,5 @@
   }
   @media (pointer: coarse) {
     min-height: 44px;
-    /* Apple HIG: 44pt touch target via min-height; keep 28px visible thumb */
-    &::-webkit-slider-thumb {
-      width: 28px;
-      height: 28px;
-      margin-top: -12px;
-    }
-    &::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
-    }
   }
 }
