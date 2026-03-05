@@ -17,7 +17,7 @@ test.describe('Kbd', () => {
 
   test('kbd has correct font size and min dimensions', async ({ page }) => {
     const kbd = preview(page).locator('kbd').first();
-    expect(await css(kbd, 'fontSize')).toBe('11px');
+    expect(await css(kbd, 'fontSize')).toBe('12px');
     const height = parseFloat(await css(kbd, 'height'));
     expect(height).toBeGreaterThanOrEqual(20);
     const width = parseFloat(await css(kbd, 'minWidth'));

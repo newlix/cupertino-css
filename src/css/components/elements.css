@@ -155,6 +155,13 @@ textarea {
     &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
     &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
   }
+  &[type="search"]::-webkit-search-decoration,
+  &[type="search"]::-webkit-search-cancel-button,
+  &[type="search"]::-webkit-search-results-button,
+  &[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
 input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])) {
   @apply h-11;
@@ -302,6 +309,7 @@ label {
   @apply block text-[15px] font-normal text-foreground;
   &:has(input[type="checkbox"], input[type="radio"]) {
     @apply flex items-center gap-2.5 cursor-pointer;
+    @media (pointer: coarse) { min-height: 44px; }
     &:has(> small) {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -412,7 +420,7 @@ hr {
 
 /* ─── Kbd ─── */
 kbd {
-  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[var(--radius-xs)] px-1.5 text-[11px] font-medium text-tertiary-foreground;
+  @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[var(--radius-xs)] px-1.5 text-[12px] font-medium text-tertiary-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
   box-shadow: 0 1px 0 var(--panel-border), var(--float-ring), inset 0 1px 0 var(--kbd-inset);
@@ -439,7 +447,7 @@ fieldset {
 
 /* ─── Small (helper text) ─── */
 small {
-  @apply text-xs text-tertiary-foreground;
+  @apply text-[13px] text-tertiary-foreground;
 }
 
 /* ─── Description list ─── */

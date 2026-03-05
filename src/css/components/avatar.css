@@ -41,7 +41,13 @@
   & .avatar:is(:hover, :focus-visible) {
     position: relative;
     z-index: 1;
+  }
+  & .avatar:hover:not(:focus-visible) {
     outline: none;
     box-shadow: var(--avatar-ring);
+  }
+  & .avatar:focus-visible {
+    outline: none;
+    box-shadow: var(--avatar-ring), var(--focus-ring);
   }
 }
