@@ -37,7 +37,7 @@
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
-      const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion"]);
+      const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta"]);
       svgEl.querySelectorAll("*").forEach((el) => {
         if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
       });
@@ -48,7 +48,7 @@
             el.removeAttribute(attr.name);
           } else if (name === "href" || name === "xlink:href") {
             const val = attr.value.replace(/\s/g, "").toLowerCase();
-            if (val.startsWith("javascript:") || val.startsWith("data:")) {
+            if (val !== "" && !/^(https?:|#|\/[^/])/.test(val)) {
               el.removeAttribute(attr.name);
             }
           }

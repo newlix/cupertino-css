@@ -72,17 +72,18 @@ function globNjk(dir) {
 function build() {
   const start = performance.now();
 
-  // Clean stale output
-  if (fs.existsSync(SITE)) {
-    fs.rmSync(SITE, { recursive: true });
-  }
+  // Build CSS first — if this fails, existing site/ stays intact for the dev server
   fs.mkdirSync(SITE, { recursive: true });
-
-  // CSS
   execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/docs.built.css`, {
     cwd: ROOT,
     stdio: "inherit",
   });
+
+  // CSS succeeded — now safe to clean stale output (preserve the CSS we just built)
+  for (const entry of fs.readdirSync(SITE)) {
+    if (entry === "docs.built.css") continue;
+    fs.rmSync(path.join(SITE, entry), { recursive: true });
+  }
 
   // Nav
   const nav = JSON.parse(

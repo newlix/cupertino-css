@@ -40,7 +40,9 @@
   }
 
   function isVisible(el) {
-    return el.offsetParent !== null || el.getClientRects().length > 0;
+    if (el.getClientRects().length === 0) return false;
+    const style = getComputedStyle(el);
+    return style.visibility !== "hidden" && style.visibility !== "collapse";
   }
 
   function trapFocus(dialog) {

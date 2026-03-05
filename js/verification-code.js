@@ -34,6 +34,7 @@
         hidden.type = "hidden";
         hidden.name = otp.dataset.name || "code";
         otp.appendChild(hidden);
+        otp._vcCreatedHidden = true;
       }
 
       function clearError() {
@@ -171,6 +172,11 @@
     if (!otp._vcInit) return;
     if (otp._vcAbort) { otp._vcAbort.abort(); otp._vcAbort = null; }
     if (otp._errorObserver) { otp._errorObserver.disconnect(); otp._errorObserver = null; }
+    if (otp._vcCreatedHidden) {
+      const hidden = otp.querySelector("input[type=hidden]");
+      if (hidden) hidden.remove();
+      otp._vcCreatedHidden = false;
+    }
     otp._vcInit = false;
   }
 

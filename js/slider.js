@@ -35,7 +35,7 @@
         if (desc && desc.get && desc.set) {
           Object.defineProperty(el, prop, {
             get() { return desc.get.call(this); },
-            set(v) { desc.set.call(this, v); update(this); },
+            set(v) { desc.set.call(this, v); this._sliderFromSetter = true; update(this); this._sliderFromSetter = false; },
             configurable: true,
           });
         }
@@ -43,7 +43,7 @@
       // Sync when value/min/max attributes change via setAttribute()
       const mo = new MutationObserver(() => {
         if (!el.isConnected) { destroy(el); return; }
-        update(el);
+        if (!el._sliderFromSetter) update(el);
       });
       el._sliderObserver = mo;
       mo.observe(el, { attributes: true, attributeFilter: ["value", "min", "max"] });

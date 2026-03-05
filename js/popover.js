@@ -28,7 +28,7 @@
       }
       function positionPopover() {
         if (!document.contains(popover) || !document.contains(trigger)) {
-          popover._cleanupPositioning();
+          popover._cleanupPositioning?.();
           return;
         }
         const rect = trigger.getBoundingClientRect();
