@@ -48,6 +48,7 @@
   }
   &[data-error] {
     animation: shake 0.4s var(--apple-ease);
+    @media (prefers-reduced-motion: reduce) { animation: none; }
     & > span { color: var(--color-destructive); }
   }
   &[data-error] + small {

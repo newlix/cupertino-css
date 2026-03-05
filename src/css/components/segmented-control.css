@@ -1,7 +1,7 @@
 /* ========== SEGMENTED CONTROL ========== */
 .segmented-control {
   --segmented-active: oklch(1 0 0);
-  .dark & { --segmented-active: oklch(0.40 0.004 286.1); }
+  .dark & { --segmented-active: oklch(0.48 0.004 286.1); }
 }
 .segmented-control [data-tab-list] {
   @apply relative inline-flex rounded-[var(--radius-sm)] p-1;
@@ -27,10 +27,10 @@
   flex: 1 1 0%;
   min-width: 56px;
   min-height: 32px;
-  transition: color var(--transition-normal) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
+  transition: color var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
   &:hover:not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
-  &:active:not(:disabled):not([aria-disabled="true"]) { opacity: 0.8; }
-  &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary); outline: 2px solid transparent; outline-offset: 2px; }
+  &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.96); }
+  &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.38; }
   @media (pointer: coarse) { min-height: 44px; }
   &[data-active],

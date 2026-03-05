@@ -48,8 +48,8 @@
     /* macOS menus appear with opacity-only — no scale transform */
     transform: none;
     transition: opacity var(--transition-fast) var(--apple-ease), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
-    &:popover-open { transform: none; }
-    @starting-style { &:popover-open { transform: none; } }
+    &:popover-open { opacity: 1; transform: none; }
+    @starting-style { &:popover-open { opacity: 0; transform: none; } }
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
@@ -89,6 +89,8 @@
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
 }
+/* Menus never show arrows (macOS HIG) — block even if .popover-arrow is added */
+.popover-menu.popover-arrow [popover]::before { display: none; }
 /* No backdrop scrim for menus — macOS menus float without dimming. */
 .popover-menu [popover]::backdrop {
   background: transparent;

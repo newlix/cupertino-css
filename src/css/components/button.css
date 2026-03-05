@@ -43,12 +43,12 @@
   border: 1px solid var(--color-border-solid);
   @media (min-resolution: 2dppx) { border-width: 0.5px; }
   &:hover { background: var(--surface-3); border-color: var(--input-border-hover); }
-  &:active { background: var(--surface-4); border-color: var(--input-border-hover); }
+  &:active { background: var(--surface-4); border-color: var(--color-border-solid); }
 }
 .btn-plain {
   @apply bg-transparent text-primary;
-  &:hover { background: var(--surface-2); }
-  &:active { background: var(--surface-3); }
+  &:hover { background: var(--surface-3); }
+  &:active { background: var(--surface-4); }
 }
 /* ── Destructive modifier ── */
 .btn-filled.btn-destructive {

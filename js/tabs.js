@@ -166,7 +166,7 @@
       btn.removeAttribute("aria-controls");
     });
     const indicator = tabGroup.querySelector("[data-tab-indicator]");
-    if (indicator) indicator.style.opacity = "0";
+    if (indicator) indicator.style.opacity = "";
     tabGroup.querySelectorAll(PANEL_SEL).forEach((panel) => {
       panel.removeAttribute("role");
       panel.removeAttribute("tabindex");
@@ -188,7 +188,7 @@
     if (el.hasAttribute?.("data-tabs")) { destroy(el); return; }
     // Only destroy if the element being cleaned up contains tab buttons (not panel content swaps)
     const parent = el.closest?.("[data-tabs]");
-    if (parent?._tabsInit && (el.hasAttribute?.("data-tab") || el.hasAttribute?.("data-tab-list") || el.querySelector?.("[data-tab]"))) {
+    if (parent?._tabsInit && (el.matches?.("[data-tab], [data-tab-list], [data-tab-panel]") || el.querySelector?.("[data-tab], [data-tab-panel]"))) {
       destroy(parent);
     }
   });

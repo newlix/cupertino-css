@@ -94,7 +94,7 @@ blockquote {
   border-color: var(--color-border-solid);
 }
 code {
-  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-normal;
+  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-normal text-foreground;
   line-height: 1.5;
 }
 
@@ -105,7 +105,12 @@ details {
   border-color: var(--color-border);
   & summary {
     @apply cursor-pointer font-semibold text-foreground;
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.5rem;
+    margin: -0.25rem -0.5rem;
+    transition: background-color var(--transition-fast) var(--apple-ease);
     @media (pointer: coarse) { min-height: 44px; display: flex; align-items: center; }
+    &:hover { background-color: var(--surface-1); }
     &::marker { color: var(--color-tertiary-foreground); }
     &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-xs); }
   }
@@ -135,10 +140,10 @@ textarea {
   @media (min-resolution: 2dppx) { border-width: 0.5px; }
   transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
   &::placeholder { @apply text-tertiary-foreground; }
-  &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
+  &:hover:not(:focus-visible):not(:read-only) { border-color: var(--input-border-hover); }
   &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
-  &:read-only { background-color: var(--surface-1); cursor: default; }
+  &:read-only { background-color: var(--surface-1); cursor: default; border-color: var(--input-border); }
   &:autofill,
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
@@ -209,7 +214,7 @@ input[type="checkbox"]:not([role="switch"]) {
     background-size: 10px;
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:hover:not(:checked):not(:indeterminate) { border-color: var(--input-border-hover); }
+  &:hover:not(:checked):not(:indeterminate):not([aria-invalid="true"]) { border-color: var(--input-border-hover); }
   &:hover:is(:checked, :indeterminate):not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.97); }
@@ -236,7 +241,7 @@ input[type="radio"] {
     background-repeat: no-repeat;
   }
   &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:hover:not(:checked) { border-color: var(--input-border-hover); }
+  &:hover:not(:checked):not([aria-invalid="true"]) { border-color: var(--input-border-hover); }
   &:hover:checked:not(:disabled):not([aria-disabled="true"]) { background-color: var(--color-primary-hover); border-color: var(--color-primary-hover); }
   &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
   &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.97); }
@@ -266,7 +271,7 @@ input[type="checkbox"][role="switch"] {
     left: 2px;
     width: 27px;
     height: 27px;
-    box-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
+    box-shadow: var(--switch-thumb-shadow);
     transition: transform var(--transition-normal) var(--apple-ease), width var(--transition-normal) var(--apple-ease);
     @media (prefers-reduced-motion: no-preference) {
       transition-timing-function: var(--apple-spring);
@@ -409,7 +414,7 @@ kbd {
   @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[var(--radius-xs)] px-1.5 text-[11px] font-medium text-tertiary-foreground;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: var(--surface-3);
-  box-shadow: 0 1px 0 var(--panel-border), var(--float-ring), inset 0 1px 0 oklch(1 0 0 / 0.15);
+  box-shadow: 0 1px 0 var(--panel-border), var(--float-ring), inset 0 1px 0 var(--kbd-inset);
 }
 
 /* ─── Table responsive wrapper ─── */

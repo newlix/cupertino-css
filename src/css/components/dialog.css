@@ -26,6 +26,7 @@ dialog {
     &:hover { @apply text-foreground; background: var(--surface-3); }
     &:active { @apply text-foreground; background: var(--surface-4); }
     &:focus-visible { @apply text-foreground; background: var(--surface-3); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+    &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
     & svg { @apply size-4; }
     @media (pointer: coarse) { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
   }
