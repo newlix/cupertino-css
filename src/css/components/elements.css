@@ -111,6 +111,7 @@ details {
     transition: background-color var(--transition-fast) var(--apple-ease);
     @media (pointer: coarse) { min-height: 44px; display: flex; align-items: center; }
     &:hover { background-color: var(--surface-1); }
+    &:active { background-color: var(--surface-3); }
     &::marker { color: var(--color-tertiary-foreground); }
     &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-xs); }
   }
@@ -510,6 +511,8 @@ abbr[title] {
     &[aria-invalid="true"] { border: 2px dashed Highlight; }
   }
   details, fieldset, blockquote { border-color: ButtonText; }
+  details summary:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+  mark { forced-color-adjust: none; background: Mark; color: MarkText; }
   table { border: 1px solid ButtonText; }
   pre { border: 1px solid ButtonText; }
   kbd { border: 1px solid ButtonText; box-shadow: none; }

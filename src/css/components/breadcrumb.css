@@ -8,6 +8,7 @@
     &:hover { @apply text-foreground no-underline; }
     &:active:not([aria-disabled="true"]) { opacity: 0.7; }
     &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: var(--radius-xs); }
+    &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
   }
   & [aria-current="page"] {
     @apply font-medium text-foreground pointer-events-none;
@@ -30,6 +31,7 @@
       color: LinkText;
       &:hover { color: LinkText; text-decoration: underline; }
       &:focus-visible { outline: 2px solid Highlight; }
+      &[aria-disabled="true"] { color: GrayText; opacity: 1; }
     }
     & [aria-current="page"] { color: CanvasText; }
     & > :not(:first-child):not([aria-hidden="true"])::before {
