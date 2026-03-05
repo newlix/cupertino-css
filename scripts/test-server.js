@@ -12,7 +12,7 @@ createServer(async (req, res) => {
     res.end('Forbidden');
     return;
   }
-  if (filePath.endsWith('/')) filePath += 'index.html';
+  if (filePath.endsWith('/') || filePath === dir) filePath = join(filePath, 'index.html');
   try {
     const data = await readFile(filePath);
     res.writeHead(200, { 'content-type': types[extname(filePath)] || 'application/octet-stream' });

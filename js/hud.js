@@ -23,13 +23,8 @@
 
     // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
     container.querySelectorAll(".hud").forEach((existing) => {
-      if (existing._ciderDismiss) {
-        existing._ciderDismiss();
-      }
-      // Force-remove already-closing HUDs to prevent jitter from stale elements
-      if (existing.hasAttribute("data-closing") && existing.parentElement) {
-        existing.remove();
-      }
+      if (existing._ciderDismiss) existing._ciderDismiss();
+      if (existing.parentElement) existing.remove();
     });
 
     const hud = document.createElement("div");
@@ -92,7 +87,7 @@
         if (hud.parentElement) hud.remove();
       }
       hud.addEventListener("animationend", removeHud);
-      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 180;
+      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 150;
       animTimer = setTimeout(removeHud, animDuration);
     }
 
