@@ -9,14 +9,18 @@ function fallbackCopy(text) {
     var ok = document.execCommand("copy");
     if (!ok) throw new Error("execCommand failed");
   } finally {
-    document.body.removeChild(ta);
+    if (ta.parentNode) ta.parentNode.removeChild(ta);
   }
 }
 
 function copyText(text) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     return navigator.clipboard.writeText(text).catch(function () {
-      fallbackCopy(text);
+      try {
+        fallbackCopy(text);
+      } catch (e) {
+        return Promise.reject(e);
+      }
     });
   }
   try {
