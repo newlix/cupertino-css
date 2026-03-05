@@ -217,22 +217,15 @@
     };
     popover.addEventListener("keydown", popover._escHandler);
 
-    // Focus trap for content (non-menu) popovers
+    // Tab dismisses content (non-menu) popovers — consistent with non-modal nature
     if (!isMenu) {
       if (popover._focusTrapHandler) {
         popover.removeEventListener("keydown", popover._focusTrapHandler);
       }
       popover._focusTrapHandler = (e) => {
         if (e.key !== "Tab" || !popover.matches(":popover-open")) return;
-        const focusable = Array.from(popover.querySelectorAll(FOCUSABLE_ALL));
-        if (!focusable.length) return;
-        const first = focusable[0];
-        const last = focusable.at(-1);
-        if (e.shiftKey) {
-          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-        } else {
-          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
+        popover._tabDismiss = true;
+        popover.hidePopover();
       };
       popover.addEventListener("keydown", popover._focusTrapHandler);
     }
