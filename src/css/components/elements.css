@@ -94,7 +94,8 @@ blockquote {
   border-color: var(--color-border-solid);
 }
 code {
-  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[13px] font-normal text-foreground;
+  @apply rounded-md px-1.5 py-0.5 font-mono text-[13px] font-normal text-foreground;
+  background: var(--surface-3);
   line-height: 1.5;
 }
 
