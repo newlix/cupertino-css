@@ -1,15 +1,14 @@
 // Snippet — ciderui
 function fallbackCopy(text) {
-  var ta = document.createElement("textarea");
+  const ta = document.createElement("textarea");
   ta.value = text;
   ta.style.cssText = "position:fixed;opacity:0";
   try {
     document.body.appendChild(ta);
     ta.select();
-    var ok = document.execCommand("copy");
-    if (!ok) throw new Error("execCommand failed");
+    if (!document.execCommand("copy")) throw new Error("execCommand failed");
   } finally {
-    if (ta.parentNode) ta.parentNode.removeChild(ta);
+    ta.remove();
   }
 }
 
@@ -35,18 +34,18 @@ if (window._ciderSnippetInit) { /* already initialized */ } else {
 window._ciderSnippetInit = true;
 document.addEventListener("click", function (e) {
   // Copy button — direct child button of snippet > header
-  var btn = e.target.closest(".snippet > header > button");
+  const btn = e.target.closest(".snippet > header > button");
   if (btn) {
-    var snippet = btn.closest(".snippet");
+    const snippet = btn.closest(".snippet");
     if (!snippet) return;
 
-    var activePanel = snippet.querySelector(
+    const activePanel = snippet.querySelector(
       "pre[data-panel][data-active] code"
     );
-    var code = activePanel || snippet.querySelector("pre code");
+    const code = activePanel || snippet.querySelector("pre code");
     if (!code) return;
 
-    var original = btn.textContent;
+    const original = btn.textContent;
     if (btn._copyTimer) clearTimeout(btn._copyTimer);
     copyText(code.textContent).then(function () {
       btn.textContent = "Copied!";
@@ -60,12 +59,12 @@ document.addEventListener("click", function (e) {
   }
 
   // Tab switching
-  var tab = e.target.closest(".snippet > header > nav > button[data-tab]");
+  const tab = e.target.closest(".snippet > header > nav > button[data-tab]");
   if (tab) {
-    var snippet = tab.closest(".snippet");
+    const snippet = tab.closest(".snippet");
     if (!snippet) return;
 
-    var target = tab.getAttribute("data-tab");
+    const target = tab.getAttribute("data-tab");
 
     snippet.querySelectorAll("header > nav > button[data-tab]").forEach(function (t) {
       t.removeAttribute("data-active");

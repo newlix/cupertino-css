@@ -370,7 +370,8 @@
     border-color: var(--color-border);
   }
   .cider :focus-visible, .cider:focus-visible {
-    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
   }
   @keyframes dialogShow {
     from {
@@ -651,7 +652,7 @@
       padding-block: calc(var(--spacing) * 2);
       font-size: 13px;
       min-height: 32px;
-      @media (pointer: coarse) {
+      @media (pointer: coarse), (hover: none) {
         min-height: 44px;
       }
     }
@@ -874,10 +875,10 @@
     }
     :is(a, button).card {
       cursor: pointer;
-      transition: background-color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
+      transition: background-color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring);
       text-decoration: none;
       color: inherit;
-      @media (pointer: coarse) {
+      @media (pointer: coarse), (hover: none) {
         min-height: 44px;
       }
       &:hover {
@@ -957,7 +958,7 @@
     dialog {
       margin: auto;
       width: 100%;
-      border-radius: 14px;
+      border-radius: var(--radius-lg);
       padding: calc(var(--spacing) * 0);
       color: var(--color-card-foreground);
       max-width: min(400px, calc(100vw - 2rem));
@@ -1020,7 +1021,7 @@
           width: calc(var(--spacing) * 4);
           height: calc(var(--spacing) * 4);
         }
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-width: 44px;
           min-height: 44px;
           display: inline-flex;
@@ -1086,6 +1087,20 @@
           border-top-width: 0.5px;
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        &[open] {
+          animation: none;
+        }
+        &:modal[open]::backdrop {
+          animation: none;
+        }
+        &[data-closing] {
+          animation: none;
+        }
+        &:modal[data-closing]::backdrop {
+          animation: none;
+        }
+      }
       @media (forced-colors: active) {
         border: 1px solid ButtonText;
         & .dialog-close {
@@ -1100,7 +1115,7 @@
     .segmented-control {
       --segmented-active: oklch(1 0 0);
       .dark & {
-        --segmented-active: oklch(0.48 0.004 286.1);
+        --segmented-active: oklch(0.58 0.004 286.1);
       }
     }
     .segmented-control [data-tab-list] {
@@ -1166,7 +1181,7 @@
         pointer-events: none;
         opacity: 0.38;
       }
-      @media (pointer: coarse) {
+      @media (pointer: coarse), (hover: none) {
         min-height: 44px;
       }
       &[data-active], &[aria-selected="true"] {
@@ -1258,7 +1273,7 @@
           opacity: 0.38;
           pointer-events: none;
         }
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-width: 44px;
           min-height: 44px;
         }
@@ -1329,6 +1344,7 @@
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       box-sizing: border-box;
+      user-select: none;
       width: 7px;
       height: 7px;
       border-radius: 50%;
@@ -1381,7 +1397,7 @@
           background: GrayText;
         }
       }
-      @media (pointer: coarse) {
+      @media (pointer: coarse), (hover: none) {
         position: relative;
         &::after {
           content: "";
@@ -1410,7 +1426,7 @@
         corner-shape: squircle;
         min-height: 32px;
         min-width: 32px;
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-height: 44px;
           min-width: 44px;
         }
@@ -1447,7 +1463,7 @@
         user-select: none;
         min-height: 32px;
         min-width: 32px;
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-height: 44px;
           min-width: 44px;
         }
@@ -1484,7 +1500,7 @@
         color: var(--color-tertiary-foreground);
         text-decoration-line: none;
         transition: color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-height: 44px;
           display: inline-flex;
           align-items: center;
@@ -1729,6 +1745,7 @@
           outline: 2px solid Highlight;
         }
         &:disabled, &[aria-disabled="true"] {
+          opacity: 1;
           &::-webkit-slider-runnable-track {
             border-color: GrayText;
             background: linear-gradient(to right, GrayText 0%, GrayText var(--slider-value), Canvas var(--slider-value), Canvas 100%);
@@ -1757,7 +1774,7 @@
           transition: none;
         }
       }
-      @media (pointer: coarse) {
+      @media (pointer: coarse), (hover: none) {
         min-height: 44px;
       }
     }
@@ -1985,13 +2002,13 @@
           outline-offset: -2px;
         }
         &:is([data-selected], [aria-selected="true"]):hover:not(:disabled, [aria-disabled="true"]) {
-          background: oklch(from var(--color-primary) l c h / 0.32);
+          background: oklch(from var(--color-primary) l c h / 0.23);
           .dark & {
-            background: oklch(from var(--color-primary) l c h / 0.38);
+            background: oklch(from var(--color-primary) l c h / 0.36);
           }
         }
         &:is([data-selected], [aria-selected="true"]):active:not(:disabled, [aria-disabled="true"]) {
-          background: oklch(from var(--color-primary) l c h / 0.35);
+          background: oklch(from var(--color-primary) l c h / 0.27);
           .dark & {
             background: oklch(from var(--color-primary) l c h / 0.40);
           }
@@ -2123,11 +2140,20 @@
           color: var(--color-foreground);
           text-decoration-line: none;
           transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
-          &:is(:hover, :focus-visible, :active) {
+          &:is(:hover, :active) {
             background: var(--color-primary);
             color: var(--color-primary-foreground);
           }
-          &:is(:hover, :focus-visible, :active) svg {
+          &:is(:hover, :active) svg {
+            color: var(--color-primary-foreground);
+          }
+          &:focus-visible {
+            background: var(--color-primary);
+            color: var(--color-primary-foreground);
+            outline: 2px solid var(--color-primary);
+            outline-offset: -2px;
+          }
+          &:focus-visible svg {
             color: var(--color-primary-foreground);
           }
           & svg {
@@ -2136,7 +2162,7 @@
             color: var(--color-tertiary-foreground);
             transition: color var(--transition-fast) var(--apple-ease);
           }
-          @media (pointer: coarse) {
+          @media (pointer: coarse), (hover: none) {
             min-height: 44px;
           }
           &:disabled, &[aria-disabled="true"] {
@@ -2250,7 +2276,9 @@
         }
         &:autofill, &:-webkit-autofill {
           -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+          box-shadow: 0 0 0 100px var(--color-card) inset;
           -webkit-text-fill-color: var(--color-foreground);
+          color: var(--color-foreground);
         }
         &[aria-invalid="true"] {
           border-color: var(--color-destructive);
@@ -2274,7 +2302,7 @@
           height: 48px;
           font-size: 24px;
         }
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           & input:not([type="hidden"]) {
             min-width: 44px;
           }
@@ -2346,7 +2374,7 @@
       line-height: 1.21;
       letter-spacing: 0.011em;
       &:not(:first-child) {
-        margin-top: calc(var(--spacing) * 8);
+        margin-top: calc(var(--spacing) * 12);
       }
     }
     h2 {
@@ -2387,8 +2415,8 @@
     }
     h5 {
       margin-bottom: calc(var(--spacing) * 1);
-      --tw-font-weight: var(--font-weight-semibold);
-      font-weight: var(--font-weight-semibold);
+      --tw-font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-bold);
       color: var(--color-foreground);
       font-size: 17px;
       line-height: 1.29;
@@ -2450,13 +2478,13 @@
     blockquote {
       border-left-style: var(--tw-border-style);
       border-left-width: 4px;
+      padding-block: calc(var(--spacing) * 2);
       padding-left: calc(var(--spacing) * 5);
       color: var(--color-tertiary-foreground);
       border-color: var(--color-border-solid);
     }
     code {
       border-radius: var(--radius-md);
-      background-color: var(--color-secondary);
       padding-inline: calc(var(--spacing) * 1.5);
       padding-block: calc(var(--spacing) * 0.5);
       font-family: var(--font-mono);
@@ -2464,6 +2492,7 @@
       --tw-font-weight: var(--font-weight-normal);
       font-weight: var(--font-weight-normal);
       color: var(--color-foreground);
+      background: var(--surface-3);
       line-height: 1.5;
     }
     details {
@@ -2482,7 +2511,7 @@
         padding: 0.25rem 0.5rem;
         margin: -0.25rem -0.5rem;
         transition: background-color var(--transition-fast) var(--apple-ease);
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-height: 44px;
           display: flex;
           align-items: center;
@@ -2504,7 +2533,7 @@
         }
       }
       & > :not(summary) {
-        margin-top: calc(var(--spacing) * 2);
+        margin-top: calc(var(--spacing) * 3);
       }
     }
     pre {
@@ -2564,7 +2593,9 @@
       }
       &:autofill, &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+        box-shadow: 0 0 0 100px var(--color-card) inset;
         -webkit-text-fill-color: var(--color-foreground);
+        color: var(--color-foreground);
       }
       &[aria-invalid="true"] {
         border-color: var(--color-destructive);
@@ -2631,6 +2662,12 @@
         cursor: not-allowed;
         opacity: 0.38;
         pointer-events: none;
+      }
+      &:autofill, &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+        box-shadow: 0 0 0 100px var(--color-card) inset;
+        -webkit-text-fill-color: var(--color-foreground);
+        color: var(--color-foreground);
       }
       &[aria-invalid="true"] {
         border-color: var(--color-destructive);
@@ -2704,6 +2741,14 @@
           box-shadow: var(--focus-ring-error);
         }
       }
+      @media (pointer: coarse), (hover: none) {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          inset: -13px;
+        }
+      }
     }
     input[type="radio"] {
       flex-shrink: 0;
@@ -2756,6 +2801,14 @@
         }
         &:focus-visible {
           box-shadow: var(--focus-ring-error);
+        }
+      }
+      @media (pointer: coarse), (hover: none) {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          inset: -13px;
         }
       }
     }
@@ -2850,7 +2903,7 @@
         cursor: pointer;
         align-items: center;
         gap: calc(var(--spacing) * 2.5);
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none) {
           min-height: 44px;
         }
         &:has(> small) {
@@ -2914,7 +2967,7 @@
         --tw-font-weight: var(--font-weight-medium);
         font-weight: var(--font-weight-medium);
         color: var(--color-tertiary-foreground);
-        font-size: 0.8125rem;
+        font-size: 13px;
         letter-spacing: -0.01em;
       }
       & tbody tr + tr td, & tbody tr + tr th {
@@ -2993,7 +3046,7 @@
       justify-content: center;
       border-radius: var(--radius-xs);
       padding-inline: calc(var(--spacing) * 1.5);
-      font-size: 12px;
+      font-size: 13px;
       --tw-font-weight: var(--font-weight-medium);
       font-weight: var(--font-weight-medium);
       color: var(--color-tertiary-foreground);

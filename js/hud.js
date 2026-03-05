@@ -3,7 +3,7 @@
 // transient, auto-dismiss), not a toast. Toasts are edge-positioned; HUDs are centered.
 // macOS equivalent: NSPanel with styleMask:.hudWindow (volume/brightness/screenshot overlays).
 (function () {
-  var DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta", "a"]);
+  const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta", "a"]);
 
   function createHUDContainer() {
     const container = document.createElement("div");
