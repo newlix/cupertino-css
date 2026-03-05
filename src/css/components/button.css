@@ -90,7 +90,7 @@
 .btn-small {
   @apply px-3 py-2 text-[13px] gap-1.5 rounded-[var(--radius-sm)];
   min-height: 32px;
-  @media (pointer: coarse) { min-height: 44px; }
+  @media (pointer: coarse), (hover: none) { min-height: 44px; }
 }
 .btn-large {
   @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[var(--radius-lg)];

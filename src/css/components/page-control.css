@@ -49,7 +49,7 @@
     &:disabled, &[aria-disabled="true"] { border-color: GrayText; background: GrayText; }
   }
   /* Enlarge touch target on touch devices without changing visual size */
-  @media (pointer: coarse) {
+  @media (pointer: coarse), (hover: none) {
     position: relative;
     &::after {
       content: "";

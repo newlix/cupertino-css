@@ -19,7 +19,7 @@
     &:active { transform: scale(var(--apple-press-scale)); }
     &:focus-visible { box-shadow: var(--avatar-ring), var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
     &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
-    @media (pointer: coarse) { min-width: 44px; min-height: 44px; }
+    @media (pointer: coarse), (hover: none) { min-width: 44px; min-height: 44px; }
   }
 }
 .avatar-sm { @apply size-7 text-[11px]; }

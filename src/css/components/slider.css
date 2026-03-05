@@ -89,7 +89,7 @@
     &::-webkit-slider-thumb { transition: none; }
     &::-moz-range-thumb { transition: none; }
   }
-  @media (pointer: coarse) {
+  @media (pointer: coarse), (hover: none) {
     min-height: 44px;
   }
 }
