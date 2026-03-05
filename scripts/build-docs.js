@@ -80,6 +80,7 @@ function build() {
   });
 
   // CSS succeeded — now safe to clean stale output (preserve the CSS we just built)
+  if (!SITE.startsWith(ROOT)) throw new Error(`SITE ${SITE} is outside ROOT ${ROOT}`);
   for (const entry of fs.readdirSync(SITE)) {
     if (entry === "docs.built.css") continue;
     fs.rmSync(path.join(SITE, entry), { recursive: true });
@@ -132,7 +133,7 @@ if (process.argv.includes("--watch")) {
       try {
         build();
       } catch (e) {
-        console.error(e.message);
+        console.error(e.stack || e.message);
       }
     }, 200);
   };

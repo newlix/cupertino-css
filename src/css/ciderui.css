@@ -270,7 +270,8 @@
    */
   .cider :focus-visible,
   .cider:focus-visible {
-    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
   }
 
   @keyframes dialogShow {

@@ -41,5 +41,7 @@ test.describe('Tag', () => {
     const btn = preview(page, 2).locator('button.tag-red').first();
     await expect(btn).toBeVisible();
     expect(await btn.getAttribute('aria-label')).toBe('Red');
+    await btn.focus();
+    await expect(btn).toBeFocused();
   });
 });

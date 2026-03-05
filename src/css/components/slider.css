@@ -77,6 +77,7 @@
     &:focus-visible::-webkit-slider-thumb { outline: 2px solid Highlight; }
     &:focus-visible::-moz-range-thumb { outline: 2px solid Highlight; }
     &:disabled, &[aria-disabled="true"] {
+      opacity: 1;
       &::-webkit-slider-runnable-track { border-color: GrayText; background: linear-gradient(to right, GrayText 0%, GrayText var(--slider-value), Canvas var(--slider-value), Canvas 100%); }
       &::-webkit-slider-thumb { background: GrayText; border-color: GrayText; }
       &::-moz-range-track { border-color: GrayText; }

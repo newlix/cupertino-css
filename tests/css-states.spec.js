@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { goto, css } from './helpers.js';
+import { goto, css, focusViaKeyboard } from './helpers.js';
 
 test.describe('CSS State Specificity', () => {
   test('radio: hover on checked shows hover feedback', async ({ page }) => {
@@ -80,7 +80,7 @@ test.describe('CSS State Specificity', () => {
     const input = page.locator('.snippet-preview > figure input[type="text"]').first();
     const beforeColor = await css(input, 'borderColor');
 
-    await input.focus();
+    await focusViaKeyboard(page, input);
     await expect(async () => {
       expect(await css(input, 'borderColor')).not.toBe(beforeColor);
     }).toPass({ timeout: 1000 });

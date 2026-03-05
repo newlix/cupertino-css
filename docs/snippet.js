@@ -19,8 +19,12 @@ function copyText(text) {
       fallbackCopy(text);
     });
   }
-  fallbackCopy(text);
-  return Promise.resolve();
+  try {
+    fallbackCopy(text);
+    return Promise.resolve();
+  } catch (e) {
+    return Promise.reject(e);
+  }
 }
 
 if (window._ciderSnippetInit) { /* already initialized */ } else {

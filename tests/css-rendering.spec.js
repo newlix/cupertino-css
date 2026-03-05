@@ -8,6 +8,7 @@ test.describe('CSS Rendering', () => {
     await expect(btn).toBeVisible();
 
     const box = await btn.boundingBox();
+    expect(box).not.toBeNull();
     expect(box.width).toBeGreaterThan(20);
     expect(box.height).toBeGreaterThan(20);
     expect(await css(btn, 'borderRadius')).not.toBe('0px');
@@ -49,6 +50,7 @@ test.describe('CSS Rendering', () => {
     for (let i = 0; i < Math.min(count, 2); i++) {
       await expect(badges.nth(i)).toBeVisible();
       const box = await badges.nth(i).boundingBox();
+      expect(box).not.toBeNull();
       expect(box.height).toBeGreaterThan(10);
     }
   });
@@ -66,6 +68,7 @@ test.describe('CSS Rendering', () => {
     const alert = page.locator('.snippet-preview > figure .callout').first();
     await expect(alert).toBeVisible();
     const box = await alert.boundingBox();
+    expect(box).not.toBeNull();
     expect(box.height).toBeGreaterThan(30);
   });
 
@@ -81,6 +84,7 @@ test.describe('CSS Rendering', () => {
     const sep = preview(page).locator('hr').first();
     await expect(sep).toBeVisible();
     const box = await sep.boundingBox();
+    expect(box).not.toBeNull();
     expect(box.height).toBeLessThanOrEqual(2);
   });
 });
