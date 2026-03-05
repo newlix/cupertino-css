@@ -11,6 +11,7 @@ progress {
   &::-webkit-progress-value {
     background: var(--color-primary);
     border-radius: var(--radius-pill);
+    /* Best-effort: transition on pseudo-elements is unreliable across browsers */
     transition: width var(--transition-normal) var(--apple-ease);
   }
   &::-moz-progress-bar {

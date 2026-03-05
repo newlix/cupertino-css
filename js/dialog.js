@@ -6,27 +6,23 @@
   let savedOverflow = null;
   const FOCUSABLE = 'a[href]:not([aria-disabled="true"]), button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
-  function closeDialog(dialog) {
-    if (dialog.hasAttribute("data-closing")) return;
+  function clearCloseAnim(dialog) {
+    if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
     if (dialog._closeAnimHandler) {
       dialog.removeEventListener("animationend", dialog._closeAnimHandler);
       dialog._closeAnimHandler = null;
     }
-    if (dialog._closeTimer) {
-      clearTimeout(dialog._closeTimer);
-      dialog._closeTimer = null;
-    }
+  }
+
+  function closeDialog(dialog) {
+    if (dialog.hasAttribute("data-closing")) return;
+    clearCloseAnim(dialog);
     let closed = false;
     function finish() {
       if (closed) return;
       closed = true;
-      if (dialog._closeTimer) clearTimeout(dialog._closeTimer);
-      dialog._closeTimer = null;
+      clearCloseAnim(dialog);
       dialog.removeAttribute("data-closing");
-      if (dialog._closeAnimHandler) {
-        dialog.removeEventListener("animationend", dialog._closeAnimHandler);
-        dialog._closeAnimHandler = null;
-      }
       dialog.close();
     }
     dialog._closeAnimHandler = (e) => {
@@ -120,7 +116,7 @@
 
       function teardown() {
         const wasActive = activeDialogs.delete(dialog);
-        if (wasActive && activeDialogs.size === 0) {
+        if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
           document.body.style.overflow = savedOverflow ?? "";
           document.body.style.paddingRight = "";
           savedOverflow = null;
@@ -157,11 +153,7 @@
             trapFocus(dialog);
           }
         } else {
-          if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
-          if (dialog._closeAnimHandler) {
-            dialog.removeEventListener("animationend", dialog._closeAnimHandler);
-            dialog._closeAnimHandler = null;
-          }
+          clearCloseAnim(dialog);
           dialog.removeAttribute("data-closing");
           dialog.removeAttribute("aria-modal");
           teardown();
@@ -180,6 +172,7 @@
   function openDialog(dialog) {
     if (!dialog || !dialog.isConnected) return;
     if (!dialog._dialogInit) init();
+    if (!dialog._dialogInit) return;
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._openWaitObs) return;
       const obs = new MutationObserver(() => {
@@ -230,8 +223,7 @@
       if (dialog._clickHandler) { dialog.removeEventListener("click", dialog._clickHandler); dialog._clickHandler = null; }
       if (dialog._focusObserver) { dialog._focusObserver.disconnect(); dialog._focusObserver = null; }
       if (dialog._focusTrapHandler) { dialog.removeEventListener("keydown", dialog._focusTrapHandler); dialog._focusTrapHandler = null; }
-      if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
-      if (dialog._closeAnimHandler) { dialog.removeEventListener("animationend", dialog._closeAnimHandler); dialog._closeAnimHandler = null; }
+      clearCloseAnim(dialog);
       if (dialog._openWaitObs) { dialog._openWaitObs.disconnect(); dialog._openWaitObs = null; }
       if (dialog._openWaitTimer) { clearTimeout(dialog._openWaitTimer); dialog._openWaitTimer = null; }
       const wasActive = activeDialogs.delete(dialog);
