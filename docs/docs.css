@@ -143,7 +143,7 @@
             @apply text-foreground;
             background: var(--surface-3);
           }
-          &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+          &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
           &[data-active] {
             @apply text-foreground;
             background: var(--surface-4);
@@ -161,7 +161,7 @@
           background: var(--surface-4);
           color: var(--color-foreground);
         }
-        &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; opacity: 1; }
+        &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; opacity: 1; }
         &:active {
           transform: scale(var(--apple-press-scale));
         }
