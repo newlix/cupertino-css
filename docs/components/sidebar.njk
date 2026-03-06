@@ -11,6 +11,14 @@
     <dd>Vertical navigation with section headers, compact items, and auto-hiding scrollbar.</dd>
     <dt><code>.sidebar-tinted</code></dt>
     <dd>Modifier — uses primary-color tinted background for the active item instead of neutral gray.</dd>
+    <dt><code>.sidebar-panel</code></dt>
+    <dd>Fixed left panel container. Desktop: always visible. Mobile (≤768px): off-canvas, slides in when toggled. Width via <code>--sidebar-width</code> (default 260px).</dd>
+    <dt><code>.sidebar-overlay</code></dt>
+    <dd>Backdrop overlay shown behind sidebar on mobile when open.</dd>
+    <dt><code>.sidebar-content</code></dt>
+    <dd>Main content area — auto margin-left on desktop, full width on mobile.</dd>
+    <dt><code>.sidebar-toggle</code></dt>
+    <dd>Toggle button — hidden on desktop, visible on mobile. Requires <code>data-sidebar-toggle</code> + <code>aria-controls</code> pointing to the <code>.sidebar-panel</code> id.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -96,6 +104,42 @@
     <a href="#">Billing</a>
   </div>
 </nav>
+{% endcall %}
+
+  <h2>Responsive Layout</h2>
+  <p>Wrap <code>.sidebar</code> in a <code>.sidebar-panel</code> for a full responsive off-canvas layout.
+  Include <code>sidebar.js</code> for mobile toggle behavior.</p>
+
+  {% call example("Layout Structure", preview=false) %}
+<!-- Toggle button (mobile only) -->
+<button class="sidebar-toggle" data-sidebar-toggle
+        aria-controls="app-sidebar" aria-expanded="false">
+  <svg fill="none" stroke="currentColor" stroke-width="2"
+       viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+  Menu
+</button>
+
+<!-- Sidebar panel -->
+<aside class="sidebar-panel" id="app-sidebar">
+  <nav class="sidebar">
+    <div>
+      <h2>Section</h2>
+      <a href="/page-1" data-active>Page One</a>
+      <a href="/page-2">Page Two</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- Overlay (mobile backdrop) -->
+<div class="sidebar-overlay"></div>
+
+<!-- Main content -->
+<main class="sidebar-content">
+  <!-- Your page content -->
+</main>
 {% endcall %}
 
 {% endblock %}

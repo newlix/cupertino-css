@@ -114,3 +114,159 @@ test.describe('Sidebar', () => {
     await setLight(page);
   });
 });
+
+test.describe('Sidebar Mobile Layout', () => {
+  test.use({ viewport: { width: 375, height: 667 } });
+
+  test.beforeEach(async ({ page }) => {
+    // Use a standalone page with the full sidebar layout
+    await page.goto('/components/sidebar.html');
+    await page.waitForLoadState('load');
+  });
+
+  test('sidebar-toggle is visible on mobile', async ({ page }) => {
+    // The docs site sidebar has a mobile toggle already, but we test the
+    // component CSS class .sidebar-toggle visibility via inline test markup
+    const visible = await page.evaluate(() => {
+      const el = document.createElement('button');
+      el.className = 'sidebar-toggle';
+      document.querySelector('.cider').appendChild(el);
+      const display = getComputedStyle(el).display;
+      el.remove();
+      return display;
+    });
+    expect(visible).not.toBe('none');
+  });
+
+  test('sidebar-toggle is hidden on desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    const hidden = await page.evaluate(() => {
+      const el = document.createElement('button');
+      el.className = 'sidebar-toggle';
+      document.querySelector('.cider').appendChild(el);
+      const display = getComputedStyle(el).display;
+      el.remove();
+      return display;
+    });
+    expect(hidden).toBe('none');
+  });
+
+  test('sidebar-panel is off-screen on mobile by default', async ({ page }) => {
+    const transform = await page.evaluate(() => {
+      const el = document.createElement('aside');
+      el.className = 'sidebar-panel';
+      el.style.cssText = 'visibility:hidden';
+      document.querySelector('.cider').appendChild(el);
+      const t = getComputedStyle(el).transform;
+      el.remove();
+      return t;
+    });
+    // translateX(-100%) results in a matrix with a negative X translation
+    expect(transform).not.toBe('none');
+  });
+
+  test('JS toggle opens and closes sidebar-panel', async ({ page }) => {
+    // Inject a sidebar layout into the page
+    await page.evaluate(() => {
+      const container = document.querySelector('.cider');
+      container.insertAdjacentHTML('beforeend', `
+        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar" aria-expanded="false">Menu</button>
+        <aside class="sidebar-panel" id="test-sidebar">
+          <nav class="sidebar"><a href="#">Link</a></nav>
+        </aside>
+        <div class="sidebar-overlay"></div>
+      `);
+      // Re-init sidebar JS
+      if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
+    });
+
+    const toggle = page.locator('[data-sidebar-toggle]');
+    const panel = page.locator('#test-sidebar');
+
+    // Initially closed
+    expect(await panel.getAttribute('data-open')).toBeNull();
+
+    // Open
+    await toggle.click();
+    expect(await panel.getAttribute('data-open')).toBe('');
+    expect(await toggle.getAttribute('aria-expanded')).toBe('true');
+
+    // Close — use force because the open panel (width:100%) covers the toggle
+    await toggle.click({ force: true });
+    expect(await panel.getAttribute('data-open')).toBeNull();
+    expect(await toggle.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  test('overlay click closes sidebar', async ({ page }) => {
+    await page.evaluate(() => {
+      const container = document.querySelector('.cider');
+      container.insertAdjacentHTML('beforeend', `
+        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar2" aria-expanded="false">Menu</button>
+        <aside class="sidebar-panel" id="test-sidebar2">
+          <nav class="sidebar"><a href="#">Link</a></nav>
+        </aside>
+        <div class="sidebar-overlay" id="test-overlay2"></div>
+      `);
+      if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
+    });
+
+    const toggle = page.locator('[aria-controls="test-sidebar2"]');
+    const panel = page.locator('#test-sidebar2');
+    const overlay = page.locator('#test-overlay2');
+
+    await toggle.click();
+    expect(await panel.getAttribute('data-open')).toBe('');
+
+    // Click overlay to close
+    await overlay.click({ force: true });
+    expect(await panel.getAttribute('data-open')).toBeNull();
+  });
+
+  test('Escape key closes sidebar', async ({ page }) => {
+    await page.evaluate(() => {
+      const container = document.querySelector('.cider');
+      container.insertAdjacentHTML('beforeend', `
+        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar3" aria-expanded="false">Menu</button>
+        <aside class="sidebar-panel" id="test-sidebar3">
+          <nav class="sidebar"><a href="#">Link</a></nav>
+        </aside>
+        <div class="sidebar-overlay"></div>
+      `);
+      if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
+    });
+
+    const toggle = page.locator('[aria-controls="test-sidebar3"]');
+    const panel = page.locator('#test-sidebar3');
+
+    await toggle.click();
+    expect(await panel.getAttribute('data-open')).toBe('');
+
+    await page.keyboard.press('Escape');
+    expect(await panel.getAttribute('data-open')).toBeNull();
+  });
+
+  test('link click inside sidebar closes panel', async ({ page }) => {
+    await page.evaluate(() => {
+      const container = document.querySelector('.cider');
+      container.insertAdjacentHTML('beforeend', `
+        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar4" aria-expanded="false">Menu</button>
+        <aside class="sidebar-panel" id="test-sidebar4">
+          <nav class="sidebar"><a href="#" id="test-link4">Link</a></nav>
+        </aside>
+        <div class="sidebar-overlay"></div>
+      `);
+      if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
+    });
+
+    const toggle = page.locator('[aria-controls="test-sidebar4"]');
+    const panel = page.locator('#test-sidebar4');
+    const link = page.locator('#test-link4');
+
+    await toggle.click({ force: true });
+    expect(await panel.getAttribute('data-open')).toBe('');
+
+    // Dispatch click programmatically — the panel transition may not have finished
+    await page.evaluate(() => document.getElementById('test-link4').click());
+    expect(await panel.getAttribute('data-open')).toBeNull();
+  });
+});

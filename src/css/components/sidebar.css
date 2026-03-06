@@ -75,6 +75,66 @@
   }
 }
 
+/* ─── Layout: sidebar-panel + sidebar-overlay + sidebar-content ─── */
+/* Responsive off-canvas sidebar layout.
+   Desktop: fixed left panel. Mobile (≤768px): hidden, slides in via JS toggle.
+   Width customisable via --sidebar-width on .sidebar-panel. */
+.sidebar-panel {
+  --sidebar-width: 260px;
+  @apply fixed left-0 top-0 bottom-0 z-40 flex flex-col;
+  width: var(--sidebar-width);
+  background: var(--color-secondary);
+  border-right: 1px solid var(--color-border);
+}
+
+.sidebar-content {
+  margin-left: var(--sidebar-width, 260px);
+  min-height: 100vh;
+}
+
+.sidebar-overlay {
+  @apply fixed inset-0 z-30;
+  background: var(--backdrop-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--apple-ease);
+}
+.sidebar-overlay[data-open] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Toggle button — hidden on desktop, visible on mobile */
+.sidebar-toggle {
+  @apply hidden;
+}
+
+@media (max-width: 768px) {
+  .sidebar-panel {
+    width: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--apple-ease);
+    border-right: none;
+  }
+  .sidebar-panel[data-open] {
+    transform: translateX(0);
+  }
+  .sidebar-content {
+    margin-left: 0;
+  }
+  .sidebar-toggle {
+    @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
+    color: var(--color-foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-panel { transition: none; }
+  .sidebar-overlay { transition: none; }
+}
+
 @media (forced-colors: active) {
   .sidebar a:hover:not(:disabled):not([aria-disabled="true"]),
   .sidebar button:hover:not(:disabled):not([aria-disabled="true"]) {
