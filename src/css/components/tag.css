@@ -1,5 +1,11 @@
 /* ========== TAG (Finder-style color dots) ========== */
-.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray {
+.tag-red,
+.tag-orange,
+.tag-yellow,
+.tag-green,
+.tag-blue,
+.tag-purple,
+.tag-gray {
   @apply inline-block;
   width: 12px;
   height: 12px;
@@ -12,29 +18,79 @@
     cursor: pointer;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-    transition: opacity var(--transition-fast) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
-    &::before { content: ""; position: absolute; inset: -16px; }
-    &:hover { opacity: 0.8; }
-    &:active { opacity: 0.65; transform: scale(0.92); }
-    &:focus-visible { box-shadow: 0 0 0 2px var(--color-background), var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-    &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.38; }
+    transition:
+      opacity var(--transition-fast) var(--apple-ease),
+      transform var(--transition-fast) var(--apple-spring);
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -16px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.65;
+      transform: scale(0.92);
+    }
+    &:focus-visible {
+      box-shadow:
+        0 0 0 2px var(--color-background),
+        var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.38;
+    }
   }
 }
 /* Apple System Colors — light / dark */
-.tag-red    { --tag-color: var(--color-destructive); }
-.tag-orange { --tag-color: var(--color-orange); }
-.tag-yellow { --tag-color: var(--color-yellow); }
-.tag-green  { --tag-color: var(--color-green); }
-.tag-blue   { --tag-color: var(--color-blue); }
-.tag-purple { --tag-color: var(--color-purple); }
-.tag-gray   { --tag-color: var(--color-gray); }
+.tag-red {
+  --tag-color: var(--color-destructive);
+}
+.tag-orange {
+  --tag-color: var(--color-orange);
+}
+.tag-yellow {
+  --tag-color: var(--color-yellow);
+}
+.tag-green {
+  --tag-color: var(--color-green);
+}
+.tag-blue {
+  --tag-color: var(--color-blue);
+}
+.tag-purple {
+  --tag-color: var(--color-purple);
+}
+.tag-gray {
+  --tag-color: var(--color-gray);
+}
 @media (forced-colors: active) {
-  :is(.tag-red, .tag-orange, .tag-yellow, .tag-green, .tag-blue, .tag-purple, .tag-gray) {
+  :is(
+    .tag-red,
+    .tag-orange,
+    .tag-yellow,
+    .tag-green,
+    .tag-blue,
+    .tag-purple,
+    .tag-gray
+  ) {
     forced-color-adjust: none;
     border: 1.5px solid ButtonText;
     &:is(button, a) {
-      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; opacity: 1; }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
+        border-color: GrayText;
+        opacity: 1;
+      }
     }
   }
 }

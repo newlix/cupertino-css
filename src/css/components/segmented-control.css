@@ -13,8 +13,13 @@
   width: 0;
   opacity: 0;
   background: var(--segmented-active);
-  box-shadow: var(--shadow-sm), 0 0 0 0.5px var(--float-ring-color);
-  transition: transform var(--transition-normal) var(--apple-spring), width var(--transition-normal) var(--apple-spring), opacity var(--transition-normal) var(--apple-ease);
+  box-shadow:
+    var(--shadow-sm),
+    0 0 0 0.5px var(--float-ring-color);
+  transition:
+    transform var(--transition-normal) var(--apple-spring),
+    width var(--transition-normal) var(--apple-spring),
+    opacity var(--transition-normal) var(--apple-ease);
 }
 .segmented-control [data-tab] {
   @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[calc(var(--radius-sm)-4px)] border-none bg-transparent px-3.5 py-1.5 text-[13px] font-medium text-tertiary-foreground cursor-pointer;
@@ -22,12 +27,28 @@
   flex: 1 1 0%;
   min-width: 56px;
   min-height: 32px;
-  transition: color var(--transition-normal) var(--apple-ease), transform var(--transition-fast) var(--apple-spring);
-  &:hover:not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; }
-  &:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.96); }
-  &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  &:disabled, &[aria-disabled="true"] { @apply pointer-events-none; opacity: 0.38; }
-  @media (pointer: coarse), (hover: none) { min-height: 44px; }
+  transition:
+    color var(--transition-normal) var(--apple-ease),
+    transform var(--transition-fast) var(--apple-spring);
+  &:hover:not(:disabled):not([aria-disabled="true"]) {
+    @apply text-foreground;
+  }
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: scale(0.96);
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply pointer-events-none;
+    opacity: 0.38;
+  }
+  @media (pointer: coarse), (hover: none) {
+    min-height: 44px;
+  }
   &[data-active],
   &[aria-selected="true"] {
     @apply text-foreground;
@@ -35,13 +56,23 @@
 }
 .segmented-control [data-tab-panel] {
   @apply py-4;
-  &:not([data-active]) { @apply hidden; }
-  &[data-active] { animation: segFadeIn var(--transition-fast) var(--apple-ease); }
+  &:not([data-active]) {
+    @apply hidden;
+  }
+  &[data-active] {
+    animation: segFadeIn var(--transition-fast) var(--apple-ease);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .segmented-control [data-tab-indicator] { transition: none; }
-  .segmented-control [data-tab] { transition: none; }
-  .segmented-control [data-tab-panel][data-active] { animation: none; }
+  .segmented-control [data-tab-indicator] {
+    transition: none;
+  }
+  .segmented-control [data-tab] {
+    transition: none;
+  }
+  .segmented-control [data-tab-panel][data-active] {
+    animation: none;
+  }
 }
 @media (forced-colors: active) {
   .segmented-control [data-tab-list] {
@@ -51,9 +82,19 @@
     display: none;
   }
   .segmented-control [data-tab] {
-    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    &:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
     &[data-active],
-    &[aria-selected="true"] { color: HighlightText; background: Highlight; }
-    &:disabled, &[aria-disabled="true"] { color: GrayText; opacity: 1; }
+    &[aria-selected="true"] {
+      color: HighlightText;
+      background: Highlight;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      color: GrayText;
+      opacity: 1;
+    }
   }
 }

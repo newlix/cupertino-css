@@ -12,7 +12,8 @@
     }
   }
 
-  const FOCUSABLE = 'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE =
+    'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function isVisible(el) {
     if (el.getClientRects().length === 0) return false;
@@ -21,7 +22,10 @@
   }
 
   function clearCloseAnim(dialog) {
-    if (dialog._asCloseTimer) { clearTimeout(dialog._asCloseTimer); dialog._asCloseTimer = null; }
+    if (dialog._asCloseTimer) {
+      clearTimeout(dialog._asCloseTimer);
+      dialog._asCloseTimer = null;
+    }
     if (dialog._asCloseAnimHandler) {
       dialog.removeEventListener("animationend", dialog._asCloseAnimHandler);
       dialog._asCloseAnimHandler = null;
@@ -45,17 +49,26 @@
     };
     dialog.addEventListener("animationend", dialog._asCloseAnimHandler);
     dialog.setAttribute("data-closing", "");
-    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 300;
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? 10
+      : 300;
     dialog._asCloseTimer = setTimeout(finish, duration);
   }
 
   function trapFocus(dialog) {
-    const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
-    if (focusable.length) { focusable[0].focus(); }
+    const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
+      isVisible,
+    );
+    if (focusable.length) {
+      focusable[0].focus();
+    }
 
     function handler(e) {
       if (e.key !== "Tab") return;
-      const current = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(isVisible);
+      const current = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
+        isVisible,
+      );
       if (!current.length) return;
       const first = current[0];
       const last = current.at(-1);
@@ -65,9 +78,15 @@
         return;
       }
       if (e.shiftKey) {
-        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
       } else {
-        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     }
 
@@ -89,7 +108,9 @@
       };
       dialog.addEventListener("cancel", dialog._asCancelHandler);
 
-      dialog._asMousedownHandler = (e) => { dialog._asMousedownTarget = e.target; };
+      dialog._asMousedownHandler = (e) => {
+        dialog._asMousedownTarget = e.target;
+      };
       dialog.addEventListener("mousedown", dialog._asMousedownHandler);
 
       dialog._asClickHandler = (e) => {
@@ -100,8 +121,14 @@
         dialog._asMousedownTarget = null;
 
         // Auto-close on button/link click inside action-sheet-group
-        const btn = e.target.closest(".action-sheet-group > button, .action-sheet-group > a");
-        if (btn && !btn.hasAttribute("data-no-dismiss") && dialog.contains(btn)) {
+        const btn = e.target.closest(
+          ".action-sheet-group > button, .action-sheet-group > a",
+        );
+        if (
+          btn &&
+          !btn.hasAttribute("data-no-dismiss") &&
+          dialog.contains(btn)
+        ) {
           closeActionSheet(dialog);
         }
       };
@@ -127,12 +154,16 @@
           if (isModal && !activeDialogs.has(dialog)) {
             if (!dialog._asPreviousFocus) {
               const candidate = document.activeElement;
-              dialog._asPreviousFocus = dialog.contains(candidate) ? document.body : candidate;
+              dialog._asPreviousFocus = dialog.contains(candidate)
+                ? document.body
+                : candidate;
             }
             if (activeDialogs.size === 0) {
               savedOverflow = document.body.style.overflow;
-              const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-              if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+              const scrollbarWidth =
+                window.innerWidth - document.documentElement.clientWidth;
+              if (scrollbarWidth > 0)
+                document.body.style.paddingRight = `${scrollbarWidth}px`;
             }
             activeDialogs.add(dialog);
             document.body.style.overflow = "hidden";
@@ -144,7 +175,11 @@
           teardown();
           const prev = dialog._asPreviousFocus;
           dialog._asPreviousFocus = null;
-          if (prev && document.contains(prev) && (prev === document.body || isVisible(prev))) {
+          if (
+            prev &&
+            document.contains(prev) &&
+            (prev === document.body || isVisible(prev))
+          ) {
             prev.focus();
           }
         }
@@ -161,7 +196,13 @@
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._asOpenWaitObs) return;
       const obs = new MutationObserver(() => {
-        if (!dialog.isConnected) { obs.disconnect(); clearTimeout(dialog._asOpenWaitTimer); dialog._asOpenWaitObs = null; dialog._asOpenWaitTimer = null; return; }
+        if (!dialog.isConnected) {
+          obs.disconnect();
+          clearTimeout(dialog._asOpenWaitTimer);
+          dialog._asOpenWaitObs = null;
+          dialog._asOpenWaitTimer = null;
+          return;
+        }
         if (!dialog.hasAttribute("data-closing") && !dialog.open) {
           obs.disconnect();
           clearTimeout(dialog._asOpenWaitTimer);
@@ -171,7 +212,10 @@
         }
       });
       dialog._asOpenWaitObs = obs;
-      obs.observe(dialog, { attributes: true, attributeFilter: ["data-closing", "open"] });
+      obs.observe(dialog, {
+        attributes: true,
+        attributeFilter: ["data-closing", "open"],
+      });
       dialog._asOpenWaitTimer = setTimeout(() => {
         obs.disconnect();
         dialog._asOpenWaitObs = null;
@@ -182,19 +226,44 @@
     }
     if (dialog.open) return;
     dialog._asPreviousFocus = document.activeElement;
-    try { dialog.showModal(); } catch { /* dialog may have been removed or is already modal */ }
+    try {
+      dialog.showModal();
+    } catch {
+      /* dialog may have been removed or is already modal */
+    }
   }
 
   function destroy(dialog) {
     if (!dialog || !dialog._asInit) return;
-    if (dialog._asCancelHandler) { dialog.removeEventListener("cancel", dialog._asCancelHandler); dialog._asCancelHandler = null; }
-    if (dialog._asMousedownHandler) { dialog.removeEventListener("mousedown", dialog._asMousedownHandler); dialog._asMousedownHandler = null; }
-    if (dialog._asClickHandler) { dialog.removeEventListener("click", dialog._asClickHandler); dialog._asClickHandler = null; }
-    if (dialog._asObserver) { dialog._asObserver.disconnect(); dialog._asObserver = null; }
-    if (dialog._asFocusTrapHandler) { dialog.removeEventListener("keydown", dialog._asFocusTrapHandler); dialog._asFocusTrapHandler = null; }
+    if (dialog._asCancelHandler) {
+      dialog.removeEventListener("cancel", dialog._asCancelHandler);
+      dialog._asCancelHandler = null;
+    }
+    if (dialog._asMousedownHandler) {
+      dialog.removeEventListener("mousedown", dialog._asMousedownHandler);
+      dialog._asMousedownHandler = null;
+    }
+    if (dialog._asClickHandler) {
+      dialog.removeEventListener("click", dialog._asClickHandler);
+      dialog._asClickHandler = null;
+    }
+    if (dialog._asObserver) {
+      dialog._asObserver.disconnect();
+      dialog._asObserver = null;
+    }
+    if (dialog._asFocusTrapHandler) {
+      dialog.removeEventListener("keydown", dialog._asFocusTrapHandler);
+      dialog._asFocusTrapHandler = null;
+    }
     clearCloseAnim(dialog);
-    if (dialog._asOpenWaitObs) { dialog._asOpenWaitObs.disconnect(); dialog._asOpenWaitObs = null; }
-    if (dialog._asOpenWaitTimer) { clearTimeout(dialog._asOpenWaitTimer); dialog._asOpenWaitTimer = null; }
+    if (dialog._asOpenWaitObs) {
+      dialog._asOpenWaitObs.disconnect();
+      dialog._asOpenWaitObs = null;
+    }
+    if (dialog._asOpenWaitTimer) {
+      clearTimeout(dialog._asOpenWaitTimer);
+      dialog._asOpenWaitTimer = null;
+    }
     restoreScrollLock(dialog);
     dialog._asPreviousFocus = null;
     dialog._asInit = false;
@@ -203,7 +272,12 @@
   window.openActionSheet = openActionSheet;
   window.closeActionSheet = closeActionSheet;
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.actionSheet = { init, destroy, open: openActionSheet, close: closeActionSheet };
+  window.CiderUI.actionSheet = {
+    init,
+    destroy,
+    open: openActionSheet,
+    close: closeActionSheet,
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init, { once: true });
@@ -215,9 +289,10 @@
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
     if (!el) return;
-    const sheets = el.tagName === "DIALOG" && el.classList.contains("action-sheet")
-      ? [el]
-      : Array.from(el.querySelectorAll?.("dialog.action-sheet") || []);
+    const sheets =
+      el.tagName === "DIALOG" && el.classList.contains("action-sheet")
+        ? [el]
+        : Array.from(el.querySelectorAll?.("dialog.action-sheet") || []);
     sheets.forEach(destroy);
   });
 })();

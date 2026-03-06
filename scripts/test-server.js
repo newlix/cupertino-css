@@ -1,30 +1,45 @@
-import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
-import { join, extname, resolve } from 'node:path';
+import { createServer } from "node:http";
+import { readFile } from "node:fs/promises";
+import { join, extname, resolve } from "node:path";
 
-const dir = resolve(new URL('../site/', import.meta.url).pathname);
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.txt': 'text/plain' };
+const dir = resolve(new URL("../site/", import.meta.url).pathname);
+const types = {
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "text/javascript",
+  ".json": "application/json",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".txt": "text/plain",
+};
 
 const server = createServer(async (req, res) => {
   try {
-    let filePath = join(dir, decodeURIComponent(new URL(req.url, 'http://x').pathname));
-    if (!filePath.startsWith(dir + '/') && filePath !== dir) {
+    let filePath = join(
+      dir,
+      decodeURIComponent(new URL(req.url, "http://x").pathname),
+    );
+    if (!filePath.startsWith(dir + "/") && filePath !== dir) {
       res.writeHead(403);
-      res.end('Forbidden');
+      res.end("Forbidden");
       return;
     }
-    if (filePath.endsWith('/') || filePath === dir) filePath = join(filePath, 'index.html');
+    if (filePath.endsWith("/") || filePath === dir)
+      filePath = join(filePath, "index.html");
     const data = await readFile(filePath);
-    res.writeHead(200, { 'content-type': types[extname(filePath)] || 'application/octet-stream' });
+    res.writeHead(200, {
+      "content-type": types[extname(filePath)] || "application/octet-stream",
+    });
     res.end(data);
   } catch (err) {
-    if (err.code !== 'ENOENT' && err.code !== 'ENOTDIR') console.error('Server error:', err);
+    if (err.code !== "ENOENT" && err.code !== "ENOTDIR")
+      console.error("Server error:", err);
     res.writeHead(404);
-    res.end('Not Found');
+    res.end("Not Found");
   }
 });
-server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') console.error('Port 3000 already in use');
+server.on("error", (err) => {
+  if (err.code === "EADDRINUSE") console.error("Port 3000 already in use");
   else console.error(err);
   process.exit(1);
 });

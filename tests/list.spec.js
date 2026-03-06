@@ -1,64 +1,72 @@
-import { test, expect } from '@playwright/test';
-import { goto, preview, css, focusViaKeyboard } from './helpers.js';
+import { test, expect } from "@playwright/test";
+import { goto, preview, css, focusViaKeyboard } from "./helpers.js";
 
-test.describe('List', () => {
+test.describe("List", () => {
   test.beforeEach(async ({ page }) => {
-    await goto(page, 'list');
+    await goto(page, "list");
   });
 
-  test('renders list items with headings and descriptions', async ({ page }) => {
-    const list = preview(page).locator('.list');
+  test("renders list items with headings and descriptions", async ({
+    page,
+  }) => {
+    const list = preview(page).locator(".list");
     await expect(list).toBeVisible();
 
-    const items = list.locator('> *');
+    const items = list.locator("> *");
     await expect(items).toHaveCount(3);
 
-    await expect(list.locator('h3').first()).toHaveText('Project Files');
-    await expect(list.locator('h3').nth(1)).toHaveText('Your profile has been verified');
+    await expect(list.locator("h3").first()).toHaveText("Project Files");
+    await expect(list.locator("h3").nth(1)).toHaveText(
+      "Your profile has been verified",
+    );
   });
 
-  test('separator lines appear between items', async ({ page }) => {
-    const secondItem = preview(page).locator('.list > *').nth(1);
-    const before = await secondItem.evaluate(el => {
-      const s = getComputedStyle(el, '::before');
+  test("separator lines appear between items", async ({ page }) => {
+    const secondItem = preview(page).locator(".list > *").nth(1);
+    const before = await secondItem.evaluate((el) => {
+      const s = getComputedStyle(el, "::before");
       return { height: s.height, position: s.position };
     });
-    expect(before.position).toBe('absolute');
+    expect(before.position).toBe("absolute");
     expect(parseFloat(before.height)).toBeLessThanOrEqual(1);
   });
 
-  test('interactive item (link) has hover background', async ({ page }) => {
-    const link = preview(page).locator('.list > a').first();
-    const bgBefore = await css(link, 'backgroundColor');
+  test("interactive item (link) has hover background", async ({ page }) => {
+    const link = preview(page).locator(".list > a").first();
+    const bgBefore = await css(link, "backgroundColor");
 
     await link.hover();
     await expect(async () => {
-      const bgAfter = await css(link, 'backgroundColor');
+      const bgAfter = await css(link, "backgroundColor");
       expect(bgAfter).not.toBe(bgBefore);
     }).toPass({ timeout: 1000 });
   });
 
-  test('interactive item has focus-visible background highlight', async ({ page }) => {
-    const link = preview(page).locator('.list > a').first();
+  test("interactive item has focus-visible background highlight", async ({
+    page,
+  }) => {
+    const link = preview(page).locator(".list > a").first();
     await focusViaKeyboard(page, link);
 
     await expect(async () => {
-      const bg = await css(link, 'backgroundColor');
-      expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+      const bg = await css(link, "backgroundColor");
+      expect(bg).not.toBe("rgba(0, 0, 0, 0)");
     }).toPass({ timeout: 1000 });
   });
 
-  test('inset-grouped list renders with card styling', async ({ page }) => {
-    const groupedList = preview(page, 3).locator('.list-inset-grouped');
+  test("inset-grouped list renders with card styling", async ({ page }) => {
+    const groupedList = preview(page, 3).locator(".list-inset-grouped");
     await expect(groupedList).toBeVisible();
 
-    const items = groupedList.locator('> *');
+    const items = groupedList.locator("> *");
     await expect(items).toHaveCount(2);
   });
 
-  test('icon has no background (Apple HIG: plain inline icons)', async ({ page }) => {
-    const icon = preview(page).locator('.list > * > svg').first();
-    const bg = await css(icon, 'backgroundColor');
-    expect(bg).toBe('rgba(0, 0, 0, 0)');
+  test("icon has no background (Apple HIG: plain inline icons)", async ({
+    page,
+  }) => {
+    const icon = preview(page).locator(".list > * > svg").first();
+    const bg = await css(icon, "backgroundColor");
+    expect(bg).toBe("rgba(0, 0, 0, 0)");
   });
 });

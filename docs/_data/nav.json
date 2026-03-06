@@ -11,7 +11,10 @@
     "title": "Components",
     "items": [
       { "label": "Action Sheet", "href": "components/action-sheet.html" },
-      { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
+      {
+        "label": "Activity Indicator",
+        "href": "components/activity-indicator.html"
+      },
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
       { "label": "Breadcrumb", "href": "components/breadcrumb.html" },
@@ -20,7 +23,10 @@
       { "label": "Card", "href": "components/card.html" },
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
-      { "label": "Disclosure Group", "href": "components/disclosure-group.html" },
+      {
+        "label": "Disclosure Group",
+        "href": "components/disclosure-group.html"
+      },
       { "label": "Gauge", "href": "components/gauge.html" },
       { "label": "Tooltip", "href": "components/tooltip.html" },
       { "label": "HUD", "href": "components/hud.html" },
@@ -34,7 +40,10 @@
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },
-      { "label": "Segmented Control", "href": "components/segmented-control.html" },
+      {
+        "label": "Segmented Control",
+        "href": "components/segmented-control.html"
+      },
       { "label": "Select", "href": "components/select.html" },
       { "label": "Separator", "href": "components/separator.html" },
       { "label": "Sidebar", "href": "components/sidebar.html" },
@@ -46,13 +55,14 @@
       { "label": "Tag", "href": "components/tag.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
       { "label": "Toolbar", "href": "components/toolbar.html" },
-      { "label": "Verification Code", "href": "components/verification-code.html" }
+      {
+        "label": "Verification Code",
+        "href": "components/verification-code.html"
+      }
     ]
   },
   {
     "title": "Resources",
-    "items": [
-      { "label": "llms.txt", "href": "llms.txt" }
-    ]
+    "items": [{ "label": "llms.txt", "href": "llms.txt" }]
   }
 ]

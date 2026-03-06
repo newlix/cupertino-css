@@ -2,10 +2,13 @@
    Apple notification badge — the red dot/count on app icons (e.g. Mail unread count).
    Always destructive (red) by design. This is NOT a label or tag.
    See: Apple HIG > App Icon > Badges */
-.badge, .badge-dot {
+.badge,
+.badge-dot {
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
-  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+  transition:
+    transform var(--transition-fast) var(--apple-spring),
+    opacity var(--transition-fast) var(--apple-ease);
 }
 .badge {
   @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
@@ -24,5 +27,9 @@
   height: 12px;
 }
 @media (forced-colors: active) {
-  .badge, .badge-dot { forced-color-adjust: none; border: 1px solid ButtonText; }
+  .badge,
+  .badge-dot {
+    forced-color-adjust: none;
+    border: 1px solid ButtonText;
+  }
 }

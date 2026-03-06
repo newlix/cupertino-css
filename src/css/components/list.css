@@ -17,8 +17,13 @@
     & > div:has(> h3) {
       @apply flex flex-1 flex-col gap-0.5;
       min-width: 0;
-      & h3 { @apply text-[17px] font-normal leading-snug truncate mb-0; letter-spacing: -0.01em; }
-      & p { @apply text-[13px] text-tertiary-foreground truncate; }
+      & h3 {
+        @apply text-[17px] font-normal leading-snug truncate mb-0;
+        letter-spacing: -0.01em;
+      }
+      & p {
+        @apply text-[13px] text-tertiary-foreground truncate;
+      }
     }
     & > svg:last-child:not(:first-child) {
       @apply size-4 shrink-0 text-tertiary-foreground;
@@ -32,31 +37,60 @@
         right: 0;
         left: var(--list-separator-inset, 3.75rem);
         height: 1px;
-        @media (min-resolution: 2dppx) { height: 0.5px; }
+        @media (min-resolution: 2dppx) {
+          height: 0.5px;
+        }
         background: var(--color-separator);
         pointer-events: none;
       }
     }
   }
-  & > a, & > button {
+  & > a,
+  & > button {
     @apply no-underline text-foreground cursor-pointer;
-    &:visited { color: var(--color-foreground); }
-    &:hover:not(:disabled, [aria-disabled="true"]) { background: var(--surface-3); text-decoration: none; }
-    &:active:not(:disabled, [aria-disabled="true"]) { background: var(--surface-4); }
-    &:is(:disabled, [aria-disabled="true"]) { opacity: 0.38; pointer-events: none; }
-    &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
-    &:is([data-selected], [aria-selected="true"]):hover:not(:disabled, [aria-disabled="true"]) {
-      background: oklch(from var(--color-primary) l c h / 0.23);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.36); }
+    &:visited {
+      color: var(--color-foreground);
     }
-    &:is([data-selected], [aria-selected="true"]):active:not(:disabled, [aria-disabled="true"]) {
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+      background: var(--surface-3);
+      text-decoration: none;
+    }
+    &:active:not(:disabled, [aria-disabled="true"]) {
+      background: var(--surface-4);
+    }
+    &:is(:disabled, [aria-disabled="true"]) {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+    &:focus-visible {
+      background: var(--surface-3);
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+    }
+    &:is([data-selected], [aria-selected="true"]):hover:not(
+        :disabled,
+        [aria-disabled="true"]
+      ) {
+      background: oklch(from var(--color-primary) l c h / 0.23);
+      .dark & {
+        background: oklch(from var(--color-primary) l c h / 0.36);
+      }
+    }
+    &:is([data-selected], [aria-selected="true"]):active:not(
+        :disabled,
+        [aria-disabled="true"]
+      ) {
       background: oklch(from var(--color-primary) l c h / 0.27);
-      .dark & { background: oklch(from var(--color-primary) l c h / 0.40); }
+      .dark & {
+        background: oklch(from var(--color-primary) l c h / 0.4);
+      }
     }
   }
   & > :is([data-selected], [aria-selected="true"]) {
     background: oklch(from var(--color-primary) l c h / 0.18);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+    .dark & {
+      background: oklch(from var(--color-primary) l c h / 0.3);
+    }
   }
 }
 /* Separator flush with content edge for lists without icons */
@@ -71,20 +105,41 @@
   corner-shape: squircle;
   overflow: hidden;
   box-shadow: var(--shadow-sm), var(--panel-ring);
-  & > *:first-child { border-radius: var(--list-radius) var(--list-radius) 0 0; corner-shape: squircle; }
-  & > *:last-child { border-radius: 0 0 var(--list-radius) var(--list-radius); corner-shape: squircle; }
-  & > *:only-child { border-radius: var(--list-radius); corner-shape: squircle; }
+  & > *:first-child {
+    border-radius: var(--list-radius) var(--list-radius) 0 0;
+    corner-shape: squircle;
+  }
+  & > *:last-child {
+    border-radius: 0 0 var(--list-radius) var(--list-radius);
+    corner-shape: squircle;
+  }
+  & > *:only-child {
+    border-radius: var(--list-radius);
+    corner-shape: squircle;
+  }
 }
 @media (forced-colors: active) {
-  .list-inset-grouped { border: 1px solid ButtonText; box-shadow: none; }
+  .list-inset-grouped {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
   .list > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
     outline: 1px solid ButtonText;
     outline-offset: -1px;
   }
-  .list > a:focus-visible, .list > button:focus-visible { outline: 2px solid Highlight; }
+  .list > a:focus-visible,
+  .list > button:focus-visible {
+    outline: 2px solid Highlight;
+  }
   .list > button:disabled,
-  .list > a[aria-disabled="true"], .list > button[aria-disabled="true"] { color: GrayText; opacity: 1; }
-  .list > * + *::before { background: ButtonText; }
+  .list > a[aria-disabled="true"],
+  .list > button[aria-disabled="true"] {
+    color: GrayText;
+    opacity: 1;
+  }
+  .list > * + *::before {
+    background: ButtonText;
+  }
   .list > :is([data-selected], [aria-selected="true"]) {
     background: Highlight;
     color: HighlightText;

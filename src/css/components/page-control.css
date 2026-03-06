@@ -18,7 +18,9 @@
   border-radius: 50%;
   background: var(--color-foreground);
   opacity: 0.3;
-  .dark & { opacity: 0.38; }
+  .dark & {
+    opacity: 0.38;
+  }
   cursor: pointer;
   transition: opacity var(--transition-normal) var(--apple-ease);
   &[aria-current="page"] {
@@ -31,24 +33,43 @@
   }
   &:hover:not([aria-current="page"]) {
     opacity: 0.5;
-    .dark & { opacity: 0.55; }
+    .dark & {
+      opacity: 0.55;
+    }
   }
-  &:active:not(:disabled):not([aria-disabled="true"]):not([aria-current="page"]) {
+  &:active:not(:disabled):not([aria-disabled="true"]):not(
+      [aria-current="page"]
+    ) {
     opacity: 0.7;
-    .dark & { opacity: 0.75; }
+    .dark & {
+      opacity: 0.75;
+    }
   }
-  &:disabled, &[aria-disabled="true"] {
+  &:disabled,
+  &[aria-disabled="true"] {
     pointer-events: none;
     opacity: 0.22;
-    .dark & { opacity: 0.25; }
+    .dark & {
+      opacity: 0.25;
+    }
   }
   @media (forced-colors: active) {
     border: 2px solid ButtonText;
     background: Canvas;
     opacity: 1;
-    &[aria-current="page"] { background: Highlight; border-color: Highlight; }
-    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-    &:disabled, &[aria-disabled="true"] { border-color: GrayText; background: GrayText; }
+    &[aria-current="page"] {
+      background: Highlight;
+      border-color: Highlight;
+    }
+    &:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      border-color: GrayText;
+      background: GrayText;
+    }
   }
   /* Enlarge touch target on touch devices without changing visual size */
   @media (pointer: coarse), (hover: none) {

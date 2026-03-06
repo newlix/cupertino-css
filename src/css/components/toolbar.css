@@ -8,12 +8,16 @@
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--color-separator);
-  @media (min-resolution: 2dppx) { border-bottom-width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    border-bottom-width: 0.5px;
+  }
 }
 .toolbar-bottom {
   border-bottom: none;
   border-top: 1px solid var(--color-separator);
-  @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    border-top-width: 0.5px;
+  }
 }
 .toolbar-group {
   @apply inline-flex items-stretch;
@@ -29,15 +33,31 @@
     background: transparent;
     color: var(--color-foreground);
     transition: background-color var(--transition-fast) var(--apple-ease);
-    & svg { @apply size-4; }
-    &:hover { background: var(--surface-4); }
-    &:active { background: var(--surface-5); }
-    &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
-    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: -2px; }
+    & svg {
+      @apply size-4;
+    }
+    &:hover {
+      background: var(--surface-4);
+    }
+    &:active {
+      background: var(--surface-5);
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: -2px;
+    }
     & + button,
     & + a {
       border-left: 1px solid var(--color-separator);
-      @media (min-resolution: 2dppx) { border-left-width: 0.5px; }
+      @media (min-resolution: 2dppx) {
+        border-left-width: 0.5px;
+      }
     }
   }
   @media (pointer: coarse), (hover: none) {
@@ -68,11 +88,24 @@
     border: 1px solid ButtonText;
     & > button,
     & > a {
-      &:hover, &:active { background: Highlight; color: HighlightText; }
-      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &:disabled, &[aria-disabled="true"] { color: GrayText; opacity: 1; }
+      &:hover,
+      &:active {
+        background: Highlight;
+        color: HighlightText;
+      }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
+        color: GrayText;
+        opacity: 1;
+      }
       & + button,
-      & + a { border-left-color: ButtonText; }
+      & + a {
+        border-left-color: ButtonText;
+      }
     }
   }
 }

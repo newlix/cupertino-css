@@ -3,7 +3,25 @@
 // transient, auto-dismiss), not a toast. Toasts are edge-positioned; HUDs are centered.
 // macOS equivalent: NSPanel with styleMask:.hudWindow (volume/brightness/screenshot overlays).
 (function () {
-  const DANGEROUS_ELEMENTS = new Set(["script", "style", "foreignobject", "iframe", "object", "embed", "use", "image", "feimage", "set", "animate", "animatetransform", "animatemotion", "link", "meta", "a", "mpath"]);
+  const DANGEROUS_ELEMENTS = new Set([
+    "script",
+    "style",
+    "foreignobject",
+    "iframe",
+    "object",
+    "embed",
+    "use",
+    "image",
+    "feimage",
+    "set",
+    "animate",
+    "animatetransform",
+    "animatemotion",
+    "link",
+    "meta",
+    "a",
+    "mpath",
+  ]);
 
   function createHUDContainer() {
     const container = document.createElement("div");
@@ -18,7 +36,10 @@
 
   function showHUD(label, options) {
     const opts = options || {};
-    const duration = (typeof opts.duration === "number" && opts.duration > 0) ? opts.duration : 1500;
+    const duration =
+      typeof opts.duration === "number" && opts.duration > 0
+        ? opts.duration
+        : 1500;
 
     const container =
       document.getElementById("hud-container") || createHUDContainer();
@@ -32,14 +53,18 @@
     hud.className = "hud";
 
     // Icon — sanitise via DOMParser to prevent XSS from untrusted input
-    const defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    const defaultIcon =
+      '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
     const iconSrc = opts.icon || defaultIcon;
     const parser = new DOMParser();
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
     if (svgEl && iconDoc.documentElement.tagName === "svg") {
       svgEl.querySelectorAll("*").forEach((el) => {
-        if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) { el.remove(); return; }
+        if (DANGEROUS_ELEMENTS.has(el.localName.toLowerCase())) {
+          el.remove();
+          return;
+        }
       });
       [svgEl, ...svgEl.querySelectorAll("*")].forEach((el) => {
         for (const attr of Array.from(el.attributes)) {
@@ -64,7 +89,7 @@
 
     const labelEl = document.createElement("span");
     labelEl.className = "hud-label";
-    labelEl.textContent = (label != null) ? String(label) : "";
+    labelEl.textContent = label != null ? String(label) : "";
     hud.appendChild(labelEl);
 
     let dismissTimeout;
@@ -87,7 +112,10 @@
         if (hud.parentElement) hud.remove();
       }
       hud.addEventListener("animationend", removeHud);
-      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 10 : 150;
+      const animDuration = window.matchMedia("(prefers-reduced-motion: reduce)")
+        .matches
+        ? 10
+        : 150;
       animTimer = setTimeout(removeHud, animDuration);
     }
 

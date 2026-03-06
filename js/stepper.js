@@ -11,7 +11,9 @@
 
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
     const incBtn = stepper.querySelector("[data-stepper-increment]");
-    const display = stepper.querySelector("[data-stepper-value]") || stepper.querySelector("output");
+    const display =
+      stepper.querySelector("[data-stepper-value]") ||
+      stepper.querySelector("output");
     const forId = stepper.getAttribute("data-for");
     const linked = forId ? document.getElementById(forId) : null;
 
@@ -35,7 +37,9 @@
     }
 
     function fireChange() {
-      stepper.dispatchEvent(new CustomEvent("change", { detail: { value }, bubbles: true }));
+      stepper.dispatchEvent(
+        new CustomEvent("change", { detail: { value }, bubbles: true }),
+      );
     }
 
     stepper._stepperDecHandler = function () {
@@ -70,10 +74,15 @@
     if (!stepper._stepperInit) return;
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
     const incBtn = stepper.querySelector("[data-stepper-increment]");
-    if (decBtn && stepper._stepperDecHandler) decBtn.removeEventListener("click", stepper._stepperDecHandler);
-    if (incBtn && stepper._stepperIncHandler) incBtn.removeEventListener("click", stepper._stepperIncHandler);
+    if (decBtn && stepper._stepperDecHandler)
+      decBtn.removeEventListener("click", stepper._stepperDecHandler);
+    if (incBtn && stepper._stepperIncHandler)
+      incBtn.removeEventListener("click", stepper._stepperIncHandler);
     if (stepper._stepperLinkedEl && stepper._stepperLinkedHandler) {
-      stepper._stepperLinkedEl.removeEventListener("input", stepper._stepperLinkedHandler);
+      stepper._stepperLinkedEl.removeEventListener(
+        "input",
+        stepper._stepperLinkedHandler,
+      );
     }
     stepper._stepperDecHandler = null;
     stepper._stepperIncHandler = null;
@@ -96,7 +105,10 @@
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
     if (!el) return;
-    if (el.hasAttribute?.("data-stepper")) { destroy(el); return; }
+    if (el.hasAttribute?.("data-stepper")) {
+      destroy(el);
+      return;
+    }
     (el.querySelectorAll?.("[data-stepper]") || []).forEach(destroy);
   });
 

@@ -5,7 +5,9 @@
   @apply flex flex-col overflow-y-auto px-3 pb-4;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
-  &:hover { scrollbar-color: var(--surface-5) transparent; }
+  &:hover {
+    scrollbar-color: var(--surface-5) transparent;
+  }
 
   /* Section groups — <div> children with optional <h2> header */
   & > div {
@@ -17,15 +19,22 @@
     @apply px-2 pb-1 text-[13px] font-semibold uppercase tracking-widest;
     margin: 0;
     color: var(--color-tertiary-foreground);
-    &:not(:first-child) { margin-top: 0; }
+    &:not(:first-child) {
+      margin-top: 0;
+    }
   }
 
   /* Navigation items */
-  & a, & button {
+  & a,
+  & button {
     @apply flex items-center gap-2 rounded-lg border-none bg-transparent px-2.5 py-1.5 text-[13px] no-underline cursor-pointer;
     color: var(--color-tertiary-foreground);
-    transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
-    &:visited { color: var(--color-tertiary-foreground); }
+    transition:
+      color var(--transition-fast) var(--apple-ease),
+      background-color var(--transition-fast) var(--apple-ease);
+    &:visited {
+      color: var(--color-tertiary-foreground);
+    }
     &:hover {
       color: var(--color-foreground);
       background: var(--surface-3);
@@ -60,7 +69,9 @@
     & > svg:first-child {
       @apply size-4 shrink-0;
     }
-    @media (pointer: coarse), (hover: none) { min-height: 44px; }
+    @media (pointer: coarse), (hover: none) {
+      min-height: 44px;
+    }
   }
 }
 
@@ -70,12 +81,16 @@
   & button:is([data-active], [aria-current="page"]) {
     color: var(--color-primary);
     background: oklch(from var(--color-primary) l c h / 0.12);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
+    .dark & {
+      background: oklch(from var(--color-primary) l c h / 0.22);
+    }
   }
   & a:is([data-active], [aria-current="page"]):hover,
   & button:is([data-active], [aria-current="page"]):hover {
     background: oklch(from var(--color-primary) l c h / 0.18);
-    .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+    .dark & {
+      background: oklch(from var(--color-primary) l c h / 0.3);
+    }
   }
 }
 
@@ -85,12 +100,14 @@
     outline: 1px solid ButtonText;
     outline-offset: -1px;
   }
-  .sidebar a:focus-visible, .sidebar button:focus-visible {
+  .sidebar a:focus-visible,
+  .sidebar button:focus-visible {
     outline: 2px solid Highlight;
     box-shadow: none;
   }
   .sidebar :is(a, button):is([data-active], [aria-current="page"]),
-  .sidebar[data-tinted] :is(a, button):is([data-active], [aria-current="page"]) {
+  .sidebar[data-tinted]
+    :is(a, button):is([data-active], [aria-current="page"]) {
     background: Highlight;
     color: HighlightText;
     outline: 2px solid Highlight;

@@ -11,10 +11,16 @@
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--color-separator);
-  @media (min-resolution: 2dppx) { border-bottom-width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    border-bottom-width: 0.5px;
+  }
 
-  & > :first-child { justify-self: start; }
-  & > :last-child { justify-self: end; }
+  & > :first-child {
+    justify-self: start;
+  }
+  & > :last-child {
+    justify-self: end;
+  }
 }
 
 .navbar-title {
@@ -41,9 +47,15 @@
   border: none;
   text-decoration: none;
   transition: opacity var(--transition-fast) var(--apple-ease);
-  & svg { @apply size-5; }
-  &:hover { opacity: 0.7; }
-  &:active { opacity: 0.5; }
+  & svg {
+    @apply size-5;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: 0.5;
+  }
   &:focus-visible {
     box-shadow: var(--focus-ring);
     border-radius: var(--radius-xs);
@@ -52,12 +64,17 @@
   }
 }
 
-.navbar-back { @apply gap-0.5; }
+.navbar-back {
+  @apply gap-0.5;
+}
 
 @media (pointer: coarse), (hover: none) {
   .navbar-back,
   .navbar-actions button,
-  .navbar-actions a { min-height: 44px; min-width: 44px; }
+  .navbar-actions a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 @media (forced-colors: active) {
@@ -70,8 +87,16 @@
   .navbar-actions button,
   .navbar-actions a {
     color: LinkText;
-    &:hover { outline: 1px solid ButtonText; outline-offset: -1px; }
-    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    &:hover {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
+    &:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
   }
-  .navbar-title { color: CanvasText; }
+  .navbar-title {
+    color: CanvasText;
+  }
 }

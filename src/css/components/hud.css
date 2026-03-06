@@ -25,8 +25,13 @@
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   box-shadow: var(--shadow-xl), var(--float-ring);
   animation: hudAppear var(--transition-normal) var(--apple-ease);
-  & svg:first-child { @apply size-12 shrink-0; }
-  & .hud-label { @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center; max-width: 100%; }
+  & svg:first-child {
+    @apply size-12 shrink-0;
+  }
+  & .hud-label {
+    @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center;
+    max-width: 100%;
+  }
 }
 
 /* Dismiss animation (set by JS via data-closing attribute) */
@@ -34,9 +39,17 @@
   animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hud { animation: none; }
-  .hud[data-closing] { animation: none; opacity: 0; }
+  .hud {
+    animation: none;
+  }
+  .hud[data-closing] {
+    animation: none;
+    opacity: 0;
+  }
 }
 @media (forced-colors: active) {
-  .hud { border: 1px solid ButtonText; box-shadow: none; }
+  .hud {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
 }

@@ -4,12 +4,32 @@
   @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
     @apply text-tertiary-foreground no-underline;
-    transition: color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
-    @media (pointer: coarse), (hover: none) { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
-    &:hover { @apply text-foreground no-underline; }
-    &:active:not([aria-disabled="true"]) { opacity: 0.7; }
-    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-xs); }
-    &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
+    transition:
+      color var(--transition-fast) var(--apple-ease),
+      opacity var(--transition-fast) var(--apple-ease);
+    @media (pointer: coarse), (hover: none) {
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &:hover {
+      @apply text-foreground no-underline;
+    }
+    &:active:not([aria-disabled="true"]) {
+      opacity: 0.7;
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      border-radius: var(--radius-xs);
+    }
+    &[aria-disabled="true"] {
+      opacity: 0.38;
+      pointer-events: none;
+    }
   }
   & [aria-current="page"] {
     @apply font-medium text-foreground pointer-events-none;
@@ -24,17 +44,30 @@
     margin-inline-end: 0.375rem;
     vertical-align: middle;
     background: var(--color-tertiary-foreground);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E")
+      no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4-4 4'/%3E%3C/svg%3E")
+      no-repeat center / contain;
   }
   @media (forced-colors: active) {
     & a {
       color: LinkText;
-      &:hover { color: LinkText; text-decoration: underline; }
-      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &[aria-disabled="true"] { color: GrayText; opacity: 1; }
+      &:hover {
+        color: LinkText;
+        text-decoration: underline;
+      }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &[aria-disabled="true"] {
+        color: GrayText;
+        opacity: 1;
+      }
     }
-    & [aria-current="page"] { color: CanvasText; }
+    & [aria-current="page"] {
+      color: CanvasText;
+    }
     & > :not(:first-child):not([aria-hidden="true"])::before {
       background: ButtonText;
       opacity: 1;

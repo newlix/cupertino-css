@@ -1,21 +1,42 @@
 /* ========== PAGINATION ========== */
 .pagination {
   @apply flex flex-wrap items-center gap-1;
-  & > button, & > a {
+  & > button,
+  & > a {
     @apply inline-flex items-center justify-center rounded-[var(--radius-sm)] px-2 text-[13px] font-medium text-tertiary-foreground cursor-pointer no-underline;
     corner-shape: squircle;
     min-height: 32px;
     min-width: 32px;
-    @media (pointer: coarse), (hover: none) { min-height: 44px; min-width: 44px; }
-    transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
-    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
-    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-    &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
-    &[data-active], &[aria-current="page"] {
+    @media (pointer: coarse), (hover: none) {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    transition:
+      color var(--transition-fast) var(--apple-ease),
+      background-color var(--transition-fast) var(--apple-ease);
+    &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not(
+        [aria-disabled="true"]
+      ) {
+      @apply text-foreground;
+      background: var(--surface-2);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not(
+        [aria-disabled="true"]
+      ) {
+      background: var(--surface-4);
+    }
+    &[data-active],
+    &[aria-current="page"] {
       @apply text-foreground pointer-events-none;
       background: var(--surface-4);
     }
-    &:disabled, &[aria-disabled="true"] {
+    &:disabled,
+    &[aria-disabled="true"] {
       @apply pointer-events-none;
       opacity: 0.38;
     }
@@ -24,15 +45,34 @@
     @apply inline-flex items-center justify-center text-[13px] text-tertiary-foreground pointer-events-none select-none;
     min-height: 32px;
     min-width: 32px;
-    @media (pointer: coarse), (hover: none) { min-height: 44px; min-width: 44px; }
+    @media (pointer: coarse), (hover: none) {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
   @media (forced-colors: active) {
-    & > button, & > a {
+    & > button,
+    & > a {
       border: 1px solid ButtonText;
-      &[data-active], &[aria-current="page"] { background: Highlight; color: HighlightText; border-color: Highlight; }
-      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; opacity: 1; }
+      &[data-active],
+      &[aria-current="page"] {
+        background: Highlight;
+        color: HighlightText;
+        border-color: Highlight;
+      }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
+        border-color: GrayText;
+        color: GrayText;
+        opacity: 1;
+      }
     }
-    & > span { color: CanvasText; }
+    & > span {
+      color: CanvasText;
+    }
   }
 }

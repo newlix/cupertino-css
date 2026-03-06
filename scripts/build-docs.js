@@ -23,7 +23,9 @@ env.addFilter("dedent", (str) => {
   const indents = lines
     .filter((l) => l.trim())
     .map((l) => l.match(/^\s*/)[0].length);
-  const minIndent = indents.length ? indents.reduce((a, b) => Math.min(a, b)) : 0;
+  const minIndent = indents.length
+    ? indents.reduce((a, b) => Math.min(a, b))
+    : 0;
   return lines.map((l) => l.slice(minIndent)).join("\n");
 });
 
@@ -80,7 +82,8 @@ function build() {
   });
 
   // CSS succeeded — now safe to clean stale output (preserve the CSS we just built)
-  if (!SITE.startsWith(ROOT)) throw new Error(`SITE ${SITE} is outside ROOT ${ROOT}`);
+  if (!SITE.startsWith(ROOT))
+    throw new Error(`SITE ${SITE} is outside ROOT ${ROOT}`);
   for (const entry of fs.readdirSync(SITE)) {
     if (entry === "docs.built.css") continue;
     fs.rmSync(path.join(SITE, entry), { recursive: true });
@@ -88,7 +91,7 @@ function build() {
 
   // Nav
   const nav = JSON.parse(
-    fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8")
+    fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8"),
   );
 
   // Render pages
@@ -138,8 +141,16 @@ if (process.argv.includes("--watch")) {
     }, 200);
   };
 
-  fs.watch(DOCS, { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
-  fs.watch(path.join(ROOT, "src", "css"), { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
-  fs.watch(path.join(ROOT, "js"), { recursive: true }, rebuild).on("error", (e) => console.error("Watch error:", e.message));
+  fs.watch(DOCS, { recursive: true }, rebuild).on("error", (e) =>
+    console.error("Watch error:", e.message),
+  );
+  fs.watch(path.join(ROOT, "src", "css"), { recursive: true }, rebuild).on(
+    "error",
+    (e) => console.error("Watch error:", e.message),
+  );
+  fs.watch(path.join(ROOT, "js"), { recursive: true }, rebuild).on(
+    "error",
+    (e) => console.error("Watch error:", e.message),
+  );
   console.log("Watching for changes...");
 }

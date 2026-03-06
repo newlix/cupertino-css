@@ -16,54 +16,116 @@ dialog {
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-  &[open] { display: flex; flex-direction: column; animation: dialogShow var(--transition-normal) var(--apple-spring); }
-  &:modal[open]::backdrop { animation: backdropFadeIn var(--transition-normal) var(--apple-ease); }
-  &[data-closing] { animation: dialogHide var(--transition-fast) var(--apple-ease) forwards; }
-  &:modal[data-closing]::backdrop { animation: backdropFadeIn var(--transition-fast) var(--apple-ease) reverse forwards; }
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    animation: dialogShow var(--transition-normal) var(--apple-spring);
+  }
+  &:modal[open]::backdrop {
+    animation: backdropFadeIn var(--transition-normal) var(--apple-ease);
+  }
+  &[data-closing] {
+    animation: dialogHide var(--transition-fast) var(--apple-ease) forwards;
+  }
+  &:modal[data-closing]::backdrop {
+    animation: backdropFadeIn var(--transition-fast) var(--apple-ease) reverse
+      forwards;
+  }
   & .dialog-close {
     @apply absolute right-4 top-4 rounded-full p-1.5 text-tertiary-foreground cursor-pointer;
-    transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
-    &:hover { @apply text-foreground; background: var(--surface-3); }
-    &:active { @apply text-foreground; background: var(--surface-4); }
-    &:focus-visible { @apply text-foreground; background: var(--surface-3); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-    &:disabled, &[aria-disabled="true"] { opacity: 0.38; pointer-events: none; }
-    & svg { @apply size-4; }
-    @media (pointer: coarse), (hover: none) { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+    transition:
+      background-color var(--transition-fast) var(--apple-ease),
+      color var(--transition-fast) var(--apple-ease);
+    &:hover {
+      @apply text-foreground;
+      background: var(--surface-3);
+    }
+    &:active {
+      @apply text-foreground;
+      background: var(--surface-4);
+    }
+    &:focus-visible {
+      @apply text-foreground;
+      background: var(--surface-3);
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+    & svg {
+      @apply size-4;
+    }
+    @media (pointer: coarse), (hover: none) {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   & > header {
     @apply px-6 pt-6 text-center;
-    & h2 { @apply text-[17px] font-semibold tracking-tight text-foreground mb-0; }
-    & p { @apply mt-1 text-[13px] leading-[18px] text-tertiary-foreground; }
+    & h2 {
+      @apply text-[17px] font-semibold tracking-tight text-foreground mb-0;
+    }
+    & p {
+      @apply mt-1 text-[13px] leading-[18px] text-tertiary-foreground;
+    }
   }
   & > section {
     @apply px-6 pt-4 pb-4 overflow-y-auto flex-1 min-h-0;
     overscroll-behavior: contain;
-    & > :not(:first-child) { margin-top: 0.75rem; }
-    &:last-child { @apply pb-6; }
+    & > :not(:first-child) {
+      margin-top: 0.75rem;
+    }
+    &:last-child {
+      @apply pb-6;
+    }
   }
   & > footer {
     @apply flex flex-wrap justify-end gap-2 px-6 pb-6 pt-4;
     /* 3+ buttons stack full-width on compact screens (Apple HIG alert button layout) */
     &:has(> :nth-child(3)) {
       @apply flex-col gap-1;
-      & > * { @apply w-full; }
+      & > * {
+        @apply w-full;
+      }
     }
   }
   & > section + footer,
   & > header + footer {
     border-top: 1px solid var(--color-border);
-    @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
+    @media (min-resolution: 2dppx) {
+      border-top-width: 0.5px;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    &[open] { animation: none; }
-    &:modal[open]::backdrop { animation: none; }
-    &[data-closing] { animation: none; }
-    &:modal[data-closing]::backdrop { animation: none; }
+    &[open] {
+      animation: none;
+    }
+    &:modal[open]::backdrop {
+      animation: none;
+    }
+    &[data-closing] {
+      animation: none;
+    }
+    &:modal[data-closing]::backdrop {
+      animation: none;
+    }
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;
     box-shadow: none;
-    & .dialog-close { border: 1px solid ButtonText; }
-    & .dialog-close:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+    & .dialog-close {
+      border: 1px solid ButtonText;
+    }
+    & .dialog-close:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
   }
 }

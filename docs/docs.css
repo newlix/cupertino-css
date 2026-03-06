@@ -3,7 +3,6 @@
 
 /* ─── Docs Layout ─── */
 @layer components {
-
   /* Docs sidebar layout — fixed panel + offset content */
   body {
     --docs-sidebar-width: 260px;
@@ -44,12 +43,18 @@
   .docs-icon-btn {
     @apply inline-flex items-center justify-center size-8 p-0 rounded-md cursor-pointer;
     color: var(--color-tertiary-foreground) !important;
-    transition: color var(--transition-fast), background-color var(--transition-fast);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
     &:hover {
       color: var(--color-foreground) !important;
       background: var(--surface-3);
     }
-    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
   }
 
   /* Doc page header */
@@ -68,7 +73,18 @@
 
   .snippet-preview > figure {
     position: relative;
-    & > .card, & > table, & > .callout, & > details, & > input, & > textarea, & > select, & > dialog, & > .list, & > form, & > fieldset, & > .cider {
+    & > .card,
+    & > table,
+    & > .callout,
+    & > details,
+    & > input,
+    & > textarea,
+    & > select,
+    & > dialog,
+    & > .list,
+    & > form,
+    & > fieldset,
+    & > .cider {
       @apply w-full;
     }
     & > .cider {
@@ -90,9 +106,15 @@
     border-bottom: 1px solid var(--color-border);
   }
   /* Icon swap based on aria-expanded (set by sidebar.js) */
-  [data-sidebar-toggle] .docs-icon-close { display: none; }
-  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-open { display: none; }
-  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-close { display: block; }
+  [data-sidebar-toggle] .docs-icon-close {
+    display: none;
+  }
+  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-open {
+    display: none;
+  }
+  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-close {
+    display: block;
+  }
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
   .snippet {
@@ -101,7 +123,9 @@
     & > pre {
       @apply overflow-x-auto p-4 m-0 text-[13px] leading-relaxed rounded-none;
       background: var(--surface-1);
-      & code, & code[class*="language-"], & code.hljs {
+      & code,
+      & code[class*="language-"],
+      & code.hljs {
         @apply font-[ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace] text-[13px] font-normal p-0 rounded-none;
         background: transparent;
         color: var(--color-foreground);
@@ -113,19 +137,27 @@
       background: var(--surface-1);
       & > span {
         @apply text-[13px] font-medium text-tertiary-foreground;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
       & > nav {
         @apply flex gap-0.5;
         & > button {
           @apply rounded-md px-2 py-1 text-[13px] font-medium text-tertiary-foreground;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
+          font-family:
+            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          transition:
+            color var(--transition-fast) var(--apple-ease),
+            background-color var(--transition-fast) var(--apple-ease);
           &:hover {
             @apply text-foreground;
             background: var(--surface-3);
           }
-          &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+          &:focus-visible {
+            box-shadow: var(--focus-ring);
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+          }
           &[data-active] {
             @apply text-foreground;
             background: var(--surface-4);
@@ -137,13 +169,22 @@
         background: var(--surface-2);
         border-color: var(--color-border);
         color: var(--color-tertiary-foreground);
-        transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), border-color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
+        transition:
+          background-color var(--transition-fast) var(--apple-ease),
+          color var(--transition-fast) var(--apple-ease),
+          border-color var(--transition-fast) var(--apple-ease),
+          opacity var(--transition-fast) var(--apple-ease);
         opacity: 0;
         &:hover {
           background: var(--surface-4);
           color: var(--color-foreground);
         }
-        &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; opacity: 1; }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+          opacity: 1;
+        }
         &:active {
           transform: scale(var(--apple-press-scale));
         }
@@ -153,7 +194,9 @@
       opacity: 1;
     }
     @media (pointer: coarse), (hover: none) {
-      & > header > button { opacity: 1; }
+      & > header > button {
+        opacity: 1;
+      }
     }
     & > .snippet-preview {
       border-bottom: 1px solid var(--panel-border);
@@ -173,18 +216,26 @@
     position: relative;
     overflow: hidden;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: -40%;
       left: 50%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, oklch(from var(--color-primary) l c h / 0.08) 0%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        oklch(from var(--color-primary) l c h / 0.08) 0%,
+        transparent 70%
+      );
       transform: translateX(-50%);
       pointer-events: none;
     }
     .dark &::before {
-      background: radial-gradient(circle, oklch(from var(--color-primary) l c h / 0.15) 0%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        oklch(from var(--color-primary) l c h / 0.15) 0%,
+        transparent 70%
+      );
     }
   }
   .home-hero-title {
@@ -192,7 +243,11 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    background: linear-gradient(to bottom, var(--color-foreground), oklch(from var(--color-foreground) l c h / 0.6));
+    background: linear-gradient(
+      to bottom,
+      var(--color-foreground),
+      oklch(from var(--color-foreground) l c h / 0.6)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -271,11 +326,17 @@
     [data-sidebar-toggle] {
       @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
       color: var(--color-foreground);
-      @media (pointer: coarse), (hover: none) { min-height: 44px; }
+      @media (pointer: coarse), (hover: none) {
+        min-height: 44px;
+      }
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    #docs-sidebar { transition: none; }
-    [data-sidebar-overlay] { transition: none; }
+    #docs-sidebar {
+      transition: none;
+    }
+    [data-sidebar-overlay] {
+      transition: none;
+    }
   }
 }

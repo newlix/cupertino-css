@@ -8,7 +8,9 @@
   overflow: hidden;
   background: var(--color-card);
 
-  @media (min-resolution: 2dppx) { border-width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
 }
 
 .stepper > button {
@@ -49,7 +51,9 @@
 .stepper > [data-stepper-value] + button,
 .stepper > button + [data-stepper-value] {
   border-left: 1px solid var(--color-border-solid);
-  @media (min-resolution: 2dppx) { border-left-width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    border-left-width: 0.5px;
+  }
 }
 
 /* Value display */

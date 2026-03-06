@@ -10,20 +10,32 @@
   width: 1px;
   min-height: 1rem;
   background: var(--color-separator);
-  @media (min-resolution: 2dppx) { width: 0.5px; }
+  @media (min-resolution: 2dppx) {
+    width: 0.5px;
+  }
 }
 .separator-label {
   @apply flex items-center gap-2 my-4 text-[13px] text-tertiary-foreground;
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     @apply flex-1;
     height: 1px;
     background: var(--color-separator);
-    @media (min-resolution: 2dppx) { height: 0.5px; }
+    @media (min-resolution: 2dppx) {
+      height: 0.5px;
+    }
   }
 }
 @media (forced-colors: active) {
-  .separator-vertical { background: ButtonText; }
-  .separator-label { color: CanvasText; }
-  .separator-label::before, .separator-label::after { background: CanvasText; }
+  .separator-vertical {
+    background: ButtonText;
+  }
+  .separator-label {
+    color: CanvasText;
+  }
+  .separator-label::before,
+  .separator-label::after {
+    background: CanvasText;
+  }
 }

@@ -1,12 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { goto, preview } from './helpers.js';
+import { test, expect } from "@playwright/test";
+import { goto, preview } from "./helpers.js";
 
-test.describe('Radio Group', () => {
+test.describe("Radio Group", () => {
   test.beforeEach(async ({ page }) => {
-    await goto(page, 'radio-group');
+    await goto(page, "radio-group");
   });
 
-  test('clicking radio selects it', async ({ page }) => {
+  test("clicking radio selects it", async ({ page }) => {
     const radios = preview(page).locator('input[type="radio"]');
     const second = radios.nth(1);
     await expect(second).not.toBeChecked();
@@ -15,7 +15,7 @@ test.describe('Radio Group', () => {
     await expect(second).toBeChecked();
   });
 
-  test('selecting one deselects others in same group', async ({ page }) => {
+  test("selecting one deselects others in same group", async ({ page }) => {
     const radios = preview(page).locator('input[type="radio"]');
     const first = radios.first();
     const second = radios.nth(1);
@@ -27,8 +27,10 @@ test.describe('Radio Group', () => {
     await expect(first).not.toBeChecked();
   });
 
-  test('disabled radio cannot be selected', async ({ page }) => {
-    const disabled = page.locator('.snippet-preview > figure input[type="radio"][disabled]').first();
+  test("disabled radio cannot be selected", async ({ page }) => {
+    const disabled = page
+      .locator('.snippet-preview > figure input[type="radio"][disabled]')
+      .first();
     await expect(disabled).toBeDisabled();
   });
 });

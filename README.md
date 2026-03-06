@@ -35,13 +35,16 @@ Add `.cider` to an ancestor element to activate styles:
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/dist/ciderui.cdn.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/dist/ciderui.cdn.min.css"
+/>
 ```
 
 ## Dark Mode
 
 ```js
-document.documentElement.classList.toggle('dark');
+document.documentElement.classList.toggle("dark");
 ```
 
 ## License

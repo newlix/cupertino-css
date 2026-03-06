@@ -1,12 +1,22 @@
 /* ========== ACTION SHEET ========== */
 @keyframes actionSheetShow {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes actionSheetHide {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(100%); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
 }
 
 dialog.action-sheet {
@@ -137,10 +147,18 @@ dialog.action-sheet {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    &[open] { animation: none; }
-    &:modal[open]::backdrop { animation: none; }
-    &[data-closing] { animation: none; }
-    &:modal[data-closing]::backdrop { animation: none; }
+    &[open] {
+      animation: none;
+    }
+    &:modal[open]::backdrop {
+      animation: none;
+    }
+    &[data-closing] {
+      animation: none;
+    }
+    &:modal[data-closing]::backdrop {
+      animation: none;
+    }
   }
 
   @media (forced-colors: active) {

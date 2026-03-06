@@ -14,7 +14,9 @@
 
     btn._sidebarInit = true;
 
-    const overlay = panel.parentElement && panel.parentElement.querySelector("[data-sidebar-overlay]");
+    const overlay =
+      panel.parentElement &&
+      panel.parentElement.querySelector("[data-sidebar-overlay]");
 
     function isOpen() {
       return panel.hasAttribute("data-open");
@@ -28,7 +30,9 @@
       openCount++;
       document.body.style.overflow = "hidden";
       // Move focus into the panel for keyboard accessibility
-      const firstFocusable = panel.querySelector("a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])");
+      const firstFocusable = panel.querySelector(
+        "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
+      );
       if (firstFocusable) firstFocusable.focus();
     }
 
@@ -94,11 +98,17 @@
       btn._sidebarClickHandler = null;
     }
     if (btn._sidebarOverlayClickHandler && btn._sidebarOverlay) {
-      btn._sidebarOverlay.removeEventListener("click", btn._sidebarOverlayClickHandler);
+      btn._sidebarOverlay.removeEventListener(
+        "click",
+        btn._sidebarOverlayClickHandler,
+      );
       btn._sidebarOverlayClickHandler = null;
     }
     if (btn._sidebarPanelClickHandler && btn._sidebarPanel) {
-      btn._sidebarPanel.removeEventListener("click", btn._sidebarPanelClickHandler);
+      btn._sidebarPanel.removeEventListener(
+        "click",
+        btn._sidebarPanelClickHandler,
+      );
       btn._sidebarPanelClickHandler = null;
     }
     btn._sidebarPanel = null;
@@ -120,7 +130,9 @@
       destroy(el);
       return;
     }
-    const toggles = el.querySelectorAll ? el.querySelectorAll("[data-sidebar-toggle]") : [];
+    const toggles = el.querySelectorAll
+      ? el.querySelectorAll("[data-sidebar-toggle]")
+      : [];
     toggles.forEach(destroy);
   });
 

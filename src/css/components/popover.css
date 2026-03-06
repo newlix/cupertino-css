@@ -23,7 +23,11 @@
     opacity: 0;
     transform: scale(0.96);
     transform-origin: var(--popover-origin, top left);
-    transition: opacity var(--transition-fast) var(--apple-ease), transform var(--transition-fast) var(--apple-spring), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
+    transition:
+      opacity var(--transition-fast) var(--apple-ease),
+      transform var(--transition-fast) var(--apple-spring),
+      display var(--transition-fast) allow-discrete,
+      overlay var(--transition-fast) allow-discrete;
 
     &:popover-open {
       opacity: 1;
@@ -47,20 +51,50 @@
 
     /* macOS menus appear with opacity-only — no scale transform */
     transform: none;
-    transition: opacity var(--transition-fast) var(--apple-ease), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
-    &:popover-open { opacity: 1; }
-    @starting-style { &:popover-open { opacity: 0; } }
+    transition:
+      opacity var(--transition-fast) var(--apple-ease),
+      display var(--transition-fast) allow-discrete,
+      overlay var(--transition-fast) allow-discrete;
+    &:popover-open {
+      opacity: 1;
+    }
+    @starting-style {
+      &:popover-open {
+        opacity: 0;
+      }
+    }
 
-    & button, & a {
+    & button,
+    & a {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
-      transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
-      &:is(:hover, :active) { background: var(--color-primary); color: var(--color-primary-foreground); }
-      &:is(:hover, :active) svg { color: var(--color-primary-foreground); }
-      &:focus-visible { background: var(--color-primary); color: var(--color-primary-foreground); outline: 2px solid transparent; outline-offset: -2px; }
-      &:focus-visible svg { color: var(--color-primary-foreground); }
-      & svg { @apply size-4 text-tertiary-foreground; transition: color var(--transition-fast) var(--apple-ease); }
-      @media (pointer: coarse), (hover: none) { min-height: 44px; }
-      &:disabled, &[aria-disabled="true"] {
+      transition:
+        background-color var(--transition-fast) var(--apple-ease),
+        color var(--transition-fast) var(--apple-ease);
+      &:is(:hover, :active) {
+        background: var(--color-primary);
+        color: var(--color-primary-foreground);
+      }
+      &:is(:hover, :active) svg {
+        color: var(--color-primary-foreground);
+      }
+      &:focus-visible {
+        background: var(--color-primary);
+        color: var(--color-primary-foreground);
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+      }
+      &:focus-visible svg {
+        color: var(--color-primary-foreground);
+      }
+      & svg {
+        @apply size-4 text-tertiary-foreground;
+        transition: color var(--transition-fast) var(--apple-ease);
+      }
+      @media (pointer: coarse), (hover: none) {
+        min-height: 44px;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
         @apply text-tertiary-foreground;
         opacity: 0.38;
         pointer-events: none;
@@ -71,7 +105,9 @@
     @apply my-1 mx-1.5 w-auto;
     height: 1px;
     border: none;
-    @media (min-resolution: 2dppx) { height: 0.5px; }
+    @media (min-resolution: 2dppx) {
+      height: 0.5px;
+    }
     background: var(--color-separator);
   }
 }
@@ -92,7 +128,9 @@
   box-shadow: -0.5px -0.5px 0 0.5px var(--float-ring-color);
 }
 /* Menus never show arrows (macOS HIG) — block even if .popover-arrow is added */
-.popover-menu.popover-arrow [popover]::before { display: none; }
+.popover-menu.popover-arrow [popover]::before {
+  display: none;
+}
 /* No backdrop scrim for menus — macOS menus float without dimming. */
 .popover-menu [popover]::backdrop {
   background: transparent;
@@ -103,7 +141,10 @@
   transform-origin: var(--popover-origin, bottom left);
 }
 /* Arrow for top-positioned popovers (JS auto-flip or CSS .popover-top) */
-:is(.popover-arrow [popover].popover-flipped-top, .popover-top.popover-arrow [popover])::before {
+:is(
+  .popover-arrow [popover].popover-flipped-top,
+  .popover-top.popover-arrow [popover]
+)::before {
   top: auto;
   bottom: -7px;
   transform: translateX(-50%) rotate(225deg);
@@ -112,12 +153,21 @@
 
 @media (prefers-reduced-motion: reduce) {
   .popover [popover],
-  .popover-menu [popover] { transition: none; }
+  .popover-menu [popover] {
+    transition: none;
+  }
 }
 @media (forced-colors: active) {
-  .popover [popover] { border: 1px solid ButtonText; box-shadow: none; }
-  .popover-arrow [popover]::before { display: none; }
-  .popover-menu [popover] hr { background: CanvasText; }
+  .popover [popover] {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
+  .popover-arrow [popover]::before {
+    display: none;
+  }
+  .popover-menu [popover] hr {
+    background: CanvasText;
+  }
   .popover-menu [popover] button:is(:hover, :focus-visible, :active),
   .popover-menu [popover] a:is(:hover, :focus-visible, :active) {
     background: Highlight;

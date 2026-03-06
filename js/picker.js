@@ -1,29 +1,39 @@
 // Picker — ciderui
 (function () {
   function getItemHeight(picker) {
-    return parseFloat(getComputedStyle(picker).getPropertyValue("--picker-item-h")) || 40;
+    return (
+      parseFloat(
+        getComputedStyle(picker).getPropertyValue("--picker-item-h"),
+      ) || 40
+    );
   }
 
   function scrollToIndex(column, index, smooth) {
     const itemH = getItemHeight(column.closest(".picker"));
-    column.scrollTo({ top: index * itemH, behavior: smooth ? "smooth" : "instant" });
+    column.scrollTo({
+      top: index * itemH,
+      behavior: smooth ? "smooth" : "instant",
+    });
   }
 
   function selectIndex(column, index, picker, colIndex) {
     const items = column.children;
     const clamped = Math.max(0, Math.min(index, items.length - 1));
-    for (let i = 0; i < items.length; i++) items[i].removeAttribute("data-selected");
+    for (let i = 0; i < items.length; i++)
+      items[i].removeAttribute("data-selected");
     if (items[clamped]) {
       items[clamped].setAttribute("data-selected", "");
     }
-    picker.dispatchEvent(new CustomEvent("change", {
-      bubbles: true,
-      detail: {
-        column: colIndex,
-        value: items[clamped] ? items[clamped].textContent : "",
-        index: clamped
-      }
-    }));
+    picker.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        detail: {
+          column: colIndex,
+          value: items[clamped] ? items[clamped].textContent : "",
+          index: clamped,
+        },
+      }),
+    );
   }
 
   function setupColumn(column, colIndex, picker) {
@@ -108,7 +118,10 @@
   document.addEventListener("htmx:beforeCleanupElement", function (evt) {
     const el = evt.detail?.elt;
     if (!el) return;
-    if (el.hasAttribute?.("data-picker")) { destroy(el); return; }
+    if (el.hasAttribute?.("data-picker")) {
+      destroy(el);
+      return;
+    }
     (el.querySelectorAll?.("[data-picker]") || []).forEach(destroy);
   });
 

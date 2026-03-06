@@ -30,58 +30,68 @@ function copyText(text) {
   }
 }
 
-if (window._ciderSnippetInit) { /* already initialized */ } else {
-window._ciderSnippetInit = true;
-document.addEventListener("click", function (e) {
-  // Copy button — direct child button of snippet > header
-  const btn = e.target.closest(".snippet > header > button");
-  if (btn) {
-    const snippet = btn.closest(".snippet");
-    if (!snippet) return;
+if (window._ciderSnippetInit) {
+  /* already initialized */
+} else {
+  window._ciderSnippetInit = true;
+  document.addEventListener("click", function (e) {
+    // Copy button — direct child button of snippet > header
+    const btn = e.target.closest(".snippet > header > button");
+    if (btn) {
+      const snippet = btn.closest(".snippet");
+      if (!snippet) return;
 
-    const activePanel = snippet.querySelector(
-      "pre[data-panel][data-active] code"
-    );
-    const code = activePanel || snippet.querySelector("pre code");
-    if (!code) return;
+      const activePanel = snippet.querySelector(
+        "pre[data-panel][data-active] code",
+      );
+      const code = activePanel || snippet.querySelector("pre code");
+      if (!code) return;
 
-    const original = btn.textContent;
-    if (btn._copyTimer) clearTimeout(btn._copyTimer);
-    copyText(code.textContent).then(function () {
-      btn.textContent = "Copied!";
-      btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
-    }).catch(function () {
-      btn.textContent = "Failed";
+      const original = btn.textContent;
       if (btn._copyTimer) clearTimeout(btn._copyTimer);
-      btn._copyTimer = setTimeout(function () { btn.textContent = original; }, 1500);
-    });
-    return;
-  }
+      copyText(code.textContent)
+        .then(function () {
+          btn.textContent = "Copied!";
+          btn._copyTimer = setTimeout(function () {
+            btn.textContent = original;
+          }, 1500);
+        })
+        .catch(function () {
+          btn.textContent = "Failed";
+          if (btn._copyTimer) clearTimeout(btn._copyTimer);
+          btn._copyTimer = setTimeout(function () {
+            btn.textContent = original;
+          }, 1500);
+        });
+      return;
+    }
 
-  // Tab switching
-  const tab = e.target.closest(".snippet > header > nav > button[data-tab]");
-  if (tab) {
-    const snippet = tab.closest(".snippet");
-    if (!snippet) return;
+    // Tab switching
+    const tab = e.target.closest(".snippet > header > nav > button[data-tab]");
+    if (tab) {
+      const snippet = tab.closest(".snippet");
+      if (!snippet) return;
 
-    const target = tab.getAttribute("data-tab");
+      const target = tab.getAttribute("data-tab");
 
-    snippet.querySelectorAll("header > nav > button[data-tab]").forEach(function (t) {
-      t.removeAttribute("data-active");
-      t.setAttribute("aria-selected", "false");
-      t.setAttribute("tabindex", "-1");
-    });
-    tab.setAttribute("data-active", "");
-    tab.setAttribute("aria-selected", "true");
-    tab.setAttribute("tabindex", "0");
+      snippet
+        .querySelectorAll("header > nav > button[data-tab]")
+        .forEach(function (t) {
+          t.removeAttribute("data-active");
+          t.setAttribute("aria-selected", "false");
+          t.setAttribute("tabindex", "-1");
+        });
+      tab.setAttribute("data-active", "");
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
 
-    snippet.querySelectorAll("pre[data-panel]").forEach(function (p) {
-      if (p.getAttribute("data-panel") === target) {
-        p.setAttribute("data-active", "");
-      } else {
-        p.removeAttribute("data-active");
-      }
-    });
-  }
-});
+      snippet.querySelectorAll("pre[data-panel]").forEach(function (p) {
+        if (p.getAttribute("data-panel") === target) {
+          p.setAttribute("data-active", "");
+        } else {
+          p.removeAttribute("data-active");
+        }
+      });
+    }
+  });
 }

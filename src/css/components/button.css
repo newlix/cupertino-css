@@ -8,89 +8,167 @@
   text-decoration: none;
   corner-shape: squircle;
   min-height: 44px;
-  transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), box-shadow var(--transition-fast) var(--apple-ease), border-color var(--transition-fast) var(--apple-ease), transform var(--transition-normal) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+  transition:
+    background-color var(--transition-fast) var(--apple-ease),
+    color var(--transition-fast) var(--apple-ease),
+    box-shadow var(--transition-fast) var(--apple-ease),
+    border-color var(--transition-fast) var(--apple-ease),
+    transform var(--transition-normal) var(--apple-spring),
+    opacity var(--transition-fast) var(--apple-ease);
   letter-spacing: -0.016em;
-  &:disabled, &[aria-disabled="true"] { pointer-events: none; opacity: 0.38; }
-  &:active:not([aria-disabled="true"]):not(:disabled) { transform: scale(var(--apple-press-scale)); }
-  &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
+  &:disabled,
+  &[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.38;
+  }
+  &:active:not([aria-disabled="true"]):not(:disabled) {
+    transform: scale(var(--apple-press-scale));
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
 }
 /* btn-gray = Apple's secondary button style (neutral gray background).
    Apple HIG calls this the "gray" button role alongside filled/tinted/bordered/plain. */
 .btn-gray {
   @apply bg-secondary text-secondary-foreground;
-  &:hover { background: var(--color-secondary-hover); }
-  &:active { background: var(--color-secondary-active); }
+  &:hover {
+    background: var(--color-secondary-hover);
+  }
+  &:active {
+    background: var(--color-secondary-active);
+  }
 }
 .btn-filled {
   @apply bg-primary text-primary-foreground;
-  &:hover { background: var(--color-primary-hover); }
-  &:active { background: var(--color-primary-active); }
+  &:hover {
+    background: var(--color-primary-hover);
+  }
+  &:active {
+    background: var(--color-primary-active);
+  }
 }
 .btn-tinted {
   @apply text-primary;
   background: oklch(from var(--color-primary) l c h / 0.12);
-  &:hover { background: oklch(from var(--color-primary) l c h / 0.18); }
-  &:active { background: oklch(from var(--color-primary) l c h / 0.22); }
+  &:hover {
+    background: oklch(from var(--color-primary) l c h / 0.18);
+  }
+  &:active {
+    background: oklch(from var(--color-primary) l c h / 0.22);
+  }
   .dark & {
     background: oklch(from var(--color-primary) l c h / 0.16);
-    &:hover { background: oklch(from var(--color-primary) l c h / 0.22); }
-    &:active { background: oklch(from var(--color-primary) l c h / 0.26); }
+    &:hover {
+      background: oklch(from var(--color-primary) l c h / 0.22);
+    }
+    &:active {
+      background: oklch(from var(--color-primary) l c h / 0.26);
+    }
   }
 }
 .btn-bezelled {
   @apply text-foreground;
   background: var(--surface-2);
   border: 1px solid var(--color-border-solid);
-  @media (min-resolution: 2dppx) { border-width: 0.5px; }
-  &:hover { background: var(--surface-3); border-color: var(--input-border-hover); }
-  &:active { background: var(--surface-4); border-color: var(--color-border-solid); }
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+  &:hover {
+    background: var(--surface-3);
+    border-color: var(--input-border-hover);
+  }
+  &:active {
+    background: var(--surface-4);
+    border-color: var(--color-border-solid);
+  }
 }
 .btn-plain {
   @apply bg-transparent text-primary;
-  &:hover { background: var(--surface-3); }
-  &:active { background: var(--surface-4); }
+  &:hover {
+    background: var(--surface-3);
+  }
+  &:active {
+    background: var(--surface-4);
+  }
 }
 /* ── Destructive modifier ── */
 .btn-filled.btn-destructive {
   @apply bg-destructive text-destructive-foreground;
-  &:hover { background: var(--color-destructive-hover); }
-  &:active { background: var(--color-destructive-active); }
+  &:hover {
+    background: var(--color-destructive-hover);
+  }
+  &:active {
+    background: var(--color-destructive-active);
+  }
 }
 :is(.btn-gray, .btn-plain).btn-destructive {
   color: var(--color-destructive);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); }
+  &:hover {
+    background: oklch(from var(--color-destructive) l c h / 0.08);
+  }
+  &:active {
+    background: oklch(from var(--color-destructive) l c h / 0.12);
+  }
   .dark & {
-    &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); }
+    &:hover {
+      background: oklch(from var(--color-destructive) l c h / 0.12);
+    }
+    &:active {
+      background: oklch(from var(--color-destructive) l c h / 0.16);
+    }
   }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);
   background: oklch(from var(--color-destructive) l c h / 0.12);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.18); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.22); }
+  &:hover {
+    background: oklch(from var(--color-destructive) l c h / 0.18);
+  }
+  &:active {
+    background: oklch(from var(--color-destructive) l c h / 0.22);
+  }
   .dark & {
     background: oklch(from var(--color-destructive) l c h / 0.16);
-    &:hover { background: oklch(from var(--color-destructive) l c h / 0.22); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.26); }
+    &:hover {
+      background: oklch(from var(--color-destructive) l c h / 0.22);
+    }
+    &:active {
+      background: oklch(from var(--color-destructive) l c h / 0.26);
+    }
   }
 }
 .btn-bezelled.btn-destructive {
   color: var(--color-destructive);
   border-color: oklch(from var(--color-destructive) l c h / 0.3);
-  &:hover { background: oklch(from var(--color-destructive) l c h / 0.08); border-color: oklch(from var(--color-destructive) l c h / 0.4); }
-  &:active { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
+  &:hover {
+    background: oklch(from var(--color-destructive) l c h / 0.08);
+    border-color: oklch(from var(--color-destructive) l c h / 0.4);
+  }
+  &:active {
+    background: oklch(from var(--color-destructive) l c h / 0.12);
+    border-color: oklch(from var(--color-destructive) l c h / 0.45);
+  }
   .dark & {
     border-color: oklch(from var(--color-destructive) l c h / 0.35);
-    &:hover { background: oklch(from var(--color-destructive) l c h / 0.12); border-color: oklch(from var(--color-destructive) l c h / 0.45); }
-    &:active { background: oklch(from var(--color-destructive) l c h / 0.16); border-color: oklch(from var(--color-destructive) l c h / 0.50); }
+    &:hover {
+      background: oklch(from var(--color-destructive) l c h / 0.12);
+      border-color: oklch(from var(--color-destructive) l c h / 0.45);
+    }
+    &:active {
+      background: oklch(from var(--color-destructive) l c h / 0.16);
+      border-color: oklch(from var(--color-destructive) l c h / 0.5);
+    }
   }
 }
 .btn-small {
   @apply px-3 py-2 text-[13px] gap-1.5 rounded-[var(--radius-sm)];
   min-height: 32px;
-  @media (pointer: coarse), (hover: none) { min-height: 44px; }
+  @media (pointer: coarse), (hover: none) {
+    min-height: 44px;
+  }
 }
 .btn-large {
   @apply px-7 py-[14px] text-[17px] leading-[1.29] font-semibold rounded-[var(--radius-lg)];
@@ -117,7 +195,9 @@
     box-shadow: var(--float-ring), var(--shadow-sm);
     opacity: 0;
     translate: -50% 2px;
-    transition: opacity var(--transition-fast) var(--apple-ease), translate var(--transition-fast) var(--apple-ease);
+    transition:
+      opacity var(--transition-fast) var(--apple-ease),
+      translate var(--transition-fast) var(--apple-ease);
   }
   &:hover::after {
     opacity: 1;
@@ -129,18 +209,42 @@
     translate: -50% 0;
   }
   @media (prefers-reduced-motion: reduce) {
-    &:hover::after { transition-delay: 0s; }
+    &:hover::after {
+      transition-delay: 0s;
+    }
   }
   @media (forced-colors: active) {
-    &::after { border: 1px solid ButtonText; background: Canvas; color: CanvasText; box-shadow: none; }
+    &::after {
+      border: 1px solid ButtonText;
+      background: Canvas;
+      color: CanvasText;
+      box-shadow: none;
+    }
   }
 }
 @media (forced-colors: active) {
-  .btn-gray, .btn-filled, .btn-tinted, .btn-bezelled, .btn-plain {
+  .btn-gray,
+  .btn-filled,
+  .btn-tinted,
+  .btn-bezelled,
+  .btn-plain {
     border: 1px solid ButtonText;
-    &:hover:not(:disabled):not([aria-disabled="true"]) { border-color: Highlight; }
-    &:active:not(:disabled):not([aria-disabled="true"]) { background: Highlight; color: HighlightText; border-color: Highlight; }
-    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-    &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      border-color: Highlight;
+    }
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      background: Highlight;
+      color: HighlightText;
+      border-color: Highlight;
+    }
+    &:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      border-color: GrayText;
+      color: GrayText;
+    }
   }
 }

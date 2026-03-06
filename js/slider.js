@@ -14,8 +14,14 @@
 
   function destroy(el) {
     if (!el._sliderInit) return;
-    if (el._sliderObserver) { el._sliderObserver.disconnect(); el._sliderObserver = null; }
-    if (el._sliderInputHandler) { el.removeEventListener("input", el._sliderInputHandler); el._sliderInputHandler = null; }
+    if (el._sliderObserver) {
+      el._sliderObserver.disconnect();
+      el._sliderObserver = null;
+    }
+    if (el._sliderInputHandler) {
+      el.removeEventListener("input", el._sliderInputHandler);
+      el._sliderInputHandler = null;
+    }
     delete el.value;
     delete el.min;
     delete el.max;
@@ -27,26 +33,44 @@
       if (el._sliderInit) return;
       el._sliderInit = true;
       update(el);
-      el._sliderInputHandler = () => { update(el); };
+      el._sliderInputHandler = () => {
+        update(el);
+      };
       el.addEventListener("input", el._sliderInputHandler);
       // Intercept .value/.min/.max property setters so programmatic changes update the fill
       for (const prop of ["value", "min", "max"]) {
-        const desc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, prop);
+        const desc = Object.getOwnPropertyDescriptor(
+          HTMLInputElement.prototype,
+          prop,
+        );
         if (desc && desc.get && desc.set) {
           Object.defineProperty(el, prop, {
-            get() { return desc.get.call(this); },
-            set(v) { desc.set.call(this, v); this._sliderFromSetter = true; update(this); this._sliderFromSetter = false; },
+            get() {
+              return desc.get.call(this);
+            },
+            set(v) {
+              desc.set.call(this, v);
+              this._sliderFromSetter = true;
+              update(this);
+              this._sliderFromSetter = false;
+            },
             configurable: true,
           });
         }
       }
       // Sync when value/min/max attributes change via setAttribute()
       const mo = new MutationObserver(() => {
-        if (!el.isConnected) { destroy(el); return; }
+        if (!el.isConnected) {
+          destroy(el);
+          return;
+        }
         if (!el._sliderFromSetter) update(el);
       });
       el._sliderObserver = mo;
-      mo.observe(el, { attributes: true, attributeFilter: ["value", "min", "max"] });
+      mo.observe(el, {
+        attributes: true,
+        attributeFilter: ["value", "min", "max"],
+      });
     });
   }
 
@@ -60,7 +84,10 @@
   document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
     if (!el) return;
-    if (el.classList?.contains("slider")) { destroy(el); return; }
+    if (el.classList?.contains("slider")) {
+      destroy(el);
+      return;
+    }
     (el.querySelectorAll?.(".slider") || []).forEach(destroy);
   });
 

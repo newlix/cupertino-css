@@ -10,17 +10,38 @@
     background-color: var(--color-card);
     color: var(--color-foreground);
     border: 1px solid var(--input-border);
-    @media (min-resolution: 2dppx) { border-width: 0.5px; }
+    @media (min-resolution: 2dppx) {
+      border-width: 0.5px;
+    }
     width: 46px;
     height: 52px;
     font-size: 28px;
-    font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-family:
+      "SF Pro Rounded",
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      sans-serif;
     font-variant-numeric: tabular-nums;
     caret-color: var(--color-primary);
-    transition: border-color var(--transition-normal) var(--apple-ease), box-shadow var(--transition-normal) var(--apple-ease);
-    &:hover:not(:focus-visible) { border-color: var(--input-border-hover); }
-    &:focus-visible { border-color: var(--color-primary); box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-    &:disabled, &[aria-disabled="true"] { @apply cursor-not-allowed; opacity: 0.38; pointer-events: none; }
+    transition:
+      border-color var(--transition-normal) var(--apple-ease),
+      box-shadow var(--transition-normal) var(--apple-ease);
+    &:hover:not(:focus-visible) {
+      border-color: var(--input-border-hover);
+    }
+    &:focus-visible {
+      border-color: var(--color-primary);
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      @apply cursor-not-allowed;
+      opacity: 0.38;
+      pointer-events: none;
+    }
     &:autofill,
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
@@ -30,8 +51,13 @@
     }
     &[aria-invalid="true"] {
       border-color: var(--color-destructive);
-      &:hover:not(:focus-visible) { border-color: var(--color-destructive); }
-      &:focus-visible { border-color: var(--color-destructive); box-shadow: var(--focus-ring-error); }
+      &:hover:not(:focus-visible) {
+        border-color: var(--color-destructive);
+      }
+      &:focus-visible {
+        border-color: var(--color-destructive);
+        box-shadow: var(--focus-ring-error);
+      }
     }
   }
   & > span {
@@ -45,13 +71,19 @@
       font-size: 24px;
     }
     @media (pointer: coarse), (hover: none) {
-      & input:not([type="hidden"]) { min-width: 44px; }
+      & input:not([type="hidden"]) {
+        min-width: 44px;
+      }
     }
   }
   &[data-error] {
     animation: shake 0.4s var(--apple-ease);
-    @media (prefers-reduced-motion: reduce) { animation: none; }
-    & > span { color: var(--color-destructive); }
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+    & > span {
+      color: var(--color-destructive);
+    }
   }
   &[data-error] + small {
     color: var(--color-destructive);
@@ -59,9 +91,19 @@
   @media (forced-colors: active) {
     & input:not([type="hidden"]) {
       border: 2px solid ButtonText;
-      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
-      &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
+        border-color: GrayText;
+        color: GrayText;
+      }
     }
-    &[data-error] input:not([type="hidden"]) { border-color: Highlight; border-style: dashed; }
+    &[data-error] input:not([type="hidden"]) {
+      border-color: Highlight;
+      border-style: dashed;
+    }
   }
 }

@@ -63,14 +63,14 @@ npm run test:ui          # Playwright UI mode
 
 Component names follow **web conventions over Apple HIG** when they conflict:
 
-| CiderUI | HIG Name | Reason |
-|---|---|---|
-| Tooltip | Help Tag | Web universal term |
-| Input | Text Field | HTML `<input>` |
-| Textarea | Text Editor | HTML `<textarea>` |
-| Select | Pop-Up Button | HTML `<select>` |
-| Switch | Toggle | HTML `role="switch"` |
-| Breadcrumb | Path Control | Web navigation convention |
+| CiderUI    | HIG Name      | Reason                    |
+| ---------- | ------------- | ------------------------- |
+| Tooltip    | Help Tag      | Web universal term        |
+| Input      | Text Field    | HTML `<input>`            |
+| Textarea   | Text Editor   | HTML `<textarea>`         |
+| Select     | Pop-Up Button | HTML `<select>`           |
+| Switch     | Toggle        | HTML `role="switch"`      |
+| Breadcrumb | Path Control  | Web navigation convention |
 
 ## Publishing
 
