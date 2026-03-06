@@ -49,6 +49,7 @@ npm run test:ui          # Playwright UI mode
 - Playwright config builds docs then starts a server on :3000.
 - Test targets: built docs pages in `site/components/`.
 - Tests cover rendering, dark mode, CSS states, focus-visible, and interactive JS behavior.
+- **UA override tests** (`tests/ua-override.spec.js`) — when adding overlay/positioned components that use semantic HTML (`<dialog>`, `[popover]`, etc.), add a test to verify the component's `getBoundingClientRect()` matches the intended layout. Browser UA stylesheets (e.g. `dialog:modal { inset: 0 }`) can silently override component positioning. Wait for animations to finish before measuring (use `el.getAnimations()`).
 
 ## Formatting
 
