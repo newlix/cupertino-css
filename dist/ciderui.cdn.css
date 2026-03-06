@@ -1862,10 +1862,7 @@
       animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
     }
     @media (prefers-reduced-motion: reduce) {
-      .hud {
-        animation: none;
-      }
-      .hud[data-closing] {
+      .hud, .hud[data-closing] {
         animation: none;
       }
     }
