@@ -375,6 +375,9 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
+  .cider :is(a, button, summary, [tabindex]):focus-visible {
+    box-shadow: var(--focus-ring);
+  }
   @keyframes dialogShow {
     from {
       opacity: 0;
@@ -468,7 +471,7 @@
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    .cider, .cider *, .cider *::before, .cider *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -2961,7 +2964,7 @@
       border-collapse: separate;
       border-spacing: 0;
       corner-shape: squircle;
-      overflow: hidden;
+      overflow: clip;
       box-shadow: var(--shadow-sm), var(--panel-ring);
       & thead tr {
         background: var(--surface-1);

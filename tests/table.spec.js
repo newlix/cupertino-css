@@ -44,11 +44,13 @@ test.describe('Table', () => {
 
   test('table clips thead/tfoot backgrounds to border-radius', async ({ page }) => {
     const table = preview(page).locator('table').first();
-    // overflow:hidden + border-radius is the mechanism that prevents
+    // overflow:clip + border-radius is the mechanism that prevents
     // thead/tfoot backgrounds from bleeding past the rounded corners.
+    // clip is preferred over hidden — it clips visually without creating
+    // a scroll container or blocking popover overflow.
     const radius = parseFloat(await css(table, 'borderRadius'));
     expect(radius).toBeGreaterThanOrEqual(12);
-    expect(await css(table, 'overflow')).toBe('hidden');
+    expect(await css(table, 'overflow')).toBe('clip');
     // Confirm the bleed condition exists: thead and tfoot have backgrounds
     const theadBg = await css(preview(page).locator('thead tr').first(), 'backgroundColor');
     expect(theadBg).not.toBe('rgba(0, 0, 0, 0)');

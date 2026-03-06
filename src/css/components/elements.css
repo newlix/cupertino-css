@@ -364,7 +364,7 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   corner-shape: squircle;
-  overflow: hidden;
+  overflow: clip;
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & thead tr {
     background: var(--surface-1);
