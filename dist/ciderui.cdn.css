@@ -3091,8 +3091,8 @@
         inset: calc(var(--spacing) * 0);
         border-radius: 50%;
         background: conic-gradient( from -90deg, var(--gauge-color, var(--color-primary)) calc(var(--gauge-value, 0) * 360deg), var(--surface-3) calc(var(--gauge-value, 0) * 360deg) );
-        -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
-        mask: radial-gradient(circle, transparent 70%, black 71%);
+        -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+        mask: radial-gradient(circle, transparent 60%, black 61%);
       }
       & > span {
         position: relative;
@@ -3133,8 +3133,8 @@
         &::before {
           forced-color-adjust: none;
           background: Highlight;
-          -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
-          mask: radial-gradient(circle, transparent 70%, black 71%);
+          -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+          mask: radial-gradient(circle, transparent 60%, black 61%);
         }
       }
     }
