@@ -47,6 +47,8 @@ dialog.action-sheet {
 
   &:modal::backdrop {
     background: var(--backdrop-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     animation: fadeIn var(--transition-normal) var(--apple-ease) forwards;
   }
 
@@ -104,6 +106,7 @@ dialog.action-sheet {
       }
 
       &:focus-visible {
+        background: var(--surface-2);
         box-shadow: var(--focus-ring);
         outline: 2px solid transparent;
         outline-offset: 2px;

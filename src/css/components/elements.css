@@ -101,9 +101,14 @@ h6 {
 }
 :is(article, .prose, p) a:not([class*="btn-"]) {
   color: var(--color-primary);
+  text-decoration: underline transparent;
+  @apply underline-offset-2;
+  transition: text-decoration-color var(--transition-fast) var(--apple-ease);
   &:where(:hover, :focus-visible) {
-    @apply underline underline-offset-2;
     text-decoration-color: var(--color-primary);
+  }
+  &:active {
+    color: var(--color-primary-active);
   }
 }
 ul:not([class]) {
@@ -151,7 +156,6 @@ details {
       box-shadow: var(--focus-ring);
       outline: 2px solid transparent;
       outline-offset: 2px;
-      border-radius: var(--radius-xs);
     }
   }
   & > :not(summary) {

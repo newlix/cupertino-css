@@ -51,5 +51,7 @@
   .hud {
     border: 1px solid ButtonText;
     box-shadow: none;
+    color: CanvasText;
+    background: Canvas;
   }
 }

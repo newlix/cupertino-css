@@ -24,6 +24,8 @@
 
     function open() {
       panel.setAttribute("data-open", "");
+      panel.setAttribute("role", "dialog");
+      panel.setAttribute("aria-modal", "true");
       if (overlay) overlay.setAttribute("data-open", "");
       btn.setAttribute("aria-expanded", "true");
       if (openCount === 0) savedOverflow = document.body.style.overflow;
@@ -39,6 +41,8 @@
     function close(returnFocus) {
       if (!isOpen()) return;
       panel.removeAttribute("data-open");
+      panel.removeAttribute("role");
+      panel.removeAttribute("aria-modal");
       if (overlay) overlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
       openCount = Math.max(0, openCount - 1);
@@ -85,6 +89,8 @@
     // Restore scroll lock if sidebar was open
     if (btn._sidebarPanel && btn._sidebarPanel.hasAttribute("data-open")) {
       btn._sidebarPanel.removeAttribute("data-open");
+      btn._sidebarPanel.removeAttribute("role");
+      btn._sidebarPanel.removeAttribute("aria-modal");
       if (btn._sidebarOverlay) btn._sidebarOverlay.removeAttribute("data-open");
       openCount = Math.max(0, openCount - 1);
       if (openCount === 0) document.body.style.overflow = savedOverflow;

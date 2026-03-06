@@ -68,9 +68,34 @@
     }
   }
 }
-@media (pointer: coarse), (hover: none) {
-  .toolbar > button,
-  .toolbar > a {
+/* Standalone toolbar items (outside .toolbar-group) */
+.toolbar > button,
+.toolbar > a {
+  @apply inline-flex items-center justify-center border-none cursor-pointer;
+  background: transparent;
+  color: var(--color-foreground);
+  transition: opacity var(--transition-fast) var(--apple-ease);
+  & svg {
+    @apply size-5;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: 0.5;
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+  @media (pointer: coarse), (hover: none) {
     min-height: 44px;
     min-width: 44px;
   }
@@ -91,6 +116,23 @@
   .toolbar-bottom {
     border-bottom: none;
     border-top: 1px solid ButtonText;
+  }
+  .toolbar > button,
+  .toolbar > a {
+    color: ButtonText;
+    &:hover {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
+    &:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      color: GrayText;
+      opacity: 1;
+    }
   }
   .toolbar-group {
     border: 1px solid ButtonText;

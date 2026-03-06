@@ -56,11 +56,30 @@
     dialog._asCloseTimer = setTimeout(finish, duration);
   }
 
+  function wireAria(dialog) {
+    const title = dialog.querySelector(".action-sheet-title");
+    const message = dialog.querySelector(".action-sheet-message");
+    if (title && !dialog.getAttribute("aria-labelledby")) {
+      if (!title.id)
+        title.id = `as-title-${Math.random().toString(36).slice(2, 8)}`;
+      dialog.setAttribute("aria-labelledby", title.id);
+    }
+    if (message && !dialog.getAttribute("aria-describedby")) {
+      if (!message.id)
+        message.id = `as-desc-${Math.random().toString(36).slice(2, 8)}`;
+      dialog.setAttribute("aria-describedby", message.id);
+    }
+  }
+
   function trapFocus(dialog) {
     const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
       isVisible,
     );
-    if (focusable.length) {
+    // Prefer cancel button for initial focus (safe default action per HIG)
+    const cancelBtn = dialog.querySelector(".action-sheet-cancel");
+    if (cancelBtn && isVisible(cancelBtn)) {
+      cancelBtn.focus();
+    } else if (focusable.length) {
       focusable[0].focus();
     }
 
@@ -167,11 +186,14 @@
             }
             activeDialogs.add(dialog);
             document.body.style.overflow = "hidden";
+            wireAria(dialog);
+            dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
           }
         } else {
           clearCloseAnim(dialog);
           dialog.removeAttribute("data-closing");
+          dialog.removeAttribute("aria-modal");
           teardown();
           const prev = dialog._asPreviousFocus;
           dialog._asPreviousFocus = null;

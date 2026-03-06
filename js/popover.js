@@ -245,6 +245,7 @@
         popover._escapeDismiss = true;
         if (popover.matches(":popover-open")) {
           e.preventDefault();
+          e.stopPropagation();
           popover.hidePopover();
         }
       }

@@ -54,10 +54,20 @@
     outline-offset: -2px;
     border-radius: var(--radius-xs);
   }
+  @media (pointer: coarse), (hover: none) {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 @media (forced-colors: active) {
   .tab-bar > a,
   .tab-bar > button {
+    &:hover:not([data-active]):not([aria-selected="true"]):not(:disabled):not(
+        [aria-disabled="true"]
+      ) {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
     &[data-active],
     &[aria-selected="true"] {
       outline: 2px solid Highlight;
