@@ -102,6 +102,7 @@
   corner-shape: round;
 }
 /* ── Tooltip ── */
+/* HIG: Help Tag (macOS) — web convention uses "tooltip". */
 /* Usage: <button data-tooltip="Label">…</button> */
 [data-tooltip] {
   @apply relative;

@@ -1,4 +1,5 @@
 /* ========== BREADCRUMB ========== */
+/* HIG: Path Control (macOS) — web convention uses "breadcrumb". */
 .breadcrumb {
   @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
