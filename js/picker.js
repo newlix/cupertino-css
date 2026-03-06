@@ -76,6 +76,42 @@
       }
     };
     column.addEventListener("scroll", column._pickerScroll, { passive: true });
+
+    // Mouse drag-to-scroll (desktop: emulate touch drag behaviour)
+    let dragY = 0;
+    let dragScrollTop = 0;
+    let dragging = false;
+
+    function onMouseDown(e) {
+      if (e.button !== 0 || e.pointerType === "touch") return;
+      dragging = true;
+      dragY = e.clientY;
+      dragScrollTop = column.scrollTop;
+      column.setPointerCapture(e.pointerId);
+      column.style.scrollSnapType = "none";
+    }
+
+    function onMouseMove(e) {
+      if (!dragging) return;
+      column.scrollTop = dragScrollTop - (e.clientY - dragY);
+    }
+
+    function onMouseUp() {
+      if (!dragging) return;
+      dragging = false;
+      column.style.scrollSnapType = "";
+      // Snap to nearest item
+      const idx = Math.round(column.scrollTop / itemH);
+      scrollToIndex(column, idx, true);
+    }
+
+    column._pickerPointerDown = onMouseDown;
+    column._pickerPointerMove = onMouseMove;
+    column._pickerPointerUp = onMouseUp;
+    column.addEventListener("pointerdown", onMouseDown);
+    column.addEventListener("pointermove", onMouseMove);
+    column.addEventListener("pointerup", onMouseUp);
+    column.addEventListener("pointercancel", onMouseUp);
   }
 
   function setupPicker(picker) {
@@ -101,6 +137,15 @@
       if (col._pickerScroll) {
         col.removeEventListener("scroll", col._pickerScroll);
         col._pickerScroll = null;
+      }
+      if (col._pickerPointerDown) {
+        col.removeEventListener("pointerdown", col._pickerPointerDown);
+        col.removeEventListener("pointermove", col._pickerPointerMove);
+        col.removeEventListener("pointerup", col._pickerPointerUp);
+        col.removeEventListener("pointercancel", col._pickerPointerUp);
+        col._pickerPointerDown = null;
+        col._pickerPointerMove = null;
+        col._pickerPointerUp = null;
       }
       clearTimeout(col._pickerTimer);
       col._pickerTimer = null;
