@@ -22,6 +22,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-tight: -0.025em;
+    --tracking-widest: 0.1em;
     --leading-snug: 1.375;
     --radius-xs: var(--radius-xs);
     --radius-sm: var(--radius-sm);
@@ -246,12 +247,12 @@
   --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   --transition-fast: 0.15s;
   --transition-normal: 0.25s;
-  --surface-1: oklch(0 0 0 / 0.04);
-  --surface-2: oklch(0 0 0 / 0.06);
-  --surface-3: oklch(0 0 0 / 0.08);
-  --surface-4: oklch(0 0 0 / 0.12);
-  --surface-5: oklch(0 0 0 / 0.16);
-  --surface-7: oklch(0 0 0 / 0.20);
+  --surface-1: oklch(0.556 0.008 286 / 0.04);
+  --surface-2: oklch(0.556 0.008 286 / 0.06);
+  --surface-3: oklch(0.556 0.008 286 / 0.08);
+  --surface-4: oklch(0.556 0.008 286 / 0.12);
+  --surface-5: oklch(0.556 0.008 286 / 0.16);
+  --surface-7: oklch(0.556 0.008 286 / 0.20);
   --panel-border: oklch(0 0 0 / 0.06);
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04);
   --float-ring-color: oklch(0 0 0 / 0.06);
@@ -320,12 +321,12 @@
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.08);
   --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.2), 0 2px 8px oklch(0 0 0 / 0.12);
   --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.25), 0 4px 16px oklch(0 0 0 / 0.12);
-  --surface-1: oklch(1 0 0 / 0.04);
-  --surface-2: oklch(1 0 0 / 0.06);
-  --surface-3: oklch(1 0 0 / 0.08);
-  --surface-4: oklch(1 0 0 / 0.12);
-  --surface-5: oklch(1 0 0 / 0.16);
-  --surface-7: oklch(1 0 0 / 0.20);
+  --surface-1: oklch(0.556 0.008 286 / 0.08);
+  --surface-2: oklch(0.556 0.008 286 / 0.12);
+  --surface-3: oklch(0.556 0.008 286 / 0.18);
+  --surface-4: oklch(0.556 0.008 286 / 0.24);
+  --surface-5: oklch(0.556 0.008 286 / 0.32);
+  --surface-7: oklch(0.556 0.008 286 / 0.36);
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring-color: oklch(1 0 0 / 0.08);
@@ -905,6 +906,14 @@
         border: 1px solid ButtonText;
         box-shadow: none;
       }
+      :is(a, button).card:hover {
+        outline: 1px solid ButtonText;
+        outline-offset: -1px;
+      }
+      :is(a, button).card:active {
+        outline: 2px solid ButtonText;
+        outline-offset: -2px;
+      }
       :is(a, button).card:focus-visible {
         outline: 2px solid Highlight;
         box-shadow: none;
@@ -1113,7 +1122,7 @@
       border-radius: var(--radius-sm);
       padding: calc(var(--spacing) * 1);
       corner-shape: squircle;
-      background: var(--surface-5);
+      background: var(--surface-4);
     }
     .segmented-control [data-tab-indicator] {
       pointer-events: none;
@@ -1183,13 +1192,23 @@
         animation: segFadeIn var(--transition-fast) var(--apple-ease);
       }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .segmented-control [data-tab-indicator] {
+        transition: none;
+      }
+      .segmented-control [data-tab] {
+        transition: none;
+      }
+      .segmented-control [data-tab-panel][data-active] {
+        animation: none;
+      }
+    }
     @media (forced-colors: active) {
       .segmented-control [data-tab-list] {
         border: 1px solid ButtonText;
       }
       .segmented-control [data-tab-indicator] {
-        background: Highlight;
-        box-shadow: none;
+        display: none;
       }
       .segmented-control [data-tab] {
         &:focus-visible {
@@ -1784,6 +1803,7 @@
       mask-position: center;
       animation: activity-spin 0.8s steps(12, start) infinite;
       @media (prefers-reduced-motion: reduce) {
+        animation: none;
         opacity: 0.65;
       }
       &.activity-indicator-sm {
@@ -1848,6 +1868,15 @@
     }
     .hud[data-closing] {
       animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hud {
+        animation: none;
+      }
+      .hud[data-closing] {
+        animation: none;
+        opacity: 0;
+      }
     }
     @media (forced-colors: active) {
       .hud {
@@ -2226,6 +2255,127 @@
     .popover-top {
       & [popover] {
         transform-origin: var(--popover-origin, bottom left);
+      }
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding-inline: calc(var(--spacing) * 3);
+      padding-bottom: calc(var(--spacing) * 4);
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+      &:hover {
+        scrollbar-color: var(--surface-5) transparent;
+      }
+      & > div {
+        padding-top: calc(var(--spacing) * 5);
+        padding-bottom: calc(var(--spacing) * 1);
+      }
+      & h2 {
+        padding-inline: calc(var(--spacing) * 2);
+        padding-bottom: calc(var(--spacing) * 1);
+        font-size: 13px;
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        --tw-tracking: var(--tracking-widest);
+        letter-spacing: var(--tracking-widest);
+        text-transform: uppercase;
+        margin: 0;
+        color: var(--color-tertiary-foreground);
+        &:not(:first-child) {
+          margin-top: 0;
+        }
+      }
+      & a, & button {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
+        border-radius: var(--radius-lg);
+        --tw-border-style: none;
+        border-style: none;
+        background-color: transparent;
+        padding-inline: calc(var(--spacing) * 2.5);
+        padding-block: calc(var(--spacing) * 1.5);
+        font-size: 13px;
+        text-decoration-line: none;
+        color: var(--color-tertiary-foreground);
+        transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
+        &:visited {
+          color: var(--color-tertiary-foreground);
+        }
+        &:hover {
+          color: var(--color-foreground);
+          background: var(--surface-3);
+          text-decoration: none;
+        }
+        &:active {
+          background: var(--surface-4);
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+        }
+        &:is(:disabled, [aria-disabled="true"]) {
+          opacity: 0.38;
+          pointer-events: none;
+        }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &:is([data-active], [aria-current="page"]) {
+          --tw-font-weight: var(--font-weight-semibold);
+          font-weight: var(--font-weight-semibold);
+          color: var(--color-foreground);
+          background: var(--surface-4);
+        }
+        &:is([data-active], [aria-current="page"]):hover {
+          background: var(--surface-5);
+        }
+        & > svg:first-child {
+          width: calc(var(--spacing) * 4);
+          height: calc(var(--spacing) * 4);
+          flex-shrink: 0;
+        }
+        @media (pointer: coarse), (hover: none) {
+          min-height: 44px;
+        }
+      }
+    }
+    .sidebar[data-tinted] {
+      & a:is([data-active], [aria-current="page"]), & button:is([data-active], [aria-current="page"]) {
+        color: var(--color-primary);
+        background: oklch(from var(--color-primary) l c h / 0.12);
+        .dark & {
+          background: oklch(from var(--color-primary) l c h / 0.22);
+        }
+      }
+      & a:is([data-active], [aria-current="page"]):hover, & button:is([data-active], [aria-current="page"]):hover {
+        background: oklch(from var(--color-primary) l c h / 0.18);
+        .dark & {
+          background: oklch(from var(--color-primary) l c h / 0.30);
+        }
+      }
+    }
+    @media (forced-colors: active) {
+      .sidebar a:hover:not(:disabled):not([aria-disabled="true"]), .sidebar button:hover:not(:disabled):not([aria-disabled="true"]) {
+        outline: 1px solid ButtonText;
+        outline-offset: -1px;
+      }
+      .sidebar a:focus-visible, .sidebar button:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      .sidebar :is(a, button):is([data-active], [aria-current="page"]), .sidebar[data-tinted] :is(a, button):is([data-active], [aria-current="page"]) {
+        background: Highlight;
+        color: HighlightText;
+        outline: 2px solid Highlight;
+      }
+      .sidebar :is(a, button):disabled, .sidebar :is(a, button)[aria-disabled="true"] {
+        color: GrayText;
+        opacity: 1;
       }
     }
     .verification-code {
@@ -2859,6 +3009,21 @@
           transform: translateX(16px);
         }
       }
+      &[aria-invalid="true"] {
+        background: oklch(from var(--color-destructive) l c h / 0.18);
+        &:checked {
+          background: var(--color-destructive);
+        }
+        &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
+          background: oklch(from var(--color-destructive) l c h / 0.25);
+        }
+        &:hover:not(:disabled):not([aria-disabled="true"]):checked {
+          background: var(--color-destructive-hover);
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring-error);
+        }
+      }
       &.switch-blue {
         --color-switch: var(--color-primary);
         --color-switch-hover: var(--color-primary-hover);
@@ -3165,6 +3330,7 @@
       }
       input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])), textarea, select:not([multiple]) {
         border: 1px solid ButtonText;
+        appearance: menulist;
         &:focus-visible {
           outline: 2px solid Highlight;
           box-shadow: none;
@@ -3189,15 +3355,27 @@
         background: Mark;
         color: MarkText;
       }
+      code {
+        background: transparent;
+        border: 1px solid ButtonText;
+      }
+      abbr[title] {
+        text-decoration-color: ButtonText;
+      }
       table {
         border: 1px solid ButtonText;
       }
       pre {
         border: 1px solid ButtonText;
       }
+      pre > code {
+        border: none;
+      }
       kbd {
         border: 1px solid ButtonText;
         box-shadow: none;
+        background: Canvas;
+        color: CanvasText;
       }
     }
   }
