@@ -110,14 +110,14 @@ blockquote {
   border-color: var(--color-border-solid);
 }
 code {
-  @apply rounded-md px-1.5 py-0.5 font-mono text-[13px] font-normal text-foreground;
+  @apply rounded-[var(--radius-xs)] px-1.5 py-0.5 font-mono text-[13px] font-normal text-foreground;
   background: var(--surface-3);
   line-height: 1.5;
 }
 
 /* ─── Details / Summary ─── */
 details {
-  @apply rounded-xl border p-5;
+  @apply rounded-[var(--radius)] border p-5;
   corner-shape: squircle;
   border-color: var(--color-border);
   & summary {
@@ -154,7 +154,7 @@ details {
 
 /* ─── Pre / Code block ─── */
 pre {
-  @apply rounded-lg p-4 text-[13px] overflow-x-auto;
+  @apply rounded-[var(--radius-sm)] p-4 text-[13px] overflow-x-auto;
   line-height: 1.6;
   corner-shape: squircle;
   background: var(--surface-2);
@@ -727,7 +727,7 @@ kbd {
 
 /* ─── Fieldset ─── */
 fieldset {
-  @apply rounded-xl border p-5;
+  @apply rounded-[var(--radius)] border p-5;
   corner-shape: squircle;
   border-color: var(--color-border);
   & > legend {
@@ -760,7 +760,7 @@ dd {
 
 /* ─── Mark (highlight) ─── */
 mark {
-  @apply rounded-sm px-1 py-0.5;
+  @apply rounded-[var(--radius-xs)] px-1 py-0.5;
   background: var(--mark-bg);
   color: var(--color-foreground);
 }

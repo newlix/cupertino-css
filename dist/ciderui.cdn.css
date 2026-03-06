@@ -3408,7 +3408,7 @@
       border-color: var(--color-border-solid);
     }
     code {
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-xs);
       padding-inline: calc(var(--spacing) * 1.5);
       padding-block: calc(var(--spacing) * 0.5);
       font-family: var(--font-mono);
@@ -3420,7 +3420,7 @@
       line-height: 1.5;
     }
     details {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       border-style: var(--tw-border-style);
       border-width: 1px;
       padding: calc(var(--spacing) * 5);
@@ -3462,7 +3462,7 @@
     }
     pre {
       overflow-x: auto;
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-sm);
       padding: calc(var(--spacing) * 4);
       font-size: 13px;
       line-height: 1.6;
@@ -4007,7 +4007,7 @@
       padding-inline: 1px;
     }
     fieldset {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       border-style: var(--tw-border-style);
       border-width: 1px;
       padding: calc(var(--spacing) * 5);
@@ -4055,7 +4055,7 @@
       min-width: 0;
     }
     mark {
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       padding-inline: calc(var(--spacing) * 1);
       padding-block: calc(var(--spacing) * 0.5);
       background: var(--mark-bg);
