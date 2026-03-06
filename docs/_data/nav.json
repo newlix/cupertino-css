@@ -22,7 +22,7 @@
       { "label": "Dialog", "href": "components/dialog.html" },
       { "label": "Disclosure Group", "href": "components/disclosure-group.html" },
       { "label": "Gauge", "href": "components/gauge.html" },
-      { "label": "Help Tag", "href": "components/help-tag.html" },
+      { "label": "Tooltip", "href": "components/tooltip.html" },
       { "label": "HUD", "href": "components/hud.html" },
       { "label": "Input", "href": "components/input.html" },
       { "label": "Kbd", "href": "components/kbd.html" },

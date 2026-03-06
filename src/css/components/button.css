@@ -101,12 +101,12 @@
   border-radius: var(--radius-pill);
   corner-shape: round;
 }
-/* ── Help Tag ── */
-/* Usage: <button data-help="Label">…</button> */
-[data-help] {
+/* ── Tooltip ── */
+/* Usage: <button data-tooltip="Label">…</button> */
+[data-tooltip] {
   @apply relative;
   &::after {
-    content: attr(data-help);
+    content: attr(data-tooltip);
     @apply pointer-events-none absolute z-40 bottom-full left-1/2 mb-2 whitespace-nowrap rounded-md px-2 py-1 text-xs font-normal;
     letter-spacing: -0.01em;
     background: var(--tooltip-bg);

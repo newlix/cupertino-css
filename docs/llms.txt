@@ -50,7 +50,7 @@
 - [Badge](https://ciderui.com/components/badge.html): `badge` — red notification count.
 - [Callout](https://ciderui.com/components/callout.html): `callout` — informational callout box.
 - [Gauge](https://ciderui.com/components/gauge.html): `gauge` `gauge-sm` `gauge-lg` `gauge-green` `gauge-orange` `gauge-destructive` — circular ring progress indicator.
-- [Help Tag](https://ciderui.com/components/help-tag.html): `[data-help]` — hover tooltip on any element. Pure CSS, no JS.
+- [Tooltip](https://ciderui.com/components/tooltip.html): `[data-tooltip]` — hover tooltip on any element. Pure CSS, no JS.
 - [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
 - [Progress](https://ciderui.com/components/progress.html): `<progress>` `.progress-indeterminate`
 

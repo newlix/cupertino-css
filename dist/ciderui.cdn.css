@@ -673,10 +673,10 @@
       border-radius: var(--radius-pill);
       corner-shape: round;
     }
-    [data-help] {
+    [data-tooltip] {
       position: relative;
       &::after {
-        content: attr(data-help);
+        content: attr(data-tooltip);
         pointer-events: none;
         position: absolute;
         bottom: 100%;
@@ -2491,7 +2491,7 @@
           &:focus-visible {
             background: var(--color-primary);
             color: var(--color-primary-foreground);
-            outline: 2px solid var(--color-primary);
+            outline: 2px solid transparent;
             outline-offset: -2px;
           }
           &:focus-visible svg {
