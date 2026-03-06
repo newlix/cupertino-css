@@ -826,6 +826,7 @@ abbr[title] {
     &:disabled,
     &[aria-disabled="true"] {
       border-color: GrayText;
+      opacity: 1;
       &::after {
         background: GrayText;
       }
@@ -864,6 +865,7 @@ abbr[title] {
     &[aria-disabled="true"] {
       border-color: GrayText;
       color: GrayText;
+      opacity: 1;
     }
     &[aria-invalid="true"] {
       border: 2px dashed Highlight;

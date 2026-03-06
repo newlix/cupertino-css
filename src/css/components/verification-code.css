@@ -99,6 +99,7 @@
       &[aria-disabled="true"] {
         border-color: GrayText;
         color: GrayText;
+        opacity: 1;
       }
     }
     &[data-error] input:not([type="hidden"]) {
