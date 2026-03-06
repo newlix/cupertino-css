@@ -19,6 +19,7 @@
       { "label": "Card", "href": "components/card.html" },
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
+      { "label": "Disclosure Group", "href": "components/disclosure-group.html" },
       { "label": "HUD", "href": "components/hud.html" },
       { "label": "Input", "href": "components/input.html" },
       { "label": "Kbd", "href": "components/kbd.html" },

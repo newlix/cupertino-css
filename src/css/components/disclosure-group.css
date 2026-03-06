@@ -1,0 +1,59 @@
+/* ========== DISCLOSURE GROUP ========== */
+/* Groups multiple <details> into a card container with separators.
+   Apple HIG disclosure-group pattern — like macOS System Settings sections.
+   Standalone <details> is already styled in elements.css (bordered, padded). */
+.disclosure-group {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  corner-shape: squircle;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm), var(--panel-ring);
+
+  & > details {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+    & + details {
+      margin-top: 0;
+      border-top: 1px solid var(--color-separator);
+      @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
+    }
+    & > summary {
+      @apply text-[17px];
+      padding: 0.75rem 1.25rem;
+      margin: 0;
+      border-radius: 0;
+      transition: background-color var(--transition-fast) var(--apple-ease);
+      @media (pointer: coarse), (hover: none) { min-height: 44px; display: flex; align-items: center; }
+      &:hover { background-color: var(--surface-2); }
+      &:active { background-color: var(--surface-3); }
+      &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+    }
+    & > :not(summary) {
+      padding: 0 1.25rem;
+      margin-top: 0;
+    }
+    & > :last-child:not(summary) {
+      padding-bottom: 1rem;
+    }
+  }
+}
+@media (forced-colors: active) {
+  .disclosure-group {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
+  .disclosure-group > details + details {
+    border-top-color: ButtonText;
+  }
+  .disclosure-group > details > summary:hover {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+  .disclosure-group > details > summary:focus-visible {
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+}

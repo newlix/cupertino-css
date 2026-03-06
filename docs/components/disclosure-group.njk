@@ -1,0 +1,97 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Disclosure Group" %}
+{% set description = "Groups multiple collapsible sections into a card container with separators." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.disclosure-group</code></dt>
+    <dd>Card container for multiple <code>&lt;details&gt;</code> elements with shared background, rounded corners, and separators.</dd>
+    <dt><code>&lt;details&gt;</code></dt>
+    <dd>Standalone disclosure (styled automatically in <code>.cider</code> scope — bordered, padded).</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div class="disclosure-group" style="max-width:28rem">
+  <details>
+    <summary>General</summary>
+    <p>About, Software Update, AirDrop, AirPlay & Continuity.</p>
+  </details>
+  <details>
+    <summary>Appearance</summary>
+    <p>Choose between Light, Dark, or Auto appearance. Accent and highlight colours can be customised in the sidebar.</p>
+  </details>
+  <details>
+    <summary>Accessibility</summary>
+    <p>VoiceOver, Zoom, Display & Text Size, Speech, Descriptions.</p>
+  </details>
+</div>
+{% endcall %}
+
+  {% call example("With one section open") %}
+<div class="disclosure-group" style="max-width:28rem">
+  <details>
+    <summary>Wi-Fi</summary>
+    <p>Manage wireless network connections and preferred networks.</p>
+  </details>
+  <details open>
+    <summary>Bluetooth</summary>
+    <p>Currently connected to <strong>AirPods Pro</strong> and <strong>Magic Keyboard</strong>. Nearby devices will appear here when discoverable.</p>
+  </details>
+  <details>
+    <summary>Network</summary>
+    <p>Ethernet, VPN, DNS, and proxy configuration.</p>
+  </details>
+</div>
+{% endcall %}
+
+  {% call example("With rich content") %}
+<div class="disclosure-group" style="max-width:28rem">
+  <details open>
+    <summary>Storage</summary>
+    <div>
+      <progress value="37" max="100" aria-label="Storage usage"></progress>
+      <p class="text-sm text-tertiary-foreground mt-2">37 GB of 256 GB used</p>
+    </div>
+  </details>
+  <details>
+    <summary>Battery</summary>
+    <div>
+      <p>Battery health: <strong>98%</strong></p>
+      <p class="text-sm text-tertiary-foreground mt-1">Optimised Battery Charging is enabled.</p>
+    </div>
+  </details>
+</div>
+{% endcall %}
+
+  {% call example("Accordion (exclusive)") %}
+<div class="disclosure-group" style="max-width:28rem">
+  <details name="faq" open>
+    <summary>What is Cider UI?</summary>
+    <p>Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Pure CSS with optional JS for interactive components.</p>
+  </details>
+  <details name="faq">
+    <summary>Do I need a build step?</summary>
+    <p>No. Use the CDN bundle for zero-config setup, or import via a package manager alongside Tailwind CSS v4.</p>
+  </details>
+  <details name="faq">
+    <summary>Does it work with React / Vue / Svelte?</summary>
+    <p>Yes. Cider UI is framework-agnostic — it works with any tool that outputs HTML.</p>
+  </details>
+</div>
+{% endcall %}
+
+  {% call example("Standalone details") %}
+<details style="max-width:28rem">
+  <summary>System requirements</summary>
+  <ul>
+    <li>macOS Sequoia 15.0 or later</li>
+    <li>4 GB RAM minimum</li>
+    <li>500 MB available disk space</li>
+  </ul>
+</details>
+{% endcall %}
+
+{% endblock %}

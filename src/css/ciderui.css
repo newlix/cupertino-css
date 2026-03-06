@@ -360,6 +360,7 @@
 
     @import "./components/list.css";
 
+    @import "./components/disclosure-group.css";
     @import "./components/popover.css";
     @import "./components/sidebar.css";
     @import "./components/verification-code.css";
