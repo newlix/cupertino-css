@@ -40,7 +40,7 @@
       dialog.close();
     }
     dialog._closeAnimHandler = (e) => {
-      if (e.target !== dialog || e.animationName !== "dialogHide") return;
+      if (e.target !== dialog || e.animationName !== "scaleOut") return;
       finish();
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);

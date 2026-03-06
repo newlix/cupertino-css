@@ -60,7 +60,7 @@
     @apply hidden;
   }
   &[data-active] {
-    animation: segFadeIn var(--transition-fast) var(--apple-ease);
+    animation: fadeIn var(--transition-fast) var(--apple-ease);
   }
 }
 @media (prefers-reduced-motion: reduce) {
