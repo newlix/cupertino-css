@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { goto, preview, css, setDark, setLight, focusViaKeyboard } from './helpers.js';
+import { goto, preview, css, setDark } from './helpers.js';
 
 test.describe('Segmented Control', () => {
   test.beforeEach(async ({ page }) => {
@@ -72,6 +72,5 @@ test.describe('Segmented Control', () => {
     const indicator = preview(page).locator('[data-tab-indicator]');
     const bg = await css(indicator, 'backgroundColor');
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
-    await setLight(page);
   });
 });

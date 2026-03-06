@@ -31,8 +31,6 @@
 
   --color-border: oklch(0.862 0.007 286.02 / 0.8);   /* #D1D1D6 Apple border */
   --color-border-solid: oklch(0.862 0.007 286.02);
-  --color-ring: oklch(from var(--color-primary) l c h / 0.1);
-
   --color-green: oklch(0.723 0.191 145.09);              /* Apple Green #34C759 */
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.673 0.178 145.09);      /* #2DB84F darker hover */
@@ -146,8 +144,6 @@
   --input-border: oklch(0.440 0.003 286.25);       /* #52525A — increased contrast for dark mode affordance */
   --input-border-hover: oklch(0.500 0.003 286.25); /* #62626A lighter on hover */
 
-  --color-ring: oklch(from var(--color-primary) l c h / 0.2);
-
   --color-green: oklch(0.756 0.208 146.98);              /* Apple Green #30D158 (dark) */
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.684 0.182 148.92);      /* #2BBF4F */
@@ -221,7 +217,6 @@
   --color-border: var(--color-border);
   --color-border-solid: var(--color-border-solid);
   --color-separator: var(--color-separator);
-  --color-ring: var(--color-ring);
   --color-green: var(--color-green);
   --color-switch: var(--color-switch);
   --color-switch-hover: var(--color-switch-hover);
@@ -229,8 +224,6 @@
   --color-destructive-hover: var(--color-destructive-hover);
   --color-destructive-active: var(--color-destructive-active);
   --color-destructive-foreground: var(--color-destructive-foreground);
-  --input-border: var(--input-border);
-  --input-border-hover: var(--input-border-hover);
   --color-orange: var(--color-orange);
   --color-yellow: var(--color-yellow);
   --color-blue: var(--color-blue);

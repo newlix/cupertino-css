@@ -48,8 +48,8 @@
     /* macOS menus appear with opacity-only — no scale transform */
     transform: none;
     transition: opacity var(--transition-fast) var(--apple-ease), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
-    &:popover-open { opacity: 1; transform: none; }
-    @starting-style { &:popover-open { opacity: 0; transform: none; } }
+    &:popover-open { opacity: 1; }
+    @starting-style { &:popover-open { opacity: 0; } }
 
     & button, & a {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-[3px] text-left text-[13px] leading-[16px] text-foreground no-underline;
@@ -111,7 +111,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .popover [popover] { transition: none; }
+  .popover [popover],
+  .popover-menu [popover] { transition: none; }
 }
 @media (forced-colors: active) {
   .popover [popover] { border: 1px solid ButtonText; }

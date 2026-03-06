@@ -15,7 +15,6 @@
    on underlying content (matches macOS volume/brightness HUD behaviour). */
 .hud {
   @apply inline-flex flex-col items-center gap-3 px-6 py-6;
-  pointer-events: none;
   min-width: 180px;
   max-width: min(280px, calc(100vw - 2rem));
   border-radius: var(--radius-xl);
@@ -33,9 +32,6 @@
 /* Dismiss animation (set by JS via data-closing attribute) */
 .hud[data-closing] {
   animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hud, .hud[data-closing] { animation: none; }
 }
 @media (forced-colors: active) {
   .hud { border: 1px solid ButtonText; box-shadow: none; }

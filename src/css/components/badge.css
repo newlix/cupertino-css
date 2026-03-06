@@ -2,6 +2,11 @@
    Apple notification badge — the red dot/count on app icons (e.g. Mail unread count).
    Always destructive (red) by design. This is NOT a label or tag.
    See: Apple HIG > App Icon > Badges */
+.badge, .badge-dot {
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
+  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+}
 .badge {
   @apply inline-flex items-center justify-center rounded-full bg-destructive text-destructive-foreground font-semibold whitespace-nowrap;
   font-size: 13px;
@@ -12,19 +17,12 @@
   padding: 2px 6px;
   max-width: 5rem;
   overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
-  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 .badge-dot {
   @apply inline-block rounded-full bg-destructive;
   width: 12px;
   height: 12px;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
-  transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
 }
 @media (forced-colors: active) {
-  .badge { forced-color-adjust: none; border: 1px solid ButtonText; }
-  .badge-dot { forced-color-adjust: none; border: 1px solid ButtonText; }
+  .badge, .badge-dot { forced-color-adjust: none; border: 1px solid ButtonText; }
 }

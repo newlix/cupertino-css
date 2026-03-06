@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { goto, preview, css, setDark, setLight, focusViaKeyboard } from './helpers.js';
+import { goto, preview, css, setDark, focusViaKeyboard } from './helpers.js';
 
 test.describe('Pagination', () => {
   test.beforeEach(async ({ page }) => {
@@ -59,7 +59,5 @@ test.describe('Pagination', () => {
     expect(Number(fw)).toBeGreaterThanOrEqual(500);
     const bg = await css(active, 'backgroundColor');
     expect(bg).not.toBe('rgba(0, 0, 0, 0)');
-
-    await setLight(page);
   });
 });

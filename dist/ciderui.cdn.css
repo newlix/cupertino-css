@@ -52,7 +52,6 @@
     --color-border: var(--color-border);
     --color-border-solid: var(--color-border-solid);
     --color-separator: var(--color-separator);
-    --color-ring: var(--color-ring);
     --color-green: var(--color-green);
     --color-switch: var(--color-switch);
     --color-switch-hover: var(--color-switch-hover);
@@ -60,8 +59,6 @@
     --color-destructive-hover: var(--color-destructive-hover);
     --color-destructive-active: var(--color-destructive-active);
     --color-destructive-foreground: var(--color-destructive-foreground);
-    --input-border: var(--input-border);
-    --input-border-hover: var(--input-border-hover);
     --color-orange: var(--color-orange);
     --color-yellow: var(--color-yellow);
     --color-blue: var(--color-blue);
@@ -234,7 +231,6 @@
   --color-tertiary-foreground: oklch(0.540 0.008 286.01);
   --color-border: oklch(0.862 0.007 286.02 / 0.8);
   --color-border-solid: oklch(0.862 0.007 286.02);
-  --color-ring: oklch(from var(--color-primary) l c h / 0.1);
   --color-green: oklch(0.723 0.191 145.09);
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.673 0.178 145.09);
@@ -313,7 +309,6 @@
   --color-secondary-active: oklch(0.402 0.003 286.25);
   --input-border: oklch(0.440 0.003 286.25);
   --input-border-hover: oklch(0.500 0.003 286.25);
-  --color-ring: oklch(from var(--color-primary) l c h / 0.2);
   --color-green: oklch(0.756 0.208 146.98);
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.684 0.182 148.92);
@@ -749,6 +744,11 @@
         }
       }
     }
+    .badge, .badge-dot {
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
+      transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
+    }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -767,9 +767,6 @@
       padding: 2px 6px;
       max-width: 5rem;
       overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
-      transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
     }
     .badge-dot {
       display: inline-block;
@@ -777,16 +774,9 @@
       background-color: var(--color-destructive);
       width: 12px;
       height: 12px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 2px var(--badge-ring, var(--color-background));
-      transition: transform var(--transition-fast) var(--apple-spring), opacity var(--transition-fast) var(--apple-ease);
     }
     @media (forced-colors: active) {
-      .badge {
-        forced-color-adjust: none;
-        border: 1px solid ButtonText;
-      }
-      .badge-dot {
+      .badge, .badge-dot {
         forced-color-adjust: none;
         border: 1px solid ButtonText;
       }
@@ -1794,7 +1784,6 @@
       mask-position: center;
       animation: activity-spin 0.8s steps(12, start) infinite;
       @media (prefers-reduced-motion: reduce) {
-        animation: none;
         opacity: 0.65;
       }
       &.activity-indicator-sm {
@@ -1830,7 +1819,6 @@
       gap: calc(var(--spacing) * 3);
       padding-inline: calc(var(--spacing) * 6);
       padding-block: calc(var(--spacing) * 6);
-      pointer-events: none;
       min-width: 180px;
       max-width: min(280px, calc(100vw - 2rem));
       border-radius: var(--radius-xl);
@@ -1860,11 +1848,6 @@
     }
     .hud[data-closing] {
       animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hud, .hud[data-closing] {
-        animation: none;
-      }
     }
     @media (forced-colors: active) {
       .hud {
@@ -2123,12 +2106,10 @@
         transition: opacity var(--transition-fast) var(--apple-ease), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
         &:popover-open {
           opacity: 1;
-          transform: none;
         }
         @starting-style {
           &:popover-open {
             opacity: 0;
-            transform: none;
           }
         }
         & button, & a {
@@ -2219,7 +2200,7 @@
       box-shadow: 0.5px 0.5px 0 0.5px var(--float-ring-color);
     }
     @media (prefers-reduced-motion: reduce) {
-      .popover [popover] {
+      .popover [popover], .popover-menu [popover] {
         transition: none;
       }
     }
