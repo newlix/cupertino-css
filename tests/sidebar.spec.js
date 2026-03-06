@@ -180,7 +180,7 @@ test.describe('Sidebar Mobile Layout', () => {
       if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
     });
 
-    const toggle = page.locator('[data-sidebar-toggle]');
+    const toggle = page.locator('[aria-controls="test-sidebar"]');
     const panel = page.locator('#test-sidebar');
 
     // Initially closed

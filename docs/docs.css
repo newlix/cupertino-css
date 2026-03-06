@@ -4,13 +4,7 @@
 /* ─── Docs Layout ─── */
 @layer components {
 
-  /* Sidebar */
-  .docs-sidebar {
-    @apply fixed left-0 top-0 z-40 h-screen w-[260px] flex flex-col;
-    background: var(--color-secondary);
-    border-right: 1px solid var(--color-border);
-    & a { text-decoration: none !important; }
-  }
+  /* Sidebar header (logo + icons) — docs-specific */
   .docs-sidebar-header {
     @apply flex items-center justify-between px-5 py-4 shrink-0;
     border-bottom: 1px solid var(--panel-border);
@@ -24,38 +18,6 @@
       background: var(--surface-3);
     }
     &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
-  }
-  .docs-nav {
-    @apply flex-1 overflow-y-auto px-3 pb-6;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    &:hover { scrollbar-color: var(--surface-5) transparent; }
-    & h2 {
-      @apply px-2 pb-1 pt-0 text-[13px] font-semibold uppercase tracking-widest;
-      color: var(--color-tertiary-foreground);
-    }
-    & a[href] {
-      @apply flex items-center rounded-lg px-2.5 py-1.5 text-[13px];
-      color: var(--color-tertiary-foreground);
-      text-decoration: none;
-      transition: color 0.15s, background 0.15s;
-      &:hover {
-        color: var(--color-foreground);
-        background: var(--surface-3);
-        text-decoration: none;
-      }
-      &[data-active] {
-        @apply font-semibold;
-        color: var(--color-foreground);
-        background: var(--surface-4);
-      }
-      &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-sm); }
-    }
-  }
-
-  /* Main content area */
-  .docs-main {
-    @apply ml-[260px] min-h-screen;
   }
 
   /* Doc page header */
@@ -88,29 +50,17 @@
       border-radius: 0;
     }
   }
-  /* Mobile header bar */
+
+  /* Mobile header bar — docs-specific fixed bar above sidebar */
   .docs-mobile-bar {
     @apply hidden fixed top-0 left-0 right-0 z-50 h-12 items-center justify-between px-4;
     background: var(--color-background);
     border-bottom: 1px solid var(--color-border);
   }
-  .docs-mobile-menu-btn {
-    @apply inline-flex items-center gap-2 text-sm font-medium cursor-pointer;
-    color: var(--color-foreground);
-    background: none;
-    border: none;
-    padding: 0.5rem 0.75rem;
-    min-height: 44px;
-    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; border-radius: var(--radius-sm); }
-  }
-  .docs-mobile-bar .docs-icon-close { display: none; }
-  .docs-mobile-bar.open .docs-icon-open { display: none; }
-  .docs-mobile-bar.open .docs-icon-close { display: block; }
-  .docs-overlay {
-    @apply fixed inset-0 z-30 hidden;
-    background: var(--backdrop-bg);
-    backdrop-filter: blur(4px);
-  }
+  /* Icon swap based on aria-expanded (set by sidebar.js) */
+  .sidebar-toggle .docs-icon-close { display: none; }
+  .sidebar-toggle[aria-expanded="true"] .docs-icon-open { display: none; }
+  .sidebar-toggle[aria-expanded="true"] .docs-icon-close { display: block; }
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
   .snippet {
@@ -259,36 +209,25 @@
     }
   }
 
-  /* Mobile responsive */
+  /* Mobile responsive — docs-specific overrides */
   @media (max-width: 768px) {
     .docs-mobile-bar {
       @apply flex;
     }
-    .docs-sidebar {
-      @apply -translate-x-full transition-transform duration-300;
-      width: 100%;
+    /* Shift sidebar below mobile bar */
+    .sidebar-panel {
       top: 48px;
       height: calc(100vh - 48px);
-      border-right: none;
-      background: var(--color-secondary);
-    }
-    .docs-sidebar.open {
-      @apply translate-x-0;
     }
     .docs-sidebar-header {
       @apply hidden;
     }
-    .docs-nav a[href] {
+    /* Larger touch targets for mobile nav */
+    .sidebar a {
       @apply text-[17px] py-2.5;
     }
-    .docs-overlay {
-      display: none !important;
-    }
-    .docs-main {
-      @apply ml-0 pt-12;
-    }
-    body.mobile-nav-open {
-      overflow: hidden;
+    .sidebar-content {
+      @apply pt-12;
     }
   }
 }
