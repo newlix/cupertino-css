@@ -58,9 +58,9 @@
     border-bottom: 1px solid var(--color-border);
   }
   /* Icon swap based on aria-expanded (set by sidebar.js) */
-  .sidebar-toggle .docs-icon-close { display: none; }
-  .sidebar-toggle[aria-expanded="true"] .docs-icon-open { display: none; }
-  .sidebar-toggle[aria-expanded="true"] .docs-icon-close { display: block; }
+  [data-sidebar-toggle] .docs-icon-close { display: none; }
+  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-open { display: none; }
+  [data-sidebar-toggle][aria-expanded="true"] .docs-icon-close { display: block; }
 
   /* ========== SNIPPET (Code Block — docs only) ========== */
   .snippet {
@@ -215,7 +215,7 @@
       @apply flex;
     }
     /* Shift sidebar below mobile bar */
-    .sidebar-panel {
+    .sidebar-layout > aside {
       top: 48px;
       height: calc(100vh - 48px);
     }
@@ -226,7 +226,7 @@
     .sidebar a {
       @apply text-[17px] py-2.5;
     }
-    .sidebar-content {
+    .sidebar-layout > main {
       @apply pt-12;
     }
   }

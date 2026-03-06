@@ -70,7 +70,7 @@ test.describe('Sidebar', () => {
   });
 
   test('tinted variant uses primary color for active background', async ({ page }) => {
-    const tinted = preview(page, 2).locator('.sidebar-tinted a[data-active]');
+    const tinted = preview(page, 2).locator('.sidebar[data-tinted] a[data-active]');
     const bg = await css(tinted, 'backgroundColor');
     // Tinted active should not be pure gray — it has a blue hue
     const defaultActive = preview(page).locator('.sidebar a[data-active]');
@@ -125,14 +125,15 @@ test.describe('Sidebar Mobile Layout', () => {
   });
 
   test('sidebar-toggle is visible on mobile', async ({ page }) => {
-    // The docs site sidebar has a mobile toggle already, but we test the
-    // component CSS class .sidebar-toggle visibility via inline test markup
     const visible = await page.evaluate(() => {
-      const el = document.createElement('button');
-      el.className = 'sidebar-toggle';
-      document.querySelector('.cider').appendChild(el);
-      const display = getComputedStyle(el).display;
-      el.remove();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'sidebar-layout';
+      const btn = document.createElement('button');
+      btn.setAttribute('data-sidebar-toggle', '');
+      wrapper.appendChild(btn);
+      document.querySelector('.cider').appendChild(wrapper);
+      const display = getComputedStyle(btn).display;
+      wrapper.remove();
       return display;
     });
     expect(visible).not.toBe('none');
@@ -141,42 +142,47 @@ test.describe('Sidebar Mobile Layout', () => {
   test('sidebar-toggle is hidden on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1024, height: 768 });
     const hidden = await page.evaluate(() => {
-      const el = document.createElement('button');
-      el.className = 'sidebar-toggle';
-      document.querySelector('.cider').appendChild(el);
-      const display = getComputedStyle(el).display;
-      el.remove();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'sidebar-layout';
+      const btn = document.createElement('button');
+      btn.setAttribute('data-sidebar-toggle', '');
+      wrapper.appendChild(btn);
+      document.querySelector('.cider').appendChild(wrapper);
+      const display = getComputedStyle(btn).display;
+      wrapper.remove();
       return display;
     });
     expect(hidden).toBe('none');
   });
 
-  test('sidebar-panel is off-screen on mobile by default', async ({ page }) => {
+  test('aside is off-screen on mobile by default', async ({ page }) => {
     const transform = await page.evaluate(() => {
-      const el = document.createElement('aside');
-      el.className = 'sidebar-panel';
-      el.style.cssText = 'visibility:hidden';
-      document.querySelector('.cider').appendChild(el);
-      const t = getComputedStyle(el).transform;
-      el.remove();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'sidebar-layout';
+      const aside = document.createElement('aside');
+      aside.style.cssText = 'visibility:hidden';
+      wrapper.appendChild(aside);
+      document.querySelector('.cider').appendChild(wrapper);
+      const t = getComputedStyle(aside).transform;
+      wrapper.remove();
       return t;
     });
     // translateX(-100%) results in a matrix with a negative X translation
     expect(transform).not.toBe('none');
   });
 
-  test('JS toggle opens and closes sidebar-panel', async ({ page }) => {
-    // Inject a sidebar layout into the page
+  test('JS toggle opens and closes sidebar', async ({ page }) => {
     await page.evaluate(() => {
       const container = document.querySelector('.cider');
       container.insertAdjacentHTML('beforeend', `
-        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar" aria-expanded="false">Menu</button>
-        <aside class="sidebar-panel" id="test-sidebar">
-          <nav class="sidebar"><a href="#">Link</a></nav>
-        </aside>
-        <div class="sidebar-overlay"></div>
+        <div class="sidebar-layout">
+          <button data-sidebar-toggle aria-controls="test-sidebar" aria-expanded="false">Menu</button>
+          <aside id="test-sidebar">
+            <nav class="sidebar"><a href="#">Link</a></nav>
+          </aside>
+          <div data-sidebar-overlay></div>
+        </div>
       `);
-      // Re-init sidebar JS
       if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
     });
 
@@ -201,11 +207,13 @@ test.describe('Sidebar Mobile Layout', () => {
     await page.evaluate(() => {
       const container = document.querySelector('.cider');
       container.insertAdjacentHTML('beforeend', `
-        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar2" aria-expanded="false">Menu</button>
-        <aside class="sidebar-panel" id="test-sidebar2">
-          <nav class="sidebar"><a href="#">Link</a></nav>
-        </aside>
-        <div class="sidebar-overlay" id="test-overlay2"></div>
+        <div class="sidebar-layout">
+          <button data-sidebar-toggle aria-controls="test-sidebar2" aria-expanded="false">Menu</button>
+          <aside id="test-sidebar2">
+            <nav class="sidebar"><a href="#">Link</a></nav>
+          </aside>
+          <div data-sidebar-overlay id="test-overlay2"></div>
+        </div>
       `);
       if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
     });
@@ -226,11 +234,13 @@ test.describe('Sidebar Mobile Layout', () => {
     await page.evaluate(() => {
       const container = document.querySelector('.cider');
       container.insertAdjacentHTML('beforeend', `
-        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar3" aria-expanded="false">Menu</button>
-        <aside class="sidebar-panel" id="test-sidebar3">
-          <nav class="sidebar"><a href="#">Link</a></nav>
-        </aside>
-        <div class="sidebar-overlay"></div>
+        <div class="sidebar-layout">
+          <button data-sidebar-toggle aria-controls="test-sidebar3" aria-expanded="false">Menu</button>
+          <aside id="test-sidebar3">
+            <nav class="sidebar"><a href="#">Link</a></nav>
+          </aside>
+          <div data-sidebar-overlay></div>
+        </div>
       `);
       if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
     });
@@ -249,11 +259,13 @@ test.describe('Sidebar Mobile Layout', () => {
     await page.evaluate(() => {
       const container = document.querySelector('.cider');
       container.insertAdjacentHTML('beforeend', `
-        <button class="sidebar-toggle" data-sidebar-toggle aria-controls="test-sidebar4" aria-expanded="false">Menu</button>
-        <aside class="sidebar-panel" id="test-sidebar4">
-          <nav class="sidebar"><a href="#" id="test-link4">Link</a></nav>
-        </aside>
-        <div class="sidebar-overlay"></div>
+        <div class="sidebar-layout">
+          <button data-sidebar-toggle aria-controls="test-sidebar4" aria-expanded="false">Menu</button>
+          <aside id="test-sidebar4">
+            <nav class="sidebar"><a href="#" id="test-link4">Link</a></nav>
+          </aside>
+          <div data-sidebar-overlay></div>
+        </div>
       `);
       if (window.CiderUI && window.CiderUI.sidebar) window.CiderUI.sidebar.init();
     });

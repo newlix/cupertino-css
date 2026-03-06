@@ -65,7 +65,7 @@
 }
 
 /* Primary-tinted active state (Apple blue highlight) */
-.sidebar-tinted {
+.sidebar[data-tinted] {
   & a:is([data-active], [aria-current="page"]),
   & button:is([data-active], [aria-current="page"]) {
     color: var(--color-primary);
@@ -79,66 +79,69 @@
   }
 }
 
-/* ─── Layout: sidebar-panel + sidebar-overlay + sidebar-content ─── */
+/* ─── Layout: .sidebar-layout ─── */
 /* Responsive off-canvas sidebar layout.
    Desktop: fixed left panel. Mobile (≤768px): hidden, slides in via JS toggle.
-   Width customisable via --sidebar-width on .sidebar-panel. */
-.sidebar-panel {
+   Width customisable via --sidebar-width on .sidebar-layout. */
+.sidebar-layout {
   --sidebar-width: 260px;
-  @apply fixed left-0 top-0 bottom-0 z-40 flex flex-col;
-  width: var(--sidebar-width);
-  background: var(--color-secondary);
-  border-right: 1px solid var(--color-border);
-}
 
-.sidebar-content {
-  margin-left: var(--sidebar-width, 260px);
-  min-height: 100vh;
-}
-
-.sidebar-overlay {
-  @apply fixed inset-0 z-30;
-  background: var(--backdrop-bg);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  cursor: pointer;
-  transition: opacity var(--transition-normal) var(--apple-ease);
-}
-.sidebar-overlay[data-open] {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Toggle button — hidden on desktop, visible on mobile */
-.sidebar-toggle {
-  @apply hidden;
-}
-
-@media (max-width: 768px) {
-  .sidebar-panel {
-    width: 100%;
-    transform: translateX(-100%);
-    transition: transform var(--transition-normal) var(--apple-ease);
-    border-right: none;
+  & > aside {
+    @apply fixed left-0 top-0 bottom-0 z-40 flex flex-col;
+    width: var(--sidebar-width);
+    background: var(--color-secondary);
+    border-right: 1px solid var(--color-border);
   }
-  .sidebar-panel[data-open] {
-    transform: translateX(0);
+
+  & > main {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
   }
-  .sidebar-content {
-    margin-left: 0;
+
+  & > [data-sidebar-overlay] {
+    @apply fixed inset-0 z-30;
+    background: var(--backdrop-bg);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    transition: opacity var(--transition-normal) var(--apple-ease);
   }
-  .sidebar-toggle {
-    @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
-    color: var(--color-foreground);
-    @media (pointer: coarse), (hover: none) { min-height: 44px; }
+  & > [data-sidebar-overlay][data-open] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Toggle button — hidden on desktop, visible on mobile */
+  & [data-sidebar-toggle] {
+    @apply hidden;
+  }
+
+  @media (max-width: 768px) {
+    & > aside {
+      width: 100%;
+      transform: translateX(-100%);
+      transition: transform var(--transition-normal) var(--apple-ease);
+      border-right: none;
+    }
+    & > aside[data-open] {
+      transform: translateX(0);
+    }
+    & > main {
+      margin-left: 0;
+    }
+    & [data-sidebar-toggle] {
+      @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
+      color: var(--color-foreground);
+      @media (pointer: coarse), (hover: none) { min-height: 44px; }
+    }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sidebar-panel { transition: none; }
-  .sidebar-overlay { transition: none; }
+  .sidebar-layout > aside { transition: none; }
+  .sidebar-layout > [data-sidebar-overlay] { transition: none; }
 }
 
 @media (forced-colors: active) {
@@ -152,7 +155,7 @@
     box-shadow: none;
   }
   .sidebar :is(a, button):is([data-active], [aria-current="page"]),
-  .sidebar-tinted :is(a, button):is([data-active], [aria-current="page"]) {
+  .sidebar[data-tinted] :is(a, button):is([data-active], [aria-current="page"]) {
     background: Highlight;
     color: HighlightText;
     outline: 2px solid Highlight;
