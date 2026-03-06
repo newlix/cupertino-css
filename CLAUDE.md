@@ -8,8 +8,8 @@ Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Pure CSS with optiona
 src/css/
   ciderui.css          # Main entry — CSS variables, theme tokens, base, @import components
   ciderui.cdn.css      # CDN bundle — includes Tailwind + ciderui.css via source(none)
-  components/           # 20 component CSS files (button, card, dialog, …)
-js/                     # 6 JS files for interactive components (dialog, tabs, hud, …)
+  components/           # 29 component CSS files (button, card, dialog, …)
+js/                     # 10 JS files for interactive components (dialog, tabs, hud, …)
 docs/
   _includes/            # Nunjucks templates (layout.njk, macros.njk)
   _data/nav.json        # Sidebar navigation data
@@ -56,3 +56,23 @@ npm run test:ui          # Playwright UI mode
 - No utility classes in component markup — Tailwind utilities are for user customization only.
 - JS files have a `// ComponentName — ciderui` header comment on line 1.
 - Doc/preview HTML `<title>` format: `ComponentName — Cider UI`.
+- Prefer classless children over extra class names — use structural selectors (e.g. `.picker-column > div` not `.picker-item`).
+- Where component names differ from Apple HIG, add a `/* HIG: … */` comment in the CSS source (e.g. Tooltip → Help Tag, Switch → Toggle).
+
+## Naming
+
+Component names follow **web conventions over Apple HIG** when they conflict:
+
+| CiderUI | HIG Name | Reason |
+|---|---|---|
+| Tooltip | Help Tag | Web universal term |
+| Input | Text Field | HTML `<input>` |
+| Textarea | Text Editor | HTML `<textarea>` |
+| Select | Pop-Up Button | HTML `<select>` |
+| Switch | Toggle | HTML `role="switch"` |
+| Breadcrumb | Path Control | Web navigation convention |
+
+## Publishing
+
+- Registry: **GitHub Releases** (not npm registry)
+- Workflow: bump `version` in package.json → `git tag -a vX.Y.Z` → `git push origin vX.Y.Z` → `gh release create`
