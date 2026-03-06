@@ -68,8 +68,7 @@
     border: 1px solid ButtonText;
     & > button,
     & > a {
-      &:hover { background: Highlight; color: HighlightText; }
-      &:active { background: Highlight; color: HighlightText; }
+      &:hover, &:active { background: Highlight; color: HighlightText; }
       &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
       &:disabled, &[aria-disabled="true"] { color: GrayText; opacity: 1; }
       & + button,
