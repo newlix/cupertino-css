@@ -67,5 +67,6 @@
   :is(a, button).card[aria-disabled="true"] {
     border-color: GrayText;
     color: GrayText;
+    opacity: 1;
   }
 }
