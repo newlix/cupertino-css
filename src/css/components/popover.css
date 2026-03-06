@@ -70,21 +70,16 @@
       transition:
         background-color var(--transition-fast) var(--apple-ease),
         color var(--transition-fast) var(--apple-ease);
-      &:is(:hover, :active) {
+      &:is(:hover, :active, :focus-visible) {
         background: var(--color-primary);
         color: var(--color-primary-foreground);
       }
-      &:is(:hover, :active) svg {
+      &:is(:hover, :active, :focus-visible) svg {
         color: var(--color-primary-foreground);
       }
       &:focus-visible {
-        background: var(--color-primary);
-        color: var(--color-primary-foreground);
         outline: 2px solid transparent;
         outline-offset: -2px;
-      }
-      &:focus-visible svg {
-        color: var(--color-primary-foreground);
       }
       & svg {
         @apply size-4 text-tertiary-foreground;

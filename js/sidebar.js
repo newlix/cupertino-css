@@ -14,9 +14,9 @@
 
     btn._sidebarInit = true;
 
-    const overlay =
-      panel.parentElement &&
-      panel.parentElement.querySelector("[data-sidebar-overlay]");
+    const overlay = panel.parentElement?.querySelector(
+      "[data-sidebar-overlay]",
+    );
 
     function isOpen() {
       return panel.hasAttribute("data-open");
@@ -123,17 +123,14 @@
   }
 
   document.addEventListener("htmx:afterSettle", init);
-  document.addEventListener("htmx:beforeCleanupElement", function (evt) {
-    const el = evt.detail && evt.detail.elt;
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
     if (!el) return;
-    if (el.hasAttribute && el.hasAttribute("data-sidebar-toggle")) {
+    if (el.hasAttribute?.("data-sidebar-toggle")) {
       destroy(el);
       return;
     }
-    const toggles = el.querySelectorAll
-      ? el.querySelectorAll("[data-sidebar-toggle]")
-      : [];
-    toggles.forEach(destroy);
+    (el.querySelectorAll?.("[data-sidebar-toggle]") || []).forEach(destroy);
   });
 
   window.CiderUI = window.CiderUI || {};

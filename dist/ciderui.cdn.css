@@ -637,16 +637,7 @@
         margin-top: 2px;
       }
       @media (prefers-reduced-motion: reduce) {
-        &[open] {
-          animation: none;
-        }
-        &:modal[open]::backdrop {
-          animation: none;
-        }
-        &[data-closing] {
-          animation: none;
-        }
-        &:modal[data-closing]::backdrop {
+        &[open], &:modal[open]::backdrop, &[data-closing], &:modal[data-closing]::backdrop {
           animation: none;
         }
       }
@@ -1440,16 +1431,7 @@
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        &[open] {
-          animation: none;
-        }
-        &:modal[open]::backdrop {
-          animation: none;
-        }
-        &[data-closing] {
-          animation: none;
-        }
-        &:modal[data-closing]::backdrop {
+        &[open], &:modal[open]::backdrop, &[data-closing], &:modal[data-closing]::backdrop {
           animation: none;
         }
       }
@@ -2217,21 +2199,16 @@
           color: var(--color-foreground);
           text-decoration-line: none;
           transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
-          &:is(:hover, :active) {
+          &:is(:hover, :active, :focus-visible) {
             background: var(--color-primary);
             color: var(--color-primary-foreground);
           }
-          &:is(:hover, :active) svg {
+          &:is(:hover, :active, :focus-visible) svg {
             color: var(--color-primary-foreground);
           }
           &:focus-visible {
-            background: var(--color-primary);
-            color: var(--color-primary-foreground);
             outline: 2px solid transparent;
             outline-offset: -2px;
-          }
-          &:focus-visible svg {
-            color: var(--color-primary-foreground);
           }
           & svg {
             width: calc(var(--spacing) * 4);
@@ -2470,10 +2447,7 @@
       }
     }
     @media (prefers-reduced-motion: reduce) {
-      .segmented-control [data-tab-indicator] {
-        transition: none;
-      }
-      .segmented-control [data-tab] {
+      .segmented-control [data-tab-indicator], .segmented-control [data-tab] {
         transition: none;
       }
       .segmented-control [data-tab-panel][data-active] {

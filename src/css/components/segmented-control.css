@@ -64,9 +64,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .segmented-control [data-tab-indicator] {
-    transition: none;
-  }
+  .segmented-control [data-tab-indicator],
   .segmented-control [data-tab] {
     transition: none;
   }

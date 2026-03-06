@@ -160,7 +160,7 @@
   }
 
   document.addEventListener("htmx:afterSettle", init);
-  document.addEventListener("htmx:beforeCleanupElement", function (evt) {
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
     const el = evt.detail?.elt;
     if (!el) return;
     if (el.hasAttribute?.("data-picker")) {

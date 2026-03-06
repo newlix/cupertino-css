@@ -155,15 +155,9 @@ dialog.action-sheet {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    &[open] {
-      animation: none;
-    }
-    &:modal[open]::backdrop {
-      animation: none;
-    }
-    &[data-closing] {
-      animation: none;
-    }
+    &[open],
+    &:modal[open]::backdrop,
+    &[data-closing],
     &:modal[data-closing]::backdrop {
       animation: none;
     }
