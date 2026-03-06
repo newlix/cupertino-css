@@ -1,7 +1,7 @@
 // Popover — ciderui
 (function () {
-  const FOCUSABLE_NOT_DISABLED = 'button:not([disabled]):not([aria-disabled="true"]), a[href]:not([disabled]):not([aria-disabled="true"])';
-  const FOCUSABLE_ALL = FOCUSABLE_NOT_DISABLED + ', input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])';
+  const FOCUSABLE_NOT_DISABLED = 'button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), a[href]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE_ALL = FOCUSABLE_NOT_DISABLED + ', input:not([tabindex="-1"]):not([disabled]), select:not([tabindex="-1"]):not([disabled]), textarea:not([tabindex="-1"]):not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled])';
 
   function setupPopover(popover) {
     if (popover._popoverInit) return;

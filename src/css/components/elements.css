@@ -465,7 +465,7 @@ fieldset {
 
 /* ─── Small (helper text) ─── */
 small {
-  @apply text-[13px] text-tertiary-foreground;
+  @apply block text-[13px] text-tertiary-foreground;
 }
 
 /* ─── Description list ─── */

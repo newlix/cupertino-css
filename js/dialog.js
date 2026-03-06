@@ -4,7 +4,7 @@
 (function () {
   const activeDialogs = new Set();
   let savedOverflow = null;
-  const FOCUSABLE = 'a[href]:not([aria-disabled="true"]), button:not([disabled]):not([aria-disabled="true"]), input:not([disabled]):not([aria-disabled="true"]), select:not([disabled]):not([aria-disabled="true"]), textarea:not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+  const FOCUSABLE = 'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function clearCloseAnim(dialog) {
     if (dialog._closeTimer) { clearTimeout(dialog._closeTimer); dialog._closeTimer = null; }
@@ -26,7 +26,7 @@
       dialog.close();
     }
     dialog._closeAnimHandler = (e) => {
-      if (e.target !== dialog) return;
+      if (e.target !== dialog || e.animationName !== "dialogHide") return;
       finish();
     };
     dialog.addEventListener("animationend", dialog._closeAnimHandler);
