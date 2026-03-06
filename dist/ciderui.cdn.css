@@ -278,6 +278,7 @@
   --tooltip-text: oklch(0.97 0 0);
   --avatar-bg: oklch(0.85 0.006 286);
   --avatar-fg: oklch(0.45 0.006 286);
+  --segmented-active: oklch(1 0 0);
   --kbd-inset: oklch(1 0 0 / 0.15);
   --switch-thumb-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.10);
   --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.50);
@@ -351,6 +352,7 @@
   --tooltip-text: var(--hud-text);
   --avatar-bg: oklch(0.35 0.006 286);
   --avatar-fg: oklch(0.80 0.006 286);
+  --segmented-active: oklch(0.58 0.004 286.1);
   --kbd-inset: oklch(1 0 0 / 0.28);
   --switch-thumb-shadow: 0 2px 6px oklch(0 0 0 / 0.45), 0 1px 3px oklch(0 0 0 / 0.30);
   --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.60);
@@ -1112,12 +1114,6 @@
         }
       }
     }
-    .segmented-control {
-      --segmented-active: oklch(1 0 0);
-      .dark & {
-        --segmented-active: oklch(0.58 0.004 286.1);
-      }
-    }
     .segmented-control [data-tab-list] {
       position: relative;
       display: inline-flex;
@@ -1137,10 +1133,7 @@
       width: 0;
       opacity: 0;
       background: var(--segmented-active);
-      box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(0 0 0 / 0.04);
-      .dark & {
-        box-shadow: var(--shadow-sm), 0 0 0 0.5px oklch(1 0 0 / 0.06);
-      }
+      box-shadow: var(--shadow-sm), 0 0 0 0.5px var(--float-ring-color);
       transition: transform var(--transition-normal) var(--apple-spring), width var(--transition-normal) var(--apple-spring), opacity var(--transition-normal) var(--apple-ease);
     }
     .segmented-control [data-tab] {
@@ -1436,7 +1429,8 @@
           background: var(--surface-2);
         }
         &:focus-visible {
-          outline: 2px solid var(--color-primary);
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
           outline-offset: 2px;
         }
         &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) {
@@ -1502,8 +1496,10 @@
         transition: color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
         @media (pointer: coarse), (hover: none) {
           min-height: 44px;
+          min-width: 44px;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
         }
         &:hover {
           color: var(--color-foreground);
@@ -1860,6 +1856,14 @@
     .hud[data-closing] {
       animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
     }
+    @media (prefers-reduced-motion: reduce) {
+      .hud {
+        animation: none;
+      }
+      .hud[data-closing] {
+        animation: none;
+      }
+    }
     @media (forced-colors: active) {
       .hud {
         border: 1px solid ButtonText;
@@ -2211,6 +2215,11 @@
       bottom: -7px;
       transform: translateX(-50%) rotate(225deg);
       box-shadow: 0.5px 0.5px 0 0.5px var(--float-ring-color);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .popover [popover] {
+        transition: none;
+      }
     }
     @media (forced-colors: active) {
       .popover [popover] {

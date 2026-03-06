@@ -9,7 +9,7 @@
     @media (pointer: coarse), (hover: none) { min-height: 44px; min-width: 44px; }
     transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
     &:hover:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { @apply text-foreground; background: var(--surface-2); }
-    &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    &:focus-visible { box-shadow: var(--focus-ring); outline: 2px solid transparent; outline-offset: 2px; }
     &:active:not([data-active]):not([aria-current="page"]):not(:disabled):not([aria-disabled="true"]) { background: var(--surface-4); }
     &[data-active], &[aria-current="page"] {
       @apply text-foreground pointer-events-none;

@@ -34,6 +34,10 @@
 .hud[data-closing] {
   animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
 }
+@media (prefers-reduced-motion: reduce) {
+  .hud { animation: none; }
+  .hud[data-closing] { animation: none; }
+}
 @media (forced-colors: active) {
   .hud { border: 1px solid ButtonText; box-shadow: none; }
 }
