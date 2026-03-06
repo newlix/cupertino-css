@@ -10,19 +10,25 @@
 
   function scrollToIndex(column, index, smooth) {
     const itemH = getItemHeight(column.closest(".picker"));
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     column.scrollTo({
       top: index * itemH,
-      behavior: smooth ? "smooth" : "instant",
+      behavior: smooth && !prefersReduced ? "smooth" : "instant",
     });
   }
 
   function selectIndex(column, index, picker, colIndex) {
     const items = column.children;
     const clamped = Math.max(0, Math.min(index, items.length - 1));
-    for (let i = 0; i < items.length; i++)
+    for (let i = 0; i < items.length; i++) {
       items[i].removeAttribute("data-selected");
+      items[i].setAttribute("aria-selected", "false");
+    }
     if (items[clamped]) {
       items[clamped].setAttribute("data-selected", "");
+      items[clamped].setAttribute("aria-selected", "true");
     }
     picker.dispatchEvent(
       new CustomEvent("change", {
@@ -39,6 +45,14 @@
   function setupColumn(column, colIndex, picker) {
     const itemH = getItemHeight(picker);
     const items = column.children;
+
+    // ARIA: make column keyboard-focusable with listbox semantics
+    if (!column.hasAttribute("tabindex")) column.setAttribute("tabindex", "0");
+    column.setAttribute("role", "listbox");
+    if (!column.getAttribute("aria-label"))
+      column.setAttribute("aria-label", `Column ${colIndex + 1}`);
+    for (let i = 0; i < items.length; i++)
+      items[i].setAttribute("role", "option");
 
     // Determine initial value from data-value on the column
     const initialValue = column.getAttribute("data-value");
@@ -112,6 +126,31 @@
     column.addEventListener("pointermove", onMouseMove);
     column.addEventListener("pointerup", onMouseUp);
     column.addEventListener("pointercancel", onMouseUp);
+
+    // Keyboard navigation
+    function onKeyDown(e) {
+      const currentIdx = Math.round(column.scrollTop / itemH);
+      let newIdx = currentIdx;
+      if (e.key === "ArrowDown") {
+        newIdx = Math.min(currentIdx + 1, items.length - 1);
+        e.preventDefault();
+      } else if (e.key === "ArrowUp") {
+        newIdx = Math.max(currentIdx - 1, 0);
+        e.preventDefault();
+      } else if (e.key === "Home") {
+        newIdx = 0;
+        e.preventDefault();
+      } else if (e.key === "End") {
+        newIdx = items.length - 1;
+        e.preventDefault();
+      } else {
+        return;
+      }
+      scrollToIndex(column, newIdx, true);
+      selectIndex(column, newIdx, picker, colIndex);
+    }
+    column._pickerKeyDown = onKeyDown;
+    column.addEventListener("keydown", onKeyDown);
   }
 
   function setupPicker(picker) {
@@ -146,6 +185,10 @@
         col._pickerPointerDown = null;
         col._pickerPointerMove = null;
         col._pickerPointerUp = null;
+      }
+      if (col._pickerKeyDown) {
+        col.removeEventListener("keydown", col._pickerKeyDown);
+        col._pickerKeyDown = null;
       }
       clearTimeout(col._pickerTimer);
       col._pickerTimer = null;

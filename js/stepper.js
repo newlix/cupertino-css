@@ -22,12 +22,18 @@
       value = Number(linked.value);
     }
 
+    // ARIA attributes for assistive technology
+    if (!stepper.getAttribute("role")) stepper.setAttribute("role", "group");
+    stepper.setAttribute("aria-valuemin", min);
+    stepper.setAttribute("aria-valuemax", max);
+
     function clamp(v) {
       return Math.min(max, Math.max(min, v));
     }
 
     function updateUI() {
       value = clamp(value);
+      stepper.setAttribute("aria-valuenow", value);
       if (display) display.textContent = value;
       if (linked) linked.value = value;
       stepper.setAttribute("data-value", value);

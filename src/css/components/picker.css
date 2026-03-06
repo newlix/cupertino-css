@@ -82,6 +82,12 @@
   user-select: none;
 }
 
+@media (pointer: coarse), (hover: none) {
+  .picker {
+    --picker-item-h: 44px;
+  }
+}
+
 @media (forced-colors: active) {
   .picker {
     border: 1px solid ButtonText;
