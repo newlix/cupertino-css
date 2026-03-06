@@ -26,11 +26,12 @@
       if (firstFocusable) firstFocusable.focus();
     }
 
-    function close() {
+    function close(returnFocus) {
       panel.removeAttribute("data-open");
       if (overlay) overlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
+      if (returnFocus !== false) btn.focus();
     }
 
     btn.addEventListener("click", function () {
@@ -44,7 +45,7 @@
     // Close when a link inside the sidebar is clicked
     panel.addEventListener("click", function (e) {
       if (e.target.closest && e.target.closest("a[href]") && isOpen()) {
-        close();
+        close(false);
       }
     });
 
@@ -52,7 +53,6 @@
     btn._sidebarEscHandler = function (e) {
       if (e.key === "Escape" && isOpen()) {
         close();
-        btn.focus();
       }
     };
     document.addEventListener("keydown", btn._sidebarEscHandler);

@@ -22,7 +22,7 @@
 
   /* Navigation items */
   & a, & button {
-    @apply flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] no-underline cursor-pointer;
+    @apply flex items-center gap-2 rounded-lg border-none bg-transparent px-2.5 py-1.5 text-[13px] no-underline cursor-pointer;
     color: var(--color-tertiary-foreground);
     transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
     &:visited { color: var(--color-tertiary-foreground); }
@@ -103,7 +103,8 @@
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s var(--apple-ease);
+  cursor: pointer;
+  transition: opacity var(--transition-normal) var(--apple-ease);
 }
 .sidebar-overlay[data-open] {
   opacity: 1;
@@ -119,7 +120,7 @@
   .sidebar-panel {
     width: 100%;
     transform: translateX(-100%);
-    transition: transform 0.3s var(--apple-ease);
+    transition: transform var(--transition-normal) var(--apple-ease);
     border-right: none;
   }
   .sidebar-panel[data-open] {

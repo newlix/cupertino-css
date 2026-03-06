@@ -48,8 +48,7 @@
     border: 1px solid ButtonText;
   }
   .segmented-control [data-tab-indicator] {
-    background: Highlight;
-    box-shadow: none;
+    display: none;
   }
   .segmented-control [data-tab] {
     &:focus-visible { outline: 2px solid Highlight; }
