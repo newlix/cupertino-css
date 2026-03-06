@@ -287,8 +287,8 @@
   --hud-text: oklch(0.95 0 0);
   --tooltip-bg: oklch(0.15 0 0 / 0.82);
   --tooltip-text: oklch(0.97 0 0);
-  --avatar-bg: oklch(0.85 0.006 286);
-  --avatar-fg: oklch(0.45 0.006 286);
+  --avatar-bg: oklch(0.92 0.006 286);
+  --avatar-fg: oklch(0.55 0.006 286);
   --segmented-active: oklch(1 0 0);
   --kbd-inset: oklch(1 0 0 / 0.15);
   --switch-thumb-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
@@ -382,8 +382,8 @@
   --hud-background: oklch(0.14 0 0 / 0.85);
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
-  --avatar-bg: oklch(0.35 0.006 286);
-  --avatar-fg: oklch(0.8 0.006 286);
+  --avatar-bg: oklch(0.27 0.006 286);
+  --avatar-fg: oklch(0.7 0.006 286);
   --segmented-active: oklch(
     0.58 0.004 286.1
   );
@@ -525,6 +525,7 @@
     }
     dialog.action-sheet {
       position: fixed;
+      top: auto;
       bottom: 0;
       left: 0;
       right: 0;
@@ -703,13 +704,15 @@
     .avatar {
       display: inline-flex;
       width: calc(var(--spacing) * 10);
-      height: calc(var(--spacing) * 10);
+      min-width: calc(var(--spacing) * 10);
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       border-radius: calc(infinity * 1px);
       font-size: 15px;
       --tw-font-weight: var(--font-weight-medium);
       font-weight: var(--font-weight-medium);
+      aspect-ratio: 1;
       background-color: var(--avatar-bg);
       color: var(--avatar-fg);
       overflow: hidden;
@@ -762,17 +765,17 @@
     }
     .avatar-sm {
       width: calc(var(--spacing) * 7);
-      height: calc(var(--spacing) * 7);
+      min-width: calc(var(--spacing) * 7);
       font-size: 11px;
     }
     .avatar-lg {
       width: calc(var(--spacing) * 16);
-      height: calc(var(--spacing) * 16);
+      min-width: calc(var(--spacing) * 16);
       font-size: 25px;
     }
     .avatar-xl {
       width: calc(var(--spacing) * 20);
-      height: calc(var(--spacing) * 20);
+      min-width: calc(var(--spacing) * 20);
       font-size: 31px;
     }
     @media (forced-colors: active) {
@@ -1831,64 +1834,62 @@
       & > :first-child {
         justify-self: start;
       }
+      & > :nth-child(2) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        font-size: 17px;
+        line-height: 1.29;
+        letter-spacing: -0.024em;
+        color: var(--color-foreground);
+        justify-self: center;
+        text-align: center;
+      }
       & > :last-child {
+        display: inline-flex;
+        align-items: center;
+        gap: calc(var(--spacing) * 2);
         justify-self: end;
       }
-    }
-    .navbar-title {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      --tw-font-weight: var(--font-weight-semibold);
-      font-weight: var(--font-weight-semibold);
-      font-size: 17px;
-      line-height: 1.29;
-      letter-spacing: -0.024em;
-      color: var(--color-foreground);
-      justify-self: center;
-      text-align: center;
-    }
-    .navbar-actions {
-      display: inline-flex;
-      align-items: center;
-      gap: calc(var(--spacing) * 2);
-    }
-    .navbar-back, .navbar-actions button, .navbar-actions a {
-      display: inline-flex;
-      cursor: pointer;
-      align-items: center;
-      font-size: 17px;
-      color: var(--color-primary);
-      background: transparent;
-      border: none;
-      text-decoration: none;
-      transition: opacity var(--transition-fast) var(--apple-ease);
-      & svg {
-        width: calc(var(--spacing) * 5);
-        height: calc(var(--spacing) * 5);
+      & :is(button, a) {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        font-size: 17px;
+        color: var(--color-primary);
+        background: transparent;
+        border: none;
+        text-decoration: none;
+        transition: opacity var(--transition-fast) var(--apple-ease);
+        & svg {
+          width: calc(var(--spacing) * 5);
+          height: calc(var(--spacing) * 5);
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+        &:active {
+          opacity: 0.5;
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          border-radius: var(--radius-xs);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+        }
+        &:disabled, &[aria-disabled="true"] {
+          opacity: 0.38;
+          pointer-events: none;
+        }
       }
-      &:hover {
-        opacity: 0.7;
+      & > :is(a, button) {
+        gap: calc(var(--spacing) * 0.5);
       }
-      &:active {
-        opacity: 0.5;
-      }
-      &:focus-visible {
-        box-shadow: var(--focus-ring);
-        border-radius: var(--radius-xs);
-        outline: 2px solid transparent;
-        outline-offset: 2px;
-      }
-      &:disabled, &[aria-disabled="true"] {
-        opacity: 0.38;
-        pointer-events: none;
-      }
-    }
-    .navbar-back {
-      gap: calc(var(--spacing) * 0.5);
     }
     @media (pointer: coarse), (hover: none) {
-      .navbar-back, .navbar-actions button, .navbar-actions a {
+      .navbar :is(button, a) {
         min-height: 44px;
         min-width: 44px;
       }
@@ -1899,7 +1900,7 @@
         background: Canvas;
         backdrop-filter: none;
       }
-      .navbar-back, .navbar-actions button, .navbar-actions a {
+      .navbar :is(button, a) {
         color: LinkText;
         &:hover {
           outline: 1px solid ButtonText;
@@ -1910,7 +1911,7 @@
           box-shadow: none;
         }
       }
-      .navbar-title {
+      .navbar > :nth-child(2) {
         color: CanvasText;
       }
     }
@@ -2209,11 +2210,10 @@
           gap: calc(var(--spacing) * 2);
           border-radius: var(--radius-xs);
           padding-inline: calc(var(--spacing) * 2.5);
-          padding-block: 3px;
+          padding-block: calc(var(--spacing) * 1);
           text-align: left;
-          font-size: 13px;
-          --tw-leading: 16px;
-          line-height: 16px;
+          font-size: var(--text-sm);
+          line-height: var(--tw-leading, var(--text-sm--line-height));
           color: var(--color-foreground);
           text-decoration-line: none;
           transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease);
@@ -3355,24 +3355,24 @@
         margin-top: calc(var(--spacing) * 4);
       }
     }
-    a:not([class*="btn-"]) {
+    :where(a:not([class*="btn-"])) {
       --tw-font-weight: var(--font-weight-normal);
       font-weight: var(--font-weight-normal);
-      color: var(--color-primary);
-      text-decoration-line: none;
-      &:where(:hover) {
-        text-decoration-line: underline;
-        text-underline-offset: 2px;
-        text-decoration-color: var(--color-primary);
-      }
+      text-decoration: none;
+      color: inherit;
       &:focus-visible {
-        text-decoration-line: underline;
-        text-underline-offset: 2px;
-        text-decoration-color: var(--color-primary);
         box-shadow: var(--focus-ring);
         outline: 2px solid transparent;
         outline-offset: 2px;
         border-radius: var(--radius-xs);
+      }
+    }
+    :is(article, .prose, p) a:not([class*="btn-"]) {
+      color: var(--color-primary);
+      &:where(:hover, :focus-visible) {
+        text-decoration-line: underline;
+        text-underline-offset: 2px;
+        text-decoration-color: var(--color-primary);
       }
     }
     ul:not([class]) {
