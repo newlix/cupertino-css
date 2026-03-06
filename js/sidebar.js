@@ -21,6 +21,9 @@
       if (overlay) overlay.setAttribute("data-open", "");
       btn.setAttribute("aria-expanded", "true");
       document.body.style.overflow = "hidden";
+      // Move focus into the panel for keyboard accessibility
+      var firstFocusable = panel.querySelector("a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])");
+      if (firstFocusable) firstFocusable.focus();
     }
 
     function close() {

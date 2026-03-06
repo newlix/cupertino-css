@@ -25,6 +25,8 @@
 }
 @media (forced-colors: active) {
   .card { border: 1px solid ButtonText; box-shadow: none; }
+  :is(a, button).card:hover { outline: 1px solid ButtonText; outline-offset: -1px; }
+  :is(a, button).card:active { outline: 2px solid ButtonText; outline-offset: -2px; }
   :is(a, button).card:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   :is(a, button).card:disabled, :is(a, button).card[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
 }

@@ -43,6 +43,10 @@
       opacity: 0.38;
       pointer-events: none;
     }
+    /* Truncate long text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     /* Selected / active item */
     &:is([data-active], [aria-current="page"]) {
       @apply font-semibold;
@@ -127,6 +131,7 @@
   .sidebar-toggle {
     @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
     color: var(--color-foreground);
+    @media (pointer: coarse), (hover: none) { min-height: 44px; }
   }
 }
 
@@ -145,7 +150,8 @@
     outline: 2px solid Highlight;
     box-shadow: none;
   }
-  .sidebar :is(a, button):is([data-active], [aria-current="page"]) {
+  .sidebar :is(a, button):is([data-active], [aria-current="page"]),
+  .sidebar-tinted :is(a, button):is([data-active], [aria-current="page"]) {
     background: Highlight;
     color: HighlightText;
     outline: 2px solid Highlight;

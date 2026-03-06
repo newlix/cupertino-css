@@ -313,6 +313,13 @@ input[type="checkbox"][role="switch"] {
     &::after { width: 31px; }
     &:checked::after { transform: translateX(16px); }
   }
+  &[aria-invalid="true"] {
+    background: oklch(from var(--color-destructive) l c h / 0.18);
+    &:checked { background: var(--color-destructive); }
+    &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) { background: oklch(from var(--color-destructive) l c h / 0.25); }
+    &:hover:not(:disabled):not([aria-disabled="true"]):checked { background: var(--color-destructive-hover); }
+    &:focus-visible { box-shadow: var(--focus-ring-error); }
+  }
   /* Color variants — Apple System Colors */
   &.switch-blue   { --color-switch: var(--color-primary);     --color-switch-hover: var(--color-primary-hover); }
   &.switch-red    { --color-switch: var(--color-destructive);  --color-switch-hover: var(--color-destructive-hover); }
@@ -539,7 +546,10 @@ abbr[title] {
   details, fieldset, blockquote { border-color: ButtonText; }
   details summary:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   mark { forced-color-adjust: none; background: Mark; color: MarkText; }
+  code { background: transparent; border: 1px solid ButtonText; }
+  abbr[title] { text-decoration-color: ButtonText; }
   table { border: 1px solid ButtonText; }
   pre { border: 1px solid ButtonText; }
+  pre > code { border: none; }
   kbd { border: 1px solid ButtonText; box-shadow: none; }
 }

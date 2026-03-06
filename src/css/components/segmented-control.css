@@ -38,6 +38,11 @@
   &:not([data-active]) { @apply hidden; }
   &[data-active] { animation: segFadeIn var(--transition-fast) var(--apple-ease); }
 }
+@media (prefers-reduced-motion: reduce) {
+  .segmented-control [data-tab-indicator] { transition: none; }
+  .segmented-control [data-tab] { transition: none; }
+  .segmented-control [data-tab-panel][data-active] { animation: none; }
+}
 @media (forced-colors: active) {
   .segmented-control [data-tab-list] {
     border: 1px solid ButtonText;
