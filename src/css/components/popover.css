@@ -67,6 +67,9 @@
     & button,
     & a {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-1 text-left text-sm text-foreground no-underline;
+      &:visited {
+        color: var(--color-foreground);
+      }
       transition:
         background-color var(--transition-fast) var(--apple-ease),
         color var(--transition-fast) var(--apple-ease);

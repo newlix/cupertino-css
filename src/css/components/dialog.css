@@ -68,6 +68,7 @@ dialog {
   }
   & > header {
     @apply px-6 pt-6 text-center;
+    overflow-wrap: anywhere;
     & h2 {
       @apply text-[17px] font-semibold tracking-tight text-foreground mb-0;
     }
@@ -77,6 +78,7 @@ dialog {
   }
   & > section {
     @apply px-6 pt-4 pb-4 overflow-y-auto flex-1 min-h-0;
+    overflow-wrap: anywhere;
     overscroll-behavior: contain;
     & > :not(:first-child) {
       margin-top: 0.75rem;
@@ -125,6 +127,16 @@ dialog {
     & .dialog-close:focus-visible {
       outline: 2px solid Highlight;
       box-shadow: none;
+    }
+    & .dialog-close:disabled,
+    & .dialog-close[aria-disabled="true"] {
+      color: GrayText;
+      opacity: 1;
+    }
+    & > footer :is(button, a):disabled,
+    & > footer :is(button, a)[aria-disabled="true"] {
+      color: GrayText;
+      opacity: 1;
     }
   }
 }

@@ -26,6 +26,10 @@
     if (!stepper.getAttribute("role")) stepper.setAttribute("role", "group");
     stepper.setAttribute("aria-valuemin", min);
     stepper.setAttribute("aria-valuemax", max);
+    if (decBtn && !decBtn.getAttribute("aria-label"))
+      decBtn.setAttribute("aria-label", "Decrease value");
+    if (incBtn && !incBtn.getAttribute("aria-label"))
+      incBtn.setAttribute("aria-label", "Increase value");
 
     function clamp(v) {
       return Math.min(max, Math.max(min, v));

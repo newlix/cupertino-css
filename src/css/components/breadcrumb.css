@@ -4,6 +4,9 @@
   @apply flex flex-wrap items-center gap-1.5 text-[13px];
   & a {
     @apply text-tertiary-foreground no-underline;
+    &:visited {
+      color: var(--color-tertiary-foreground);
+    }
     transition:
       color var(--transition-fast) var(--apple-ease),
       opacity var(--transition-fast) var(--apple-ease);

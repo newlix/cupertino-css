@@ -74,6 +74,9 @@
   @apply inline-flex items-center justify-center border-none cursor-pointer;
   background: transparent;
   color: var(--color-foreground);
+  &:visited {
+    color: var(--color-foreground);
+  }
   transition: opacity var(--transition-fast) var(--apple-ease);
   & svg {
     @apply size-5;

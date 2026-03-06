@@ -22,6 +22,9 @@
   gap: 2px;
   padding: 2px 0;
   color: var(--color-tertiary-foreground);
+  &:visited {
+    color: var(--color-tertiary-foreground);
+  }
   font-size: 10px;
   letter-spacing: 0.01em;
   line-height: 1;
