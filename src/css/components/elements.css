@@ -549,7 +549,7 @@ abbr[title] {
   mark { forced-color-adjust: none; background: Mark; color: MarkText; }
   code { background: transparent; border: 1px solid ButtonText; }
   abbr[title] { text-decoration-color: ButtonText; }
-  table { border: 1px solid ButtonText; }
+  table { border: 1px solid ButtonText; box-shadow: none; }
   pre { border: 1px solid ButtonText; }
   pre > code { border: none; }
   kbd { border: 1px solid ButtonText; box-shadow: none; background: Canvas; color: CanvasText; }

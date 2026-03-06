@@ -115,7 +115,7 @@
   .popover-menu [popover] { transition: none; }
 }
 @media (forced-colors: active) {
-  .popover [popover] { border: 1px solid ButtonText; }
+  .popover [popover] { border: 1px solid ButtonText; box-shadow: none; }
   .popover-arrow [popover]::before { display: none; }
   .popover-menu [popover] hr { background: CanvasText; }
   .popover-menu [popover] button:is(:hover, :focus-visible, :active),

@@ -30,7 +30,7 @@
     & a {
       color: LinkText;
       &:hover { color: LinkText; text-decoration: underline; }
-      &:focus-visible { outline: 2px solid Highlight; }
+      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
       &[aria-disabled="true"] { color: GrayText; opacity: 1; }
     }
     & [aria-current="page"] { color: CanvasText; }

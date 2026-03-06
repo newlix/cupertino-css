@@ -47,7 +47,7 @@
     background: Canvas;
     opacity: 1;
     &[aria-current="page"] { background: Highlight; border-color: Highlight; }
-    &:focus-visible { outline: 2px solid Highlight; }
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
     &:disabled, &[aria-disabled="true"] { border-color: GrayText; background: GrayText; }
   }
   /* Enlarge touch target on touch devices without changing visual size */

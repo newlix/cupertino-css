@@ -30,7 +30,7 @@
     & > button, & > a {
       border: 1px solid ButtonText;
       &[data-active], &[aria-current="page"] { background: Highlight; color: HighlightText; border-color: Highlight; }
-      &:focus-visible { outline: 2px solid Highlight; }
+      &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
       &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; opacity: 1; }
     }
     & > span { color: CanvasText; }

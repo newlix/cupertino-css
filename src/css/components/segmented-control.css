@@ -51,7 +51,7 @@
     display: none;
   }
   .segmented-control [data-tab] {
-    &:focus-visible { outline: 2px solid Highlight; }
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
     &[data-active],
     &[aria-selected="true"] { color: HighlightText; background: Highlight; }
     &:disabled, &[aria-disabled="true"] { color: GrayText; opacity: 1; }

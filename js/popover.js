@@ -322,5 +322,5 @@
   });
 
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.popover = { init };
+  window.CiderUI.popover = { init, destroy: destroyPopover };
 })();

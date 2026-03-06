@@ -76,7 +76,7 @@
   & > *:only-child { border-radius: var(--list-radius); corner-shape: squircle; }
 }
 @media (forced-colors: active) {
-  .list-inset-grouped { border: 1px solid ButtonText; }
+  .list-inset-grouped { border: 1px solid ButtonText; box-shadow: none; }
   .list > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
     outline: 1px solid ButtonText;
     outline-offset: -1px;

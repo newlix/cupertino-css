@@ -44,7 +44,7 @@
   .docs-icon-btn {
     @apply inline-flex items-center justify-center size-8 p-0 rounded-md cursor-pointer;
     color: var(--color-tertiary-foreground) !important;
-    transition: color 0.15s, background 0.15s;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
     &:hover {
       color: var(--color-foreground) !important;
       background: var(--surface-3);
@@ -120,7 +120,7 @@
         & > button {
           @apply rounded-md px-2 py-1 text-[13px] font-medium text-tertiary-foreground;
           font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          transition: all 0.15s var(--apple-ease);
+          transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
           &:hover {
             @apply text-foreground;
             background: var(--surface-3);
@@ -137,7 +137,7 @@
         background: var(--surface-2);
         border-color: var(--color-border);
         color: var(--color-tertiary-foreground);
-        transition: all 0.15s var(--apple-ease);
+        transition: background-color var(--transition-fast) var(--apple-ease), color var(--transition-fast) var(--apple-ease), border-color var(--transition-fast) var(--apple-ease), opacity var(--transition-fast) var(--apple-ease);
         opacity: 0;
         &:hover {
           background: var(--surface-4);
