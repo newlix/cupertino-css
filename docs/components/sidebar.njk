@@ -11,8 +11,6 @@
     <dd>Vertical navigation with section headers, compact items, and auto-hiding scrollbar.</dd>
     <dt><code>data-tinted</code></dt>
     <dd>Attribute modifier on <code>.sidebar</code> — uses primary-color tinted background for the active item instead of neutral gray.</dd>
-    <dt><code>.sidebar-layout</code></dt>
-    <dd>Responsive off-canvas layout wrapper. Desktop: fixed left panel. Mobile (≤768px): slides in when toggled. Width via <code>--sidebar-width</code> (default 260px). Uses semantic elements inside: <code>&lt;aside&gt;</code> for the panel, <code>&lt;main&gt;</code> for content, <code>[data-sidebar-overlay]</code> for the backdrop, <code>[data-sidebar-toggle]</code> for the toggle button.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -98,44 +96,6 @@
     <a href="#">Billing</a>
   </div>
 </nav>
-{% endcall %}
-
-  <h2>Responsive Layout</h2>
-  <p>Wrap everything in a <code>.sidebar-layout</code> container for a full responsive off-canvas layout.
-  Include <code>sidebar.js</code> for mobile toggle behavior.</p>
-
-  {% call example("Layout Structure", preview=false) %}
-<div class="sidebar-layout">
-  <!-- Toggle button (mobile only) -->
-  <button data-sidebar-toggle
-          aria-controls="app-sidebar" aria-expanded="false">
-    <svg fill="none" stroke="currentColor" stroke-width="2"
-         viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-    Menu
-  </button>
-
-  <!-- Sidebar panel -->
-  <aside id="app-sidebar">
-    <nav class="sidebar">
-      <div>
-        <h2>Section</h2>
-        <a href="/page-1" data-active>Page One</a>
-        <a href="/page-2">Page Two</a>
-      </div>
-    </nav>
-  </aside>
-
-  <!-- Overlay (mobile backdrop) -->
-  <div data-sidebar-overlay></div>
-
-  <!-- Main content -->
-  <main>
-    <!-- Your page content -->
-  </main>
-</div>
 {% endcall %}
 
 {% endblock %}

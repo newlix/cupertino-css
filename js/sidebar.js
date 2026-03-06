@@ -1,5 +1,5 @@
 // Sidebar — ciderui
-// Mobile off-canvas toggle for .sidebar-layout. Wire up [data-sidebar-toggle]
+// Mobile off-canvas toggle. Wire up [data-sidebar-toggle]
 // buttons to slide the panel in/out, with overlay dismiss and Escape key support.
 (function () {
   function setupToggle(btn) {

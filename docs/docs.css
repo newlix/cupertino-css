@@ -4,6 +4,38 @@
 /* ─── Docs Layout ─── */
 @layer components {
 
+  /* Docs sidebar layout — fixed panel + offset content */
+  body {
+    --docs-sidebar-width: 260px;
+  }
+  #docs-sidebar {
+    @apply fixed left-0 top-0 bottom-0 z-40 flex flex-col;
+    width: var(--docs-sidebar-width);
+    background: var(--color-secondary);
+    border-right: 1px solid var(--color-border);
+  }
+  body > main {
+    margin-left: var(--docs-sidebar-width);
+    min-height: 100vh;
+  }
+  [data-sidebar-overlay] {
+    @apply fixed inset-0 z-30;
+    background: var(--backdrop-bg);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    transition: opacity var(--transition-normal) var(--apple-ease);
+  }
+  [data-sidebar-overlay][data-open] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  [data-sidebar-toggle] {
+    @apply hidden;
+  }
+
   /* Sidebar header (logo + icons) — docs-specific */
   .docs-sidebar-header {
     @apply flex items-center justify-between px-5 py-4 shrink-0;
@@ -214,10 +246,16 @@
     .docs-mobile-bar {
       @apply flex;
     }
-    /* Shift sidebar below mobile bar */
-    .sidebar-layout > aside {
+    #docs-sidebar {
+      width: 100%;
       top: 48px;
       height: calc(100vh - 48px);
+      transform: translateX(-100%);
+      transition: transform var(--transition-normal) var(--apple-ease);
+      border-right: none;
+    }
+    #docs-sidebar[data-open] {
+      transform: translateX(0);
     }
     .docs-sidebar-header {
       @apply hidden;
@@ -226,8 +264,18 @@
     .sidebar a {
       @apply text-[17px] py-2.5;
     }
-    .sidebar-layout > main {
+    body > main {
+      margin-left: 0;
       @apply pt-12;
     }
+    [data-sidebar-toggle] {
+      @apply inline-flex items-center gap-2 text-[15px] font-medium cursor-pointer;
+      color: var(--color-foreground);
+      @media (pointer: coarse), (hover: none) { min-height: 44px; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #docs-sidebar { transition: none; }
+    [data-sidebar-overlay] { transition: none; }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "ciderui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Apple-aesthetic UI components as a Tailwind CSS plugin",
   "license": "MIT",
   "author": "newlix",
@@ -21,7 +21,6 @@
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
-
     "./dialog.js": "./js/dialog.js",
     "./verification-code.js": "./js/verification-code.js",
     "./popover.js": "./js/popover.js",
