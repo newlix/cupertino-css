@@ -10,9 +10,9 @@
   }
 
   function selectIndex(column, index, picker, colIndex) {
-    const items = column.querySelectorAll(".picker-item");
+    const items = column.children;
     const clamped = Math.max(0, Math.min(index, items.length - 1));
-    items.forEach(function (item) { item.removeAttribute("data-selected"); });
+    for (let i = 0; i < items.length; i++) items[i].removeAttribute("data-selected");
     if (items[clamped]) {
       items[clamped].setAttribute("data-selected", "");
     }
@@ -28,7 +28,7 @@
 
   function setupColumn(column, colIndex, picker) {
     const itemH = getItemHeight(picker);
-    const items = column.querySelectorAll(".picker-item");
+    const items = column.children;
 
     // Determine initial value from data-value on the column
     const initialValue = column.getAttribute("data-value");

@@ -3187,7 +3187,7 @@
         }
       }
     }
-    .picker-item {
+    .picker-column > div {
       height: var(--picker-item-h);
       display: flex;
       align-items: center;

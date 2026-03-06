@@ -26,7 +26,7 @@ test.describe('Picker', () => {
   });
 
   test('picker column contains items', async ({ page }) => {
-    const items = preview(page).locator('.picker-column .picker-item');
+    const items = preview(page).locator('.picker-column > div');
     const count = await items.count();
     expect(count).toBe(12); // 12 months
   });
@@ -48,7 +48,7 @@ test.describe('Picker', () => {
   });
 
   test('picker items have correct height', async ({ page }) => {
-    const item = preview(page).locator('.picker-item').first();
+    const item = preview(page).locator('.picker-column > div').first();
     const h = parseFloat(await css(item, 'height'));
     expect(h).toBe(40);
   });

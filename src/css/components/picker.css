@@ -54,7 +54,7 @@
   }
 }
 
-.picker-item {
+.picker-column > div {
   height: var(--picker-item-h);
   @apply flex items-center justify-center;
   scroll-snap-align: center;

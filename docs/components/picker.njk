@@ -11,25 +11,25 @@
     <dd>Container element with <code>data-picker</code> attribute. Provides the card background, selection indicator, and overflow clipping.</dd>
     <dt><code>.picker-column</code></dt>
     <dd>Scrollable column inside the picker. Set <code>data-value</code> to pre-select an item.</dd>
-    <dt><code>.picker-item</code></dt>
-    <dd>Individual selectable item inside a column.</dd>
+    <dt>Column <code>&lt;div&gt;</code> children</dt>
+    <dd>Individual selectable items — no class needed, styled automatically as direct children of <code>.picker-column</code>.</dd>
   </dl>
 
   {% call example("Single Column") %}
 <div class="picker" data-picker>
   <div class="picker-column" data-value="March">
-    <div class="picker-item">January</div>
-    <div class="picker-item">February</div>
-    <div class="picker-item">March</div>
-    <div class="picker-item">April</div>
-    <div class="picker-item">May</div>
-    <div class="picker-item">June</div>
-    <div class="picker-item">July</div>
-    <div class="picker-item">August</div>
-    <div class="picker-item">September</div>
-    <div class="picker-item">October</div>
-    <div class="picker-item">November</div>
-    <div class="picker-item">December</div>
+    <div >January</div>
+    <div >February</div>
+    <div >March</div>
+    <div >April</div>
+    <div >May</div>
+    <div >June</div>
+    <div >July</div>
+    <div >August</div>
+    <div >September</div>
+    <div >October</div>
+    <div >November</div>
+    <div >December</div>
   </div>
 </div>
 {% endcall %}
@@ -37,22 +37,22 @@
   {% call example("Multi Column") %}
 <div class="picker" data-picker>
   <div class="picker-column" data-value="9">
-    <div class="picker-item">1</div>
-    <div class="picker-item">2</div>
-    <div class="picker-item">3</div>
-    <div class="picker-item">4</div>
-    <div class="picker-item">5</div>
-    <div class="picker-item">6</div>
-    <div class="picker-item">7</div>
-    <div class="picker-item">8</div>
-    <div class="picker-item">9</div>
-    <div class="picker-item">10</div>
-    <div class="picker-item">11</div>
-    <div class="picker-item">12</div>
+    <div >1</div>
+    <div >2</div>
+    <div >3</div>
+    <div >4</div>
+    <div >5</div>
+    <div >6</div>
+    <div >7</div>
+    <div >8</div>
+    <div >9</div>
+    <div >10</div>
+    <div >11</div>
+    <div >12</div>
   </div>
   <div class="picker-column" data-value="AM">
-    <div class="picker-item">AM</div>
-    <div class="picker-item">PM</div>
+    <div >AM</div>
+    <div >PM</div>
   </div>
 </div>
 {% endcall %}
