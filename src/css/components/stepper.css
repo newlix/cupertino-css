@@ -23,13 +23,14 @@
   font-size: 20px;
   transition: background-color var(--transition-fast) var(--apple-ease);
 
-  &:hover {
+  &:hover:not(:disabled):not([aria-disabled="true"]) {
     background: var(--surface-2);
   }
-  &:active {
+  &:active:not(:disabled):not([aria-disabled="true"]) {
     background: var(--surface-4);
   }
-  &:disabled {
+  &:disabled,
+  &[aria-disabled="true"] {
     color: var(--color-tertiary-foreground);
     opacity: 0.38;
     pointer-events: none;
@@ -88,7 +89,8 @@
     &:hover {
       outline: 1px solid Highlight;
     }
-    &:disabled {
+    &:disabled,
+    &[aria-disabled="true"] {
       color: GrayText;
       opacity: 1;
     }

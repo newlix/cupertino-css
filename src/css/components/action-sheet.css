@@ -40,20 +40,21 @@ dialog.action-sheet {
   &[open] {
     display: flex;
     flex-direction: column;
-    animation: actionSheetShow 0.35s var(--apple-spring) forwards;
+    animation: actionSheetShow var(--transition-normal) var(--apple-spring)
+      forwards;
   }
 
   &:modal::backdrop {
     background: var(--backdrop-bg);
-    animation: fadeIn 0.3s var(--apple-ease) forwards;
+    animation: fadeIn var(--transition-normal) var(--apple-ease) forwards;
   }
 
   &[data-closing] {
-    animation: actionSheetHide 0.25s var(--apple-ease) forwards;
+    animation: actionSheetHide var(--transition-fast) var(--apple-ease) forwards;
   }
 
   &:modal[data-closing]::backdrop {
-    animation: fadeIn 0.25s var(--apple-ease) reverse forwards;
+    animation: fadeIn var(--transition-fast) var(--apple-ease) reverse forwards;
   }
 
   & .action-sheet-group {
@@ -105,6 +106,12 @@ dialog.action-sheet {
         box-shadow: var(--focus-ring);
         outline: 2px solid transparent;
         outline-offset: 2px;
+      }
+
+      &:disabled,
+      &[aria-disabled="true"] {
+        opacity: 0.38;
+        pointer-events: none;
       }
 
       &.action-sheet-destructive {

@@ -66,6 +66,12 @@
   }
 }
 
+.picker-column:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
 .picker-column > div {
   height: var(--picker-item-h);
   @apply flex items-center justify-center;

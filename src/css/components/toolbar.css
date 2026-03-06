@@ -64,7 +64,15 @@
     & > button,
     & > a {
       min-height: 44px;
+      min-width: 44px;
     }
+  }
+}
+@media (pointer: coarse), (hover: none) {
+  .toolbar > button,
+  .toolbar > a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 .toolbar-spacer {

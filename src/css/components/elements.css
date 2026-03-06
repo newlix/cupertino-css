@@ -528,6 +528,13 @@ input[type="checkbox"][role="switch"] {
       box-shadow: var(--focus-ring-error);
     }
   }
+  @media (pointer: coarse), (hover: none) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -6.5px 0;
+    }
+  }
   /* Color variants — Apple System Colors */
   &.switch-blue {
     --color-switch: var(--color-primary);

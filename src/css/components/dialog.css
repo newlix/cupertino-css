@@ -94,6 +94,12 @@ dialog {
         @apply w-full;
       }
     }
+    @media (pointer: coarse), (hover: none) {
+      & > button,
+      & > a {
+        min-height: 44px;
+      }
+    }
   }
   & > section + footer,
   & > header + footer {

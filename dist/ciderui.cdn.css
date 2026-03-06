@@ -531,17 +531,17 @@
       &[open] {
         display: flex;
         flex-direction: column;
-        animation: actionSheetShow 0.35s var(--apple-spring) forwards;
+        animation: actionSheetShow var(--transition-normal) var(--apple-spring) forwards;
       }
       &:modal::backdrop {
         background: var(--backdrop-bg);
-        animation: fadeIn 0.3s var(--apple-ease) forwards;
+        animation: fadeIn var(--transition-normal) var(--apple-ease) forwards;
       }
       &[data-closing] {
-        animation: actionSheetHide 0.25s var(--apple-ease) forwards;
+        animation: actionSheetHide var(--transition-fast) var(--apple-ease) forwards;
       }
       &:modal[data-closing]::backdrop {
-        animation: fadeIn 0.25s var(--apple-ease) reverse forwards;
+        animation: fadeIn var(--transition-fast) var(--apple-ease) reverse forwards;
       }
       & .action-sheet-group {
         border-radius: var(--radius);
@@ -584,6 +584,10 @@
             box-shadow: var(--focus-ring);
             outline: 2px solid transparent;
             outline-offset: 2px;
+          }
+          &:disabled, &[aria-disabled="true"] {
+            opacity: 0.38;
+            pointer-events: none;
           }
           &.action-sheet-destructive {
             color: var(--color-destructive);
@@ -1408,6 +1412,11 @@
             width: 100%;
           }
         }
+        @media (pointer: coarse), (hover: none) {
+          & > button, & > a {
+            min-height: 44px;
+          }
+        }
       }
       & > section + footer, & > header + footer {
         border-top: 1px solid var(--color-border);
@@ -1563,7 +1572,7 @@
         border-radius: 50%;
         &::before {
           forced-color-adjust: none;
-          background: Highlight;
+          background: conic-gradient( from -90deg, Highlight calc(var(--gauge-value, 0) * 360deg), Canvas calc(var(--gauge-value, 0) * 360deg) );
           -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
           mask: radial-gradient(circle, transparent 60%, black 61%);
         }
@@ -1858,6 +1867,10 @@
         outline: 2px solid transparent;
         outline-offset: 2px;
       }
+      &:disabled, &[aria-disabled="true"] {
+        opacity: 0.38;
+        pointer-events: none;
+      }
     }
     .navbar-back {
       gap: calc(var(--spacing) * 0.5);
@@ -2099,6 +2112,11 @@
           border-left-width: 0.5px;
         }
       }
+    }
+    .picker-column:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: -2px;
     }
     .picker-column > div {
       height: var(--picker-item-h);
@@ -2810,13 +2828,13 @@
       color: var(--color-primary);
       font-size: 20px;
       transition: background-color var(--transition-fast) var(--apple-ease);
-      &:hover {
+      &:hover:not(:disabled):not([aria-disabled="true"]) {
         background: var(--surface-2);
       }
-      &:active {
+      &:active:not(:disabled):not([aria-disabled="true"]) {
         background: var(--surface-4);
       }
-      &:disabled {
+      &:disabled, &[aria-disabled="true"] {
         color: var(--color-tertiary-foreground);
         opacity: 0.38;
         pointer-events: none;
@@ -2865,7 +2883,7 @@
         &:hover {
           outline: 1px solid Highlight;
         }
-        &:disabled {
+        &:disabled, &[aria-disabled="true"] {
           color: GrayText;
           opacity: 1;
         }
@@ -2917,6 +2935,9 @@
       }
       &:hover:not([data-active]):not([aria-selected="true"]):not(:disabled):not( [aria-disabled="true"] ) {
         color: var(--color-foreground);
+      }
+      &:active:not([data-active]):not([aria-selected="true"]):not(:disabled):not( [aria-disabled="true"] ) {
+        opacity: 0.7;
       }
       &:disabled, &[aria-disabled="true"] {
         opacity: 0.38;
@@ -3089,7 +3110,14 @@
       @media (pointer: coarse), (hover: none) {
         & > button, & > a {
           min-height: 44px;
+          min-width: 44px;
         }
+      }
+    }
+    @media (pointer: coarse), (hover: none) {
+      .toolbar > button, .toolbar > a {
+        min-height: 44px;
+        min-width: 44px;
       }
     }
     .toolbar-spacer {
@@ -3776,6 +3804,13 @@
         }
         &:focus-visible {
           box-shadow: var(--focus-ring-error);
+        }
+      }
+      @media (pointer: coarse), (hover: none) {
+        &::before {
+          content: "";
+          position: absolute;
+          inset: -6.5px 0;
         }
       }
       &.switch-blue {

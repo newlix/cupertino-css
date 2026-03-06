@@ -59,7 +59,11 @@
     border-radius: 50%;
     &::before {
       forced-color-adjust: none;
-      background: Highlight;
+      background: conic-gradient(
+        from -90deg,
+        Highlight calc(var(--gauge-value, 0) * 360deg),
+        Canvas calc(var(--gauge-value, 0) * 360deg)
+      );
       -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
       mask: radial-gradient(circle, transparent 60%, black 61%);
     }
