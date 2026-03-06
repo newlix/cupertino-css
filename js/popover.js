@@ -5,12 +5,13 @@
 
   function setupPopover(popover) {
     if (popover._popoverInit) return;
-    popover._popoverInit = true;
 
     const wrapper = popover.closest(".popover");
     if (!wrapper) return;
     const trigger = wrapper.querySelector("button:not([popover] button), a:not([popover] a)");
     if (!trigger) return;
+
+    popover._popoverInit = true;
 
     trigger.popoverTargetElement = popover;
     trigger.popoverTargetAction = "toggle";

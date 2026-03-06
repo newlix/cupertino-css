@@ -26,7 +26,8 @@
     "./popover.js": "./js/popover.js",
     "./tabs.js": "./js/tabs.js",
     "./hud.js": "./js/hud.js",
-    "./slider.js": "./js/slider.js"
+    "./slider.js": "./js/slider.js",
+    "./sidebar.js": "./js/sidebar.js"
   },
   "files": [
     "src/css/",

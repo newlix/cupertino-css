@@ -7,11 +7,12 @@
 
   function setupToggle(btn) {
     if (btn._sidebarInit) return;
-    btn._sidebarInit = true;
 
     const targetId = btn.getAttribute("aria-controls");
     const panel = targetId ? document.getElementById(targetId) : null;
     if (!panel) return;
+
+    btn._sidebarInit = true;
 
     const overlay = panel.parentElement && panel.parentElement.querySelector("[data-sidebar-overlay]");
 
