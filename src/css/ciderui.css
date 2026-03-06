@@ -66,12 +66,12 @@
    *   surface-5  →  slider track, progress track bg, segmented control bg
    *   surface-7  →  tooltip bg
    */
-  --surface-1: oklch(0 0 0 / 0.04);
-  --surface-2: oklch(0 0 0 / 0.06);
-  --surface-3: oklch(0 0 0 / 0.08);   /* Apple: quaternarySystemFill */
-  --surface-4: oklch(0 0 0 / 0.12);   /* Apple: tertiarySystemFill */
-  --surface-5: oklch(0 0 0 / 0.16);   /* Apple: secondarySystemFill */
-  --surface-7: oklch(0 0 0 / 0.20);   /* Apple: systemFill */
+  --surface-1: oklch(0.556 0.008 286 / 0.04);
+  --surface-2: oklch(0.556 0.008 286 / 0.06);
+  --surface-3: oklch(0.556 0.008 286 / 0.08);   /* Apple: quaternarySystemFill rgba(116,116,128,.08) */
+  --surface-4: oklch(0.556 0.008 286 / 0.12);   /* Apple: tertiarySystemFill rgba(118,118,128,.12) */
+  --surface-5: oklch(0.556 0.008 286 / 0.16);   /* Apple: secondarySystemFill rgba(120,120,128,.16) */
+  --surface-7: oklch(0.556 0.008 286 / 0.20);   /* Apple: systemFill rgba(120,120,128,.20) */
   --panel-border: oklch(0 0 0 / 0.06); /* section dividers in panels */
   --panel-ring: 0 0 0 1px oklch(0 0 0 / 0.04); /* card/table shadow outline */
   --float-ring-color: oklch(0 0 0 / 0.06);
@@ -157,12 +157,12 @@
   --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.2), 0 2px 8px oklch(0 0 0 / 0.12);
   --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.25), 0 4px 16px oklch(0 0 0 / 0.12);
 
-  --surface-1: oklch(1 0 0 / 0.04);
-  --surface-2: oklch(1 0 0 / 0.06);
-  --surface-3: oklch(1 0 0 / 0.08);
-  --surface-4: oklch(1 0 0 / 0.12);
-  --surface-5: oklch(1 0 0 / 0.16);
-  --surface-7: oklch(1 0 0 / 0.20);
+  --surface-1: oklch(0.556 0.008 286 / 0.08);
+  --surface-2: oklch(0.556 0.008 286 / 0.12);
+  --surface-3: oklch(0.556 0.008 286 / 0.18);   /* Apple: quaternarySystemFill dark */
+  --surface-4: oklch(0.556 0.008 286 / 0.24);   /* Apple: tertiarySystemFill dark */
+  --surface-5: oklch(0.556 0.008 286 / 0.32);   /* Apple: secondarySystemFill dark */
+  --surface-7: oklch(0.556 0.008 286 / 0.36);   /* Apple: systemFill dark */
   --panel-border: oklch(1 0 0 / 0.08);
   --panel-ring: 0 0 0 1px oklch(1 0 0 / 0.06);
   --float-ring-color: oklch(1 0 0 / 0.08);

@@ -2,7 +2,7 @@
 .segmented-control [data-tab-list] {
   @apply relative inline-flex rounded-[var(--radius-sm)] p-1;
   corner-shape: squircle;
-  background: var(--surface-5);
+  background: var(--surface-4);
 }
 .segmented-control [data-tab-indicator] {
   @apply absolute rounded-[4px] pointer-events-none;
