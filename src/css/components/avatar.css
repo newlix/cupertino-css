@@ -1,6 +1,10 @@
 /* ========== AVATAR ========== */
 .avatar {
-  @apply inline-flex size-10 items-center justify-center rounded-full text-[15px] font-medium;
+  /* min-width prevents shrinking in any layout context (flex, grid, inline-block).
+     aspect-ratio derives height from width — no explicit height, so avatars stay
+     circular even when a parent constrains width. */
+  @apply inline-flex shrink-0 w-10 min-w-10 items-center justify-center rounded-full text-[15px] font-medium;
+  aspect-ratio: 1;
   background-color: var(--avatar-bg);
   color: var(--avatar-fg);
   overflow: hidden;
@@ -50,13 +54,13 @@
   }
 }
 .avatar-sm {
-  @apply size-7 text-[11px];
+  @apply w-7 min-w-7 text-[11px];
 }
 .avatar-lg {
-  @apply size-16 text-[25px];
+  @apply w-16 min-w-16 text-[25px];
 } /* 64px — Apple profile size */
 .avatar-xl {
-  @apply size-20 text-[31px];
+  @apply w-20 min-w-20 text-[31px];
 } /* 80px — Apple large profile size */
 @media (forced-colors: active) {
   .avatar {

@@ -67,6 +67,16 @@ test.describe("CSS Rendering", () => {
     expect(radius).toBeGreaterThan(100);
   });
 
+  test("avatar stays square in constrained container", async ({ page }) => {
+    await goto(page, "avatar");
+    const avatars = preview(page, 2).locator(".avatar");
+    const count = await avatars.count();
+    for (let i = 0; i < count; i++) {
+      const box = await avatars.nth(i).boundingBox();
+      expect(box.width).toBeCloseTo(box.height, 0);
+    }
+  });
+
   test("callout is visible", async ({ page }) => {
     await goto(page, "callout");
     const alert = page.locator(".snippet-preview > figure .callout").first();

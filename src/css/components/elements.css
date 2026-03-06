@@ -84,19 +84,25 @@ h6 {
     @apply mt-4;
   }
 }
+/* HIG: In Apple UI, links use no special color or underline — they rely on
+   context and interaction states. Accent color + underline are reserved for
+   prose content (article, .prose, p) where links appear inline with text. */
 a:not([class*="btn-"]) {
-  @apply font-normal text-primary no-underline;
-  &:where(:hover) {
-    @apply underline underline-offset-2;
-    text-decoration-color: var(--color-primary);
-  }
+  @apply font-normal;
+  text-decoration: none;
+  color: inherit;
   &:focus-visible {
-    @apply underline underline-offset-2;
-    text-decoration-color: var(--color-primary);
     box-shadow: var(--focus-ring);
     outline: 2px solid transparent;
     outline-offset: 2px;
     border-radius: var(--radius-xs);
+  }
+}
+:is(article, .prose, p) a:not([class*="btn-"]) {
+  color: var(--color-primary);
+  &:where(:hover, :focus-visible) {
+    @apply underline underline-offset-2;
+    text-decoration-color: var(--color-primary);
   }
 }
 ul:not([class]) {

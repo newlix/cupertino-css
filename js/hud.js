@@ -55,7 +55,15 @@
     // Icon — sanitise via DOMParser to prevent XSS from untrusted input
     const defaultIcon =
       '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
-    const iconSrc = opts.icon || defaultIcon;
+    let iconSrc = opts.icon || defaultIcon;
+    // DOMParser with image/svg+xml requires xmlns for correct namespace —
+    // without it, adoptNode produces elements the browser won't render as SVG.
+    if (iconSrc.includes("<svg") && !iconSrc.includes("xmlns")) {
+      iconSrc = iconSrc.replace(
+        "<svg",
+        '<svg xmlns="http://www.w3.org/2000/svg"',
+      );
+    }
     const parser = new DOMParser();
     const iconDoc = parser.parseFromString(iconSrc, "image/svg+xml");
     const svgEl = iconDoc.querySelector("svg");
