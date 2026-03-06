@@ -30,6 +30,7 @@
   }
   & .hud-label {
     @apply block text-[13px] font-medium whitespace-nowrap overflow-hidden text-ellipsis text-center;
+    letter-spacing: -0.01em;
     max-width: 100%;
   }
 }

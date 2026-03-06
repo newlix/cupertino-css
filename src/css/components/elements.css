@@ -652,6 +652,7 @@ table {
   }
   & td {
     @apply px-4 py-3;
+    font-variant-numeric: tabular-nums;
   }
   & tbody tr {
     transition: background-color var(--transition-normal) var(--apple-ease);

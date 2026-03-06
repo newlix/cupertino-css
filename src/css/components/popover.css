@@ -67,6 +67,7 @@
     & button,
     & a {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-1 text-left text-sm text-foreground no-underline;
+      letter-spacing: -0.016em;
       &:visited {
         color: var(--color-foreground);
       }

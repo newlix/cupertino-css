@@ -28,6 +28,7 @@
   & a,
   & button {
     @apply flex items-center gap-2 rounded-lg border-none bg-transparent px-2.5 py-1.5 text-[13px] no-underline cursor-pointer;
+    letter-spacing: -0.01em;
     color: var(--color-tertiary-foreground);
     transition:
       color var(--transition-fast) var(--apple-ease),
