@@ -27,3 +27,33 @@ The base `outline: 2px solid transparent` on `.cider :focus-visible` suppresses 
 `.tag-*` uses `forced-color-adjust: none` to retain Finder-tag colors, bypassing the user's high-contrast override. This means tags only communicate through color in forced-colors mode.
 - **A)** Keep `forced-color-adjust: none` (preserves visual intent, tags are supplementary)
 - **B)** Remove it and use border-style differentiation per color (accessible but less faithful to Finder)
+
+## 6. Font sizes below Apple HIG 11pt minimum
+
+Several components use 13px (9.75pt), below the HIG's 11pt (14.67px) minimum:
+- `callout.css`: body text `text-sm` (14px = 10.5pt)
+- `separator.css`: `.separator-label` `text-[13px]`
+- `avatar.css`: `.avatar-sm` initials `text-[11px]` (8.25pt)
+- `elements.css`: `th`, `code`, `kbd`, `small`, `fieldset > legend` all 13px
+
+Apple's own SF Pro type scale uses 13px as "caption1". macOS apps routinely use 12-13px for secondary/caption text. The 11pt minimum primarily targets iOS body text.
+- **A)** Keep as-is (matches macOS native fidelity)
+- **B)** Bump to 15px for strict HIG compliance (affects visual density)
+
+## 7. Switch touch target (31px height)
+
+The switch is 51x31px, matching Apple's native UISwitch exactly. When wrapped in a `<label>`, the label provides `min-height: 44px`. A standalone switch would have a 31px tap target on touch devices.
+- **A)** Keep as-is (matches native UISwitch dimensions)
+- **B)** Add `min-height: 44px` on coarse pointers for standalone switches
+
+## 8. List/popover inset focus ring
+
+`list.css` and `popover.css` menu items use inset `outline` instead of the standard `box-shadow: var(--focus-ring)` pattern. This may be intentional (macOS sidebar/menu behavior, avoids overflow clipping).
+- **A)** Keep inset pattern (matches macOS native, avoids clipping)
+- **B)** Unify to standard `box-shadow` pattern for consistency
+
+## 9. Table `overflow: hidden`
+
+Table uses `overflow: hidden` for border-radius clipping, which silently clips long content. `.table-responsive` wrapper provides scrolling but users must opt in.
+- **A)** Keep `overflow: hidden` (rely on `.table-responsive` docs)
+- **B)** Change to `overflow: clip` (clips for border-radius without creating scroll context)
