@@ -80,17 +80,11 @@
   & a:is([data-active], [aria-current="page"]),
   & button:is([data-active], [aria-current="page"]) {
     color: var(--color-primary);
-    background: oklch(from var(--color-primary) l c h / 0.12);
-    .dark & {
-      background: oklch(from var(--color-primary) l c h / 0.22);
-    }
+    background: var(--sidebar-tint-bg);
   }
   & a:is([data-active], [aria-current="page"]):hover,
   & button:is([data-active], [aria-current="page"]):hover {
-    background: oklch(from var(--color-primary) l c h / 0.18);
-    .dark & {
-      background: oklch(from var(--color-primary) l c h / 0.3);
-    }
+    background: var(--sidebar-tint-bg-hover);
   }
 }
 

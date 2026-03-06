@@ -122,6 +122,14 @@
 
   --mark-bg: oklch(0.92 0.1 95); /* warm yellow highlight */
 
+  --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.12);
+  --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.18);
+
+  --page-dot-opacity: 0.3;
+  --page-dot-hover-opacity: 0.5;
+  --page-dot-active-opacity: 0.7;
+  --page-dot-disabled-opacity: 0.22;
+
   --radius-xs: 0.3125rem; /* 5px */
   --radius-sm: 0.5rem; /* 8px */
   --radius: 0.75rem; /* 12px */
@@ -233,6 +241,14 @@
   --mark-bg: oklch(
     0.5 0.14 90
   ); /* dark warm highlight — brighter for readability */
+
+  --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.22);
+  --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.3);
+
+  --page-dot-opacity: 0.38;
+  --page-dot-hover-opacity: 0.55;
+  --page-dot-active-opacity: 0.75;
+  --page-dot-disabled-opacity: 0.25;
 }
 
 /* ─── Theme tokens (register names for Tailwind utilities) ─── */
