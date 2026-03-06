@@ -50,6 +50,10 @@ npm run test:ui          # Playwright UI mode
 - Test targets: built docs pages in `site/components/`.
 - Tests cover rendering, dark mode, CSS states, focus-visible, and interactive JS behavior.
 
+## Formatting
+
+- **Prettier** — run `npx prettier --write .` before every commit.
+
 ## Conventions
 
 - CSS class names are semantic: `btn`, `card`, `dialog`, `tabs`, `badge`, etc.
