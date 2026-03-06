@@ -30,7 +30,7 @@
 
 - [Breadcrumb](https://ciderui.com/components/breadcrumb.html): `breadcrumb` — breadcrumb navigation with separator arrows.
 - [Card](https://ciderui.com/components/card.html): `card` — simple padded container.
-- [Navigation Bar](https://ciderui.com/components/navbar.html): `navbar` `navbar-title` `navbar-back` `navbar-actions` — iOS-style top navigation bar.
+- [Navigation Bar](https://ciderui.com/components/navbar.html): `navbar` — iOS-style top navigation bar. Grid 1fr/auto/1fr: 1st = left slot, 2nd = title, 3rd = right slot (structural, no extra classes).
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
 - [Pagination](https://ciderui.com/components/pagination.html): `pagination` — page navigation buttons.
 - [Separator](https://ciderui.com/components/separator.html): Classless `<hr>` for horizontal dividers; `.separator-vertical`, `.separator-label` for variants.

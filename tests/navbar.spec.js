@@ -17,41 +17,39 @@ test.describe("Navigation Bar", () => {
     expect(display).toBe("grid");
   });
 
-  test("navbar-title is centered", async ({ page }) => {
+  test("title is centered", async ({ page }) => {
     const navbar = preview(page).locator(".navbar");
-    const title = preview(page).locator(".navbar-title");
+    const title = navbar.locator("> :nth-child(2)");
     await expect(title).toHaveText("Inbox");
     const titleBox = await title.boundingBox();
     const navbarBox = await navbar.boundingBox();
-    // Title center should be approximately at navbar center
     const titleCenter = titleBox.x + titleBox.width / 2;
     const navbarCenter = navbarBox.x + navbarBox.width / 2;
     expect(Math.abs(titleCenter - navbarCenter)).toBeLessThan(5);
   });
 
-  test("navbar-back has primary text color", async ({ page }) => {
-    const back = preview(page).locator(".navbar-back");
+  test("back button has primary text color", async ({ page }) => {
+    const back = preview(page).locator(".navbar > :first-child");
     await expect(back).toBeVisible();
     const color = await css(back, "color");
-    // Should be the primary blue color, not foreground
     const bodyColor = await css(page.locator("body"), "color");
     expect(color).not.toBe(bodyColor);
   });
 
-  test("navbar-actions contains action buttons", async ({ page }) => {
-    const actions = preview(page, 1).locator(".navbar-actions");
+  test("actions container holds action buttons", async ({ page }) => {
+    const actions = preview(page, 1).locator(".navbar > :last-child");
     const buttons = actions.locator("button");
     const count = await buttons.count();
     expect(count).toBeGreaterThanOrEqual(1);
   });
 
   test("title-only navbar renders with centered title", async ({ page }) => {
-    const title = preview(page, 2).locator(".navbar-title");
+    const title = preview(page, 2).locator(".navbar > :nth-child(2)");
     await expect(title).toHaveText("Welcome");
   });
 
   test("focus-visible shows ring on back button", async ({ page }) => {
-    const back = preview(page).locator(".navbar-back");
+    const back = preview(page).locator(".navbar > :first-child");
     await focusViaKeyboard(page, back);
     await expect(async () => {
       const shadow = await css(back, "boxShadow");

@@ -86,8 +86,9 @@ h6 {
 }
 /* HIG: In Apple UI, links use no special color or underline — they rely on
    context and interaction states. Accent color + underline are reserved for
-   prose content (article, .prose, p) where links appear inline with text. */
-a:not([class*="btn-"]) {
+   prose content (article, .prose, p) where links appear inline with text.
+   :where() keeps specificity at (0,0,0) so component selectors win naturally. */
+:where(a:not([class*="btn-"])) {
   @apply font-normal;
   text-decoration: none;
   color: inherit;

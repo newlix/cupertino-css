@@ -1,6 +1,8 @@
 /* ========== NAVBAR ========== */
-/* iOS UINavigationBar — top bar with back button, centered title, right actions.
-   Uses CSS Grid 1fr/auto/1fr for perfect title centering regardless of left/right width. */
+/* iOS UINavigationBar — top bar with centered title and left/right slots.
+   Uses CSS Grid 1fr/auto/1fr for perfect title centering regardless of slot width.
+   Children: 1st = left slot, 2nd = title, 3rd = right slot — no extra classes needed.
+   Either slot can hold a back button, action buttons, or be empty. */
 .navbar {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -18,65 +20,62 @@
   & > :first-child {
     justify-self: start;
   }
+
+  /* Title — center column */
+  & > :nth-child(2) {
+    @apply font-semibold truncate;
+    font-size: 17px;
+    line-height: 1.29;
+    letter-spacing: -0.024em;
+    color: var(--color-foreground);
+    justify-self: center;
+    text-align: center;
+  }
+
   & > :last-child {
+    @apply inline-flex items-center gap-2;
     justify-self: end;
   }
-}
 
-.navbar-title {
-  @apply font-semibold truncate;
-  font-size: 17px;
-  line-height: 1.29;
-  letter-spacing: -0.024em;
-  color: var(--color-foreground);
-  justify-self: center;
-  text-align: center;
-}
+  /* All interactive elements — back button, action buttons/links */
+  & :is(button, a) {
+    @apply inline-flex items-center cursor-pointer;
+    font-size: 17px;
+    color: var(--color-primary);
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    transition: opacity var(--transition-fast) var(--apple-ease);
+    & svg {
+      @apply size-5;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+    &:active {
+      opacity: 0.5;
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      border-radius: var(--radius-xs);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+  }
 
-.navbar-actions {
-  @apply inline-flex items-center gap-2;
-}
-
-.navbar-back,
-.navbar-actions button,
-.navbar-actions a {
-  @apply inline-flex items-center cursor-pointer;
-  font-size: 17px;
-  color: var(--color-primary);
-  background: transparent;
-  border: none;
-  text-decoration: none;
-  transition: opacity var(--transition-fast) var(--apple-ease);
-  & svg {
-    @apply size-5;
+  /* Tighter gap for icon + text combos (e.g. back button with chevron) */
+  & > :is(a, button) {
+    @apply gap-0.5;
   }
-  &:hover {
-    opacity: 0.7;
-  }
-  &:active {
-    opacity: 0.5;
-  }
-  &:focus-visible {
-    box-shadow: var(--focus-ring);
-    border-radius: var(--radius-xs);
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-  }
-  &:disabled,
-  &[aria-disabled="true"] {
-    opacity: 0.38;
-    pointer-events: none;
-  }
-}
-
-.navbar-back {
-  @apply gap-0.5;
 }
 
 @media (pointer: coarse), (hover: none) {
-  .navbar-back,
-  .navbar-actions button,
-  .navbar-actions a {
+  .navbar :is(button, a) {
     min-height: 44px;
     min-width: 44px;
   }
@@ -88,9 +87,7 @@
     background: Canvas;
     backdrop-filter: none;
   }
-  .navbar-back,
-  .navbar-actions button,
-  .navbar-actions a {
+  .navbar :is(button, a) {
     color: LinkText;
     &:hover {
       outline: 1px solid ButtonText;
@@ -101,7 +98,7 @@
       box-shadow: none;
     }
   }
-  .navbar-title {
+  .navbar > :nth-child(2) {
     color: CanvasText;
   }
 }

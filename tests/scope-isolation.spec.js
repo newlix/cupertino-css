@@ -68,14 +68,17 @@ test.describe("Scope Isolation — styles stay inside .cider", () => {
     expect(await css(outside, "fontSize")).not.toBe("34px");
   });
 
-  test("anchor color only set to primary inside .cider", async ({ page }) => {
+  test("anchor inherits color inside .cider (no forced primary)", async ({
+    page,
+  }) => {
     const inside = page.locator("#inside a");
     const outside = page.locator("#outside a");
 
-    // CiderUI sets color to --color-primary on links inside .cider
+    // HIG: links inherit color by default; primary is only for prose contexts
     const insideColor = await css(inside, "color");
     const outsideColor = await css(outside, "color");
-    expect(insideColor).not.toBe(outsideColor);
+    // Both should inherit from their parent — no forced primary
+    expect(insideColor).toBe(outsideColor);
   });
 
   test("text input border-radius only applies inside .cider", async ({
@@ -196,16 +199,16 @@ test.describe("Scope Isolation — .cider-reset stops styles", () => {
     expect(await css(reset, "fontSize")).not.toBe("34px");
   });
 
-  test("anchor inside .cider-reset does not get primary color", async ({
+  test("anchor inside .cider-reset inherits color like outside .cider", async ({
     page,
   }) => {
     const reset = page.locator("#reset a");
-    const inside = page.locator("#inside a");
+    const outside = page.locator("#outside a");
 
-    // Inside .cider, anchor gets primary color; inside .cider-reset it should not
+    // Inside .cider-reset, anchor should behave like outside .cider
     const resetColor = await css(reset, "color");
-    const insideColor = await css(inside, "color");
-    expect(resetColor).not.toBe(insideColor);
+    const outsideColor = await css(outside, "color");
+    expect(resetColor).toBe(outsideColor);
   });
 
   test("input inside .cider-reset has no CiderUI border-radius", async ({
