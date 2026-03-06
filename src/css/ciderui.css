@@ -361,6 +361,7 @@
     @import "./components/list.css";
 
     @import "./components/popover.css";
+    @import "./components/sidebar.css";
     @import "./components/verification-code.css";
 
     @import "./components/elements.css";

@@ -1,0 +1,98 @@
+/* ========== SIDEBAR ========== */
+/* macOS-style sidebar navigation — section headers + compact link items.
+   Typically used as a fixed/sticky aside with .sidebar on a <nav> element. */
+.sidebar {
+  @apply flex flex-col overflow-y-auto px-3 pb-4;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  &:hover { scrollbar-color: var(--surface-5) transparent; }
+
+  /* Section groups — <div> children with optional <h2> header */
+  & > div {
+    @apply pt-5 pb-1;
+  }
+
+  /* Section headers */
+  & h2 {
+    @apply px-2 pb-1 text-[13px] font-semibold uppercase tracking-widest;
+    margin: 0;
+    color: var(--color-tertiary-foreground);
+    &:not(:first-child) { margin-top: 0; }
+  }
+
+  /* Navigation items */
+  & a, & button {
+    @apply flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] no-underline cursor-pointer;
+    color: var(--color-tertiary-foreground);
+    transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
+    &:visited { color: var(--color-tertiary-foreground); }
+    &:hover {
+      color: var(--color-foreground);
+      background: var(--surface-3);
+      text-decoration: none;
+    }
+    &:active {
+      background: var(--surface-4);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    &:is(:disabled, [aria-disabled="true"]) {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+    /* Selected / active item */
+    &:is([data-active], [aria-current="page"]) {
+      @apply font-semibold;
+      color: var(--color-foreground);
+      background: var(--surface-4);
+    }
+    &:is([data-active], [aria-current="page"]):hover {
+      background: var(--surface-5);
+    }
+    /* Icon inside item */
+    & > svg:first-child {
+      @apply size-4 shrink-0;
+    }
+    @media (pointer: coarse), (hover: none) { min-height: 44px; }
+  }
+}
+
+/* Primary-tinted active state (Apple blue highlight) */
+.sidebar-tinted {
+  & a:is([data-active], [aria-current="page"]),
+  & button:is([data-active], [aria-current="page"]) {
+    color: var(--color-primary);
+    background: oklch(from var(--color-primary) l c h / 0.12);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.22); }
+  }
+  & a:is([data-active], [aria-current="page"]):hover,
+  & button:is([data-active], [aria-current="page"]):hover {
+    background: oklch(from var(--color-primary) l c h / 0.18);
+    .dark & { background: oklch(from var(--color-primary) l c h / 0.30); }
+  }
+}
+
+@media (forced-colors: active) {
+  .sidebar a:hover:not(:disabled):not([aria-disabled="true"]),
+  .sidebar button:hover:not(:disabled):not([aria-disabled="true"]) {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+  .sidebar a:focus-visible, .sidebar button:focus-visible {
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+  .sidebar :is(a, button):is([data-active], [aria-current="page"]) {
+    background: Highlight;
+    color: HighlightText;
+    outline: 2px solid Highlight;
+  }
+  .sidebar :is(a, button):disabled,
+  .sidebar :is(a, button)[aria-disabled="true"] {
+    color: GrayText;
+    opacity: 1;
+  }
+}
