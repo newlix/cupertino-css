@@ -21,7 +21,7 @@
       @media (min-resolution: 2dppx) { border-top-width: 0.5px; }
     }
     & > summary {
-      @apply text-[17px];
+      font-size: 17px;
       padding: 0.75rem 1.25rem;
       margin: 0;
       border-radius: 0;
@@ -29,7 +29,7 @@
       @media (pointer: coarse), (hover: none) { min-height: 44px; display: flex; align-items: center; }
       &:hover { background-color: var(--surface-2); }
       &:active { background-color: var(--surface-3); }
-      &:focus-visible { background: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+      &:focus-visible { background-color: var(--surface-3); outline: 2px solid var(--color-primary); outline-offset: -2px; }
     }
     & > :not(summary) {
       padding: 0 1.25rem;

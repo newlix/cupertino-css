@@ -23,7 +23,7 @@ env.addFilter("dedent", (str) => {
   const indents = lines
     .filter((l) => l.trim())
     .map((l) => l.match(/^\s*/)[0].length);
-  const minIndent = indents.length ? Math.min(...indents) : 0;
+  const minIndent = indents.length ? indents.reduce((a, b) => Math.min(a, b)) : 0;
   return lines.map((l) => l.slice(minIndent)).join("\n");
 });
 
