@@ -4,6 +4,16 @@
 (function () {
   const activeDialogs = new Set();
   let savedOverflow = null;
+
+  function restoreScrollLock(dialog) {
+    const wasActive = activeDialogs.delete(dialog);
+    if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
+      document.body.style.overflow = savedOverflow ?? "";
+      document.body.style.paddingRight = "";
+      savedOverflow = null;
+    }
+  }
+
   const FOCUSABLE = 'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function clearCloseAnim(dialog) {
@@ -115,12 +125,7 @@
       dialog.addEventListener("click", dialog._clickHandler);
 
       function teardown() {
-        const wasActive = activeDialogs.delete(dialog);
-        if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
-          document.body.style.overflow = savedOverflow ?? "";
-          document.body.style.paddingRight = "";
-          savedOverflow = null;
-        }
+        restoreScrollLock(dialog);
         if (dialog._focusTrapHandler) {
           dialog.removeEventListener("keydown", dialog._focusTrapHandler);
           dialog._focusTrapHandler = null;
@@ -226,12 +231,7 @@
       clearCloseAnim(dialog);
       if (dialog._openWaitObs) { dialog._openWaitObs.disconnect(); dialog._openWaitObs = null; }
       if (dialog._openWaitTimer) { clearTimeout(dialog._openWaitTimer); dialog._openWaitTimer = null; }
-      const wasActive = activeDialogs.delete(dialog);
-      if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
-        document.body.style.overflow = savedOverflow ?? "";
-        document.body.style.paddingRight = "";
-        savedOverflow = null;
-      }
+      restoreScrollLock(dialog);
       dialog._previousFocus = null;
       dialog._dialogInit = false;
     });

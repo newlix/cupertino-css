@@ -5,7 +5,7 @@
 .verification-code {
   @apply flex items-center gap-2;
   & input:not([type="hidden"]) {
-    @apply text-center p-0 font-semibold rounded-[10px];
+    @apply text-center p-0 font-semibold rounded-[var(--radius)];
     corner-shape: squircle;
     background-color: var(--color-card);
     color: var(--color-foreground);

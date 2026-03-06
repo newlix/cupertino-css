@@ -539,11 +539,11 @@ abbr[title] {
   textarea,
   select:not([multiple]) {
     border: 1px solid ButtonText;
-    appearance: menulist;
     &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
     &:disabled, &[aria-disabled="true"] { border-color: GrayText; color: GrayText; }
     &[aria-invalid="true"] { border: 2px dashed Highlight; }
   }
+  select:not([multiple]) { appearance: menulist; }
   details, fieldset, blockquote { border-color: ButtonText; }
   details summary:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
   mark { forced-color-adjust: none; background: Mark; color: MarkText; }

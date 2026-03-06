@@ -42,7 +42,7 @@
 /* Menu variant — action list with item styling + arrow key nav */
 .popover-menu {
   & [popover] {
-    @apply min-w-[200px] max-w-none rounded-[9px] p-1;
+    @apply min-w-[200px] max-w-none rounded-[var(--radius-sm)] p-1;
     max-height: min(400px, calc(100vh - 2rem));
 
     /* macOS menus appear with opacity-only — no scale transform */
