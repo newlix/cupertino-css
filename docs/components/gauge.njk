@@ -1,0 +1,57 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Gauge" %}
+{% set description = "Circular ring indicator for displaying progress or levels." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.gauge</code></dt>
+    <dd>Circular ring progress indicator. Set <code>--gauge-value</code> (0 to 1) to control fill.</dd>
+    <dt><code>.gauge-sm</code></dt>
+    <dd>Small size variant (40px).</dd>
+    <dt><code>.gauge-lg</code></dt>
+    <dd>Large size variant (96px).</dd>
+    <dt><code>.gauge-green</code></dt>
+    <dd>Green color variant.</dd>
+    <dt><code>.gauge-orange</code></dt>
+    <dd>Orange color variant.</dd>
+    <dt><code>.gauge-destructive</code></dt>
+    <dd>Destructive (red) color variant.</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div class="flex items-center gap-6">
+  <div class="gauge" style="--gauge-value: 0.25"><span>25%</span></div>
+  <div class="gauge" style="--gauge-value: 0.50"><span>50%</span></div>
+  <div class="gauge" style="--gauge-value: 0.75"><span>75%</span></div>
+</div>
+{% endcall %}
+
+  {% call example("Sizes") %}
+<div class="flex items-center gap-6">
+  <div class="gauge gauge-sm" style="--gauge-value: 0.6"><span>60%</span></div>
+  <div class="gauge" style="--gauge-value: 0.6"><span>60%</span></div>
+  <div class="gauge gauge-lg" style="--gauge-value: 0.6"><span>60%</span></div>
+</div>
+{% endcall %}
+
+  {% call example("Colors") %}
+<div class="flex items-center gap-6">
+  <div class="gauge" style="--gauge-value: 0.4"><span>40%</span></div>
+  <div class="gauge gauge-green" style="--gauge-value: 0.65"><span>65%</span></div>
+  <div class="gauge gauge-orange" style="--gauge-value: 0.80"><span>80%</span></div>
+  <div class="gauge gauge-destructive" style="--gauge-value: 0.92"><span>92%</span></div>
+</div>
+{% endcall %}
+
+  {% call example("Without Label") %}
+<div class="flex items-center gap-6">
+  <div class="gauge gauge-sm" style="--gauge-value: 0.33"></div>
+  <div class="gauge" style="--gauge-value: 0.66"></div>
+  <div class="gauge gauge-lg" style="--gauge-value: 1"></div>
+</div>
+{% endcall %}
+
+{% endblock %}

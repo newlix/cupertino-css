@@ -247,8 +247,8 @@
   --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   --transition-fast: 0.15s;
   --transition-normal: 0.25s;
-  --surface-1: oklch(0.556 0.008 286 / 0.04);
-  --surface-2: oklch(0.556 0.008 286 / 0.06);
+  --surface-1: oklch(0 0 0 / 0.04);
+  --surface-2: oklch(0 0 0 / 0.06);
   --surface-3: oklch(0.556 0.008 286 / 0.08);
   --surface-4: oklch(0.556 0.008 286 / 0.12);
   --surface-5: oklch(0.556 0.008 286 / 0.16);
@@ -321,8 +321,8 @@
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.08);
   --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.2), 0 2px 8px oklch(0 0 0 / 0.12);
   --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.25), 0 4px 16px oklch(0 0 0 / 0.12);
-  --surface-1: oklch(0.556 0.008 286 / 0.08);
-  --surface-2: oklch(0.556 0.008 286 / 0.12);
+  --surface-1: oklch(1 0 0 / 0.04);
+  --surface-2: oklch(1 0 0 / 0.06);
   --surface-3: oklch(0.556 0.008 286 / 0.18);
   --surface-4: oklch(0.556 0.008 286 / 0.24);
   --surface-5: oklch(0.556 0.008 286 / 0.32);
@@ -1107,12 +1107,169 @@
       }
       @media (forced-colors: active) {
         border: 1px solid ButtonText;
+        box-shadow: none;
         & .dialog-close {
           border: 1px solid ButtonText;
         }
         & .dialog-close:focus-visible {
           outline: 2px solid Highlight;
           box-shadow: none;
+        }
+      }
+    }
+    @keyframes actionSheetShow {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+    @keyframes actionSheetHide {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+    dialog.action-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: 420px;
+      padding: 0 8px;
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      overflow: visible;
+      max-height: none;
+      border-radius: 0;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      &[open] {
+        display: flex;
+        flex-direction: column;
+        animation: actionSheetShow 0.35s var(--apple-spring) forwards;
+      }
+      &:modal::backdrop {
+        background: var(--backdrop-bg);
+        animation: backdropFadeIn 0.3s var(--apple-ease) forwards;
+      }
+      &[data-closing] {
+        animation: actionSheetHide 0.25s var(--apple-ease) forwards;
+      }
+      &:modal[data-closing]::backdrop {
+        animation: backdropFadeIn 0.25s var(--apple-ease) reverse forwards;
+      }
+      & .action-sheet-group {
+        border-radius: var(--radius);
+        corner-shape: squircle;
+        overflow: hidden;
+        background: var(--glass-bg-opaque);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        & + .action-sheet-group {
+          margin-top: 8px;
+        }
+        & > button, & > a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: var(--color-primary);
+          padding: 16px;
+          font-size: 20px;
+          letter-spacing: -0.024em;
+          font-family: inherit;
+          text-decoration: none;
+          transition: background-color var(--transition-fast) var(--apple-ease);
+          & + button, & + a {
+            border-top: 1px solid var(--color-separator);
+            @media (min-resolution: 2dppx) {
+              border-top-width: 0.5px;
+            }
+          }
+          &:hover {
+            background: var(--surface-2);
+          }
+          &:active {
+            background: var(--surface-4);
+          }
+          &:focus-visible {
+            box-shadow: var(--focus-ring);
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+          }
+          &.action-sheet-destructive {
+            color: var(--color-destructive);
+          }
+          &.action-sheet-cancel {
+            font-weight: 600;
+          }
+          @media (pointer: coarse), (hover: none) {
+            min-height: 57px;
+          }
+        }
+      }
+      & .action-sheet-header {
+        padding-inline: calc(var(--spacing) * 4);
+        padding-block: calc(var(--spacing) * 3);
+        text-align: center;
+        border-bottom: 1px solid var(--color-separator);
+        @media (min-resolution: 2dppx) {
+          border-bottom-width: 0.5px;
+        }
+        & + button, & + a {
+          border-top: none;
+        }
+      }
+      & .action-sheet-title {
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-foreground);
+        font-size: 13px;
+      }
+      & .action-sheet-message {
+        color: var(--color-tertiary-foreground);
+        font-size: 13px;
+        margin-top: 2px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        &[open] {
+          animation: none;
+        }
+        &:modal[open]::backdrop {
+          animation: none;
+        }
+        &[data-closing] {
+          animation: none;
+        }
+        &:modal[data-closing]::backdrop {
+          animation: none;
+        }
+      }
+      @media (forced-colors: active) {
+        & .action-sheet-group {
+          border: 1px solid ButtonText;
+        }
+        & .action-sheet-group > button, & .action-sheet-group > a {
+          border: 1px solid ButtonText;
+          &:focus-visible {
+            outline: 2px solid Highlight;
+            box-shadow: none;
+          }
+        }
+        & .action-sheet-header {
+          border-bottom-color: ButtonText;
         }
       }
     }
@@ -1127,7 +1284,7 @@
     .segmented-control [data-tab-indicator] {
       pointer-events: none;
       position: absolute;
-      border-radius: 4px;
+      border-radius: calc(var(--radius-sm) - 4px);
       corner-shape: squircle;
       top: 4px;
       bottom: 4px;
@@ -1146,7 +1303,7 @@
       align-items: center;
       justify-content: center;
       gap: calc(var(--spacing) * 1.5);
-      border-radius: 4px;
+      border-radius: calc(var(--radius-sm) - 4px);
       --tw-border-style: none;
       border-style: none;
       background-color: transparent;
@@ -1213,6 +1370,7 @@
       .segmented-control [data-tab] {
         &:focus-visible {
           outline: 2px solid Highlight;
+          box-shadow: none;
         }
         &[data-active], &[aria-selected="true"] {
           color: HighlightText;
@@ -1341,7 +1499,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 0.5rem;
     }
     .page-control > button {
       all: unset;
@@ -1397,6 +1555,7 @@
         }
         &:focus-visible {
           outline: 2px solid Highlight;
+          box-shadow: none;
         }
         &:disabled, &[aria-disabled="true"] {
           border-color: GrayText;
@@ -1485,6 +1644,7 @@
           }
           &:focus-visible {
             outline: 2px solid Highlight;
+            box-shadow: none;
           }
           &:disabled, &[aria-disabled="true"] {
             border-color: GrayText;
@@ -1559,6 +1719,7 @@
           }
           &:focus-visible {
             outline: 2px solid Highlight;
+            box-shadow: none;
           }
           &[aria-disabled="true"] {
             color: GrayText;
@@ -2065,6 +2226,7 @@
     @media (forced-colors: active) {
       .list-inset-grouped {
         border: 1px solid ButtonText;
+        box-shadow: none;
       }
       .list > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
         outline: 1px solid ButtonText;
@@ -2084,6 +2246,198 @@
         background: Highlight;
         color: HighlightText;
         outline: 2px solid Highlight;
+      }
+    }
+    .disclosure-group {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      corner-shape: squircle;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm), var(--panel-ring);
+      & > details {
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        & + details {
+          margin-top: 0;
+          border-top: 1px solid var(--color-separator);
+          @media (min-resolution: 2dppx) {
+            border-top-width: 0.5px;
+          }
+        }
+        & > summary {
+          font-size: 17px;
+          padding: 0.75rem 1.25rem;
+          margin: 0;
+          border-radius: 0;
+          transition: background-color var(--transition-fast) var(--apple-ease);
+          @media (pointer: coarse), (hover: none) {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+          }
+          &:hover {
+            background-color: var(--surface-2);
+          }
+          &:active {
+            background-color: var(--surface-3);
+          }
+          &:focus-visible {
+            background-color: var(--surface-3);
+            outline: 2px solid var(--color-primary);
+            outline-offset: -2px;
+          }
+        }
+        & > :not(summary) {
+          padding: 0 1.25rem;
+          margin-top: 0;
+        }
+        & > :last-child:not(summary) {
+          padding-bottom: 1rem;
+        }
+      }
+    }
+    @media (forced-colors: active) {
+      .disclosure-group {
+        border: 1px solid ButtonText;
+        box-shadow: none;
+      }
+      .disclosure-group > details + details {
+        border-top-color: ButtonText;
+      }
+      .disclosure-group > details > summary:hover {
+        outline: 1px solid ButtonText;
+        outline-offset: -1px;
+      }
+      .disclosure-group > details > summary:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+    }
+    .navbar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 16px;
+      background: var(--glass-bg-opaque);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--color-separator);
+      @media (min-resolution: 2dppx) {
+        border-bottom-width: 0.5px;
+      }
+      & > :first-child {
+        justify-self: start;
+      }
+      & > :last-child {
+        justify-self: end;
+      }
+    }
+    .navbar-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+      font-size: 17px;
+      line-height: 1.29;
+      letter-spacing: -0.024em;
+      color: var(--color-foreground);
+      justify-self: center;
+      text-align: center;
+    }
+    .navbar-back {
+      display: inline-flex;
+      cursor: pointer;
+      align-items: center;
+      gap: calc(var(--spacing) * 0.5);
+      font-size: 17px;
+      color: var(--color-primary);
+      background: transparent;
+      border: none;
+      text-decoration: none;
+      transition: opacity var(--transition-fast) var(--apple-ease);
+      & svg {
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+      }
+      &:hover {
+        opacity: 0.7;
+      }
+      &:active {
+        opacity: 0.5;
+      }
+      &:focus-visible {
+        box-shadow: var(--focus-ring);
+        border-radius: var(--radius-xs);
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+    }
+    .navbar-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--spacing) * 2);
+      & button, & a {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        font-size: 17px;
+        color: var(--color-primary);
+        background: transparent;
+        border: none;
+        text-decoration: none;
+        transition: opacity var(--transition-fast) var(--apple-ease);
+        & svg {
+          width: calc(var(--spacing) * 5);
+          height: calc(var(--spacing) * 5);
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+        &:active {
+          opacity: 0.5;
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          border-radius: var(--radius-xs);
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+        }
+      }
+    }
+    @media (pointer: coarse), (hover: none) {
+      .navbar-back {
+        min-height: 44px;
+        min-width: 44px;
+      }
+      .navbar-actions button, .navbar-actions a {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+    @media (forced-colors: active) {
+      .navbar {
+        border-bottom: 1px solid ButtonText;
+        background: Canvas;
+        backdrop-filter: none;
+      }
+      .navbar-back, .navbar-actions button, .navbar-actions a {
+        color: LinkText;
+        &:hover {
+          outline: 1px solid ButtonText;
+          outline-offset: -1px;
+        }
+        &:focus-visible {
+          outline: 2px solid Highlight;
+          box-shadow: none;
+        }
+      }
+      .navbar-title {
+        color: CanvasText;
       }
     }
     .popover {
@@ -2128,7 +2482,7 @@
       & [popover] {
         max-width: none;
         min-width: 200px;
-        border-radius: 9px;
+        border-radius: var(--radius-sm);
         padding: calc(var(--spacing) * 1);
         max-height: min(400px, calc(100vh - 2rem));
         transform: none;
@@ -2236,6 +2590,7 @@
     @media (forced-colors: active) {
       .popover [popover] {
         border: 1px solid ButtonText;
+        box-shadow: none;
       }
       .popover-arrow [popover]::before {
         display: none;
@@ -2378,12 +2733,200 @@
         opacity: 1;
       }
     }
+    .tab-bar {
+      display: flex;
+      justify-content: space-around;
+      min-height: 49px;
+      padding-top: 4px;
+      padding-bottom: max(4px, env(safe-area-inset-bottom));
+      background: var(--glass-bg-opaque);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-top: 1px solid var(--color-separator);
+    }
+    @media (min-resolution: 2dppx) {
+      .tab-bar {
+        border-top-width: 0.5px;
+      }
+    }
+    .tab-bar > a, .tab-bar > button {
+      display: flex;
+      flex: 1;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      --tw-border-style: none;
+      border-style: none;
+      background-color: transparent;
+      text-decoration-line: none;
+      gap: 2px;
+      padding: 2px 0;
+      color: var(--color-tertiary-foreground);
+      font-size: 10px;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      transition: color var(--transition-fast) var(--apple-ease);
+      & svg {
+        width: calc(var(--spacing) * 6);
+        height: calc(var(--spacing) * 6);
+      }
+      &[data-active], &[aria-selected="true"] {
+        color: var(--color-primary);
+      }
+      &:hover:not([data-active]):not([aria-selected="true"]):not(:disabled):not([aria-disabled="true"]) {
+        color: var(--color-foreground);
+      }
+      &:disabled, &[aria-disabled="true"] {
+        opacity: 0.38;
+        pointer-events: none;
+      }
+      &:focus-visible {
+        box-shadow: var(--focus-ring);
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+        border-radius: var(--radius-xs);
+      }
+    }
+    @media (forced-colors: active) {
+      .tab-bar > a, .tab-bar > button {
+        &[data-active], &[aria-selected="true"] {
+          outline: 2px solid Highlight;
+        }
+        &:focus-visible {
+          outline: 2px solid Highlight;
+          box-shadow: none;
+        }
+        &:disabled, &[aria-disabled="true"] {
+          color: GrayText;
+          opacity: 1;
+        }
+      }
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 12px;
+      gap: 8px;
+      background: var(--glass-bg-opaque);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--color-separator);
+      @media (min-resolution: 2dppx) {
+        border-bottom-width: 0.5px;
+      }
+    }
+    .toolbar-bottom {
+      border-bottom: none;
+      border-top: 1px solid var(--color-separator);
+      @media (min-resolution: 2dppx) {
+        border-top-width: 0.5px;
+      }
+    }
+    .toolbar-group {
+      display: inline-flex;
+      align-items: stretch;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      corner-shape: squircle;
+      overflow: hidden;
+      & > button, & > a {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        --tw-border-style: none;
+        border-style: none;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 36px;
+        height: 30px;
+        background: transparent;
+        color: var(--color-foreground);
+        transition: background-color var(--transition-fast) var(--apple-ease);
+        & svg {
+          width: calc(var(--spacing) * 4);
+          height: calc(var(--spacing) * 4);
+        }
+        &:hover {
+          background: var(--surface-4);
+        }
+        &:active {
+          background: var(--surface-5);
+        }
+        &:disabled, &[aria-disabled="true"] {
+          opacity: 0.38;
+          pointer-events: none;
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+          outline-offset: -2px;
+        }
+        & + button, & + a {
+          border-left: 1px solid var(--color-separator);
+          @media (min-resolution: 2dppx) {
+            border-left-width: 0.5px;
+          }
+        }
+      }
+      @media (pointer: coarse), (hover: none) {
+        & > button, & > a {
+          min-height: 44px;
+        }
+      }
+    }
+    .toolbar-spacer {
+      flex: 1 1 auto;
+    }
+    .toolbar-title {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-foreground);
+      font-size: 13px;
+    }
+    @media (forced-colors: active) {
+      .toolbar {
+        border-bottom: 1px solid ButtonText;
+        background: Canvas;
+        backdrop-filter: none;
+      }
+      .toolbar-bottom {
+        border-bottom: none;
+        border-top: 1px solid ButtonText;
+      }
+      .toolbar-group {
+        border: 1px solid ButtonText;
+        & > button, & > a {
+          &:hover {
+            background: Highlight;
+            color: HighlightText;
+          }
+          &:active {
+            background: Highlight;
+            color: HighlightText;
+          }
+          &:focus-visible {
+            outline: 2px solid Highlight;
+            box-shadow: none;
+          }
+          &:disabled, &[aria-disabled="true"] {
+            color: GrayText;
+            opacity: 1;
+          }
+          & + button, & + a {
+            border-left-color: ButtonText;
+          }
+        }
+      }
+    }
     .verification-code {
       display: flex;
       align-items: center;
       gap: calc(var(--spacing) * 2);
       & input:not([type="hidden"]) {
-        border-radius: 10px;
+        border-radius: var(--radius);
         padding: calc(var(--spacing) * 0);
         text-align: center;
         --tw-font-weight: var(--font-weight-semibold);
@@ -2478,6 +3021,232 @@
           border-color: Highlight;
           border-style: dashed;
         }
+      }
+    }
+    .stepper {
+      display: inline-flex;
+      align-items: stretch;
+      height: 32px;
+      border: 1px solid var(--color-border-solid);
+      border-radius: var(--radius-sm);
+      corner-shape: squircle;
+      overflow: hidden;
+      background: var(--color-card);
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+        border-width: 0.5px;
+      }
+    }
+    .stepper > button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 47px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--color-primary);
+      font-size: 20px;
+      transition: background-color var(--transition-fast) var(--apple-ease);
+      &:hover {
+        background: var(--surface-2);
+      }
+      &:active {
+        background: var(--surface-4);
+      }
+      &:disabled {
+        color: var(--color-tertiary-foreground);
+        opacity: 0.38;
+        pointer-events: none;
+      }
+      &:focus-visible {
+        box-shadow: var(--focus-ring);
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+      }
+      & svg {
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+      }
+    }
+    .stepper > button + button, .stepper > output + button, .stepper > button + output, .stepper > [data-stepper-value] + button, .stepper > button + [data-stepper-value] {
+      border-left: 1px solid var(--color-border-solid);
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+        border-left-width: 0.5px;
+      }
+    }
+    .stepper > output, .stepper > [data-stepper-value] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      padding: 0 8px;
+      font-size: 15px;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-foreground);
+    }
+    @media (pointer: coarse), (hover: none) {
+      .stepper {
+        height: 44px;
+      }
+      .stepper > button {
+        width: 56px;
+      }
+    }
+    @media (forced-colors: active) {
+      .stepper {
+        border: 1px solid ButtonText;
+      }
+      .stepper > button {
+        color: ButtonText;
+        &:hover {
+          outline: 1px solid Highlight;
+        }
+        &:disabled {
+          color: GrayText;
+          opacity: 1;
+        }
+      }
+      .stepper > button + button, .stepper > output + button, .stepper > button + output, .stepper > [data-stepper-value] + button, .stepper > button + [data-stepper-value] {
+        border-left: 1px solid ButtonText;
+      }
+    }
+    .gauge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      &::before {
+        content: "";
+        position: absolute;
+        inset: calc(var(--spacing) * 0);
+        border-radius: 50%;
+        background: conic-gradient( from -90deg, var(--gauge-color, var(--color-primary)) calc(var(--gauge-value, 0) * 360deg), var(--surface-3) calc(var(--gauge-value, 0) * 360deg) );
+        -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
+        mask: radial-gradient(circle, transparent 70%, black 71%);
+      }
+      & > span {
+        position: relative;
+        z-index: 10;
+        font-size: 13px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--text-foreground);
+      }
+    }
+    .gauge-sm {
+      width: 40px;
+      height: 40px;
+      & > span {
+        font-size: 10px;
+      }
+    }
+    .gauge-lg {
+      width: 96px;
+      height: 96px;
+      & > span {
+        font-size: 17px;
+      }
+    }
+    .gauge-green {
+      --gauge-color: var(--color-green);
+    }
+    .gauge-orange {
+      --gauge-color: var(--color-orange);
+    }
+    .gauge-destructive {
+      --gauge-color: var(--color-destructive);
+    }
+    @media (forced-colors: active) {
+      .gauge {
+        border: 2px solid CanvasText;
+        border-radius: 50%;
+        &::before {
+          forced-color-adjust: none;
+          background: Highlight;
+          -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
+          mask: radial-gradient(circle, transparent 70%, black 71%);
+        }
+      }
+    }
+    .picker {
+      --picker-visible: 5;
+      --picker-item-h: 40px;
+      position: relative;
+      display: inline-flex;
+      height: calc(var(--picker-visible) * var(--picker-item-h));
+      overflow: hidden;
+      border-radius: var(--radius);
+      corner-shape: squircle;
+      background: var(--color-card);
+      box-shadow: var(--shadow-sm), var(--panel-ring);
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: var(--picker-item-h);
+        transform: translateY(-50%);
+        border-top: 1px solid var(--color-separator);
+        border-bottom: 1px solid var(--color-separator);
+        @media (min-resolution: 2dppx) {
+          border-top-width: 0.5px;
+          border-bottom-width: 0.5px;
+        }
+        pointer-events: none;
+        z-index: 1;
+      }
+    }
+    .picker-column {
+      position: relative;
+      width: 120px;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      padding: calc((var(--picker-visible) - 1) / 2 * var(--picker-item-h)) 0;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      & + .picker-column {
+        border-left: 1px solid var(--color-separator);
+        @media (min-resolution: 2dppx) {
+          border-left-width: 0.5px;
+        }
+      }
+    }
+    .picker-item {
+      height: var(--picker-item-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: center;
+      font-size: 20px;
+      color: var(--color-foreground);
+      cursor: default;
+      user-select: none;
+    }
+    @media (forced-colors: active) {
+      .picker {
+        border: 1px solid ButtonText;
+        box-shadow: none;
+      }
+      .picker::after {
+        border-top-color: ButtonText;
+        border-bottom-color: ButtonText;
+      }
+      .picker-column + .picker-column {
+        border-left-color: ButtonText;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .picker-column {
+        scroll-behavior: auto;
       }
     }
     :scope.cider-fixed {
@@ -3330,7 +4099,6 @@
       }
       input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="hidden"], [role="switch"])), textarea, select:not([multiple]) {
         border: 1px solid ButtonText;
-        appearance: menulist;
         &:focus-visible {
           outline: 2px solid Highlight;
           box-shadow: none;
@@ -3342,6 +4110,9 @@
         &[aria-invalid="true"] {
           border: 2px dashed Highlight;
         }
+      }
+      select:not([multiple]) {
+        appearance: menulist;
       }
       details, fieldset, blockquote {
         border-color: ButtonText;
@@ -3364,6 +4135,7 @@
       }
       table {
         border: 1px solid ButtonText;
+        box-shadow: none;
       }
       pre {
         border: 1px solid ButtonText;

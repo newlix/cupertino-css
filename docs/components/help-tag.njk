@@ -1,0 +1,40 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Help Tag" %}
+{% set description = "Hover tooltip via data attribute. Pure CSS, no JS required." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>[data-help]</code></dt>
+    <dd>Adds a hover tooltip displaying the attribute value. Works on any element.</dd>
+  </dl>
+
+  <p class="text-tertiary-foreground">
+    Add <code>data-help="Label"</code> to any element. The tooltip appears on hover (with a 0.6s delay matching macOS) and on <code>:focus-visible</code>.
+  </p>
+
+  {% call example("Icon Buttons") %}
+<div class="flex items-center gap-4">
+  <button class="btn-gray size-11 p-0" data-help="Edit" aria-label="Edit">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+  </button>
+  <button class="btn-gray size-11 p-0" data-help="Delete" aria-label="Delete">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+  </button>
+  <button class="btn-gray size-11 p-0" data-help="Share" aria-label="Share">
+    <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("On Any Element") %}
+<div class="flex items-center gap-6">
+  <span data-help="Online" class="inline-block size-3 rounded-full bg-green"></span>
+  <a href="#" data-help="View profile">John Doe</a>
+  <abbr data-help="Cascading Style Sheets">CSS</abbr>
+</div>
+{% endcall %}
+
+{% endblock %}

@@ -10,6 +10,7 @@
   {
     "title": "Components",
     "items": [
+      { "label": "Action Sheet", "href": "components/action-sheet.html" },
       { "label": "Activity Indicator", "href": "components/activity-indicator.html" },
       { "label": "Avatar", "href": "components/avatar.html" },
       { "label": "Badge", "href": "components/badge.html" },
@@ -20,12 +21,16 @@
       { "label": "Checkbox", "href": "components/checkbox.html" },
       { "label": "Dialog", "href": "components/dialog.html" },
       { "label": "Disclosure Group", "href": "components/disclosure-group.html" },
+      { "label": "Gauge", "href": "components/gauge.html" },
+      { "label": "Help Tag", "href": "components/help-tag.html" },
       { "label": "HUD", "href": "components/hud.html" },
       { "label": "Input", "href": "components/input.html" },
       { "label": "Kbd", "href": "components/kbd.html" },
       { "label": "List", "href": "components/list.html" },
+      { "label": "Navigation Bar", "href": "components/navbar.html" },
       { "label": "Page Control", "href": "components/page-control.html" },
       { "label": "Pagination", "href": "components/pagination.html" },
+      { "label": "Picker", "href": "components/picker.html" },
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },
@@ -34,10 +39,13 @@
       { "label": "Separator", "href": "components/separator.html" },
       { "label": "Sidebar", "href": "components/sidebar.html" },
       { "label": "Slider", "href": "components/slider.html" },
+      { "label": "Stepper", "href": "components/stepper.html" },
       { "label": "Switch", "href": "components/switch.html" },
+      { "label": "Tab Bar", "href": "components/tab-bar.html" },
       { "label": "Table", "href": "components/table.html" },
       { "label": "Tag", "href": "components/tag.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
+      { "label": "Toolbar", "href": "components/toolbar.html" },
       { "label": "Verification Code", "href": "components/verification-code.html" }
     ]
   },

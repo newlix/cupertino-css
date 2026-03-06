@@ -1,0 +1,78 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Picker" %}
+{% set description = "iOS-style scroll wheel picker for selecting values." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.picker</code></dt>
+    <dd>Container element with <code>data-picker</code> attribute. Provides the card background, selection indicator, and overflow clipping.</dd>
+    <dt><code>.picker-column</code></dt>
+    <dd>Scrollable column inside the picker. Set <code>data-value</code> to pre-select an item.</dd>
+    <dt><code>.picker-item</code></dt>
+    <dd>Individual selectable item inside a column.</dd>
+  </dl>
+
+  {% call example("Single Column") %}
+<div class="picker" data-picker>
+  <div class="picker-column" data-value="March">
+    <div class="picker-item">January</div>
+    <div class="picker-item">February</div>
+    <div class="picker-item">March</div>
+    <div class="picker-item">April</div>
+    <div class="picker-item">May</div>
+    <div class="picker-item">June</div>
+    <div class="picker-item">July</div>
+    <div class="picker-item">August</div>
+    <div class="picker-item">September</div>
+    <div class="picker-item">October</div>
+    <div class="picker-item">November</div>
+    <div class="picker-item">December</div>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("Multi Column") %}
+<div class="picker" data-picker>
+  <div class="picker-column" data-value="9">
+    <div class="picker-item">1</div>
+    <div class="picker-item">2</div>
+    <div class="picker-item">3</div>
+    <div class="picker-item">4</div>
+    <div class="picker-item">5</div>
+    <div class="picker-item">6</div>
+    <div class="picker-item">7</div>
+    <div class="picker-item">8</div>
+    <div class="picker-item">9</div>
+    <div class="picker-item">10</div>
+    <div class="picker-item">11</div>
+    <div class="picker-item">12</div>
+  </div>
+  <div class="picker-column" data-value="AM">
+    <div class="picker-item">AM</div>
+    <div class="picker-item">PM</div>
+  </div>
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the picker JS to enable scroll-snap selection and change events. Set <code>data-value</code> on a <code>.picker-column</code> to pre-select an item on load.</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/picker.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/picker.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+    <p class="mt-4 text-[15px] text-tertiary-foreground">Listen for the <code>change</code> event on the picker element to react to selections:</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-js">document.querySelector('[data-picker]').addEventListener('change', (e) =&gt; {
+  console.log(e.detail); // { column: 0, value: "March", index: 2 }
+});</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

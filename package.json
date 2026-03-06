@@ -27,7 +27,10 @@
     "./tabs.js": "./js/tabs.js",
     "./hud.js": "./js/hud.js",
     "./slider.js": "./js/slider.js",
-    "./sidebar.js": "./js/sidebar.js"
+    "./sidebar.js": "./js/sidebar.js",
+    "./stepper.js": "./js/stepper.js",
+    "./action-sheet.js": "./js/action-sheet.js",
+    "./picker.js": "./js/picker.js"
   },
   "files": [
     "src/css/",

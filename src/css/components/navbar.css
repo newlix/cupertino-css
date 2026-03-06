@@ -1,0 +1,92 @@
+/* ========== NAVBAR ========== */
+/* iOS UINavigationBar — top bar with back button, centered title, right actions.
+   Uses CSS Grid 1fr/auto/1fr for perfect title centering regardless of left/right width. */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--color-separator);
+  @media (min-resolution: 2dppx) { border-bottom-width: 0.5px; }
+
+  & > :first-child { justify-self: start; }
+  & > :last-child { justify-self: end; }
+}
+
+.navbar-title {
+  @apply font-semibold truncate;
+  font-size: 17px;
+  line-height: 1.29;
+  letter-spacing: -0.024em;
+  color: var(--color-foreground);
+  justify-self: center;
+  text-align: center;
+}
+
+.navbar-back {
+  @apply inline-flex items-center gap-0.5 cursor-pointer;
+  font-size: 17px;
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  transition: opacity var(--transition-fast) var(--apple-ease);
+  & svg { @apply size-5; }
+  &:hover { opacity: 0.7; }
+  &:active { opacity: 0.5; }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-xs);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+}
+
+.navbar-actions {
+  @apply inline-flex items-center gap-2;
+
+  & button, & a {
+    @apply inline-flex items-center cursor-pointer;
+    font-size: 17px;
+    color: var(--color-primary);
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    transition: opacity var(--transition-fast) var(--apple-ease);
+    & svg { @apply size-5; }
+    &:hover { opacity: 0.7; }
+    &:active { opacity: 0.5; }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      border-radius: var(--radius-xs);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
+}
+
+@media (pointer: coarse), (hover: none) {
+  .navbar-back { min-height: 44px; min-width: 44px; }
+  .navbar-actions button,
+  .navbar-actions a { min-height: 44px; min-width: 44px; }
+}
+
+@media (forced-colors: active) {
+  .navbar {
+    border-bottom: 1px solid ButtonText;
+    background: Canvas;
+    backdrop-filter: none;
+  }
+  .navbar-back,
+  .navbar-actions button,
+  .navbar-actions a {
+    color: LinkText;
+    &:hover { outline: 1px solid ButtonText; outline-offset: -1px; }
+    &:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+  }
+  .navbar-title { color: CanvasText; }
+}

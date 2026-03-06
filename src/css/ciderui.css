@@ -346,6 +346,7 @@
     @import "./components/callout.css";
 
     @import "./components/dialog.css";
+    @import "./components/action-sheet.css";
     @import "./components/segmented-control.css";
     @import "./components/avatar.css";
     @import "./components/page-control.css";
@@ -361,9 +362,15 @@
     @import "./components/list.css";
 
     @import "./components/disclosure-group.css";
+    @import "./components/navbar.css";
     @import "./components/popover.css";
     @import "./components/sidebar.css";
+    @import "./components/tab-bar.css";
+    @import "./components/toolbar.css";
     @import "./components/verification-code.css";
+    @import "./components/stepper.css";
+    @import "./components/gauge.css";
+    @import "./components/picker.css";
 
     @import "./components/elements.css";
   }

@@ -1,0 +1,56 @@
+/* ========== GAUGE ========== */
+.gauge {
+  @apply relative inline-flex items-center justify-center;
+  width: 64px;
+  height: 64px;
+  &::before {
+    content: "";
+    @apply absolute inset-0;
+    border-radius: 50%;
+    background: conic-gradient(
+      from -90deg,
+      var(--gauge-color, var(--color-primary)) calc(var(--gauge-value, 0) * 360deg),
+      var(--surface-3) calc(var(--gauge-value, 0) * 360deg)
+    );
+    -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
+    mask: radial-gradient(circle, transparent 70%, black 71%);
+  }
+  & > span {
+    @apply relative z-10;
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-foreground);
+  }
+}
+
+/* Size variants */
+.gauge-sm {
+  width: 40px;
+  height: 40px;
+  & > span { font-size: 10px; }
+}
+.gauge-lg {
+  width: 96px;
+  height: 96px;
+  & > span { font-size: 17px; }
+}
+
+/* Color variants */
+.gauge-green { --gauge-color: var(--color-green); }
+.gauge-orange { --gauge-color: var(--color-orange); }
+.gauge-destructive { --gauge-color: var(--color-destructive); }
+
+/* Forced colors */
+@media (forced-colors: active) {
+  .gauge {
+    border: 2px solid CanvasText;
+    border-radius: 50%;
+    &::before {
+      forced-color-adjust: none;
+      background: Highlight;
+      -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
+      mask: radial-gradient(circle, transparent 70%, black 71%);
+    }
+  }
+}

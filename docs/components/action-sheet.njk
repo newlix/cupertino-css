@@ -1,0 +1,99 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Action Sheet" %}
+{% set description = "iOS-style bottom sheet for contextual actions." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>dialog.action-sheet</code></dt>
+    <dd>Bottom-anchored modal sheet. Slides up from the bottom of the screen.</dd>
+    <dt><code>.action-sheet-group</code></dt>
+    <dd>Rounded group of action buttons. Separate groups are spaced apart (e.g. cancel button in its own group).</dd>
+    <dt><code>.action-sheet-header</code></dt>
+    <dd>Optional title/message area at the top of a group.</dd>
+    <dt><code>.action-sheet-title</code></dt>
+    <dd>Title text inside the header.</dd>
+    <dt><code>.action-sheet-message</code></dt>
+    <dd>Descriptive text inside the header.</dd>
+    <dt><code>.action-sheet-destructive</code></dt>
+    <dd>Modifier on a button to style it as a destructive action (red).</dd>
+    <dt><code>.action-sheet-cancel</code></dt>
+    <dd>Modifier on the cancel button for bolder weight.</dd>
+    <dt><code>data-no-dismiss</code></dt>
+    <dd>Prevents a button from auto-closing the action sheet when clicked (requires <code>js/action-sheet.js</code>).</dd>
+  </dl>
+
+  {% call example("Default") %}
+<button onclick="openActionSheet(document.getElementById('sheet1'))" class="btn-tinted">Share Photo</button>
+
+<dialog id="sheet1" class="action-sheet">
+  <div class="action-sheet-group">
+    <button>
+      Share via Messages
+    </button>
+    <button>
+      Copy Link
+    </button>
+    <button class="action-sheet-destructive">
+      Delete Photo
+    </button>
+  </div>
+  <div class="action-sheet-group">
+    <button class="action-sheet-cancel">Cancel</button>
+  </div>
+</dialog>
+{% endcall %}
+
+  {% call example("With Header") %}
+<button onclick="openActionSheet(document.getElementById('sheet2'))" class="btn-tinted">Delete Item</button>
+
+<dialog id="sheet2" class="action-sheet">
+  <div class="action-sheet-group">
+    <div class="action-sheet-header">
+      <div class="action-sheet-title">Remove this item?</div>
+      <div class="action-sheet-message">This action cannot be undone.</div>
+    </div>
+    <button class="action-sheet-destructive">
+      Delete
+    </button>
+    <button>
+      Archive Instead
+    </button>
+  </div>
+  <div class="action-sheet-group">
+    <button class="action-sheet-cancel">Cancel</button>
+  </div>
+</dialog>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Adds slide-up/down animation, backdrop click to dismiss, button auto-close, focus trapping, scroll lock, and focus restoration.</p>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Clicking any button inside <code>.action-sheet-group</code> auto-closes the sheet.</li>
+      <li>Add <code>data-no-dismiss</code> to a button to prevent auto-closing on click.</li>
+      <li>Escape key and backdrop click also dismiss the sheet.</li>
+    </ul>
+    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/action-sheet.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/action-sheet.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">API</h2>
+    <dl>
+      <dt><code>openActionSheet(dialogElement)</code></dt>
+      <dd>Opens the action sheet as a modal. Guards against re-opening an already-open or closing sheet.</dd>
+      <dt><code>closeActionSheet(dialogElement)</code></dt>
+      <dd>Closes the action sheet with a slide-down animation, restoring focus and scroll position.</dd>
+    </dl>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Both functions are available as globals and via <code>CiderUI.actionSheet.open()</code> / <code>CiderUI.actionSheet.close()</code>.</p>
+  </section>
+
+{% endblock %}

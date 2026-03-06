@@ -1,0 +1,104 @@
+/* ========== STEPPER ========== */
+.stepper {
+  @apply inline-flex items-stretch;
+  height: 32px;
+  border: 1px solid var(--color-border-solid);
+  border-radius: var(--radius-sm);
+  corner-shape: squircle;
+  overflow: hidden;
+  background: var(--color-card);
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+}
+
+.stepper > button {
+  @apply inline-flex items-center justify-center;
+  width: 47px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-size: 20px;
+  transition: background-color var(--transition-fast) var(--apple-ease);
+
+  &:hover {
+    background: var(--surface-2);
+  }
+  &:active {
+    background: var(--surface-4);
+  }
+  &:disabled {
+    color: var(--color-tertiary-foreground);
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+  & svg {
+    @apply size-4;
+  }
+}
+
+/* Dividers between elements */
+.stepper > button + button,
+.stepper > output + button,
+.stepper > button + output,
+.stepper > [data-stepper-value] + button,
+.stepper > button + [data-stepper-value] {
+  border-left: 1px solid var(--color-border-solid);
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    border-left-width: 0.5px;
+  }
+}
+
+/* Value display */
+.stepper > output,
+.stepper > [data-stepper-value] {
+  @apply inline-flex items-center justify-center;
+  min-width: 44px;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-foreground);
+}
+
+/* Touch targets */
+@media (pointer: coarse), (hover: none) {
+  .stepper {
+    height: 44px;
+  }
+  .stepper > button {
+    width: 56px;
+  }
+}
+
+/* Forced colors */
+@media (forced-colors: active) {
+  .stepper {
+    border: 1px solid ButtonText;
+  }
+  .stepper > button {
+    color: ButtonText;
+    &:hover {
+      outline: 1px solid Highlight;
+    }
+    &:disabled {
+      color: GrayText;
+      opacity: 1;
+    }
+  }
+  .stepper > button + button,
+  .stepper > output + button,
+  .stepper > button + output,
+  .stepper > [data-stepper-value] + button,
+  .stepper > button + [data-stepper-value] {
+    border-left: 1px solid ButtonText;
+  }
+}

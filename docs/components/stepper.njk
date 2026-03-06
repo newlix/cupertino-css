@@ -1,0 +1,85 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Stepper" %}
+{% set description = "Increment and decrement control for numeric values." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.stepper</code></dt>
+    <dd>Container for the stepper control. Add <code>data-stepper</code> to enable JS behavior.</dd>
+    <dt><code>[data-stepper-decrement]</code></dt>
+    <dd>Decrement button.</dd>
+    <dt><code>[data-stepper-increment]</code></dt>
+    <dd>Increment button.</dd>
+    <dt><code>[data-stepper-value]</code> / <code>&lt;output&gt;</code></dt>
+    <dd>Optional value display between the buttons.</dd>
+    <dt><code>data-min</code> / <code>data-max</code> / <code>data-step</code> / <code>data-value</code></dt>
+    <dd>Attributes on the <code>.stepper</code> element to configure range and initial value.</dd>
+    <dt><code>data-for</code></dt>
+    <dd>ID of an external <code>&lt;input&gt;</code> to keep in sync.</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div class="stepper" data-stepper data-min="0" data-max="10" data-value="3">
+  <button data-stepper-decrement aria-label="Decrement">&minus;</button>
+  <button data-stepper-increment aria-label="Increment">+</button>
+</div>
+{% endcall %}
+
+  {% call example("With Value") %}
+<div class="stepper" data-stepper data-min="0" data-max="10" data-value="5">
+  <button data-stepper-decrement aria-label="Decrement">&minus;</button>
+  <output>5</output>
+  <button data-stepper-increment aria-label="Increment">+</button>
+</div>
+{% endcall %}
+
+  {% call example("Linked Input") %}
+<div class="flex items-center gap-3">
+  <div class="stepper" data-stepper data-min="0" data-max="99" data-step="1" data-value="1" data-for="qty">
+    <button data-stepper-decrement aria-label="Decrement">&minus;</button>
+    <output>1</output>
+    <button data-stepper-increment aria-label="Increment">+</button>
+  </div>
+  <label class="text-sm text-tertiary-foreground">
+    Qty: <input id="qty" type="number" min="0" max="99" value="1" class="w-16 rounded-[var(--radius-sm)] border border-border-solid px-2 py-1 text-center text-sm" />
+  </label>
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the stepper JS to enable increment/decrement behavior, value display updates, and boundary clamping.</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/stepper.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/stepper.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Events</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">A <code>change</code> event fires on the stepper element whenever the value changes. The new value is available in <code>event.detail.value</code>.</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-js">document.querySelector('[data-stepper]')
+  .addEventListener('change', (e) => {
+    console.log('New value:', e.detail.value);
+  });</code></pre>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Use <code>aria-label</code> on each button to identify its action for screen readers.</li>
+      <li>Buttons are automatically disabled at min/max boundaries.</li>
+      <li>The <code>&lt;output&gt;</code> element is natively associated with form controls by assistive technology.</li>
+      <li>Use <code>data-for</code> to link to a visible <code>&lt;input&gt;</code> so users can also type a value directly.</li>
+    </ul>
+  </section>
+
+{% endblock %}
