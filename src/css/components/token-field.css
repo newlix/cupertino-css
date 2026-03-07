@@ -1,0 +1,122 @@
+/* ========== TOKEN FIELD ========== */
+/* HIG: Token Field — text input that converts entries into removable tokens.
+   macOS uses this in Mail (recipients), Finder (tags), Spotlight. */
+.token-field {
+  @apply flex flex-wrap items-center gap-1.5 w-full rounded-[var(--radius)] border px-2.5;
+  corner-shape: squircle;
+  min-height: 44px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: var(--color-card);
+  border-color: var(--input-border);
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+  transition:
+    border-color var(--transition-normal) var(--apple-ease),
+    box-shadow var(--transition-normal) var(--apple-ease);
+  cursor: text;
+
+  &:hover:not(:focus-within) {
+    border-color: var(--input-border-hover);
+  }
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  & input {
+    @apply flex-1 border-none bg-transparent text-[15px] text-foreground outline-none p-0;
+    min-width: 80px;
+    height: 28px;
+    letter-spacing: -0.016em;
+    &::placeholder {
+      @apply text-tertiary-foreground;
+    }
+  }
+
+  &[aria-disabled="true"],
+  &:has(input:disabled) {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+}
+
+.token {
+  @apply inline-flex items-center gap-1 rounded-[var(--radius-xs)] px-2 text-[13px] font-medium text-foreground;
+  height: 26px;
+  letter-spacing: -0.01em;
+  background: var(--surface-3);
+  corner-shape: squircle;
+  transition: background-color var(--transition-fast) var(--apple-ease);
+  user-select: none;
+
+  & button {
+    @apply flex items-center justify-center rounded-full p-0 text-tertiary-foreground cursor-pointer;
+    width: 14px;
+    height: 14px;
+    border: none;
+    background: transparent;
+    transition:
+      color var(--transition-fast) var(--apple-ease),
+      background-color var(--transition-fast) var(--apple-ease);
+    & svg {
+      width: 8px;
+      height: 8px;
+    }
+    &:hover {
+      @apply text-foreground;
+      background: var(--surface-5);
+    }
+    &:active {
+      background: var(--surface-7);
+    }
+    @media (pointer: coarse), (hover: none) {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+      }
+    }
+  }
+
+  /* Blue variant — Apple Mail recipient style */
+  &.token-blue {
+    background: oklch(from var(--color-primary) l c h / 0.15);
+    color: var(--color-primary);
+    & button {
+      color: oklch(from var(--color-primary) l c h / 0.5);
+      &:hover {
+        color: var(--color-primary);
+        background: oklch(from var(--color-primary) l c h / 0.12);
+      }
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .token-field {
+    border: 1px solid ButtonText;
+    &:focus-within {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
+    &[aria-disabled="true"],
+    &:has(input:disabled) {
+      border-color: GrayText;
+      color: GrayText;
+      opacity: 1;
+    }
+  }
+  .token {
+    border: 1px solid ButtonText;
+    background: transparent;
+    & button:hover {
+      background: transparent;
+      color: Highlight;
+    }
+  }
+}

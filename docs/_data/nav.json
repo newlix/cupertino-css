@@ -54,6 +54,7 @@
       { "label": "Tag", "href": "components/tag.html" },
       { "label": "Text Field", "href": "components/text-field.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
+      { "label": "Token Field", "href": "components/token-field.html" },
       { "label": "Toolbar", "href": "components/toolbar.html" },
       { "label": "Tooltip", "href": "components/tooltip.html" },
       {

@@ -1,0 +1,65 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Token Field" %}
+{% set description = "Text input that converts entries into removable tokens — like Mail recipients or Finder tags." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.token-field</code></dt>
+    <dd>Container with <code>data-token-field</code>. Wraps tokens and an input.</dd>
+    <dt><code>.token</code></dt>
+    <dd>Individual removable token chip.</dd>
+    <dt><code>.token-blue</code></dt>
+    <dd>Blue variant for the token (Apple Mail recipient style).</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div class="token-field" data-token-field>
+  <span class="token">Design<button type="button" aria-label="Remove Design"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg></button></span>
+  <span class="token">Photos<button type="button" aria-label="Remove Photos"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg></button></span>
+  <input type="text" placeholder="Add tag..." />
+</div>
+{% endcall %}
+
+  {% call example("Blue Tokens") %}
+<div class="token-field" data-token-field data-token-class="token-blue">
+  <span class="token token-blue">alice@example.com<button type="button" aria-label="Remove alice@example.com"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg></button></span>
+  <span class="token token-blue">bob@example.com<button type="button" aria-label="Remove bob@example.com"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg></button></span>
+  <input type="text" placeholder="Add recipient..." />
+</div>
+{% endcall %}
+
+  {% call example("Empty") %}
+<div class="token-field" data-token-field>
+  <input type="text" placeholder="Type and press Enter..." />
+</div>
+{% endcall %}
+
+  {% call example("Disabled") %}
+<div class="token-field" data-token-field>
+  <span class="token">Read-only<button type="button" aria-label="Remove Read-only"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg></button></span>
+  <input type="text" placeholder="Add tag..." disabled />
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the token field JS to enable adding tokens with Enter or comma, and removing with Backspace or the × button.</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/token-field.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/token-field.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+    <p class="mt-4 text-[15px] text-tertiary-foreground">Listen for the <code>change</code> event to react to token changes:</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-js">document.querySelector('[data-token-field]').addEventListener('change', (e) =&gt; {
+  console.log(e.detail.tokens); // ["Design", "Photos"]
+});</code></pre>
+    </div>
+  </section>
+
+{% endblock %}

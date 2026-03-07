@@ -22,6 +22,7 @@
 - [Stepper](https://ciderui.com/components/stepper.html): `stepper` — increment/decrement control. Requires `js/stepper.js`.
 - [Switch](https://ciderui.com/components/switch.html): `input[role="switch"]` — pure CSS toggle switch.
 - [Textarea](https://ciderui.com/components/textarea.html): `textarea` — styled textarea.
+- [Token Field](https://ciderui.com/components/token-field.html): `token-field` `token` `token-blue` — text input with removable tokens. Requires `js/token-field.js`.
 
 ### Layout
 
@@ -97,5 +98,6 @@ import "ciderui/popover.js";
 import "ciderui/slider.js";
 import "ciderui/stepper.js";
 import "ciderui/picker.js";
+import "ciderui/token-field.js";
 import "ciderui/verification-code.js";
 ```

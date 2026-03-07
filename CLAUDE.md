@@ -80,6 +80,7 @@ Component names follow **web conventions over Apple HIG** when they conflict:
 | Dialog       | Alert         | `header` + `footer` pattern covers HIG alerts |
 | Picker       | Date Picker   | Date example in picker docs                   |
 | Search Field | Search Field  | `.search-field` — filled style with icon      |
+| Token Field  | Token Field   | `.token-field` — removable chip input         |
 | Sidebar      | Split View    | Sidebar + content layout covers this          |
 
 ## Publishing
