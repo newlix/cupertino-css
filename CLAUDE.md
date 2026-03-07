@@ -82,6 +82,7 @@ Component names follow **web conventions over Apple HIG** when they conflict:
 | Search Field | Search Field  | `.search-field` — filled style with icon      |
 | Token Field  | Token Field   | `.token-field` — removable chip input         |
 | Sidebar      | Split View    | Sidebar + content layout covers this          |
+| —            | Color Well    | Rarely used on web — skipped                  |
 
 ## Publishing
 
