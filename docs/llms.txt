@@ -13,7 +13,8 @@
 
 - [Button](https://ciderui.com/components/button.html): `btn-filled` `btn-tinted` `btn-plain` `btn-gray` `btn-destructive` `btn-capsule` `btn-small` `btn-large`.
 - [Checkbox](https://ciderui.com/components/checkbox.html): `input[type="checkbox"]` — pure CSS checkbox styling.
-- [Input](https://ciderui.com/components/input.html): `input` — styled text input.
+- [Text Field](https://ciderui.com/components/text-field.html): `input` — styled text input.
+- [Search Field](https://ciderui.com/components/search-field.html): `search-field` `search-clear` — rounded search input with magnifying glass icon.
 - [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `input[type="radio"]` — pure CSS radio styling.
 - [Select](https://ciderui.com/components/select.html): Native `<select>` styling.

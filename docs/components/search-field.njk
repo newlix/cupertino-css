@@ -1,0 +1,37 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Search Field" %}
+{% set description = "Rounded search input with magnifying glass icon — Apple's filled search bar style." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.search-field</code></dt>
+    <dd>Wrapper that provides the magnifying glass icon and positions children.</dd>
+    <dt><code>.search-clear</code></dt>
+    <dd>Optional clear button inside the field.</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div class="search-field">
+  <input type="search" placeholder="Search" />
+</div>
+{% endcall %}
+
+  {% call example("With Clear Button") %}
+<div class="search-field">
+  <input type="search" placeholder="Search" value="Photos" />
+  <button type="button" class="search-clear" aria-label="Clear search">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg>
+  </button>
+</div>
+{% endcall %}
+
+  {% call example("Disabled") %}
+<div class="search-field">
+  <input type="search" placeholder="Search" disabled />
+</div>
+{% endcall %}
+
+{% endblock %}

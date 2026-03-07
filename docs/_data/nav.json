@@ -28,9 +28,7 @@
         "href": "components/disclosure-group.html"
       },
       { "label": "Gauge", "href": "components/gauge.html" },
-      { "label": "Tooltip", "href": "components/tooltip.html" },
       { "label": "HUD", "href": "components/hud.html" },
-      { "label": "Input", "href": "components/input.html" },
       { "label": "Kbd", "href": "components/kbd.html" },
       { "label": "List", "href": "components/list.html" },
       { "label": "Navigation Bar", "href": "components/navbar.html" },
@@ -40,6 +38,7 @@
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
       { "label": "Radio", "href": "components/radio-group.html" },
+      { "label": "Search Field", "href": "components/search-field.html" },
       {
         "label": "Segmented Control",
         "href": "components/segmented-control.html"
@@ -53,8 +52,10 @@
       { "label": "Tab Bar", "href": "components/tab-bar.html" },
       { "label": "Table", "href": "components/table.html" },
       { "label": "Tag", "href": "components/tag.html" },
+      { "label": "Text Field", "href": "components/text-field.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
       { "label": "Toolbar", "href": "components/toolbar.html" },
+      { "label": "Tooltip", "href": "components/tooltip.html" },
       {
         "label": "Verification Code",
         "href": "components/verification-code.html"

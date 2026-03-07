@@ -57,6 +57,67 @@
 </div>
 {% endcall %}
 
+  {% call example("Date Picker") %}
+<div class="picker" data-picker>
+  <div class="picker-column" data-value="March" aria-label="Month">
+    <div>January</div>
+    <div>February</div>
+    <div>March</div>
+    <div>April</div>
+    <div>May</div>
+    <div>June</div>
+    <div>July</div>
+    <div>August</div>
+    <div>September</div>
+    <div>October</div>
+    <div>November</div>
+    <div>December</div>
+  </div>
+  <div class="picker-column" data-value="7" aria-label="Day">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+    <div>31</div>
+  </div>
+  <div class="picker-column" data-value="2026" aria-label="Year">
+    <div>2024</div>
+    <div>2025</div>
+    <div>2026</div>
+    <div>2027</div>
+    <div>2028</div>
+    <div>2029</div>
+    <div>2030</div>
+  </div>
+</div>
+{% endcall %}
+
   <section class="mt-12">
     <h2 class="text-xl font-bold tracking-tight">Usage</h2>
     <p class="mt-2 text-[15px] text-tertiary-foreground">Include the picker JS to enable scroll-snap selection and change events. Set <code>data-value</code> on a <code>.picker-column</code> to pre-select an item on load.</p>
