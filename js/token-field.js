@@ -45,10 +45,10 @@
 
   function setup(field) {
     if (field._tokenFieldInit) return;
-    field._tokenFieldInit = true;
 
     var input = field.querySelector("input");
     if (!input) return;
+    field._tokenFieldInit = true;
     field._tokenFieldInput = input;
 
     var tokenClass = field.getAttribute("data-token-class") || "";

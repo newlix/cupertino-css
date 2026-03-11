@@ -29,8 +29,12 @@
 
     // ARIA attributes for assistive technology
     if (!stepper.getAttribute("role")) stepper.setAttribute("role", "group");
-    stepper.setAttribute("aria-valuemin", min);
-    stepper.setAttribute("aria-valuemax", max);
+    // aria-value* belong on spinbutton (display), not the group container
+    if (display) {
+      display.setAttribute("role", "spinbutton");
+      display.setAttribute("aria-valuemin", min);
+      display.setAttribute("aria-valuemax", max);
+    }
     if (decBtn && !decBtn.getAttribute("aria-label"))
       decBtn.setAttribute("aria-label", "Decrease value");
     if (incBtn && !incBtn.getAttribute("aria-label"))
@@ -42,8 +46,10 @@
 
     function updateUI() {
       value = clamp(value);
-      stepper.setAttribute("aria-valuenow", value);
-      if (display) display.textContent = value;
+      if (display) {
+        display.setAttribute("aria-valuenow", value);
+        display.textContent = value;
+      }
       if (linked) linked.value = value;
       stepper.setAttribute("data-value", value);
 
@@ -88,6 +94,15 @@
 
   function destroy(stepper) {
     if (!stepper._stepperInit) return;
+    const display =
+      stepper.querySelector("[data-stepper-value]") ||
+      stepper.querySelector("output");
+    if (display) {
+      display.removeAttribute("role");
+      display.removeAttribute("aria-valuemin");
+      display.removeAttribute("aria-valuemax");
+      display.removeAttribute("aria-valuenow");
+    }
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
     const incBtn = stepper.querySelector("[data-stepper-increment]");
     if (decBtn && stepper._stepperDecHandler)
