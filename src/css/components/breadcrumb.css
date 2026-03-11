@@ -11,11 +11,20 @@
       color var(--transition-fast) var(--apple-ease),
       opacity var(--transition-fast) var(--apple-ease);
     @media (pointer: coarse), (hover: none) {
+      /* Expand touch target via pseudo-element, not min-width — preserves
+         chevron separator rhythm on short labels like "Home" */
+      position: relative;
       min-height: 44px;
-      min-width: 44px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        min-width: 44px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
     &:hover {
       @apply text-foreground no-underline;
