@@ -343,7 +343,7 @@ input[type="checkbox"]:not([role="switch"]) {
     border-color var(--transition-normal) var(--apple-ease),
     background-color var(--transition-normal) var(--apple-ease),
     box-shadow var(--transition-normal) var(--apple-ease),
-    transform var(--transition-normal) var(--apple-ease);
+    transform var(--transition-normal) var(--apple-spring);
   &:is(:checked, :indeterminate) {
     @apply bg-primary border-primary;
     background-position: center;
@@ -415,7 +415,7 @@ input[type="radio"] {
     border-color var(--transition-normal) var(--apple-ease),
     background-color var(--transition-normal) var(--apple-ease),
     box-shadow var(--transition-normal) var(--apple-ease),
-    transform var(--transition-normal) var(--apple-ease);
+    transform var(--transition-normal) var(--apple-spring);
   &:checked {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
