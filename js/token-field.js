@@ -53,11 +53,9 @@
 
     var tokenClass = field.getAttribute("data-token-class") || "";
 
-    // ARIA
-    field.setAttribute("role", "listbox");
-    field.setAttribute("aria-orientation", "horizontal");
+    // ARIA — role="group" (not listbox — tokens are created items, not selectable options)
+    field.setAttribute("role", "group");
     field.querySelectorAll(".token").forEach(function (t) {
-      t.setAttribute("role", "option");
       if (!t.dataset.value)
         t.dataset.value = t.firstChild ? t.firstChild.textContent.trim() : "";
     });
