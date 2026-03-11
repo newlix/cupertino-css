@@ -223,8 +223,8 @@
   --color-gray: oklch(0.681 0.007 286); /* Apple System Gray #98989D (dark) */
 
   --color-separator: oklch(
-    0.38 0.003 286 / 0.65
-  ); /* semi-transparent — adapts to surface underneath */
+    0.32 0.003 286
+  ); /* opaque — matches Apple opaqueSeparator #38383A */
   --hud-background: oklch(0.14 0 0 / 0.85);
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
   --tooltip-text: var(--hud-text);
