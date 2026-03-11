@@ -263,7 +263,7 @@
       return;
     }
     if (dialog.open) return;
-    dialog._asPreviousFocus = document.activeElement;
+    dialog._asPreviousFocus = dialog._asPreviousFocus || document.activeElement;
     try {
       dialog.showModal();
     } catch {

@@ -242,13 +242,11 @@
       popover.removeEventListener("keydown", popover._escHandler);
     }
     popover._escHandler = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" && popover.matches(":popover-open")) {
         popover._escapeDismiss = true;
-        if (popover.matches(":popover-open")) {
-          e.preventDefault();
-          e.stopPropagation();
-          popover.hidePopover();
-        }
+        e.preventDefault();
+        e.stopPropagation();
+        popover.hidePopover();
       }
     };
     popover.addEventListener("keydown", popover._escHandler);

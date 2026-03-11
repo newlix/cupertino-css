@@ -110,9 +110,9 @@ dialog.action-sheet {
 
       &:focus-visible {
         background: var(--surface-2);
-        box-shadow: var(--focus-ring);
-        outline: 2px solid transparent;
-        outline-offset: 2px;
+        /* outline (not box-shadow) — action-sheet-group has overflow:hidden which clips box-shadow */
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
       }
 
       &:disabled,

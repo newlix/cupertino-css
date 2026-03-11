@@ -46,9 +46,9 @@ dialog.dialog {
     &:focus-visible {
       @apply text-foreground;
       background: var(--surface-3);
-      box-shadow: var(--focus-ring);
-      outline: 2px solid transparent;
-      outline-offset: 2px;
+      /* outline (not box-shadow) — dialog has overflow:clip which clips box-shadow */
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
     }
     &:disabled,
     &[aria-disabled="true"] {

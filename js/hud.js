@@ -46,7 +46,8 @@
 
     // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
     container.querySelectorAll(".hud").forEach((existing) => {
-      if (existing.parentElement) existing.remove();
+      if (existing._ciderDismiss) existing._ciderDismiss();
+      else if (existing.parentElement) existing.remove();
     });
 
     const hud = document.createElement("div");
