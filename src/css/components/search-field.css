@@ -90,7 +90,7 @@
       &::after {
         content: "";
         position: absolute;
-        inset: -8px;
+        inset: -13px; /* 18 + 2×13 = 44px — meets HIG 44pt minimum */
       }
     }
   }

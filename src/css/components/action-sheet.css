@@ -86,7 +86,7 @@ dialog.action-sheet {
         color: var(--color-primary);
       }
       padding: 16px;
-      font-size: 20px;
+      font-size: 1.25rem; /* 20px — rem scales with user font-size preference */
       letter-spacing: -0.024em;
       font-family: inherit;
       text-decoration: none;
@@ -166,6 +166,9 @@ dialog.action-sheet {
     &:modal[open]::backdrop,
     &:modal[data-closing]::backdrop {
       animation: none;
+    }
+    &[data-closing] {
+      opacity: 0;
     }
   }
 

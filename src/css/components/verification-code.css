@@ -81,6 +81,9 @@
     & > span {
       color: var(--color-destructive);
     }
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
   &[data-error] + small {
     color: var(--color-destructive);

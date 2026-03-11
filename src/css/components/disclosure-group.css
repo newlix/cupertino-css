@@ -39,6 +39,10 @@
       &:active {
         background-color: var(--surface-3);
       }
+      /* Persistent tint on expanded item — mirrors macOS System Settings */
+      details[open] > & {
+        background-color: var(--surface-1);
+      }
       /* outline (not box-shadow) — parent has overflow:hidden which clips box-shadow */
       &:focus-visible {
         background-color: var(--surface-3);

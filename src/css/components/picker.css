@@ -65,10 +65,11 @@
   }
 }
 
+/* outline (not box-shadow) — parent .picker has overflow:hidden which clips box-shadow */
 .picker-column:focus-visible {
-  box-shadow: var(--focus-ring);
-  outline: 2px solid transparent;
-  outline-offset: -2px;
+  outline: 3px solid oklch(from var(--color-primary) l c h / 0.5);
+  outline-offset: -3px;
+  box-shadow: none;
 }
 
 .picker-column > div {

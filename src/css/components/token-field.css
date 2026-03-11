@@ -74,11 +74,16 @@
     &:active {
       background: var(--surface-7);
     }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
     @media (pointer: coarse), (hover: none) {
       &::after {
         content: "";
         position: absolute;
-        inset: -8px;
+        inset: -15px; /* 14 + 2×15 = 44px — meets HIG 44pt minimum */
       }
     }
   }

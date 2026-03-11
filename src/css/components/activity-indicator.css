@@ -13,16 +13,16 @@
   -webkit-mask-position: center;
   mask-position: center;
   animation: activity-spin 0.8s steps(12, start) infinite;
-  /* State fallback — global rule handles animation; opacity gives a static visual */
+  /* Reduced-motion: stop spin and show static spoke-wheel at reduced opacity */
   @media (prefers-reduced-motion: reduce) {
+    animation: none;
     opacity: 0.65;
   }
   &.activity-indicator-sm {
     @apply size-4;
   }
   &.activity-indicator-md {
-    width: 37px;
-    height: 37px;
+    @apply size-9; /* 36px — aligns with Tailwind spacing scale */
   }
   &.activity-indicator-lg {
     @apply size-[100px];

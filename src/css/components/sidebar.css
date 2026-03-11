@@ -39,6 +39,7 @@
       text-decoration: none;
     }
     &:active {
+      color: var(--color-foreground);
       background: var(--surface-4);
     }
     &:focus-visible {

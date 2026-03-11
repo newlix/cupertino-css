@@ -11,7 +11,7 @@
       from -90deg,
       var(--gauge-color, var(--color-primary))
         calc(var(--gauge-value, 0) * 360deg),
-      var(--surface-3) calc(var(--gauge-value, 0) * 360deg)
+      var(--surface-5) calc(var(--gauge-value, 0) * 360deg)
     );
     -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
     mask: radial-gradient(circle, transparent 60%, black 61%);
