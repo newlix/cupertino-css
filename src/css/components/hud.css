@@ -39,10 +39,14 @@
 .hud[data-closing] {
   animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
 }
-/* State fallback — global rule handles animation; opacity ensures dismissed HUD is invisible */
+/* Reduced motion: replace scale with opacity-only fade (WCAG C39).
+   !important overrides the global reduced-motion blanket rule. */
 @media (prefers-reduced-motion: reduce) {
+  .hud {
+    animation: fadeIn var(--transition-fast) var(--apple-ease) !important;
+  }
   .hud[data-closing] {
-    opacity: 0;
+    animation: fadeIn var(--transition-fast) var(--apple-ease) reverse forwards !important;
   }
 }
 @media (forced-colors: active) {

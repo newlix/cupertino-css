@@ -111,11 +111,22 @@ dialog.dialog {
       border-top-width: 0.5px;
     }
   }
-  /* Global reduced-motion rule covers the dialog element; ::backdrop needs explicit override */
+  /* Reduced motion: replace scale with opacity-only fade (WCAG C39).
+     !important overrides the global reduced-motion blanket rule. */
   @media (prefers-reduced-motion: reduce) {
-    &:modal[open]::backdrop,
+    &[open] {
+      animation: fadeIn var(--transition-fast) var(--apple-ease) !important;
+    }
+    &[data-closing] {
+      animation: fadeIn var(--transition-fast) var(--apple-ease) reverse
+        forwards !important;
+    }
+    &:modal[open]::backdrop {
+      animation: fadeIn var(--transition-fast) var(--apple-ease) !important;
+    }
     &:modal[data-closing]::backdrop {
-      animation: none;
+      animation: fadeIn var(--transition-fast) var(--apple-ease) reverse
+        forwards !important;
     }
   }
   @media (forced-colors: active) {
