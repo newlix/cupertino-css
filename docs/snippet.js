@@ -1,5 +1,6 @@
 // Snippet — ciderui
 function fallbackCopy(text) {
+  const prev = document.activeElement;
   const ta = document.createElement("textarea");
   ta.value = text;
   ta.style.cssText = "position:fixed;opacity:0";
@@ -9,6 +10,7 @@ function fallbackCopy(text) {
     if (!document.execCommand("copy")) throw new Error("execCommand failed");
   } finally {
     ta.remove();
+    if (prev && prev !== document.body) prev.focus();
   }
 }
 
