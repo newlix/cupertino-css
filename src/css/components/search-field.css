@@ -59,6 +59,9 @@
       -webkit-appearance: none;
       appearance: none;
     }
+    @media (pointer: coarse), (hover: none) {
+      height: 44px; /* HIG 44pt minimum touch target */
+    }
   }
 
   /* Clear button — appears inside the field */

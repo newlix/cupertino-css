@@ -56,6 +56,21 @@
 .avatar-sm {
   @apply w-7 min-w-7 text-[12px];
 }
+/* Touch: pseudo-element expands hit area while keeping 28px visual circle.
+   Overrides .avatar:is(button,a) min-width/min-height which would distort the circle. */
+@media (pointer: coarse), (hover: none) {
+  .avatar-sm:is(button, a) {
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    overflow: visible;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -8px; /* 28 + 2×8 = 44px touch target */
+    }
+  }
+}
 .avatar-lg {
   @apply w-16 min-w-16 text-[25px];
 } /* 64px — Apple profile size */

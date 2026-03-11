@@ -40,10 +40,10 @@ test.describe("Tab Bar", () => {
     await expect(svg).toBeVisible();
   });
 
-  test("tab items have 10px font size for labels", async ({ page }) => {
+  test("tab items have 11px font size for labels", async ({ page }) => {
     const item = preview(page).locator(".tab-bar > a").first();
     const fontSize = parseFloat(await css(item, "fontSize"));
-    expect(fontSize).toBe(10);
+    expect(fontSize).toBe(11);
   });
 
   test("badge example shows badge on tab item", async ({ page }) => {
