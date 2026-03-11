@@ -47,9 +47,9 @@
       opacity: 0.38;
       pointer-events: none;
     }
+    /* outline (not box-shadow) — parent has overflow:hidden which clips box-shadow */
     &:focus-visible {
-      box-shadow: var(--focus-ring);
-      outline: 2px solid transparent;
+      outline: 2px solid var(--color-primary);
       outline-offset: -2px;
     }
     & + button,

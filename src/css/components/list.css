@@ -62,6 +62,7 @@
       opacity: 0.38;
       pointer-events: none;
     }
+    /* outline (not box-shadow) — parent has overflow:hidden which clips box-shadow */
     &:focus-visible {
       background: var(--surface-3);
       outline: 2px solid var(--color-primary);

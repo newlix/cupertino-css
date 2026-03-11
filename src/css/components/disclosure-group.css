@@ -39,6 +39,7 @@
       &:active {
         background-color: var(--surface-3);
       }
+      /* outline (not box-shadow) — parent has overflow:hidden which clips box-shadow */
       &:focus-visible {
         background-color: var(--surface-3);
         outline: 2px solid var(--color-primary);

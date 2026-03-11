@@ -62,14 +62,12 @@ test.describe("Toolbar", () => {
     expect(parseInt(weight)).toBeGreaterThanOrEqual(600);
   });
 
-  test("focus-visible shows box-shadow ring on group button", async ({
-    page,
-  }) => {
+  test("focus-visible shows outline ring on group button", async ({ page }) => {
     const btn = preview(page).locator(".toolbar-group button").first();
     await focusViaKeyboard(page, btn);
     await expect(async () => {
-      const shadow = await css(btn, "boxShadow");
-      expect(shadow).not.toBe("none");
+      const style = await css(btn, "outlineStyle");
+      expect(style).toBe("solid");
     }).toPass({ timeout: 1000 });
   });
 

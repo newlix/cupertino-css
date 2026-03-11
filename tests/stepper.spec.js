@@ -76,8 +76,8 @@ test.describe("Stepper", () => {
     const btn = preview(page).locator("[data-stepper-increment]");
     await focusViaKeyboard(page, btn);
     await expect(async () => {
-      const shadow = await css(btn, "boxShadow");
-      expect(shadow).not.toBe("none");
+      const style = await css(btn, "outlineStyle");
+      expect(style).toBe("solid");
     }).toPass({ timeout: 1000 });
   });
 });
