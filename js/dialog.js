@@ -3,14 +3,36 @@
 // focus trapping, scroll lock, and focus restoration.
 (function () {
   const activeDialogs = new Set();
-  let savedOverflow = null;
+
+  // Shared scroll-lock across dialog, action-sheet, and sidebar IIFEs
+  window.CiderUI = window.CiderUI || {};
+  if (!window.CiderUI._scrollLock) {
+    window.CiderUI._scrollLock = {
+      count: 0,
+      saved: null,
+      lock() {
+        if (this.count++ === 0) {
+          this.saved = document.body.style.overflow;
+          const sw = window.innerWidth - document.documentElement.clientWidth;
+          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
+          document.body.style.overflow = "hidden";
+        }
+      },
+      unlock() {
+        if (this.count <= 0) return;
+        if (--this.count === 0) {
+          document.body.style.overflow = this.saved ?? "";
+          document.body.style.paddingRight = "";
+          this.saved = null;
+        }
+      },
+    };
+  }
+  const scrollLock = window.CiderUI._scrollLock;
 
   function restoreScrollLock(dialog) {
-    const wasActive = activeDialogs.delete(dialog);
-    if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
-      document.body.style.overflow = savedOverflow ?? "";
-      document.body.style.paddingRight = "";
-      savedOverflow = null;
+    if (activeDialogs.delete(dialog)) {
+      scrollLock.unlock();
     }
   }
 
@@ -29,7 +51,7 @@
   }
 
   function closeDialog(dialog) {
-    if (dialog.hasAttribute("data-closing")) return;
+    if (!dialog || dialog.hasAttribute("data-closing")) return;
     clearCloseAnim(dialog);
     let closed = false;
     function finish() {
@@ -182,15 +204,8 @@
                 ? document.body
                 : candidate;
             }
-            if (activeDialogs.size === 0) {
-              savedOverflow = document.body.style.overflow;
-              const scrollbarWidth =
-                window.innerWidth - document.documentElement.clientWidth;
-              if (scrollbarWidth > 0)
-                document.body.style.paddingRight = `${scrollbarWidth}px`;
-            }
             activeDialogs.add(dialog);
-            document.body.style.overflow = "hidden";
+            scrollLock.lock();
             wireAria(dialog);
             dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
@@ -222,6 +237,7 @@
     if (!dialog._dialogInit) return;
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._openWaitObs) return;
+      dialog._previousFocus = dialog._previousFocus || document.activeElement;
       const obs = new MutationObserver(() => {
         if (!dialog.isConnected) {
           obs.disconnect();

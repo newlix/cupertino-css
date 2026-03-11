@@ -77,6 +77,7 @@
 
     function onScrollSettle() {
       const idx = Math.round(column.scrollTop / itemH);
+      scrollToIndex(column, idx, false);
       selectIndex(column, idx, picker, colIndex);
     }
 
@@ -97,12 +98,14 @@
     let dragY = 0;
     let dragScrollTop = 0;
     let dragging = false;
+    let activePointerId = null;
 
     function onMouseDown(e) {
-      if (e.button !== 0 || e.pointerType === "touch") return;
+      if (e.button !== 0 || e.pointerType !== "mouse") return;
       dragging = true;
       dragY = e.clientY;
       dragScrollTop = column.scrollTop;
+      activePointerId = e.pointerId;
       column.setPointerCapture(e.pointerId);
       column.style.scrollSnapType = "none";
     }
@@ -115,6 +118,12 @@
     function onMouseUp() {
       if (!dragging) return;
       dragging = false;
+      if (activePointerId !== null) {
+        try {
+          column.releasePointerCapture(activePointerId);
+        } catch {}
+        activePointerId = null;
+      }
       column.style.scrollSnapType = "";
       // Snap to nearest item
       const idx = Math.round(column.scrollTop / itemH);

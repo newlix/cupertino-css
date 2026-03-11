@@ -130,7 +130,7 @@
       while (idx !== from && isDisabled(currentButtons[idx]) && --guard > 0) {
         idx = (idx + step + currentButtons.length) % currentButtons.length;
       }
-      return idx !== from && !isDisabled(currentButtons[idx])
+      return idx !== from && guard > 0 && !isDisabled(currentButtons[idx])
         ? currentButtons[idx]
         : null;
     }

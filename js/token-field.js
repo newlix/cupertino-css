@@ -3,6 +3,7 @@
   function createToken(text, tokenClass) {
     const span = document.createElement("span");
     span.className = "token" + (tokenClass ? " " + tokenClass : "");
+    span.dataset.value = text;
     span.textContent = text;
     const btn = document.createElement("button");
     btn.type = "button";
@@ -15,7 +16,9 @@
 
   function getTokens(field) {
     return Array.from(field.querySelectorAll(".token")).map(function (t) {
-      return t.firstChild ? t.firstChild.textContent.trim() : "";
+      return (
+        t.dataset.value ?? (t.firstChild ? t.firstChild.textContent.trim() : "")
+      );
     });
   }
 
@@ -46,6 +49,7 @@
 
     var input = field.querySelector("input");
     if (!input) return;
+    field._tokenFieldInput = input;
 
     var tokenClass = field.getAttribute("data-token-class") || "";
 
@@ -54,6 +58,8 @@
     field.setAttribute("aria-orientation", "horizontal");
     field.querySelectorAll(".token").forEach(function (t) {
       t.setAttribute("role", "option");
+      if (!t.dataset.value)
+        t.dataset.value = t.firstChild ? t.firstChild.textContent.trim() : "";
     });
 
     // Click container to focus input
@@ -90,16 +96,11 @@
       fireChange(field);
     };
     field.addEventListener("click", field._tokenFieldRemove);
-
-    // Tag existing tokens with ARIA
-    field.querySelectorAll(".token").forEach(function (t) {
-      if (!t.getAttribute("role")) t.setAttribute("role", "option");
-    });
   }
 
   function destroy(field) {
     if (!field._tokenFieldInit) return;
-    var input = field.querySelector("input");
+    var input = field._tokenFieldInput;
     if (field._tokenFieldClick)
       field.removeEventListener("click", field._tokenFieldClick);
     if (input && field._tokenFieldKeydown)
@@ -109,6 +110,7 @@
     field._tokenFieldClick = null;
     field._tokenFieldKeydown = null;
     field._tokenFieldRemove = null;
+    field._tokenFieldInput = null;
     field._tokenFieldInit = false;
   }
 

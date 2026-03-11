@@ -1,14 +1,35 @@
 // ActionSheet — ciderui
 (function () {
   const activeDialogs = new Set();
-  let savedOverflow = null;
+
+  window.CiderUI = window.CiderUI || {};
+  if (!window.CiderUI._scrollLock) {
+    window.CiderUI._scrollLock = {
+      count: 0,
+      saved: null,
+      lock() {
+        if (this.count++ === 0) {
+          this.saved = document.body.style.overflow;
+          const sw = window.innerWidth - document.documentElement.clientWidth;
+          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
+          document.body.style.overflow = "hidden";
+        }
+      },
+      unlock() {
+        if (this.count <= 0) return;
+        if (--this.count === 0) {
+          document.body.style.overflow = this.saved ?? "";
+          document.body.style.paddingRight = "";
+          this.saved = null;
+        }
+      },
+    };
+  }
+  const scrollLock = window.CiderUI._scrollLock;
 
   function restoreScrollLock(dialog) {
-    const wasActive = activeDialogs.delete(dialog);
-    if (wasActive && activeDialogs.size === 0 && savedOverflow !== null) {
-      document.body.style.overflow = savedOverflow ?? "";
-      document.body.style.paddingRight = "";
-      savedOverflow = null;
+    if (activeDialogs.delete(dialog)) {
+      scrollLock.unlock();
     }
   }
 
@@ -177,15 +198,8 @@
                 ? document.body
                 : candidate;
             }
-            if (activeDialogs.size === 0) {
-              savedOverflow = document.body.style.overflow;
-              const scrollbarWidth =
-                window.innerWidth - document.documentElement.clientWidth;
-              if (scrollbarWidth > 0)
-                document.body.style.paddingRight = `${scrollbarWidth}px`;
-            }
             activeDialogs.add(dialog);
-            document.body.style.overflow = "hidden";
+            scrollLock.lock();
             wireAria(dialog);
             dialog.setAttribute("aria-modal", "true");
             trapFocus(dialog);
@@ -217,6 +231,8 @@
     if (!dialog._asInit) return;
     if (dialog.hasAttribute("data-closing")) {
       if (dialog._asOpenWaitObs) return;
+      dialog._asPreviousFocus =
+        dialog._asPreviousFocus || document.activeElement;
       const obs = new MutationObserver(() => {
         if (!dialog.isConnected) {
           obs.disconnect();

@@ -166,6 +166,7 @@
         if (wrapper.parentNode)
           popover._disconnectObserver.observe(wrapper.parentNode, {
             childList: true,
+            subtree: true,
           });
 
         const first = popover.querySelector(FOCUSABLE_ALL);

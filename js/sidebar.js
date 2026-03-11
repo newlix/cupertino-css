@@ -2,8 +2,30 @@
 // Mobile off-canvas toggle. Wire up [data-sidebar-toggle]
 // buttons to slide the panel in/out, with overlay dismiss and Escape key support.
 (function () {
-  let openCount = 0;
-  let savedOverflow = "";
+  window.CiderUI = window.CiderUI || {};
+  if (!window.CiderUI._scrollLock) {
+    window.CiderUI._scrollLock = {
+      count: 0,
+      saved: null,
+      lock() {
+        if (this.count++ === 0) {
+          this.saved = document.body.style.overflow;
+          const sw = window.innerWidth - document.documentElement.clientWidth;
+          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
+          document.body.style.overflow = "hidden";
+        }
+      },
+      unlock() {
+        if (this.count <= 0) return;
+        if (--this.count === 0) {
+          document.body.style.overflow = this.saved ?? "";
+          document.body.style.paddingRight = "";
+          this.saved = null;
+        }
+      },
+    };
+  }
+  const scrollLock = window.CiderUI._scrollLock;
 
   function setupToggle(btn) {
     if (btn._sidebarInit) return;
@@ -28,9 +50,7 @@
       panel.setAttribute("aria-modal", "true");
       if (overlay) overlay.setAttribute("data-open", "");
       btn.setAttribute("aria-expanded", "true");
-      if (openCount === 0) savedOverflow = document.body.style.overflow;
-      openCount++;
-      document.body.style.overflow = "hidden";
+      scrollLock.lock();
       // Move focus into the panel for keyboard accessibility
       const firstFocusable = panel.querySelector(
         "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
@@ -45,8 +65,7 @@
       panel.removeAttribute("aria-modal");
       if (overlay) overlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
-      openCount = Math.max(0, openCount - 1);
-      if (openCount === 0) document.body.style.overflow = savedOverflow;
+      scrollLock.unlock();
       if (returnFocus !== false) btn.focus();
     }
 
@@ -92,8 +111,8 @@
       btn._sidebarPanel.removeAttribute("role");
       btn._sidebarPanel.removeAttribute("aria-modal");
       if (btn._sidebarOverlay) btn._sidebarOverlay.removeAttribute("data-open");
-      openCount = Math.max(0, openCount - 1);
-      if (openCount === 0) document.body.style.overflow = savedOverflow;
+      btn.setAttribute("aria-expanded", "false");
+      scrollLock.unlock();
     }
     if (btn._sidebarEscHandler) {
       document.removeEventListener("keydown", btn._sidebarEscHandler);
