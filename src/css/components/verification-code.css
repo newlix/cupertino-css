@@ -72,7 +72,7 @@
     }
     @media (pointer: coarse), (hover: none) {
       & input:not([type="hidden"]) {
-        min-width: 44px;
+        min-width: 40px;
       }
     }
   }
