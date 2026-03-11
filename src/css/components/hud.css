@@ -49,7 +49,9 @@
   .hud {
     border: 1px solid ButtonText;
     box-shadow: none;
-    color: CanvasText;
-    background: Canvas;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: ButtonText;
+    background: ButtonFace;
   }
 }

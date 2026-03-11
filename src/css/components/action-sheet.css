@@ -176,6 +176,8 @@ dialog.action-sheet {
   @media (forced-colors: active) {
     & .action-sheet-group {
       border: 1px solid ButtonText;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     & .action-sheet-group > button,
     & .action-sheet-group > a {

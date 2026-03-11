@@ -160,6 +160,8 @@
   .popover [popover] {
     border: 1px solid ButtonText;
     box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .popover-arrow [popover]::before {
     display: none;

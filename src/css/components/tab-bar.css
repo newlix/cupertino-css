@@ -62,7 +62,8 @@
   }
 }
 @media (forced-colors: active) {
-  .tab-bar > a,
+  .tab-bar > a:any-link,
+  .tab-bar > a:not(:any-link),
   .tab-bar > button {
     &:hover:not([data-active]):not([aria-selected="true"]):not(:disabled):not(
         [aria-disabled="true"]

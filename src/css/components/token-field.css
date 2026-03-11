@@ -119,6 +119,10 @@
   .token {
     border: 1px solid ButtonText;
     background: transparent;
+    & button {
+      border: 1px solid ButtonText;
+      color: ButtonText;
+    }
     & button:hover {
       background: transparent;
       color: Highlight;

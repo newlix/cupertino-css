@@ -121,6 +121,8 @@ dialog.dialog {
   @media (forced-colors: active) {
     border: 1px solid ButtonText;
     box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     & .dialog-close {
       border: 1px solid ButtonText;
     }

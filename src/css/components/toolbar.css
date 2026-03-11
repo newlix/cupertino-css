@@ -143,6 +143,7 @@
     border: 1px solid ButtonText;
     & > button,
     & > a {
+      color: ButtonText;
       &:hover,
       &:active {
         background: Highlight;

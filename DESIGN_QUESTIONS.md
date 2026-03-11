@@ -23,3 +23,15 @@
 - **Problem**: Under `prefers-reduced-motion`, the global rule collapses animations to 0.01ms. Overlays pop in/out instantly with zero visual feedback. Best practice (W3C WCAG C39) recommends replacing directional/scale animations with opacity-only fades, not eliminating all feedback.
 - **Options**: A) Add per-component `@media (prefers-reduced-motion)` blocks with `fadeIn`/`fadeOut` fallbacks / B) Keep current instant-appear behavior (rely on global rule)
 - **Status**: Not addressed (skipped) — architectural decision about global vs per-component reduced-motion handling
+
+## [src/css/components/tab-bar.css]
+
+- **Problem**: Tab bar label font-size is 10px, which is below the Apple HIG 11pt minimum. iOS native tab bars use 10pt but scale with Dynamic Type; the hardcoded 10px on web cannot scale.
+- **Options**: A) Raise to 11px for HIG compliance / B) Keep 10px for iOS visual fidelity (document the deliberate deviation)
+- **Status**: Not addressed (skipped) — design fidelity vs accessibility tradeoff
+
+## [js/sidebar.js]
+
+- **Problem**: When sidebar opens as mobile overlay (`role="dialog"` + `aria-modal="true"`), focus moves to the first focusable element but there is no Tab key focus trap. Users can Tab past the sidebar into obscured page content. Dialog and action-sheet both implement focus trapping; sidebar does not.
+- **Options**: A) Add Tab-key focus trap (mirror dialog.js pattern) / B) Accept current behavior (sidebar is less modal than dialog)
+- **Status**: Not addressed (skipped) — significant JS addition
