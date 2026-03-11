@@ -20,7 +20,13 @@ import { goto, preview } from "./helpers.js";
 /** Wait for all CSS animations on an element to finish. */
 async function waitForAnimations(locator) {
   await locator.evaluate((el) =>
-    Promise.all(el.getAnimations().map((a) => a.finished)).catch(() => {}),
+    Promise.all(
+      el.getAnimations().map((a) =>
+        a.finished.catch((e) => {
+          if (e.name !== "AbortError") throw e;
+        }),
+      ),
+    ),
   );
 }
 

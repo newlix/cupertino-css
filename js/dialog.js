@@ -276,10 +276,51 @@
     }
   }
 
+  function destroy(dialog) {
+    if (!dialog._dialogInit) return;
+    if (dialog._cancelHandler) {
+      dialog.removeEventListener("cancel", dialog._cancelHandler);
+      dialog._cancelHandler = null;
+    }
+    if (dialog._mousedownHandler) {
+      dialog.removeEventListener("mousedown", dialog._mousedownHandler);
+      dialog._mousedownHandler = null;
+    }
+    if (dialog._clickHandler) {
+      dialog.removeEventListener("click", dialog._clickHandler);
+      dialog._clickHandler = null;
+    }
+    if (dialog._focusObserver) {
+      dialog._focusObserver.disconnect();
+      dialog._focusObserver = null;
+    }
+    if (dialog._focusTrapHandler) {
+      dialog.removeEventListener("keydown", dialog._focusTrapHandler);
+      dialog._focusTrapHandler = null;
+    }
+    clearCloseAnim(dialog);
+    if (dialog._openWaitObs) {
+      dialog._openWaitObs.disconnect();
+      dialog._openWaitObs = null;
+    }
+    if (dialog._openWaitTimer) {
+      clearTimeout(dialog._openWaitTimer);
+      dialog._openWaitTimer = null;
+    }
+    restoreScrollLock(dialog);
+    dialog._previousFocus = null;
+    dialog._dialogInit = false;
+  }
+
   window.closeDialog = closeDialog;
   window.openDialog = openDialog;
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.dialog = { init, close: closeDialog, open: openDialog };
+  window.CiderUI.dialog = {
+    init,
+    destroy,
+    close: closeDialog,
+    open: openDialog,
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init, { once: true });
@@ -295,40 +336,6 @@
       el.tagName === "DIALOG" && el.classList.contains("dialog")
         ? [el]
         : Array.from(el.querySelectorAll?.("dialog.dialog") || []);
-    dialogs.forEach((dialog) => {
-      if (!dialog._dialogInit) return;
-      if (dialog._cancelHandler) {
-        dialog.removeEventListener("cancel", dialog._cancelHandler);
-        dialog._cancelHandler = null;
-      }
-      if (dialog._mousedownHandler) {
-        dialog.removeEventListener("mousedown", dialog._mousedownHandler);
-        dialog._mousedownHandler = null;
-      }
-      if (dialog._clickHandler) {
-        dialog.removeEventListener("click", dialog._clickHandler);
-        dialog._clickHandler = null;
-      }
-      if (dialog._focusObserver) {
-        dialog._focusObserver.disconnect();
-        dialog._focusObserver = null;
-      }
-      if (dialog._focusTrapHandler) {
-        dialog.removeEventListener("keydown", dialog._focusTrapHandler);
-        dialog._focusTrapHandler = null;
-      }
-      clearCloseAnim(dialog);
-      if (dialog._openWaitObs) {
-        dialog._openWaitObs.disconnect();
-        dialog._openWaitObs = null;
-      }
-      if (dialog._openWaitTimer) {
-        clearTimeout(dialog._openWaitTimer);
-        dialog._openWaitTimer = null;
-      }
-      restoreScrollLock(dialog);
-      dialog._previousFocus = null;
-      dialog._dialogInit = false;
-    });
+    dialogs.forEach(destroy);
   });
 })();

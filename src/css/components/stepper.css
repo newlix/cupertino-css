@@ -31,7 +31,6 @@
   }
   &:disabled,
   &[aria-disabled="true"] {
-    color: var(--color-tertiary-foreground);
     opacity: 0.38;
     pointer-events: none;
   }

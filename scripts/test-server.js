@@ -15,9 +15,7 @@ const types = {
 
 const server = createServer(async (req, res) => {
   try {
-    let filePath = resolve(
-      join(dir, decodeURIComponent(new URL(req.url, "http://x").pathname)),
-    );
+    let filePath = resolve(join(dir, new URL(req.url, "http://x").pathname));
     if (!filePath.startsWith(dir + "/") && filePath !== dir) {
       res.writeHead(403);
       res.end("Forbidden");
