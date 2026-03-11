@@ -27,6 +27,15 @@
   }
   const scrollLock = window.CiderUI._scrollLock;
 
+  const FOCUSABLE =
+    'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+
+  function isVisible(el) {
+    if (el.getClientRects().length === 0) return false;
+    var style = getComputedStyle(el);
+    return style.visibility !== "hidden" && style.visibility !== "collapse";
+  }
+
   function setupToggle(btn) {
     if (btn._sidebarInit) return;
 
@@ -58,6 +67,33 @@
         "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
       );
       if (firstFocusable) firstFocusable.focus();
+      // Focus trap — mirror dialog.js pattern
+      btn._sidebarFocusTrap = function (e) {
+        if (e.key !== "Tab") return;
+        var focusable = Array.from(panel.querySelectorAll(FOCUSABLE)).filter(
+          isVisible,
+        );
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (focusable.indexOf(document.activeElement) === -1) {
+          e.preventDefault();
+          first.focus();
+          return;
+        }
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      };
+      panel.addEventListener("keydown", btn._sidebarFocusTrap);
     }
 
     function close(returnFocus) {
@@ -69,6 +105,10 @@
       btn.setAttribute("aria-expanded", "false");
       scrollLock.unlock();
       document.removeEventListener("keydown", btn._sidebarEscHandler);
+      if (btn._sidebarFocusTrap) {
+        panel.removeEventListener("keydown", btn._sidebarFocusTrap);
+        btn._sidebarFocusTrap = null;
+      }
       if (returnFocus !== false) {
         const prev = btn._sidebarPreviousFocus;
         btn._sidebarPreviousFocus = null;
@@ -147,6 +187,10 @@
         btn._sidebarPanelClickHandler,
       );
       btn._sidebarPanelClickHandler = null;
+    }
+    if (btn._sidebarFocusTrap && btn._sidebarPanel) {
+      btn._sidebarPanel.removeEventListener("keydown", btn._sidebarFocusTrap);
+      btn._sidebarFocusTrap = null;
     }
     btn._sidebarPreviousFocus = null;
     btn._sidebarPanel = null;
