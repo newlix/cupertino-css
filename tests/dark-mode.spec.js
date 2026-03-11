@@ -92,7 +92,7 @@ test.describe("Dark Mode", () => {
   });
 
   test("input border is visible against background", async ({ page }) => {
-    await goto(page, "input");
+    await goto(page, "text-field");
     await setDark(page);
 
     const input = preview(page).locator('input[type="text"]').first();

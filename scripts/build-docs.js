@@ -7,8 +7,11 @@ import hljs from "highlight.js";
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DOCS = path.join(ROOT, "docs");
 const SITE = path.join(ROOT, "site");
+const CSS_OUT = "docs.built.css";
 
 // ─── Configure Nunjucks ───
+// No autoescape — all template data comes from version-controlled source files.
+// Do not pass user-supplied or external data to env.render() without manual escaping.
 const env = nunjucks.configure(DOCS, {
   autoescape: false,
   trimBlocks: true,
@@ -76,7 +79,7 @@ function build() {
 
   // Build CSS first — if this fails, existing site/ stays intact for the dev server
   fs.mkdirSync(SITE, { recursive: true });
-  execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/docs.built.css`, {
+  execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/${CSS_OUT}`, {
     cwd: ROOT,
     stdio: "inherit",
   });
@@ -85,7 +88,7 @@ function build() {
   if (!SITE.startsWith(ROOT))
     throw new Error(`SITE ${SITE} is outside ROOT ${ROOT}`);
   for (const entry of fs.readdirSync(SITE)) {
-    if (entry === "docs.built.css") continue;
+    if (entry === CSS_OUT) continue;
     fs.rmSync(path.join(SITE, entry), { recursive: true });
   }
 

@@ -55,7 +55,7 @@
   user-select: none;
 
   & button {
-    @apply flex items-center justify-center rounded-full p-0 text-tertiary-foreground cursor-pointer;
+    @apply relative flex items-center justify-center rounded-full p-0 text-tertiary-foreground cursor-pointer;
     width: 14px;
     height: 14px;
     border: none;

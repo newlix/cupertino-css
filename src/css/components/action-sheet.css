@@ -161,10 +161,9 @@ dialog.action-sheet {
     overflow-wrap: anywhere;
   }
 
+  /* Global reduced-motion rule covers the dialog element; ::backdrop needs explicit override */
   @media (prefers-reduced-motion: reduce) {
-    &[open],
     &:modal[open]::backdrop,
-    &[data-closing],
     &:modal[data-closing]::backdrop {
       animation: none;
     }

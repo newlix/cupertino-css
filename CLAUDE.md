@@ -8,16 +8,16 @@ Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Pure CSS with optiona
 src/css/
   ciderui.css          # Main entry — CSS variables, theme tokens, base, @import components
   ciderui.cdn.css      # CDN bundle — includes Tailwind + ciderui.css via source(none)
-  components/           # 29 component CSS files (button, card, dialog, …)
-js/                     # 10 JS files for interactive components (dialog, tabs, hud, …)
+  components/           # 31 component CSS files (button, card, dialog, …)
+js/                     # 11 JS files for interactive components (dialog, tabs, hud, …)
 docs/
   _includes/            # Nunjucks templates (layout.njk, macros.njk)
   _data/nav.json        # Sidebar navigation data
   docs.css              # Tailwind + ciderui + docs-specific styles
   components/*.njk      # Component doc pages (Nunjucks source)
-  demos/*.html          # HTML fragments lazy-loaded on homepage
 scripts/
   build-docs.js         # SSG build: .njk → site/*.html + CSS + assets
+  test-server.js        # Lightweight HTTP server for Playwright tests (:3000)
 site/                   # Build output (gitignored)
 tests/                  # Playwright test files
 ```

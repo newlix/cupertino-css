@@ -128,7 +128,7 @@ code {
 }
 
 /* ─── Details / Summary ─── */
-details:not([class]) {
+details:where(:not([class])) {
   @apply rounded-[var(--radius)] border p-5;
   corner-shape: squircle;
   border-color: var(--color-border);
@@ -738,7 +738,7 @@ kbd {
 }
 
 /* ─── Fieldset ─── */
-fieldset:not([class]) {
+fieldset:where(:not([class])) {
   @apply rounded-[var(--radius)] border p-5;
   corner-shape: squircle;
   border-color: var(--color-border);

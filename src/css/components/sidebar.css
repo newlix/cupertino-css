@@ -19,9 +19,6 @@
     @apply px-2 pb-1 text-[13px] font-semibold uppercase tracking-widest;
     margin: 0;
     color: var(--color-tertiary-foreground);
-    &:not(:first-child) {
-      margin-top: 0;
-    }
   }
 
   /* Navigation items */

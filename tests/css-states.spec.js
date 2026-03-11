@@ -99,7 +99,7 @@ test.describe("CSS State Specificity", () => {
   });
 
   test("input focus changes border-color to primary", async ({ page }) => {
-    await goto(page, "input");
+    await goto(page, "text-field");
 
     const input = page
       .locator('.snippet-preview > figure input[type="text"]')

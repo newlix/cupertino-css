@@ -110,10 +110,9 @@ dialog {
       border-top-width: 0.5px;
     }
   }
+  /* Global reduced-motion rule covers the dialog element; ::backdrop needs explicit override */
   @media (prefers-reduced-motion: reduce) {
-    &[open],
     &:modal[open]::backdrop,
-    &[data-closing],
     &:modal[data-closing]::backdrop {
       animation: none;
     }

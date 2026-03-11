@@ -140,8 +140,7 @@ test.describe("Sidebar JS (sidebar.js)", () => {
   test.use({ viewport: { width: 375, height: 667 } });
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("/components/sidebar.html");
-    await page.waitForLoadState("load");
+    await goto(page, "sidebar");
   });
 
   test("JS toggle opens and closes sidebar", async ({ page }) => {

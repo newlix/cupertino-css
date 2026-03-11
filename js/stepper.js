@@ -4,10 +4,14 @@
     if (stepper._stepperInit) return;
     stepper._stepperInit = true;
 
-    const min = Number(stepper.getAttribute("data-min") ?? 0);
-    const max = Number(stepper.getAttribute("data-max") ?? 100);
-    const step = Number(stepper.getAttribute("data-step") ?? 1);
+    let min = Number(stepper.getAttribute("data-min") ?? 0);
+    if (Number.isNaN(min)) min = 0;
+    let max = Number(stepper.getAttribute("data-max") ?? 100);
+    if (Number.isNaN(max)) max = 100;
+    let step = Number(stepper.getAttribute("data-step") ?? 1);
+    if (Number.isNaN(step)) step = 1;
     let value = Number(stepper.getAttribute("data-value") ?? min);
+    if (Number.isNaN(value)) value = min;
 
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
     const incBtn = stepper.querySelector("[data-stepper-increment]");
@@ -70,7 +74,8 @@
     // Listen for external changes on the linked input
     if (linked) {
       stepper._stepperLinkedHandler = function () {
-        value = clamp(Number(linked.value) || min);
+        const n = Number(linked.value);
+        value = clamp(Number.isNaN(n) ? min : n);
         updateUI();
       };
       linked.addEventListener("input", stepper._stepperLinkedHandler);

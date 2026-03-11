@@ -38,7 +38,6 @@
   scroll-snap-type: y mandatory;
   padding: calc((var(--picker-visible) - 1) / 2 * var(--picker-item-h)) 0;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -99,11 +98,5 @@
   }
   .picker-column + .picker-column {
     border-left-color: ButtonText;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .picker-column {
-    scroll-behavior: auto;
   }
 }

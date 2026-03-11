@@ -150,12 +150,6 @@
   box-shadow: 0.5px 0.5px 0 0.5px var(--float-ring-color);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .popover [popover],
-  .popover-menu [popover] {
-    transition: none;
-  }
-}
 @media (forced-colors: active) {
   .popover [popover] {
     border: 1px solid ButtonText;

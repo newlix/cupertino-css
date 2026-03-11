@@ -79,10 +79,12 @@ test.describe("Dialog", () => {
     await dialog.locator('button:has-text("Cancel")').click();
     await expect(dialog).not.toBeVisible();
 
-    const overflowAfter = await page.evaluate(
-      () => document.body.style.overflow,
-    );
-    expect(overflowAfter).toBe("");
+    await expect(async () => {
+      const overflowAfter = await page.evaluate(
+        () => document.body.style.overflow,
+      );
+      expect(overflowAfter).toBe("");
+    }).toPass({ timeout: 2000 });
   });
 
   test("focus is restored to trigger after dialog closes", async ({ page }) => {
