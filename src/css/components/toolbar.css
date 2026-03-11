@@ -155,6 +155,7 @@
       &:disabled,
       &[aria-disabled="true"] {
         color: GrayText;
+        border-color: GrayText;
         opacity: 1;
       }
       & + button,

@@ -32,8 +32,18 @@
     // aria-value* belong on spinbutton (display), not the group container
     if (display) {
       display.setAttribute("role", "spinbutton");
+      display.setAttribute("tabindex", "0");
       display.setAttribute("aria-valuemin", min);
       display.setAttribute("aria-valuemax", max);
+      if (
+        !display.getAttribute("aria-label") &&
+        !display.getAttribute("aria-labelledby")
+      ) {
+        const lbl =
+          stepper.getAttribute("aria-label") ||
+          stepper.getAttribute("data-label");
+        if (lbl) display.setAttribute("aria-label", lbl);
+      }
     }
     if (decBtn && !decBtn.getAttribute("aria-label"))
       decBtn.setAttribute("aria-label", "Decrease value");
@@ -78,6 +88,30 @@
     if (decBtn) decBtn.addEventListener("click", stepper._stepperDecHandler);
     if (incBtn) incBtn.addEventListener("click", stepper._stepperIncHandler);
 
+    // Spinbutton keyboard interaction (WAI-ARIA APG spinbutton pattern)
+    if (display) {
+      stepper._stepperKeyHandler = function (e) {
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          stepper._stepperIncHandler();
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          stepper._stepperDecHandler();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          value = min;
+          updateUI();
+          fireChange();
+        } else if (e.key === "End") {
+          e.preventDefault();
+          value = max;
+          updateUI();
+          fireChange();
+        }
+      };
+      display.addEventListener("keydown", stepper._stepperKeyHandler);
+    }
+
     // Listen for external changes on the linked input
     if (linked) {
       stepper._stepperLinkedHandler = function () {
@@ -99,9 +133,13 @@
       stepper.querySelector("output");
     if (display) {
       display.removeAttribute("role");
+      display.removeAttribute("tabindex");
       display.removeAttribute("aria-valuemin");
       display.removeAttribute("aria-valuemax");
       display.removeAttribute("aria-valuenow");
+      display.removeAttribute("aria-label");
+      if (stepper._stepperKeyHandler)
+        display.removeEventListener("keydown", stepper._stepperKeyHandler);
     }
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
     const incBtn = stepper.querySelector("[data-stepper-increment]");
@@ -119,6 +157,7 @@
     stepper._stepperIncHandler = null;
     stepper._stepperLinkedHandler = null;
     stepper._stepperLinkedEl = null;
+    stepper._stepperKeyHandler = null;
     stepper._stepperInit = false;
   }
 

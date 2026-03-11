@@ -123,5 +123,9 @@
       background: transparent;
       color: Highlight;
     }
+    & button:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+    }
   }
 }

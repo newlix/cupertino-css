@@ -28,7 +28,7 @@
     container.id = "hud-container";
     container.className = "cider hud-container";
     container.setAttribute("role", "status");
-    container.setAttribute("aria-live", "polite");
+    container.setAttribute("aria-live", "assertive");
     container.setAttribute("aria-atomic", "true");
     document.body.appendChild(container);
     return container;

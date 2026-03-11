@@ -131,6 +131,15 @@
           popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
             item.setAttribute("role", "menuitem");
             item.setAttribute("data-ciderui-menuitem", "");
+            // Remove from natural tab order (APG menu pattern requires arrow-key nav only)
+            if (!item.hasAttribute("data-ciderui-prev-tabindex")) {
+              const prev = item.getAttribute("tabindex");
+              item.setAttribute(
+                "data-ciderui-prev-tabindex",
+                prev != null ? prev : "",
+              );
+            }
+            item.setAttribute("tabindex", "-1");
           });
           popover.querySelectorAll("hr").forEach((hr) => {
             hr.setAttribute("role", "separator");
@@ -169,7 +178,11 @@
             subtree: true,
           });
 
-        const first = popover.querySelector(FOCUSABLE_ALL);
+        const first = isMenu
+          ? popover.querySelector(
+              '[data-ciderui-menuitem]:not([disabled]):not([aria-disabled="true"])',
+            )
+          : popover.querySelector(FOCUSABLE_ALL);
         if (first) first.focus();
       } else {
         trigger.setAttribute("aria-expanded", "false");
@@ -187,6 +200,13 @@
             .forEach((item) => {
               item.removeAttribute("role");
               item.removeAttribute("data-ciderui-menuitem");
+              // Restore original tabindex
+              const prev = item.getAttribute("data-ciderui-prev-tabindex");
+              if (prev != null) {
+                if (prev === "") item.removeAttribute("tabindex");
+                else item.setAttribute("tabindex", prev);
+                item.removeAttribute("data-ciderui-prev-tabindex");
+              }
             });
           popover.querySelectorAll("[data-ciderui-separator]").forEach((hr) => {
             hr.removeAttribute("role");
@@ -283,7 +303,9 @@
       }
       popover._menuKeyHandler = (e) => {
         const items = Array.from(
-          popover.querySelectorAll(FOCUSABLE_NOT_DISABLED),
+          popover.querySelectorAll(
+            '[data-ciderui-menuitem]:not([disabled]):not([aria-disabled="true"])',
+          ),
         );
         if (!items.length) return;
         let idx = items.indexOf(document.activeElement);

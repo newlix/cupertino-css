@@ -33,12 +33,13 @@
     @apply size-6;
   }
   &[data-active],
-  &[aria-selected="true"] {
+  &[aria-selected="true"],
+  &[aria-current="page"] {
     color: var(--color-primary);
   }
-  &:hover:not([data-active]):not([aria-selected="true"]):not(:disabled):not(
-      [aria-disabled="true"]
-    ) {
+  &:hover:not([data-active]):not([aria-selected="true"]):not(
+      [aria-current="page"]
+    ):not(:disabled):not([aria-disabled="true"]) {
     color: var(--color-foreground);
   }
   &:active:not(:disabled):not([aria-disabled="true"]) {
@@ -70,7 +71,8 @@
       outline-offset: -1px;
     }
     &[data-active],
-    &[aria-selected="true"] {
+    &[aria-selected="true"],
+    &[aria-current="page"] {
       outline: 2px solid Highlight;
     }
     &:focus-visible {
