@@ -2,12 +2,6 @@
 
 Items that need user decision before proceeding.
 
-## [src/css/components/dialog.css]
-
-- **問題描述**：Bare `dialog` element selector (line 2) styles every `<dialog>` inside `.cider`, including third-party ones. `action-sheet.css` correctly uses `dialog.action-sheet` to scope.
-- **可能的做法**：A) Add `.dialog` class requirement (`dialog.dialog`) — breaking change for existing users / B) Keep as-is if third-party dialogs inside `.cider` are not a real concern
-- **目前狀態**：未處理（跳過）
-
 ## [js/dialog.js + js/action-sheet.js + js/sidebar.js]
 
 - **問題描述**：Each file manages body `overflow: hidden` scroll-lock independently. If multiple are open simultaneously (e.g. Dialog + ActionSheet), the saved/restored overflow state corrupts — the last one to close restores its stale `savedOverflow`, potentially unlocking scroll while another overlay is still open.

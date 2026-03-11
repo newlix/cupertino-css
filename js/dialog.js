@@ -131,9 +131,8 @@
   }
 
   function init() {
-    document.querySelectorAll("dialog").forEach((dialog) => {
+    document.querySelectorAll("dialog.dialog").forEach((dialog) => {
       if (dialog._dialogInit) return;
-      if (dialog.classList.contains("action-sheet")) return;
       dialog._dialogInit = true;
       wireAria(dialog);
       dialog._cancelHandler = (e) => {
@@ -277,9 +276,9 @@
     const el = evt.detail?.elt;
     if (!el) return;
     const dialogs =
-      el.tagName === "DIALOG"
+      el.tagName === "DIALOG" && el.classList.contains("dialog")
         ? [el]
-        : Array.from(el.querySelectorAll?.("dialog") || []);
+        : Array.from(el.querySelectorAll?.("dialog.dialog") || []);
     dialogs.forEach((dialog) => {
       if (!dialog._dialogInit) return;
       if (dialog._cancelHandler) {

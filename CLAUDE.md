@@ -55,6 +55,16 @@ npm run test:ui          # Playwright UI mode
 
 - **Prettier** — run `npx prettier --write .` before every commit.
 
+## Design Philosophy: Classless vs Explicit
+
+Two-tier approach within the `.cider` scope:
+
+- **Classless = styling** — Elements that just need visual treatment (`<h1>`, `<input>`, `<select>`, `<table>`, `<blockquote>`, etc.) are styled by element selector. Adding a Tailwind utility class should not break their base styling.
+- **Explicit class = component behavior** — Elements that represent full interactive components with layout, animations, positioning, or JS behavior require an explicit class (`.dialog`, `.action-sheet`, `.tabs`, `.card`, etc.).
+- **Dual-purpose elements** (`<details>`, `<fieldset>`, `<ul>`, `<ol>`) use `:where(:not([class]))` guard — classless styling applies only when no class is present, so component classes (`.disclosure-group`, `.token-field`) can fully override without specificity fights.
+
+The boundary: if a bare HTML element only needs typography/form styling, keep it classless. If it becomes a full component (backdrop, animations, scroll lock, focus trap), require an explicit class.
+
 ## Conventions
 
 - CSS class names are semantic: `btn`, `card`, `dialog`, `tabs`, `badge`, etc.
