@@ -243,7 +243,7 @@
         dialog._asOpenWaitObs = null;
         dialog._asOpenWaitTimer = null;
         if (dialog.isConnected && !dialog.open) openActionSheet(dialog);
-      }, 400);
+      }, 300);
       return;
     }
     if (dialog.open) return;
