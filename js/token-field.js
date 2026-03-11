@@ -15,7 +15,7 @@
 
   function getTokens(field) {
     return Array.from(field.querySelectorAll(".token")).map(function (t) {
-      return t.firstChild.textContent.trim();
+      return t.firstChild ? t.firstChild.textContent.trim() : "";
     });
   }
 

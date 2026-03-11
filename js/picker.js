@@ -9,7 +9,9 @@
   }
 
   function scrollToIndex(column, index, smooth) {
-    const itemH = getItemHeight(column.closest(".picker"));
+    const pickerEl = column.closest(".picker");
+    if (!pickerEl) return;
+    const itemH = getItemHeight(pickerEl);
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;

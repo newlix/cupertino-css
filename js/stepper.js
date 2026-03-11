@@ -23,7 +23,8 @@
 
     // Sync initial value from linked input if present
     if (linked && linked.value !== "") {
-      value = Number(linked.value);
+      const n = Number(linked.value);
+      if (!Number.isNaN(n)) value = n;
     }
 
     // ARIA attributes for assistive technology

@@ -39,12 +39,9 @@
 .hud[data-closing] {
   animation: hudDismiss var(--transition-fast) var(--apple-ease) forwards;
 }
+/* State fallback — global rule handles animation; opacity ensures dismissed HUD is invisible */
 @media (prefers-reduced-motion: reduce) {
-  .hud {
-    animation: none;
-  }
   .hud[data-closing] {
-    animation: none;
     opacity: 0;
   }
 }

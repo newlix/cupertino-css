@@ -111,10 +111,10 @@ h6 {
     color: var(--color-primary-active);
   }
 }
-ul:not([class]) {
+ul:where(:not([class])) {
   @apply list-disc pl-5 space-y-1.5;
 }
-ol:not([class]) {
+ol:where(:not([class])) {
   @apply list-decimal pl-5 space-y-1.5;
 }
 blockquote {

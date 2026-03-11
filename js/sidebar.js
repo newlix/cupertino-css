@@ -59,7 +59,7 @@
     btn.addEventListener("click", btn._sidebarClickHandler);
 
     if (overlay) {
-      btn._sidebarOverlayClickHandler = close;
+      btn._sidebarOverlayClickHandler = () => close();
       overlay.addEventListener("click", btn._sidebarOverlayClickHandler);
     }
 
