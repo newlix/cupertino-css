@@ -11,7 +11,7 @@ test.describe("Slider", () => {
     await expect(slider).toBeVisible();
 
     const value = await slider.inputValue();
-    expect(Number(value)).toBeGreaterThanOrEqual(0);
+    expect(Number(value)).toBe(33);
   });
 
   test("slider value can be changed", async ({ page }) => {
