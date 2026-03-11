@@ -73,6 +73,7 @@
   .avatar:is(button, a):disabled,
   .avatar:is(button, a)[aria-disabled="true"] {
     border-color: GrayText;
+    color: GrayText;
     opacity: 1;
   }
 }

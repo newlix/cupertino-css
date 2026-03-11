@@ -166,8 +166,9 @@
 
   function setupPicker(picker) {
     if (picker._pickerInit) return;
-    picker._pickerInit = true;
     const columns = picker.querySelectorAll(".picker-column");
+    if (!columns.length) return;
+    picker._pickerInit = true;
     columns.forEach(function (col, i) {
       setupColumn(col, i, picker);
     });

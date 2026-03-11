@@ -137,5 +137,16 @@
 
   window.showHUD = showHUD;
   window.CiderUI = window.CiderUI || {};
-  window.CiderUI.hud = { show: showHUD };
+  window.CiderUI.hud = {
+    show: showHUD,
+    destroy() {
+      const c = document.getElementById("hud-container");
+      if (c) {
+        c.querySelectorAll(".hud").forEach((h) => {
+          if (h._ciderDismiss) h._ciderDismiss();
+        });
+        c.remove();
+      }
+    },
+  };
 })();

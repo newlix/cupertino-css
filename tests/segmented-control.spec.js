@@ -69,6 +69,28 @@ test.describe("Segmented Control", () => {
     await expect(panel1).toHaveAttribute("role", "tabpanel");
   });
 
+  test("Home key moves focus to first tab", async ({ page }) => {
+    const seg1 = preview(page).locator('[data-tab="seg-1"]');
+    const seg3 = preview(page).locator('[data-tab="seg-3"]');
+
+    await seg3.click();
+    await expect(seg3).toBeFocused();
+
+    await page.keyboard.press("Home");
+    await expect(seg1).toHaveAttribute("data-active", "");
+    await expect(seg1).toBeFocused();
+  });
+
+  test("End key moves focus to last tab", async ({ page }) => {
+    const seg1 = preview(page).locator('[data-tab="seg-1"]');
+    const seg3 = preview(page).locator('[data-tab="seg-3"]');
+
+    await seg1.focus();
+    await page.keyboard.press("End");
+    await expect(seg3).toHaveAttribute("data-active", "");
+    await expect(seg3).toBeFocused();
+  });
+
   test("dark mode: indicator still has background", async ({ page }) => {
     await setDark(page);
     const indicator = preview(page).locator("[data-tab-indicator]");

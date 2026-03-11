@@ -128,7 +128,12 @@ function build() {
 }
 
 // ─── Initial build ───
-build();
+try {
+  build();
+} catch (e) {
+  console.error(e.stack || e.message);
+  process.exit(1);
+}
 
 // ─── Watch mode ───
 if (process.argv.includes("--watch")) {
