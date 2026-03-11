@@ -56,8 +56,9 @@ test.describe("Disclosure Group", () => {
       .first();
     await focusViaKeyboard(page, summary);
 
-    const boxShadow = await css(summary, "boxShadow");
-    expect(boxShadow).not.toBe("none");
+    // Disclosure group uses outline (not box-shadow) because parent has overflow:hidden
+    const outline = await css(summary, "outlineStyle");
+    expect(outline).toBe("solid");
   });
 
   test("standalone details has border", async ({ page }) => {

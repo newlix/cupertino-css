@@ -45,12 +45,14 @@
     }
 
     function open() {
+      btn._sidebarPreviousFocus = document.activeElement;
       panel.setAttribute("data-open", "");
       panel.setAttribute("role", "dialog");
       panel.setAttribute("aria-modal", "true");
       if (overlay) overlay.setAttribute("data-open", "");
       btn.setAttribute("aria-expanded", "true");
       scrollLock.lock();
+      document.addEventListener("keydown", btn._sidebarEscHandler);
       // Move focus into the panel for keyboard accessibility
       const firstFocusable = panel.querySelector(
         "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
@@ -66,7 +68,18 @@
       if (overlay) overlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
       scrollLock.unlock();
-      if (returnFocus !== false) btn.focus();
+      document.removeEventListener("keydown", btn._sidebarEscHandler);
+      if (returnFocus !== false) {
+        const prev = btn._sidebarPreviousFocus;
+        btn._sidebarPreviousFocus = null;
+        if (prev && document.contains(prev) && prev !== document.body) {
+          prev.focus();
+        } else {
+          btn.focus();
+        }
+      } else {
+        btn._sidebarPreviousFocus = null;
+      }
     }
 
     btn._sidebarPanel = panel;
@@ -90,13 +103,12 @@
     };
     panel.addEventListener("click", btn._sidebarPanelClickHandler);
 
-    // Escape key closes the sidebar
+    // Escape key closes the sidebar (listener added/removed on open/close)
     btn._sidebarEscHandler = function (e) {
       if (e.key === "Escape" && isOpen()) {
         close();
       }
     };
-    document.addEventListener("keydown", btn._sidebarEscHandler);
   }
 
   function init() {
@@ -136,6 +148,7 @@
       );
       btn._sidebarPanelClickHandler = null;
     }
+    btn._sidebarPreviousFocus = null;
     btn._sidebarPanel = null;
     btn._sidebarOverlay = null;
     btn._sidebarInit = false;

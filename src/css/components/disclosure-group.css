@@ -48,6 +48,7 @@
         background-color: var(--surface-3);
         outline: 2px solid var(--color-primary);
         outline-offset: -2px;
+        box-shadow: none;
       }
     }
     & > :not(summary) {

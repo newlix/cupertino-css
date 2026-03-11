@@ -49,6 +49,7 @@ dialog.dialog {
       /* outline (not box-shadow) — dialog has overflow:clip which clips box-shadow */
       outline: 2px solid var(--color-primary);
       outline-offset: -2px;
+      box-shadow: none;
     }
     &:disabled,
     &[aria-disabled="true"] {

@@ -113,6 +113,7 @@ dialog.action-sheet {
         /* outline (not box-shadow) — action-sheet-group has overflow:hidden which clips box-shadow */
         outline: 2px solid var(--color-primary);
         outline-offset: -2px;
+        box-shadow: none;
       }
 
       &:disabled,
