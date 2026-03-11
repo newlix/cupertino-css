@@ -37,8 +37,11 @@
     }
     &[data-active],
     &[aria-current="page"] {
-      @apply text-foreground pointer-events-none;
-      background: var(--surface-4);
+      @apply text-primary pointer-events-none;
+      background: oklch(from var(--color-primary) l c h / 0.12);
+      .dark & {
+        background: oklch(from var(--color-primary) l c h / 0.16);
+      }
     }
     &:disabled,
     &[aria-disabled="true"] {
