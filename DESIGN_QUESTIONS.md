@@ -53,3 +53,13 @@ Currently `#fff` in `:root` only, with no explicit `.dark` override. The value h
 - A) Add `--color-destructive-foreground: #fff;` to `.dark` block for parity
 - B) Also add `--color-primary-foreground: #fff;` (same situation)
 - C) Keep as-is (unnecessary duplication)
+
+## 6. Page control disabled vs inactive dot distinction
+
+Disabled dot opacity (0.22 light / 0.25 dark) is very close to inactive dot opacity (0.30 light / 0.38 dark). Visual distinction is only ~0.08 units. Apple's native UIPageControl dims disabled dots similarly, but the web usage context may benefit from clearer differentiation.
+
+**Options:**
+
+- A) Lower disabled opacity to 0.12 (light) / 0.15 (dark) for clearer gap
+- B) Add a subtle scale reduction (`transform: scale(0.7)`) for disabled dots
+- C) Keep as-is (matches Apple's native behavior)

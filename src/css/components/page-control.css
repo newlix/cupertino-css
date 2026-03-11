@@ -40,9 +40,6 @@
   &[aria-disabled="true"] {
     pointer-events: none;
     opacity: var(--page-dot-disabled-opacity);
-    /* Dashed outline distinguishes disabled from inactive dots at similar opacity */
-    outline: 1px dashed var(--color-foreground);
-    outline-offset: 2px;
   }
   @media (forced-colors: active) {
     border: 2px solid ButtonText;
