@@ -75,7 +75,9 @@
   }
 }
 
-/* Primary-tinted active state (Apple blue highlight) */
+/* Primary-tinted active state (Apple blue highlight).
+   Opt-in via data-tinted — neutral gray is the default for brand-agnostic usage,
+   even though macOS defaults to tinted. */
 .sidebar[data-tinted] {
   & a:is([data-active], [aria-current="page"]),
   & button:is([data-active], [aria-current="page"]) {

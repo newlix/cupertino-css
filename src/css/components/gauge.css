@@ -1,4 +1,6 @@
 /* ========== GAUGE ========== */
+/* Single value display only — no built-in subtitle/unit slot.
+   Users who need a label below the value can position it externally. */
 .gauge {
   @apply relative inline-flex items-center justify-center;
   width: 64px;
