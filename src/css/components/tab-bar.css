@@ -40,7 +40,7 @@
   &:hover:not([data-active]):not([aria-selected="true"]):not(
       [aria-current="page"]
     ):not(:disabled):not([aria-disabled="true"]) {
-    color: var(--color-foreground);
+    color: var(--color-secondary-foreground);
   }
   &:active:not(:disabled):not([aria-disabled="true"]) {
     opacity: 0.7;

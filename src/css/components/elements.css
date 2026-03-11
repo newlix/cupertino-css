@@ -67,7 +67,8 @@ h4 {
   }
 }
 h5 {
-  @apply font-bold text-foreground mb-1;
+  /* HIG: Headline — Semibold 17pt (not Bold, which competes with larger headings) */
+  @apply font-semibold text-foreground mb-1;
   font-size: 17px;
   line-height: 1.29;
   letter-spacing: -0.024em;
@@ -76,7 +77,8 @@ h5 {
   }
 }
 h6 {
-  @apply font-normal text-tertiary-foreground mb-1;
+  /* HIG: Subheadline — Medium weight keeps heading distinction from body text */
+  @apply font-medium text-foreground mb-1;
   font-size: 15px;
   line-height: 1.33;
   letter-spacing: -0.016em;
@@ -118,7 +120,7 @@ ol:where(:not([class])) {
   @apply list-decimal pl-5 space-y-1.5;
 }
 blockquote {
-  @apply border-l-4 pl-5 py-2 text-tertiary-foreground;
+  @apply border-l-4 pl-5 py-2 text-secondary-foreground;
   border-color: var(--color-border-solid);
 }
 code {
@@ -168,7 +170,7 @@ pre {
   @apply rounded-[var(--radius-sm)] p-4 text-[13px] overflow-x-auto;
   line-height: 1.6;
   corner-shape: squircle;
-  background: var(--surface-2);
+  background: var(--surface-3);
   & > code {
     @apply bg-transparent p-0 rounded-none text-inherit;
     font: inherit;

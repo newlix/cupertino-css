@@ -40,7 +40,7 @@
       @apply text-primary pointer-events-none;
       background: oklch(from var(--color-primary) l c h / 0.12);
       .dark & {
-        background: oklch(from var(--color-primary) l c h / 0.16);
+        background: oklch(from var(--color-primary) l c h / 0.2);
       }
     }
     &:disabled,

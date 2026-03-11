@@ -54,7 +54,7 @@
   }
 }
 .avatar-sm {
-  @apply w-7 min-w-7 text-[11px];
+  @apply w-7 min-w-7 text-[12px];
 }
 .avatar-lg {
   @apply w-16 min-w-16 text-[25px];

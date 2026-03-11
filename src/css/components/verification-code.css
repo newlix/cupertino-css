@@ -61,7 +61,7 @@
     }
   }
   & > span {
-    @apply text-[15px] text-tertiary-foreground;
+    @apply text-[20px] text-tertiary-foreground;
   }
   @media (max-width: 374px) {
     @apply gap-1.5;

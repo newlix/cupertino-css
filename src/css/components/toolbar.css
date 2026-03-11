@@ -29,7 +29,7 @@
   & > a {
     @apply inline-flex items-center justify-center border-none cursor-pointer select-none;
     width: 36px;
-    height: 30px;
+    height: 32px;
     background: transparent;
     color: var(--color-foreground);
     transition: background-color var(--transition-fast) var(--apple-ease);
@@ -108,7 +108,7 @@
   flex: 1 1 auto;
 }
 .toolbar-title {
-  @apply font-semibold text-foreground;
+  @apply font-medium text-foreground;
   font-size: 13px;
   letter-spacing: -0.01em;
 }

@@ -86,8 +86,8 @@ dialog.action-sheet {
         color: var(--color-primary);
       }
       padding: 16px;
-      font-size: 1.25rem; /* 20px — rem scales with user font-size preference */
-      letter-spacing: -0.024em;
+      font-size: 1.0625rem; /* 17px — matches UIKit action sheet label size */
+      letter-spacing: -0.022em;
       font-family: inherit;
       text-decoration: none;
       transition: background-color var(--transition-fast) var(--apple-ease);
@@ -158,7 +158,8 @@ dialog.action-sheet {
   & .action-sheet-message {
     @apply text-tertiary-foreground;
     font-size: 13px;
-    margin-top: 2px;
+    line-height: 1.4;
+    margin-top: 4px;
     overflow-wrap: anywhere;
   }
 

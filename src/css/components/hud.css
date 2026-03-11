@@ -24,7 +24,7 @@
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   box-shadow: var(--shadow-xl), var(--float-ring);
-  animation: scaleIn var(--transition-normal) var(--apple-ease);
+  animation: scaleIn var(--transition-normal) var(--apple-spring);
   & svg:first-child {
     @apply size-12 shrink-0;
   }

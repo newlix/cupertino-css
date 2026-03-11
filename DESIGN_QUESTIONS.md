@@ -35,3 +35,15 @@
 - **Problem**: When sidebar opens as mobile overlay (`role="dialog"` + `aria-modal="true"`), focus moves to the first focusable element but there is no Tab key focus trap. Users can Tab past the sidebar into obscured page content. Dialog and action-sheet both implement focus trapping; sidebar does not.
 - **Options**: A) Add Tab-key focus trap (mirror dialog.js pattern) / B) Accept current behavior (sidebar is less modal than dialog)
 - **Status**: Not addressed (skipped) — significant JS addition
+
+## [src/css/components/sidebar.css]
+
+- **Problem**: Default `.sidebar` active state uses neutral gray (`surface-4`), while Apple macOS sidebars default to accent-colored (tinted) active row. The tinted variant requires opt-in via `data-tinted` attribute, inverting Apple's convention where tinted is default and neutral is the fallback.
+- **Options**: A) Make tinted the default, add `data-muted` modifier for neutral gray / B) Keep current behavior (neutral default is safer for brand-agnostic usage)
+- **Status**: Not addressed (skipped) — significant visual change to default component appearance
+
+## [src/css/components/gauge.css]
+
+- **Problem**: Gauge only supports a single `<span>` for the value display. Apple HIG gauges typically pair a value with a unit label or title below. No CSS provision for a stacked label (no flex-col, no gap, no second child selector).
+- **Options**: A) Add CSS support for a second child element (label/unit text) / B) Document as single-value only (users add external labels)
+- **Status**: Not addressed (skipped) — component API addition

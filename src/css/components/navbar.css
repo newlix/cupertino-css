@@ -30,6 +30,7 @@
     color: var(--color-foreground);
     justify-self: center;
     text-align: center;
+    transition: opacity var(--transition-fast) var(--apple-ease);
   }
 
   & > :last-child {

@@ -15,7 +15,7 @@
   }
 }
 .separator-label {
-  @apply flex items-center gap-2 my-4 text-[13px] text-tertiary-foreground;
+  @apply flex items-center gap-2 my-4 text-[13px] text-secondary-foreground;
   &::before,
   &::after {
     content: "";

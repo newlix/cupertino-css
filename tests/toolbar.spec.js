@@ -59,7 +59,7 @@ test.describe("Toolbar", () => {
     await expect(title).toBeVisible();
     await expect(title).toHaveText("Document.txt");
     const weight = await css(title, "fontWeight");
-    expect(parseInt(weight)).toBeGreaterThanOrEqual(600);
+    expect(parseInt(weight)).toBeGreaterThanOrEqual(500);
   });
 
   test("focus-visible shows outline ring on group button", async ({ page }) => {

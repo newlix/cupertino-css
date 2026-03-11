@@ -16,7 +16,8 @@
 
   /* Section headers */
   & h2 {
-    @apply px-2 pb-1 text-[13px] font-semibold uppercase tracking-widest;
+    @apply px-2 pb-1 text-[13px] font-semibold uppercase;
+    letter-spacing: 0.05em;
     margin: 0;
     color: var(--color-tertiary-foreground);
   }

@@ -44,7 +44,7 @@
     }
   }
   & [aria-current="page"] {
-    @apply font-medium text-foreground pointer-events-none;
+    @apply font-semibold text-foreground pointer-events-none;
   }
   /* Auto chevron separator — SVG mask for proper chevron glyph with color reactivity */
   & > :not(:first-child):not([aria-hidden="true"])::before {
