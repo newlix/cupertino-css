@@ -52,7 +52,7 @@
     const duration = window.matchMedia("(prefers-reduced-motion: reduce)")
       .matches
       ? 10
-      : 300;
+      : 200;
     dialog._asCloseTimer = setTimeout(finish, duration);
   }
 

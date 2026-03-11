@@ -12,16 +12,14 @@
     function getPanels() {
       return tabGroup.querySelectorAll(PANEL_SEL);
     }
-    const buttons = getButtons();
-    const panels = getPanels();
-
     function isDisabled(btn) {
       return btn.disabled || btn.getAttribute("aria-disabled") === "true";
     }
 
     // Set ARIA attributes
     const list =
-      tabGroup.querySelector("[data-tab-list]") || buttons[0]?.parentElement;
+      tabGroup.querySelector("[data-tab-list]") ||
+      getButtons()[0]?.parentElement;
     if (list) {
       list.setAttribute("role", "tablist");
       const orientation = list.getAttribute("data-orientation") || "horizontal";
@@ -54,7 +52,7 @@
       tabGroup._tabsResizeObserver = ro;
     }
 
-    buttons.forEach((btn) => {
+    getButtons().forEach((btn) => {
       if (!btn.id)
         btn.id = `tab-${Math.random().toString(36).substring(2, 11)}`;
       btn.setAttribute("role", "tab");
@@ -69,12 +67,15 @@
     });
 
     // Ensure at least one tab is keyboard-reachable when none is active
-    if (!Array.from(buttons).some((b) => b.getAttribute("tabindex") === "0")) {
-      const first = Array.from(buttons).find((b) => !isDisabled(b));
+    const initButtons = getButtons();
+    if (
+      !Array.from(initButtons).some((b) => b.getAttribute("tabindex") === "0")
+    ) {
+      const first = Array.from(initButtons).find((b) => !isDisabled(b));
       if (first) first.setAttribute("tabindex", "0");
     }
 
-    panels.forEach((panel) => {
+    getPanels().forEach((panel) => {
       if (!panel.id)
         panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
       panel.setAttribute("role", "tabpanel");
@@ -83,7 +84,7 @@
         panel.hasAttribute("data-active") ? "0" : "-1",
       );
       const panelTarget = panel.getAttribute("data-tab-panel");
-      const matchingBtn = Array.from(buttons).find(
+      const matchingBtn = Array.from(getButtons()).find(
         (b) => b.getAttribute("data-tab") === panelTarget,
       );
       if (matchingBtn) {
@@ -134,7 +135,7 @@
         : null;
     }
 
-    buttons.forEach((btn) => {
+    getButtons().forEach((btn) => {
       btn._tabClickHandler = () => {
         activate(btn);
       };
