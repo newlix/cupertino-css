@@ -42,7 +42,10 @@
         const lbl =
           stepper.getAttribute("aria-label") ||
           stepper.getAttribute("data-label");
-        if (lbl) display.setAttribute("aria-label", lbl);
+        if (lbl) {
+          display.setAttribute("aria-label", lbl);
+          stepper._stepperSetDisplayAriaLabel = true;
+        }
       }
     }
     if (decBtn && !decBtn.getAttribute("aria-label"))
@@ -147,7 +150,10 @@
       display.removeAttribute("aria-valuemin");
       display.removeAttribute("aria-valuemax");
       display.removeAttribute("aria-valuenow");
-      display.removeAttribute("aria-label");
+      if (stepper._stepperSetDisplayAriaLabel) {
+        display.removeAttribute("aria-label");
+        stepper._stepperSetDisplayAriaLabel = false;
+      }
       if (stepper._stepperKeyHandler)
         display.removeEventListener("keydown", stepper._stepperKeyHandler);
     }
