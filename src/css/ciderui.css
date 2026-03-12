@@ -334,8 +334,11 @@
   }
 
   /* Shared keyframes — deduplicated aliases:
-     scaleIn  = dialogShow, hudAppear  (opacity 0→1, scale 0.96→1)
-     fadeIn   = backdropFadeIn, segFadeIn (opacity 0→1) */
+     scaleIn         = dialogShow, hudAppear    (opacity 0→1, scale 0.96→1)
+     scaleOut        = dialogHide               (opacity 1→0, scale 1→0.96)
+     fadeIn          = backdropFadeIn, segFadeIn (opacity 0→1)
+     actionSheetShow = slide up from bottom
+     actionSheetHide = fade + slide down to bottom */
   @keyframes scaleIn {
     from {
       opacity: 0;
@@ -393,6 +396,26 @@
     }
     100% {
       transform: translateX(100%);
+    }
+  }
+
+  @keyframes actionSheetShow {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes actionSheetHide {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
     }
   }
 

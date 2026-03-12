@@ -1,23 +1,5 @@
 /* ========== ACTION SHEET ========== */
-@keyframes actionSheetShow {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes actionSheetHide {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-}
+/* Keyframes moved to ciderui.css @layer base (shared keyframes block) */
 
 dialog.action-sheet {
   position: fixed;

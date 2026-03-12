@@ -58,15 +58,24 @@
       panel.setAttribute("data-open", "");
       panel.setAttribute("role", "dialog");
       panel.setAttribute("aria-modal", "true");
+      // Accessible name for the dialog (required by ARIA spec)
+      const heading = panel.querySelector("h1, h2, h3, h4, h5, h6");
+      if (heading) {
+        if (!heading.id)
+          heading.id = `sidebar-title-${Math.random().toString(36).slice(2, 8)}`;
+        panel.setAttribute("aria-labelledby", heading.id);
+      } else if (!panel.getAttribute("aria-label")) {
+        panel.setAttribute("aria-label", "Navigation");
+      }
       if (overlay) overlay.setAttribute("data-open", "");
       btn.setAttribute("aria-expanded", "true");
       scrollLock.lock();
       document.addEventListener("keydown", btn._sidebarEscHandler);
       // Move focus into the panel for keyboard accessibility
-      const firstFocusable = panel.querySelector(
-        "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
-      );
-      if (firstFocusable) firstFocusable.focus();
+      const focusableInPanel = Array.from(
+        panel.querySelectorAll(FOCUSABLE),
+      ).filter(isVisible);
+      if (focusableInPanel.length) focusableInPanel[0].focus();
       // Focus trap — mirror dialog.js pattern
       btn._sidebarFocusTrap = function (e) {
         if (e.key !== "Tab") return;
@@ -101,6 +110,7 @@
       panel.removeAttribute("data-open");
       panel.removeAttribute("role");
       panel.removeAttribute("aria-modal");
+      panel.removeAttribute("aria-labelledby");
       if (overlay) overlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
       scrollLock.unlock();
@@ -162,6 +172,7 @@
       btn._sidebarPanel.removeAttribute("data-open");
       btn._sidebarPanel.removeAttribute("role");
       btn._sidebarPanel.removeAttribute("aria-modal");
+      btn._sidebarPanel.removeAttribute("aria-labelledby");
       if (btn._sidebarOverlay) btn._sidebarOverlay.removeAttribute("data-open");
       btn.setAttribute("aria-expanded", "false");
       scrollLock.unlock();

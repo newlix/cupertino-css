@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { join, extname, resolve } from "node:path";
 
 const dir = resolve(new URL("../site/", import.meta.url).pathname);
@@ -23,6 +23,8 @@ const server = createServer(async (req, res) => {
     }
     if (filePath.endsWith("/") || filePath === dir)
       filePath = join(filePath, "index.html");
+    const st = await stat(filePath).catch(() => null);
+    if (st?.isDirectory()) filePath = join(filePath, "index.html");
     const data = await readFile(filePath);
     res.writeHead(200, {
       "content-type": types[extname(filePath)] || "application/octet-stream",

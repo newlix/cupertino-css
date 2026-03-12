@@ -51,8 +51,11 @@
             set(v) {
               desc.set.call(this, v);
               this._sliderFromSetter = true;
-              update(this);
-              this._sliderFromSetter = false;
+              try {
+                update(this);
+              } finally {
+                this._sliderFromSetter = false;
+              }
             },
             configurable: true,
           });

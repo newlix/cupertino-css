@@ -228,9 +228,8 @@
         popover._tabDismiss = false;
       }
     };
-    popover.addEventListener("toggle", popover._toggleHandler);
-
-    // Detect DOM removal while open to clean up scroll/resize listeners and event handlers
+    // Detect DOM removal while open to clean up scroll/resize listeners and event handlers.
+    // Created before registering the toggle handler because the handler references it on open.
     if (popover._disconnectObserver) popover._disconnectObserver.disconnect();
     popover._disconnectObserver = new MutationObserver(() => {
       if (!popover.isConnected) {
@@ -256,6 +255,8 @@
         popover._popoverInit = false;
       }
     });
+
+    popover.addEventListener("toggle", popover._toggleHandler);
 
     // Escape key to close popover
     if (popover._escHandler) {

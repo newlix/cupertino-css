@@ -9,7 +9,7 @@
     let max = Number(stepper.getAttribute("data-max") ?? 100);
     if (Number.isNaN(max)) max = 100;
     let step = Number(stepper.getAttribute("data-step") ?? 1);
-    if (Number.isNaN(step)) step = 1;
+    if (Number.isNaN(step) || step <= 0) step = 1;
     let value = Number(stepper.getAttribute("data-value") ?? min);
     if (Number.isNaN(value)) value = min;
 
@@ -50,8 +50,18 @@
     if (incBtn && !incBtn.getAttribute("aria-label"))
       incBtn.setAttribute("aria-label", "Increase value");
 
+    // Decimal places from step to avoid floating-point accumulation (e.g. 0.1+0.1+0.1)
+    const stepDecimals = (function () {
+      const s = String(step);
+      const dot = s.indexOf(".");
+      return dot === -1 ? 0 : s.length - dot - 1;
+    })();
+
     function clamp(v) {
-      return Math.min(max, Math.max(min, v));
+      const clamped = Math.min(max, Math.max(min, v));
+      return stepDecimals > 0
+        ? parseFloat(clamped.toFixed(stepDecimals))
+        : clamped;
     }
 
     function updateUI() {
