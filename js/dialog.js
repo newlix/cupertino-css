@@ -142,6 +142,13 @@
         desc.id = `dlg-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", desc.id);
     }
+    // Fallback: ensure dialog always has an accessible name
+    if (
+      !dialog.getAttribute("aria-labelledby") &&
+      !dialog.getAttribute("aria-label")
+    ) {
+      dialog.setAttribute("aria-label", "Dialog");
+    }
     dialog.querySelectorAll(".dialog-close").forEach((btn) => {
       if (
         !btn.getAttribute("aria-label") &&
