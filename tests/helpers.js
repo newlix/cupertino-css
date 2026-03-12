@@ -63,10 +63,13 @@ export async function contrastBetween(locator1, prop1, locator2, prop2) {
         // Sentinel: set a known non-black color first to detect invalid inputs
         ctx.fillStyle = "#ff0000";
         ctx.fillStyle = color;
+        // getComputedStyle returns rgb() format; canvas normalizes to hex.
+        // Exempt all forms of pure red to avoid false positives on the sentinel.
         if (
           ctx.fillStyle === "#ff0000" &&
           color !== "#ff0000" &&
-          color !== "red"
+          color !== "red" &&
+          color !== "rgb(255, 0, 0)"
         )
           throw new Error("cssToRgb: unparseable color: " + color);
         ctx.fillRect(0, 0, 1, 1);

@@ -76,7 +76,7 @@
     const supportsScrollEnd = "onscrollend" in window;
 
     function onScrollSettle() {
-      const idx = Math.round(column.scrollTop / itemH);
+      const idx = Math.round(column.scrollTop / getItemHeight(picker));
       scrollToIndex(column, idx, false);
       selectIndex(column, idx, picker, colIndex);
     }
@@ -126,7 +126,7 @@
       }
       column.style.scrollSnapType = "";
       // Snap to nearest item
-      const idx = Math.round(column.scrollTop / itemH);
+      const idx = Math.round(column.scrollTop / getItemHeight(picker));
       scrollToIndex(column, idx, true);
     }
 
@@ -140,7 +140,7 @@
 
     // Keyboard navigation
     function onKeyDown(e) {
-      const currentIdx = Math.round(column.scrollTop / itemH);
+      const currentIdx = Math.round(column.scrollTop / getItemHeight(picker));
       let newIdx = currentIdx;
       if (e.key === "ArrowDown") {
         newIdx = Math.min(currentIdx + 1, items.length - 1);

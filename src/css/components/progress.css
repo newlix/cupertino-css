@@ -53,6 +53,8 @@ progress {
       var(--color-primary) 75%,
       transparent 100%
     );
+    /* Symmetric ease-in-out for smooth infinite looping — --apple-ease and
+       --apple-spring are asymmetric and produce a jarring loop seam. */
     animation: indeterminate 1.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
   @media (prefers-reduced-motion: reduce) {
