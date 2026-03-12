@@ -101,12 +101,12 @@
             pasting = true;
             try {
               fillFrom(i, v);
+              sync();
+              const nextIdx = Math.min(i + v.length, inputs.length - 1);
+              inputs[nextIdx].focus();
             } finally {
               pasting = false;
             }
-            sync();
-            const nextIdx = Math.min(i + v.length, inputs.length - 1);
-            inputs[nextIdx].focus();
             return;
           }
           input.value = v.slice(-1);

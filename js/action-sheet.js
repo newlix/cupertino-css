@@ -90,6 +90,13 @@
         message.id = `as-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", message.id);
     }
+    // Fallback: ensure dialog always has an accessible name
+    if (
+      !dialog.getAttribute("aria-labelledby") &&
+      !dialog.getAttribute("aria-label")
+    ) {
+      dialog.setAttribute("aria-label", "Action Sheet");
+    }
   }
 
   function trapFocus(dialog) {
