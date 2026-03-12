@@ -51,6 +51,7 @@
       { "label": "Switch", "href": "components/switch.html" },
       { "label": "Tab Bar", "href": "components/tab-bar.html" },
       { "label": "Table", "href": "components/table.html" },
+      { "label": "Tabs", "href": "components/tabs.html" },
       { "label": "Tag", "href": "components/tag.html" },
       { "label": "Text Field", "href": "components/text-field.html" },
       { "label": "Textarea", "href": "components/textarea.html" },

@@ -1,0 +1,131 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Tabs" %}
+{% set description = "Switch between mutually exclusive content panels via tabbed navigation." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>[data-tabs]</code></dt>
+    <dd>Container for the tab group. Activates <code>tabs.js</code> behavior.</dd>
+    <dt><code>[data-tab-list]</code></dt>
+    <dd>Optional wrapper for tab buttons. Falls back to the first button's parent element. Receives <code>role="tablist"</code>.</dd>
+    <dt><code>[data-tab="id"]</code></dt>
+    <dd>Tab button. The value links to a matching <code>[data-tab-panel]</code>.</dd>
+    <dt><code>[data-tab-panel="id"]</code></dt>
+    <dd>Content panel toggled by the active tab. Hidden when inactive.</dd>
+    <dt><code>[data-tab-indicator]</code></dt>
+    <dd>Optional sliding indicator positioned by JS (used by <a href="segmented-control.html">Segmented Control</a>).</dd>
+    <dt><code>[data-active]</code></dt>
+    <dd>Marks the initially active tab and panel.</dd>
+  </dl>
+
+  {% call example("Default") %}
+<div data-tabs>
+  <div data-tab-list class="flex gap-1 border-b border-border-solid pb-px">
+    <button data-tab="t1" data-active class="px-3 py-1.5 text-sm font-medium border-b-2 border-primary text-primary -mb-px">General</button>
+    <button data-tab="t2" class="px-3 py-1.5 text-sm text-tertiary-foreground hover:text-foreground border-b-2 border-transparent -mb-px">Notifications</button>
+    <button data-tab="t3" class="px-3 py-1.5 text-sm text-tertiary-foreground hover:text-foreground border-b-2 border-transparent -mb-px">Security</button>
+  </div>
+  <div data-tab-panel="t1" data-active>
+    <p class="py-4 text-sm text-tertiary-foreground">General settings content.</p>
+  </div>
+  <div data-tab-panel="t2">
+    <p class="py-4 text-sm text-tertiary-foreground">Notification preferences content.</p>
+  </div>
+  <div data-tab-panel="t3">
+    <p class="py-4 text-sm text-tertiary-foreground">Security settings content.</p>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("Disabled Tab") %}
+<div data-tabs>
+  <div data-tab-list class="flex gap-1 border-b border-border-solid pb-px">
+    <button data-tab="d1" data-active class="px-3 py-1.5 text-sm font-medium border-b-2 border-primary text-primary -mb-px">Active</button>
+    <button data-tab="d2" class="px-3 py-1.5 text-sm text-tertiary-foreground hover:text-foreground border-b-2 border-transparent -mb-px">Available</button>
+    <button data-tab="d3" disabled class="px-3 py-1.5 text-sm text-tertiary-foreground border-b-2 border-transparent -mb-px opacity-40 cursor-not-allowed">Locked</button>
+  </div>
+  <div data-tab-panel="d1" data-active>
+    <p class="py-4 text-sm text-tertiary-foreground">This tab is active. The "Locked" tab cannot be selected.</p>
+  </div>
+  <div data-tab-panel="d2">
+    <p class="py-4 text-sm text-tertiary-foreground">This tab is available.</p>
+  </div>
+  <div data-tab-panel="d3">
+    <p class="py-4 text-sm text-tertiary-foreground">This panel is unreachable.</p>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("Vertical") %}
+<div data-tabs class="flex gap-6">
+  <div data-tab-list data-orientation="vertical" class="flex flex-col gap-1 border-r border-border-solid pr-4 min-w-[120px]">
+    <button data-tab="v1" data-active class="px-3 py-1.5 text-sm font-medium text-left text-primary bg-primary/10 rounded-[var(--radius-sm)]">Profile</button>
+    <button data-tab="v2" class="px-3 py-1.5 text-sm text-left text-tertiary-foreground hover:text-foreground hover:bg-secondary/50 rounded-[var(--radius-sm)]">Account</button>
+    <button data-tab="v3" class="px-3 py-1.5 text-sm text-left text-tertiary-foreground hover:text-foreground hover:bg-secondary/50 rounded-[var(--radius-sm)]">Billing</button>
+  </div>
+  <div data-tab-panel="v1" data-active class="flex-1">
+    <p class="text-sm text-tertiary-foreground">Profile settings. Arrow Up/Down navigate tabs in vertical orientation.</p>
+  </div>
+  <div data-tab-panel="v2" class="flex-1">
+    <p class="text-sm text-tertiary-foreground">Account settings content.</p>
+  </div>
+  <div data-tab-panel="v3" class="flex-1">
+    <p class="text-sm text-tertiary-foreground">Billing information content.</p>
+  </div>
+</div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <p class="mt-2 text-[15px] text-tertiary-foreground">Tabs is a behavioral layer — it manages activation, ARIA attributes, and keyboard navigation. Visual styling is up to you (Tailwind utilities, custom CSS, or the <a href="segmented-control.html" class="text-primary hover:underline">Segmented Control</a> component).</p>
+    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+      <pre><code class="language-html">&lt;!-- npm --&gt;
+&lt;script src="node_modules/ciderui/js/tabs.js"&gt;&lt;/script&gt;
+
+&lt;!-- CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/tabs.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Keyboard</h2>
+    <div class="mt-3 overflow-hidden rounded-xl border border-border-solid">
+      <table>
+        <thead>
+          <tr><th>Key</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><kbd>Arrow Right</kbd> / <kbd>Arrow Left</kbd></td><td>Move to next / previous tab (horizontal orientation)</td></tr>
+          <tr><td><kbd>Arrow Down</kbd> / <kbd>Arrow Up</kbd></td><td>Move to next / previous tab (vertical orientation)</td></tr>
+          <tr><td><kbd>Home</kbd></td><td>Move to first tab</td></tr>
+          <tr><td><kbd>End</kbd></td><td>Move to last tab</td></tr>
+          <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activate focused tab</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Sets <code>role="tablist"</code>, <code>role="tab"</code>, and <code>role="tabpanel"</code> automatically.</li>
+      <li>Manages <code>aria-selected</code>, <code>aria-controls</code>, <code>aria-labelledby</code>, and <code>tabindex</code> roving focus.</li>
+      <li>Set <code>data-orientation="vertical"</code> on <code>[data-tab-list]</code> for vertical arrow key navigation.</li>
+      <li>Disabled tabs (<code>disabled</code> or <code>aria-disabled="true"</code>) are skipped during keyboard navigation.</li>
+    </ul>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">API</h2>
+    <dl>
+      <dt><code>CiderUI.tabs.init()</code></dt>
+      <dd>Scans the document for <code>[data-tabs]</code> elements and initializes them. Called automatically on DOMContentLoaded and <code>htmx:afterSettle</code>.</dd>
+      <dt><code>CiderUI.tabs.destroy(tabGroupElement)</code></dt>
+      <dd>Tears down event listeners and ARIA attributes for a specific tab group.</dd>
+    </dl>
+  </section>
+
+{% endblock %}
