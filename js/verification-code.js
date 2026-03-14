@@ -20,9 +20,14 @@
         );
       }
     });
-    if (!otp.getAttribute("role")) otp.setAttribute("role", "group");
-    if (!otp.getAttribute("aria-label"))
+    if (!otp.getAttribute("role")) {
+      otp.setAttribute("role", "group");
+      otp._vcSetRole = true;
+    }
+    if (!otp.getAttribute("aria-label")) {
       otp.setAttribute("aria-label", "Verification code");
+      otp._vcSetAriaLabel = true;
+    }
     const describedBy = otp.getAttribute("aria-describedby");
     if (describedBy) {
       const errorEl = document.getElementById(describedBy);
@@ -257,8 +262,14 @@
       input.removeAttribute("aria-label");
       input.removeAttribute("aria-invalid");
     });
-    otp.removeAttribute("role");
-    otp.removeAttribute("aria-label");
+    if (otp._vcSetRole) {
+      otp.removeAttribute("role");
+      otp._vcSetRole = false;
+    }
+    if (otp._vcSetAriaLabel) {
+      otp.removeAttribute("aria-label");
+      otp._vcSetAriaLabel = false;
+    }
     if (otp._vcSetAriaLive) {
       otp._vcSetAriaLive.removeAttribute("aria-live");
       otp._vcSetAriaLive = null;
