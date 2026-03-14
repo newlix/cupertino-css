@@ -28,6 +28,7 @@
       const errorEl = document.getElementById(describedBy);
       if (errorEl && !errorEl.getAttribute("aria-live")) {
         errorEl.setAttribute("aria-live", "polite");
+        otp._vcSetAriaLive = errorEl;
       }
     }
 
@@ -258,6 +259,10 @@
     });
     otp.removeAttribute("role");
     otp.removeAttribute("aria-label");
+    if (otp._vcSetAriaLive) {
+      otp._vcSetAriaLive.removeAttribute("aria-live");
+      otp._vcSetAriaLive = null;
+    }
     otp._vcInit = false;
   }
 

@@ -387,6 +387,7 @@
     );
     if (trigger) {
       trigger.popoverTargetElement = null;
+      trigger.popoverTargetAction = "";
       trigger.removeAttribute("aria-expanded");
       trigger.removeAttribute("aria-haspopup");
       trigger.removeAttribute("aria-controls");
