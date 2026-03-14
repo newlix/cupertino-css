@@ -161,10 +161,17 @@
     }
     const decBtn = stepper._stepperDecBtn;
     const incBtn = stepper._stepperIncBtn;
-    if (decBtn && stepper._stepperDecHandler)
-      decBtn.removeEventListener("click", stepper._stepperDecHandler);
-    if (incBtn && stepper._stepperIncHandler)
-      incBtn.removeEventListener("click", stepper._stepperIncHandler);
+    if (decBtn) {
+      if (stepper._stepperDecHandler)
+        decBtn.removeEventListener("click", stepper._stepperDecHandler);
+      decBtn.disabled = false;
+    }
+    if (incBtn) {
+      if (stepper._stepperIncHandler)
+        incBtn.removeEventListener("click", stepper._stepperIncHandler);
+      incBtn.disabled = false;
+    }
+    stepper.removeAttribute("role");
     if (stepper._stepperLinkedEl && stepper._stepperLinkedHandler) {
       stepper._stepperLinkedEl.removeEventListener(
         "input",

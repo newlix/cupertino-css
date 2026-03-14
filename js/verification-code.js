@@ -249,6 +249,15 @@
       if (hidden) hidden.remove();
       otp._vcCreatedHidden = false;
     }
+    otp.querySelectorAll('input:not([type="hidden"])').forEach((input) => {
+      input.removeAttribute("inputmode");
+      input.removeAttribute("pattern");
+      input.removeAttribute("autocomplete");
+      input.removeAttribute("aria-label");
+      input.removeAttribute("aria-invalid");
+    });
+    otp.removeAttribute("role");
+    otp.removeAttribute("aria-label");
     otp._vcInit = false;
   }
 

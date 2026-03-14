@@ -25,6 +25,7 @@
       const orientation = list.getAttribute("data-orientation") || "horizontal";
       list.setAttribute("aria-orientation", orientation);
     }
+    tabGroup._tabsList = list;
 
     // Create sliding indicator for segmented controls
     const indicator = list?.querySelector("[data-tab-indicator]");
@@ -197,13 +198,12 @@
       tabGroup._tabsResizeObserver.disconnect();
       tabGroup._tabsResizeObserver = null;
     }
-    const list =
-      tabGroup.querySelector("[data-tab-list]") ||
-      tabGroup.querySelector("[role='tablist']");
+    const list = tabGroup._tabsList;
     if (list) {
       list.removeAttribute("role");
       list.removeAttribute("aria-orientation");
     }
+    tabGroup._tabsList = null;
     tabGroup.querySelectorAll(TAB_SEL).forEach((btn) => {
       if (btn._tabClickHandler) {
         btn.removeEventListener("click", btn._tabClickHandler);

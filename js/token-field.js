@@ -105,6 +105,7 @@
     field._tokenFieldKeydown = null;
     field._tokenFieldRemove = null;
     field._tokenFieldInput = null;
+    field.removeAttribute("role");
     field._tokenFieldInit = false;
   }
 

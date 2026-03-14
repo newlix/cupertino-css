@@ -14,7 +14,7 @@
 }
 
 .stepper > button {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex items-center justify-center select-none;
   width: 47px;
   background: transparent;
   border: none;

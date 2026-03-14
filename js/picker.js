@@ -206,6 +206,10 @@
       }
       clearTimeout(col._pickerTimer);
       col._pickerTimer = null;
+      col.removeAttribute("role");
+      col.removeAttribute("tabindex");
+      col.removeAttribute("aria-label");
+      Array.from(col.children).forEach((item) => item.removeAttribute("role"));
     });
     picker._pickerInit = false;
   }

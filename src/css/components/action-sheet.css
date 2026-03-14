@@ -62,6 +62,7 @@ dialog.action-sheet {
       width: 100%;
       background: transparent;
       border: none;
+      user-select: none;
       cursor: pointer;
       color: var(--color-primary);
       &:visited {

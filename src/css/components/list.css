@@ -47,7 +47,7 @@
   }
   & > a,
   & > button {
-    @apply no-underline text-foreground cursor-pointer;
+    @apply no-underline text-foreground cursor-pointer select-none;
     &:visited {
       color: var(--color-foreground);
     }
