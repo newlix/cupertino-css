@@ -396,6 +396,12 @@
       popover._disconnectObserver = null;
     }
     popover._cleanupPositioning?.();
+    popover.style.top = "";
+    popover.style.left = "";
+    popover.style.margin = "";
+    popover.style.removeProperty("--popover-origin");
+    popover.style.removeProperty("--arrow-left");
+    popover.classList.remove("popover-flipped-top");
     clearTimeout(popover._typeAheadTimer);
     popover._typeAheadTimer = null;
     popover._typeAheadBuffer = "";

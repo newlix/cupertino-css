@@ -301,6 +301,8 @@
       dialog._asFocusTrapHandler = null;
     }
     clearCloseAnim(dialog);
+    dialog.removeAttribute("data-closing");
+    dialog.removeAttribute("aria-modal");
     if (dialog._asOpenWaitObs) {
       dialog._asOpenWaitObs.disconnect();
       dialog._asOpenWaitObs = null;

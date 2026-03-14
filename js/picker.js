@@ -209,7 +209,11 @@
       col.removeAttribute("role");
       col.removeAttribute("tabindex");
       col.removeAttribute("aria-label");
-      Array.from(col.children).forEach((item) => item.removeAttribute("role"));
+      Array.from(col.children).forEach((item) => {
+        item.removeAttribute("role");
+        item.removeAttribute("aria-selected");
+        item.removeAttribute("data-selected");
+      });
     });
     picker._pickerInit = false;
   }

@@ -25,6 +25,7 @@
     delete el.value;
     delete el.min;
     delete el.max;
+    el.style.removeProperty("--slider-value");
     el._sliderInit = false;
   }
 

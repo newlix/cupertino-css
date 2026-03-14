@@ -55,3 +55,9 @@ Items that need user decision before proceeding.
 - **問題描述**：`.picker-column` applies `mask-image` which creates a stacking context, while `.picker::after` (selection indicator) uses `z-index: 1`. The z-index layering between the masked column and the `::after` indicator is browser-dependent.
 - **可能的做法**：A) Add `isolation: isolate` to `.picker` to explicitly contain the stacking context / B) Leave as-is if current rendering is acceptable across target browsers
 - **目前狀態**：未處理（跳過）
+
+## [js/dialog.js, js/action-sheet.js — wireAria cleanup in destroy]
+
+- **問題描述**：`wireAria()` injects `aria-labelledby`, `aria-describedby`, `aria-label`, and random IDs onto child elements (headings, descriptions, close buttons), but `destroy()` never removes them. For the `dialog.js` close button, `aria-label="Close"` is set unconditionally when the button had none. These attributes persist after destroy if the element is reused (e.g. destroy + reinit cycle). The current approach works fine when elements are fully removed from the DOM (htmx cleanup).
+- **可能的做法**：A) Add tracking flags (e.g. `dialog._ciderSetLabelledBy`, `dialog._ciderSetLabel`) and clean them up in destroy, matching the pattern used in sidebar.js / B) Leave as-is since the guards in wireAria prevent duplicates and the attributes are semantically correct even after destroy
+- **目前狀態**：未處理（跳過）

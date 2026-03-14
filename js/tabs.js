@@ -219,7 +219,11 @@
       btn.removeAttribute("aria-controls");
     });
     const indicator = tabGroup.querySelector("[data-tab-indicator]");
-    if (indicator) indicator.style.opacity = "";
+    if (indicator) {
+      indicator.style.opacity = "";
+      indicator.style.width = "";
+      indicator.style.transform = "";
+    }
     tabGroup.querySelectorAll(PANEL_SEL).forEach((panel) => {
       panel.removeAttribute("role");
       panel.removeAttribute("tabindex");
