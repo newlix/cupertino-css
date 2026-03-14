@@ -16,7 +16,7 @@
 .tab-bar > a:any-link,
 .tab-bar > a:not(:any-link),
 .tab-bar > button {
-  @apply flex flex-col items-center justify-center flex-1 no-underline bg-transparent border-none cursor-pointer;
+  @apply flex flex-col items-center justify-center flex-1 no-underline bg-transparent border-none cursor-pointer select-none;
   gap: 2px;
   padding: 2px 0;
   color: var(--color-tertiary-foreground);

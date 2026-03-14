@@ -21,7 +21,7 @@
     });
   }
 
-  function selectIndex(column, index, picker, colIndex) {
+  function selectIndex(column, index, picker, colIndex, silent) {
     const items = column.children;
     const clamped = Math.max(0, Math.min(index, items.length - 1));
     for (let i = 0; i < items.length; i++) {
@@ -32,16 +32,18 @@
       items[clamped].setAttribute("data-selected", "");
       items[clamped].setAttribute("aria-selected", "true");
     }
-    picker.dispatchEvent(
-      new CustomEvent("change", {
-        bubbles: true,
-        detail: {
-          column: colIndex,
-          value: items[clamped] ? items[clamped].textContent : "",
-          index: clamped,
-        },
-      }),
-    );
+    if (!silent) {
+      picker.dispatchEvent(
+        new CustomEvent("change", {
+          bubbles: true,
+          detail: {
+            column: colIndex,
+            value: items[clamped] ? items[clamped].textContent : "",
+            index: clamped,
+          },
+        }),
+      );
+    }
   }
 
   function setupColumn(column, colIndex, picker) {
@@ -70,7 +72,7 @@
 
     // Scroll to initial position without animation
     scrollToIndex(column, initialIndex, false);
-    selectIndex(column, initialIndex, picker, colIndex);
+    selectIndex(column, initialIndex, picker, colIndex, true);
 
     // scrollend event with fallback debounce
     const supportsScrollEnd = "onscrollend" in window;

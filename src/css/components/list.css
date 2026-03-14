@@ -109,15 +109,12 @@
   box-shadow: var(--shadow-sm), var(--panel-ring);
   & > *:first-child {
     border-radius: var(--list-radius) var(--list-radius) 0 0;
-    corner-shape: squircle;
   }
   & > *:last-child {
     border-radius: 0 0 var(--list-radius) var(--list-radius);
-    corner-shape: squircle;
   }
   & > *:only-child {
     border-radius: var(--list-radius);
-    corner-shape: squircle;
   }
 }
 @media (forced-colors: active) {

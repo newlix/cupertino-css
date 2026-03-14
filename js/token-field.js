@@ -71,11 +71,7 @@
       if (e.key === "Enter" || e.key === ",") {
         e.preventDefault();
         addToken(field, input, input.value, tokenClass);
-      } else if (
-        e.key === "Backspace" &&
-        input.value === "" &&
-        input.selectionStart === 0
-      ) {
+      } else if (e.key === "Backspace" && input.value === "") {
         var tokens = field.querySelectorAll(".token");
         if (tokens.length) {
           tokens[tokens.length - 1].remove();

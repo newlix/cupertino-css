@@ -8,7 +8,7 @@
  */
 
 /* ─── Dark mode variant ─── */
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ─── CSS Variables ─── */
 :root {
@@ -256,7 +256,7 @@
 }
 
 /* ─── Theme tokens (register names for Tailwind utilities) ─── */
-@theme {
+@theme inline {
   --color-primary: var(--color-primary);
   --color-primary-hover: var(--color-primary-hover);
   --color-primary-active: var(--color-primary-active);

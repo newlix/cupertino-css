@@ -374,6 +374,17 @@
 
   function destroyPopover(popover) {
     if (!popover._popoverInit) return;
+    // Reset trigger attributes to prevent stale native popover wiring
+    const wrapper = popover.closest?.(".popover");
+    const trigger = wrapper?.querySelector(
+      "button:not([popover] button), a:not([popover] a)",
+    );
+    if (trigger) {
+      trigger.popoverTargetElement = null;
+      trigger.removeAttribute("aria-expanded");
+      trigger.removeAttribute("aria-haspopup");
+      trigger.removeAttribute("aria-controls");
+    }
     if (popover._disconnectObserver) {
       popover._disconnectObserver.disconnect();
       popover._disconnectObserver = null;

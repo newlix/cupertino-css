@@ -98,6 +98,10 @@
       fireChange();
     };
 
+    stepper._stepperDecBtn = decBtn;
+    stepper._stepperIncBtn = incBtn;
+    stepper._stepperDisplay = display;
+
     if (decBtn) decBtn.addEventListener("click", stepper._stepperDecHandler);
     if (incBtn) incBtn.addEventListener("click", stepper._stepperIncHandler);
 
@@ -141,9 +145,7 @@
 
   function destroy(stepper) {
     if (!stepper._stepperInit) return;
-    const display =
-      stepper.querySelector("[data-stepper-value]") ||
-      stepper.querySelector("output");
+    const display = stepper._stepperDisplay;
     if (display) {
       display.removeAttribute("role");
       display.removeAttribute("tabindex");
@@ -157,8 +159,8 @@
       if (stepper._stepperKeyHandler)
         display.removeEventListener("keydown", stepper._stepperKeyHandler);
     }
-    const decBtn = stepper.querySelector("[data-stepper-decrement]");
-    const incBtn = stepper.querySelector("[data-stepper-increment]");
+    const decBtn = stepper._stepperDecBtn;
+    const incBtn = stepper._stepperIncBtn;
     if (decBtn && stepper._stepperDecHandler)
       decBtn.removeEventListener("click", stepper._stepperDecHandler);
     if (incBtn && stepper._stepperIncHandler)
@@ -174,6 +176,9 @@
     stepper._stepperLinkedHandler = null;
     stepper._stepperLinkedEl = null;
     stepper._stepperKeyHandler = null;
+    stepper._stepperDecBtn = null;
+    stepper._stepperIncBtn = null;
+    stepper._stepperDisplay = null;
     stepper._stepperInit = false;
   }
 

@@ -54,6 +54,7 @@
     }
 
     function open() {
+      if (isOpen()) return;
       btn._sidebarPreviousFocus = document.activeElement;
       panel.setAttribute("data-open", "");
       panel.setAttribute("role", "dialog");
@@ -238,6 +239,5 @@
     (el.querySelectorAll?.("[data-sidebar-toggle]") || []).forEach(destroy);
   });
 
-  window.CiderUI = window.CiderUI || {};
   window.CiderUI.sidebar = { init, destroy };
 })();

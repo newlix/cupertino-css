@@ -601,6 +601,8 @@ label {
     @apply cursor-not-allowed;
     opacity: 0.38;
     & > input {
+      /* Label wrapper already applies opacity:0.38 — reset child input to avoid
+         compounding to ~0.14 (input's own :disabled rule also sets 0.38). */
       opacity: 1;
     }
   }

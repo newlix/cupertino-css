@@ -1,43 +1,57 @@
-# REFACTOR_QUESTIONS.md
+# Refactor Questions
 
-## [js/dialog.js, js/action-sheet.js, js/sidebar.js]
+Items that need user decision before proceeding.
 
-- **Problem**: `_scrollLock` object is copy-pasted verbatim across all three files (~20 lines each). Any bug fix must be manually applied to all three copies.
-- **Possible approaches**: A) Extract to a shared `js/scroll-lock.js` loaded before the others. B) Keep as-is since the project has a "no build step" philosophy and the duplication is small.
-- **Status**: Unresolved (skipped)
+## [src/css/components/disclosure-group.css, list.css, navbar.css, hud.css, gauge.css]
 
-## [src/css/components/button.css, src/css/components/popover.css]
-
-- **Problem**: Tooltip z-index (z-40) is below popover z-index (z-50). A tooltip on a button adjacent to an open popover will be visually buried. Z-index hierarchy across overlay components is implicit and undocumented.
-- **Possible approaches**: A) Raise tooltip to z-[60] so it always appears above popovers. B) Add CSS custom properties `--z-tooltip`, `--z-popover`, `--z-hud` for a documented, overridable hierarchy. C) Keep current values if tooltips-inside-popovers is the only supported pattern.
-- **Status**: Unresolved (skipped)
-
-## [docs/index.njk, docs/_includes/layout.njk]
-
-- **Problem**: Theme-toggle JavaScript is duplicated (~10 lines each) with different element selectors (`#theme-toggle` vs `.docs-theme-toggle`). Highlight.js CDN URLs also appear in 3 places.
-- **Possible approaches**: A) Extract toggle logic into `snippet.js` (already shared). B) Keep separate since index.njk is a standalone page with different structure.
-- **Status**: Unresolved (skipped)
-
-## [docs/_data/nav.json]
-
-- **Problem**: No "Tabs" component doc page despite `tabs.js` being a global interactive JS file. Segmented Control page partially covers the `[data-tab]` pattern but doesn't document `tabs.js` explicitly.
-- **Possible approaches**: A) Add a `docs/components/tabs.njk` page. B) Add a JS/Usage section to `segmented-control.njk` documenting `tabs.js`.
-- **Status**: Unresolved (skipped)
-
-## [js/picker.js]
-
-- **Problem**: `itemH` is captured once at setup time via `getItemHeight()` and closed over by `onScrollSettle` and keyboard handlers. If `--picker-item-h` CSS property changes after init (responsive breakpoint, theme switch), scroll-to-index calculations use stale height.
-- **Possible approaches**: A) Call `getItemHeight()` fresh in `onScrollSettle` and `onKeyDown` instead of using the closed-over value. B) Keep as-is if CSS property changes after init are not a supported use case.
-- **Status**: Unresolved (skipped)
+- **問題描述**：`@media (forced-colors: active)` blocks are at the top level of these component files instead of nested inside the component selector (using `&`). Other files like `dialog.css`, `picker.css`, `pagination.css` correctly nest them. While the `@scope` import context still applies, the inconsistency makes the architecture fragile — any future refactor moving files outside the `@scope` wrapper would cause forced-colors styles to leak globally.
+- **可能的做法**：A) Move all top-level forced-colors blocks into their parent component selector using `&` nesting (matches dialog/picker pattern) / B) Leave as-is since `@scope` import handles it correctly today
+- **目前狀態**：未處理（跳過）
 
 ## [src/css/components/progress.css]
 
-- **Problem**: Indeterminate progress bar uses hardcoded `cubic-bezier(0.65, 0, 0.35, 1)` instead of a shared easing token. This is intentionally different from `--apple-ease`/`--apple-spring` (symmetric ease-in-out suits looping animations) but lacks a comment explaining the choice.
-- **Possible approaches**: A) Add a comment explaining why. B) Extract to a `--apple-loop` token for overridability.
-- **Status**: Unresolved (skipped)
+- **問題描述**：`progress-indeterminate` `::after` pseudo-element uses `width: 100%` but the keyframe sweeps `translateX(-100%)` to `translateX(100%)`, producing a visual gap at the loop seam. The `prefers-reduced-motion` fallback uses a static 40% width bar, suggesting the animated bar should also be narrower.
+- **可能的做法**：A) Change `::after` to `width: 40%` and adjust keyframe range to cover the full track / B) Keep current width but adjust keyframe timing to eliminate the gap / C) Intentional design — leave as-is
+- **目前狀態**：未處理（跳過）
 
-## [tests/helpers.js]
+## [src/css/components/slider.css]
 
-- **Problem**: `cssToRgb` canvas sentinel may fail for `oklch()` color values returned by `getComputedStyle` in Chromium. Canvas 2D `fillStyle` doesn't accept oklch, causing all such colors to be flagged as "unparseable". Tailwind CSS v4 uses oklch by default.
-- **Possible approaches**: A) Resolve colors via a DOM element's `getComputedStyle` (which canonicalizes oklch to rgb) before passing to the canvas. B) Keep as-is if current Playwright Chromium version still returns hex/rgb from getComputedStyle.
-- **Status**: Unresolved (needs investigation)
+- **問題描述**：`slider.css` is the only component that defines dark-mode custom property overrides locally with `.dark &` instead of using the global `:root`/`.dark` token system in `ciderui.css`. This creates an architectural inconsistency — `--slider-thumb-shadow*` tokens could be promoted to the global system.
+- **可能的做法**：A) Move `--slider-thumb-shadow`, `--slider-thumb-shadow-hover`, `--slider-thumb` to global `:root`/`.dark` blocks in `ciderui.css` / B) Leave as local tokens since they're slider-specific
+- **目前狀態**：未處理（跳過）
+
+## [js/popover.js — double-rAF on initial show]
+
+- **問題描述**：`positionPopover` reads `offsetWidth`/`offsetHeight` in its first `requestAnimationFrame` call after `showPopover()`. For top-layer elements, the first rAF may run before the browser has completed layout, potentially returning 0×0 dimensions and causing incorrect initial positioning (popover flashes at wrong position).
+- **可能的做法**：A) Use double-rAF (`requestAnimationFrame(() => requestAnimationFrame(positionPopover))`) for the initial call only / B) Leave as single rAF if no visual issues have been observed
+- **目前狀態**：未處理（跳過）
+
+## [js/popover.js — `popover-flipped-top` class logic]
+
+- **問題描述**：`popover-flipped-top` is only toggled when auto-flipping (`isFlippedTop && !wrapper.classList.contains("popover-top")`). When the user explicitly sets `popover-top`, the class is NOT applied. If `popover-flipped-top` drives any CSS (arrow direction, animation origin), it would be absent for explicit top placement.
+- **可能的做法**：A) Apply `popover-flipped-top` unconditionally when `isFlippedTop` is true / B) Intentional — explicit `popover-top` uses different CSS than auto-flipped top
+- **目前狀態**：未處理（跳過）
+
+## [js/hud.js — SVG sanitiser href allowlist]
+
+- **問題描述**：The href sanitiser regex `!/^(https?:|#|\/[^/])/.test(val)` allows single-slash relative paths, which could in theory match constructed values like `/\x00javascript:...`. The risk is extremely low in practice (browser SVG href context does not execute JS), but the sanitiser's intent is an allowlist.
+- **可能的做法**：A) Tighten to strict allowlist (`/^(https?:\/\/|#|data:image\/)/.test(val)`) / B) Strip all href/xlink:href unconditionally since cider icons don't need them / C) Leave as-is given negligible real-world risk
+- **目前狀態**：未處理（跳過）
+
+## [src/css/components/gauge.css]
+
+- **問題描述**：`.gauge-sm` and `.gauge-lg` size modifiers are standalone selectors that set `width`/`height` but silently depend on `.gauge`'s `display: inline-flex` to render correctly. A user applying `.gauge-sm` without `.gauge` would get no visual effect.
+- **可能的做法**：A) Nest size variants under `.gauge` as `&.gauge-sm` / B) Add a comment documenting the dependency / C) Leave as-is — matches the project's modifier class convention
+- **目前狀態**：未處理（跳過）
+
+## [src/css/components/dialog.css]
+
+- **問題描述**：`.dialog-close:hover` has no forced-colors outline, inconsistent with all other interactive hover states that receive `outline: 1px solid ButtonText` in HCM. The hover state is invisible in Windows High Contrast Mode.
+- **可能的做法**：A) Add `outline: 1px solid ButtonText; outline-offset: -1px` for `.dialog-close:hover` in the forced-colors block / B) Leave as-is since the close button is still visible via its icon
+- **目前狀態**：未處理（跳過）
+
+## [src/css/components/picker.css]
+
+- **問題描述**：`.picker-column` applies `mask-image` which creates a stacking context, while `.picker::after` (selection indicator) uses `z-index: 1`. The z-index layering between the masked column and the `::after` indicator is browser-dependent.
+- **可能的做法**：A) Add `isolation: isolate` to `.picker` to explicitly contain the stacking context / B) Leave as-is if current rendering is acceptable across target browsers
+- **目前狀態**：未處理（跳過）

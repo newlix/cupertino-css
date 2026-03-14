@@ -73,6 +73,7 @@
     @media (pointer: coarse), (hover: none) {
       & input:not([type="hidden"]) {
         min-width: 40px;
+        min-height: 48px;
       }
     }
   }
