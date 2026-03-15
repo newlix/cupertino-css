@@ -76,38 +76,36 @@
   & > :is(a, button) {
     @apply gap-0.5;
   }
-}
 
-@media (pointer: coarse), (hover: none) {
-  .navbar :is(button, a) {
-    min-height: 44px;
-    min-width: 44px;
+  @media (pointer: coarse), (hover: none) {
+    & :is(button, a) {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
-}
 
-@media (forced-colors: active) {
-  .navbar {
+  @media (forced-colors: active) {
     border-bottom: 1px solid ButtonText;
     background: Canvas;
     backdrop-filter: none;
-  }
-  .navbar :is(button, a) {
-    color: LinkText;
-    &:hover {
-      outline: 1px solid ButtonText;
-      outline-offset: -1px;
+    & :is(button, a) {
+      color: LinkText;
+      &:hover {
+        outline: 1px solid ButtonText;
+        outline-offset: -1px;
+      }
+      &:focus-visible {
+        outline: 2px solid Highlight;
+        box-shadow: none;
+      }
+      &:disabled,
+      &[aria-disabled="true"] {
+        color: GrayText;
+        opacity: 1;
+      }
     }
-    &:focus-visible {
-      outline: 2px solid Highlight;
-      box-shadow: none;
+    & > :nth-child(2) {
+      color: CanvasText;
     }
-    &:disabled,
-    &[aria-disabled="true"] {
-      color: GrayText;
-      opacity: 1;
-    }
-  }
-  .navbar > :nth-child(2) {
-    color: CanvasText;
   }
 }

@@ -94,6 +94,28 @@
       background: oklch(from var(--color-primary) l c h / 0.3);
     }
   }
+  @media (forced-colors: active) {
+    & > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
+    & > a:focus-visible,
+    & > button:focus-visible {
+      outline: 2px solid Highlight;
+    }
+    & > :is(a, button):is(:disabled, [aria-disabled="true"]) {
+      color: GrayText;
+      opacity: 1;
+    }
+    & > * + *::before {
+      background: ButtonText;
+    }
+    & > :is([data-selected], [aria-selected="true"]) {
+      background: Highlight;
+      color: HighlightText;
+      outline: 2px solid Highlight;
+    }
+  }
 }
 /* Separator flush with content edge for lists without icons */
 .list-plain {
@@ -116,30 +138,8 @@
   & > *:only-child {
     border-radius: var(--list-radius);
   }
-}
-@media (forced-colors: active) {
-  .list-inset-grouped {
+  @media (forced-colors: active) {
     border: 1px solid ButtonText;
     box-shadow: none;
-  }
-  .list > :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
-    outline: 1px solid ButtonText;
-    outline-offset: -1px;
-  }
-  .list > a:focus-visible,
-  .list > button:focus-visible {
-    outline: 2px solid Highlight;
-  }
-  .list > :is(a, button):is(:disabled, [aria-disabled="true"]) {
-    color: GrayText;
-    opacity: 1;
-  }
-  .list > * + *::before {
-    background: ButtonText;
-  }
-  .list > :is([data-selected], [aria-selected="true"]) {
-    background: Highlight;
-    color: HighlightText;
-    outline: 2px solid Highlight;
   }
 }

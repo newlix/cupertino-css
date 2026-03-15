@@ -25,9 +25,23 @@
     font-variant-numeric: tabular-nums;
     color: var(--color-foreground);
   }
+  @media (forced-colors: active) {
+    border: 2px solid CanvasText;
+    border-radius: 50%;
+    &::before {
+      forced-color-adjust: none;
+      background: conic-gradient(
+        from -90deg,
+        Highlight calc(var(--gauge-value, 0) * 360deg),
+        Canvas calc(var(--gauge-value, 0) * 360deg)
+      );
+      -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+      mask: radial-gradient(circle, transparent 60%, black 61%);
+    }
+  }
 }
 
-/* Size variants */
+/* Size variants — require .gauge on the same element for display:inline-flex */
 .gauge-sm {
   width: 40px;
   height: 40px;
@@ -52,22 +66,4 @@
 }
 .gauge-destructive {
   --gauge-color: var(--color-destructive);
-}
-
-/* Forced colors */
-@media (forced-colors: active) {
-  .gauge {
-    border: 2px solid CanvasText;
-    border-radius: 50%;
-    &::before {
-      forced-color-adjust: none;
-      background: conic-gradient(
-        from -90deg,
-        Highlight calc(var(--gauge-value, 0) * 360deg),
-        Canvas calc(var(--gauge-value, 0) * 360deg)
-      );
-      -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
-      mask: radial-gradient(circle, transparent 60%, black 61%);
-    }
-  }
 }

@@ -137,6 +137,10 @@ dialog.dialog {
     & .dialog-close {
       border: 1px solid ButtonText;
     }
+    & .dialog-close:hover:not(:disabled):not([aria-disabled="true"]) {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
     & .dialog-close:focus-visible {
       outline: 2px solid Highlight;
       box-shadow: none;

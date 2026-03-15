@@ -81,10 +81,9 @@
           if (name.startsWith("on") || name === "style") {
             el.removeAttribute(attr.name);
           } else if (name === "href" || name === "xlink:href") {
-            const val = attr.value.replace(/\s/g, "").toLowerCase();
-            if (val !== "" && !/^(https?:|#|\/[^/])/.test(val)) {
-              el.removeAttribute(attr.name);
-            }
+            /* All elements that use href (<a>, <use>, <image>) are already
+               in DANGEROUS_ELEMENTS — remaining elements don't need href. */
+            el.removeAttribute(attr.name);
           }
         }
       });

@@ -61,21 +61,19 @@
       padding-bottom: 1rem;
     }
   }
-}
-@media (forced-colors: active) {
-  .disclosure-group {
+  @media (forced-colors: active) {
     border: 1px solid ButtonText;
     box-shadow: none;
-  }
-  .disclosure-group > details + details {
-    border-top-color: ButtonText;
-  }
-  .disclosure-group > details > summary:hover {
-    outline: 1px solid ButtonText;
-    outline-offset: -1px;
-  }
-  .disclosure-group > details > summary:focus-visible {
-    outline: 2px solid Highlight;
-    box-shadow: none;
+    & > details + details {
+      border-top-color: ButtonText;
+    }
+    & > details > summary:hover {
+      outline: 1px solid ButtonText;
+      outline-offset: -1px;
+    }
+    & > details > summary:focus-visible {
+      outline: 2px solid Highlight;
+      box-shadow: none;
+    }
   }
 }

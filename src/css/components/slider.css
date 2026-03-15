@@ -3,7 +3,9 @@
   @apply block w-full cursor-pointer appearance-none rounded-full;
   outline: none;
   --slider-value: 0%;
-  /* Thumb shadow tokens — define once, override in dark mode */
+  /* Thumb shadow tokens — local to .slider because they use complex oklch()
+     shadow values that differ between light/dark, unlike simple color swaps.
+     Not worth promoting to global :root/.dark token system. */
   --slider-thumb-shadow:
     0 0.5px 2px oklch(0 0 0 / 0.18), 0 0 0 0.5px oklch(0 0 0 / 0.1);
   --slider-thumb-shadow-hover:
