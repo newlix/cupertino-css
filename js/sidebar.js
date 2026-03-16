@@ -62,8 +62,10 @@
       // Accessible name for the dialog (required by ARIA spec)
       const heading = panel.querySelector("h1, h2, h3, h4, h5, h6");
       if (heading) {
-        if (!heading.id)
+        if (!heading.id) {
           heading.id = `sidebar-title-${Math.random().toString(36).slice(2, 8)}`;
+          btn._sidebarHeadingIdInjected = heading;
+        }
         panel.setAttribute("aria-labelledby", heading.id);
         btn._sidebarSetAriaLabelledBy = true;
       } else if (!panel.getAttribute("aria-label")) {
@@ -116,6 +118,10 @@
       if (btn._sidebarSetAriaLabelledBy) {
         panel.removeAttribute("aria-labelledby");
         btn._sidebarSetAriaLabelledBy = false;
+      }
+      if (btn._sidebarHeadingIdInjected) {
+        btn._sidebarHeadingIdInjected.removeAttribute("id");
+        btn._sidebarHeadingIdInjected = null;
       }
       if (btn._sidebarSetAriaLabel) {
         panel.removeAttribute("aria-label");
@@ -182,12 +188,20 @@
       btn._sidebarPanel.removeAttribute("data-open");
       btn._sidebarPanel.removeAttribute("role");
       btn._sidebarPanel.removeAttribute("aria-modal");
-      if (btn._sidebarSetAriaLabelledBy)
+      if (btn._sidebarSetAriaLabelledBy) {
         btn._sidebarPanel.removeAttribute("aria-labelledby");
-      if (btn._sidebarSetAriaLabel)
+        btn._sidebarSetAriaLabelledBy = false;
+      }
+      if (btn._sidebarHeadingIdInjected) {
+        btn._sidebarHeadingIdInjected.removeAttribute("id");
+        btn._sidebarHeadingIdInjected = null;
+      }
+      if (btn._sidebarSetAriaLabel) {
         btn._sidebarPanel.removeAttribute("aria-label");
+        btn._sidebarSetAriaLabel = false;
+      }
       if (btn._sidebarOverlay) btn._sidebarOverlay.removeAttribute("data-open");
-      btn.setAttribute("aria-expanded", "false");
+      btn.removeAttribute("aria-expanded");
       scrollLock.unlock();
     }
     if (btn._sidebarEscHandler) {

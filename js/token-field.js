@@ -54,7 +54,10 @@
     var tokenClass = field.getAttribute("data-token-class") || "";
 
     // ARIA — role="group" (not listbox — tokens are created items, not selectable options)
-    field.setAttribute("role", "group");
+    if (!field.hasAttribute("role")) {
+      field.setAttribute("role", "group");
+      field._tokenFieldSetRole = true;
+    }
     field.querySelectorAll(".token").forEach(function (t) {
       if (!t.dataset.value)
         t.dataset.value = t.firstChild ? t.firstChild.textContent.trim() : "";
@@ -105,7 +108,10 @@
     field._tokenFieldKeydown = null;
     field._tokenFieldRemove = null;
     field._tokenFieldInput = null;
-    field.removeAttribute("role");
+    if (field._tokenFieldSetRole) {
+      field.removeAttribute("role");
+      field._tokenFieldSetRole = false;
+    }
     field._tokenFieldInit = false;
   }
 
