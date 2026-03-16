@@ -84,11 +84,13 @@
       if (!title.id)
         title.id = `as-title-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-labelledby", title.id);
+      dialog._asSetAriaLabelledBy = true;
     }
     if (message && !dialog.getAttribute("aria-describedby")) {
       if (!message.id)
         message.id = `as-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", message.id);
+      dialog._asSetAriaDescribedBy = true;
     }
     // Fallback: ensure dialog always has an accessible name
     if (
@@ -96,6 +98,7 @@
       !dialog.getAttribute("aria-label")
     ) {
       dialog.setAttribute("aria-label", "Action Sheet");
+      dialog._asSetAriaLabel = true;
     }
   }
 
@@ -303,6 +306,18 @@
     clearCloseAnim(dialog);
     dialog.removeAttribute("data-closing");
     dialog.removeAttribute("aria-modal");
+    if (dialog._asSetAriaLabelledBy) {
+      dialog.removeAttribute("aria-labelledby");
+      dialog._asSetAriaLabelledBy = false;
+    }
+    if (dialog._asSetAriaDescribedBy) {
+      dialog.removeAttribute("aria-describedby");
+      dialog._asSetAriaDescribedBy = false;
+    }
+    if (dialog._asSetAriaLabel) {
+      dialog.removeAttribute("aria-label");
+      dialog._asSetAriaLabel = false;
+    }
     if (dialog._asOpenWaitObs) {
       dialog._asOpenWaitObs.disconnect();
       dialog._asOpenWaitObs = null;

@@ -54,8 +54,10 @@
     }
 
     getButtons().forEach((btn) => {
-      if (!btn.id)
+      if (!btn.id) {
         btn.id = `tab-${Math.random().toString(36).substring(2, 11)}`;
+        btn._tabInjectedId = true;
+      }
       btn.setAttribute("role", "tab");
       const isActive = btn.hasAttribute("data-active");
       btn.setAttribute("aria-selected", isActive ? "true" : "false");
@@ -77,8 +79,10 @@
     }
 
     getPanels().forEach((panel) => {
-      if (!panel.id)
+      if (!panel.id) {
         panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
+        panel._tabInjectedId = true;
+      }
       panel.setAttribute("role", "tabpanel");
       panel.setAttribute(
         "tabindex",
@@ -217,6 +221,10 @@
       btn.removeAttribute("aria-selected");
       btn.removeAttribute("tabindex");
       btn.removeAttribute("aria-controls");
+      if (btn._tabInjectedId) {
+        btn.removeAttribute("id");
+        btn._tabInjectedId = false;
+      }
     });
     const indicator = tabGroup.querySelector("[data-tab-indicator]");
     if (indicator) {
@@ -228,6 +236,10 @@
       panel.removeAttribute("role");
       panel.removeAttribute("tabindex");
       panel.removeAttribute("aria-labelledby");
+      if (panel._tabInjectedId) {
+        panel.removeAttribute("id");
+        panel._tabInjectedId = false;
+      }
     });
     tabGroup._tabsInit = false;
   }

@@ -136,11 +136,13 @@
       if (!heading.id)
         heading.id = `dlg-title-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-labelledby", heading.id);
+      dialog._dlgSetAriaLabelledBy = true;
     }
     if (desc && !dialog.getAttribute("aria-describedby")) {
       if (!desc.id)
         desc.id = `dlg-desc-${Math.random().toString(36).slice(2, 8)}`;
       dialog.setAttribute("aria-describedby", desc.id);
+      dialog._dlgSetAriaDescribedBy = true;
     }
     // Fallback: ensure dialog always has an accessible name
     if (
@@ -148,6 +150,7 @@
       !dialog.getAttribute("aria-label")
     ) {
       dialog.setAttribute("aria-label", "Dialog");
+      dialog._dlgSetAriaLabel = true;
     }
     dialog.querySelectorAll(".dialog-close").forEach((btn) => {
       if (
@@ -155,6 +158,7 @@
         !btn.getAttribute("aria-labelledby")
       ) {
         btn.setAttribute("aria-label", "Close");
+        btn._dlgSetAriaLabel = true;
       }
     });
   }
@@ -307,6 +311,24 @@
     clearCloseAnim(dialog);
     dialog.removeAttribute("data-closing");
     dialog.removeAttribute("aria-modal");
+    if (dialog._dlgSetAriaLabelledBy) {
+      dialog.removeAttribute("aria-labelledby");
+      dialog._dlgSetAriaLabelledBy = false;
+    }
+    if (dialog._dlgSetAriaDescribedBy) {
+      dialog.removeAttribute("aria-describedby");
+      dialog._dlgSetAriaDescribedBy = false;
+    }
+    if (dialog._dlgSetAriaLabel) {
+      dialog.removeAttribute("aria-label");
+      dialog._dlgSetAriaLabel = false;
+    }
+    dialog.querySelectorAll(".dialog-close").forEach((btn) => {
+      if (btn._dlgSetAriaLabel) {
+        btn.removeAttribute("aria-label");
+        btn._dlgSetAriaLabel = false;
+      }
+    });
     if (dialog._openWaitObs) {
       dialog._openWaitObs.disconnect();
       dialog._openWaitObs = null;

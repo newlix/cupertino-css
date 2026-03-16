@@ -48,10 +48,14 @@
         }
       }
     }
-    if (decBtn && !decBtn.getAttribute("aria-label"))
+    if (decBtn && !decBtn.getAttribute("aria-label")) {
       decBtn.setAttribute("aria-label", "Decrease value");
-    if (incBtn && !incBtn.getAttribute("aria-label"))
+      stepper._stepperSetDecAriaLabel = true;
+    }
+    if (incBtn && !incBtn.getAttribute("aria-label")) {
       incBtn.setAttribute("aria-label", "Increase value");
+      stepper._stepperSetIncAriaLabel = true;
+    }
 
     // Decimal places from step to avoid floating-point accumulation (e.g. 0.1+0.1+0.1)
     const stepDecimals = (function () {
@@ -164,11 +168,19 @@
     if (decBtn) {
       if (stepper._stepperDecHandler)
         decBtn.removeEventListener("click", stepper._stepperDecHandler);
+      if (stepper._stepperSetDecAriaLabel) {
+        decBtn.removeAttribute("aria-label");
+        stepper._stepperSetDecAriaLabel = false;
+      }
       decBtn.disabled = false;
     }
     if (incBtn) {
       if (stepper._stepperIncHandler)
         incBtn.removeEventListener("click", stepper._stepperIncHandler);
+      if (stepper._stepperSetIncAriaLabel) {
+        incBtn.removeAttribute("aria-label");
+        stepper._stepperSetIncAriaLabel = false;
+      }
       incBtn.disabled = false;
     }
     stepper.removeAttribute("role");
