@@ -379,7 +379,7 @@
   );
   --hud-background: oklch(0.14 0 0 / 0.85);
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
-  --tooltip-text: var(--hud-text);
+  --tooltip-text: oklch(0.95 0 0);
   --avatar-bg: oklch(0.27 0.006 286);
   --avatar-fg: oklch(0.7 0.006 286);
   --segmented-active: oklch(
