@@ -127,9 +127,10 @@
         activePointerId = null;
       }
       column.style.scrollSnapType = "";
-      // Snap to nearest item
+      // Snap to nearest item and update selection
       const idx = Math.round(column.scrollTop / getItemHeight(picker));
       scrollToIndex(column, idx, true);
+      selectIndex(column, idx, picker, colIndex);
     }
 
     column._pickerPointerDown = onMouseDown;

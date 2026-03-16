@@ -209,6 +209,7 @@
   &:focus-visible::after {
     opacity: 1;
     translate: -50% 0;
+    transition-delay: 0s;
   }
   @media (prefers-reduced-motion: reduce) {
     &:hover::after {

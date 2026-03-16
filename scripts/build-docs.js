@@ -93,9 +93,14 @@ function build() {
   }
 
   // Nav
-  const nav = JSON.parse(
-    fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8"),
-  );
+  let nav;
+  try {
+    nav = JSON.parse(
+      fs.readFileSync(path.join(DOCS, "_data", "nav.json"), "utf-8"),
+    );
+  } catch (e) {
+    throw new Error(`Failed to parse docs/_data/nav.json: ${e.message}`);
+  }
 
   // Render pages
   const pages = globNjk(DOCS);
@@ -118,7 +123,8 @@ function build() {
     copyFile(path.join(DOCS, "llms.txt"), path.join(SITE, "llms.txt"));
   if (fs.existsSync(path.join(DOCS, "demos")))
     copyDir(path.join(DOCS, "demos"), path.join(SITE, "demos"));
-  copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
+  if (fs.existsSync(path.join(ROOT, "js")))
+    copyDir(path.join(ROOT, "js"), path.join(SITE, "js"));
   if (fs.existsSync(path.join(DOCS, "snippet.js")))
     copyFile(path.join(DOCS, "snippet.js"), path.join(SITE, "snippet.js"));
   fs.writeFileSync(path.join(SITE, "CNAME"), "ciderui.com\n");

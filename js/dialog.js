@@ -163,7 +163,6 @@
     document.querySelectorAll("dialog.dialog").forEach((dialog) => {
       if (dialog._dialogInit) return;
       dialog._dialogInit = true;
-      wireAria(dialog);
       dialog._cancelHandler = (e) => {
         e.preventDefault();
         if (!dialog.hasAttribute("data-modal")) closeDialog(dialog);

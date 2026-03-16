@@ -878,6 +878,7 @@ abbr[title] {
   }
   select:not([multiple]) {
     appearance: menulist;
+    background-image: none;
   }
   details,
   fieldset,

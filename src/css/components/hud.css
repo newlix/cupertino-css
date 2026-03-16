@@ -48,7 +48,9 @@
   .hud[data-closing] {
     animation: fadeIn var(--transition-fast) var(--apple-ease) reverse forwards !important;
   }
-  @media (forced-colors: active) {
+}
+@media (forced-colors: active) {
+  .hud {
     border: 1px solid ButtonText;
     box-shadow: none;
     backdrop-filter: none;

@@ -261,6 +261,7 @@
       input.removeAttribute("autocomplete");
       input.removeAttribute("aria-label");
       input.removeAttribute("aria-invalid");
+      input.removeAttribute("maxlength");
     });
     if (otp._vcSetRole) {
       otp.removeAttribute("role");

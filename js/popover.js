@@ -380,6 +380,10 @@
 
   function destroyPopover(popover) {
     if (!popover._popoverInit) return;
+    // Hide if currently open so the browser dismisses it cleanly
+    try {
+      if (popover.matches(":popover-open")) popover.hidePopover();
+    } catch {}
     // Reset trigger attributes to prevent stale native popover wiring
     const wrapper = popover.closest?.(".popover");
     const trigger = wrapper?.querySelector(
