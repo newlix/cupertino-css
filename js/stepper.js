@@ -28,7 +28,10 @@
     }
 
     // ARIA attributes for assistive technology
-    if (!stepper.getAttribute("role")) stepper.setAttribute("role", "group");
+    if (!stepper.getAttribute("role")) {
+      stepper.setAttribute("role", "group");
+      stepper._stepperSetRole = true;
+    }
     // aria-value* belong on spinbutton (display), not the group container
     if (display) {
       display.setAttribute("role", "spinbutton");
@@ -183,7 +186,10 @@
       }
       incBtn.disabled = false;
     }
-    stepper.removeAttribute("role");
+    if (stepper._stepperSetRole) {
+      stepper.removeAttribute("role");
+      stepper._stepperSetRole = false;
+    }
     if (stepper._stepperLinkedEl && stepper._stepperLinkedHandler) {
       stepper._stepperLinkedEl.removeEventListener(
         "input",
