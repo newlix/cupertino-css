@@ -53,7 +53,7 @@
 /* Menu variant — action list with item styling + arrow key nav */
 .popover-menu {
   & [popover] {
-    @apply min-w-[200px] max-w-none rounded-[var(--radius-sm)] p-1;
+    @apply min-w-[200px] max-w-none rounded-[var(--radius-sm)] p-1.5;
     max-height: min(400px, calc(100vh - 2rem));
 
     /* macOS menus appear with opacity-only — no scale transform */
@@ -73,7 +73,7 @@
 
     & button,
     & a {
-      @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-2.5 py-1 text-left text-sm text-foreground no-underline select-none;
+      @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-3 py-1.5 text-left text-sm text-foreground no-underline select-none;
       letter-spacing: -0.016em;
       &:visited {
         color: var(--color-foreground);
@@ -107,7 +107,7 @@
     }
   }
   & [popover] hr {
-    @apply my-1 mx-1.5 w-auto;
+    @apply my-1.5 mx-1.5 w-auto;
     height: 1px;
     border: none;
     @media (min-resolution: 2dppx) {
