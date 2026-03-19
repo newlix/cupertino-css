@@ -1921,6 +1921,7 @@
         --tw-font-weight: var(--font-weight-semibold);
         font-weight: var(--font-weight-semibold);
         min-width: 0;
+        max-width: 60%;
         font-size: 17px;
         line-height: 1.29;
         letter-spacing: -0.024em;
@@ -2021,9 +2022,11 @@
       background: var(--color-foreground);
       opacity: var(--page-dot-opacity);
       cursor: pointer;
-      transition: opacity var(--transition-normal) var(--apple-ease);
+      transition: opacity var(--transition-normal) var(--apple-ease), width var(--transition-normal) var(--apple-ease), height var(--transition-normal) var(--apple-ease);
       &[aria-current="page"] {
         opacity: 1;
+        width: 9px;
+        height: 9px;
       }
       &:focus-visible {
         box-shadow: var(--focus-ring);
@@ -2834,10 +2837,10 @@
           --tw-font-weight: var(--font-weight-semibold);
           font-weight: var(--font-weight-semibold);
           color: var(--color-foreground);
-          background: var(--surface-4);
+          background: var(--surface-5);
         }
         &:is([data-active], [aria-current="page"]):hover {
-          background: var(--surface-5);
+          background: var(--surface-7);
         }
         & > svg:first-child {
           width: calc(var(--spacing) * 4);

@@ -21,10 +21,12 @@
     justify-self: start;
   }
 
-  /* Title — center column. min-width:0 lets truncate work inside auto-width grid column */
+  /* Title — center column. max-width prevents auto column from pushing slots off-screen;
+     min-width:0 lets truncate work when grid forces the column smaller than content */
   & > :nth-child(2) {
     @apply font-semibold truncate;
     min-width: 0;
+    max-width: 60%;
     font-size: 17px;
     line-height: 1.29;
     letter-spacing: -0.024em;

@@ -19,9 +19,15 @@
   background: var(--color-foreground);
   opacity: var(--page-dot-opacity);
   cursor: pointer;
-  transition: opacity var(--transition-normal) var(--apple-ease);
+  transition:
+    opacity var(--transition-normal) var(--apple-ease),
+    width var(--transition-normal) var(--apple-ease),
+    height var(--transition-normal) var(--apple-ease);
+  /* Active dot is slightly larger for non-color distinction (accessibility) */
   &[aria-current="page"] {
     opacity: 1;
+    width: 9px;
+    height: 9px;
   }
   &:focus-visible {
     box-shadow: var(--focus-ring);

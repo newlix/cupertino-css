@@ -56,14 +56,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* Selected / active item */
+    /* Selected / active item — surface-5 for clear distinction from hover (surface-3) */
     &:is([data-active], [aria-current="page"]) {
       @apply font-semibold;
       color: var(--color-foreground);
-      background: var(--surface-4);
+      background: var(--surface-5);
     }
     &:is([data-active], [aria-current="page"]):hover {
-      background: var(--surface-5);
+      background: var(--surface-7);
     }
     /* Icon inside item */
     & > svg:first-child {
