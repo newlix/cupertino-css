@@ -31,6 +31,10 @@
     if (items[clamped]) {
       items[clamped].setAttribute("data-selected", "");
       items[clamped].setAttribute("aria-selected", "true");
+      if (!items[clamped].id) {
+        items[clamped].id = `picker-opt-${colIndex}-${clamped}`;
+      }
+      column.setAttribute("aria-activedescendant", items[clamped].id);
     }
     if (!silent) {
       picker.dispatchEvent(
@@ -210,10 +214,14 @@
       col.removeAttribute("role");
       col.removeAttribute("tabindex");
       col.removeAttribute("aria-label");
+      col.removeAttribute("aria-activedescendant");
       Array.from(col.children).forEach((item) => {
         item.removeAttribute("role");
         item.removeAttribute("aria-selected");
         item.removeAttribute("data-selected");
+        if (item.id && item.id.startsWith("picker-opt-")) {
+          item.removeAttribute("id");
+        }
       });
     });
     picker._pickerInit = false;
