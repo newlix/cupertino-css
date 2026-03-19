@@ -59,7 +59,7 @@
     <div>
       {%- if section.title %}<h2>{{ section.title }}</h2>{%- endif %}
       {%- for item in section.items %}
-      <a href="{{ base }}{{ item.href }}"{% if item.href == page %} data-active{% endif %}>{{ item.label }}</a>
+      <a href="{{ base }}{{ item.href }}"{% if item.href == page %} data-active aria-current="page"{% endif %}>{{ item.label }}</a>
       {%- endfor %}
     </div>
     {%- endfor %}

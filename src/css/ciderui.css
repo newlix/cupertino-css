@@ -226,6 +226,9 @@
     0.32 0.003 286
   ); /* opaque — matches Apple opaqueSeparator #38383A */
   --hud-background: oklch(0.14 0 0 / 0.85);
+  --hud-text: oklch(
+    0.95 0 0
+  ); /* intentionally same as light — HUD is always dark-glass */
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
   --tooltip-text: oklch(0.95 0 0);
 
@@ -248,6 +251,8 @@
 
   --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.22);
   --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.3);
+
+  --pagination-active-alpha: 0.2;
 
   --page-dot-opacity: 0.38;
   --page-dot-hover-opacity: 0.55;

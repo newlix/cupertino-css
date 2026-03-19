@@ -378,6 +378,7 @@
     0.32 0.003 286
   );
   --hud-background: oklch(0.14 0 0 / 0.85);
+  --hud-text: oklch(0.95 0 0);
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
   --tooltip-text: oklch(0.95 0 0);
   --avatar-bg: oklch(0.27 0.006 286);
@@ -394,6 +395,7 @@
   );
   --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.22);
   --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.3);
+  --pagination-active-alpha: 0.2;
   --page-dot-opacity: 0.38;
   --page-dot-hover-opacity: 0.55;
   --page-dot-active-opacity: 0.75;
@@ -2106,10 +2108,7 @@
         &[data-active], &[aria-current="page"] {
           pointer-events: none;
           color: var(--color-primary);
-          background: oklch(from var(--color-primary) l c h / 0.12);
-          .dark & {
-            background: oklch(from var(--color-primary) l c h / 0.2);
-          }
+          background: oklch( from var(--color-primary) l c h / var(--pagination-active-alpha, 0.12) );
         }
         &:disabled, &[aria-disabled="true"] {
           pointer-events: none;
@@ -2290,7 +2289,7 @@
         max-width: none;
         min-width: 200px;
         border-radius: var(--radius-sm);
-        padding: calc(var(--spacing) * 1);
+        padding: calc(var(--spacing) * 1.5);
         max-height: min(400px, calc(100vh - 2rem));
         transform: none;
         transition: opacity var(--transition-fast) var(--apple-ease), display var(--transition-fast) allow-discrete, overlay var(--transition-fast) allow-discrete;
@@ -2308,8 +2307,8 @@
           align-items: center;
           gap: calc(var(--spacing) * 2);
           border-radius: var(--radius-xs);
-          padding-inline: calc(var(--spacing) * 2.5);
-          padding-block: calc(var(--spacing) * 1);
+          padding-inline: calc(var(--spacing) * 3);
+          padding-block: calc(var(--spacing) * 1.5);
           text-align: left;
           font-size: var(--text-sm);
           line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -2350,7 +2349,7 @@
       }
       & [popover] hr {
         margin-inline: calc(var(--spacing) * 1.5);
-        margin-block: calc(var(--spacing) * 1);
+        margin-block: calc(var(--spacing) * 1.5);
         width: auto;
         height: 1px;
         border: none;
