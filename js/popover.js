@@ -158,7 +158,7 @@
           "--popover-origin",
           `${isTop ? "bottom" : "top"} ${isEnd ? "right" : "left"}`,
         );
-        requestAnimationFrame(positionPopover);
+        requestAnimationFrame(() => requestAnimationFrame(positionPopover));
         let rafPending = false;
         popover._rafPositioner = () => {
           if (!rafPending) {
