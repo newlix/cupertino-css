@@ -26,6 +26,29 @@
 </nav>
 {% endcall %}
 
+  {% call example("Few Pages") %}
+<nav class="page-control" aria-label="Onboarding">
+  <button aria-label="Step 1" aria-current="page"></button>
+  <button aria-label="Step 2"></button>
+  <button aria-label="Step 3"></button>
+</nav>
+{% endcall %}
+
+  {% call example("Below Content") %}
+<div class="space-y-4 text-center">
+  <div class="rounded-xl border p-8">
+    <h4>Welcome to Cider UI</h4>
+    <p class="text-sm text-tertiary-foreground mt-1">Apple-aesthetic components for the web.</p>
+  </div>
+  <nav class="page-control" aria-label="Onboarding steps">
+    <button aria-label="Step 1"></button>
+    <button aria-label="Step 2" aria-current="page"></button>
+    <button aria-label="Step 3"></button>
+    <button aria-label="Step 4"></button>
+  </nav>
+</div>
+{% endcall %}
+
   {% call example("Disabled") %}
 <nav class="page-control" aria-label="Page control">
   <button aria-label="Page 1" aria-current="page"></button>

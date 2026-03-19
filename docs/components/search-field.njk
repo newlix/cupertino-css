@@ -34,4 +34,16 @@
 </div>
 {% endcall %}
 
+  {% call example("In Toolbar") %}
+<div class="toolbar">
+  <div class="search-field" style="flex: 1; max-width: 320px;">
+    <input type="search" placeholder="Search settings…" />
+  </div>
+  <div class="toolbar-spacer"></div>
+  <button class="btn-plain size-11 p-0" data-tooltip="Filter" aria-label="Filter">
+    <svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+  </button>
+</div>
+{% endcall %}
+
 {% endblock %}

@@ -19,13 +19,35 @@
 </nav>
 {% endcall %}
 
+  {% call example("Long Path") %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="#">Apple Developer</a>
+  <a href="#">Documentation</a>
+  <a href="#">SwiftUI</a>
+  <a href="#">Views</a>
+  <span aria-current="page">NavigationStack</span>
+</nav>
+{% endcall %}
+
   {% call example("Collapsed") %}
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="#">Home</a>
-  <span>...</span>
+  <span aria-hidden="true">…</span>
   <a href="#">Components</a>
   <span aria-current="page">Breadcrumb</span>
 </nav>
+{% endcall %}
+
+  {% call example("In Page Header") %}
+<div class="space-y-2">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">Settings</a>
+    <a href="#">Privacy &amp; Security</a>
+    <span aria-current="page">Location Services</span>
+  </nav>
+  <h1 class="text-2xl font-bold">Location Services</h1>
+  <p class="text-tertiary-foreground">Control which apps can access your location.</p>
+</div>
 {% endcall %}
 
 {% endblock %}
