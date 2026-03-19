@@ -42,6 +42,11 @@
     &:active {
       background: var(--surface-5);
     }
+    &[aria-pressed="true"],
+    &[data-active] {
+      background: var(--surface-5);
+      color: var(--color-primary);
+    }
     &:disabled,
     &[aria-disabled="true"] {
       opacity: 0.38;
@@ -146,6 +151,11 @@
       color: ButtonText;
       &:hover,
       &:active {
+        background: Highlight;
+        color: HighlightText;
+      }
+      &[aria-pressed="true"],
+      &[data-active] {
         background: Highlight;
         color: HighlightText;
       }

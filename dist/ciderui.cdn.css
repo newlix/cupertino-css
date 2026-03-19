@@ -378,7 +378,9 @@
     0.32 0.003 286
   );
   --hud-background: oklch(0.14 0 0 / 0.85);
-  --hud-text: oklch(0.95 0 0);
+  --hud-text: oklch(
+    0.95 0 0
+  );
   --tooltip-bg: oklch(0.2 0 0 / 0.95);
   --tooltip-text: oklch(0.95 0 0);
   --avatar-bg: oklch(0.27 0.006 286);
@@ -1918,6 +1920,7 @@
         white-space: nowrap;
         --tw-font-weight: var(--font-weight-semibold);
         font-weight: var(--font-weight-semibold);
+        min-width: 0;
         font-size: 17px;
         line-height: 1.29;
         letter-spacing: -0.024em;
@@ -3474,6 +3477,10 @@
         &:active {
           background: var(--surface-5);
         }
+        &[aria-pressed="true"], &[data-active] {
+          background: var(--surface-5);
+          color: var(--color-primary);
+        }
         &:disabled, &[aria-disabled="true"] {
           opacity: 0.38;
           pointer-events: none;
@@ -3575,6 +3582,10 @@
         & > button, & > a {
           color: ButtonText;
           &:hover, &:active {
+            background: Highlight;
+            color: HighlightText;
+          }
+          &[aria-pressed="true"], &[data-active] {
             background: Highlight;
             color: HighlightText;
           }
