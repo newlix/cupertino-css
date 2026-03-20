@@ -20,6 +20,9 @@
     transform var(--transition-normal) var(--apple-spring),
     width var(--transition-normal) var(--apple-ease),
     opacity var(--transition-normal) var(--apple-ease);
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 .segmented-control [data-tab] {
   @apply relative z-10 inline-flex items-center justify-center gap-1.5 rounded-[calc(var(--radius-sm)-4px)] border-none bg-transparent px-3.5 py-1.5 text-[13px] font-normal text-tertiary-foreground cursor-pointer;

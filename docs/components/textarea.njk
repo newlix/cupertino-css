@@ -22,8 +22,8 @@
 
   {% call example("Invalid") %}
 <label for="msg-err">Message</label>
-<textarea id="msg-err" rows="3" placeholder="Type your message..." aria-invalid="true"></textarea>
-<small>Message is required.</small>
+<textarea id="msg-err" rows="3" placeholder="Type your message..." aria-invalid="true" aria-describedby="msg-err-msg"></textarea>
+<small id="msg-err-msg">Message is required.</small>
 {% endcall %}
 
   {% call example("Disabled") %}

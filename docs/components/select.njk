@@ -73,13 +73,13 @@
 
   {% call example("Invalid State") %}
 <label for="role-err">Role</label>
-<select id="role-err" aria-invalid="true">
+<select id="role-err" aria-invalid="true" aria-describedby="role-err-msg">
   <option value="" disabled selected>Select a role</option>
   <option value="admin">Admin</option>
   <option value="editor">Editor</option>
   <option value="viewer">Viewer</option>
 </select>
-<small>Please select a role.</small>
+<small id="role-err-msg">Please select a role.</small>
 {% endcall %}
 
 {% endblock %}

@@ -37,8 +37,8 @@
 
   {% call example("Error State") %}
 <label for="username-err">Username</label>
-<input id="username-err" type="text" value="ab" aria-invalid="true" />
-<small>Username must be at least 3 characters.</small>
+<input id="username-err" type="text" value="ab" aria-invalid="true" aria-describedby="username-err-msg" />
+<small id="username-err-msg">Username must be at least 3 characters.</small>
 {% endcall %}
 
   <p class="text-tertiary-foreground">
