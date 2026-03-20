@@ -47,6 +47,11 @@
       opacity: 0.38;
       pointer-events: none;
     }
+    @media (prefers-reduced-motion: reduce) {
+      &:active {
+        transform: none;
+      }
+    }
     @media (pointer: coarse), (hover: none) {
       min-width: 44px;
       min-height: 44px;

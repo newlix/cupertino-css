@@ -29,6 +29,11 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
+  @media (prefers-reduced-motion: reduce) {
+    &:active:not([aria-disabled="true"]):not(:disabled) {
+      transform: none;
+    }
+  }
 }
 /* btn-gray = Apple's secondary button style (neutral gray background).
    Apple HIG calls this the "gray" button role alongside filled/tinted/bordered/plain. */

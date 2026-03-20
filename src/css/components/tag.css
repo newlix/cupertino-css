@@ -45,6 +45,11 @@
       pointer-events: none;
       opacity: 0.38;
     }
+    @media (prefers-reduced-motion: reduce) {
+      &:active {
+        transform: none;
+      }
+    }
   }
 }
 /* Apple System Colors — light / dark */

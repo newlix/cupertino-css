@@ -136,4 +136,13 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Each column is focusable and receives <code>role="listbox"</code>; items receive <code>role="option"</code> with <code>aria-selected</code>.</li>
+      <li>Keyboard: <strong>Arrow Up / Down</strong> to move between items, <strong>Home / End</strong> to jump to first or last.</li>
+      <li>Add <code>aria-label</code> to each <code>.picker-column</code> to describe its purpose (e.g. "Month", "Day").</li>
+    </ul>
+  </section>
+
 {% endblock %}
