@@ -128,4 +128,13 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Segments receive <code>role="tab"</code> and panels receive <code>role="tabpanel"</code> via <code>tabs.js</code>.</li>
+      <li>Keyboard: <strong>Arrow Left / Right</strong> to move between segments, <strong>Home / End</strong> to jump to first or last.</li>
+      <li>Uses roving <code>tabindex</code> — only the active segment is in the tab order.</li>
+    </ul>
+  </section>
+
 {% endblock %}
