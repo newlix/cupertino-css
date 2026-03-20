@@ -35,7 +35,7 @@
 
   function isVisible(el) {
     if (el.getClientRects().length === 0) return false;
-    var style = getComputedStyle(el);
+    const style = getComputedStyle(el);
     return style.visibility !== "hidden" && style.visibility !== "collapse";
   }
 
@@ -87,13 +87,13 @@
       // Focus trap — mirror dialog.js pattern
       btn._sidebarFocusTrap = function (e) {
         if (e.key !== "Tab") return;
-        var focusable = Array.from(panel.querySelectorAll(FOCUSABLE)).filter(
+        const focusable = Array.from(panel.querySelectorAll(FOCUSABLE)).filter(
           isVisible,
         );
         if (!focusable.length) return;
-        var first = focusable[0];
-        var last = focusable[focusable.length - 1];
-        if (focusable.indexOf(document.activeElement) === -1) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!focusable.includes(document.activeElement)) {
           e.preventDefault();
           first.focus();
           return;
