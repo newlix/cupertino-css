@@ -342,11 +342,25 @@
       }
     }
   }
+  /* Skip link — visible only on focus for keyboard users */
+  .docs-skip-link {
+    @apply fixed z-[100] -top-10 left-4 rounded-md px-4 py-2 text-sm font-medium;
+    background: var(--color-primary);
+    color: white;
+    transition: top var(--transition-fast) var(--apple-ease);
+    &:focus {
+      top: 0.5rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #docs-sidebar {
       transition: none;
     }
     [data-sidebar-overlay] {
+      transition: none;
+    }
+    .docs-skip-link {
       transition: none;
     }
   }

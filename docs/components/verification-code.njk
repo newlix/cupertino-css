@@ -16,13 +16,13 @@
   </dl>
 
   {% call example("6-Digit") %}
-<div class="verification-code" data-name="code">
+<div class="verification-code" data-name="code" role="group" aria-label="Verification code">
   <input><input><input><input><input><input>
 </div>
 {% endcall %}
 
   {% call example("With Separator") %}
-<div class="verification-code" data-name="verify">
+<div class="verification-code" data-name="verify" role="group" aria-label="Verification code">
   <input><input><input>
   <span>&ndash;</span>
   <input><input><input>
@@ -30,7 +30,7 @@
 {% endcall %}
 
   {% call example("Error State") %}
-<div class="verification-code" data-name="error-demo" data-error aria-describedby="error-demo-msg">
+<div class="verification-code" data-name="error-demo" data-error role="group" aria-label="Verification code" aria-describedby="error-demo-msg">
   <input value="1"><input value="2"><input value="3"><input value="4"><input value="5"><input value="6">
 </div>
 <small id="error-demo-msg">Invalid verification code.</small>

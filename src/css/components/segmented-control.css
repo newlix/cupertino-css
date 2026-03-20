@@ -64,6 +64,11 @@
   &[data-active] {
     animation: fadeIn var(--transition-fast) var(--apple-ease);
   }
+  @media (prefers-reduced-motion: reduce) {
+    &[data-active] {
+      animation: none;
+    }
+  }
 }
 @media (forced-colors: active) {
   .segmented-control [data-tab-list] {

@@ -58,7 +58,8 @@ if (window._ciderSnippetInit) {
             btn.textContent = original;
           }, 1500);
         })
-        .catch(function () {
+        .catch(function (err) {
+          console.error("Failed to copy code:", err);
           btn.textContent = "Failed";
           if (btn._copyTimer) clearTimeout(btn._copyTimer);
           btn._copyTimer = setTimeout(function () {

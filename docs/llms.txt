@@ -37,7 +37,9 @@
 - [Pagination](https://ciderui.com/components/pagination.html): `pagination` — page navigation buttons.
 - [Separator](https://ciderui.com/components/separator.html): Classless `<hr>` for horizontal dividers; `.separator-vertical`, `.separator-label` for variants.
 - [Segmented Control](https://ciderui.com/components/segmented-control.html): `segmented-control` — tabbed segment selector. Requires `js/tabs.js`.
+- [Sidebar](https://ciderui.com/components/sidebar.html): `sidebar` — macOS-style sidebar navigation with section headers and compact link items. Requires `js/sidebar.js` for mobile toggle.
 - [Tab Bar](https://ciderui.com/components/tab-bar.html): `tab-bar` — iOS-style bottom navigation with icon and label items.
+- [Tabs](https://ciderui.com/components/tabs.html): `[data-tabs]` `[data-tab-list]` `[data-tab]` `[data-tab-panel]` — tab group with ARIA roles, keyboard navigation, and optional sliding indicator. Requires `js/tabs.js`.
 - [Toolbar](https://ciderui.com/components/toolbar.html): `toolbar` `toolbar-group` `toolbar-spacer` `toolbar-title` — macOS-style grouped action bar.
 
 ### Overlays & Dialogs
@@ -60,6 +62,7 @@
 
 - [Avatar](https://ciderui.com/components/avatar.html): `avatar` `avatar-sm` `avatar-lg` `avatar-xl` `avatar-group` — use Tailwind `size-*` and `text-*` for custom sizes.
 - [Kbd](https://ciderui.com/components/kbd.html): `kbd` — keyboard shortcut styling with macOS, Windows, and Linux shortcut examples.
+- [Disclosure Group](https://ciderui.com/components/disclosure-group.html): `disclosure-group` — collapsible accordion sections using native `<details>/<summary>`.
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
 - [Picker](https://ciderui.com/components/picker.html): `picker` `picker-column` — iOS-style scroll wheel picker. Requires `js/picker.js`.
@@ -98,6 +101,7 @@ import "ciderui/popover.js";
 import "ciderui/slider.js";
 import "ciderui/stepper.js";
 import "ciderui/picker.js";
+import "ciderui/sidebar.js";
 import "ciderui/token-field.js";
 import "ciderui/verification-code.js";
 ```

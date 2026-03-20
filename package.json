@@ -30,7 +30,8 @@
     "./sidebar.js": "./js/sidebar.js",
     "./stepper.js": "./js/stepper.js",
     "./action-sheet.js": "./js/action-sheet.js",
-    "./picker.js": "./js/picker.js"
+    "./picker.js": "./js/picker.js",
+    "./token-field.js": "./js/token-field.js"
   },
   "files": [
     "src/css/",
