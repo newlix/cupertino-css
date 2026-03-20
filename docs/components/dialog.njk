@@ -216,4 +216,15 @@
     <p class="mt-2 text-[15px] text-tertiary-foreground">Both functions are available as globals and via <code>CiderUI.dialog.open()</code> / <code>CiderUI.dialog.close()</code>.</p>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Uses native <code>&lt;dialog&gt;</code> for built-in modal semantics.</li>
+      <li>Auto-sets <code>aria-labelledby</code> from the dialog's heading and <code>aria-describedby</code> from its description.</li>
+      <li>Focus is trapped inside the dialog while open; first focusable element receives focus on open.</li>
+      <li><strong>Escape</strong> closes the dialog. Backdrop click also dismisses (unless <code>data-modal</code> is set).</li>
+      <li>Focus is restored to the triggering element on close.</li>
+    </ul>
+  </section>
+
 {% endblock %}

@@ -62,4 +62,14 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li><strong>Enter</strong> or <strong>comma</strong> adds the current input as a token.</li>
+      <li><strong>Backspace</strong> on an empty input removes the last token.</li>
+      <li>Each token's remove button has <code>aria-label="Remove {text}"</code> for screen readers.</li>
+      <li>A <code>change</code> event fires on the container with the updated token list.</li>
+    </ul>
+  </section>
+
 {% endblock %}

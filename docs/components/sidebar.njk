@@ -98,4 +98,14 @@
 </nav>
 {% endcall %}
 
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>Toggle button uses <code>aria-controls</code> and <code>aria-expanded</code> to communicate state.</li>
+      <li>Panel receives <code>aria-labelledby</code> from its heading, or a fallback <code>aria-label</code>.</li>
+      <li><strong>Escape</strong> closes the sidebar on mobile. Overlay click also dismisses.</li>
+      <li>Focus is trapped inside the panel while open and restored to the toggle button on close.</li>
+    </ul>
+  </section>
+
 {% endblock %}
