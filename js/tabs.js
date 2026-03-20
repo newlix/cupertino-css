@@ -31,8 +31,8 @@
     const indicator = list?.querySelector("[data-tab-indicator]");
     function positionIndicator(btn) {
       if (!indicator || !btn) return;
-      var listRect = list.getBoundingClientRect();
-      var btnRect = btn.getBoundingClientRect();
+      const listRect = list.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
       indicator.style.width = `${btnRect.width}px`;
       indicator.style.transform = `translateX(${btnRect.left - listRect.left}px)`;
       indicator.style.opacity = "1";

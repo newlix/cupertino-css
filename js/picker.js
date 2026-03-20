@@ -164,7 +164,7 @@
       } else {
         return;
       }
-      scrollToIndex(column, newIdx, true);
+      scrollToIndex(column, newIdx, false); // instant: avoids scrollend race with rapid keypress
       selectIndex(column, newIdx, picker, colIndex);
     }
     column._pickerKeyDown = onKeyDown;

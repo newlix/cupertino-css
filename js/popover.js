@@ -158,7 +158,11 @@
           "--popover-origin",
           `${isTop ? "bottom" : "top"} ${isEnd ? "right" : "left"}`,
         );
-        requestAnimationFrame(() => requestAnimationFrame(positionPopover));
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            if (popover.matches(":popover-open")) positionPopover();
+          }),
+        );
         let rafPending = false;
         popover._rafPositioner = () => {
           if (!rafPending) {

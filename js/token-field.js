@@ -32,12 +32,12 @@
   }
 
   function addToken(field, input, text, tokenClass) {
-    var trimmed = text.trim();
+    const trimmed = text.trim();
     if (!trimmed) return;
     // Prevent duplicates
-    var existing = getTokens(field);
+    const existing = getTokens(field);
     if (existing.indexOf(trimmed) !== -1) return;
-    var token = createToken(trimmed, tokenClass);
+    const token = createToken(trimmed, tokenClass);
     field.insertBefore(token, input);
     input.value = "";
     fireChange(field);
@@ -46,12 +46,12 @@
   function setup(field) {
     if (field._tokenFieldInit) return;
 
-    var input = field.querySelector("input");
+    const input = field.querySelector("input");
     if (!input) return;
     field._tokenFieldInit = true;
     field._tokenFieldInput = input;
 
-    var tokenClass = field.getAttribute("data-token-class") || "";
+    const tokenClass = field.getAttribute("data-token-class") || "";
 
     // ARIA — role="group" (not listbox — tokens are created items, not selectable options)
     if (!field.hasAttribute("role")) {
@@ -75,7 +75,7 @@
         e.preventDefault();
         addToken(field, input, input.value, tokenClass);
       } else if (e.key === "Backspace" && input.value === "") {
-        var tokens = field.querySelectorAll(".token");
+        const tokens = field.querySelectorAll(".token");
         if (tokens.length) {
           tokens[tokens.length - 1].remove();
           fireChange(field);
@@ -86,7 +86,7 @@
 
     // Remove token on × click (event delegation)
     field._tokenFieldRemove = function (e) {
-      var btn = e.target.closest(".token button");
+      const btn = e.target.closest(".token button");
       if (!btn) return;
       btn.closest(".token").remove();
       input.focus();
@@ -97,7 +97,7 @@
 
   function destroy(field) {
     if (!field._tokenFieldInit) return;
-    var input = field._tokenFieldInput;
+    const input = field._tokenFieldInput;
     if (field._tokenFieldClick)
       field.removeEventListener("click", field._tokenFieldClick);
     if (input && field._tokenFieldKeydown)
@@ -127,7 +127,7 @@
 
   document.addEventListener("htmx:afterSettle", init);
   document.addEventListener("htmx:beforeCleanupElement", function (evt) {
-    var el = evt.detail?.elt;
+    const el = evt.detail?.elt;
     if (!el) return;
     if (el.hasAttribute?.("data-token-field")) {
       destroy(el);

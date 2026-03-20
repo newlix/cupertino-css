@@ -6,10 +6,12 @@
   if (!window.CiderUI._scrollLock) {
     window.CiderUI._scrollLock = {
       count: 0,
-      saved: null,
+      savedOverflow: null,
+      savedPaddingRight: null,
       lock() {
         if (this.count++ === 0) {
-          this.saved = document.body.style.overflow;
+          this.savedOverflow = document.body.style.overflow;
+          this.savedPaddingRight = document.body.style.paddingRight;
           const sw = window.innerWidth - document.documentElement.clientWidth;
           if (sw > 0) document.body.style.paddingRight = `${sw}px`;
           document.body.style.overflow = "hidden";
@@ -18,9 +20,10 @@
       unlock() {
         if (this.count <= 0) return;
         if (--this.count === 0) {
-          document.body.style.overflow = this.saved ?? "";
-          document.body.style.paddingRight = "";
-          this.saved = null;
+          document.body.style.overflow = this.savedOverflow ?? "";
+          document.body.style.paddingRight = this.savedPaddingRight ?? "";
+          this.savedOverflow = null;
+          this.savedPaddingRight = null;
         }
       },
     };
