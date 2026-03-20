@@ -208,6 +208,17 @@
       @apply hidden;
     }
   }
+  /* Featured snippet — highlights the preferred code block in comparisons */
+  .snippet[data-featured] {
+    border-color: oklch(from var(--color-primary) l c h / 0.35);
+    & > header {
+      background: oklch(from var(--color-primary) l c h / 0.06);
+      border-bottom-color: oklch(from var(--color-primary) l c h / 0.15);
+      & > span {
+        color: var(--color-primary);
+      }
+    }
+  }
   /* ========== Homepage sections ========== */
   .home-section-alt {
     background: var(--color-secondary);
@@ -279,7 +290,7 @@
       @apply text-3xl font-bold tracking-tight text-foreground;
     }
     & > p {
-      @apply mt-3 text-tertiary-foreground max-w-xl mx-auto;
+      @apply mt-3 text-[15px] leading-relaxed text-tertiary-foreground max-w-xl mx-auto;
     }
   }
 

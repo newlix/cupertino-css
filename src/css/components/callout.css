@@ -10,10 +10,10 @@
      meeting WCAG AA contrast (>4.5:1).
    - Heading font-size matches body (text-sm) for uniform callout density — hierarchy
      comes from font-semibold weight alone, consistent with Apple's quiet info style.
-   - text-sm — callout is supplementary info, one step below body text.
+   - text-[15px] — callout matches the project's secondary text level (labels, h6).
 */
 .callout {
-  @apply px-4 py-3.5 text-sm leading-snug text-foreground;
+  @apply px-4 py-3.5 text-[15px] leading-snug text-foreground;
   border-radius: var(--radius);
   corner-shape: squircle;
   background: var(--color-secondary);
@@ -23,7 +23,7 @@
     border-width: 0.5px;
   }
   & > :is(h1, h2, h3, h4, h5, h6) {
-    @apply mb-1 font-semibold text-sm;
+    @apply mb-1 font-semibold text-[15px];
   }
   & > strong {
     @apply block mb-1;
