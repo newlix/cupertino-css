@@ -348,7 +348,7 @@
     background: var(--color-primary);
     color: white;
     transition: top var(--transition-fast) var(--apple-ease);
-    &:focus {
+    &:focus-visible {
       top: 0.5rem;
     }
   }
