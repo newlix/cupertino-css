@@ -1289,7 +1289,7 @@
       flex-direction: column;
       gap: calc(var(--spacing) * 3);
       background-color: var(--color-card);
-      padding: calc(var(--spacing) * 4);
+      padding: calc(var(--spacing) * 5);
       color: var(--color-card-foreground);
       border-radius: var(--radius);
       corner-shape: squircle;

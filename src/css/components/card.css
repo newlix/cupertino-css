@@ -1,6 +1,6 @@
 /* ========== CARD ========== */
 .card {
-  @apply bg-card text-card-foreground p-4 flex flex-col gap-3;
+  @apply bg-card text-card-foreground p-5 flex flex-col gap-3;
   border-radius: var(--radius);
   corner-shape: squircle;
   overflow: hidden;
