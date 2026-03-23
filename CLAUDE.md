@@ -72,27 +72,7 @@ The boundary: if a bare HTML element only needs typography/form styling, keep it
 - JS files have a `// ComponentName — ciderui` header comment on line 1.
 - Doc/preview HTML `<title>` format: `ComponentName — Cider UI`.
 - Prefer classless children over extra class names — use structural selectors (e.g. `.picker-column > div` not `.picker-item`).
-- Where component names differ from Apple HIG, add a `/* HIG: … */` comment in the CSS source (e.g. Tooltip → Help Tag, Switch → Toggle).
-
-## Naming
-
-Component names follow **web conventions over Apple HIG** when they conflict:
-
-| CiderUI      | HIG Name      | Reason                                        |
-| ------------ | ------------- | --------------------------------------------- |
-| Tooltip      | Help Tag      | Web universal term                            |
-| Text Field   | Text Field    | HTML `<input>`, doc page `text-field`         |
-| Textarea     | Text Editor   | HTML `<textarea>`                             |
-| Select       | Pop-Up Button | HTML `<select>`                               |
-| Switch       | Toggle        | HTML `role="switch"`                          |
-| Breadcrumb   | Path Control  | Web navigation convention                     |
-| Popover Menu | Menu          | `.popover-menu` variant inside popover        |
-| Dialog       | Alert         | `header` + `footer` pattern covers HIG alerts |
-| Picker       | Date Picker   | Date example in picker docs                   |
-| Search Field | Search Field  | `.search-field` — filled style with icon      |
-| Token Field  | Token Field   | `.token-field` — removable chip input         |
-| Sidebar      | Split View    | Sidebar + content layout covers this          |
-| —            | Color Well    | Rarely used on web — skipped                  |
+- Component names follow web conventions over Apple HIG when they conflict (e.g. Tooltip not Help Tag, Select not Pop-Up Button).
 
 ## Publishing
 

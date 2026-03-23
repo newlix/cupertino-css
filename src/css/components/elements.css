@@ -178,7 +178,6 @@ pre {
 }
 
 /* ─── Text inputs & Textarea ─── */
-/* HIG: Text Field / Text Editor — web convention uses <input> / <textarea>. */
 /* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
 input:where(
   :not(
@@ -278,7 +277,6 @@ textarea {
 }
 
 /* ─── Select ─── */
-/* HIG: Pop-Up Button (macOS) — web convention uses <select>. */
 select:not([multiple]) {
   @apply w-full h-11 rounded-[var(--radius)] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
   corner-shape: squircle;
@@ -471,7 +469,6 @@ input[type="radio"] {
 }
 
 /* ─── Switch ─── */
-/* HIG: Toggle — web convention uses role="switch". */
 /* Design decision: checked state uses --color-switch (Apple Green #34C759) to match
    Apple's native UISwitch behaviour. Use .switch-blue variant for primary/brand colour. */
 input[type="checkbox"][role="switch"] {

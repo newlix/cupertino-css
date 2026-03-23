@@ -535,7 +535,11 @@
   <section>
     <h2 class="text-xl font-bold tracking-tight">Stepper</h2>
     <div class="mt-4">
-      <div class="stepper" data-stepper data-value="5" data-min="0" data-max="10"></div>
+      <div class="stepper" data-stepper data-value="5" data-min="0" data-max="10">
+        <button data-stepper-decrement aria-label="Decrement">&minus;</button>
+        <output>5</output>
+        <button data-stepper-increment aria-label="Increment">+</button>
+      </div>
     </div>
   </section>
 
