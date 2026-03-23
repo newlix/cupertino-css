@@ -252,6 +252,7 @@ textarea {
     appearance: none;
   }
 }
+/* height for text inputs only (not textarea) — selector mirrors the shared block above */
 input:where(
   :not(
     [type="checkbox"],

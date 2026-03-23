@@ -20,14 +20,31 @@ export async function css(locator, prop) {
 
 /** Toggle dark mode on. */
 export async function setDark(page) {
-  await page.evaluate(() => document.documentElement.classList.add("dark"));
-  await page.evaluate(() => getComputedStyle(document.documentElement).color);
+  await page.evaluate(() => {
+    document.documentElement.classList.add("dark");
+    getComputedStyle(document.documentElement).color; // flush styles
+  });
 }
 
 /** Toggle dark mode off. */
 export async function setLight(page) {
-  await page.evaluate(() => document.documentElement.classList.remove("dark"));
-  await page.evaluate(() => getComputedStyle(document.documentElement).color);
+  await page.evaluate(() => {
+    document.documentElement.classList.remove("dark");
+    getComputedStyle(document.documentElement).color; // flush styles
+  });
+}
+
+/** Wait for all CSS animations on an element to finish. */
+export async function waitForAnimations(locator) {
+  await locator.evaluate((el) =>
+    Promise.all(
+      el.getAnimations().map((a) =>
+        a.finished.catch((e) => {
+          if (e.name !== "AbortError") throw e;
+        }),
+      ),
+    ),
+  );
 }
 
 /**

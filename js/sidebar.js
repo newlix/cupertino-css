@@ -185,7 +185,7 @@
   }
 
   function destroy(btn) {
-    if (!btn._sidebarInit) return;
+    if (!btn || !btn._sidebarInit) return;
     // Restore scroll lock if sidebar was open
     if (btn._sidebarPanel && btn._sidebarPanel.hasAttribute("data-open")) {
       btn._sidebarPanel.removeAttribute("data-open");
@@ -204,7 +204,7 @@
         btn._sidebarSetAriaLabel = false;
       }
       if (btn._sidebarOverlay) btn._sidebarOverlay.removeAttribute("data-open");
-      btn.removeAttribute("aria-expanded");
+      btn.setAttribute("aria-expanded", "false");
       scrollLock.unlock();
     }
     if (btn._sidebarEscHandler) {

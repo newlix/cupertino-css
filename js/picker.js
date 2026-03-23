@@ -186,7 +186,7 @@
   }
 
   function destroy(picker) {
-    if (!picker._pickerInit) return;
+    if (!picker || !picker._pickerInit) return;
     picker.querySelectorAll(".picker-column").forEach(function (col) {
       if (col._pickerScrollEnd) {
         col.removeEventListener("scrollend", col._pickerScrollEnd);

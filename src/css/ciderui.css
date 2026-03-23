@@ -127,6 +127,8 @@
   --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.12);
   --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.18);
 
+  --pagination-active-alpha: 0.12;
+
   --page-dot-opacity: 0.3;
   --page-dot-hover-opacity: 0.5;
   --page-dot-active-opacity: 0.7;

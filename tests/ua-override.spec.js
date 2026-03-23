@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import { goto, preview, waitForAnimations } from "./helpers.js";
 
 /**
  * UA stylesheet override tests.
@@ -16,19 +16,6 @@ import { goto, preview } from "./helpers.js";
  * We must wait for animations to finish before measuring getBoundingClientRect(),
  * because mid-animation transforms shift the visual position.
  */
-
-/** Wait for all CSS animations on an element to finish. */
-async function waitForAnimations(locator) {
-  await locator.evaluate((el) =>
-    Promise.all(
-      el.getAnimations().map((a) =>
-        a.finished.catch((e) => {
-          if (e.name !== "AbortError") throw e;
-        }),
-      ),
-    ),
-  );
-}
 
 test.describe("UA Override — Action Sheet", () => {
   test.beforeEach(async ({ page }) => {

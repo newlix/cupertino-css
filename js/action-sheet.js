@@ -336,7 +336,6 @@
 
   window.openActionSheet = openActionSheet;
   window.closeActionSheet = closeActionSheet;
-  window.CiderUI = window.CiderUI || {};
   window.CiderUI.actionSheet = {
     init,
     destroy,

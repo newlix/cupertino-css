@@ -310,9 +310,12 @@
 <script src="snippet.js"></script>
 <script>
   // Theme toggle
-  document.getElementById("theme-toggle").addEventListener("click", function() {
+  var themeToggle = document.getElementById("theme-toggle");
+  themeToggle.setAttribute("aria-pressed", document.documentElement.classList.contains("dark") ? "true" : "false");
+  themeToggle.addEventListener("click", function() {
     document.documentElement.classList.toggle("dark");
     var isDark = document.documentElement.classList.contains("dark");
+    themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
     localStorage.setItem("theme", isDark ? "dark" : "light");
     var el = document.getElementById("hljs-theme");
     if (el) el.href = isDark

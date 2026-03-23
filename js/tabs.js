@@ -155,8 +155,10 @@
         if (currentIdx < 0) return;
 
         if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          activate(btn);
+          if (!isDisabled(btn)) {
+            e.preventDefault();
+            activate(btn);
+          }
           return;
         } else if (
           e.key ===

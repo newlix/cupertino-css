@@ -290,7 +290,7 @@
   }
 
   function destroy(dialog) {
-    if (!dialog._dialogInit) return;
+    if (!dialog || !dialog._dialogInit) return;
     if (dialog._cancelHandler) {
       dialog.removeEventListener("cancel", dialog._cancelHandler);
       dialog._cancelHandler = null;
@@ -347,7 +347,6 @@
 
   window.closeDialog = closeDialog;
   window.openDialog = openDialog;
-  window.CiderUI = window.CiderUI || {};
   window.CiderUI.dialog = {
     init,
     destroy,
