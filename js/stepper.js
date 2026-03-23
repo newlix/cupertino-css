@@ -4,13 +4,13 @@
     if (stepper._stepperInit) return;
     stepper._stepperInit = true;
 
-    let min = Number(stepper.getAttribute("data-min") ?? 0);
+    let min = Number(stepper.getAttribute("data-min") || 0);
     if (Number.isNaN(min)) min = 0;
-    let max = Number(stepper.getAttribute("data-max") ?? 100);
+    let max = Number(stepper.getAttribute("data-max") || 100);
     if (Number.isNaN(max)) max = 100;
-    let step = Number(stepper.getAttribute("data-step") ?? 1);
+    let step = Number(stepper.getAttribute("data-step") || 1);
     if (Number.isNaN(step) || step <= 0) step = 1;
-    let value = Number(stepper.getAttribute("data-value") ?? min);
+    let value = Number(stepper.getAttribute("data-value") || min);
     if (Number.isNaN(value)) value = min;
 
     const decBtn = stepper.querySelector("[data-stepper-decrement]");
