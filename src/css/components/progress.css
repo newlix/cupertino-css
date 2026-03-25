@@ -4,11 +4,15 @@ progress {
   height: 5px;
   background: var(--surface-5);
   &::-webkit-progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
     background: var(--surface-5);
     border-radius: var(--radius-pill);
     overflow: hidden;
   }
   &::-webkit-progress-value {
+    -webkit-appearance: none;
+    appearance: none;
     background: var(--color-primary);
     border-radius: var(--radius-pill);
     /* Best-effort: transition on pseudo-elements is unreliable across browsers */
