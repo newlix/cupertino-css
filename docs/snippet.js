@@ -36,6 +36,23 @@ if (window._ciderSnippetInit) {
   /* already initialized */
 } else {
   window._ciderSnippetInit = true;
+
+  // Set ARIA roles on snippet tab navs so aria-selected is valid
+  document.querySelectorAll(".snippet > header > nav").forEach(function (nav) {
+    nav.setAttribute("role", "tablist");
+    nav.querySelectorAll("button[data-tab]").forEach(function (btn) {
+      btn.setAttribute("role", "tab");
+      btn.setAttribute(
+        "aria-selected",
+        btn.hasAttribute("data-active") ? "true" : "false",
+      );
+      btn.setAttribute(
+        "tabindex",
+        btn.hasAttribute("data-active") ? "0" : "-1",
+      );
+    });
+  });
+
   document.addEventListener("click", function (e) {
     // Copy button — direct child button of snippet > header
     const btn = e.target.closest(".snippet > header > button");
