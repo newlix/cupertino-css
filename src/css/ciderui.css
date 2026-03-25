@@ -484,7 +484,8 @@
     @import "./components/pagination.css";
     @import "./components/picker.css";
     @import "./components/popover.css";
-    @import "./components/progress.css";
+    /* progress.css imported outside @scope — Safari cannot style
+       ::-webkit-progress-* pseudo-elements inside @scope */
     @import "./components/search-field.css";
     @import "./components/segmented-control.css";
     @import "./components/separator.css";
@@ -499,4 +500,8 @@
     /* elements.css last — classless styles have lowest specificity intent */
     @import "./components/elements.css";
   }
+
+  /* progress outside @scope — Safari cannot style ::-webkit-progress-*
+     pseudo-elements inside @scope. Scoped manually with .cider selector. */
+  @import "./components/progress.css";
 }

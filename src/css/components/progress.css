@@ -1,7 +1,8 @@
 /* ========== PROGRESS ========== */
-/* Pseudo-elements written as flat selectors (not nested) because Safari
-   does not reliably apply nested &::-webkit-progress-* inside @scope. */
-progress {
+/* Lives outside @scope(.cider) because Safari cannot style
+   ::-webkit-progress-* pseudo-elements inside @scope.
+   Scoped manually with .cider ancestor selector. */
+.cider progress {
   @apply block w-full overflow-hidden rounded-full;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -9,46 +10,46 @@ progress {
   height: 5px;
   background: var(--surface-5);
 }
-progress::-webkit-progress-bar {
+.cider progress::-webkit-progress-bar {
   -webkit-appearance: none;
   appearance: none;
   background: var(--surface-5);
   border-radius: var(--radius-pill);
   overflow: hidden;
 }
-progress::-webkit-progress-value {
+.cider progress::-webkit-progress-value {
   -webkit-appearance: none;
   appearance: none;
   background: var(--color-primary);
   border-radius: var(--radius-pill);
   transition: width var(--transition-normal) var(--apple-ease);
 }
-progress::-moz-progress-bar {
+.cider progress::-moz-progress-bar {
   background: var(--color-primary);
   border-radius: var(--radius-pill);
 }
 @media (prefers-reduced-motion: reduce) {
-  progress::-webkit-progress-value {
+  .cider progress::-webkit-progress-value {
     transition: none;
   }
 }
 @media (forced-colors: active) {
-  progress {
+  .cider progress {
     border: 1px solid ButtonText;
   }
-  progress::-webkit-progress-bar {
+  .cider progress::-webkit-progress-bar {
     background: Canvas;
   }
-  progress::-webkit-progress-value {
+  .cider progress::-webkit-progress-value {
     background: Highlight;
   }
-  progress::-moz-progress-bar {
+  .cider progress::-moz-progress-bar {
     background: Highlight;
   }
 }
 /* Usage: <div class="progress-indeterminate" role="progressbar" aria-label="Loading"></div>
    The div requires role="progressbar" and aria-label for screen reader accessibility. */
-.progress-indeterminate {
+.cider .progress-indeterminate {
   @apply relative w-full overflow-hidden rounded-full;
   height: 5px;
   background: var(--surface-5);
@@ -63,8 +64,6 @@ progress::-moz-progress-bar {
       var(--color-primary) 75%,
       transparent 100%
     );
-    /* Symmetric ease-in-out for smooth infinite looping — --apple-ease and
-       --apple-spring are asymmetric and produce a jarring loop seam. */
     animation: indeterminate 1.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
   @media (prefers-reduced-motion: reduce) {
