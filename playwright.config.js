@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
@@ -14,4 +14,15 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
   },
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    /* WebKit + Firefox run in CI only (requires `npx playwright install --with-deps`).
+       To test locally: `npx playwright install webkit firefox` then `npx playwright test`. */
+    ...(process.env.CI
+      ? [
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+        ]
+      : []),
+  ],
 });
