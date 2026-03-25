@@ -1,6 +1,24 @@
 // CiderUI — Interactive components
 // All component JS bundled into a single file for easy inclusion.
 // Each component is wrapped in its own IIFE for encapsulation.
+//
+// Public API (window.CiderUI.*):
+//   actionSheet        { init, destroy, open, close }
+//   dialog             { init, destroy, open, close }
+//   hud                { init, show, destroy }
+//   picker             { init, destroy }
+//   popover            { init, destroy }
+//   sidebar            { init, destroy }
+//   slider             { init, update, destroy }
+//   stepper            { init, destroy }
+//   tabs               { init, destroy }
+//   tokenField         { init, destroy }
+//   verificationCode   { init, destroy }
+//
+// Window globals:
+//   openDialog(el) / closeDialog(el)
+//   openActionSheet(el) / closeActionSheet(el)
+//   showHUD(label, opts?) → { dismiss, element }
 
 // ── Action Sheet ──
 // ActionSheet — ciderui
@@ -881,6 +899,7 @@
   window.showHUD = showHUD;
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.hud = {
+    init() {}, // no-op — HUD is created imperatively via showHUD()
     show: showHUD,
     destroy() {
       const c = document.getElementById("hud-container");

@@ -105,7 +105,7 @@
     background: var(--color-background);
     border-bottom: 1px solid var(--color-border);
   }
-  /* Icon swap based on aria-expanded (set by sidebar.js) */
+  /* Icon swap based on aria-expanded (set by cider.js) */
   [data-sidebar-toggle] .docs-icon-close {
     display: none;
   }

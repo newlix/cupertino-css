@@ -14,7 +14,7 @@
     <dt><code>.hud-label</code></dt>
     <dd>Text label inside the HUD pill.</dd>
     <dt><code>showHUD(label, options?)</code></dt>
-    <dd>JS API — create and show a HUD. Options: <code>{ icon: '&lt;svg&gt;…&lt;/svg&gt;', duration: 2000 }</code>. Returns object with <code>.dismiss()</code> method.</dd>
+    <dd>JS API — create and show a HUD. Options: <code>{ icon: '&lt;svg&gt;…&lt;/svg&gt;', duration: 1500 }</code>. Returns object with <code>.dismiss()</code> method. Default duration is 1.5 seconds.</dd>
   </dl>
 
   {% call example("HUD") %}
@@ -63,6 +63,16 @@ showHUD("Copied", {
 var hud = showHUD("Uploading...", { duration: 60000 });
 hud.dismiss();</code></pre>
     </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+      <li>The <code>.hud-container</code> uses <code>role="status"</code> with <code>aria-live="polite"</code> so screen readers announce HUD text when it appears.</li>
+      <li><code>showHUD()</code> creates the container automatically if absent.</li>
+      <li>HUD icons should carry <code>aria-hidden="true"</code> — only the text label is announced.</li>
+      <li>HUDs are non-interactive and cannot be dismissed by keyboard.</li>
+    </ul>
   </section>
 
 {% endblock %}

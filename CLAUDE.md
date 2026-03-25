@@ -69,7 +69,7 @@ The boundary: if a bare HTML element only needs typography/form styling, keep it
 
 - CSS class names are semantic: `btn`, `card`, `dialog`, `tabs`, `badge`, etc.
 - No utility classes in component markup — Tailwind utilities are for user customization only.
-- JS files have a `// ComponentName — ciderui` header comment on line 1.
+- Each component IIFE in `js/cider.js` starts with a `// ComponentName — ciderui` header comment.
 - Doc/preview HTML `<title>` format: `ComponentName — Cider UI`.
 - Prefer classless children over extra class names — use structural selectors (e.g. `.picker-column > div` not `.picker-item`).
 - Component names follow web conventions over Apple HIG when they conflict (e.g. Tooltip not Help Tag, Select not Pop-Up Button).
