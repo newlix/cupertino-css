@@ -806,11 +806,8 @@
     const container =
       document.getElementById("hud-container") || createHUDContainer();
 
-    // macOS shows one HUD at a time — dismiss any existing HUD before showing new one
-    container.querySelectorAll(".hud").forEach((existing) => {
-      if (existing._ciderDismiss) existing._ciderDismiss();
-      else if (existing.parentElement) existing.remove();
-    });
+    // macOS shows one HUD at a time — remove existing immediately (no exit animation)
+    container.querySelectorAll(".hud").forEach((existing) => existing.remove());
 
     const hud = document.createElement("div");
     hud.className = "hud";
