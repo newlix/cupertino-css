@@ -21,17 +21,7 @@
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
-    "./dialog.js": "./js/dialog.js",
-    "./verification-code.js": "./js/verification-code.js",
-    "./popover.js": "./js/popover.js",
-    "./tabs.js": "./js/tabs.js",
-    "./hud.js": "./js/hud.js",
-    "./slider.js": "./js/slider.js",
-    "./sidebar.js": "./js/sidebar.js",
-    "./stepper.js": "./js/stepper.js",
-    "./action-sheet.js": "./js/action-sheet.js",
-    "./picker.js": "./js/picker.js",
-    "./token-field.js": "./js/token-field.js"
+    "./cider.js": "./js/cider.js"
   },
   "files": [
     "src/css/",

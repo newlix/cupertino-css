@@ -9,7 +9,7 @@ src/css/
   ciderui.css          # Main entry — CSS variables, theme tokens, base, @import components
   ciderui.cdn.css      # CDN bundle — includes Tailwind + ciderui.css via source(none)
   components/           # 31 component CSS files (button, card, dialog, …)
-js/                     # 11 JS files for interactive components (dialog, tabs, hud, …)
+js/cider.js              # All interactive component JS in one file
 docs/
   _includes/            # Nunjucks templates (layout.njk, macros.njk)
   _data/nav.json        # Sidebar navigation data
@@ -39,7 +39,7 @@ npm run test:ui          # Playwright UI mode
 - **CDN variant** — `ciderui.cdn.css` bundles Tailwind + all components via `source(none)`.
 - **`.cider` scope** — all component CSS (classless elements AND class-based components) lives inside `@scope(.cider) to (.cider-reset)`. Users must add `.cider` to an ancestor element for any styles to take effect. `.cider-reset` creates escape boundaries.
 - **Component CSS** — each component in `src/css/components/*.css`, imported by `ciderui.css` inside `@layer components` within the `@scope(.cider)` block.
-- **Component JS** — vanilla JS, no dependencies. Each file is self-contained (IIFE or top-level).
+- **Component JS** — vanilla JS, no dependencies. All components bundled in `js/cider.js`, each in its own IIFE.
 - **Dark mode** — class-based (`.dark` on `<html>`). All CSS variables swap in `.dark {}` block.
 - **Docs site** — Nunjucks SSG. Pages are `.njk` source files compiled to static HTML in `site/` via `scripts/build-docs.js`. Syntax highlighting baked in at build time (highlight.js).
 
