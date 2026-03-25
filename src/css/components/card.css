@@ -51,6 +51,18 @@
     pointer-events: none;
   }
 }
+/* details.card — collapsible card panels.
+   Card shadow replaces the classless details border. */
+details.card {
+  border: none;
+  & > summary {
+    list-style: none;
+    user-select: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
 @media (forced-colors: active) {
   .card {
     border: 1px solid ButtonText;
