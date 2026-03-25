@@ -1,4 +1,6 @@
 /* ========== PROGRESS ========== */
+/* Pseudo-elements written as flat selectors (not nested) because Safari
+   does not reliably apply nested &::-webkit-progress-* inside @scope. */
 progress {
   @apply block w-full overflow-hidden rounded-full;
   -webkit-appearance: none;
@@ -6,41 +8,42 @@ progress {
   appearance: none;
   height: 5px;
   background: var(--surface-5);
-  &::-webkit-progress-bar {
-    -webkit-appearance: none;
-    appearance: none;
-    background: var(--surface-5);
-    border-radius: var(--radius-pill);
-    overflow: hidden;
+}
+progress::-webkit-progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--surface-5);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+progress::-webkit-progress-value {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
+  transition: width var(--transition-normal) var(--apple-ease);
+}
+progress::-moz-progress-bar {
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
+}
+@media (prefers-reduced-motion: reduce) {
+  progress::-webkit-progress-value {
+    transition: none;
   }
-  &::-webkit-progress-value {
-    -webkit-appearance: none;
-    appearance: none;
-    background: var(--color-primary);
-    border-radius: var(--radius-pill);
-    /* Best-effort: transition on pseudo-elements is unreliable across browsers */
-    transition: width var(--transition-normal) var(--apple-ease);
-  }
-  &::-moz-progress-bar {
-    background: var(--color-primary);
-    border-radius: var(--radius-pill);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    &::-webkit-progress-value {
-      transition: none;
-    }
-  }
-  @media (forced-colors: active) {
+}
+@media (forced-colors: active) {
+  progress {
     border: 1px solid ButtonText;
-    &::-webkit-progress-bar {
-      background: Canvas;
-    }
-    &::-webkit-progress-value {
-      background: Highlight;
-    }
-    &::-moz-progress-bar {
-      background: Highlight;
-    }
+  }
+  progress::-webkit-progress-bar {
+    background: Canvas;
+  }
+  progress::-webkit-progress-value {
+    background: Highlight;
+  }
+  progress::-moz-progress-bar {
+    background: Highlight;
   }
 }
 /* Usage: <div class="progress-indeterminate" role="progressbar" aria-label="Loading"></div>
