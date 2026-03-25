@@ -79,7 +79,7 @@ function build() {
 
   // Build CSS first — if this fails, existing site/ stays intact for the dev server
   fs.mkdirSync(SITE, { recursive: true });
-  execSync(`npx @tailwindcss/cli -i docs/docs.css -o site/${CSS_OUT}`, {
+  execSync(`npx tailwindcss -i docs/docs.css -o site/${CSS_OUT}`, {
     cwd: ROOT,
     stdio: "inherit",
   });
