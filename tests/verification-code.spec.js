@@ -40,7 +40,11 @@ test.describe("Verification Code", () => {
     await expect(inputs.nth(0)).toBeFocused();
   });
 
-  test("paste fills multiple slots", async ({ page }) => {
+  test("paste fills multiple slots", async ({ page, browserName }) => {
+    test.fixme(
+      browserName === "firefox",
+      "Firefox headless: synthetic ClipboardEvent paste not dispatched to handler",
+    );
     const inputs = preview(page).locator(
       '.verification-code input:not([type="hidden"])',
     );

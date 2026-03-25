@@ -16,13 +16,7 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    /* WebKit + Firefox run in CI only (requires `npx playwright install --with-deps`).
-       To test locally: `npx playwright install webkit firefox` then `npx playwright test`. */
-    ...(process.env.CI
-      ? [
-          { name: "webkit", use: { ...devices["Desktop Safari"] } },
-          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
-        ]
-      : []),
+    { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
   ],
 });

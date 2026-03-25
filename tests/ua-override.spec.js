@@ -36,7 +36,8 @@ test.describe("UA Override — Action Sheet", () => {
     // The sheet's bottom edge should be within 20px of the viewport bottom
     // (accounts for safe-area-inset-bottom + 8px padding)
     expect(dialogBottom).toBeGreaterThan(viewportHeight - 20);
-    expect(dialogBottom).toBeLessThanOrEqual(viewportHeight);
+    // Allow 1px tolerance for sub-pixel rounding across browsers
+    expect(dialogBottom).toBeLessThanOrEqual(viewportHeight + 1);
 
     await dialog.locator('button:has-text("Cancel")').click();
   });
@@ -68,7 +69,8 @@ test.describe("UA Override — Action Sheet", () => {
     }));
 
     expect(dialogBottom).toBeGreaterThan(viewportHeight - 20);
-    expect(dialogBottom).toBeLessThanOrEqual(viewportHeight);
+    // Allow 1px tolerance for sub-pixel rounding across browsers
+    expect(dialogBottom).toBeLessThanOrEqual(viewportHeight + 1);
 
     await dialog.locator('button:has-text("Cancel")').click();
   });

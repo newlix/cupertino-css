@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview, css, focusViaKeyboard } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  focusViaKeyboard,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Disclosure Group", () => {
   test.beforeEach(async ({ page }) => {
@@ -14,7 +20,11 @@ test.describe("Disclosure Group", () => {
     await expect(items).toHaveCount(3);
   });
 
-  test("grouped details have no individual border", async ({ page }) => {
+  test("grouped details have no individual border", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const detail = preview(page).locator(".disclosure-group > details").first();
     const border = await css(detail, "borderStyle");
     expect(border).toBe("none");
@@ -26,7 +36,11 @@ test.describe("Disclosure Group", () => {
     expect(borderTop).toBe("solid");
   });
 
-  test("summary has hover background in group", async ({ page }) => {
+  test("summary has hover background in group", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const summary = preview(page)
       .locator(".disclosure-group > details > summary")
       .first();

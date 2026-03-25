@@ -1,10 +1,19 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview, css, setDark, contrastBetween } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  setDark,
+  contrastBetween,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Dark Mode", () => {
   test("verification code slots have visible background against card", async ({
     page,
+    browserName,
   }) => {
+    skipWebkitScope(browserName);
     await goto(page, "verification-code");
     await setDark(page);
 

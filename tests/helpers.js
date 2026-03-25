@@ -2,6 +2,21 @@
  * Shared test utilities for ciderui Playwright tests.
  */
 
+import { test } from "@playwright/test";
+
+/**
+ * Skip test in WebKit due to @scope element selector bug.
+ * WebKit applies @scope styles to class-based selectors (.btn-filled, .card)
+ * but fails on bare element selectors (input, details, summary, textarea)
+ * even when qualified by ancestor classes (.search-field input).
+ */
+export function skipWebkitScope(browserName) {
+  test.fixme(
+    browserName === "webkit",
+    "WebKit @scope bug: element selectors not applied",
+  );
+}
+
 /** Navigate to a component doc page and wait for ready. */
 export async function goto(page, component, section = "components") {
   await page.goto(`/${section}/${component}.html`);

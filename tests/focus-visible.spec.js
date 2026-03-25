@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, css, focusViaKeyboard } from "./helpers.js";
+import { goto, css, focusViaKeyboard, skipWebkitScope } from "./helpers.js";
 
 test.describe("Focus Visible Accessibility", () => {
   test("radio shows box-shadow on keyboard focus", async ({ page }) => {
@@ -56,7 +56,11 @@ test.describe("Focus Visible Accessibility", () => {
     }).toPass({ timeout: 1000 });
   });
 
-  test("slider removes default outline on keyboard focus", async ({ page }) => {
+  test("slider removes default outline on keyboard focus", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     await goto(page, "slider");
 
     const slider = page.locator(".snippet-preview > figure .slider").first();

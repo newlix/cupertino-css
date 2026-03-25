@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, css } from "./helpers.js";
+import { goto, css, skipWebkitScope } from "./helpers.js";
 
 /**
  * Verify that CiderUI @scope(.cider) component styles do NOT leak
@@ -83,7 +83,9 @@ test.describe("Scope Isolation — styles stay inside .cider", () => {
 
   test("text input border-radius only applies inside .cider", async ({
     page,
+    browserName,
   }) => {
+    skipWebkitScope(browserName);
     const inside = page.locator('#inside input[type="text"]');
     const outside = page.locator('#outside input[type="text"]');
 
@@ -96,7 +98,9 @@ test.describe("Scope Isolation — styles stay inside .cider", () => {
 
   test("textarea border-radius only applies inside .cider", async ({
     page,
+    browserName,
   }) => {
+    skipWebkitScope(browserName);
     const inside = page.locator("#inside textarea");
     const outside = page.locator("#outside textarea");
 

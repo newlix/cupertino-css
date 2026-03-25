@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, css, focusViaKeyboard } from "./helpers.js";
+import { goto, css, focusViaKeyboard, skipWebkitScope } from "./helpers.js";
 
 test.describe("CSS State Specificity", () => {
   test("radio: hover on checked shows hover feedback", async ({ page }) => {
@@ -98,7 +98,11 @@ test.describe("CSS State Specificity", () => {
     expect(await css(disabled, "pointerEvents")).toBe("none");
   });
 
-  test("input focus changes border-color to primary", async ({ page }) => {
+  test("input focus changes border-color to primary", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     await goto(page, "text-field");
 
     const input = page

@@ -194,6 +194,9 @@ test.describe("Popover Auto-flip", () => {
     const popoverBox = await popover.boundingBox();
     expect(triggerBox).not.toBeNull();
     expect(popoverBox).not.toBeNull();
-    expect(popoverBox.y + popoverBox.height).toBeLessThanOrEqual(triggerBox.y);
+    // Allow 1px tolerance for sub-pixel rounding across browsers
+    expect(popoverBox.y + popoverBox.height).toBeLessThanOrEqual(
+      triggerBox.y + 1,
+    );
   });
 });

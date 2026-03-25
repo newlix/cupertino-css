@@ -1,19 +1,34 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview, css, setDark, focusViaKeyboard } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  setDark,
+  focusViaKeyboard,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Search Field", () => {
   test.beforeEach(async ({ page }) => {
     await goto(page, "search-field");
   });
 
-  test("search input renders with rounded border-radius", async ({ page }) => {
+  test("search input renders with rounded border-radius", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const input = preview(page).locator(".search-field input").first();
     await expect(input).toBeVisible();
     const radius = parseFloat(await css(input, "borderRadius"));
     expect(radius).toBeGreaterThanOrEqual(8);
   });
 
-  test("search input has left padding for icon", async ({ page }) => {
+  test("search input has left padding for icon", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const input = preview(page).locator(".search-field input").first();
     const paddingLeft = parseFloat(await css(input, "paddingLeft"));
     expect(paddingLeft).toBeGreaterThanOrEqual(28);
@@ -24,20 +39,29 @@ test.describe("Search Field", () => {
     await expect(clearBtn).toBeVisible();
   });
 
-  test("disabled search input has reduced opacity", async ({ page }) => {
+  test("disabled search input has reduced opacity", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const input = preview(page, 2).locator(".search-field input").first();
     const opacity = parseFloat(await css(input, "opacity"));
     expect(opacity).toBeLessThan(1);
   });
 
-  test("focus-visible shows focus ring on input", async ({ page }) => {
+  test("focus-visible shows focus ring on input", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
     const input = preview(page).locator(".search-field input").first();
     await focusViaKeyboard(page, input);
     const shadow = await css(input, "boxShadow");
     expect(shadow).not.toBe("none");
   });
 
-  test("dark mode changes input background", async ({ page }) => {
+  test("dark mode changes input background", async ({ page, browserName }) => {
+    skipWebkitScope(browserName);
     const input = preview(page).locator(".search-field input").first();
     const lightBg = await css(input, "backgroundColor");
     await setDark(page);
