@@ -46,7 +46,7 @@
 
   <section class="mt-12">
     <h2>Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the token field JS to enable adding tokens with Enter or comma, and removing with Backspace or the × button.</p>
+    <p>Include the token field JS to enable adding tokens with Enter or comma, and removing with Backspace or the × button.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
@@ -54,7 +54,7 @@
 &lt;!-- CDN --&gt;
 &lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    <p class="mt-4 text-[15px] text-tertiary-foreground">Listen for the <code>change</code> event to react to token changes:</p>
+    <p>Listen for the <code>change</code> event to react to token changes:</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-js">document.querySelector('[data-token-field]').addEventListener('change', (e) =&gt; {
   console.log(e.detail.tokens); // ["Design", "Photos"]
@@ -64,7 +64,7 @@
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li><strong>Enter</strong> or <strong>comma</strong> adds the current input as a token.</li>
       <li><strong>Backspace</strong> on an empty input removes the last token.</li>
       <li>Each token's remove button has <code>aria-label="Remove {text}"</code> for screen readers.</li>

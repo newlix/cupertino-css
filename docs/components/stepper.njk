@@ -51,7 +51,7 @@
 
   <section class="mt-12">
     <h2>Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the stepper JS to enable increment/decrement behavior, value display updates, and boundary clamping.</p>
+    <p>Include the stepper JS to enable increment/decrement behavior, value display updates, and boundary clamping.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
@@ -63,7 +63,7 @@
 
   <section class="mt-12">
     <h2>Events</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">A <code>change</code> event fires on the stepper element whenever the value changes. The new value is available in <code>event.detail.value</code>.</p>
+    <p>A <code>change</code> event fires on the stepper element whenever the value changes. The new value is available in <code>event.detail.value</code>.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-js">document.querySelector('[data-stepper]')
   .addEventListener('change', (e) => {
@@ -74,7 +74,7 @@
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li>Use <code>aria-label</code> on each button to identify its action for screen readers.</li>
       <li>Buttons are automatically disabled at min/max boundaries.</li>
       <li>The <code>&lt;output&gt;</code> element is natively associated with form controls by assistive technology.</li>

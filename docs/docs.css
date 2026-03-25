@@ -71,6 +71,14 @@
     }
   }
 
+  /* Doc prose — section descriptions and lists use smaller tertiary text */
+  .docs-main section > p,
+  .docs-main section > ul,
+  .docs-main section > ol {
+    font-size: 15px;
+    color: var(--color-tertiary-foreground);
+  }
+
   .snippet-preview > figure {
     position: relative;
     & > .card,

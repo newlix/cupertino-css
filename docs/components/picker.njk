@@ -120,7 +120,7 @@
 
   <section class="mt-12">
     <h2>Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Include the picker JS to enable scroll-snap selection and change events. Set <code>data-value</code> on a <code>.picker-column</code> to pre-select an item on load.</p>
+    <p>Include the picker JS to enable scroll-snap selection and change events. Set <code>data-value</code> on a <code>.picker-column</code> to pre-select an item on load.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
@@ -128,7 +128,7 @@
 &lt;!-- CDN --&gt;
 &lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    <p class="mt-4 text-[15px] text-tertiary-foreground">Listen for the <code>change</code> event on the picker element to react to selections:</p>
+    <p>Listen for the <code>change</code> event on the picker element to react to selections:</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-js">document.querySelector('[data-picker]').addEventListener('change', (e) =&gt; {
   console.log(e.detail); // { column: 0, value: "March", index: 2 }
@@ -138,7 +138,7 @@
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li>Each column is focusable and receives <code>role="listbox"</code>; items receive <code>role="option"</code> with <code>aria-selected</code>.</li>
       <li>Keyboard: <strong>Arrow Up / Down</strong> to move between items, <strong>Home / End</strong> to jump to first or last.</li>
       <li>Add <code>aria-label</code> to each <code>.picker-column</code> to describe its purpose (e.g. "Month", "Day").</li>

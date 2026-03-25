@@ -70,8 +70,8 @@
 
   <section class="mt-12">
     <h2>Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Adds slide-up/down animation, backdrop click to dismiss, button auto-close, focus trapping, scroll lock, and focus restoration.</p>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <p>Adds slide-up/down animation, backdrop click to dismiss, button auto-close, focus trapping, scroll lock, and focus restoration.</p>
+    <ul>
       <li>Clicking any button inside <code>.action-sheet-group</code> auto-closes the sheet.</li>
       <li>Add <code>data-no-dismiss</code> to a button to prevent auto-closing on click.</li>
       <li>Escape key and backdrop click also dismiss the sheet.</li>
@@ -93,12 +93,12 @@
       <dt><code>closeActionSheet(dialogElement)</code></dt>
       <dd>Closes the action sheet with a slide-down animation, restoring focus and scroll position.</dd>
     </dl>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Both functions are available as globals and via <code>CiderUI.actionSheet.open()</code> / <code>CiderUI.actionSheet.close()</code>.</p>
+    <p>Both functions are available as globals and via <code>CiderUI.actionSheet.open()</code> / <code>CiderUI.actionSheet.close()</code>.</p>
   </section>
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li>Uses native <code>&lt;dialog&gt;</code> for built-in modal semantics.</li>
       <li>Focus is trapped inside the sheet while open; cancel button is preferred for initial focus.</li>
       <li><strong>Escape</strong> closes the sheet. Backdrop click also dismisses.</li>

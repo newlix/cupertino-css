@@ -46,7 +46,7 @@
 
   <section class="mt-12">
     <h2>Usage Notes</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li>Use <code>&lt;progress&gt;</code> when you know the completion percentage.</li>
       <li>Use <code>.progress-indeterminate</code> when duration is unknown (e.g., file processing).</li>
       <li>Hide indeterminate bars with <code>display: none</code> when not active to reduce battery usage on mobile.</li>
@@ -55,7 +55,7 @@
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">The native <code>&lt;progress&gt;</code> element is accessible by default. For the indeterminate variant (<code>.progress-indeterminate</code>), add <code>role="progressbar"</code> and <code>aria-label</code> so screen readers can announce the loading state.</p>
+    <p>The native <code>&lt;progress&gt;</code> element is accessible by default. For the indeterminate variant (<code>.progress-indeterminate</code>), add <code>role="progressbar"</code> and <code>aria-label</code> so screen readers can announce the loading state.</p>
     <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;div class="progress-indeterminate" role="progressbar" aria-label="Loading"&gt;&lt;/div&gt;</code></pre>
     </div>

@@ -185,17 +185,17 @@
 
   <section class="mt-12">
     <h2>Button Order</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Place the primary action on the right, secondary in the middle, and cancel/dismiss on the left. Apple convention: the rightmost button is the default action.</p>
+    <p>Place the primary action on the right, secondary in the middle, and cancel/dismiss on the left. Apple convention: the rightmost button is the default action.</p>
   </section>
 
   <section class="mt-12">
     <h2>Browser Support</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Dialog uses <code>corner-shape: squircle</code> for Apple-style rounded corners. This requires Safari 18+ or Chrome 130+. Standard <code>border-radius</code> is applied as a fallback in older browsers.</p>
+    <p>Dialog uses <code>corner-shape: squircle</code> for Apple-style rounded corners. This requires Safari 18+ or Chrome 130+. Standard <code>border-radius</code> is applied as a fallback in older browsers.</p>
   </section>
 
   <section class="mt-12">
     <h2>Usage</h2>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Adds backdrop click to close with exit animation, focus trapping, scroll lock, and focus restoration. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
+    <p>Adds backdrop click to close with exit animation, focus trapping, scroll lock, and focus restoration. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
@@ -213,12 +213,12 @@
       <dt><code>closeDialog(dialogElement)</code></dt>
       <dd>Closes the dialog with an exit animation, restoring focus and scroll position.</dd>
     </dl>
-    <p class="mt-2 text-[15px] text-tertiary-foreground">Both functions are available as globals and via <code>CiderUI.dialog.open()</code> / <code>CiderUI.dialog.close()</code>.</p>
+    <p>Both functions are available as globals and via <code>CiderUI.dialog.open()</code> / <code>CiderUI.dialog.close()</code>.</p>
   </section>
 
   <section class="mt-12">
     <h2>Accessibility</h2>
-    <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
+    <ul>
       <li>Uses native <code>&lt;dialog&gt;</code> for built-in modal semantics.</li>
       <li>Auto-sets <code>aria-labelledby</code> from the dialog's heading and <code>aria-describedby</code> from its description.</li>
       <li>Focus is trapped inside the dialog while open; first focusable element receives focus on open.</li>
