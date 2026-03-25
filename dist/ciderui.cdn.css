@@ -293,6 +293,7 @@
   --mark-bg: oklch(0.92 0.1 95);
   --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.12);
   --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.18);
+  --pagination-active-alpha: 0.12;
   --page-dot-opacity: 0.3;
   --page-dot-hover-opacity: 0.5;
   --page-dot-active-opacity: 0.7;
@@ -774,6 +775,11 @@
           opacity: 0.38;
           pointer-events: none;
         }
+        @media (prefers-reduced-motion: reduce) {
+          &:active {
+            transform: none;
+          }
+        }
         @media (pointer: coarse), (hover: none) {
           min-width: 44px;
           min-height: 44px;
@@ -1007,6 +1013,11 @@
         box-shadow: var(--focus-ring);
         outline: 2px solid transparent;
         outline-offset: 2px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        &:active:not([aria-disabled="true"]):not(:disabled) {
+          transform: none;
+        }
       }
     }
     .btn-gray {
@@ -1273,9 +1284,6 @@
       }
       & > p {
         color: oklch(from var(--color-foreground) l c h / 0.82);
-        .dark & {
-          color: oklch(from var(--color-foreground) l c h / 0.85);
-        }
       }
       @media (forced-colors: active) {
         border: 1px solid ButtonText;
@@ -2421,41 +2429,49 @@
     progress {
       display: block;
       width: 100%;
-      appearance: none;
       overflow: hidden;
       border-radius: calc(infinity * 1px);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       height: 5px;
       background: var(--surface-5);
-      &::-webkit-progress-bar {
-        background: var(--surface-5);
-        border-radius: var(--radius-pill);
-        overflow: hidden;
+    }
+    progress::-webkit-progress-bar {
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--surface-5);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    progress::-webkit-progress-value {
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--color-primary);
+      border-radius: var(--radius-pill);
+      transition: width var(--transition-normal) var(--apple-ease);
+    }
+    progress::-moz-progress-bar {
+      background: var(--color-primary);
+      border-radius: var(--radius-pill);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      progress::-webkit-progress-value {
+        transition: none;
       }
-      &::-webkit-progress-value {
-        background: var(--color-primary);
-        border-radius: var(--radius-pill);
-        transition: width var(--transition-normal) var(--apple-ease);
-      }
-      &::-moz-progress-bar {
-        background: var(--color-primary);
-        border-radius: var(--radius-pill);
-      }
-      @media (prefers-reduced-motion: reduce) {
-        &::-webkit-progress-value {
-          transition: none;
-        }
-      }
-      @media (forced-colors: active) {
+    }
+    @media (forced-colors: active) {
+      progress {
         border: 1px solid ButtonText;
-        &::-webkit-progress-bar {
-          background: Canvas;
-        }
-        &::-webkit-progress-value {
-          background: Highlight;
-        }
-        &::-moz-progress-bar {
-          background: Highlight;
-        }
+      }
+      progress::-webkit-progress-bar {
+        background: Canvas;
+      }
+      progress::-webkit-progress-value {
+        background: Highlight;
+      }
+      progress::-moz-progress-bar {
+        background: Highlight;
       }
     }
     .progress-indeterminate {
@@ -2643,6 +2659,9 @@
       background: var(--segmented-active);
       box-shadow: var(--shadow-sm), 0 0 0 0.5px var(--float-ring-color);
       transition: transform var(--transition-normal) var(--apple-spring), width var(--transition-normal) var(--apple-ease), opacity var(--transition-normal) var(--apple-ease);
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
     }
     .segmented-control [data-tab] {
       position: relative;
@@ -2700,6 +2719,11 @@
       }
       &[data-active] {
         animation: fadeIn var(--transition-fast) var(--apple-ease);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        &[data-active] {
+          animation: none;
+        }
       }
     }
     @media (forced-colors: active) {
@@ -2778,6 +2802,15 @@
         padding-top: calc(var(--spacing) * 5);
         padding-bottom: calc(var(--spacing) * 1);
       }
+      & ul {
+        margin: calc(var(--spacing) * 0);
+        list-style-type: none;
+        padding: calc(var(--spacing) * 0);
+      }
+      & li {
+        margin: calc(var(--spacing) * 0);
+        padding: calc(var(--spacing) * 0);
+      }
       & h2 {
         padding-inline: calc(var(--spacing) * 2);
         padding-bottom: calc(var(--spacing) * 1);
@@ -2794,7 +2827,6 @@
         cursor: pointer;
         align-items: center;
         gap: calc(var(--spacing) * 2);
-        border-radius: var(--radius-lg);
         --tw-border-style: none;
         border-style: none;
         background-color: transparent;
@@ -2804,6 +2836,7 @@
         text-decoration-line: none;
         -webkit-user-select: none;
         user-select: none;
+        border-radius: var(--radius-sm);
         letter-spacing: -0.01em;
         color: var(--color-tertiary-foreground);
         transition: color var(--transition-fast) var(--apple-ease), background-color var(--transition-fast) var(--apple-ease);
@@ -3234,6 +3267,11 @@
         &:disabled, &[aria-disabled="true"] {
           pointer-events: none;
           opacity: 0.38;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          &:active {
+            transform: none;
+          }
         }
       }
     }
