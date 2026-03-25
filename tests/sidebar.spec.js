@@ -136,7 +136,7 @@ test.describe("Sidebar", () => {
   });
 });
 
-test.describe("Sidebar JS (sidebar.js)", () => {
+test.describe("Sidebar JS (cider.js)", () => {
   test.use({ viewport: { width: 375, height: 667 } });
 
   test.beforeEach(async ({ page }) => {
