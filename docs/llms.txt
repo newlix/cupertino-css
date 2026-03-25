@@ -15,14 +15,14 @@
 - [Checkbox](https://ciderui.com/components/checkbox.html): `input[type="checkbox"]` — pure CSS checkbox styling.
 - [Text Field](https://ciderui.com/components/text-field.html): `input` — styled text input.
 - [Search Field](https://ciderui.com/components/search-field.html): `search-field` `search-clear` — rounded search input with magnifying glass icon.
-- [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/verification-code.js`.
+- [Verification Code](https://ciderui.com/components/verification-code.html): Verification code input with auto-advance. Requires `js/cider.js`.
 - [Radio Group](https://ciderui.com/components/radio-group.html): `input[type="radio"]` — pure CSS radio styling.
 - [Select](https://ciderui.com/components/select.html): Native `<select>` styling.
 - [Slider](https://ciderui.com/components/slider.html): `slider` — styled range input.
-- [Stepper](https://ciderui.com/components/stepper.html): `stepper` — increment/decrement control. Requires `js/stepper.js`.
+- [Stepper](https://ciderui.com/components/stepper.html): `stepper` — increment/decrement control. Requires `js/cider.js`.
 - [Switch](https://ciderui.com/components/switch.html): `input[role="switch"]` — pure CSS toggle switch.
 - [Textarea](https://ciderui.com/components/textarea.html): `textarea` — styled textarea.
-- [Token Field](https://ciderui.com/components/token-field.html): `token-field` `token` `token-blue` — text input with removable tokens. Requires `js/token-field.js`.
+- [Token Field](https://ciderui.com/components/token-field.html): `token-field` `token` `token-blue` — text input with removable tokens. Requires `js/cider.js`.
 
 ### Layout
 
@@ -36,17 +36,17 @@
 - [Page Control](https://ciderui.com/components/page-control.html): `page-control` — Apple-style dot page indicator.
 - [Pagination](https://ciderui.com/components/pagination.html): `pagination` — page navigation buttons.
 - [Separator](https://ciderui.com/components/separator.html): Classless `<hr>` for horizontal dividers; `.separator-vertical`, `.separator-label` for variants.
-- [Segmented Control](https://ciderui.com/components/segmented-control.html): `segmented-control` — tabbed segment selector. Requires `js/tabs.js`.
-- [Sidebar](https://ciderui.com/components/sidebar.html): `sidebar` — macOS-style sidebar navigation with section headers and compact link items. Requires `js/sidebar.js` for mobile toggle.
+- [Segmented Control](https://ciderui.com/components/segmented-control.html): `segmented-control` — tabbed segment selector. Requires `js/cider.js`.
+- [Sidebar](https://ciderui.com/components/sidebar.html): `sidebar` — macOS-style sidebar navigation with section headers and compact link items. Requires `js/cider.js` for mobile toggle.
 - [Tab Bar](https://ciderui.com/components/tab-bar.html): `tab-bar` — iOS-style bottom navigation with icon and label items.
-- [Tabs](https://ciderui.com/components/tabs.html): `[data-tabs]` `[data-tab-list]` `[data-tab]` `[data-tab-panel]` — tab group with ARIA roles, keyboard navigation, and optional sliding indicator. Requires `js/tabs.js`.
+- [Tabs](https://ciderui.com/components/tabs.html): `[data-tabs]` `[data-tab-list]` `[data-tab]` `[data-tab-panel]` — tab group with ARIA roles, keyboard navigation, and optional sliding indicator. Requires `js/cider.js`.
 - [Toolbar](https://ciderui.com/components/toolbar.html): `toolbar` `toolbar-group` `toolbar-spacer` `toolbar-title` — macOS-style grouped action bar.
 
 ### Overlays & Dialogs
 
-- [Action Sheet](https://ciderui.com/components/action-sheet.html): `action-sheet` `action-sheet-group` — iOS-style bottom sheet for contextual actions. Requires `js/action-sheet.js`.
-- [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Alerts and form dialogs. Optional `js/dialog.js`.
-- [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/popover.js`.
+- [Action Sheet](https://ciderui.com/components/action-sheet.html): `action-sheet` `action-sheet-group` — iOS-style bottom sheet for contextual actions. Requires `js/cider.js`.
+- [Dialog](https://ciderui.com/components/dialog.html): `dialog` with `header`, `section`, `footer`. Alerts and form dialogs. Optional `js/cider.js`.
+- [Popover](https://ciderui.com/components/popover.html): Click-triggered floating content. Requires `js/cider.js`.
 
 ### Feedback & Status
 
@@ -55,7 +55,7 @@
 - [Callout](https://ciderui.com/components/callout.html): `callout` — informational callout box.
 - [Gauge](https://ciderui.com/components/gauge.html): `gauge` `gauge-sm` `gauge-lg` `gauge-green` `gauge-orange` `gauge-destructive` — circular ring progress indicator.
 - [Tooltip](https://ciderui.com/components/tooltip.html): `[data-tooltip]` — hover tooltip on any element. Pure CSS, no JS.
-- [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/hud.js`.
+- [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires `js/cider.js`.
 - [Progress](https://ciderui.com/components/progress.html): `<progress>` `.progress-indeterminate`
 
 ### Display & Media
@@ -65,7 +65,7 @@
 - [Disclosure Group](https://ciderui.com/components/disclosure-group.html): `disclosure-group` — collapsible accordion sections using native `<details>/<summary>`.
 - [List](https://ciderui.com/components/list.html): List with auto-styled rows. `list` — children get icon, content, action styling via structural selectors.
 - [Table](https://ciderui.com/components/table.html): `table` `table-striped` — styled tables.
-- [Picker](https://ciderui.com/components/picker.html): `picker` `picker-column` — iOS-style scroll wheel picker. Requires `js/picker.js`.
+- [Picker](https://ciderui.com/components/picker.html): `picker` `picker-column` — iOS-style scroll wheel picker. Requires `js/cider.js`.
 - [Tag](https://ciderui.com/components/tag.html): `tag` — small label for categorisation.
 
 ## Quick Start
@@ -93,15 +93,5 @@ Add `class="dark"` to `<html>`. All components adapt automatically via CSS varia
 Most components are pure CSS. Import JS only for interactive behavior:
 
 ```js
-import "ciderui/dialog.js";
-import "ciderui/action-sheet.js";
-import "ciderui/tabs.js";
-import "ciderui/hud.js";
-import "ciderui/popover.js";
-import "ciderui/slider.js";
-import "ciderui/stepper.js";
-import "ciderui/picker.js";
-import "ciderui/sidebar.js";
-import "ciderui/token-field.js";
-import "ciderui/verification-code.js";
+import "ciderui/cider.js";
 ```
