@@ -37,9 +37,10 @@ const server = createServer(async (req, res) => {
     res.end("Not Found");
   }
 });
+const port = parseInt(process.env.PORT, 10) || 3000;
 server.on("error", (err) => {
-  if (err.code === "EADDRINUSE") console.error("Port 3000 already in use");
+  if (err.code === "EADDRINUSE") console.error(`Port ${port} already in use`);
   else console.error(err);
   process.exit(1);
 });
-server.listen(3000);
+server.listen(port);
