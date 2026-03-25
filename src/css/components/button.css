@@ -57,20 +57,20 @@
 }
 .btn-tinted {
   @apply text-primary;
-  background: oklch(from var(--color-primary) l c h / 0.12);
+  background: color-mix(in oklch, var(--color-primary) 12%, transparent);
   &:hover {
-    background: oklch(from var(--color-primary) l c h / 0.18);
+    background: color-mix(in oklch, var(--color-primary) 18%, transparent);
   }
   &:active {
-    background: oklch(from var(--color-primary) l c h / 0.22);
+    background: color-mix(in oklch, var(--color-primary) 22%, transparent);
   }
   .dark & {
-    background: oklch(from var(--color-primary) l c h / 0.16);
+    background: color-mix(in oklch, var(--color-primary) 16%, transparent);
     &:hover {
-      background: oklch(from var(--color-primary) l c h / 0.22);
+      background: color-mix(in oklch, var(--color-primary) 22%, transparent);
     }
     &:active {
-      background: oklch(from var(--color-primary) l c h / 0.26);
+      background: color-mix(in oklch, var(--color-primary) 26%, transparent);
     }
   }
 }
@@ -112,59 +112,103 @@
 :is(.btn-gray, .btn-plain).btn-destructive {
   color: var(--color-destructive);
   &:hover {
-    background: oklch(from var(--color-destructive) l c h / 0.08);
+    background: color-mix(in oklch, var(--color-destructive) 8%, transparent);
   }
   &:active {
-    background: oklch(from var(--color-destructive) l c h / 0.12);
+    background: color-mix(in oklch, var(--color-destructive) 12%, transparent);
   }
   .dark & {
     &:hover {
-      background: oklch(from var(--color-destructive) l c h / 0.12);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 12%,
+        transparent
+      );
     }
     &:active {
-      background: oklch(from var(--color-destructive) l c h / 0.16);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 16%,
+        transparent
+      );
     }
   }
 }
 .btn-tinted.btn-destructive {
   color: var(--color-destructive);
-  background: oklch(from var(--color-destructive) l c h / 0.12);
+  background: color-mix(in oklch, var(--color-destructive) 12%, transparent);
   &:hover {
-    background: oklch(from var(--color-destructive) l c h / 0.18);
+    background: color-mix(in oklch, var(--color-destructive) 18%, transparent);
   }
   &:active {
-    background: oklch(from var(--color-destructive) l c h / 0.22);
+    background: color-mix(in oklch, var(--color-destructive) 22%, transparent);
   }
   .dark & {
-    background: oklch(from var(--color-destructive) l c h / 0.16);
+    background: color-mix(in oklch, var(--color-destructive) 16%, transparent);
     &:hover {
-      background: oklch(from var(--color-destructive) l c h / 0.22);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 22%,
+        transparent
+      );
     }
     &:active {
-      background: oklch(from var(--color-destructive) l c h / 0.26);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 26%,
+        transparent
+      );
     }
   }
 }
 .btn-bezelled.btn-destructive {
   color: var(--color-destructive);
-  border-color: oklch(from var(--color-destructive) l c h / 0.3);
+  border-color: color-mix(in oklch, var(--color-destructive) 30%, transparent);
   &:hover {
-    background: oklch(from var(--color-destructive) l c h / 0.08);
-    border-color: oklch(from var(--color-destructive) l c h / 0.4);
+    background: color-mix(in oklch, var(--color-destructive) 8%, transparent);
+    border-color: color-mix(
+      in oklch,
+      var(--color-destructive) 40%,
+      transparent
+    );
   }
   &:active {
-    background: oklch(from var(--color-destructive) l c h / 0.12);
-    border-color: oklch(from var(--color-destructive) l c h / 0.45);
+    background: color-mix(in oklch, var(--color-destructive) 12%, transparent);
+    border-color: color-mix(
+      in oklch,
+      var(--color-destructive) 45%,
+      transparent
+    );
   }
   .dark & {
-    border-color: oklch(from var(--color-destructive) l c h / 0.35);
+    border-color: color-mix(
+      in oklch,
+      var(--color-destructive) 35%,
+      transparent
+    );
     &:hover {
-      background: oklch(from var(--color-destructive) l c h / 0.12);
-      border-color: oklch(from var(--color-destructive) l c h / 0.45);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 12%,
+        transparent
+      );
+      border-color: color-mix(
+        in oklch,
+        var(--color-destructive) 45%,
+        transparent
+      );
     }
     &:active {
-      background: oklch(from var(--color-destructive) l c h / 0.16);
-      border-color: oklch(from var(--color-destructive) l c h / 0.5);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 16%,
+        transparent
+      );
+      border-color: color-mix(
+        in oklch,
+        var(--color-destructive) 50%,
+        transparent
+      );
     }
   }
 }

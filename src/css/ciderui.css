@@ -96,8 +96,8 @@
   --color-blue: oklch(0.603 0.218 257.42); /* Apple Blue #007AFF */
   --color-purple: oklch(0.615 0.213 312.41); /* Apple Purple #AF52DE */
   --color-gray: oklch(0.648 0.007 286.19); /* Apple System Gray #8E8E93 */
-  --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.9);
-  --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.92);
+  --glass-bg-opaque: color-mix(in oklch, var(--color-card) 90%, transparent);
+  --glass-bg-dialog: color-mix(in oklch, var(--color-card) 92%, transparent);
   --backdrop-bg: oklch(0 0 0 / 0.5);
   --hover-brightness: 0.92;
 
@@ -119,13 +119,19 @@
   --switch-thumb-shadow:
     0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
 
-  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.5);
-  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.5);
+  --focus-ring: 0 0 0 3px
+    color-mix(in oklch, var(--color-primary) 50%, transparent);
+  --focus-ring-error: 0 0 0 3px
+    color-mix(in oklch, var(--color-destructive) 50%, transparent);
 
   --mark-bg: oklch(0.92 0.1 95); /* warm yellow highlight */
 
-  --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.12);
-  --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.18);
+  --sidebar-tint-bg: color-mix(in oklch, var(--color-primary) 12%, transparent);
+  --sidebar-tint-bg-hover: color-mix(
+    in oklch,
+    var(--color-primary) 18%,
+    transparent
+  );
 
   --pagination-active-alpha: 0.12;
 
@@ -212,8 +218,8 @@
   --float-ring: 0 0 0 1px var(--float-ring-color);
   --glass-blur: blur(20px) saturate(1.7);
   --glass-blur-heavy: blur(40px) saturate(2);
-  --glass-bg-opaque: oklch(from var(--color-card) l c h / 0.92);
-  --glass-bg-dialog: oklch(from var(--color-card) l c h / 0.94);
+  --glass-bg-opaque: color-mix(in oklch, var(--color-card) 92%, transparent);
+  --glass-bg-dialog: color-mix(in oklch, var(--color-card) 94%, transparent);
 
   --backdrop-bg: oklch(0 0 0 / 0.65);
   --hover-brightness: 1.12;
@@ -244,15 +250,21 @@
   --switch-thumb-shadow:
     0 2px 6px oklch(0 0 0 / 0.45), 0 1px 3px oklch(0 0 0 / 0.3);
 
-  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.6);
-  --focus-ring-error: 0 0 0 3px oklch(from var(--color-destructive) l c h / 0.6);
+  --focus-ring: 0 0 0 3px
+    color-mix(in oklch, var(--color-primary) 60%, transparent);
+  --focus-ring-error: 0 0 0 3px
+    color-mix(in oklch, var(--color-destructive) 60%, transparent);
 
   --mark-bg: oklch(
     0.5 0.14 90
   ); /* dark warm highlight — brighter for readability */
 
-  --sidebar-tint-bg: oklch(from var(--color-primary) l c h / 0.22);
-  --sidebar-tint-bg-hover: oklch(from var(--color-primary) l c h / 0.3);
+  --sidebar-tint-bg: color-mix(in oklch, var(--color-primary) 22%, transparent);
+  --sidebar-tint-bg-hover: color-mix(
+    in oklch,
+    var(--color-primary) 30%,
+    transparent
+  );
 
   --pagination-active-alpha: 0.2;
 

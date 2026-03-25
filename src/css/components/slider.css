@@ -13,7 +13,7 @@
   --slider-thumb-shadow-active:
     0 1px 2px oklch(0 0 0 / 0.2), 0 0 0 0.5px oklch(0 0 0 / 0.1);
   --slider-thumb-shadow-focus:
-    0 0 0 3px oklch(from var(--color-primary) l c h / 0.5),
+    0 0 0 3px color-mix(in oklch, var(--color-primary) 50%, transparent),
     0 1px 4px oklch(0 0 0 / 0.15), 0 0 0 0.5px oklch(0 0 0 / 0.08);
   --slider-thumb: white;
   .dark & {
@@ -24,7 +24,7 @@
     --slider-thumb-shadow-active:
       0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 0.5px oklch(0 0 0 / 0.15);
     --slider-thumb-shadow-focus:
-      0 0 0 3px oklch(from var(--color-primary) l c h / 0.6),
+      0 0 0 3px color-mix(in oklch, var(--color-primary) 60%, transparent),
       0 1px 4px oklch(0 0 0 / 0.3), 0 0 0 0.5px oklch(0 0 0 / 0.15);
   }
   height: 4px;

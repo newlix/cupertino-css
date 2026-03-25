@@ -90,13 +90,13 @@
 
   /* Blue variant — Apple Mail recipient style */
   &.token-blue {
-    background: oklch(from var(--color-primary) l c h / 0.15);
+    background: color-mix(in oklch, var(--color-primary) 15%, transparent);
     color: var(--color-primary);
     & button {
-      color: oklch(from var(--color-primary) l c h / 0.5);
+      color: color-mix(in oklch, var(--color-primary) 50%, transparent);
       &:hover {
         color: var(--color-primary);
-        background: oklch(from var(--color-primary) l c h / 0.12);
+        background: color-mix(in oklch, var(--color-primary) 12%, transparent);
       }
     }
   }

@@ -73,25 +73,25 @@
         :disabled,
         [aria-disabled="true"]
       ) {
-      background: oklch(from var(--color-primary) l c h / 0.23);
+      background: color-mix(in oklch, var(--color-primary) 23%, transparent);
       .dark & {
-        background: oklch(from var(--color-primary) l c h / 0.36);
+        background: color-mix(in oklch, var(--color-primary) 36%, transparent);
       }
     }
     &:is([data-selected], [aria-selected="true"]):active:not(
         :disabled,
         [aria-disabled="true"]
       ) {
-      background: oklch(from var(--color-primary) l c h / 0.27);
+      background: color-mix(in oklch, var(--color-primary) 27%, transparent);
       .dark & {
-        background: oklch(from var(--color-primary) l c h / 0.4);
+        background: color-mix(in oklch, var(--color-primary) 40%, transparent);
       }
     }
   }
   & > :is([data-selected], [aria-selected="true"]) {
-    background: oklch(from var(--color-primary) l c h / 0.18);
+    background: color-mix(in oklch, var(--color-primary) 18%, transparent);
     .dark & {
-      background: oklch(from var(--color-primary) l c h / 0.3);
+      background: color-mix(in oklch, var(--color-primary) 30%, transparent);
     }
   }
   @media (forced-colors: active) {

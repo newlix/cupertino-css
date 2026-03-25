@@ -8,6 +8,17 @@
   &:hover {
     scrollbar-color: var(--surface-5) transparent;
   }
+  /* Safari — scrollbar-width not supported */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 3px;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background: var(--surface-5);
+  }
 
   /* Section groups — <div> children with optional <h2> header */
   & > div {

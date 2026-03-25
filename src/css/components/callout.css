@@ -29,7 +29,7 @@
     @apply block mb-1;
   }
   & > p {
-    color: oklch(from var(--color-foreground) l c h / 0.82);
+    color: color-mix(in oklch, var(--color-foreground) 82%, transparent);
   }
   @media (forced-colors: active) {
     border: 1px solid ButtonText;

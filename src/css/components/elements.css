@@ -525,12 +525,16 @@ input[type="checkbox"][role="switch"] {
     }
   }
   &[aria-invalid="true"] {
-    background: oklch(from var(--color-destructive) l c h / 0.18);
+    background: color-mix(in oklch, var(--color-destructive) 18%, transparent);
     &:checked {
       background: var(--color-destructive);
     }
     &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
-      background: oklch(from var(--color-destructive) l c h / 0.25);
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 25%,
+        transparent
+      );
     }
     &:hover:not(:disabled):not([aria-disabled="true"]):checked {
       background: var(--color-destructive-hover);
@@ -664,14 +668,18 @@ table {
     }
     &[data-selected],
     &[aria-selected="true"] {
-      background: oklch(from var(--color-primary) l c h / 0.18);
+      background: color-mix(in oklch, var(--color-primary) 18%, transparent);
       .dark & {
-        background: oklch(from var(--color-primary) l c h / 0.3);
+        background: color-mix(in oklch, var(--color-primary) 30%, transparent);
       }
       &:hover {
-        background: oklch(from var(--color-primary) l c h / 0.24);
+        background: color-mix(in oklch, var(--color-primary) 24%, transparent);
         .dark & {
-          background: oklch(from var(--color-primary) l c h / 0.38);
+          background: color-mix(
+            in oklch,
+            var(--color-primary) 38%,
+            transparent
+          );
         }
       }
     }
@@ -693,15 +701,15 @@ table {
     background: var(--surface-3);
   }
   &.table-striped tbody tr:is([data-selected], [aria-selected="true"]) {
-    background: oklch(from var(--color-primary) l c h / 0.14);
+    background: color-mix(in oklch, var(--color-primary) 14%, transparent);
     .dark & {
-      background: oklch(from var(--color-primary) l c h / 0.22);
+      background: color-mix(in oklch, var(--color-primary) 22%, transparent);
     }
   }
   &.table-striped tbody tr:is([data-selected], [aria-selected="true"]):hover {
-    background: oklch(from var(--color-primary) l c h / 0.18);
+    background: color-mix(in oklch, var(--color-primary) 18%, transparent);
     .dark & {
-      background: oklch(from var(--color-primary) l c h / 0.3);
+      background: color-mix(in oklch, var(--color-primary) 30%, transparent);
     }
   }
 }
