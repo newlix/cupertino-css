@@ -57,15 +57,6 @@
     }
   }
 
-  /* Normalize all section headings in docs content to the same size.
-     Cider's classless h2 is 28px, but docs section headings should be
-     smaller for proper hierarchy under the 34px page title. */
-  .docs-main h2:not(:where(.snippet-preview *, .docs-page-header *)) {
-    @apply text-xl font-bold tracking-tight text-foreground;
-    margin-top: 3rem;
-    margin-bottom: 0.75rem;
-  }
-
   /* Doc page header */
   .docs-page-header {
     @apply mb-10 pb-8;

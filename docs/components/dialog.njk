@@ -184,17 +184,17 @@
 {% endcall %}
 
   <section class="mt-12">
-    <h2 class="text-xl font-bold tracking-tight">Button Order</h2>
+    <h2>Button Order</h2>
     <p class="mt-2 text-[15px] text-tertiary-foreground">Place the primary action on the right, secondary in the middle, and cancel/dismiss on the left. Apple convention: the rightmost button is the default action.</p>
   </section>
 
   <section class="mt-12">
-    <h2 class="text-xl font-bold tracking-tight">Browser Support</h2>
+    <h2>Browser Support</h2>
     <p class="mt-2 text-[15px] text-tertiary-foreground">Dialog uses <code>corner-shape: squircle</code> for Apple-style rounded corners. This requires Safari 18+ or Chrome 130+. Standard <code>border-radius</code> is applied as a fallback in older browsers.</p>
   </section>
 
   <section class="mt-12">
-    <h2 class="text-xl font-bold tracking-tight">Usage</h2>
+    <h2>Usage</h2>
     <p class="mt-2 text-[15px] text-tertiary-foreground">Adds backdrop click to close with exit animation, focus trapping, scroll lock, and focus restoration. The native <code>&lt;dialog&gt;</code> element handles open/close — this script is optional.</p>
     <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
       <pre><code class="language-html">&lt;!-- npm --&gt;
@@ -206,7 +206,7 @@
   </section>
 
   <section class="mt-12">
-    <h2 class="text-xl font-bold tracking-tight">API</h2>
+    <h2>API</h2>
     <dl>
       <dt><code>openDialog(dialogElement)</code></dt>
       <dd>Opens the dialog as a modal. Guards against re-opening an already-open or closing dialog.</dd>
@@ -217,7 +217,7 @@
   </section>
 
   <section class="mt-12">
-    <h2 class="text-xl font-bold tracking-tight">Accessibility</h2>
+    <h2>Accessibility</h2>
     <ul class="mt-2 list-disc pl-5 space-y-1 text-[15px] text-tertiary-foreground">
       <li>Uses native <code>&lt;dialog&gt;</code> for built-in modal semantics.</li>
       <li>Auto-sets <code>aria-labelledby</code> from the dialog's heading and <code>aria-describedby</code> from its description.</li>
