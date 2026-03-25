@@ -1,6 +1,9 @@
 /* ========== PROGRESS ========== */
 progress {
-  @apply block w-full overflow-hidden rounded-full appearance-none;
+  @apply block w-full overflow-hidden rounded-full;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   height: 5px;
   background: var(--surface-5);
   &::-webkit-progress-bar {
