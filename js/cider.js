@@ -2033,11 +2033,17 @@
       }
     }
     if (decBtn && !decBtn.getAttribute("aria-label")) {
-      decBtn.setAttribute("aria-label", "Decrease value");
+      decBtn.setAttribute(
+        "aria-label",
+        stepper.dataset.labelDecrease || "Decrease value",
+      );
       stepper._stepperSetDecAriaLabel = true;
     }
     if (incBtn && !incBtn.getAttribute("aria-label")) {
-      incBtn.setAttribute("aria-label", "Increase value");
+      incBtn.setAttribute(
+        "aria-label",
+        stepper.dataset.labelIncrease || "Increase value",
+      );
       stepper._stepperSetIncAriaLabel = true;
     }
 
@@ -2495,14 +2501,15 @@
 // ── Token Field ──
 // TokenField — ciderui
 (function () {
-  function createToken(text, tokenClass) {
+  function createToken(text, tokenClass, field) {
     const span = document.createElement("span");
     span.className = "token" + (tokenClass ? " " + tokenClass : "");
     span.dataset.value = text;
     span.textContent = text;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.setAttribute("aria-label", "Remove " + text);
+    const removeTpl = (field && field.dataset.labelRemove) || "Remove {token}";
+    btn.setAttribute("aria-label", removeTpl.replace("{token}", text));
     btn.innerHTML =
       '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l6-6M9 9L3 3"/></svg>';
     span.appendChild(btn);
@@ -2532,7 +2539,7 @@
     // Prevent duplicates
     const existing = getTokens(field);
     if (existing.indexOf(trimmed) !== -1) return;
-    const token = createToken(trimmed, tokenClass);
+    const token = createToken(trimmed, tokenClass, field);
     field.insertBefore(token, input);
     input.value = "";
     fireChange(field);
@@ -2652,9 +2659,10 @@
         input.setAttribute("autocomplete", idx === 0 ? "one-time-code" : "off");
       }
       if (!input.getAttribute("aria-label")) {
+        const tpl = otp.dataset.labelDigit || "Digit {n} of {total}";
         input.setAttribute(
           "aria-label",
-          `Digit ${idx + 1} of ${inputs.length}`,
+          tpl.replace("{n}", idx + 1).replace("{total}", inputs.length),
         );
       }
     });
@@ -2663,7 +2671,10 @@
       otp._vcSetRole = true;
     }
     if (!otp.getAttribute("aria-label")) {
-      otp.setAttribute("aria-label", "Verification code");
+      otp.setAttribute(
+        "aria-label",
+        otp.dataset.labelGroup || "Verification code",
+      );
       otp._vcSetAriaLabel = true;
     }
     const describedBy = otp.getAttribute("aria-describedby");
