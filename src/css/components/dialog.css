@@ -51,8 +51,7 @@ dialog.dialog {
       outline-offset: -2px;
       box-shadow: none;
     }
-    &:disabled,
-    &[aria-disabled="true"] {
+    &:is(:disabled, [aria-disabled="true"]) {
       opacity: 0.38;
       pointer-events: none;
     }
@@ -98,8 +97,7 @@ dialog.dialog {
       }
     }
     @media (pointer: coarse), (hover: none) {
-      & > button,
-      & > a {
+      & > :is(button, a) {
         min-height: 44px;
       }
     }

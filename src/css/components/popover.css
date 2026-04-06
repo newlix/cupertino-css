@@ -46,6 +46,12 @@
       &:not(:popover-open) {
         opacity: 0;
       }
+      @starting-style {
+        &:popover-open {
+          opacity: 0;
+          transform: none;
+        }
+      }
     }
   }
 }
@@ -71,8 +77,7 @@
       }
     }
 
-    & button,
-    & a {
+    & :is(button, a) {
       @apply flex w-full items-center gap-2 rounded-[var(--radius-xs)] px-3 py-1.5 text-left text-sm text-foreground no-underline select-none;
       letter-spacing: -0.016em;
       &:visited {
@@ -99,8 +104,7 @@
       @media (pointer: coarse), (hover: none) {
         min-height: 44px;
       }
-      &:disabled,
-      &[aria-disabled="true"] {
+      &:is(:disabled, [aria-disabled="true"]) {
         opacity: 0.38;
         pointer-events: none;
       }
@@ -169,8 +173,7 @@
   .popover-menu [popover] hr {
     background: CanvasText;
   }
-  .popover-menu [popover] button:is(:hover, :focus-visible, :active),
-  .popover-menu [popover] a:is(:hover, :focus-visible, :active) {
+  .popover-menu [popover] :is(button, a):is(:hover, :focus-visible, :active) {
     background: Highlight;
     color: HighlightText;
   }

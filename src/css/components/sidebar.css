@@ -42,8 +42,7 @@
   }
 
   /* Navigation items */
-  & a,
-  & button {
+  & :is(a, button) {
     @apply flex items-center gap-2 border-none bg-transparent px-2.5 py-1.5 text-[13px] no-underline cursor-pointer select-none;
     border-radius: var(--radius-sm);
     letter-spacing: -0.01em;
@@ -99,25 +98,21 @@
    Opt-in via data-tinted — neutral gray is the default for brand-agnostic usage,
    even though macOS defaults to tinted. */
 .sidebar[data-tinted] {
-  & a:is([data-active], [aria-current="page"]),
-  & button:is([data-active], [aria-current="page"]) {
+  & :is(a, button):is([data-active], [aria-current="page"]) {
     color: var(--color-primary);
     background: var(--sidebar-tint-bg);
   }
-  & a:is([data-active], [aria-current="page"]):hover,
-  & button:is([data-active], [aria-current="page"]):hover {
+  & :is(a, button):is([data-active], [aria-current="page"]):hover {
     background: var(--sidebar-tint-bg-hover);
   }
 }
 
 @media (forced-colors: active) {
-  .sidebar a:hover:not(:disabled):not([aria-disabled="true"]),
-  .sidebar button:hover:not(:disabled):not([aria-disabled="true"]) {
+  .sidebar :is(a, button):hover:not(:disabled):not([aria-disabled="true"]) {
     outline: 1px solid ButtonText;
     outline-offset: -1px;
   }
-  .sidebar a:focus-visible,
-  .sidebar button:focus-visible {
+  .sidebar :is(a, button):focus-visible {
     outline: 2px solid Highlight;
     box-shadow: none;
   }

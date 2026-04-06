@@ -25,8 +25,7 @@
   border-radius: var(--radius-sm);
   corner-shape: squircle;
   overflow: hidden;
-  & > button,
-  & > a {
+  & > :is(button, a) {
     @apply inline-flex items-center justify-center border-none cursor-pointer select-none;
     width: 36px;
     height: 32px;
@@ -47,8 +46,7 @@
       background: var(--surface-5);
       color: var(--color-primary);
     }
-    &:disabled,
-    &[aria-disabled="true"] {
+    &:is(:disabled, [aria-disabled="true"]) {
       opacity: 0.38;
       pointer-events: none;
     }
@@ -58,8 +56,7 @@
       outline-offset: -2px;
       box-shadow: none;
     }
-    & + button,
-    & + a {
+    & + :is(button, a) {
       border-left: 1px solid var(--color-separator);
       @media (min-resolution: 2dppx) {
         border-left-width: 0.5px;
@@ -67,16 +64,14 @@
     }
   }
   @media (pointer: coarse), (hover: none) {
-    & > button,
-    & > a {
+    & > :is(button, a) {
       min-height: 44px;
       min-width: 44px;
     }
   }
 }
 /* Standalone toolbar items (outside .toolbar-group) */
-.toolbar > button,
-.toolbar > a {
+.toolbar > :is(button, a) {
   @apply inline-flex items-center justify-center border-none cursor-pointer;
   background: transparent;
   color: var(--color-foreground);
@@ -93,8 +88,7 @@
   &:active {
     opacity: 0.5;
   }
-  &:disabled,
-  &[aria-disabled="true"] {
+  &:is(:disabled, [aria-disabled="true"]) {
     opacity: 0.38;
     pointer-events: none;
   }
@@ -127,8 +121,7 @@
     border-bottom: none;
     border-top: 1px solid ButtonText;
   }
-  .toolbar > button,
-  .toolbar > a {
+  .toolbar > :is(button, a) {
     color: ButtonText;
     &:hover {
       outline: 1px solid ButtonText;
@@ -138,16 +131,14 @@
       outline: 2px solid Highlight;
       box-shadow: none;
     }
-    &:disabled,
-    &[aria-disabled="true"] {
+    &:is(:disabled, [aria-disabled="true"]) {
       color: GrayText;
       opacity: 1;
     }
   }
   .toolbar-group {
     border: 1px solid ButtonText;
-    & > button,
-    & > a {
+    & > :is(button, a) {
       color: ButtonText;
       &:hover,
       &:active {
@@ -161,16 +152,15 @@
       }
       &:focus-visible {
         outline: 2px solid Highlight;
+        outline-offset: -2px;
         box-shadow: none;
       }
-      &:disabled,
-      &[aria-disabled="true"] {
+      &:is(:disabled, [aria-disabled="true"]) {
         color: GrayText;
         border-color: GrayText;
         opacity: 1;
       }
-      & + button,
-      & + a {
+      & + :is(button, a) {
         border-left-color: ButtonText;
       }
     }

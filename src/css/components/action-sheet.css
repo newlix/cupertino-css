@@ -54,8 +54,7 @@ dialog.action-sheet {
       margin-top: 8px;
     }
 
-    & > button,
-    & > a {
+    & > :is(button, a) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,8 +74,7 @@ dialog.action-sheet {
       text-decoration: none;
       transition: background-color var(--transition-fast) var(--apple-ease);
 
-      & + button,
-      & + a {
+      & + :is(button, a) {
         border-top: 1px solid var(--color-separator);
         @media (min-resolution: 2dppx) {
           border-top-width: 0.5px;
@@ -99,8 +97,7 @@ dialog.action-sheet {
         box-shadow: none;
       }
 
-      &:disabled,
-      &[aria-disabled="true"] {
+      &:is(:disabled, [aria-disabled="true"]) {
         opacity: 0.38;
         pointer-events: none;
       }
@@ -127,8 +124,7 @@ dialog.action-sheet {
     }
 
     /* First button after header already has visual separation via header border-bottom */
-    & + button,
-    & + a {
+    & + :is(button, a) {
       border-top: none;
     }
   }
@@ -171,15 +167,13 @@ dialog.action-sheet {
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
-    & .action-sheet-group > button,
-    & .action-sheet-group > a {
+    & .action-sheet-group > :is(button, a) {
       border: 1px solid ButtonText;
       &:focus-visible {
         outline: 2px solid Highlight;
         box-shadow: none;
       }
-      &:disabled,
-      &[aria-disabled="true"] {
+      &:is(:disabled, [aria-disabled="true"]) {
         color: GrayText;
         opacity: 1;
       }
