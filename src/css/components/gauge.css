@@ -25,6 +25,8 @@
     font-variant-numeric: tabular-nums;
     color: var(--color-foreground);
   }
+  /* No prefers-reduced-motion needed — gauge uses static conic-gradient,
+     no CSS transitions or animations. JS-driven value changes are instant. */
   @media (forced-colors: active) {
     border: 2px solid CanvasText;
     border-radius: 50%;

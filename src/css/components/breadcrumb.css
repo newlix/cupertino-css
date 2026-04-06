@@ -19,10 +19,11 @@
       &::after {
         content: "";
         position: absolute;
-        inset: 0;
-        min-width: 44px;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
+        min-width: 44px;
+        min-height: 44px;
       }
     }
     &:hover {

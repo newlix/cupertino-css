@@ -930,4 +930,8 @@ abbr[title] {
     background: Canvas;
     color: CanvasText;
   }
+  label:has(input:is(:disabled, [aria-disabled="true"])) {
+    opacity: 1;
+    color: GrayText;
+  }
 }

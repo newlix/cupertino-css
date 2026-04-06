@@ -98,6 +98,9 @@
         color: var(--color-primary);
         background: color-mix(in oklch, var(--color-primary) 12%, transparent);
       }
+      &:active {
+        background: color-mix(in oklch, var(--color-primary) 20%, transparent);
+      }
     }
   }
 }

@@ -47,6 +47,9 @@
     pointer-events: none;
     opacity: var(--page-dot-disabled-opacity);
   }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
   @media (forced-colors: active) {
     border: 2px solid ButtonText;
     background: Canvas;

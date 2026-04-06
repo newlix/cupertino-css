@@ -56,10 +56,6 @@
     transparent 100%
   );
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   & + .picker-column {
     border-left: 1px solid var(--color-separator);
     @media (min-resolution: 2dppx) {
