@@ -36,7 +36,7 @@
     "test:ui": "playwright test --ui"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.0",
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/cli": "^4.2.1",
     "concurrently": "^9.2.0",
     "highlight.js": "^11.11.1",
