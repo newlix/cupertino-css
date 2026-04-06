@@ -25,11 +25,11 @@ tests/                  # Playwright test files
 ## Commands
 
 ```bash
-npm run dev              # Build docs site + serve on :8000
-npm run build            # Build CDN bundle to dist/
-npm run build:docs       # Build docs site to site/
-npm test                 # Run Playwright tests (builds docs + starts server)
-npm run test:ui          # Playwright UI mode
+pnpm dev              # Build docs site + serve on :8000
+pnpm build            # Build CDN bundle to dist/
+pnpm build:docs       # Build docs site to site/
+pnpm test                 # Run Playwright tests (builds docs + starts server)
+pnpm test:ui          # Playwright UI mode
 ```
 
 ## Architecture
@@ -53,7 +53,7 @@ npm run test:ui          # Playwright UI mode
 
 ## Formatting
 
-- **Prettier** — run `npx prettier --write .` before every commit.
+- **Prettier** — run `pnpm prettier --write .` before every commit.
 
 ## Design Philosophy: Classless vs Explicit
 
