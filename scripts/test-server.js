@@ -24,7 +24,10 @@ const server = createServer(async (req, res) => {
     if (filePath.endsWith("/") || filePath === dir)
       filePath = join(filePath, "index.html");
     let st = await stat(filePath).catch(() => null);
-    if (st?.isDirectory()) filePath = join(filePath, "index.html");
+    if (st?.isDirectory()) {
+      filePath = join(filePath, "index.html");
+      st = await stat(filePath).catch(() => null);
+    }
     // .html fallback for clean URLs (e.g. /installation → /installation.html)
     if (!st && !extname(filePath)) {
       const htmlPath = filePath + ".html";

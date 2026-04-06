@@ -970,8 +970,10 @@
     // ARIA: make column keyboard-focusable with listbox semantics
     if (!column.hasAttribute("tabindex")) column.setAttribute("tabindex", "0");
     column.setAttribute("role", "listbox");
-    if (!column.getAttribute("aria-label"))
+    if (!column.getAttribute("aria-label")) {
       column.setAttribute("aria-label", `Column ${colIndex + 1}`);
+      column._pickerSetAriaLabel = true;
+    }
     for (let i = 0; i < items.length; i++)
       items[i].setAttribute("role", "option");
 
@@ -1126,7 +1128,10 @@
       col._pickerTimer = null;
       col.removeAttribute("role");
       col.removeAttribute("tabindex");
-      col.removeAttribute("aria-label");
+      if (col._pickerSetAriaLabel) {
+        col.removeAttribute("aria-label");
+        col._pickerSetAriaLabel = false;
+      }
       col.removeAttribute("aria-activedescendant");
       Array.from(col.children).forEach((item) => {
         item.removeAttribute("role");
@@ -1252,6 +1257,7 @@
     }
 
     popover._cleanupPositioning = () => {
+      popover._rafPending = false;
       if (popover._rafPositioner) {
         window.removeEventListener("scroll", popover._rafPositioner, true);
         window.removeEventListener("resize", popover._rafPositioner);
@@ -1292,6 +1298,8 @@
         if (isMenu) {
           popover.setAttribute("role", "menu");
           setAriaLabelledBy();
+          popover._ciderMenuItems = [];
+          popover._ciderMenuSeparators = [];
           popover.querySelectorAll(FOCUSABLE_NOT_DISABLED).forEach((item) => {
             item.setAttribute("role", "menuitem");
             item.setAttribute("data-ciderui-menuitem", "");
@@ -1304,10 +1312,12 @@
               );
             }
             item.setAttribute("tabindex", "-1");
+            popover._ciderMenuItems.push(item);
           });
           popover.querySelectorAll("hr").forEach((hr) => {
             hr.setAttribute("role", "separator");
             hr.setAttribute("data-ciderui-separator", "");
+            popover._ciderMenuSeparators.push(hr);
           });
         } else {
           popover.setAttribute("role", "dialog");
@@ -1327,13 +1337,13 @@
             if (popover.matches(":popover-open")) positionPopover();
           }),
         );
-        let rafPending = false;
+        popover._rafPending = false;
         popover._rafPositioner = () => {
-          if (!rafPending) {
-            rafPending = true;
+          if (!popover._rafPending) {
+            popover._rafPending = true;
             requestAnimationFrame(() => {
-              rafPending = false;
-              positionPopover();
+              popover._rafPending = false;
+              if (popover.matches(":popover-open")) positionPopover();
             });
           }
         };
@@ -1369,23 +1379,22 @@
         popover.removeAttribute("role");
         clearAriaLabelledBy();
         if (isMenu) {
-          popover
-            .querySelectorAll("[data-ciderui-menuitem]")
-            .forEach((item) => {
-              item.removeAttribute("role");
-              item.removeAttribute("data-ciderui-menuitem");
-              // Restore original tabindex
-              const prev = item.getAttribute("data-ciderui-prev-tabindex");
-              if (prev != null) {
-                if (prev === "") item.removeAttribute("tabindex");
-                else item.setAttribute("tabindex", prev);
-                item.removeAttribute("data-ciderui-prev-tabindex");
-              }
-            });
-          popover.querySelectorAll("[data-ciderui-separator]").forEach((hr) => {
+          (popover._ciderMenuItems || []).forEach((item) => {
+            item.removeAttribute("role");
+            item.removeAttribute("data-ciderui-menuitem");
+            const prev = item.getAttribute("data-ciderui-prev-tabindex");
+            if (prev != null) {
+              if (prev === "") item.removeAttribute("tabindex");
+              else item.setAttribute("tabindex", prev);
+              item.removeAttribute("data-ciderui-prev-tabindex");
+            }
+          });
+          (popover._ciderMenuSeparators || []).forEach((hr) => {
             hr.removeAttribute("role");
             hr.removeAttribute("data-ciderui-separator");
           });
+          popover._ciderMenuItems = null;
+          popover._ciderMenuSeparators = null;
         }
         if (
           !popover._tabDismiss &&
@@ -1686,8 +1695,10 @@
           heading.id = `sidebar-title-${Math.random().toString(36).slice(2, 8)}`;
           btn._sidebarHeadingIdInjected = heading;
         }
-        panel.setAttribute("aria-labelledby", heading.id);
-        btn._sidebarSetAriaLabelledBy = true;
+        if (!panel.getAttribute("aria-labelledby")) {
+          panel.setAttribute("aria-labelledby", heading.id);
+          btn._sidebarSetAriaLabelledBy = true;
+        }
       } else if (!panel.getAttribute("aria-label")) {
         panel.setAttribute("aria-label", "Navigation");
         btn._sidebarSetAriaLabel = true;
@@ -2318,7 +2329,9 @@
       );
       if (matchingBtn) {
         panel.setAttribute("aria-labelledby", matchingBtn.id);
+        panel._tabInjectedAriaLabelledBy = true;
         matchingBtn.setAttribute("aria-controls", panel.id);
+        matchingBtn._tabInjectedAriaControls = true;
       }
     });
 
@@ -2446,7 +2459,10 @@
       btn.removeAttribute("role");
       btn.removeAttribute("aria-selected");
       btn.removeAttribute("tabindex");
-      btn.removeAttribute("aria-controls");
+      if (btn._tabInjectedAriaControls) {
+        btn.removeAttribute("aria-controls");
+        btn._tabInjectedAriaControls = false;
+      }
       if (btn._tabInjectedId) {
         btn.removeAttribute("id");
         btn._tabInjectedId = false;
@@ -2461,7 +2477,10 @@
     tabGroup.querySelectorAll(PANEL_SEL).forEach((panel) => {
       panel.removeAttribute("role");
       panel.removeAttribute("tabindex");
-      panel.removeAttribute("aria-labelledby");
+      if (panel._tabInjectedAriaLabelledBy) {
+        panel.removeAttribute("aria-labelledby");
+        panel._tabInjectedAriaLabelledBy = false;
+      }
       if (panel._tabInjectedId) {
         panel.removeAttribute("id");
         panel._tabInjectedId = false;
@@ -2590,8 +2609,20 @@
     field._tokenFieldRemove = function (e) {
       const btn = e.target.closest(".token button");
       if (!btn) return;
-      btn.closest(".token").remove();
-      input.focus();
+      const token = btn.closest(".token");
+      const next = token.nextElementSibling;
+      const prev = token.previousElementSibling;
+      token.remove();
+      // Move focus to adjacent token's remove button (keyboard nav), else input
+      const nextBtn =
+        (next &&
+          next.classList.contains("token") &&
+          next.querySelector("button")) ||
+        (prev &&
+          prev.classList.contains("token") &&
+          prev.querySelector("button"));
+      if (nextBtn) nextBtn.focus();
+      else input.focus();
       fireChange(field);
     };
     field.addEventListener("click", field._tokenFieldRemove);
@@ -2664,6 +2695,7 @@
           "aria-label",
           tpl.replace("{n}", idx + 1).replace("{total}", inputs.length),
         );
+        input._vcSetAriaLabel = true;
       }
     });
     if (!otp.getAttribute("role")) {
@@ -2908,7 +2940,10 @@
       input.removeAttribute("inputmode");
       input.removeAttribute("pattern");
       input.removeAttribute("autocomplete");
-      input.removeAttribute("aria-label");
+      if (input._vcSetAriaLabel) {
+        input.removeAttribute("aria-label");
+        input._vcSetAriaLabel = false;
+      }
       input.removeAttribute("aria-invalid");
       input.removeAttribute("maxlength");
     });
