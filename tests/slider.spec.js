@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  focusViaKeyboard,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Slider", () => {
   test.beforeEach(async ({ page }) => {
@@ -42,5 +48,17 @@ test.describe("Slider", () => {
       .locator(".snippet-preview > figure .slider[disabled]")
       .first();
     await expect(slider).toBeDisabled();
+  });
+
+  test("focus-visible removes default outline", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
+    const slider = preview(page).locator(".slider").first();
+    await focusViaKeyboard(page, slider);
+    await expect(async () => {
+      expect(await css(slider, "outlineStyle")).toBe("none");
+    }).toPass({ timeout: 1000 });
   });
 });

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import { goto, preview, css, setDark, skipWebkitScope } from "./helpers.js";
 
 test.describe("Verification Code", () => {
   test.beforeEach(async ({ page }) => {
@@ -115,5 +115,20 @@ test.describe("Verification Code", () => {
 
     await page.keyboard.press("ArrowRight");
     await expect(inputs.nth(1)).toBeFocused();
+  });
+
+  test("dark mode: slots visible against card background", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
+    await setDark(page);
+    const slot = preview(page)
+      .locator('.verification-code input:not([type="hidden"])')
+      .first();
+    const container = preview(page);
+    expect(await css(slot, "backgroundColor")).not.toBe(
+      await css(container, "backgroundColor"),
+    );
   });
 });

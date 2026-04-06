@@ -3,7 +3,9 @@ import {
   goto,
   preview,
   css,
+  setDark,
   focusViaKeyboard,
+  contrastBetween,
   skipWebkitScope,
 } from "./helpers.js";
 
@@ -47,5 +49,21 @@ test.describe("Text Field", () => {
       (el) => getComputedStyle(el, "::after").content,
     );
     expect(content).toContain("*");
+  });
+
+  test("dark mode: border visible against background", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
+    await setDark(page);
+    const input = preview(page).locator('input[type="text"]').first();
+    const ratio = await contrastBetween(
+      input,
+      "borderColor",
+      input,
+      "backgroundColor",
+    );
+    expect(ratio).toBeGreaterThan(1.05);
   });
 });

@@ -1,5 +1,12 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview, css, focusViaKeyboard } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  setDark,
+  focusViaKeyboard,
+  contrastBetween,
+} from "./helpers.js";
 
 test.describe("Card", () => {
   test.beforeEach(async ({ page }) => {
@@ -28,5 +35,17 @@ test.describe("Card", () => {
       const outline = await css(btn, "outlineStyle");
       expect(outline).toBe("solid");
     }
+  });
+
+  test("dark mode: border visible against background", async ({ page }) => {
+    await setDark(page);
+    const card = preview(page, 0).locator(".card").first();
+    const ratio = await contrastBetween(
+      card,
+      "borderColor",
+      card,
+      "backgroundColor",
+    );
+    expect(ratio).toBeGreaterThan(1.05);
   });
 });

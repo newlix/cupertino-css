@@ -39,6 +39,17 @@ test.describe("Checkbox", () => {
     await expect(cb).toBeDisabled();
   });
 
+  test("hover on checked checkbox changes background", async ({ page }) => {
+    const cb = page
+      .locator('.snippet-preview > figure input[type="checkbox"]:checked')
+      .first();
+    const before = await css(cb, "backgroundColor");
+    await cb.hover();
+    await expect(async () => {
+      expect(await css(cb, "backgroundColor")).not.toBe(before);
+    }).toPass({ timeout: 1000 });
+  });
+
   test("focus-visible shows ring on checkbox", async ({
     page,
     browserName,
