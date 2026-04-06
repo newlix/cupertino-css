@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  focusViaKeyboard,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Switch", () => {
   test.beforeEach(async ({ page }) => {
@@ -28,5 +34,27 @@ test.describe("Switch", () => {
       .locator('.snippet-preview > figure input[role="switch"][disabled]')
       .first();
     await expect(sw).toBeDisabled();
+  });
+
+  test("checked vs unchecked have different background color", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
+    const unchecked = preview(page).locator('input[role="switch"]').first();
+    const checked = preview(page)
+      .locator('input[role="switch"]:checked')
+      .first();
+    const uncheckedBg = await css(unchecked, "backgroundColor");
+    const checkedBg = await css(checked, "backgroundColor");
+    expect(checkedBg).not.toBe(uncheckedBg);
+  });
+
+  test("focus-visible shows ring", async ({ page, browserName }) => {
+    skipWebkitScope(browserName);
+    const sw = preview(page).locator('input[role="switch"]').first();
+    await focusViaKeyboard(page, sw);
+    const shadow = await css(sw, "boxShadow");
+    expect(shadow).not.toBe("none");
   });
 });

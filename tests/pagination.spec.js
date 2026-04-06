@@ -68,4 +68,22 @@ test.describe("Pagination", () => {
     const bg = await css(active, "backgroundColor");
     expect(bg).not.toBe("rgba(0, 0, 0, 0)");
   });
+
+  test("active button background uses primary color tint (not transparent)", async ({
+    page,
+  }) => {
+    // Regression: oklch(from var(...)) broke Safari < 18; replaced with color-mix.
+    // Verify the active button gets a visible tinted background in both modes.
+    const active = preview(page).locator(
+      '.pagination button[aria-current="page"]',
+    );
+    const lightBg = await css(active, "backgroundColor");
+    expect(lightBg).not.toBe("rgba(0, 0, 0, 0)");
+
+    await setDark(page);
+    const darkBg = await css(active, "backgroundColor");
+    expect(darkBg).not.toBe("rgba(0, 0, 0, 0)");
+    // Dark mode uses higher alpha (20% vs 12%) so background should differ
+    expect(darkBg).not.toBe(lightBg);
+  });
 });

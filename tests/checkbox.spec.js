@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import {
+  goto,
+  preview,
+  css,
+  focusViaKeyboard,
+  skipWebkitScope,
+} from "./helpers.js";
 
 test.describe("Checkbox", () => {
   test.beforeEach(async ({ page }) => {
@@ -31,5 +37,16 @@ test.describe("Checkbox", () => {
       .locator('.snippet-preview > figure input[type="checkbox"][disabled]')
       .first();
     await expect(cb).toBeDisabled();
+  });
+
+  test("focus-visible shows ring on checkbox", async ({
+    page,
+    browserName,
+  }) => {
+    skipWebkitScope(browserName);
+    const cb = preview(page).locator('input[type="checkbox"]').first();
+    await focusViaKeyboard(page, cb);
+    const shadow = await css(cb, "boxShadow");
+    expect(shadow).not.toBe("none");
   });
 });

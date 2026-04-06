@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { goto, preview } from "./helpers.js";
+import { goto, preview, waitForAnimations } from "./helpers.js";
 
 test.describe("Popover", () => {
   test.beforeEach(async ({ page }) => {
@@ -159,6 +159,7 @@ test.describe("Popover Auto-flip", () => {
     await trigger.scrollIntoViewIfNeeded();
     await trigger.click();
     await expect(popover).toBeVisible();
+    await waitForAnimations(popover);
 
     // Popover should not overflow the viewport right edge
     const vw = await page.evaluate(() => document.documentElement.clientWidth);
@@ -188,6 +189,7 @@ test.describe("Popover Auto-flip", () => {
 
     await trigger.click();
     await expect(popover).toBeVisible();
+    await waitForAnimations(popover);
 
     // Popover should appear above the trigger
     const triggerBox = await trigger.boundingBox();

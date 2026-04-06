@@ -35,4 +35,25 @@ test.describe("Activity Indicator", () => {
     // Light and dark should have different background colors
     expect(darkBg).not.toBe(lightBg);
   });
+
+  test("spinner animates with stepped keyframes", async ({ page }) => {
+    const indicator = preview(page).locator(".activity-indicator").first();
+    const name = await css(indicator, "animationName");
+    expect(name).not.toBe("none");
+    const timing = await css(indicator, "animationTimingFunction");
+    expect(timing).toContain("steps");
+  });
+
+  test("size variants render at expected dimensions", async ({ page }) => {
+    const sizes = [
+      { cls: ".activity-indicator-sm", px: 16 },
+      { cls: ".activity-indicator-lg", px: 100 },
+    ];
+    for (const { cls, px } of sizes) {
+      const el = page.locator(`.snippet-preview > figure ${cls}`).first();
+      if ((await el.count()) > 0) {
+        expect(parseFloat(await css(el, "width")), cls).toBe(px);
+      }
+    }
+  });
 });
