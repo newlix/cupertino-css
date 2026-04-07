@@ -20,52 +20,56 @@
 //   openActionSheet(el) / closeActionSheet(el)
 //   showHUD(label, opts?) → { dismiss, element }
 
+// ── Shared Utilities ──
+// Used by ActionSheet, Dialog, and Sidebar for scroll locking, focus trapping,
+// and element visibility checks. Defined once to avoid 3× duplication.
+window.CiderUI = window.CiderUI || {};
+
+window.CiderUI._scrollLock = window.CiderUI._scrollLock || {
+  count: 0,
+  savedOverflow: null,
+  savedPaddingRight: null,
+  lock() {
+    if (this.count++ === 0) {
+      this.savedOverflow = document.body.style.overflow;
+      this.savedPaddingRight = document.body.style.paddingRight;
+      const sw = window.innerWidth - document.documentElement.clientWidth;
+      if (sw > 0) document.body.style.paddingRight = `${sw}px`;
+      document.body.style.overflow = "hidden";
+    }
+  },
+  unlock() {
+    if (this.count <= 0) return;
+    if (--this.count === 0) {
+      document.body.style.overflow = this.savedOverflow ?? "";
+      document.body.style.paddingRight = this.savedPaddingRight ?? "";
+      this.savedOverflow = null;
+      this.savedPaddingRight = null;
+    }
+  },
+};
+
+window.CiderUI._FOCUSABLE =
+  'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
+
+window.CiderUI._isVisible = function (el) {
+  if (el.getClientRects().length === 0) return false;
+  const style = getComputedStyle(el);
+  return style.visibility !== "hidden" && style.visibility !== "collapse";
+};
+
 // ── Action Sheet ──
 // ActionSheet — ciderui
 (function () {
   const activeDialogs = new Set();
-
-  window.CiderUI = window.CiderUI || {};
-  if (!window.CiderUI._scrollLock) {
-    window.CiderUI._scrollLock = {
-      count: 0,
-      savedOverflow: null,
-      savedPaddingRight: null,
-      lock() {
-        if (this.count++ === 0) {
-          this.savedOverflow = document.body.style.overflow;
-          this.savedPaddingRight = document.body.style.paddingRight;
-          const sw = window.innerWidth - document.documentElement.clientWidth;
-          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
-          document.body.style.overflow = "hidden";
-        }
-      },
-      unlock() {
-        if (this.count <= 0) return;
-        if (--this.count === 0) {
-          document.body.style.overflow = this.savedOverflow ?? "";
-          document.body.style.paddingRight = this.savedPaddingRight ?? "";
-          this.savedOverflow = null;
-          this.savedPaddingRight = null;
-        }
-      },
-    };
-  }
   const scrollLock = window.CiderUI._scrollLock;
+  const FOCUSABLE = window.CiderUI._FOCUSABLE;
+  const isVisible = window.CiderUI._isVisible;
 
   function restoreScrollLock(dialog) {
     if (activeDialogs.delete(dialog)) {
       scrollLock.unlock();
     }
-  }
-
-  const FOCUSABLE =
-    'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
-
-  function isVisible(el) {
-    if (el.getClientRects().length === 0) return false;
-    const style = getComputedStyle(el);
-    return style.visibility !== "hidden" && style.visibility !== "collapse";
   }
 
   function clearCloseAnim(dialog) {
@@ -390,44 +394,14 @@
 // focus trapping, scroll lock, and focus restoration.
 (function () {
   const activeDialogs = new Set();
-
-  // Shared scroll-lock across dialog, action-sheet, and sidebar IIFEs
-  window.CiderUI = window.CiderUI || {};
-  if (!window.CiderUI._scrollLock) {
-    window.CiderUI._scrollLock = {
-      count: 0,
-      savedOverflow: null,
-      savedPaddingRight: null,
-      lock() {
-        if (this.count++ === 0) {
-          this.savedOverflow = document.body.style.overflow;
-          this.savedPaddingRight = document.body.style.paddingRight;
-          const sw = window.innerWidth - document.documentElement.clientWidth;
-          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
-          document.body.style.overflow = "hidden";
-        }
-      },
-      unlock() {
-        if (this.count <= 0) return;
-        if (--this.count === 0) {
-          document.body.style.overflow = this.savedOverflow ?? "";
-          document.body.style.paddingRight = this.savedPaddingRight ?? "";
-          this.savedOverflow = null;
-          this.savedPaddingRight = null;
-        }
-      },
-    };
-  }
   const scrollLock = window.CiderUI._scrollLock;
+  const FOCUSABLE = window.CiderUI._FOCUSABLE;
 
   function restoreScrollLock(dialog) {
     if (activeDialogs.delete(dialog)) {
       scrollLock.unlock();
     }
   }
-
-  const FOCUSABLE =
-    'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
 
   function clearCloseAnim(dialog) {
     if (dialog._closeTimer) {
@@ -464,11 +438,7 @@
     dialog._closeTimer = setTimeout(finish, duration);
   }
 
-  function isVisible(el) {
-    if (el.getClientRects().length === 0) return false;
-    const style = getComputedStyle(el);
-    return style.visibility !== "hidden" && style.visibility !== "collapse";
-  }
+  const isVisible = window.CiderUI._isVisible;
 
   function trapFocus(dialog) {
     const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
@@ -1628,42 +1598,9 @@
 // Mobile off-canvas toggle. Wire up [data-sidebar-toggle]
 // buttons to slide the panel in/out, with overlay dismiss and Escape key support.
 (function () {
-  window.CiderUI = window.CiderUI || {};
-  if (!window.CiderUI._scrollLock) {
-    window.CiderUI._scrollLock = {
-      count: 0,
-      savedOverflow: null,
-      savedPaddingRight: null,
-      lock() {
-        if (this.count++ === 0) {
-          this.savedOverflow = document.body.style.overflow;
-          this.savedPaddingRight = document.body.style.paddingRight;
-          const sw = window.innerWidth - document.documentElement.clientWidth;
-          if (sw > 0) document.body.style.paddingRight = `${sw}px`;
-          document.body.style.overflow = "hidden";
-        }
-      },
-      unlock() {
-        if (this.count <= 0) return;
-        if (--this.count === 0) {
-          document.body.style.overflow = this.savedOverflow ?? "";
-          document.body.style.paddingRight = this.savedPaddingRight ?? "";
-          this.savedOverflow = null;
-          this.savedPaddingRight = null;
-        }
-      },
-    };
-  }
   const scrollLock = window.CiderUI._scrollLock;
-
-  const FOCUSABLE =
-    'a[href]:not([tabindex="-1"]):not([aria-disabled="true"]), button:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), input:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), select:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), textarea:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])';
-
-  function isVisible(el) {
-    if (el.getClientRects().length === 0) return false;
-    const style = getComputedStyle(el);
-    return style.visibility !== "hidden" && style.visibility !== "collapse";
-  }
+  const FOCUSABLE = window.CiderUI._FOCUSABLE;
+  const isVisible = window.CiderUI._isVisible;
 
   function setupToggle(btn) {
     if (btn._sidebarInit) return;
@@ -2290,7 +2227,7 @@
 
     getButtons().forEach((btn) => {
       if (!btn.id) {
-        btn.id = `tab-${Math.random().toString(36).substring(2, 11)}`;
+        btn.id = `tab-${Math.random().toString(36).slice(2, 8)}`;
         btn._tabInjectedId = true;
       }
       btn.setAttribute("role", "tab");
@@ -2315,7 +2252,7 @@
 
     getPanels().forEach((panel) => {
       if (!panel.id) {
-        panel.id = `tabpanel-${Math.random().toString(36).substring(2, 11)}`;
+        panel.id = `tabpanel-${Math.random().toString(36).slice(2, 8)}`;
         panel._tabInjectedId = true;
       }
       panel.setAttribute("role", "tabpanel");
