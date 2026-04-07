@@ -7,7 +7,8 @@ Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names 
 ## Install
 
 ```bash
-npm install ciderui@github:newlix/ciderui
+pnpm add ciderui@github:newlix/ciderui
+# or: npm install ciderui@github:newlix/ciderui
 ```
 
 ## Usage
@@ -32,7 +33,21 @@ Add `.cider` to an ancestor element to activate styles:
 </body>
 ```
 
-### CDN
+### Interactive components
+
+Some components (dialog, popover, tabs, etc.) need JS. Include the bundle:
+
+```js
+import "ciderui/cider.js";
+```
+
+Or via CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"></script>
+```
+
+### CDN (no build step)
 
 ```html
 <link

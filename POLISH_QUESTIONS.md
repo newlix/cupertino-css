@@ -2,11 +2,11 @@
 
 Items flagged during DX/Docs/a11y review that need user input before proceeding.
 
-## [docs/installation.njk vs README.md]
+## [docs/_includes/macros.njk — figure without figcaption]
 
-- **Problem**: CDN URL in installation.njk uses `ciderui.cdn.css` (unminified), but README.md uses `ciderui.cdn.min.css` (minified). Inconsistent guidance for new users.
-- **Options**: A) Standardize both to `.min.css` / B) Keep as-is (unminified for dev docs, minified in README)
-- **Status**: Skipped
+- **Problem**: `example()` macro wraps preview in `<figure>` but the label `<h3>` is outside — no `<figcaption>`, screen reader announces unnamed figure
+- **Options**: A) Move h3 inside figure as figcaption / B) Replace `<figure>` with `<div>` (simpler but breaks ~40 test selectors using `.snippet-preview > figure`)
+- **Status**: Skipped — needs coordinated test selector update
 
 ## [JS components — hardcoded ARIA label strings]
 

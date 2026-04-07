@@ -114,4 +114,22 @@ if (window._ciderSnippetInit) {
       });
     }
   });
+
+  // Arrow key navigation for snippet tab strips (ARIA tablist pattern)
+  document.addEventListener("keydown", function (e) {
+    var tab = e.target.closest(".snippet > header > nav > button[data-tab]");
+    if (!tab) return;
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    var tabs = Array.from(
+      tab.closest("nav").querySelectorAll("button[data-tab]"),
+    );
+    var idx = tabs.indexOf(tab);
+    var next =
+      e.key === "ArrowRight"
+        ? tabs[(idx + 1) % tabs.length]
+        : tabs[(idx - 1 + tabs.length) % tabs.length];
+    next.click();
+    next.focus();
+  });
 }
