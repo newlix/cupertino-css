@@ -29,14 +29,14 @@ test.describe("Radio Group", () => {
 
   test("disabled radio cannot be selected", async ({ page }) => {
     const disabled = page
-      .locator('.snippet-preview > figure input[type="radio"][disabled]')
+      .locator('.snippet-preview > .cider input[type="radio"][disabled]')
       .first();
     await expect(disabled).toBeDisabled();
   });
 
   test("hover on checked radio changes border", async ({ page }) => {
     const radio = page
-      .locator('.snippet-preview > figure input[type="radio"]:checked')
+      .locator('.snippet-preview > .cider input[type="radio"]:checked')
       .first();
     const before = await css(radio, "borderColor");
     await radio.hover();
@@ -48,7 +48,7 @@ test.describe("Radio Group", () => {
   test("hover on unchecked radio changes border", async ({ page }) => {
     const radio = page
       .locator(
-        '.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)',
+        '.snippet-preview > .cider input[type="radio"]:not(:checked):not(:disabled)',
       )
       .first();
     const before = await css(radio, "borderColor");
@@ -60,7 +60,7 @@ test.describe("Radio Group", () => {
 
   test("focus-visible shows ring", async ({ page }) => {
     const radio = page
-      .locator('.snippet-preview > figure input[type="radio"]')
+      .locator('.snippet-preview > .cider input[type="radio"]')
       .first();
     const before = await css(radio, "boxShadow");
     await focusViaKeyboard(page, radio);
@@ -76,11 +76,11 @@ test.describe("Radio Group", () => {
   }) => {
     await setDark(page);
     const checked = page
-      .locator('.snippet-preview > figure input[type="radio"]:checked')
+      .locator('.snippet-preview > .cider input[type="radio"]:checked')
       .first();
     const unchecked = page
       .locator(
-        '.snippet-preview > figure input[type="radio"]:not(:checked):not(:disabled)',
+        '.snippet-preview > .cider input[type="radio"]:not(:checked):not(:disabled)',
       )
       .first();
     expect(await css(checked, "borderColor")).not.toBe(

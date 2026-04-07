@@ -19,7 +19,7 @@ test.describe("Avatar", () => {
     page,
   }) => {
     const group = page
-      .locator(".snippet-preview > figure .avatar-group")
+      .locator(".snippet-preview > .cider .avatar-group")
       .first();
     if ((await group.count()) === 0) return;
     const avatar = group.locator(".avatar").first();

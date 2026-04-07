@@ -34,14 +34,14 @@ test.describe("Checkbox", () => {
 
   test("disabled checkbox cannot be toggled", async ({ page }) => {
     const cb = page
-      .locator('.snippet-preview > figure input[type="checkbox"][disabled]')
+      .locator('.snippet-preview > .cider input[type="checkbox"][disabled]')
       .first();
     await expect(cb).toBeDisabled();
   });
 
   test("hover on checked checkbox changes background", async ({ page }) => {
     const cb = page
-      .locator('.snippet-preview > figure input[type="checkbox"]:checked')
+      .locator('.snippet-preview > .cider input[type="checkbox"]:checked')
       .first();
     const before = await css(cb, "backgroundColor");
     await cb.hover();

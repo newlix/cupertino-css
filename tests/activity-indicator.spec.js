@@ -50,7 +50,7 @@ test.describe("Activity Indicator", () => {
       { cls: ".activity-indicator-lg", px: 100 },
     ];
     for (const { cls, px } of sizes) {
-      const el = page.locator(`.snippet-preview > figure ${cls}`).first();
+      const el = page.locator(`.snippet-preview > .cider ${cls}`).first();
       if ((await el.count()) > 0) {
         expect(parseFloat(await css(el, "width")), cls).toBe(px);
       }

@@ -56,7 +56,7 @@ test.describe("Preview Rendering", () => {
       await page.goto(path);
       await page.waitForLoadState("load");
 
-      const previews = page.locator(".snippet-preview > figure");
+      const previews = page.locator(".snippet-preview > .cider");
       const count = await previews.count();
       if (count === 0) return; // pages like essentials may have code-only snippets
 

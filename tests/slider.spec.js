@@ -45,7 +45,7 @@ test.describe("Slider", () => {
 
   test("disabled slider is not interactive", async ({ page }) => {
     const slider = page
-      .locator(".snippet-preview > figure .slider[disabled]")
+      .locator(".snippet-preview > .cider .slider[disabled]")
       .first();
     await expect(slider).toBeDisabled();
   });

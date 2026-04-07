@@ -29,7 +29,7 @@ test.describe("Card", () => {
   }) => {
     // Card uses overflow:hidden which clips box-shadow rings,
     // so focus-visible must use outline instead
-    const btn = page.locator(".snippet-preview > figure button.card").first();
+    const btn = page.locator(".snippet-preview > .cider button.card").first();
     if ((await btn.count()) > 0) {
       await focusViaKeyboard(page, btn);
       const outline = await css(btn, "outlineStyle");

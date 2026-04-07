@@ -31,7 +31,7 @@ test.describe("Switch", () => {
 
   test("disabled switch cannot be toggled", async ({ page }) => {
     const sw = page
-      .locator('.snippet-preview > figure input[role="switch"][disabled]')
+      .locator('.snippet-preview > .cider input[role="switch"][disabled]')
       .first();
     await expect(sw).toBeDisabled();
   });
