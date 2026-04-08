@@ -85,8 +85,8 @@ function build() {
   });
 
   // CSS succeeded — now safe to clean stale output (preserve the CSS we just built)
-  if (!SITE.startsWith(ROOT + path.sep) && SITE !== ROOT)
-    throw new Error(`SITE ${SITE} is outside ROOT ${ROOT}`);
+  if (!SITE.startsWith(ROOT + path.sep))
+    throw new Error(`SITE ${SITE} is outside or equal to ROOT ${ROOT}`);
   for (const entry of fs.readdirSync(SITE)) {
     if (entry === CSS_OUT) continue;
     fs.rmSync(path.join(SITE, entry), { recursive: true });
