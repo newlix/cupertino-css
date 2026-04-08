@@ -19,9 +19,7 @@ const allLinks = nav.flatMap((section) =>
     .filter((item) => item.href.endsWith(".html"))
     .map((item) => ({
       label: item.label,
-      path: item.href.startsWith("components/")
-        ? `/${item.href}`
-        : `/${item.href}`,
+      path: `/${item.href}`,
     })),
 );
 

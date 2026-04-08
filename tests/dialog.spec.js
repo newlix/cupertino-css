@@ -102,29 +102,30 @@ test.describe("Dialog", () => {
 
   test("focus trap wraps within dialog", async ({ page }) => {
     const dialog = preview(page, 3).locator("dialog");
-    const FOCUSABLE =
-      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
     await preview(page, 3).locator('button:has-text("Edit Profile")').click();
     await expect(dialog).toBeVisible();
 
-    // Tab through all focusable elements to reach the last one
-    const focusable = await dialog.evaluate((d, sel) => {
-      return d.querySelectorAll(sel).length;
-    }, FOCUSABLE);
+    // Use the same FOCUSABLE selector as the production focus trap
+    const focusable = await dialog.evaluate((d) => {
+      return d.querySelectorAll(window.CiderUI._FOCUSABLE).length;
+    });
     expect(focusable).toBeGreaterThan(1);
 
     // Focus the last focusable element, then Tab should wrap to first
-    await dialog.evaluate((d, sel) => {
-      const els = d.querySelectorAll(sel);
+    await dialog.evaluate((d) => {
+      const els = d.querySelectorAll(window.CiderUI._FOCUSABLE);
       els[els.length - 1].focus();
-    }, FOCUSABLE);
+    });
     await page.keyboard.press("Tab");
 
     // Focus should have wrapped to the first focusable element
-    const wrappedToFirst = await dialog.evaluate((d, sel) => {
-      return document.activeElement === d.querySelectorAll(sel)[0];
-    }, FOCUSABLE);
+    const wrappedToFirst = await dialog.evaluate((d) => {
+      return (
+        document.activeElement ===
+        d.querySelectorAll(window.CiderUI._FOCUSABLE)[0]
+      );
+    });
     expect(wrappedToFirst).toBe(true);
 
     await dialog.locator('button:has-text("Cancel")').click();

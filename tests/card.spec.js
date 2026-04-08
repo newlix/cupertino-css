@@ -24,17 +24,15 @@ test.describe("Card", () => {
     expect(await css(card, "overflow")).toBe("hidden");
   });
 
-  test("card focus-visible uses outline (not just box-shadow) for overflow:hidden compat", async ({
+  test.fixme("card focus-visible uses outline (not just box-shadow) for overflow:hidden compat", async ({
     page,
   }) => {
-    // Card uses overflow:hidden which clips box-shadow rings,
-    // so focus-visible must use outline instead
+    // No button.card example exists in the doc page yet
     const btn = page.locator(".snippet-preview > .cider button.card").first();
-    if ((await btn.count()) > 0) {
-      await focusViaKeyboard(page, btn);
-      const outline = await css(btn, "outlineStyle");
-      expect(outline).toBe("solid");
-    }
+    await expect(btn).toBeVisible();
+    await focusViaKeyboard(page, btn);
+    const outline = await css(btn, "outlineStyle");
+    expect(outline).toBe("solid");
   });
 
   test("dark mode: border visible against background", async ({ page }) => {

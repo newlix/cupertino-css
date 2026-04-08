@@ -592,7 +592,7 @@ label {
     @media (pointer: coarse), (hover: none) {
       min-height: 44px;
     }
-    &:has(> small) {
+    &:has(> small):not(:has(input[role="switch"])) {
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 0.625rem;

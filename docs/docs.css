@@ -79,7 +79,8 @@
     color: var(--color-tertiary-foreground);
   }
 
-  .snippet-preview > figure {
+  .snippet-preview > .cider {
+    @apply py-6 px-6;
     position: relative;
     & > .card,
     & > table,
@@ -91,15 +92,8 @@
     & > dialog,
     & > .list,
     & > form,
-    & > fieldset,
-    & > .cider {
+    & > fieldset {
       @apply w-full;
-    }
-    & > .cider {
-      max-width: none;
-      padding-left: 0;
-      padding-right: 0;
-      margin: 0;
     }
     & pre {
       background: transparent;
@@ -209,9 +203,6 @@
     }
     & > .snippet-preview {
       border-bottom: 1px solid var(--panel-border);
-      & > figure {
-        @apply py-6 px-6 m-0;
-      }
     }
     & > pre[data-panel]:not([data-active]) {
       @apply hidden;

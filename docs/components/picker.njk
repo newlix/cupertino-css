@@ -121,7 +121,7 @@
   <section class="mt-12">
     <h2>Usage</h2>
     <p>Include the picker JS to enable scroll-snap selection and change events. Set <code>data-value</code> on a <code>.picker-column</code> to pre-select an item on load.</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
 
@@ -129,7 +129,7 @@
 &lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"&gt;&lt;/script&gt;</code></pre>
     </div>
     <p>Listen for the <code>change</code> event on the picker element to react to selections:</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-js">document.querySelector('[data-picker]').addEventListener('change', (e) =&gt; {
   console.log(e.detail); // { column: 0, value: "March", index: 2 }
 });</code></pre>

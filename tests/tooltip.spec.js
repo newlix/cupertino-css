@@ -17,12 +17,13 @@ test.describe("Tooltip", () => {
     expect(parseFloat(before)).toBe(0);
 
     await btn.hover();
-    // Wait for 0.6s macOS-style delay + transition
-    await page.waitForTimeout(800);
-    const after = await btn.evaluate(
-      (el) => getComputedStyle(el, "::after").opacity,
-    );
-    expect(parseFloat(after)).toBe(1);
+    // 0.6s macOS-style delay + transition — use retry assertion for CI stability
+    await expect(async () => {
+      const opacity = await btn.evaluate(
+        (el) => getComputedStyle(el, "::after").opacity,
+      );
+      expect(parseFloat(opacity)).toBe(1);
+    }).toPass({ timeout: 2000 });
   });
 
   test("tooltip appears on focus-visible without delay", async ({

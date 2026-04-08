@@ -21,7 +21,7 @@ test.describe("Avatar", () => {
     const group = page
       .locator(".snippet-preview > .cider .avatar-group")
       .first();
-    if ((await group.count()) === 0) return;
+    await expect(group).toBeVisible();
     const avatar = group.locator(".avatar").first();
     await avatar.hover();
     await expect(async () => {

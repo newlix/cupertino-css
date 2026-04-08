@@ -36,6 +36,9 @@ test.describe("Slider", () => {
     page,
   }) => {
     const slider = preview(page).locator(".slider").first();
+    await page.waitForFunction(
+      () => document.querySelector(".slider")?._sliderInit,
+    );
     await slider.fill("50");
     const pct = await slider.evaluate((el) =>
       el.style.getPropertyValue("--slider-value"),

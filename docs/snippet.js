@@ -6,6 +6,7 @@ function fallbackCopy(text) {
   ta.style.cssText = "position:fixed;opacity:0";
   try {
     document.body.appendChild(ta);
+    ta.focus();
     ta.select();
     if (!document.execCommand("copy")) throw new Error("execCommand failed");
   } finally {

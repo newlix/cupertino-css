@@ -52,7 +52,7 @@
   <section class="mt-12">
     <h2>Usage</h2>
     <p>Include the stepper JS to enable increment/decrement behavior, value display updates, and boundary clamping.</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
 
@@ -64,7 +64,7 @@
   <section class="mt-12">
     <h2>Events</h2>
     <p>A <code>change</code> event fires on the stepper element whenever the value changes. The new value is available in <code>event.detail.value</code>.</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-js">document.querySelector('[data-stepper]')
   .addEventListener('change', (e) => {
     console.log('New value:', e.detail.value);

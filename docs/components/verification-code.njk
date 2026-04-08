@@ -39,7 +39,7 @@
   <section class="mt-12">
     <h2>Usage</h2>
     <p>Use inside a <code>.cider</code> container. Handles auto-advance, backspace, paste, and arrow key navigation. Syncs values to a hidden input and auto-sets <code>maxlength</code> and <code>inputmode</code>.</p>
-    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
 
@@ -51,7 +51,7 @@
   <section class="mt-12">
     <h2>Events</h2>
     <p>A <code>complete</code> event fires on the container when all slots are filled. Use it to auto-submit or validate.</p>
-    <div class="snippet mt-4" data-active style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-js">document.querySelector('.verification-code')
   .addEventListener('complete', (e) => {
     console.log('Code entered:', e.detail.code);

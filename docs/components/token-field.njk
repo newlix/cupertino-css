@@ -47,7 +47,7 @@
   <section class="mt-12">
     <h2>Usage</h2>
     <p>Include the token field JS to enable adding tokens with Enter or comma, and removing with Backspace or the × button.</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-html">&lt;!-- npm --&gt;
 &lt;script src="node_modules/ciderui/js/cider.js"&gt;&lt;/script&gt;
 
@@ -55,7 +55,7 @@
 &lt;script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"&gt;&lt;/script&gt;</code></pre>
     </div>
     <p>Listen for the <code>change</code> event to react to token changes:</p>
-    <div class="snippet mt-4" style="border-radius: var(--radius-lg); overflow: hidden;">
+    <div class="snippet mt-4">
       <pre><code class="language-js">document.querySelector('[data-token-field]').addEventListener('change', (e) =&gt; {
   console.log(e.detail.tokens); // ["Design", "Photos"]
 });</code></pre>

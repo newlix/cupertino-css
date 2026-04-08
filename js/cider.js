@@ -934,7 +934,6 @@ window.CiderUI._isVisible = function (el) {
   }
 
   function setupColumn(column, colIndex, picker) {
-    const itemH = getItemHeight(picker);
     const items = column.children;
 
     // ARIA: make column keyboard-focusable with listbox semantics
@@ -977,13 +976,15 @@ window.CiderUI._isVisible = function (el) {
       column.addEventListener("scrollend", onScrollSettle);
     }
 
-    column._pickerScroll = function () {
-      if (!supportsScrollEnd) {
+    if (!supportsScrollEnd) {
+      column._pickerScroll = function () {
         clearTimeout(column._pickerTimer);
         column._pickerTimer = setTimeout(onScrollSettle, 100);
-      }
-    };
-    column.addEventListener("scroll", column._pickerScroll, { passive: true });
+      };
+      column.addEventListener("scroll", column._pickerScroll, {
+        passive: true,
+      });
+    }
 
     // Mouse drag-to-scroll (desktop: emulate touch drag behaviour)
     let dragY = 0;
@@ -1706,7 +1707,12 @@ window.CiderUI._isVisible = function (el) {
       if (returnFocus !== false) {
         const prev = btn._sidebarPreviousFocus;
         btn._sidebarPreviousFocus = null;
-        if (prev && document.contains(prev) && prev !== document.body) {
+        if (
+          prev &&
+          document.contains(prev) &&
+          prev !== document.body &&
+          isVisible(prev)
+        ) {
           prev.focus();
         } else {
           btn.focus();

@@ -37,7 +37,7 @@
       { "label": "Picker", "href": "components/picker.html" },
       { "label": "Popover", "href": "components/popover.html" },
       { "label": "Progress", "href": "components/progress.html" },
-      { "label": "Radio", "href": "components/radio-group.html" },
+      { "label": "Radio Group", "href": "components/radio-group.html" },
       { "label": "Search Field", "href": "components/search-field.html" },
       {
         "label": "Segmented Control",
