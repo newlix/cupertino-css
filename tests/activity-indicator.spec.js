@@ -51,9 +51,8 @@ test.describe("Activity Indicator", () => {
     ];
     for (const { cls, px } of sizes) {
       const el = page.locator(`.snippet-preview > .cider ${cls}`).first();
-      if ((await el.count()) > 0) {
-        expect(parseFloat(await css(el, "width")), cls).toBe(px);
-      }
+      await expect(el, `${cls} should be visible`).toBeVisible();
+      expect(parseFloat(await css(el, "width")), cls).toBe(px);
     }
   });
 });

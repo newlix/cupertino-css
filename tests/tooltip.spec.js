@@ -37,11 +37,12 @@ test.describe("Tooltip", () => {
     );
     const btn = preview(page).locator("[data-tooltip]").first();
     await focusViaKeyboard(page, btn);
-    await page.waitForTimeout(300);
-    const opacity = await btn.evaluate(
-      (el) => getComputedStyle(el, "::after").opacity,
-    );
-    expect(parseFloat(opacity)).toBe(1);
+    await expect(async () => {
+      const opacity = await btn.evaluate(
+        (el) => getComputedStyle(el, "::after").opacity,
+      );
+      expect(parseFloat(opacity)).toBe(1);
+    }).toPass({ timeout: 2000 });
   });
 
   test("tooltip text is set via data attribute", async ({ page }) => {

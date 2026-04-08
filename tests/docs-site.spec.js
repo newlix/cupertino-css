@@ -44,8 +44,11 @@ test.describe("Docs Smoke", () => {
 
 // ── Preview rendering: every example has visible content ──
 
-const componentLinks = allLinks.filter((l) =>
-  l.path.startsWith("/components/"),
+const componentLinks = allLinks.filter(
+  (l) =>
+    l.path.startsWith("/components/") &&
+    !l.path.includes("kitchen-sink") &&
+    !l.path.includes("essentials"),
 );
 
 test.describe("Preview Rendering", () => {
@@ -56,7 +59,9 @@ test.describe("Preview Rendering", () => {
 
       const previews = page.locator(".snippet-preview > .cider");
       const count = await previews.count();
-      if (count === 0) return; // pages like essentials may have code-only snippets
+      expect(count, `${path} should have at least one preview`).toBeGreaterThan(
+        0,
+      );
 
       for (let i = 0; i < count; i++) {
         const fig = previews.nth(i);
