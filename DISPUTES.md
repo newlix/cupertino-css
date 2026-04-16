@@ -13,28 +13,24 @@ Format: date, context, what I decided, why, how to reverse.
 **Reversal:** how to undo if disagreed.
 -->
 
-## 2026-04-17 — Disabled-state cursor inconsistency (partial coverage)
+## 2026-04-17 — Disabled input cursor (Playwright readback quirk, 1 fixme)
 
-**Decision:** `tests/disabled-cursor.spec.js` keeps two fixmes:
+**Decision:** `tests/disabled-cursor.spec.js` keeps one fixme:
 
-1. `disabled .btn-filled` returns computed `cursor: pointer` because
-   button.css only overrides `opacity` and `pointer-events` on
-   `:disabled`, not `cursor`. Form inputs (in elements/forms.css) do
-   override `cursor: not-allowed`. Inconsistent.
-2. `input[disabled]` in the docs returns `cursor: default` via
-   Playwright even though `cursor: not-allowed` is declared —
-   interaction with `pointer-events: none` on the same rule.
+- `input[disabled]` in the docs returns `cursor: default` via
+  Playwright's `getComputedStyle` readback even though
+  `cursor: not-allowed` is declared. Interacts with
+  `pointer-events: none` on the same rule.
 
-**Why defer:** visually both elements don't accept pointer events, so
-the OS-level cursor is hardly relevant. Fixing #1 is a one-line
-addition to button.css (`cursor: not-allowed` in the `:disabled`
-rule); #2 is a test-harness serialisation issue more than a bug.
-Leaving the fixmes in so a future pass documents the intent.
+**Why defer:** the rule IS in the cascade (browser devtools confirm),
+and visually the element doesn't accept pointer events so OS cursor
+is moot. Fix would be either splitting the `:disabled` rule so cursor
+isn't on the same declaration as pointer-events, or accepting the
+test-harness output difference.
 
-**Reversal:** add
-`&:disabled, &[aria-disabled="true"] { cursor: not-allowed; }` to
-button.css' base rule, then turn the first fixme into a regular
-test.
+**Already fixed (separate commit):** `button.css` `:disabled` rule
+now sets `cursor: not-allowed` — brings buttons in line with form
+inputs; matching regular test is green.
 
 ## 2026-04-17 — `destroy(undefined)` not required to be a no-op
 

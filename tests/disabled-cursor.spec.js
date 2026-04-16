@@ -7,14 +7,7 @@ import { test, expect } from "@playwright/test";
 import { css, goto } from "./helpers.js";
 
 test.describe("Disabled cursor", () => {
-  test.fixme("disabled button has not-allowed cursor", async ({ page }) => {
-    // Finding: .btn-filled etc. declare cursor:pointer in the base rule
-    // but the :disabled / [aria-disabled="true"] override only sets
-    // opacity + pointer-events:none, leaving cursor:pointer in
-    // computed style. pointer-events:none means cursors visually
-    // inherit from the parent at runtime so the bug is cosmetic,
-    // but inconsistent with form inputs (which do set
-    // cursor:not-allowed on disabled). Documented in DISPUTES.md.
+  test("disabled button has not-allowed cursor", async ({ page }) => {
     await goto(page, "button");
     const el = await page.evaluate(() => {
       const b = document.createElement("button");

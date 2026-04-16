@@ -18,6 +18,7 @@
   letter-spacing: -0.016em;
   &:disabled,
   &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
     pointer-events: none;
     opacity: 0.38;
   }
