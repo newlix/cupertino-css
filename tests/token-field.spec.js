@@ -33,6 +33,30 @@ test.describe("Token Field", () => {
     }).toPass({ timeout: 2000 });
   });
 
+  test("removing middle token preserves surrounding tokens", async ({
+    page,
+  }) => {
+    const field = preview(page).locator(".token-field");
+    const input = field.locator("input");
+
+    // Add three distinct tokens so we know exact order
+    for (const t of ["one-rm", "two-rm", "three-rm"]) {
+      await input.fill(t);
+      await input.press("Enter");
+    }
+
+    // Remove the middle one by finding its remove button
+    const middleToken = field.locator(".token", { hasText: "two-rm" });
+    await middleToken.locator("button").click();
+
+    const remaining = await field
+      .locator(".token")
+      .evaluateAll((els) => els.map((e) => e.dataset.value).filter(Boolean));
+    expect(remaining).toContain("one-rm");
+    expect(remaining).toContain("three-rm");
+    expect(remaining).not.toContain("two-rm");
+  });
+
   test("duplicate tokens are not added", async ({ page }) => {
     const field = preview(page).locator(".token-field");
     const input = field.locator("input");
