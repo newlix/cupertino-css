@@ -26,8 +26,16 @@ const order = [
   "verificationCode.js",
 ];
 
+// Strip ESM `import` lines when building the classic-script bundle —
+// components use them to declare their dependency on _shared.js in
+// module consumers, but _shared.js is already the first file we
+// concatenate, so the imports are redundant (and syntactically invalid
+// for a <script> tag without type="module").
+const stripImports = (src) =>
+  src.replace(/^\s*import\s+["'][^"']+["'];\s*\n/gm, "");
+
 const out = order
-  .map((f) => readFileSync(resolve(compDir, f), "utf8"))
+  .map((f) => stripImports(readFileSync(resolve(compDir, f), "utf8")))
   .join("");
 
 writeFileSync(outFile, out);

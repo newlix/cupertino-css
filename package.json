@@ -45,6 +45,7 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:types": "pnpm --package=typescript dlx tsc",
+    "test:shared-imports": "node scripts/check-shared-imports.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "peerDependencies": {

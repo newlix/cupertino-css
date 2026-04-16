@@ -2,6 +2,7 @@
 // Dialog — ciderui
 // Uses native <dialog> element. Adds backdrop-click-to-close with exit animation,
 // focus trapping, scroll lock, and focus restoration.
+import "./_shared.js";
 (function () {
   const activeDialogs = new Set();
   const scrollLock = window.CiderUI._scrollLock;

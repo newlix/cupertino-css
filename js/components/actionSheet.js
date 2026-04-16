@@ -1,5 +1,6 @@
 // ── Action Sheet ──
 // ActionSheet — ciderui
+import "./_shared.js";
 (function () {
   const activeDialogs = new Set();
   const scrollLock = window.CiderUI._scrollLock;

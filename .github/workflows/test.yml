@@ -39,6 +39,9 @@ jobs:
       - name: Type check
         run: pnpm test:types
 
+      - name: Tree-shake contract (components import _shared where needed)
+        run: pnpm test:shared-imports
+
       - name: Playwright tests
         run: pnpm test
         env:

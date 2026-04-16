@@ -2,6 +2,7 @@
 // Sidebar — ciderui
 // Mobile off-canvas toggle. Wire up [data-sidebar-toggle]
 // buttons to slide the panel in/out, with overlay dismiss and Escape key support.
+import "./_shared.js";
 (function () {
   const scrollLock = window.CiderUI._scrollLock;
   const FOCUSABLE = window.CiderUI._FOCUSABLE;
