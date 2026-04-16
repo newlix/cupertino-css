@@ -13,6 +13,13 @@ const types = {
   ".txt": "text/plain",
 };
 
+// In-memory cache of file bodies. Playwright hits the same pages
+// repeatedly across 3 browser projects × multiple workers, and cold
+// disk reads under that load were a significant chunk of page.goto
+// latency. The site/ tree is static during a test run, so caching
+// is safe; any docs change rebuilds site/ and restarts the server.
+const cache = new Map();
+
 const server = createServer(async (req, res) => {
   try {
     let filePath = resolve(join(dir, new URL(req.url, "http://x").pathname));
@@ -23,6 +30,14 @@ const server = createServer(async (req, res) => {
     }
     if (filePath.endsWith("/") || filePath === dir)
       filePath = join(filePath, "index.html");
+
+    const hit = cache.get(filePath);
+    if (hit) {
+      res.writeHead(200, { "content-type": hit.type });
+      res.end(hit.data);
+      return;
+    }
+
     let st = await stat(filePath).catch(() => null);
     if (st?.isDirectory()) {
       filePath = join(filePath, "index.html");
@@ -35,9 +50,9 @@ const server = createServer(async (req, res) => {
       if (st?.isFile()) filePath = htmlPath;
     }
     const data = await readFile(filePath);
-    res.writeHead(200, {
-      "content-type": types[extname(filePath)] || "application/octet-stream",
-    });
+    const type = types[extname(filePath)] || "application/octet-stream";
+    cache.set(filePath, { data, type });
+    res.writeHead(200, { "content-type": type });
     res.end(data);
   } catch (err) {
     if (err.code !== "ENOENT" && err.code !== "ENOTDIR")
