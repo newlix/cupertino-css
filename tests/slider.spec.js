@@ -64,4 +64,71 @@ test.describe("Slider", () => {
       expect(await css(slider, "outlineStyle")).toBe("none");
     }).toPass({ timeout: 1000 });
   });
+
+  test("ArrowRight increments and updates fill", async ({ page }) => {
+    const slider = preview(page).locator(".slider").first();
+    await page.waitForFunction(
+      () => document.querySelector(".slider")?._sliderInit,
+    );
+    await slider.focus();
+    const before = Number(await slider.inputValue());
+
+    await page.keyboard.press("ArrowRight");
+    await expect
+      .poll(async () => Number(await slider.inputValue()))
+      .toBe(before + 1);
+    const pct = await slider.evaluate((el) =>
+      el.style.getPropertyValue("--slider-value"),
+    );
+    // value=34, max=100, min=0 → 34%
+    expect(pct).toBe("34%");
+  });
+
+  test("ArrowLeft decrements and updates fill", async ({ page }) => {
+    const slider = preview(page).locator(".slider").first();
+    await page.waitForFunction(
+      () => document.querySelector(".slider")?._sliderInit,
+    );
+    await slider.focus();
+    const before = Number(await slider.inputValue());
+
+    await page.keyboard.press("ArrowLeft");
+    await expect
+      .poll(async () => Number(await slider.inputValue()))
+      .toBe(before - 1);
+  });
+
+  test("Home jumps to min, End jumps to max", async ({ page }) => {
+    const slider = preview(page).locator(".slider").first();
+    await page.waitForFunction(
+      () => document.querySelector(".slider")?._sliderInit,
+    );
+    await slider.focus();
+
+    await page.keyboard.press("End");
+    await expect.poll(async () => Number(await slider.inputValue())).toBe(100);
+
+    await page.keyboard.press("Home");
+    await expect.poll(async () => Number(await slider.inputValue())).toBe(0);
+  });
+
+  test("programmatic value assignment updates the CSS fill", async ({
+    page,
+  }) => {
+    // Ciderui-specific: the slider intercepts HTMLInputElement.prototype.value
+    // setter so JS code doing `slider.value = 75` also updates --slider-value.
+    // Native <input> doesn't fire 'input' on programmatic assignment.
+    const slider = preview(page).locator(".slider").first();
+    await page.waitForFunction(
+      () => document.querySelector(".slider")?._sliderInit,
+    );
+
+    await slider.evaluate((el) => {
+      el.value = "75";
+    });
+    const pct = await slider.evaluate((el) =>
+      el.style.getPropertyValue("--slider-value"),
+    );
+    expect(pct).toBe("75%");
+  });
 });
