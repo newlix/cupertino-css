@@ -85,9 +85,12 @@ test.describe("Scope Isolation — styles stay inside .cider", () => {
       };
     });
 
-    // Inside .cider: tooltip rules apply — ::after content is the tooltip attr, host is position:relative
-    expect(inside.content).toContain("Tip");
+    // Inside .cider: tooltip rules apply — host is position:relative, ::after
+    // has content set. Chromium/Webkit resolve attr(data-tooltip) → "Tip";
+    // Firefox reports the declared value "attr(data-tooltip)" literally. Both
+    // are OK — we only need to prove the rule matched.
     expect(inside.position).toBe("relative");
+    expect(inside.content === "none" || inside.content === "").toBe(false);
 
     // Outside .cider: no tooltip styling; ::after content is empty / "none"
     expect(outside.content === "none" || outside.content === "").toBe(true);
