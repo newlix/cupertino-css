@@ -25,11 +25,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Verify generated cider.js is up to date
+      - name: Verify generated bundles are up to date
         run: |
-          node scripts/build-cider-js.js
-          git diff --exit-code js/cider.js || {
-            echo "::error::js/cider.js is stale; run \`pnpm build:js\` and commit.";
+          pnpm build
+          git diff --exit-code js/cider.js dist/ || {
+            echo "::error::Generated output is stale. Run \`pnpm build\` locally and commit js/cider.js + dist/.";
             exit 1;
           }
 

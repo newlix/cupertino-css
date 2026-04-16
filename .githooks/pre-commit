@@ -16,6 +16,17 @@ if printf '%s\n' "${staged[@]}" | grep -q '^js/components/'; then
   grep -qxF 'js/cider.js' <(printf '%s\n' "${staged[@]}") || staged+=("js/cider.js")
 fi
 
+# If any CSS source is staged, regenerate dist/ (CDN bundle) and restage it.
+# Skips if tailwindcss isn't resolvable (e.g. fresh clone pre-install) — CI
+# still gates on the rebuild + diff.
+if printf '%s\n' "${staged[@]}" | grep -qE '^src/css/'; then
+  if [ -x node_modules/.bin/tailwindcss ]; then
+    node_modules/.bin/tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css >/dev/null 2>&1
+    node_modules/.bin/tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify >/dev/null 2>&1
+    git add dist/ciderui.cdn.css dist/ciderui.cdn.min.css
+  fi
+fi
+
 if ! command -v npx >/dev/null 2>&1; then
   echo "pre-commit: npx not found; skipping prettier" >&2
   exit 0
