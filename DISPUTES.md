@@ -13,6 +13,29 @@ Format: date, context, what I decided, why, how to reverse.
 **Reversal:** how to undo if disagreed.
 -->
 
+## 2026-04-17 — Disabled-state cursor inconsistency (partial coverage)
+
+**Decision:** `tests/disabled-cursor.spec.js` keeps two fixmes:
+
+1. `disabled .btn-filled` returns computed `cursor: pointer` because
+   button.css only overrides `opacity` and `pointer-events` on
+   `:disabled`, not `cursor`. Form inputs (in elements/forms.css) do
+   override `cursor: not-allowed`. Inconsistent.
+2. `input[disabled]` in the docs returns `cursor: default` via
+   Playwright even though `cursor: not-allowed` is declared —
+   interaction with `pointer-events: none` on the same rule.
+
+**Why defer:** visually both elements don't accept pointer events, so
+the OS-level cursor is hardly relevant. Fixing #1 is a one-line
+addition to button.css (`cursor: not-allowed` in the `:disabled`
+rule); #2 is a test-harness serialisation issue more than a bug.
+Leaving the fixmes in so a future pass documents the intent.
+
+**Reversal:** add
+`&:disabled, &[aria-disabled="true"] { cursor: not-allowed; }` to
+button.css' base rule, then turn the first fixme into a regular
+test.
+
 ## 2026-04-17 — `destroy(undefined)` not required to be a no-op
 
 **Decision:** `tests/destroy-safety.spec.js` only gates
