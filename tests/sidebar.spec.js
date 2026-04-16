@@ -202,6 +202,45 @@ test.describe("Sidebar JS (cider.js)", () => {
     expect(await panel.getAttribute("data-open")).toBeNull();
   });
 
+  test("focus trap wraps within open sidebar", async ({ page }) => {
+    await page.evaluate(() => {
+      const container = document.querySelector(".cider");
+      container.insertAdjacentHTML(
+        "beforeend",
+        `
+        <button data-sidebar-toggle aria-controls="test-sidebar-trap" aria-expanded="false">Menu</button>
+        <aside id="test-sidebar-trap">
+          <nav class="sidebar">
+            <a href="#a">First</a>
+            <a href="#b">Middle</a>
+            <a href="#c">Last</a>
+          </nav>
+        </aside>
+        <div data-sidebar-overlay></div>
+      `,
+      );
+      if (window.CiderUI && window.CiderUI.sidebar)
+        window.CiderUI.sidebar.init();
+    });
+
+    const toggle = page.locator('[aria-controls="test-sidebar-trap"]');
+    const panel = page.locator("#test-sidebar-trap");
+
+    await toggle.click();
+    await expect(panel).toHaveAttribute("data-open", "");
+
+    // Focus the last link and Tab → should wrap to first
+    await panel.evaluate((p) => {
+      const links = p.querySelectorAll("a");
+      links[links.length - 1].focus();
+    });
+    await page.keyboard.press("Tab");
+    const wrapped = await panel.evaluate((p) => {
+      return document.activeElement === p.querySelector("a");
+    });
+    expect(wrapped).toBe(true);
+  });
+
   test("Escape key closes sidebar", async ({ page }) => {
     await page.evaluate(() => {
       const container = document.querySelector(".cider");

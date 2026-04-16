@@ -90,6 +90,32 @@ test.describe("Action Sheet", () => {
     await expect(trigger).toBeFocused();
   });
 
+  test("focus trap wraps within action sheet", async ({ page }) => {
+    await preview(page, 0).locator('button:has-text("Share Photo")').click();
+    const dialog = page.locator("#sheet1");
+    await expect(dialog).toBeVisible();
+
+    const focusable = await dialog.evaluate(
+      (d) => d.querySelectorAll(window.CiderUI._FOCUSABLE).length,
+    );
+    expect(focusable).toBeGreaterThan(1);
+
+    await dialog.evaluate((d) => {
+      const els = d.querySelectorAll(window.CiderUI._FOCUSABLE);
+      els[els.length - 1].focus();
+    });
+    await page.keyboard.press("Tab");
+
+    const wrappedToFirst = await dialog.evaluate(
+      (d) =>
+        document.activeElement ===
+        d.querySelectorAll(window.CiderUI._FOCUSABLE)[0],
+    );
+    expect(wrappedToFirst).toBe(true);
+
+    await dialog.locator('button:has-text("Cancel")').click();
+  });
+
   test("with-header example shows title and message", async ({ page }) => {
     await preview(page, 1).locator('button:has-text("Delete Item")').click();
     const dialog = page.locator("#sheet2");
