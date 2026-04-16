@@ -2267,6 +2267,13 @@ window.CiderUI._isVisible = function (el) {
         "tabindex",
         panel.hasAttribute("data-active") ? "0" : "-1",
       );
+      // Mirror the click-handler behaviour on initial setup so inactive
+      // panels hide from first paint, not just after a user click.
+      if (panel.hasAttribute("data-active")) {
+        panel.removeAttribute("hidden");
+      } else {
+        panel.setAttribute("hidden", "");
+      }
       const panelTarget = panel.getAttribute("data-tab-panel");
       const matchingBtn = Array.from(getButtons()).find(
         (b) => b.getAttribute("data-tab") === panelTarget,
