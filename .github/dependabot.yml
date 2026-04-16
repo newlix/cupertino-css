@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Group dev-only dependency bumps into one PR per week to avoid noise.
+    groups:
+      dev-deps:
+        patterns: ["*"]
+        dependency-type: development
+    # Ignore patch bumps on Tailwind since it's a peerDependency —
+    # consumers pin their own version and minor drift at the lockfile
+    # level doesn't affect the published package.
+    ignore:
+      - dependency-name: tailwindcss
+        update-types: [version-update:semver-patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
