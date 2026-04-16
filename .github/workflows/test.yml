@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  playwright:
+    # Using the official Playwright container gives us a matching browser
+    # bundle so we don't need to reinstall browsers per run.
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Verify generated cider.js is up to date
+        run: |
+          node scripts/build-cider-js.js
+          git diff --exit-code js/cider.js || {
+            echo "::error::js/cider.js is stale; run \`pnpm build:js\` and commit.";
+            exit 1;
+          }
+
+      - name: Prettier check
+        run: pnpm prettier --check .
+
+      - name: Playwright tests
+        run: pnpm test
+        env:
+          CI: "true"
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

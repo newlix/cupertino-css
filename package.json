@@ -18,6 +18,7 @@
     "ui"
   ],
   "type": "module",
+  "packageManager": "pnpm@10.33.0",
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
