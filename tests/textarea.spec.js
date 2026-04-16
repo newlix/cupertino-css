@@ -67,9 +67,9 @@ test.describe("Textarea", () => {
     skipWebkitScope(browserName);
     const textarea = preview(page).locator("textarea").first();
     const shape = await css(textarea, "cornerShape");
-    // Browsers without corner-shape support return empty string; in
-    // supporting browsers it returns "squircle". Either is OK — we just
-    // assert the rule parses.
-    expect(["", "squircle", "normal"]).toContain(shape);
+    // Firefox returns undefined (property unknown); supporting browsers
+    // return "squircle". Either is OK — we just assert we didn't break
+    // the rule parsing into a bogus value.
+    expect(["", "squircle", "normal", undefined]).toContain(shape);
   });
 });
