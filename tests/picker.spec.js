@@ -71,4 +71,51 @@ test.describe("Picker", () => {
     const darkBg = await css(picker, "backgroundColor");
     expect(darkBg).not.toBe(lightBg);
   });
+
+  // ── Keyboard navigation ──
+  async function selectedIndexOf(column) {
+    return column.evaluate((col) => {
+      const items = col.querySelectorAll("[aria-selected]");
+      return [...items].findIndex(
+        (el) => el.getAttribute("aria-selected") === "true",
+      );
+    });
+  }
+
+  test("ArrowDown advances selection by one item", async ({ page }) => {
+    const column = preview(page).locator(".picker-column").first();
+    await column.focus();
+    const startIdx = await selectedIndexOf(column);
+
+    await page.keyboard.press("ArrowDown");
+    await expect.poll(() => selectedIndexOf(column)).toBe(startIdx + 1);
+  });
+
+  test("ArrowUp retreats selection by one item", async ({ page }) => {
+    const column = preview(page).locator(".picker-column").first();
+    await column.focus();
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    const startIdx = await selectedIndexOf(column);
+    expect(startIdx).toBeGreaterThanOrEqual(2);
+
+    await page.keyboard.press("ArrowUp");
+    await expect.poll(() => selectedIndexOf(column)).toBe(startIdx - 1);
+  });
+
+  test("Home jumps to first, End jumps to last", async ({ page }) => {
+    const column = preview(page).locator(".picker-column").first();
+    await column.focus();
+
+    const total = await column.evaluate(
+      (col) => col.querySelectorAll("[aria-selected]").length,
+    );
+    expect(total).toBeGreaterThan(1);
+
+    await page.keyboard.press("End");
+    await expect.poll(() => selectedIndexOf(column)).toBe(total - 1);
+
+    await page.keyboard.press("Home");
+    await expect.poll(() => selectedIndexOf(column)).toBe(0);
+  });
 });
