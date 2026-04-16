@@ -92,6 +92,32 @@ test.describe("Popover Menu", () => {
     await expect(popover).not.toBeVisible();
   });
 
+  test("type-ahead jumps to matching menu item", async ({ page }) => {
+    const p = preview(page, 1);
+    const trigger = p.locator(".popover-menu > button").first();
+    const popover = p.locator("[popover]");
+
+    await trigger.click();
+    await expect(popover).toBeVisible();
+
+    // Wait for the auto-focus-first-item behaviour to settle before typing
+    const firstItem = popover.locator("button:not([disabled])").first();
+    await expect(firstItem).toBeFocused();
+
+    // Profile is focused; pressing "s" should move to Settings.
+    await page.keyboard.press("s");
+    await expect(
+      popover.locator("button", { hasText: "Settings" }),
+    ).toBeFocused();
+
+    // Wait for type-ahead buffer to clear (>500ms) then try another letter
+    await page.waitForTimeout(600);
+    await page.keyboard.press("p");
+    await expect(
+      popover.locator("button", { hasText: "Profile" }),
+    ).toBeFocused();
+  });
+
   test("arrow keys navigate menu items", async ({ page }) => {
     const p = preview(page, 1);
     const trigger = p.locator(".popover-menu > button").first();
