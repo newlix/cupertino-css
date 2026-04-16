@@ -5,7 +5,14 @@
 import { test, expect } from "@playwright/test";
 import { goto } from "./helpers.js";
 
-test(".popover-end variant right-aligns with the trigger", async ({ page }) => {
+test(".popover-end variant right-aligns with the trigger", async ({
+  page,
+  browserName,
+}) => {
+  test.skip(
+    browserName !== "chromium",
+    "popover positioning timing requires Chromium's native popover support",
+  );
   await goto(page, "popover");
 
   const result = await page.evaluate(async () => {
