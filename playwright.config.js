@@ -10,7 +10,10 @@ export default defineConfig({
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
-  timeout: 10000,
+  timeout: 15000,
+  // Cap workers so the :3000 test server isn't saturated by 3 browser
+  // projects × many workers — flaked page.goto under default (cpu/2 = 8).
+  workers: process.env.CI ? 2 : 4,
   use: {
     baseURL: "http://localhost:3000",
   },

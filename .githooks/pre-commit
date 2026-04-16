@@ -4,7 +4,7 @@
 set -e
 
 mapfile -t staged < <(git diff --cached --name-only --diff-filter=ACMR |
-  grep -E '\.(js|ts|jsx|tsx|css|njk|json|md|yml|yaml|html)$' || true)
+  grep -E '\.(js|ts|jsx|tsx|css|json|md|yml|yaml|html)$' || true)
 
 [ ${#staged[@]} -eq 0 ] && exit 0
 

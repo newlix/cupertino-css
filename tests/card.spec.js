@@ -24,10 +24,9 @@ test.describe("Card", () => {
     expect(await css(card, "overflow")).toBe("hidden");
   });
 
-  test.fixme("card focus-visible uses outline (not just box-shadow) for overflow:hidden compat", async ({
+  test("card focus-visible uses outline (not just box-shadow) for overflow:hidden compat", async ({
     page,
   }) => {
-    // No button.card example exists in the doc page yet
     const btn = page.locator(".snippet-preview > .cider button.card").first();
     await expect(btn).toBeVisible();
     await focusViaKeyboard(page, btn);

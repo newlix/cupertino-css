@@ -9,6 +9,8 @@
   <dl>
     <dt><code>.card</code></dt>
     <dd>Rounded container with squircle corners, shadow, and padding.</dd>
+    <dt><code>a.card</code>, <code>button.card</code></dt>
+    <dd>Interactive variant — gains hover/active/focus-visible treatment.</dd>
   </dl>
 
   {% call example("Default") %}
@@ -26,6 +28,19 @@
     <progress value="10" max="100" aria-label="iCloud storage usage"></progress>
     <p class="mt-2 text-xs text-tertiary-foreground">Manage your storage plan and see what's using space.</p>
   </div>
+</div>
+{% endcall %}
+
+  {% call example("Interactive (button / link)") %}
+<div class="flex flex-col gap-3 max-w-sm">
+  <button type="button" class="card text-left">
+    <h4>Apple Music</h4>
+    <p class="text-sm text-tertiary-foreground">Listen to over 100 million songs, ad-free.</p>
+  </button>
+  <a href="#" class="card">
+    <h4>Apple TV+</h4>
+    <p class="text-sm text-tertiary-foreground">Stream Apple Originals in 4K HDR.</p>
+  </a>
 </div>
 {% endcall %}
 
