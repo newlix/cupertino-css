@@ -72,6 +72,37 @@ test.describe("Stepper", () => {
     expect(Number(after)).toBe(Number(before) + 1);
   });
 
+  test("ArrowUp/Down on display changes value (spinbutton pattern)", async ({
+    page,
+  }) => {
+    // "With Value" example (index 1) has the output element; default
+    // stepper (index 0) has no display surface, so no keyboard handler.
+    const display = preview(page, 1).locator("output").first();
+    await display.focus();
+    const before = Number(await display.textContent());
+
+    await page.keyboard.press("ArrowUp");
+    await expect
+      .poll(async () => Number(await display.textContent()))
+      .toBe(before + 1);
+
+    await page.keyboard.press("ArrowDown");
+    await expect
+      .poll(async () => Number(await display.textContent()))
+      .toBe(before);
+  });
+
+  test("Home/End jump to min/max", async ({ page }) => {
+    const display = preview(page, 1).locator("output").first();
+    await display.focus();
+
+    await page.keyboard.press("End");
+    await expect.poll(async () => Number(await display.textContent())).toBe(10);
+
+    await page.keyboard.press("Home");
+    await expect.poll(async () => Number(await display.textContent())).toBe(0);
+  });
+
   test("focus-visible shows ring on stepper button", async ({ page }) => {
     const btn = preview(page).locator("[data-stepper-increment]");
     await focusViaKeyboard(page, btn);
