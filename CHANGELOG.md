@@ -66,6 +66,25 @@ table,misc,forced-colors}.css` for maintainability.
 - `DISPUTES.md` logs the Apple-brand-vs-WCAG-AA tradeoff that keeps
   axe's `color-contrast` rule disabled, with exact affected pairs and
   a reversal recipe.
+- `DISPUTES.md` also logs the `destroy(undefined)` contract — not a
+  no-op by design, with reversal if we change our mind.
+
+### Contracts enforced by new tests
+
+- `global-surface.spec.js` — `window.*` after loading `cider.js`
+  equals the surface declared in `cider.d.ts`; no IIFE leaks.
+- `destroy-safety.spec.js` — every component's `destroy(el)` is safe
+  on never-init'd elements and double-calls.
+- `nav-completeness.spec.js` — every `docs/components/*.njk` is
+  linked from `nav.json` and no nav entry points at a missing file.
+- `nav-order.spec.js` — Components section of `nav.json` is
+  alphabetical.
+
+### RTL
+
+- Picker, stepper, and toolbar dividers switched from `border-left`
+  to `border-inline-start`. No full RTL claim; fixes the obvious
+  physical-axis dividers that break with `dir="rtl"`.
 
 ## [0.5.1] — 2026-04-09
 
