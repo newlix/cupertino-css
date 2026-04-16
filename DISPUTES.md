@@ -13,6 +13,23 @@ Format: date, context, what I decided, why, how to reverse.
 **Reversal:** how to undo if disagreed.
 -->
 
+## 2026-04-17 — `destroy(undefined)` not required to be a no-op
+
+**Decision:** `tests/destroy-safety.spec.js` only gates
+`destroy(element)` on never-init'd elements and double-destroy. Passing
+`undefined` or `null` is intentionally unspecified and currently
+throws (`Cannot read properties of undefined (reading '_xxxInit')`).
+
+**Why:** a consumer reaching for `destroy(undefined)` is almost
+certainly acting on a `querySelector` result they didn't check. Loud
+failure there surfaces the bug faster than a silent no-op. The
+internal htmx cleanup path already guards with `if (!el) return`
+before calling destroy, so it never passes `undefined` in practice.
+
+**Reversal:** if we decide `destroy(null)` should be tolerant, add
+`if (!el) return;` to each component's `destroy` function (11 files).
+Re-enable the `destroy(undefined)` case in the spec.
+
 ## 2026-04-17 — axe-core `color-contrast` rule disabled
 
 **Decision:** `tests/a11y.spec.js` runs axe with WCAG 2.1 AA but
