@@ -2343,9 +2343,9 @@
       mask-image: linear-gradient( to bottom, transparent 0%, black 25%, black 75%, transparent 100% );
       -webkit-mask-image: linear-gradient( to bottom, transparent 0%, black 25%, black 75%, transparent 100% );
       & + .picker-column {
-        border-left: 1px solid var(--color-separator);
+        border-inline-start: 1px solid var(--color-separator);
         @media (min-resolution: 2dppx) {
-          border-left-width: 0.5px;
+          border-inline-start-width: 0.5px;
         }
       }
     }
@@ -3181,9 +3181,9 @@
       }
     }
     .stepper > :is(button, output, [data-stepper-value]) + :is(button, output, [data-stepper-value]) {
-      border-left: 1px solid var(--color-border-solid);
+      border-inline-start: 1px solid var(--color-border-solid);
       @media (min-resolution: 2dppx) {
-        border-left-width: 0.5px;
+        border-inline-start-width: 0.5px;
       }
     }
     .stepper > output, .stepper > [data-stepper-value] {
@@ -3223,7 +3223,7 @@
         }
       }
       .stepper > :is(button, output, [data-stepper-value]) + :is(button, output, [data-stepper-value]) {
-        border-left: 1px solid ButtonText;
+        border-inline-start: 1px solid ButtonText;
       }
     }
     .tab-bar {
@@ -3628,9 +3628,9 @@
           box-shadow: none;
         }
         & + :is(button, a) {
-          border-left: 1px solid var(--color-separator);
+          border-inline-start: 1px solid var(--color-separator);
           @media (min-resolution: 2dppx) {
-            border-left-width: 0.5px;
+            border-inline-start-width: 0.5px;
           }
         }
       }
