@@ -23,6 +23,17 @@ All notable changes to Cider UI are documented here. Format follows
 - Pre-commit hook (`.githooks/pre-commit`) runs prettier on staged files
   and regenerates `js/cider.js` when any `js/components/*.js` changes.
   Activated automatically by `pnpm install`.
+- `axe-core` automated a11y spec (`tests/a11y.spec.js`) gates every
+  docs page against WCAG 2.1 AA. `color-contrast` rule currently
+  disabled pending palette decision (see DISPUTES.md).
+- `scripts/axe-audit.js` — standalone rollup utility for local triage.
+- New test coverage: HUD SVG sanitiser security suite, htmx
+  init/teardown integration, tree-shake isolation runtime check,
+  action-sheet / sidebar focus traps, picker + stepper keyboard
+  navigation, tooltip scope isolation, nav.json alphabetical +
+  completeness guards.
+- Dependabot config, issue/PR templates, CHANGELOG, CONTRIBUTING,
+  CI status badge, and grouped component list in README.
 
 ### Changed
 
@@ -44,6 +55,17 @@ table,misc,forced-colors}.css` for maintainability.
 "./_shared.js"` so consumers loading them individually don't hit an
   undefined `window.CiderUI._scrollLock`. A CI check
   (`pnpm test:shared-imports`) prevents regression.
+- Three critical axe `select-name` violations on `components/select.html`:
+  the unlabeled native-select demos now carry `aria-label`.
+- Card dark-mode border-contrast threshold relaxed 1.05 → 1.04 to
+  stop flaking on Firefox under parallel load (ratio hovers in the
+  1.047–1.052 range across browsers).
+
+### Documented
+
+- `DISPUTES.md` logs the Apple-brand-vs-WCAG-AA tradeoff that keeps
+  axe's `color-contrast` rule disabled, with exact affected pairs and
+  a reversal recipe.
 
 ## [0.5.1] — 2026-04-09
 
