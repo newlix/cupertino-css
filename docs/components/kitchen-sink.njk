@@ -621,4 +621,36 @@
     </div>
   </section>
 
+  <section class="mt-12">
+    <h2>Action Sheet</h2>
+    <div class="mt-4">
+      <button onclick="openActionSheet(document.getElementById('ks-sheet'))" class="btn-tinted">Open sheet</button>
+      <dialog class="action-sheet" id="ks-sheet">
+        <div class="action-sheet-group">
+          <button onclick="closeActionSheet(this.closest('dialog'))">Share</button>
+          <button onclick="closeActionSheet(this.closest('dialog'))">Save to Files</button>
+        </div>
+        <div class="action-sheet-group">
+          <button onclick="closeActionSheet(this.closest('dialog'))">Cancel</button>
+        </div>
+      </dialog>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2>Picker</h2>
+    <div class="mt-4 max-w-xs">
+      <div class="picker" data-picker>
+        <div class="picker-column" tabindex="0" aria-label="Month">
+          <div>January</div>
+          <div>February</div>
+          <div>March</div>
+          <div>April</div>
+          <div>May</div>
+          <div>June</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
