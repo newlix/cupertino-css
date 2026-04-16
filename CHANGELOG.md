@@ -79,6 +79,38 @@ table,misc,forced-colors}.css` for maintainability.
   linked from `nav.json` and no nav entry points at a missing file.
 - `nav-order.spec.js` — Components section of `nav.json` is
   alphabetical.
+- `bundle-size.spec.js` — byte canaries on `js/cider.js` (≤120KB)
+  and `dist/ciderui.cdn.min.css` (≤180KB).
+- `icon-button-labels.spec.js` — every icon-only button in the docs
+  has `aria-label` / `aria-labelledby` / `title`.
+- `init-perf.spec.js` — kitchen-sink `domContentLoaded` ≤ 1500ms.
+- `kitchen-sink-coverage.spec.js` — every interactive component has
+  a marker in kitchen-sink (added action-sheet + picker demos).
+- `rapid-toggle.spec.js` — 5× open/close on dialog + action-sheet
+  doesn't leak scroll-lock.
+- `subtree-cleanup.spec.js` — `htmx:beforeCleanupElement` on a
+  wrapper tears down all component children.
+- `tree-shake-integration.spec.js` — loading one component from
+  source doesn't drag in siblings.
+- `theming.spec.js` — overriding `--color-primary`, `--radius`,
+  `--color-destructive` at `.cider` scope recolours components.
+- `reduced-motion.spec.js` — `prefers-reduced-motion` collapses
+  durations; dialog keeps deliberate `!important` fade.
+- `aria-lifecycle.spec.js` — popover + verification-code `destroy`
+  clears the ARIA attributes init added.
+- `verification-code-observer.spec.js` — `data-error` MutationObserver
+  wires correctly + disconnects on `destroy`.
+- `public-api.spec.js` — the 5 global helpers (`showHUD`,
+  `openDialog`, `closeDialog`, `openActionSheet`, `closeActionSheet`)
+  return / mutate as their type declaration says.
+- `htmx-integration.spec.js` — init runs on `htmx:afterSettle`,
+  cleanup on `htmx:beforeCleanupElement`, re-init is idempotent.
+- `hud-sanitize.spec.js` — 5 XSS vectors neutralised by the HUD
+  icon sanitiser.
+- Additional keyboard coverage: picker (Arrow/Home/End), stepper
+  (APG spinbutton), slider (Arrow/Home/End + programmatic value),
+  popover menu (type-ahead, data-no-dismiss), action-sheet +
+  sidebar focus traps.
 
 ### RTL
 
