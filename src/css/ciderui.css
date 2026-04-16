@@ -508,6 +508,7 @@
     @import "./components/tag.css";
     @import "./components/token-field.css";
     @import "./components/toolbar.css";
+    @import "./components/tooltip.css";
     @import "./components/verification-code.css";
     /* elements.css last — classless styles have lowest specificity intent */
     @import "./components/elements.css";

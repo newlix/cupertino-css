@@ -1313,59 +1313,6 @@
       border-radius: var(--radius-pill);
       corner-shape: round;
     }
-    [data-tooltip] {
-      position: relative;
-      &::after {
-        content: attr(data-tooltip);
-        pointer-events: none;
-        position: absolute;
-        bottom: 100%;
-        left: calc(1 / 2 * 100%);
-        z-index: 60;
-        margin-bottom: calc(var(--spacing) * 2);
-        padding-inline: calc(var(--spacing) * 2);
-        padding-block: calc(var(--spacing) * 1);
-        font-size: 13px;
-        --tw-leading: 18px;
-        line-height: 18px;
-        --tw-font-weight: var(--font-weight-normal);
-        font-weight: var(--font-weight-normal);
-        white-space: nowrap;
-        border-radius: var(--radius-xs);
-        letter-spacing: -0.01em;
-        background: var(--tooltip-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        color: var(--tooltip-text);
-        box-shadow: var(--float-ring), var(--shadow-sm);
-        opacity: 0;
-        translate: -50% 2px;
-        transition: opacity var(--transition-fast) var(--apple-ease), translate var(--transition-fast) var(--apple-ease);
-      }
-      &:hover::after {
-        opacity: 1;
-        translate: -50% 0;
-        transition-delay: 0.6s;
-      }
-      &:focus-visible::after {
-        opacity: 1;
-        translate: -50% 0;
-        transition-delay: 0s;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        &:hover::after {
-          transition-delay: 0s;
-        }
-      }
-      @media (forced-colors: active) {
-        &::after {
-          border: 1px solid ButtonText;
-          background: Canvas;
-          color: CanvasText;
-          box-shadow: none;
-        }
-      }
-    }
     @media (forced-colors: active) {
       .btn-gray, .btn-filled, .btn-tinted, .btn-bezelled, .btn-plain {
         border: 1px solid ButtonText;
@@ -3792,6 +3739,59 @@
           & + :is(button, a) {
             border-left-color: ButtonText;
           }
+        }
+      }
+    }
+    [data-tooltip] {
+      position: relative;
+      &::after {
+        content: attr(data-tooltip);
+        pointer-events: none;
+        position: absolute;
+        bottom: 100%;
+        left: calc(1 / 2 * 100%);
+        z-index: 60;
+        margin-bottom: calc(var(--spacing) * 2);
+        padding-inline: calc(var(--spacing) * 2);
+        padding-block: calc(var(--spacing) * 1);
+        font-size: 13px;
+        --tw-leading: 18px;
+        line-height: 18px;
+        --tw-font-weight: var(--font-weight-normal);
+        font-weight: var(--font-weight-normal);
+        white-space: nowrap;
+        border-radius: var(--radius-xs);
+        letter-spacing: -0.01em;
+        background: var(--tooltip-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        color: var(--tooltip-text);
+        box-shadow: var(--float-ring), var(--shadow-sm);
+        opacity: 0;
+        translate: -50% 2px;
+        transition: opacity var(--transition-fast) var(--apple-ease), translate var(--transition-fast) var(--apple-ease);
+      }
+      &:hover::after {
+        opacity: 1;
+        translate: -50% 0;
+        transition-delay: 0.6s;
+      }
+      &:focus-visible::after {
+        opacity: 1;
+        translate: -50% 0;
+        transition-delay: 0s;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        &:hover::after {
+          transition-delay: 0s;
+        }
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border: 1px solid ButtonText;
+          background: Canvas;
+          color: CanvasText;
+          box-shadow: none;
         }
       }
     }

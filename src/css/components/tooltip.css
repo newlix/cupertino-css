@@ -1,0 +1,45 @@
+/* ========== TOOLTIP ========== */
+/* Generic `[data-tooltip]` utility — works on any element, not just buttons.
+   Shows a small dark floating label on hover (0.6s delay) / focus-visible (no delay). */
+[data-tooltip] {
+  @apply relative;
+  &::after {
+    content: attr(data-tooltip);
+    @apply pointer-events-none absolute z-60 bottom-full left-1/2 mb-2 whitespace-nowrap px-2 py-1 text-[13px] leading-[18px] font-normal;
+    border-radius: var(--radius-xs);
+    letter-spacing: -0.01em;
+    background: var(--tooltip-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--tooltip-text);
+    box-shadow: var(--float-ring), var(--shadow-sm);
+    opacity: 0;
+    translate: -50% 2px;
+    transition:
+      opacity var(--transition-fast) var(--apple-ease),
+      translate var(--transition-fast) var(--apple-ease);
+  }
+  &:hover::after {
+    opacity: 1;
+    translate: -50% 0;
+    transition-delay: 0.6s;
+  }
+  &:focus-visible::after {
+    opacity: 1;
+    translate: -50% 0;
+    transition-delay: 0s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &:hover::after {
+      transition-delay: 0s;
+    }
+  }
+  @media (forced-colors: active) {
+    &::after {
+      border: 1px solid ButtonText;
+      background: Canvas;
+      color: CanvasText;
+      box-shadow: none;
+    }
+  }
+}
