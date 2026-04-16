@@ -57,6 +57,19 @@ table,misc,forced-colors}.css` for maintainability.
   (`pnpm test:shared-imports`) prevents regression.
 - Three critical axe `select-name` violations on `components/select.html`:
   the unlabeled native-select demos now carry `aria-label`.
+- **Tabs**: non-active `[data-tab-panel]` elements were rendering
+  stacked — the `.segmented-control` CSS rule that hides them was
+  scoped only to that variant, so standalone `[data-tabs]` showed
+  every panel at once. `tabs.js` now sets the HTML `hidden` attribute
+  on inactive panels so the behaviour works without requiring a CSS
+  rule.
+- **Picker**: items on a page with multiple picker instances all got
+  the same auto-generated ID (`picker-opt-0-2`), breaking
+  `aria-activedescendant` for screen readers and
+  label/querySelector wiring. IDs now include a per-picker uid.
+- **Button**: disabled `.btn-*` variants now set
+  `cursor: not-allowed`, matching form inputs (was leaving the base
+  `cursor: pointer` in place).
 - Card dark-mode border-contrast threshold relaxed 1.05 → 1.04 to
   stop flaking on Firefox under parallel load (ratio hovers in the
   1.047–1.052 range across browsers).
