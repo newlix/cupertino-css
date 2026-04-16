@@ -12,7 +12,7 @@
   </dl>
 
   {% call example("Native Select") %}
-<select>
+<select aria-label="Demo option">
   <option value="" disabled selected>Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
@@ -21,7 +21,7 @@
 {% endcall %}
 
   {% call example("With Groups") %}
-<select>
+<select aria-label="Demo fruit">
   <option value="" disabled selected>Select a fruit</option>
   <optgroup label="Citrus">
     <option value="orange">Orange</option>
@@ -54,7 +54,7 @@
 {% endcall %}
 
   {% call example("Disabled") %}
-<select disabled>
+<select disabled aria-label="Demo disabled option">
   <option value="" disabled selected>Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
