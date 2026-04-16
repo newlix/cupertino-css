@@ -6,9 +6,17 @@ Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names 
 
 ## Install
 
+Pin a released tag to get a stable version:
+
 ```bash
-pnpm add ciderui@github:newlix/ciderui
-# or: npm install ciderui@github:newlix/ciderui
+pnpm add ciderui@github:newlix/ciderui#v0.5.1
+# or: npm install ciderui@github:newlix/ciderui#v0.5.1
+```
+
+Omitting the tag tracks `main` and can break between commits:
+
+```bash
+pnpm add ciderui@github:newlix/ciderui   # ⚠ unstable
 ```
 
 ## Usage
@@ -35,10 +43,17 @@ Add `.cider` to an ancestor element to activate styles:
 
 ### Interactive components
 
-Some components (dialog, popover, tabs, etc.) need JS. Include the bundle:
+Some components (dialog, popover, tabs, etc.) need JS. Include the full bundle:
 
 ```js
 import "ciderui/cider.js";
+```
+
+Or import only what you need (tree-shakeable):
+
+```js
+import "ciderui/components/dialog";
+import "ciderui/components/popover";
 ```
 
 Or via CDN:

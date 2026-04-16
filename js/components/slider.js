@@ -1,0 +1,101 @@
+// ── Slider ──
+// Slider — ciderui
+(function () {
+  function update(el) {
+    let min = el.min !== "" ? Number(el.min) : 0;
+    let max = el.max !== "" ? Number(el.max) : 100;
+    let val = Number(el.value);
+    if (Number.isNaN(min)) min = 0;
+    if (Number.isNaN(max)) max = 100;
+    if (Number.isNaN(val)) val = min;
+    const range = max - min;
+    const pct = range > 0 ? ((val - min) / range) * 100 : 0;
+    el.style.setProperty("--slider-value", `${pct}%`);
+  }
+
+  function destroy(el) {
+    if (!el._sliderInit) return;
+    if (el._sliderObserver) {
+      el._sliderObserver.disconnect();
+      el._sliderObserver = null;
+    }
+    if (el._sliderInputHandler) {
+      el.removeEventListener("input", el._sliderInputHandler);
+      el._sliderInputHandler = null;
+    }
+    delete el.value;
+    delete el.min;
+    delete el.max;
+    el.style.removeProperty("--slider-value");
+    el._sliderInit = false;
+  }
+
+  function init() {
+    document.querySelectorAll(".slider").forEach((el) => {
+      if (el._sliderInit) return;
+      el._sliderInit = true;
+      update(el);
+      el._sliderInputHandler = () => {
+        update(el);
+      };
+      el.addEventListener("input", el._sliderInputHandler);
+      // Intercept .value/.min/.max property setters so programmatic changes update the fill
+      for (const prop of ["value", "min", "max"]) {
+        const desc = Object.getOwnPropertyDescriptor(
+          HTMLInputElement.prototype,
+          prop,
+        );
+        if (desc && desc.get && desc.set) {
+          Object.defineProperty(el, prop, {
+            get() {
+              return desc.get.call(this);
+            },
+            set(v) {
+              desc.set.call(this, v);
+              this._sliderFromSetter = true;
+              try {
+                update(this);
+              } finally {
+                this._sliderFromSetter = false;
+              }
+            },
+            configurable: true,
+          });
+        }
+      }
+      // Sync when value/min/max attributes change via setAttribute()
+      const mo = new MutationObserver(() => {
+        if (!el.isConnected) {
+          destroy(el);
+          return;
+        }
+        if (!el._sliderFromSetter) update(el);
+      });
+      el._sliderObserver = mo;
+      mo.observe(el, {
+        attributes: true,
+        attributeFilter: ["value", "min", "max"],
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+
+  document.addEventListener("htmx:afterSettle", init);
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
+    if (!el) return;
+    if (el.classList?.contains("slider")) {
+      destroy(el);
+      return;
+    }
+    (el.querySelectorAll?.(".slider") || []).forEach(destroy);
+  });
+
+  window.CiderUI = window.CiderUI || {};
+  window.CiderUI.slider = { init, update, destroy };
+})();

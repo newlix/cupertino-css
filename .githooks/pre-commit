@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Pre-commit: format staged files with Prettier, then re-stage.
+# Enabled via `pnpm install` (package.json `prepare` sets core.hooksPath).
+set -e
+
+mapfile -t staged < <(git diff --cached --name-only --diff-filter=ACMR |
+  grep -E '\.(js|ts|jsx|tsx|css|njk|json|md|yml|yaml|html)$' || true)
+
+[ ${#staged[@]} -eq 0 ] && exit 0
+
+# If any js/components/*.js is staged, regenerate the CDN bundle and restage it.
+if printf '%s\n' "${staged[@]}" | grep -q '^js/components/'; then
+  node scripts/build-cider-js.js >/dev/null
+  git add js/cider.js
+  # Include the regenerated bundle in the prettier pass below.
+  grep -qxF 'js/cider.js' <(printf '%s\n' "${staged[@]}") || staged+=("js/cider.js")
+fi
+
+if ! command -v npx >/dev/null 2>&1; then
+  echo "pre-commit: npx not found; skipping prettier" >&2
+  exit 0
+fi
+
+npx --no-install prettier --write "${staged[@]}" 2>/dev/null || \
+  npx prettier --write "${staged[@]}"
+
+git add "${staged[@]}"

@@ -21,7 +21,8 @@
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
-    "./cider.js": "./js/cider.js"
+    "./cider.js": "./js/cider.js",
+    "./components/*": "./js/components/*.js"
   },
   "files": [
     "src/css/",
@@ -29,11 +30,16 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
+    "build": "npm run build:js && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.css && tailwindcss -i src/css/ciderui.cdn.css -o dist/ciderui.cdn.min.css --minify",
+    "build:js": "node scripts/build-cider-js.js",
     "build:docs": "node scripts/build-docs.js",
     "dev": "concurrently \"node scripts/build-docs.js --watch\" \"PORT=8000 node scripts/test-server.js\"",
     "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

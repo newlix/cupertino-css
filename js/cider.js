@@ -57,7 +57,6 @@ window.CiderUI._isVisible = function (el) {
   const style = getComputedStyle(el);
   return style.visibility !== "hidden" && style.visibility !== "collapse";
 };
-
 // ── Action Sheet ──
 // ActionSheet — ciderui
 (function () {
@@ -387,7 +386,6 @@ window.CiderUI._isVisible = function (el) {
     sheets.forEach(destroy);
   });
 })();
-
 // ── Dialog ──
 // Dialog — ciderui
 // Uses native <dialog> element. Adds backdrop-click-to-close with exit animation,
@@ -728,7 +726,6 @@ window.CiderUI._isVisible = function (el) {
     dialogs.forEach(destroy);
   });
 })();
-
 // ── Hud ──
 // HUD — ciderui
 // Named "HUD" intentionally — this is the macOS HUD overlay pattern (centered, dark,
@@ -879,7 +876,6 @@ window.CiderUI._isVisible = function (el) {
     },
   };
 })();
-
 // ── Picker ──
 // Picker — ciderui
 (function () {
@@ -1136,7 +1132,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.picker = { init, destroy };
 })();
-
 // ── Popover ──
 // Popover — ciderui
 (function () {
@@ -1593,7 +1588,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.popover = { init, destroy: destroyPopover };
 })();
-
 // ── Sidebar ──
 // Sidebar — ciderui
 // Mobile off-canvas toggle. Wire up [data-sidebar-toggle]
@@ -1829,7 +1823,6 @@ window.CiderUI._isVisible = function (el) {
 
   window.CiderUI.sidebar = { init, destroy };
 })();
-
 // ── Slider ──
 // Slider — ciderui
 (function () {
@@ -1931,7 +1924,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.slider = { init, update, destroy };
 })();
-
 // ── Stepper ──
 // Stepper — ciderui
 (function () {
@@ -2172,7 +2164,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.stepper = { init, destroy };
 })();
-
 // ── Tabs ──
 // Tabs — ciderui
 (function () {
@@ -2459,7 +2450,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.tabs = { init, destroy };
 })();
-
 // ── Token Field ──
 // TokenField — ciderui
 (function () {
@@ -2615,7 +2605,6 @@ window.CiderUI._isVisible = function (el) {
   window.CiderUI = window.CiderUI || {};
   window.CiderUI.tokenField = { init, destroy };
 })();
-
 // ── Verification Code ──
 // Verification Code — ciderui
 // Auto-advance, backspace, paste for verification code inputs.

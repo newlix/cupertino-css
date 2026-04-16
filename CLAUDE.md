@@ -39,7 +39,7 @@ pnpm test:ui          # Playwright UI mode
 - **CDN variant** — `ciderui.cdn.css` bundles Tailwind + all components via `source(none)`.
 - **`.cider` scope** — all component CSS (classless elements AND class-based components) lives inside `@scope(.cider) to (.cider-reset)`. Users must add `.cider` to an ancestor element for any styles to take effect. `.cider-reset` creates escape boundaries.
 - **Component CSS** — each component in `src/css/components/*.css`, imported by `ciderui.css` inside `@layer components` within the `@scope(.cider)` block.
-- **Component JS** — vanilla JS, no dependencies. All components bundled in `js/cider.js`, each in its own IIFE.
+- **Component JS** — vanilla JS, no dependencies. Source of truth: `js/components/*.js` (one IIFE per file, `_shared.js` sets up `window.CiderUI` utilities). `js/cider.js` is a generated CDN/classic-script bundle — run `pnpm build:js` after editing a component file to regenerate it. Also exposed as tree-shakeable subpaths via `ciderui/components/{name}`.
 - **Dark mode** — class-based (`.dark` on `<html>`). All CSS variables swap in `.dark {}` block.
 - **Docs site** — Nunjucks SSG. Pages are `.njk` source files compiled to static HTML in `site/` via `scripts/build-docs.js`. Syntax highlighting baked in at build time (highlight.js).
 

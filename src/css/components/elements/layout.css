@@ -1,0 +1,18 @@
+/* ─── Layout ─── */
+/* .cider-fixed = layout modifier — add alongside .cider for centered
+   fixed-width breakpoints. Scope boundary .cider-reset is handled by the
+   parent @scope in ciderui.css. */
+:scope.cider-fixed {
+  @apply mx-auto px-5 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl;
+}
+
+/* ─── Flow content rhythm ─── */
+:is(p, ul, ol, blockquote, table, dl, pre, details, fieldset, hr)
+  + :is(p, ul, ol, blockquote, table, dl, pre, details, fieldset, hr) {
+  margin-top: 1rem;
+}
+
+/* ─── Form field group spacing ─── */
+:is(input:not([type="hidden"]), textarea, select, small) + label {
+  @apply mt-4;
+}

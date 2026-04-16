@@ -1,0 +1,467 @@
+/* ─── Text inputs & Textarea ─── */
+/* [type="range"] styled in slider.css; [type="file"] intentionally unstyled */
+input:where(
+  :not(
+    [type="checkbox"],
+    [type="radio"],
+    [type="range"],
+    [type="file"],
+    [type="submit"],
+    [type="reset"],
+    [type="button"],
+    [type="image"],
+    [type="hidden"],
+    [role="switch"]
+  )
+),
+textarea {
+  @apply w-full rounded-[var(--radius)] border px-4 text-[17px] text-foreground outline-none;
+  corner-shape: squircle;
+  background-color: var(--color-card);
+  border-color: var(--input-border);
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+  transition:
+    border-color var(--transition-normal) var(--apple-ease),
+    box-shadow var(--transition-normal) var(--apple-ease);
+  &::placeholder {
+    @apply text-tertiary-foreground;
+  }
+  &:hover:not(:focus-visible):not(:read-only) {
+    border-color: var(--input-border-hover);
+  }
+  &:focus-visible {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:read-only {
+    background-color: var(--surface-1);
+    cursor: default;
+    border-color: var(--input-border);
+  }
+  &:autofill,
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+    box-shadow: 0 0 0 100px var(--color-card) inset;
+    -webkit-text-fill-color: var(--color-foreground);
+    color: var(--color-foreground);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:hover:not(:focus-visible) {
+      border-color: var(--color-destructive);
+    }
+    &:focus-visible {
+      border-color: var(--color-destructive);
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+  &[type="search"]::-webkit-search-decoration,
+  &[type="search"]::-webkit-search-cancel-button,
+  &[type="search"]::-webkit-search-results-button,
+  &[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+/* height for text inputs only (not textarea) — selector mirrors the shared block above */
+input:where(
+  :not(
+    [type="checkbox"],
+    [type="radio"],
+    [type="range"],
+    [type="file"],
+    [type="submit"],
+    [type="reset"],
+    [type="button"],
+    [type="image"],
+    [type="hidden"],
+    [role="switch"]
+  )
+) {
+  @apply h-11;
+}
+textarea {
+  @apply py-3;
+  resize: vertical;
+  &:read-only {
+    resize: none;
+  }
+}
+
+/* ─── Select ─── */
+select:not([multiple]) {
+  @apply w-full h-11 rounded-[var(--radius)] border appearance-none pl-3.5 pr-10 text-[17px] text-foreground outline-none;
+  corner-shape: squircle;
+  background-color: var(--color-card);
+  border-color: var(--input-border);
+  @media (min-resolution: 2dppx) {
+    border-width: 0.5px;
+  }
+  transition:
+    border-color var(--transition-normal) var(--apple-ease),
+    box-shadow var(--transition-normal) var(--apple-ease);
+  /* Chevron SVG — light: #6E6E73 (--color-tertiary-foreground), dark: #98989D
+     Two SVGs needed because <select> is a replaced element (no pseudo-elements).
+     Hex values hardcoded — update manually if --color-tertiary-foreground changes. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6E73' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8 10l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  .dark & {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2398989D' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8 10l4 4 4-4'/%3E%3C/svg%3E");
+  }
+  &:hover:not(:focus-visible) {
+    border-color: var(--input-border-hover);
+  }
+  &:focus-visible {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:autofill,
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px var(--color-card) inset;
+    box-shadow: 0 0 0 100px var(--color-card) inset;
+    -webkit-text-fill-color: var(--color-foreground);
+    color: var(--color-foreground);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:hover:not(:focus-visible) {
+      border-color: var(--color-destructive);
+    }
+    &:focus-visible {
+      border-color: var(--color-destructive);
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+}
+
+/* ─── Checkbox ─── */
+input[type="checkbox"]:not([role="switch"]) {
+  @apply appearance-none shrink-0 rounded-[var(--radius-xs)] border-[1.5px] bg-card cursor-pointer;
+  corner-shape: squircle;
+  width: 18px;
+  height: 18px;
+  border-color: var(--input-border);
+  transition:
+    border-color var(--transition-normal) var(--apple-ease),
+    background-color var(--transition-normal) var(--apple-ease),
+    box-shadow var(--transition-normal) var(--apple-ease),
+    transform var(--transition-normal) var(--apple-spring);
+  &:is(:checked, :indeterminate) {
+    @apply bg-primary border-primary;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 12px;
+  }
+  &:indeterminate {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' d='M6 12h12'/%3E%3C/svg%3E");
+    background-size: 10px;
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:hover:not(:checked):not(:indeterminate):not([aria-invalid="true"]) {
+    border-color: var(--input-border-hover);
+  }
+  &:hover:is(:checked, :indeterminate):not(:disabled):not(
+      [aria-disabled="true"]
+    ) {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: scale(0.97);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:checked {
+      @apply bg-destructive border-destructive;
+    }
+    &:hover:is(:checked, :indeterminate):not(:disabled):not(
+        [aria-disabled="true"]
+      ) {
+      background-color: var(--color-destructive-hover);
+      border-color: var(--color-destructive-hover);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+  @media (pointer: coarse), (hover: none) {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -13px;
+    }
+  }
+}
+
+/* ─── Radio ─── */
+input[type="radio"] {
+  @apply appearance-none shrink-0 rounded-full border-[1.5px] bg-card cursor-pointer;
+  width: 18px;
+  height: 18px;
+  border-color: var(--input-border);
+  transition:
+    border-color var(--transition-normal) var(--apple-ease),
+    background-color var(--transition-normal) var(--apple-ease),
+    box-shadow var(--transition-normal) var(--apple-ease),
+    transform var(--transition-normal) var(--apple-spring);
+  &:checked {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='3.5' fill='white'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:hover:not(:checked):not([aria-invalid="true"]) {
+    border-color: var(--input-border-hover);
+  }
+  &:hover:checked:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: scale(0.97);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-destructive);
+    &:checked {
+      border-color: var(--color-destructive);
+      background-color: var(--color-destructive);
+    }
+    &:hover:checked:not(:disabled):not([aria-disabled="true"]) {
+      background-color: var(--color-destructive-hover);
+      border-color: var(--color-destructive-hover);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+  @media (pointer: coarse), (hover: none) {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -13px;
+    }
+  }
+}
+
+/* ─── Switch ─── */
+/* Design decision: checked state uses --color-switch (Apple Green #34C759) to match
+   Apple's native UISwitch behaviour. Use .switch-blue variant for primary/brand colour. */
+input[type="checkbox"][role="switch"] {
+  @apply appearance-none relative shrink-0 rounded-full cursor-pointer;
+  width: 51px;
+  height: 31px;
+  background: var(--surface-5);
+  transition: background-color var(--transition-normal) var(--apple-ease);
+  &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
+    background: var(--surface-7);
+  }
+  &:hover:not(:disabled):not([aria-disabled="true"]):checked {
+    background: var(--color-switch-hover);
+  }
+  &::after {
+    content: "";
+    @apply absolute rounded-full bg-white;
+    top: 2px;
+    left: 2px;
+    width: 27px;
+    height: 27px;
+    box-shadow: var(--switch-thumb-shadow);
+    transition:
+      transform var(--transition-normal) var(--apple-ease),
+      width var(--transition-normal) var(--apple-ease);
+    @media (prefers-reduced-motion: no-preference) {
+      transition-timing-function: var(--apple-spring);
+    }
+  }
+  &:checked {
+    background: var(--color-switch);
+    &::after {
+      transform: translateX(20px);
+    }
+  }
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    pointer-events: none;
+  }
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    &::after {
+      width: 31px;
+    }
+    &:checked::after {
+      transform: translateX(16px);
+    }
+  }
+  &[aria-invalid="true"] {
+    background: color-mix(in oklch, var(--color-destructive) 18%, transparent);
+    &:checked {
+      background: var(--color-destructive);
+    }
+    &:hover:not(:disabled):not([aria-disabled="true"]):not(:checked) {
+      background: color-mix(
+        in oklch,
+        var(--color-destructive) 25%,
+        transparent
+      );
+    }
+    &:hover:not(:disabled):not([aria-disabled="true"]):checked {
+      background: var(--color-destructive-hover);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring-error);
+    }
+  }
+  @media (pointer: coarse), (hover: none) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -6.5px 0;
+    }
+  }
+  /* Color variants — Apple System Colors */
+  &.switch-blue {
+    --color-switch: var(--color-primary);
+    --color-switch-hover: var(--color-primary-hover);
+  }
+  &.switch-red {
+    --color-switch: var(--color-destructive);
+    --color-switch-hover: var(--color-destructive-hover);
+  }
+  &.switch-orange {
+    --color-switch: oklch(0.769 0.188 70.08);
+    --color-switch-hover: oklch(0.719 0.175 70.08);
+  }
+  &.switch-pink {
+    --color-switch: oklch(0.714 0.169 331.59);
+    --color-switch-hover: oklch(0.664 0.156 331.59);
+  }
+  .dark &.switch-orange {
+    --color-switch: oklch(0.799 0.195 70.08);
+    --color-switch-hover: oklch(0.749 0.182 70.08);
+  }
+  .dark &.switch-pink {
+    --color-switch: oklch(0.744 0.176 331.59);
+    --color-switch-hover: oklch(0.694 0.163 331.59);
+  }
+}
+
+/* ─── Label ─── */
+label {
+  @apply block text-[15px] font-normal text-foreground;
+  &:has(input[type="checkbox"], input[type="radio"]) {
+    @apply flex items-center gap-2.5 cursor-pointer;
+    /* HIG: switch labels are always "text left, toggle right" */
+    &:has(input[role="switch"]) {
+      justify-content: space-between;
+    }
+    @media (pointer: coarse), (hover: none) {
+      min-height: 44px;
+    }
+    &:has(> small):not(:has(input[role="switch"])) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 0.625rem;
+      row-gap: 0.25rem;
+      align-items: start;
+      & > input {
+        @apply mt-0.5;
+      }
+      & > small {
+        grid-column: 2;
+      }
+    }
+  }
+  &:has(input:is(:disabled, [aria-disabled="true"])) {
+    @apply cursor-not-allowed;
+    opacity: 0.38;
+    & > input {
+      /* Label wrapper already applies opacity:0.38 — reset child input to avoid
+         compounding to ~0.14 (input's own :disabled rule also sets 0.38). */
+      opacity: 1;
+    }
+  }
+}
+label:has(+ :is(input, textarea, select):required)::after {
+  content: " *";
+  color: var(--color-destructive);
+}
+label + input,
+label + textarea,
+label + select {
+  @apply mt-1.5;
+}
+input + small,
+textarea + small,
+select + small {
+  @apply mt-1.5;
+}
+:is(input, textarea, select)[aria-invalid="true"] + small {
+  @apply text-destructive;
+}
+
+/* ─── Fieldset ─── */
+fieldset:where(:not([class])) {
+  @apply rounded-[var(--radius)] border p-5;
+  corner-shape: squircle;
+  border-color: var(--color-border);
+  & > legend {
+    @apply px-2 text-[13px] font-semibold text-foreground;
+  }
+  @apply space-y-4;
+  &:has(input[type="checkbox"], input[type="radio"]) {
+    @apply space-y-2.5;
+  }
+}

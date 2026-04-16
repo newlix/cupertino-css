@@ -1,0 +1,329 @@
+// ── Action Sheet ──
+// ActionSheet — ciderui
+(function () {
+  const activeDialogs = new Set();
+  const scrollLock = window.CiderUI._scrollLock;
+  const FOCUSABLE = window.CiderUI._FOCUSABLE;
+  const isVisible = window.CiderUI._isVisible;
+
+  function restoreScrollLock(dialog) {
+    if (activeDialogs.delete(dialog)) {
+      scrollLock.unlock();
+    }
+  }
+
+  function clearCloseAnim(dialog) {
+    if (dialog._asCloseTimer) {
+      clearTimeout(dialog._asCloseTimer);
+      dialog._asCloseTimer = null;
+    }
+    if (dialog._asCloseAnimHandler) {
+      dialog.removeEventListener("animationend", dialog._asCloseAnimHandler);
+      dialog._asCloseAnimHandler = null;
+    }
+  }
+
+  function closeActionSheet(dialog) {
+    if (!dialog || dialog.hasAttribute("data-closing")) return;
+    clearCloseAnim(dialog);
+    let closed = false;
+    function finish() {
+      if (closed) return;
+      closed = true;
+      clearCloseAnim(dialog);
+      dialog.removeAttribute("data-closing");
+      dialog.close();
+    }
+    dialog._asCloseAnimHandler = (e) => {
+      if (e.target !== dialog || e.animationName !== "actionSheetHide") return;
+      finish();
+    };
+    dialog.addEventListener("animationend", dialog._asCloseAnimHandler);
+    dialog.setAttribute("data-closing", "");
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? 10
+      : 200;
+    dialog._asCloseTimer = setTimeout(finish, duration);
+  }
+
+  function wireAria(dialog) {
+    const title = dialog.querySelector(".action-sheet-title");
+    const message = dialog.querySelector(".action-sheet-message");
+    if (title && !dialog.getAttribute("aria-labelledby")) {
+      if (!title.id)
+        title.id = `as-title-${Math.random().toString(36).slice(2, 8)}`;
+      dialog.setAttribute("aria-labelledby", title.id);
+      dialog._asSetAriaLabelledBy = true;
+    }
+    if (message && !dialog.getAttribute("aria-describedby")) {
+      if (!message.id)
+        message.id = `as-desc-${Math.random().toString(36).slice(2, 8)}`;
+      dialog.setAttribute("aria-describedby", message.id);
+      dialog._asSetAriaDescribedBy = true;
+    }
+    // Fallback: ensure dialog always has an accessible name
+    if (
+      !dialog.getAttribute("aria-labelledby") &&
+      !dialog.getAttribute("aria-label")
+    ) {
+      dialog.setAttribute("aria-label", "Action Sheet");
+      dialog._asSetAriaLabel = true;
+    }
+  }
+
+  function trapFocus(dialog) {
+    const focusable = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
+      isVisible,
+    );
+    // Prefer cancel button for initial focus (safe default action per HIG)
+    const cancelBtn = dialog.querySelector(".action-sheet-cancel");
+    if (cancelBtn && isVisible(cancelBtn)) {
+      cancelBtn.focus();
+    } else if (focusable.length) {
+      focusable[0].focus();
+    }
+
+    function handler(e) {
+      if (e.key !== "Tab") return;
+      const current = Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
+        isVisible,
+      );
+      if (!current.length) return;
+      const first = current[0];
+      const last = current.at(-1);
+      if (!current.includes(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+        return;
+      }
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    if (dialog._asFocusTrapHandler) {
+      dialog.removeEventListener("keydown", dialog._asFocusTrapHandler);
+    }
+    dialog._asFocusTrapHandler = handler;
+    dialog.addEventListener("keydown", handler);
+  }
+
+  function init() {
+    document.querySelectorAll("dialog.action-sheet").forEach((dialog) => {
+      if (dialog._asInit) return;
+      dialog._asInit = true;
+
+      dialog._asCancelHandler = (e) => {
+        e.preventDefault();
+        closeActionSheet(dialog);
+      };
+      dialog.addEventListener("cancel", dialog._asCancelHandler);
+
+      dialog._asMousedownHandler = (e) => {
+        dialog._asMousedownTarget = e.target;
+      };
+      dialog.addEventListener("mousedown", dialog._asMousedownHandler);
+
+      dialog._asClickHandler = (e) => {
+        // Backdrop click — mousedown and click both on the dialog element itself
+        if (e.target === dialog && dialog._asMousedownTarget === dialog) {
+          closeActionSheet(dialog);
+        }
+        dialog._asMousedownTarget = null;
+
+        // Auto-close on button/link click inside action-sheet-group
+        const btn = e.target.closest(
+          ".action-sheet-group > button, .action-sheet-group > a",
+        );
+        if (
+          btn &&
+          !btn.hasAttribute("data-no-dismiss") &&
+          dialog.contains(btn)
+        ) {
+          closeActionSheet(dialog);
+        }
+      };
+      dialog.addEventListener("click", dialog._asClickHandler);
+
+      function teardown() {
+        restoreScrollLock(dialog);
+        if (dialog._asFocusTrapHandler) {
+          dialog.removeEventListener("keydown", dialog._asFocusTrapHandler);
+          dialog._asFocusTrapHandler = null;
+        }
+      }
+
+      const observer = new MutationObserver(() => {
+        if (!dialog.isConnected) {
+          teardown();
+          dialog._asPreviousFocus = null;
+          observer.disconnect();
+          return;
+        }
+        if (dialog.open) {
+          const isModal = dialog.matches(":modal");
+          if (isModal && !activeDialogs.has(dialog)) {
+            if (!dialog._asPreviousFocus) {
+              const candidate = document.activeElement;
+              dialog._asPreviousFocus = dialog.contains(candidate)
+                ? document.body
+                : candidate;
+            }
+            activeDialogs.add(dialog);
+            scrollLock.lock();
+            wireAria(dialog);
+            dialog.setAttribute("aria-modal", "true");
+            trapFocus(dialog);
+          }
+        } else {
+          clearCloseAnim(dialog);
+          dialog.removeAttribute("data-closing");
+          dialog.removeAttribute("aria-modal");
+          teardown();
+          const prev = dialog._asPreviousFocus;
+          dialog._asPreviousFocus = null;
+          if (
+            prev &&
+            document.contains(prev) &&
+            (prev === document.body || isVisible(prev))
+          ) {
+            prev.focus();
+          }
+        }
+      });
+      dialog._asObserver = observer;
+      observer.observe(dialog, { attributes: true, attributeFilter: ["open"] });
+    });
+  }
+
+  function openActionSheet(dialog) {
+    if (!dialog || !dialog.isConnected) return;
+    if (!dialog._asInit) init();
+    if (!dialog._asInit) return;
+    if (dialog.hasAttribute("data-closing")) {
+      if (dialog._asOpenWaitObs) return;
+      dialog._asPreviousFocus =
+        dialog._asPreviousFocus || document.activeElement;
+      const obs = new MutationObserver(() => {
+        if (!dialog.isConnected) {
+          obs.disconnect();
+          clearTimeout(dialog._asOpenWaitTimer);
+          dialog._asOpenWaitObs = null;
+          dialog._asOpenWaitTimer = null;
+          return;
+        }
+        if (!dialog.hasAttribute("data-closing") && !dialog.open) {
+          obs.disconnect();
+          clearTimeout(dialog._asOpenWaitTimer);
+          dialog._asOpenWaitObs = null;
+          dialog._asOpenWaitTimer = null;
+          openActionSheet(dialog);
+        }
+      });
+      dialog._asOpenWaitObs = obs;
+      obs.observe(dialog, {
+        attributes: true,
+        attributeFilter: ["data-closing", "open"],
+      });
+      dialog._asOpenWaitTimer = setTimeout(() => {
+        obs.disconnect();
+        dialog._asOpenWaitObs = null;
+        dialog._asOpenWaitTimer = null;
+        if (dialog.isConnected && !dialog.open) openActionSheet(dialog);
+      }, 300);
+      return;
+    }
+    if (dialog.open) return;
+    dialog._asPreviousFocus = dialog._asPreviousFocus || document.activeElement;
+    try {
+      dialog.showModal();
+    } catch {
+      /* dialog may have been removed or is already modal */
+    }
+  }
+
+  function destroy(dialog) {
+    if (!dialog || !dialog._asInit) return;
+    if (dialog._asCancelHandler) {
+      dialog.removeEventListener("cancel", dialog._asCancelHandler);
+      dialog._asCancelHandler = null;
+    }
+    if (dialog._asMousedownHandler) {
+      dialog.removeEventListener("mousedown", dialog._asMousedownHandler);
+      dialog._asMousedownHandler = null;
+    }
+    if (dialog._asClickHandler) {
+      dialog.removeEventListener("click", dialog._asClickHandler);
+      dialog._asClickHandler = null;
+    }
+    if (dialog._asObserver) {
+      dialog._asObserver.disconnect();
+      dialog._asObserver = null;
+    }
+    if (dialog._asFocusTrapHandler) {
+      dialog.removeEventListener("keydown", dialog._asFocusTrapHandler);
+      dialog._asFocusTrapHandler = null;
+    }
+    clearCloseAnim(dialog);
+    dialog.removeAttribute("data-closing");
+    dialog.removeAttribute("aria-modal");
+    if (dialog._asSetAriaLabelledBy) {
+      dialog.removeAttribute("aria-labelledby");
+      dialog._asSetAriaLabelledBy = false;
+    }
+    if (dialog._asSetAriaDescribedBy) {
+      dialog.removeAttribute("aria-describedby");
+      dialog._asSetAriaDescribedBy = false;
+    }
+    if (dialog._asSetAriaLabel) {
+      dialog.removeAttribute("aria-label");
+      dialog._asSetAriaLabel = false;
+    }
+    if (dialog._asOpenWaitObs) {
+      dialog._asOpenWaitObs.disconnect();
+      dialog._asOpenWaitObs = null;
+    }
+    if (dialog._asOpenWaitTimer) {
+      clearTimeout(dialog._asOpenWaitTimer);
+      dialog._asOpenWaitTimer = null;
+    }
+    restoreScrollLock(dialog);
+    dialog._asPreviousFocus = null;
+    dialog._asInit = false;
+  }
+
+  window.openActionSheet = openActionSheet;
+  window.closeActionSheet = closeActionSheet;
+  window.CiderUI.actionSheet = {
+    init,
+    destroy,
+    open: openActionSheet,
+    close: closeActionSheet,
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+
+  document.addEventListener("htmx:afterSettle", init);
+  document.addEventListener("htmx:beforeCleanupElement", (evt) => {
+    const el = evt.detail?.elt;
+    if (!el) return;
+    const sheets =
+      el.tagName === "DIALOG" && el.classList.contains("action-sheet")
+        ? [el]
+        : Array.from(el.querySelectorAll?.("dialog.action-sheet") || []);
+    sheets.forEach(destroy);
+  });
+})();
