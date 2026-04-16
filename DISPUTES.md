@@ -3,6 +3,23 @@
 Controversial or debatable decisions taken during autonomous work —
 kept here so the maintainer can review them on waking up.
 
+**Real bugs fixed this session** (all discovered via new tests, not
+disputes):
+
+1. **`.btn-*:disabled` missing `cursor: not-allowed`** — was leaving
+   the base `cursor: pointer` in computed style. Form inputs already
+   set `not-allowed`; buttons now match. Fix in `button.css`
+   (ea6458b).
+2. **Picker auto-generated IDs collided** across multiple picker
+   instances (every picker column 0 row 2 got `picker-opt-0-2`).
+   Broke `aria-activedescendant` / label / `querySelector`. Now
+   `picker-opt-<uid>-<col>-<row>` (55a0de3).
+3. **Tabs inactive panels rendered visible** — only
+   `.segmented-control [data-tab-panel]:not([data-active])` had a
+   CSS hide rule; standalone `[data-tabs]` users saw every panel
+   stacked. `tabs.js` now sets HTML `hidden` attribute on inactive
+   panels (f6218e9).
+
 Format: date, context, what I decided, why, how to reverse.
 
 <!--
