@@ -62,6 +62,9 @@ Or via CDN:
 <script src="https://cdn.jsdelivr.net/gh/newlix/ciderui@main/js/cider.js"></script>
 ```
 
+TypeScript types are shipped alongside — `window.CiderUI.*` and the global
+helpers (`openDialog`, `showHUD`, etc.) are fully typed.
+
 ### CDN (no build step)
 
 ```html

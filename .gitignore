@@ -1,3 +1,7 @@
 node_modules/
 test-results/
 site/
+playwright-report/
+.direnv/
+.claude/
+autoresearch-results.tsv

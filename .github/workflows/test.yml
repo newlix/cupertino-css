@@ -36,6 +36,9 @@ jobs:
       - name: Prettier check
         run: pnpm prettier --check .
 
+      - name: Type check
+        run: pnpm test:types
+
       - name: Playwright tests
         run: pnpm test
         env:

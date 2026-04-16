@@ -22,9 +22,16 @@
   "exports": {
     ".": "./src/css/ciderui.css",
     "./cdn": "./src/css/ciderui.cdn.css",
-    "./cider.js": "./js/cider.js",
-    "./components/*": "./js/components/*.js"
+    "./cider.js": {
+      "types": "./js/cider.d.ts",
+      "default": "./js/cider.js"
+    },
+    "./components/*": {
+      "types": "./js/cider.d.ts",
+      "default": "./js/components/*.js"
+    }
   },
+  "types": "./js/cider.d.ts",
   "files": [
     "src/css/",
     "js/",
@@ -37,6 +44,7 @@
     "dev": "concurrently \"node scripts/build-docs.js --watch\" \"PORT=8000 node scripts/test-server.js\"",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
+    "test:types": "pnpm --package=typescript dlx tsc",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "peerDependencies": {
