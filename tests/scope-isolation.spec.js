@@ -19,6 +19,7 @@ const TEST_HTML = `
     <code>code</code>
     <table><thead><tr><th>H</th></tr></thead><tbody><tr><td>C</td></tr></tbody></table>
     <input type="checkbox">
+    <button data-tooltip="Tip" id="tip-outside">Btn</button>
   </div>
   <div id="inside" class="cider">
     <h1>Heading</h1>
@@ -32,6 +33,7 @@ const TEST_HTML = `
     <code>code</code>
     <table><thead><tr><th>H</th></tr></thead><tbody><tr><td>C</td></tr></tbody></table>
     <input type="checkbox">
+    <button data-tooltip="Tip" id="tip-inside">Btn</button>
   </div>
   <div id="reset-wrapper" class="cider">
     <div id="reset" class="cider-reset">
@@ -57,6 +59,38 @@ async function setupIsolationPage(page) {
 test.describe("Scope Isolation — styles stay inside .cider", () => {
   test.beforeEach(async ({ page }) => {
     await setupIsolationPage(page);
+  });
+
+  test("data-tooltip ::after pseudo-element only styled inside .cider", async ({
+    page,
+  }) => {
+    // The tooltip ::after pseudo-element is generated only when the
+    // rules in tooltip.css apply (position: relative on host, ::after
+    // carrying content: attr(data-tooltip)). Outside .cider, the
+    // ::after should not exist / have no generated content.
+    const outside = await page.evaluate(() => {
+      const el = document.querySelector("#tip-outside");
+      const after = getComputedStyle(el, "::after");
+      return {
+        content: after.content,
+        position: getComputedStyle(el).position,
+      };
+    });
+    const inside = await page.evaluate(() => {
+      const el = document.querySelector("#tip-inside");
+      const after = getComputedStyle(el, "::after");
+      return {
+        content: after.content,
+        position: getComputedStyle(el).position,
+      };
+    });
+
+    // Inside .cider: tooltip rules apply — ::after content is the tooltip attr, host is position:relative
+    expect(inside.content).toContain("Tip");
+    expect(inside.position).toBe("relative");
+
+    // Outside .cider: no tooltip styling; ::after content is empty / "none"
+    expect(outside.content === "none" || outside.content === "").toBe(true);
   });
 
   test("h1 typography only applies inside .cider", async ({ page }) => {
