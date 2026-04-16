@@ -9,28 +9,38 @@ src/css/
   ciderui.css          # Main entry — CSS variables, theme tokens, base, @import components
   ciderui.cdn.css      # CDN bundle — includes Tailwind + ciderui.css via source(none)
   components/           # 32 component CSS files (button, card, dialog, tooltip, …)
-                       # elements.css splits further into components/elements/*.css
-js/cider.js              # All interactive component JS in one file
+    elements/           # classless element styles (typography, forms, table, …)
+js/
+  cider.js              # Generated CDN/classic-script bundle (do not edit directly)
+  cider.d.ts            # TypeScript types for window.CiderUI.* API
+  components/           # Source of truth — one IIFE per file; _shared.js has utilities
 docs/
   _includes/            # Nunjucks templates (layout.njk, macros.njk)
-  _data/nav.json        # Sidebar navigation data
+  _data/nav.json        # Sidebar navigation data (alphabetical within sections)
   docs.css              # Tailwind + ciderui + docs-specific styles
   components/*.njk      # Component doc pages (Nunjucks source)
 scripts/
   build-docs.js         # SSG build: .njk → site/*.html + CSS + assets
+  build-cider-js.js     # Concat js/components/*.js → js/cider.js
+  check-shared-imports.js  # CI gate: components using _shared globals must import it
   test-server.js        # Lightweight HTTP server for Playwright tests (:3000)
+types/                  # Compile-only type assertions (tsc --noEmit smoke test)
 site/                   # Build output (gitignored)
 tests/                  # Playwright test files
+.githooks/pre-commit    # Auto-prettier staged files; rebuild cider.js / dist/ on source change
 ```
 
 ## Commands
 
 ```bash
-pnpm dev              # Build docs site + serve on :8000
-pnpm build            # Build CDN bundle to dist/
-pnpm build:docs       # Build docs site to site/
+pnpm dev                  # Build docs site + serve on :8000
+pnpm build                # Regenerate js/cider.js + dist/ciderui.cdn{,.min}.css
+pnpm build:js             # Regenerate only js/cider.js
+pnpm build:docs           # Build docs site to site/
 pnpm test                 # Run Playwright tests (builds docs + starts server)
-pnpm test:ui          # Playwright UI mode
+pnpm test:ui              # Playwright UI mode
+pnpm test:types           # tsc --noEmit on ciderui.d.ts + types/*.ts
+pnpm test:shared-imports  # Verify components using _shared globals import it
 ```
 
 ## Architecture
