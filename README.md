@@ -1,8 +1,11 @@
 # Cider UI
 
+[![Test](https://github.com/newlix/ciderui/actions/workflows/test.yml/badge.svg)](https://github.com/newlix/ciderui/actions/workflows/test.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Apple-aesthetic UI components as a Tailwind CSS v4 plugin. Semantic class names like `btn`, `card`, `input` — no utility soup in your markup.
 
-**Docs & demos:** [ciderui.com](https://ciderui.com)
+**Docs & demos:** [ciderui.com](https://ciderui.com) · **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 
 ## Install
 
@@ -79,6 +82,23 @@ helpers (`openDialog`, `showHUD`, etc.) are fully typed.
 ```js
 document.documentElement.classList.toggle("dark");
 ```
+
+## Components
+
+- **Actions** — button, action-sheet, dialog, toolbar, hud, tooltip
+- **Input** — text-field, textarea, search-field, select, checkbox,
+  radio-group, switch, slider, stepper, token-field, verification-code
+- **Display** — card, list, table, badge, avatar, tag, kbd, callout,
+  progress, activity-indicator, gauge, separator
+- **Navigation** — navbar, sidebar, tabs, tab-bar, breadcrumb,
+  pagination, page-control, segmented-control
+- **Overlay** — popover, picker, disclosure-group
+
+See [ciderui.com](https://ciderui.com) for live examples and markup.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the dev workflow.
 
 ## License
 
