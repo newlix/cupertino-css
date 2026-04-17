@@ -7,8 +7,10 @@ on:
 
 jobs:
   playwright:
-    # Using the official Playwright container gives us a matching browser
-    # bundle so we don't need to reinstall browsers per run.
+    # Using the official Playwright container for system deps; browsers
+    # are installed via `pnpm exec playwright install` so they always
+    # match the @playwright/test version in the lockfile (image tag can
+    # lag behind library bumps for ~a week).
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.58.2-noble
@@ -24,6 +26,9 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers matching lib version
+        run: pnpm exec playwright install chromium firefox webkit
 
       - name: Verify generated bundles are up to date
         run: |
