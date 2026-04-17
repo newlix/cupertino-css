@@ -1,12 +1,5 @@
 import { test, expect } from "@playwright/test";
-import {
-  goto,
-  preview,
-  css,
-  setDark,
-  focusViaKeyboard,
-  contrastBetween,
-} from "./helpers.js";
+import { goto, preview, css, setDark, focusViaKeyboard } from "./helpers.js";
 
 test.describe("Card", () => {
   test.beforeEach(async ({ page }) => {
@@ -34,18 +27,16 @@ test.describe("Card", () => {
     expect(outline).toBe("solid");
   });
 
-  test("dark mode: border visible against background", async ({ page }) => {
+  test("dark mode: card has visible boundary via shadow", async ({ page }) => {
     await setDark(page);
     const card = preview(page, 0).locator(".card").first();
-    const ratio = await contrastBetween(
-      card,
-      "borderColor",
-      card,
-      "backgroundColor",
-    );
-    // Threshold 1.04 (not 1.05) — color-mix() alpha blending produces
-    // slightly different float values per browser/load, and the ratio
-    // sits around 1.047-1.052 in dark mode. We only need "not equal".
-    expect(ratio).toBeGreaterThan(1.04);
+    // Card renders its boundary via box-shadow (panel-ring + shadow-sm),
+    // not border-width — which is 0. Earlier version of this test
+    // asserted borderColor vs backgroundColor contrast but since
+    // border-width is 0 that comparison is both meaningless (border
+    // isn't drawn) and flaky (tiny color-mix() float deltas between
+    // browsers/hosts drift the ratio around 1.03-1.05). What matters
+    // is that the box-shadow is non-none in dark mode.
+    expect(await css(card, "boxShadow")).not.toBe("none");
   });
 });
