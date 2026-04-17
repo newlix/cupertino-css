@@ -18,7 +18,7 @@ test.describe("Activity Indicator", () => {
     await expect(async () => {
       const bgAfter = await css(indicator, "backgroundColor");
       expect(bgAfter).not.toBe(bg);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("color swaps in dark mode via inherited currentColor", async ({

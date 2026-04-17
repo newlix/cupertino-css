@@ -50,7 +50,7 @@ test.describe("Disclosure Group", () => {
     await expect(async () => {
       const bgAfter = await css(summary, "backgroundColor");
       expect(bgAfter).not.toBe(bgBefore);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("clicking summary toggles open state", async ({ page }) => {

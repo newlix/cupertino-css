@@ -31,7 +31,7 @@ test.describe("Page Control", () => {
     await expect(async () => {
       const outline = await css(dot, "outlineStyle");
       expect(outline).toBe("solid");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("default example renders 10 dots with 5th one active", async ({

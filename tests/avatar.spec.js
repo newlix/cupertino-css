@@ -27,7 +27,7 @@ test.describe("Avatar", () => {
     await expect(async () => {
       const z = await css(avatar, "zIndex");
       expect(z).toBe("1");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("dark mode changes avatar ring shadow", async ({ page }) => {

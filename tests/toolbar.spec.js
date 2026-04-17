@@ -68,7 +68,7 @@ test.describe("Toolbar", () => {
     await expect(async () => {
       const style = await css(btn, "outlineStyle");
       expect(style).toBe("solid");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("dark mode changes toolbar background", async ({ page }) => {

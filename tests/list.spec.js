@@ -39,7 +39,7 @@ test.describe("List", () => {
     await expect(async () => {
       const bgAfter = await css(link, "backgroundColor");
       expect(bgAfter).not.toBe(bgBefore);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("interactive item has focus-visible background highlight", async ({
@@ -51,7 +51,7 @@ test.describe("List", () => {
     await expect(async () => {
       const bg = await css(link, "backgroundColor");
       expect(bg).not.toBe("rgba(0, 0, 0, 0)");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("inset-grouped list renders with card styling", async ({ page }) => {

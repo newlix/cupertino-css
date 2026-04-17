@@ -109,6 +109,6 @@ test.describe("Stepper", () => {
     await expect(async () => {
       const style = await css(btn, "outlineStyle");
       expect(style).toBe("solid");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 });

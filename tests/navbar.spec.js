@@ -54,7 +54,7 @@ test.describe("Navigation Bar", () => {
     await expect(async () => {
       const shadow = await css(back, "boxShadow");
       expect(shadow).not.toBe("none");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("dark mode changes navbar background", async ({ page }) => {

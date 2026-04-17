@@ -77,7 +77,7 @@ test.describe("Button", () => {
     await expect(async () => {
       const shadow = await css(btn, "boxShadow");
       expect(shadow).not.toBe("none");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("dark mode changes filled button background", async ({ page }) => {

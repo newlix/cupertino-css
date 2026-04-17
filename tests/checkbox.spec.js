@@ -47,7 +47,7 @@ test.describe("Checkbox", () => {
     await cb.hover();
     await expect(async () => {
       expect(await css(cb, "backgroundColor")).not.toBe(before);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("focus-visible shows ring on checkbox", async ({

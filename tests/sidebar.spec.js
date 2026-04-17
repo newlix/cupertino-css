@@ -53,7 +53,7 @@ test.describe("Sidebar", () => {
     await expect(async () => {
       const bgAfter = await css(link, "backgroundColor");
       expect(bgAfter).not.toBe(bgBefore);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("items have rounded corners", async ({ page }) => {

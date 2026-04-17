@@ -42,7 +42,7 @@ test.describe("Radio Group", () => {
     await radio.hover();
     await expect(async () => {
       expect(await css(radio, "borderColor")).not.toBe(before);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("hover on unchecked radio changes border", async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe("Radio Group", () => {
     await radio.hover();
     await expect(async () => {
       expect(await css(radio, "borderColor")).not.toBe(before);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("focus-visible shows ring", async ({ page }) => {

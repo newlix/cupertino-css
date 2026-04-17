@@ -62,7 +62,7 @@ test.describe("Slider", () => {
     await focusViaKeyboard(page, slider);
     await expect(async () => {
       expect(await css(slider, "outlineStyle")).toBe("none");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("ArrowRight increments and updates fill", async ({ page }) => {

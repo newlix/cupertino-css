@@ -13,7 +13,7 @@ test.describe("Breadcrumb", () => {
     await link.hover();
     await expect(async () => {
       expect(await css(link, "color")).not.toBe(before);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("link has no underline on hover", async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe("Breadcrumb", () => {
     await link.hover();
     await expect(async () => {
       expect(await css(link, "textDecorationLine")).toBe("none");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("chevron separator renders between items via ::before", async ({

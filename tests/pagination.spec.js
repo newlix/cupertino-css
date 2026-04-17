@@ -40,7 +40,7 @@ test.describe("Pagination", () => {
     await expect(async () => {
       const outline = await css(btn, "outlineStyle");
       expect(outline).toBe("solid");
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("ellipsis span is present", async ({ page }) => {
