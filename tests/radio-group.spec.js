@@ -64,11 +64,13 @@ test.describe("Radio Group", () => {
       .first();
     const before = await css(radio, "boxShadow");
     await focusViaKeyboard(page, radio);
+    // Firefox in CI is slower to paint the focus-visible ring than
+    // locally; 1000ms was borderline. 3000ms gives comfortable margin.
     await expect(async () => {
       const after = await css(radio, "boxShadow");
       expect(after).not.toBe("none");
       expect(after).not.toBe(before);
-    }).toPass({ timeout: 1000 });
+    }).toPass({ timeout: 3000 });
   });
 
   test("dark mode: checked vs unchecked are distinguishable", async ({
