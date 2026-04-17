@@ -6,6 +6,8 @@ All notable changes to Cider UI are documented here. Format follows
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-04-17
+
 ### Added
 
 - Ship TypeScript types for the interactive-component API

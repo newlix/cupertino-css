@@ -1,6 +1,6 @@
 {
   "name": "ciderui",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Apple-aesthetic UI components as a Tailwind CSS plugin",
   "license": "MIT",
   "author": "newlix",
