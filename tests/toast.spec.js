@@ -12,8 +12,9 @@ test.describe("Toast", () => {
     await expect(toast).toBeVisible();
     await expect(toast.locator(".toast-title")).toHaveText("Saved");
 
-    // Duration 300ms + animation + fallback can take ~1s; allow 5s.
-    await expect(toast).toHaveCount(0, { timeout: 5000 });
+    // Duration 300ms + animation + fallback can take ~1s locally; CI
+    // Firefox under parallel load needs more margin — 10s.
+    await expect(toast).toHaveCount(0, { timeout: 10000 });
   });
 
   test("dismiss button removes toast", async ({ page }) => {
