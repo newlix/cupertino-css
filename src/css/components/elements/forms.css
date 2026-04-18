@@ -449,7 +449,9 @@ select + small {
   @apply mt-1.5;
 }
 :is(input, textarea, select)[aria-invalid="true"] + small {
-  @apply text-destructive;
+  /* Use the text-variant destructive so small error text on dark bg
+     stays readable (lighter red) while form borders stay bold red. */
+  color: var(--color-destructive-text, var(--color-destructive));
 }
 
 /* ─── Fieldset ─── */

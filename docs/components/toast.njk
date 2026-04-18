@@ -1,0 +1,68 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Toast" %}
+{% set description = "Edge-positioned notification that stacks and auto-dismisses. Distinct from HUD (centered, one-at-a-time)." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.toast-container</code></dt>
+    <dd>Fixed region at top-right (bottom on mobile). Auto-created by <code>showToast</code>.</dd>
+    <dt><code>.toast</code></dt>
+    <dd>Individual notification. Set <code>data-variant="success|error"</code> for accent colour.</dd>
+    <dt><code>window.showToast(titleOrOptions)</code></dt>
+    <dd>Imperative API. Returns <code>{ dismiss, element }</code>.</dd>
+  </dl>
+
+  {% call example("Basic") %}
+<button class="btn-tinted" onclick="showToast('Saved successfully')">Show toast</button>
+{% endcall %}
+
+  {% call example("With message + variant") %}
+<div class="flex flex-wrap gap-2">
+  <button class="btn-tinted" onclick="showToast({ title: 'Changes saved', message: 'Your settings were updated.', variant: 'success' })">Success</button>
+  <button class="btn-tinted" onclick="showToast({ title: 'Upload failed', message: 'File too large (max 10MB).', variant: 'error' })">Error</button>
+  <button class="btn-tinted" onclick="showToast({ title: 'Syncing...', message: 'Finishing up, please wait.' })">Info</button>
+</div>
+{% endcall %}
+
+  {% call example("Sticky (no auto-dismiss)") %}
+<button class="btn-tinted" onclick="showToast({ title: 'Action required', message: 'Dismiss manually.', duration: 0 })">Sticky</button>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2>API</h2>
+    <div class="snippet mt-4">
+      <pre><code class="language-js">// Short form — just a title
+showToast("Saved");
+
+// Full form
+showToast({
+  title: "Changes saved",
+  message: "Your settings were updated.",
+  variant: "success",    // "info" (default) | "success" | "error"
+  duration: 4000,        // ms; 0 = sticky
+});</code></pre>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2>Accessibility</h2>
+    <ul>
+      <li>Container has <code>role="region"</code> and <code>aria-live="polite"</code> so screen readers announce new toasts without stealing focus.</li>
+      <li>Error toasts use <code>role="alert"</code> for more assertive announcement.</li>
+      <li>Dismiss button has <code>aria-label="Dismiss notification"</code>.</li>
+      <li>Respects <code>prefers-reduced-motion</code> — slide-in collapses to a quick fade.</li>
+    </ul>
+  </section>
+
+  <section class="mt-12">
+    <h2>Toast vs HUD</h2>
+    <ul>
+      <li><strong>HUD</strong>: centered on screen, one-at-a-time, very short duration. Inspired by macOS volume/brightness overlays.</li>
+      <li><strong>Toast</strong>: edge corner, stacks, persistent until dismissed or timer expires. Standard web notification pattern.</li>
+    </ul>
+  </section>
+
+{% endblock %}

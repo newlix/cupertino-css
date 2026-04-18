@@ -33,7 +33,8 @@
   &[data-active],
   &[aria-selected="true"],
   &[aria-current="page"] {
-    color: var(--color-primary);
+    /* --color-link is lighter in dark mode for text-on-dark-bg contrast */
+    color: var(--color-link, var(--color-primary));
   }
   &:hover:not([data-active]):not([aria-selected="true"]):not(
       [aria-current="page"]

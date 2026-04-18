@@ -24,6 +24,7 @@ const ALLOWED_GLOBALS = new Set([
   "openActionSheet",
   "closeActionSheet",
   "showHUD",
+  "showToast",
 ]);
 
 test("full bundle attaches only documented globals", async ({ page }) => {

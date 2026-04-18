@@ -41,13 +41,15 @@
     justify-self: end;
   }
 
-  /* All interactive elements — back button, action buttons/links */
+  /* All interactive elements — back button, action buttons/links.
+     --color-link is lighter than --color-primary in dark mode so the
+     blue-text-on-dark-nav pattern stays readable. */
   & :is(button, a) {
     @apply inline-flex items-center cursor-pointer;
     font-size: 17px;
-    color: var(--color-primary);
+    color: var(--color-link, var(--color-primary));
     &:visited {
-      color: var(--color-primary);
+      color: var(--color-link, var(--color-primary));
     }
     background: transparent;
     border: none;

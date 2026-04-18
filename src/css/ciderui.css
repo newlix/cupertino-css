@@ -47,6 +47,13 @@
   --color-destructive-active: oklch(0.44 0.23 28.66);
   --color-destructive-foreground: #fff;
 
+  /* Text-usage colour variants — same as primary/destructive in light
+     mode but lighter in dark mode (set in .dark) so text-on-dark-bg
+     stays readable. Components using primary/destructive as
+     *background* keep reading --color-primary/--color-destructive. */
+  --color-link: var(--color-primary);
+  --color-destructive-text: var(--color-destructive);
+
   --color-secondary-active: oklch(
     0.896 0.004 285.99
   ); /* pressed state for gray buttons */
@@ -162,11 +169,14 @@
 }
 
 .dark {
-  --color-primary: oklch(
-    0.624 0.206 255.49
-  ); /* Apple System Blue #0A84FF (dark); brighter than the light-mode override since dark bg needs lighter foreground */
-  --color-primary-hover: oklch(0.584 0.206 255.49);
-  --color-primary-active: oklch(0.544 0.206 255.49);
+  /* Dark-mode primary is a compromise between two conflicting WCAG needs:
+     - white text on primary bg (btn-filled) wants DARKER primary
+     - primary text on dark bg (text-primary link) wants LIGHTER primary
+     0.42 prioritises btn-filled; text-primary violations documented
+     in DISPUTES.md. */
+  --color-primary: oklch(0.42 0.2 255.49);
+  --color-primary-hover: oklch(0.38 0.2 255.49);
+  --color-primary-active: oklch(0.34 0.2 255.49);
   --color-background: oklch(0.061 0.004 286); /* near-black dark bg */
   --color-foreground: oklch(0.971 0.003 286.35); /* #F5F5F7 Apple dark text */
 
@@ -178,8 +188,8 @@
   --color-secondary-foreground: oklch(0.971 0.003 286.35);
 
   --color-tertiary-foreground: oklch(
-    0.681 0.007 286.21
-  ); /* #98989D Apple dark secondary label */
+    0.85 0.007 286.21
+  ); /* Brighter than Apple dark secondary label to survive AA darkening on dark bg */
 
   --color-border: oklch(0.349 0.003 286.22); /* #3A3A3C systemGray4 */
   --color-border-solid: oklch(0.402 0.003 286.25); /* #48484A systemGray3 */
@@ -196,11 +206,16 @@
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.684 0.182 148.92); /* #2BBF4F */
 
-  --color-destructive: oklch(0.663 0.224 28.29); /* Apple Dark Red #FF453A */
-  --color-destructive-hover: oklch(0.616 0.224 28.29);
-  --color-destructive-active: oklch(0.57 0.224 28.29);
+  --color-destructive: oklch(
+    0.42 0.22 28.29
+  ); /* darker than Apple dark red for WCAG AA btn-filled */
+  --color-destructive-hover: oklch(0.38 0.22 28.29);
+  --color-destructive-active: oklch(0.34 0.22 28.29);
   --color-primary-foreground: #fff;
   --color-destructive-foreground: #fff;
+  /* Lighter variants for text usage on dark bg (meets WCAG AA) */
+  --color-link: oklch(0.75 0.15 255.49);
+  --color-destructive-text: oklch(0.7 0.2 28.29);
   --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08), 0 1px 2px oklch(0 0 0 / 0.04);
   --shadow: 0 2px 8px oklch(0 0 0 / 0.12), 0 1px 3px oklch(0 0 0 / 0.08);
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.08);
@@ -251,8 +266,8 @@
   --avatar-fg: oklch(0.7 0.006 286);
 
   --segmented-active: oklch(
-    0.58 0.004 286.1
-  ); /* segmented control indicator: mid-gray */
+    0.48 0.004 286.1
+  ); /* segmented control indicator: mid-gray, dark enough for white-on-it WCAG */
   --kbd-inset: oklch(1 0 0 / 0.28);
   --switch-thumb-shadow:
     0 2px 6px oklch(0 0 0 / 0.45), 0 1px 3px oklch(0 0 0 / 0.3);
@@ -325,6 +340,19 @@
 }
 
 /* ─── Base ─── */
+/* Dark-mode overrides for Tailwind utilities that use brand tokens as
+   text colour. --color-primary/--color-destructive are intentionally
+   dark in dark mode so white-on-them meets WCAG AA — but that makes
+   them too dark when used AS text on a dark bg. The *-text variants
+   are lighter versions set only in dark mode. Unscoped so they work
+   anywhere the utility is applied. */
+.dark .text-primary {
+  color: var(--color-link);
+}
+.dark .text-destructive {
+  color: var(--color-destructive-text);
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground antialiased;
@@ -509,10 +537,12 @@
     @import "./components/segmented-control.css";
     @import "./components/separator.css";
     @import "./components/sidebar.css";
+    @import "./components/skeleton.css";
     @import "./components/slider.css";
     @import "./components/stepper.css";
     @import "./components/tab-bar.css";
     @import "./components/tag.css";
+    @import "./components/toast.css";
     @import "./components/token-field.css";
     @import "./components/toolbar.css";
     @import "./components/tooltip.css";

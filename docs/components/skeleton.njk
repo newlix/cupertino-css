@@ -1,0 +1,56 @@
+{% extends "_includes/layout.njk" %}
+{% from "_includes/macros.njk" import example %}
+{% set title = "Skeleton" %}
+{% set description = "Loading placeholder with gentle shimmer. Use while content is pending." %}
+
+{% block content %}
+
+  <h2>Selectors</h2>
+  <dl>
+    <dt><code>.skeleton</code></dt>
+    <dd>Placeholder surface with shimmer animation. Set width / height / border-radius via utilities.</dd>
+  </dl>
+
+  {% call example("Text Lines") %}
+<div class="space-y-2 max-w-sm">
+  <div class="skeleton h-4 w-3/4 rounded-sm"></div>
+  <div class="skeleton h-4 w-full rounded-sm"></div>
+  <div class="skeleton h-4 w-5/6 rounded-sm"></div>
+</div>
+{% endcall %}
+
+  {% call example("Avatar + Text") %}
+<div class="flex items-center gap-3">
+  <div class="skeleton size-10 rounded-full"></div>
+  <div class="space-y-2 flex-1 max-w-xs">
+    <div class="skeleton h-4 w-32 rounded-sm"></div>
+    <div class="skeleton h-3 w-24 rounded-sm"></div>
+  </div>
+</div>
+{% endcall %}
+
+  {% call example("Card Placeholder") %}
+<div class="card max-w-sm">
+  <div class="skeleton h-5 w-48 rounded-sm"></div>
+  <div class="space-y-2 mt-2">
+    <div class="skeleton h-3 w-full rounded-sm"></div>
+    <div class="skeleton h-3 w-5/6 rounded-sm"></div>
+    <div class="skeleton h-3 w-3/4 rounded-sm"></div>
+  </div>
+  <div class="skeleton mt-4 h-8 w-24 rounded"></div>
+</div>
+{% endcall %}
+
+  {% call example("Image Placeholder") %}
+<div class="skeleton w-full max-w-xs h-40 rounded-[var(--radius-lg)]"></div>
+{% endcall %}
+
+  <section class="mt-12">
+    <h2>Accessibility</h2>
+    <ul>
+      <li>Wrap skeletons in an element with <code>aria-busy="true"</code> so assistive tech announces a loading state.</li>
+      <li>Respect <code>prefers-reduced-motion</code>: the shimmer animation collapses to static via the global blanket rule.</li>
+    </ul>
+  </section>
+
+{% endblock %}

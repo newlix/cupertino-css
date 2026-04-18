@@ -91,7 +91,7 @@
   /* Blue variant — Apple Mail recipient style */
   &.token-blue {
     background: color-mix(in oklch, var(--color-primary) 15%, transparent);
-    color: var(--color-primary);
+    color: var(--color-link, var(--color-primary));
     & button {
       color: color-mix(in oklch, var(--color-primary) 50%, transparent);
       &:hover {

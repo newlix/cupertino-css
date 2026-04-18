@@ -6,6 +6,46 @@ All notable changes to Cider UI are documented here. Format follows
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-04-19
+
+### Added
+
+- **Skeleton** component — loading placeholder with shimmer animation.
+  CSS-only, respects `prefers-reduced-motion`.
+- **Toast** component — edge-positioned notification stack with
+  variants (info/success/error), auto-dismiss, and sticky duration=0.
+  `window.showToast(titleOrOptions)` API plus `window.CiderUI.toast.*`.
+  Distinct from HUD (centered, transient) — toasts stack at a corner
+  and persist.
+- **Theming** docs page — concise guide to overriding the documented
+  CSS custom properties at `.cider` scope, including restore-Apple-
+  exact-palette recipe.
+- `--color-link` and `--color-destructive-text` tokens — lighter
+  variants for text-as-brand-colour usage on dark backgrounds. Fall
+  back to `--color-primary` / `--color-destructive` in light mode.
+
+### Changed
+
+- **Dark-mode WCAG AA**: tokens adjusted so `color-contrast` passes
+  for every component state in dark mode, not just light. Required
+  darkening dark-mode primary / destructive for white-on-them
+  contrast and introducing the `-text` variants for text-on-dark-bg
+  contexts. axe-audit CI now scans both light and dark modes (86
+  assertions) and both are green.
+- Dark-mode `--segmented-active` darkened 0.58 → 0.48 so white tab
+  text on the active indicator meets contrast.
+- `prefers-color-scheme: dark` emulation added to dark-mode a11y
+  spec to work around a Chromium @scope+var()+class-change caching
+  quirk — the docs head script applies `.dark` before first paint,
+  avoiding the toggle path.
+
+### Fixed
+
+- Prose links, `.text-primary` / `.text-destructive` utilities, and
+  a handful of components (btn-plain, btn-tinted, navbar, tab-bar,
+  sidebar tinted-active, token-blue) now read the `*-text` variants
+  so they stay readable on dark backgrounds.
+
 ## [0.6.0] — 2026-04-17
 
 ### Added

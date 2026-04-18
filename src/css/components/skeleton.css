@@ -1,0 +1,53 @@
+/* ========== SKELETON ==========
+   Loading placeholder with gentle shimmer. Place a .skeleton element
+   where the real content will render; set width/height/border-radius
+   via utilities to match the incoming shape.
+
+   Usage:
+     <div class="skeleton h-4 w-40 rounded-sm"></div>
+     <div class="skeleton size-10 rounded-full"></div>
+     <div class="skeleton h-40 rounded"></div>
+
+   Reduced-motion respects the global blanket rule (animation disabled);
+   the static appearance is still a tinted surface so users know content
+   is pending. */
+
+.skeleton {
+  @apply relative overflow-hidden;
+  background: var(--surface-3);
+  border-radius: var(--radius-sm);
+  /* Matches non-skeleton's corner-shape to avoid layout shift on swap */
+  corner-shape: squircle;
+}
+
+.skeleton::after {
+  content: "";
+  @apply absolute inset-0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--surface-4) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.6s var(--apple-ease) infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (forced-colors: active) {
+  .skeleton {
+    border: 1px solid ButtonText;
+    background: Canvas;
+  }
+  .skeleton::after {
+    display: none;
+  }
+}

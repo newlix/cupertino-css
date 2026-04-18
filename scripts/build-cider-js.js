@@ -22,6 +22,7 @@ const order = [
   "slider.js",
   "stepper.js",
   "tabs.js",
+  "toast.js",
   "tokenField.js",
   "verificationCode.js",
 ];

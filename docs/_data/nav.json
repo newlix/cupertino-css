@@ -4,7 +4,8 @@
     "items": [
       { "label": "Installation", "href": "installation.html" },
       { "label": "Essentials", "href": "components/essentials.html" },
-      { "label": "Kitchen Sink", "href": "components/kitchen-sink.html" }
+      { "label": "Kitchen Sink", "href": "components/kitchen-sink.html" },
+      { "label": "Theming", "href": "theming.html" }
     ]
   },
   {
@@ -46,6 +47,7 @@
       { "label": "Select", "href": "components/select.html" },
       { "label": "Separator", "href": "components/separator.html" },
       { "label": "Sidebar", "href": "components/sidebar.html" },
+      { "label": "Skeleton", "href": "components/skeleton.html" },
       { "label": "Slider", "href": "components/slider.html" },
       { "label": "Stepper", "href": "components/stepper.html" },
       { "label": "Switch", "href": "components/switch.html" },
@@ -55,6 +57,7 @@
       { "label": "Tag", "href": "components/tag.html" },
       { "label": "Text Field", "href": "components/text-field.html" },
       { "label": "Textarea", "href": "components/textarea.html" },
+      { "label": "Toast", "href": "components/toast.html" },
       { "label": "Token Field", "href": "components/token-field.html" },
       { "label": "Toolbar", "href": "components/toolbar.html" },
       { "label": "Tooltip", "href": "components/tooltip.html" },

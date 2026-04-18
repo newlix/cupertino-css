@@ -99,7 +99,7 @@
    even though macOS defaults to tinted. */
 .sidebar[data-tinted] {
   & :is(a, button):is([data-active], [aria-current="page"]) {
-    color: var(--color-primary);
+    color: var(--color-link, var(--color-primary));
     background: var(--sidebar-tint-bg);
   }
   & :is(a, button):is([data-active], [aria-current="page"]):hover {

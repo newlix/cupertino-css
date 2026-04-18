@@ -239,6 +239,8 @@
   --color-destructive-hover: oklch(0.48 0.23 28.66);
   --color-destructive-active: oklch(0.44 0.23 28.66);
   --color-destructive-foreground: #fff;
+  --color-link: var(--color-primary);
+  --color-destructive-text: var(--color-destructive);
   --color-secondary-active: oklch(
     0.896 0.004 285.99
   );
@@ -341,11 +343,9 @@
   --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.12), 0 4px 16px oklch(0 0 0 / 0.06);
 }
 .dark {
-  --color-primary: oklch(
-    0.624 0.206 255.49
-  );
-  --color-primary-hover: oklch(0.584 0.206 255.49);
-  --color-primary-active: oklch(0.544 0.206 255.49);
+  --color-primary: oklch(0.42 0.2 255.49);
+  --color-primary-hover: oklch(0.38 0.2 255.49);
+  --color-primary-active: oklch(0.34 0.2 255.49);
   --color-background: oklch(0.061 0.004 286);
   --color-foreground: oklch(0.971 0.003 286.35);
   --color-card: oklch(0.227 0.004 286.09);
@@ -354,7 +354,7 @@
   --color-secondary-hover: oklch(0.349 0.003 286.22);
   --color-secondary-foreground: oklch(0.971 0.003 286.35);
   --color-tertiary-foreground: oklch(
-    0.681 0.007 286.21
+    0.85 0.007 286.21
   );
   --color-border: oklch(0.349 0.003 286.22);
   --color-border-solid: oklch(0.402 0.003 286.25);
@@ -368,11 +368,15 @@
   --color-green: oklch(0.756 0.208 146.98);
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.684 0.182 148.92);
-  --color-destructive: oklch(0.663 0.224 28.29);
-  --color-destructive-hover: oklch(0.616 0.224 28.29);
-  --color-destructive-active: oklch(0.57 0.224 28.29);
+  --color-destructive: oklch(
+    0.42 0.22 28.29
+  );
+  --color-destructive-hover: oklch(0.38 0.22 28.29);
+  --color-destructive-active: oklch(0.34 0.22 28.29);
   --color-primary-foreground: #fff;
   --color-destructive-foreground: #fff;
+  --color-link: oklch(0.75 0.15 255.49);
+  --color-destructive-text: oklch(0.7 0.2 28.29);
   --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08), 0 1px 2px oklch(0 0 0 / 0.04);
   --shadow: 0 2px 8px oklch(0 0 0 / 0.12), 0 1px 3px oklch(0 0 0 / 0.08);
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.08);
@@ -423,7 +427,7 @@
   --avatar-bg: oklch(0.27 0.006 286);
   --avatar-fg: oklch(0.7 0.006 286);
   --segmented-active: oklch(
-    0.58 0.004 286.1
+    0.48 0.004 286.1
   );
   --kbd-inset: oklch(1 0 0 / 0.28);
   --switch-thumb-shadow: 0 2px 6px oklch(0 0 0 / 0.45), 0 1px 3px oklch(0 0 0 / 0.3);
@@ -459,6 +463,12 @@
   --page-dot-hover-opacity: 0.55;
   --page-dot-active-opacity: 0.75;
   --page-dot-disabled-opacity: 0.25;
+}
+.dark .text-primary {
+  color: var(--color-link);
+}
+.dark .text-destructive {
+  color: var(--color-destructive-text);
 }
 @layer base {
   body {
@@ -1099,7 +1109,7 @@
       }
     }
     .btn-tinted {
-      color: var(--color-primary);
+      color: var(--color-link, var(--color-primary));
       background: var(--color-primary);
       @supports (color: color-mix(in lab, red, red)) {
         background: color-mix(in oklch, var(--color-primary) 12%, transparent);
@@ -1153,7 +1163,7 @@
     }
     .btn-plain {
       background-color: transparent;
-      color: var(--color-primary);
+      color: var(--color-link, var(--color-primary));
       &:hover {
         background: var(--surface-3);
       }
@@ -1172,7 +1182,7 @@
       }
     }
     :is(.btn-gray, .btn-plain).btn-destructive {
-      color: var(--color-destructive);
+      color: var(--color-destructive-text, var(--color-destructive));
       &:hover {
         background: var(--color-destructive);
         @supports (color: color-mix(in lab, red, red)) {
@@ -1201,7 +1211,7 @@
       }
     }
     .btn-tinted.btn-destructive {
-      color: var(--color-destructive);
+      color: var(--color-destructive-text, var(--color-destructive));
       background: var(--color-destructive);
       @supports (color: color-mix(in lab, red, red)) {
         background: color-mix(in oklch, var(--color-destructive) 12%, transparent);
@@ -1238,7 +1248,7 @@
       }
     }
     .btn-bezelled.btn-destructive {
-      color: var(--color-destructive);
+      color: var(--color-destructive-text, var(--color-destructive));
       border-color: var(--color-destructive);
       @supports (color: color-mix(in lab, red, red)) {
         border-color: color-mix(in oklch, var(--color-destructive) 30%, transparent);
@@ -2081,9 +2091,9 @@
         cursor: pointer;
         align-items: center;
         font-size: 17px;
-        color: var(--color-primary);
+        color: var(--color-link, var(--color-primary));
         &:visited {
-          color: var(--color-primary);
+          color: var(--color-link, var(--color-primary));
         }
         background: transparent;
         border: none;
@@ -2959,7 +2969,7 @@
     }
     .sidebar[data-tinted] {
       & :is(a, button):is([data-active], [aria-current="page"]) {
-        color: var(--color-primary);
+        color: var(--color-link, var(--color-primary));
         background: var(--sidebar-tint-bg);
       }
       & :is(a, button):is([data-active], [aria-current="page"]):hover {
@@ -2983,6 +2993,38 @@
       .sidebar :is(a, button):disabled, .sidebar :is(a, button)[aria-disabled="true"] {
         color: GrayText;
         opacity: 1;
+      }
+    }
+    .skeleton {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      corner-shape: squircle;
+    }
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      inset: calc(var(--spacing) * 0);
+      background: linear-gradient( 90deg, transparent 0%, var(--surface-4) 50%, transparent 100% );
+      transform: translateX(-100%);
+      animation: skeleton-shimmer 1.6s var(--apple-ease) infinite;
+    }
+    @keyframes skeleton-shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    @media (forced-colors: active) {
+      .skeleton {
+        border: 1px solid ButtonText;
+        background: Canvas;
+      }
+      .skeleton::after {
+        display: none;
       }
     }
     .slider {
@@ -3273,7 +3315,7 @@
         height: calc(var(--spacing) * 6);
       }
       &[data-active], &[aria-selected="true"], &[aria-current="page"] {
-        color: var(--color-primary);
+        color: var(--color-link, var(--color-primary));
       }
       &:hover:not([data-active]):not([aria-selected="true"]):not( [aria-current="page"] ):not(:disabled):not([aria-disabled="true"]) {
         color: var(--color-secondary-foreground);
@@ -3400,6 +3442,125 @@
         }
       }
     }
+    .toast-container {
+      pointer-events: none;
+      position: fixed;
+      top: calc(var(--spacing) * 4);
+      right: calc(var(--spacing) * 4);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing) * 2);
+      width: min(380px, calc(100vw - 2rem));
+      @media (pointer: coarse) {
+        top: auto;
+        bottom: calc(var(--spacing) * 4);
+        left: calc(var(--spacing) * 4);
+        width: calc(100vw - 2rem);
+      }
+    }
+    .toast {
+      pointer-events: auto;
+      display: flex;
+      align-items: flex-start;
+      gap: calc(var(--spacing) * 3);
+      padding-inline: calc(var(--spacing) * 4);
+      padding-block: calc(var(--spacing) * 3);
+      border-radius: var(--radius);
+      corner-shape: squircle;
+      background: var(--glass-bg-opaque);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow-lg), var(--float-ring);
+      color: var(--color-foreground);
+      animation: toastIn var(--transition-normal) var(--apple-spring);
+      & svg:first-child {
+        margin-top: calc(var(--spacing) * 0.5);
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+        flex-shrink: 0;
+        color: var(--color-tertiary-foreground);
+      }
+      & .toast-body {
+        min-width: calc(var(--spacing) * 0);
+        flex: 1;
+        font-size: 15px;
+        --tw-leading: var(--leading-snug);
+        line-height: var(--leading-snug);
+      }
+      & .toast-title {
+        display: block;
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        letter-spacing: -0.01em;
+      }
+      & .toast-message {
+        margin-top: calc(var(--spacing) * 0.5);
+        display: block;
+        font-size: 13px;
+        color: var(--color-tertiary-foreground);
+      }
+      & .toast-dismiss {
+        display: inline-flex;
+        width: calc(var(--spacing) * 6);
+        height: calc(var(--spacing) * 6);
+        flex-shrink: 0;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-xs);
+        background: transparent;
+        color: var(--color-tertiary-foreground);
+        border: none;
+        transition: background-color var(--transition-fast) var(--apple-ease);
+        &:hover {
+          background: var(--surface-2);
+        }
+        &:focus-visible {
+          box-shadow: var(--focus-ring);
+          outline: 2px solid transparent;
+        }
+      }
+      &[data-variant="success"] svg:first-child {
+        color: var(--color-green);
+      }
+      &[data-variant="error"] svg:first-child {
+        color: var(--color-destructive-text, var(--color-destructive));
+      }
+      &[data-closing] {
+        animation: toastOut var(--transition-fast) var(--apple-ease) forwards;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        animation: fadeIn var(--transition-fast) var(--apple-ease) !important;
+        &[data-closing] {
+          animation: fadeIn var(--transition-fast) var(--apple-ease) reverse forwards !important;
+        }
+      }
+    }
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateX(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes toastOut {
+      to {
+        opacity: 0;
+        transform: translateX(10px);
+      }
+    }
+    @media (forced-colors: active) {
+      .toast {
+        border: 1px solid ButtonText;
+        background: Canvas;
+        color: CanvasText;
+        backdrop-filter: none;
+      }
+    }
     .token-field {
       display: flex;
       width: 100%;
@@ -3512,7 +3673,7 @@
         @supports (color: color-mix(in lab, red, red)) {
           background: color-mix(in oklch, var(--color-primary) 15%, transparent);
         }
-        color: var(--color-primary);
+        color: var(--color-link, var(--color-primary));
         & button {
           color: var(--color-primary);
           @supports (color: color-mix(in lab, red, red)) {
@@ -3876,14 +4037,14 @@
       &[data-error] {
         animation: shake 0.4s var(--apple-ease);
         & > span {
-          color: var(--color-destructive);
+          color: var(--color-destructive-text, var(--color-destructive));
         }
         @media (prefers-reduced-motion: reduce) {
           animation: none;
         }
       }
       &[data-error] + small {
-        color: var(--color-destructive);
+        color: var(--color-destructive-text, var(--color-destructive));
       }
       @media (forced-colors: active) {
         & input:not([type="hidden"]) {
@@ -4016,12 +4177,12 @@
       }
     }
     :is(article, .prose, p) a:not([class*="btn-"]) {
-      color: var(--color-primary);
+      color: var(--color-link, var(--color-primary));
       text-decoration: underline transparent;
       text-underline-offset: 2px;
       transition: text-decoration-color var(--transition-fast) var(--apple-ease);
       &:where(:hover, :focus-visible) {
-        text-decoration-color: var(--color-primary);
+        text-decoration-color: var(--color-link, var(--color-primary));
       }
       &:active {
         color: var(--color-primary-active);
@@ -4574,7 +4735,7 @@
       margin-top: calc(var(--spacing) * 1.5);
     }
     :is(input, textarea, select)[aria-invalid="true"] + small {
-      color: var(--color-destructive);
+      color: var(--color-destructive-text, var(--color-destructive));
     }
     fieldset:where(:not([class])) {
       border-radius: var(--radius);

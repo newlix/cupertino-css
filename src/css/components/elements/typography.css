@@ -81,12 +81,15 @@
   }
 }
 :is(article, .prose, p) a:not([class*="btn-"]) {
-  color: var(--color-primary);
+  /* --color-link is lighter than --color-primary in dark mode so prose
+     links stay readable against near-black backgrounds. Falls back to
+     primary so consumers overriding only --color-primary still work. */
+  color: var(--color-link, var(--color-primary));
   text-decoration: underline transparent;
   @apply underline-offset-2;
   transition: text-decoration-color var(--transition-fast) var(--apple-ease);
   &:where(:hover, :focus-visible) {
-    text-decoration-color: var(--color-primary);
+    text-decoration-color: var(--color-link, var(--color-primary));
   }
   &:active {
     color: var(--color-primary-active);

@@ -80,14 +80,14 @@
   &[data-error] {
     animation: shake 0.4s var(--apple-ease);
     & > span {
-      color: var(--color-destructive);
+      color: var(--color-destructive-text, var(--color-destructive));
     }
     @media (prefers-reduced-motion: reduce) {
       animation: none;
     }
   }
   &[data-error] + small {
-    color: var(--color-destructive);
+    color: var(--color-destructive-text, var(--color-destructive));
   }
   @media (forced-colors: active) {
     & input:not([type="hidden"]) {

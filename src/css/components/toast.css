@@ -1,0 +1,107 @@
+/* ========== TOAST ==========
+   Edge-positioned notification. Distinct from HUD (centered, transient):
+   toasts stack at a page corner and persist until dismissed or until
+   duration expires.
+
+   Default position: top-right. Stack grows downward. Mobile (pointer:
+   coarse) snaps to full-width bottom.
+
+   Usage (declarative):
+     <div class="toast-container" role="region" aria-label="Notifications"></div>
+     (JS appends .toast elements inside)
+
+   Usage (imperative):
+     window.showToast("Saved", { variant: "success" });
+   See toast.js for the full API.
+*/
+
+.toast-container {
+  @apply fixed top-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none;
+  width: min(380px, calc(100vw - 2rem));
+  @media (pointer: coarse) {
+    @apply top-auto left-4 bottom-4;
+    width: calc(100vw - 2rem);
+  }
+}
+
+.toast {
+  @apply flex items-start gap-3 px-4 py-3 pointer-events-auto;
+  border-radius: var(--radius);
+  corner-shape: squircle;
+  background: var(--glass-bg-opaque);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-lg), var(--float-ring);
+  color: var(--color-foreground);
+  animation: toastIn var(--transition-normal) var(--apple-spring);
+  & svg:first-child {
+    @apply size-5 shrink-0 mt-0.5;
+    color: var(--color-tertiary-foreground);
+  }
+  & .toast-body {
+    @apply flex-1 min-w-0 text-[15px] leading-snug;
+  }
+  & .toast-title {
+    @apply block font-semibold;
+    letter-spacing: -0.01em;
+  }
+  & .toast-message {
+    @apply block text-[13px] text-tertiary-foreground mt-0.5;
+  }
+  & .toast-dismiss {
+    @apply shrink-0 inline-flex items-center justify-center size-6 rounded-[var(--radius-xs)] cursor-pointer;
+    background: transparent;
+    color: var(--color-tertiary-foreground);
+    border: none;
+    transition: background-color var(--transition-fast) var(--apple-ease);
+    &:hover {
+      background: var(--surface-2);
+    }
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: 2px solid transparent;
+    }
+  }
+  &[data-variant="success"] svg:first-child {
+    color: var(--color-green);
+  }
+  &[data-variant="error"] svg:first-child {
+    color: var(--color-destructive-text, var(--color-destructive));
+  }
+  &[data-closing] {
+    animation: toastOut var(--transition-fast) var(--apple-ease) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    animation: fadeIn var(--transition-fast) var(--apple-ease) !important;
+    &[data-closing] {
+      animation: fadeIn var(--transition-fast) var(--apple-ease) reverse
+        forwards !important;
+    }
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+@media (forced-colors: active) {
+  .toast {
+    border: 1px solid ButtonText;
+    background: Canvas;
+    color: CanvasText;
+    backdrop-filter: none;
+  }
+}

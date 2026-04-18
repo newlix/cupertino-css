@@ -17,7 +17,14 @@ const links = nav.flatMap((s) =>
 );
 
 const browser = await chromium.launch();
-const context = await browser.newContext({ baseURL: "http://localhost:3000" });
+// Emulate prefers-color-scheme: dark so the docs layout's head script
+// sets `.dark` on html BEFORE first paint. Toggling the class after
+// paint hits a Chromium caching quirk where var() resolution inside
+// @scope doesn't re-evaluate on ancestor class change.
+const context = await browser.newContext({
+  baseURL: "http://localhost:3000",
+  colorScheme: "dark",
+});
 const page = await context.newPage();
 const rollup = new Map();
 

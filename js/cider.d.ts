@@ -45,6 +45,28 @@ export interface SliderAPI extends ComponentLifecycle {
   update(el: HTMLInputElement | HTMLElement): void;
 }
 
+export interface ToastShowOptions {
+  /** Short label (required; can pass a string directly to showToast). */
+  title?: string;
+  /** Secondary supporting text below the title. */
+  message?: string;
+  /** Visual treatment — changes icon + accent colour. */
+  variant?: "info" | "success" | "error";
+  /** Auto-dismiss after N ms. Default 4000. Pass <=0 for sticky. */
+  duration?: number;
+}
+
+export interface ToastInstance {
+  dismiss(): void;
+  element: HTMLElement;
+}
+
+export interface ToastAPI {
+  init(): void;
+  show(titleOrOptions: string | ToastShowOptions): ToastInstance;
+  destroy(): void;
+}
+
 export interface CiderUIGlobal {
   actionSheet: ActionSheetAPI;
   dialog: DialogAPI;
@@ -55,6 +77,7 @@ export interface CiderUIGlobal {
   slider: SliderAPI;
   stepper: ComponentLifecycle;
   tabs: ComponentLifecycle;
+  toast: ToastAPI;
   tokenField: ComponentLifecycle;
   verificationCode: ComponentLifecycle;
 }
@@ -67,6 +90,7 @@ declare global {
     openActionSheet(dialog: HTMLDialogElement): void;
     closeActionSheet(dialog: HTMLDialogElement): void;
     showHUD(label: string, options?: HUDShowOptions): HUDInstance;
+    showToast(titleOrOptions: string | ToastShowOptions): ToastInstance;
   }
 }
 

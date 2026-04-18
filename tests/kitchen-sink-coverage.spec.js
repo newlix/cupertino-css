@@ -48,6 +48,8 @@ test("kitchen-sink demos every interactive component", async ({ page }) => {
     separator: "hr, .separator-vertical",
     hud: ".hud, button[onclick*='showHUD']",
     tooltip: "[data-tooltip]",
+    skeleton: ".skeleton",
+    toast: "button[onclick*='showToast']",
   };
 
   const missing = [];

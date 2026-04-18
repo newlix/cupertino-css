@@ -57,7 +57,10 @@
   }
 }
 .btn-tinted {
-  @apply text-primary;
+  /* --color-link is lighter than --color-primary in dark mode so the
+     blue-on-tinted-blue-bg pattern stays readable. Falls back to
+     --color-primary for light mode and for consumers who override. */
+  color: var(--color-link, var(--color-primary));
   background: color-mix(in oklch, var(--color-primary) 12%, transparent);
   &:hover {
     background: color-mix(in oklch, var(--color-primary) 18%, transparent);
@@ -92,7 +95,10 @@
   }
 }
 .btn-plain {
-  @apply bg-transparent text-primary;
+  /* Same dark-mode readability concern as btn-tinted — blue text on
+     transparent bg needs lighter blue in dark mode. */
+  @apply bg-transparent;
+  color: var(--color-link, var(--color-primary));
   &:hover {
     background: var(--surface-3);
   }
@@ -111,7 +117,7 @@
   }
 }
 :is(.btn-gray, .btn-plain).btn-destructive {
-  color: var(--color-destructive);
+  color: var(--color-destructive-text, var(--color-destructive));
   &:hover {
     background: color-mix(in oklch, var(--color-destructive) 8%, transparent);
   }
@@ -136,7 +142,7 @@
   }
 }
 .btn-tinted.btn-destructive {
-  color: var(--color-destructive);
+  color: var(--color-destructive-text, var(--color-destructive));
   background: color-mix(in oklch, var(--color-destructive) 12%, transparent);
   &:hover {
     background: color-mix(in oklch, var(--color-destructive) 18%, transparent);
@@ -163,7 +169,7 @@
   }
 }
 .btn-bezelled.btn-destructive {
-  color: var(--color-destructive);
+  color: var(--color-destructive-text, var(--color-destructive));
   border-color: color-mix(in oklch, var(--color-destructive) 30%, transparent);
   &:hover {
     background: color-mix(in oklch, var(--color-destructive) 8%, transparent);
