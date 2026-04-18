@@ -214,9 +214,11 @@
 }
 @layer utilities;
 :root {
-  --color-primary: oklch(0.603 0.218 257.42);
-  --color-primary-hover: oklch(0.56 0.218 257.42);
-  --color-primary-active: oklch(0.518 0.218 257.42);
+  --color-primary: oklch(
+    0.4 0.2 257.42
+  );
+  --color-primary-hover: oklch(0.36 0.2 257.42);
+  --color-primary-active: oklch(0.32 0.2 257.42);
   --color-primary-foreground: #fff;
   --color-background: #fff;
   --color-foreground: oklch(0.232 0.004 285.99);
@@ -226,16 +228,16 @@
   --color-secondary-hover: oklch(0.93 0.005 286.02);
   --color-secondary-foreground: oklch(0.232 0.004 285.99);
   --color-tertiary-foreground: oklch(
-    0.54 0.008 286.01
+    0.32 0.008 286.01
   );
   --color-border: oklch(0.862 0.007 286.02 / 0.8);
   --color-border-solid: oklch(0.862 0.007 286.02);
   --color-green: oklch(0.723 0.191 145.09);
   --color-switch: var(--color-green);
   --color-switch-hover: oklch(0.673 0.178 145.09);
-  --color-destructive: oklch(0.654 0.232 28.66);
-  --color-destructive-hover: oklch(0.607 0.232 28.66);
-  --color-destructive-active: oklch(0.561 0.232 28.66);
+  --color-destructive: oklch(0.52 0.23 28.66);
+  --color-destructive-hover: oklch(0.48 0.23 28.66);
+  --color-destructive-active: oklch(0.44 0.23 28.66);
   --color-destructive-foreground: #fff;
   --color-secondary-active: oklch(
     0.896 0.004 285.99
@@ -285,12 +287,14 @@
   --color-separator: oklch(
     0.923 0.007 286.27
   );
-  --hud-background: oklch(0.1 0 0 / 0.82);
-  --hud-text: oklch(0.95 0 0);
+  --hud-background: oklch(0.1 0 0 / 0.92);
+  --hud-text: oklch(0.97 0 0);
   --tooltip-bg: oklch(0.15 0 0 / 0.82);
   --tooltip-text: oklch(0.97 0 0);
   --avatar-bg: oklch(0.92 0.006 286);
-  --avatar-fg: oklch(0.55 0.006 286);
+  --avatar-fg: oklch(
+    0.38 0.006 286
+  );
   --segmented-active: oklch(1 0 0);
   --kbd-inset: oklch(1 0 0 / 0.15);
   --switch-thumb-shadow: 0 2px 4px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);

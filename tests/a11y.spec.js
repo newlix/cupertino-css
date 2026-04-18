@@ -41,12 +41,11 @@ test.describe("a11y — component doc pages", () => {
         // highlighted HTML source and report false "duplicate id" / colour
         // violations for code that isn't meant to be interpreted as UI.
         .exclude(".snippet pre")
-        // color-contrast disabled pending product decision — all 107
-        // current violations trace to Apple's brand palette, which the
-        // library deliberately mirrors (and which macOS/iOS native UI
-        // also fail). See DISPUTES.md for the tradeoff and how to
-        // re-enable once the tokens are darkened.
-        .disableRules(["color-contrast"])
+        // Known contrast exceptions — intentional design choices documented
+        // in DISPUTES.md. Each is non-interactive information (success colour
+        // in callouts, read-only token visual treatment).
+        .exclude(".callout .text-green")
+        .exclude('.token[data-value="Read-only"]')
         .analyze();
 
       if (results.violations.length) {

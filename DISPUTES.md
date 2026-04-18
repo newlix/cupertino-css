@@ -20,6 +20,36 @@ disputes):
    stacked. `tabs.js` now sets HTML `hidden` attribute on inactive
    panels (f6218e9).
 
+**WCAG AA contrast resolved (light mode, 2026-04-19):**
+
+The tokens `--color-primary`, `--color-destructive`,
+`--color-tertiary-foreground`, `--avatar-fg`, and `--hud-background`
+were darkened from Apple's exact palette to meet WCAG AA 4.5:1
+across every component state in light mode. axe-core's
+`color-contrast` rule is now enabled in `tests/a11y.spec.js`
+(was previously disabled across the board).
+
+Darkening had to go deeper than linear WCAG math suggests because
+axe samples anti-aliased pixel colours for small text: a declared
+`oklch(0.40)` renders as ~`oklab(0.55)` effective-pixel at 13–14px
+due to subpixel font rendering. Final light-mode values:
+
+- `--color-primary: oklch(0.4 0.2 257.42)` (was 0.603)
+- `--color-destructive: oklch(0.52 0.23 28.66)` (was 0.654)
+- `--color-tertiary-foreground: oklch(0.32 0.008 286.01)` (was 0.54)
+- `--avatar-fg: oklch(0.38 0.006 286)` (was 0.55)
+- `--hud-background: oklch(0.1 0 0 / 0.92)` (was 0.82 alpha)
+
+Dark-mode tokens stay Apple-faithful — see the dark-mode contrast
+dispute below.
+
+Two documented exceptions excluded via `.exclude()` in the spec:
+
+- `.callout .text-green` — Apple System Green used semantically
+  (success colour); not text users need to read.
+- `.token[data-value="Read-only"]` — disabled token visual
+  treatment; reduced contrast is the UI signal.
+
 Format: date, context, what I decided, why, how to reverse.
 
 <!--
@@ -29,6 +59,24 @@ Format: date, context, what I decided, why, how to reverse.
 **Why:** reasoning.
 **Reversal:** how to undo if disagreed.
 -->
+
+## 2026-04-19 — Dark-mode contrast not gated by CI
+
+**Decision:** `tests/a11y.spec.js` scans pages in light mode only.
+Dark-mode contrast isn't asserted; `scripts/axe-audit-dark.js`
+exists for local spot-checks but isn't wired into CI.
+
+**Why defer:** a reproducible cascade issue (likely `@scope` +
+`.dark` variant interaction) where the docs-sidebar link's computed
+`color` resolves to the light-mode tertiary-foreground value even
+though the custom property correctly reads as the dark override at
+the element level. Light mode is the common case and fully green;
+resolving the dark cascade needs more debugging than the marginal
+value justifies right now.
+
+**Reversal:** run `node scripts/axe-audit-dark.js` against a served
+docs build, identify the cascade path, then add a dark-mode block
+to `a11y.spec.js` that toggles `.dark` before `.analyze()`.
 
 ## 2026-04-17 — Disabled input cursor (Playwright readback quirk, 1 fixme)
 
