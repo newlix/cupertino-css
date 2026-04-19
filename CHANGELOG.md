@@ -6,6 +6,27 @@ All notable changes to Cider UI are documented here. Format follows
 
 ## [Unreleased]
 
+## [0.7.1] — 2026-04-20
+
+### Added
+
+- `examples/` directory with three integration starters:
+  - `examples/vanilla-html` — CDN, no build step.
+  - `examples/vite` — Vite + Tailwind v4 + ESM tree-shake.
+  - `examples/nextjs` — Next.js 15 App Router, SSR-safe.
+- Linked from README under "Starter Examples".
+
+### Changed
+
+- `llms.txt` refreshed with Theming page, Skeleton + Toast components,
+  per-component tree-shake import syntax, TypeScript note, and
+  `examples/` links. Useful for AI agents indexing the project.
+
+### Notes
+
+- Docs site verified live at https://ciderui.com (custom domain,
+  HTTPS enforced).
+
 ## [0.7.0] — 2026-04-19
 
 ### Added
