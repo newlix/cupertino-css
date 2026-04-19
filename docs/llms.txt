@@ -6,6 +6,7 @@
 
 - [Home](https://ciderui.com/index.html): Overview of Cider UI — semantic classes, dark mode, ~12 KB CSS + ~5 KB JS gzipped.
 - [Installation](https://ciderui.com/installation.html): CDN, npm/pnpm/bun/yarn, ES module imports, dark mode setup.
+- [Theming](https://ciderui.com/theming.html): Override CSS custom properties at `.cider` scope. Full token inventory (colours, radii, shadows, transitions) plus Apple-exact palette restore recipe.
 
 ## Components
 
@@ -55,8 +56,10 @@
 - [Callout](https://ciderui.com/components/callout.html): `callout` — informational callout box.
 - [Gauge](https://ciderui.com/components/gauge.html): `gauge` `gauge-sm` `gauge-lg` `gauge-green` `gauge-orange` `gauge-destructive` — circular ring progress indicator.
 - [Tooltip](https://ciderui.com/components/tooltip.html): `[data-tooltip]` — hover tooltip on any element. Pure CSS, no JS.
-- [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires JS.
+- [HUD](https://ciderui.com/components/hud.html): `hud` `hud-container`. Requires JS. Centered one-at-a-time overlay for quick status feedback (volume/brightness style).
 - [Progress](https://ciderui.com/components/progress.html): `<progress>` `.progress-indeterminate`
+- [Skeleton](https://ciderui.com/components/skeleton.html): `skeleton` — loading placeholder with gentle shimmer animation. CSS-only, respects `prefers-reduced-motion`. Set width/height/border-radius via utilities.
+- [Toast](https://ciderui.com/components/toast.html): `toast-container` `toast` — edge-positioned notification stack. `window.showToast(titleOrOptions)` API. Variants: `info` / `success` / `error`. Auto-dismiss or sticky (`duration: 0`). Distinct from HUD: toasts stack at a corner and persist.
 
 ### Display & Media
 
@@ -86,12 +89,31 @@ All styles require a `.cider` ancestor — both classless elements and component
 
 ## Dark Mode
 
-Add `class="dark"` to `<html>`. All components adapt automatically via CSS variables.
+Add `class="dark"` to `<html>`. All components adapt automatically via CSS variables. Both light and dark modes meet WCAG AA 4.5:1 contrast (axe-core verified in CI).
+
+Two tokens to know: `--color-link` (lighter primary for text on dark bg) and `--color-destructive-text` (same for destructive). Fall back to `--color-primary` / `--color-destructive` in light mode so single-token overrides still work.
 
 ## Interactive Components (Optional)
 
 Most components are pure CSS. Import JS only for interactive behavior:
 
 ```js
+// Full bundle — one import, all interactive components work
 import "ciderui/cider.js";
+
+// Or tree-shakeable per-component subpaths
+import "ciderui/components/dialog";
+import "ciderui/components/popover";
 ```
+
+## TypeScript
+
+Types ship with the package. `window.CiderUI.*` APIs and global helpers (`openDialog`, `closeDialog`, `openActionSheet`, `closeActionSheet`, `showHUD`, `showToast`) are fully typed.
+
+## Examples
+
+Minimal integration starters:
+
+- [examples/vanilla-html](https://github.com/newlix/ciderui/tree/main/examples/vanilla-html) — static HTML with CDN link, no build.
+- [examples/vite](https://github.com/newlix/ciderui/tree/main/examples/vite) — Vite + Tailwind CSS v4 + ESM imports.
+- [examples/nextjs](https://github.com/newlix/ciderui/tree/main/examples/nextjs) — Next.js App Router integration.

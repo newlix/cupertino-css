@@ -22,6 +22,14 @@ Omitting the tag tracks `main` and can break between commits:
 pnpm add ciderui@github:newlix/ciderui   # ⚠ unstable
 ```
 
+## Starter Examples
+
+Copy-paste-ready integration examples in [`examples/`](./examples):
+
+- [`examples/vanilla-html`](./examples/vanilla-html) — open in browser, no build step (CDN)
+- [`examples/vite`](./examples/vite) — Vite + Tailwind v4 + tree-shakeable imports
+- [`examples/nextjs`](./examples/nextjs) — Next.js 15 App Router, SSR-safe CSS
+
 ## Usage
 
 ### Tailwind CSS v4 plugin

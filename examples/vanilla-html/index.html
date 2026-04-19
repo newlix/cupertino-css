@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cider UI — Vanilla HTML</title>
+
+    <!--
+      Minimal Cider UI setup: one CSS link, one script tag.
+      The CDN bundle ships Tailwind + Cider UI precompiled so no build
+      step is required. Pin a tag for stability (here: v0.7.0).
+    -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/newlix/ciderui@v0.7.0/dist/ciderui.cdn.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/newlix/ciderui@v0.7.0/js/cider.js"
+      defer
+    ></script>
+
+    <script>
+      // Match OS preference on load so dark components render from first paint.
+      if (matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+
+  <body class="cider cider-fixed">
+    <header class="mt-10 mb-8">
+      <h1>Cider UI — Vanilla HTML</h1>
+      <p>
+        Drop-in demo with the CDN bundle. No Node, no Tailwind install, no build
+        step — just open this file in a browser.
+      </p>
+    </header>
+
+    <section class="mt-8">
+      <h2>Buttons</h2>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button
+          class="btn-filled"
+          onclick="showToast({ title: 'Saved', variant: 'success' })"
+        >
+          Filled
+        </button>
+        <button
+          class="btn-tinted"
+          onclick="
+            showToast({
+              title: 'Hello',
+              message: 'A tinted button fired a toast.',
+            })
+          "
+        >
+          Tinted
+        </button>
+        <button class="btn-gray">Gray</button>
+        <button class="btn-plain">Plain</button>
+        <button
+          class="btn-filled btn-destructive"
+          onclick="showToast({ title: 'Deleted', variant: 'error' })"
+        >
+          Delete
+        </button>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2>Card + Form</h2>
+      <div class="card mt-3 max-w-md">
+        <h3>Sign in</h3>
+        <label for="demo-email">Email</label>
+        <input id="demo-email" type="email" placeholder="you@example.com" />
+        <label for="demo-pass">Password</label>
+        <input id="demo-pass" type="password" />
+        <button
+          class="btn-filled mt-2"
+          onclick="showToast({ title: 'Welcome back', variant: 'success' })"
+        >
+          Sign in
+        </button>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2>Dialog + HUD</h2>
+      <div class="mt-3 flex gap-2">
+        <button
+          class="btn-tinted"
+          onclick="openDialog(document.getElementById('demo-dialog'))"
+        >
+          Open dialog
+        </button>
+        <button class="btn-tinted" onclick="showHUD('Saved')">Show HUD</button>
+      </div>
+      <dialog class="dialog alert" id="demo-dialog">
+        <header>
+          <h3>Save changes?</h3>
+          <p>Your edits will be discarded if you cancel.</p>
+        </header>
+        <div class="dialog-footer">
+          <button
+            class="btn-gray"
+            onclick="closeDialog(this.closest('dialog'))"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn-filled"
+            onclick="closeDialog(this.closest('dialog'))"
+          >
+            Save
+          </button>
+        </div>
+      </dialog>
+    </section>
+
+    <footer class="mt-16 mb-10 text-tertiary-foreground text-sm">
+      <p>
+        See the full docs at
+        <a href="https://ciderui.com">ciderui.com</a>.
+      </p>
+    </footer>
+  </body>
+</html>

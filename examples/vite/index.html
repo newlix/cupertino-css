@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cider UI — Vite</title>
+    <link rel="stylesheet" href="/src/app.css" />
+    <script>
+      if (matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body class="cider cider-fixed">
+    <main class="mt-10 mb-10">
+      <h1>Cider UI — Vite</h1>
+      <p>Vite + Tailwind CSS v4 + tree-shakeable per-component imports.</p>
+
+      <section class="mt-8">
+        <h2>Buttons</h2>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button id="toast-btn" class="btn-filled">Show toast</button>
+          <button class="btn-tinted">Tinted</button>
+          <button class="btn-gray">Gray</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
